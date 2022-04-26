@@ -1,4 +1,4 @@
-# sky130 0.0.1
+# sky130 0.0.2
 
 gdsfactory pdk based on [skywater130](https://github.com/google/skywater-pdk)
 
