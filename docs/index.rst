@@ -6,5 +6,5 @@ sky130
     :maxdepth: 2
 
     README
-    markdown
-    rst
+    components
+    api
