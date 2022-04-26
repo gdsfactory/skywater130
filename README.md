@@ -5,6 +5,8 @@
 
 gdsfactory pdk based on [skywater130](https://github.com/google/skywater-pdk)
 
+![](https://i.imgur.com/xvnfEtZ.png)
+
 ## Installation
 
 For users:
