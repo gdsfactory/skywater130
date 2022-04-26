@@ -34,3 +34,6 @@ update:
 
 update2:
 	pre-commit autoupdate --bleeding-edge
+
+release:
+	git push origin --tags
