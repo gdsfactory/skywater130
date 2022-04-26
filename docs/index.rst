@@ -8,5 +8,3 @@ sky130
     README
     markdown
     rst
-
-

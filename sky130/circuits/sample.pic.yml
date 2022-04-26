@@ -19,8 +19,9 @@ placements:
 routes:
    electrical:
       links:
-         a2,VPWR: a3,VGND
+         a2,VGND: a3,VGND
+      routing_strategy: get_bundle_electrical
+
       settings:
          cross_section: xs_metal1
-         width: 2
-
+         width: 0.2

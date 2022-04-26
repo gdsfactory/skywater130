@@ -1,6 +1,5 @@
-
-from pydantic import BaseModel
 from gdsfactory.types import Layer
+from pydantic import BaseModel
 
 
 class LayerMap(BaseModel):

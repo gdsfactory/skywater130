@@ -13444,4 +13444,3 @@ sky130_fd_sc_hvl__xor2_1
 
   c = sky130.components.sky130_fd_sc_hvl__xor2_1()
   c.plot()
-
