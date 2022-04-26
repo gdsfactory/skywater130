@@ -1,5 +1,4 @@
-""" store configuration
-"""
+"""Store configuration."""
 
 __all__ = ["PATH"]
 

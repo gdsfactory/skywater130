@@ -8,7 +8,7 @@ from sky130.layers import LAYER
 
 xs_metal1 = gf.partial(metal1, layer=LAYER.met1drawing, width=10.0)
 xs_metal2 = gf.partial(metal1, layer=LAYER.met2drawing, width=10.0)
-
+strip = xs_metal1
 
 cross_sections = get_cross_section_factories(sys.modules[__name__])
 

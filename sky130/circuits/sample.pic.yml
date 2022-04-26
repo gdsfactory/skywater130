@@ -1,0 +1,26 @@
+name: demo
+pdk: sky130
+
+instances:
+  a2:
+    component: sky130_fd_sc_hd__a2111oi_0
+
+  a3:
+    component: sky130_fd_sc_hd__a311o_2
+
+placements:
+  a2:
+    xmin: 50
+  a3:
+    xmin: a2,east
+    dx: 5
+
+
+routes:
+   electrical:
+      links:
+         a2,VPWR: a3,VGND
+      settings:
+         cross_section: xs_metal1
+         width: 2
+
