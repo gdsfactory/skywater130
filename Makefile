@@ -38,3 +38,6 @@ update-pre:
 
 release:
 	git push origin --tags
+
+build:
+	python setup.py sdist bdist_wheel
