@@ -1087,5 +1087,7 @@ if __name__ == "__main__":
     # gf.write_cells.write_cells(gdspath=PATH.gdshs, dirpath="gds")
     # gf.write_cells.write_cells(gdspath=PATH.gdshvl, dirpath="gds")
     # print(gf.write_cells.get_import_gds_script(PATH.gds))
-    c = sky130_fd_sc_hvl__xor2_1()
+    # c = sky130_fd_sc_hvl__xor2_1()
+    # c = sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2()
+    c = sky130_fd_sc_hd__conb_1()
     c.show()

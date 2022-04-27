@@ -5,8 +5,16 @@ from pytest_regressions.data_regression import DataRegressionFixture
 
 from sky130 import cells
 
+skip = [
+    "add_ports",
+    "add_ports_m1",
+    "add_ports_m2",
+    "import_gds",
+    "sky130_fd_sc_hd__conb_1",
+    "sky130_fd_sc_hd__macro_sparecell",
+]
 
-cell_names = cells.keys()
+cell_names = set(cells.keys()) - set(skip)
 dirpath = pathlib.Path(__file__).absolute().with_suffix(".gds")
 
 
