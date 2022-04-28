@@ -1,14 +1,10 @@
 """Symlink tech to klayout."""
+
 import os
 import pathlib
 import sys
 
-if sys.platform == "win32":
-    klayout_folder = "KLayout"
-else:
-    klayout_folder = ".klayout"
-
-
+klayout_folder = "KLayout" if sys.platform == "win32" else ".klayout"
 cwd = pathlib.Path(__file__).resolve().parent
 home = pathlib.Path.home()
 src = cwd / "sky130" / "klayout" / "sky130"
