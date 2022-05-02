@@ -33,15 +33,18 @@ jobs:
           pip install .
       - name: Test with pytest
         run: pytest
-  automerge:
-    needs: build
-    runs-on: ubuntu-latest
-
-    permissions:
-      pull-requests: write
-      contents: write
-
-    steps:
-      - uses: fastify/github-action-merge-dependabot@v3.0.0
+      - name: Commit file
+        uses: swinton/commit@v2.x
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            requirements.txt
+          commit-message: Autoupdate requirements.txt
+          ref: refs/heads/my-branch
+  bump:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tool3/bump@master #latest
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
