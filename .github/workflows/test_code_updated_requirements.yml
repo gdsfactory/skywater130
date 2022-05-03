@@ -1,5 +1,5 @@
 ---
-name: test with updated requirements (bleeding edge versions)
+name: test with updated requirements and auto-update
 # https://docs.github.com/en/free-pro-team@latest/actions/guides/building-and-testing-python
 
 on:
@@ -33,18 +33,13 @@ jobs:
           pip install .
       - name: Test with pytest
         run: pytest
-      - name: Commit file
-        uses: swinton/commit@v2.x
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          files: |
-            requirements.txt
-          commit-message: Autoupdate requirements.txt
-          ref: refs/heads/my-branch
-  bump:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: tool3/bump@master #latest
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -m "Add changes" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
