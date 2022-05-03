@@ -8,7 +8,7 @@ from sky130 import components
 from sky130.config import module_path
 from sky130.tech import cross_sections
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 gf.asserts.version(">=5.2.5")
 
