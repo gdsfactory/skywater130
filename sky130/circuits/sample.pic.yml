@@ -1,6 +1,9 @@
 name: demo
 pdk: sky130
 
+settings:
+  metal_width: 0.2
+
 instances:
   a2:
     component: sky130_fd_sc_hd__a2111oi_0
@@ -15,7 +18,6 @@ placements:
     xmin: a2,east
     dx: 5
 
-
 routes:
    electrical:
       links:
@@ -24,4 +26,4 @@ routes:
 
       settings:
          cross_section: xs_metal1
-         width: 0.2
+         width: ${settings.metal_width}
