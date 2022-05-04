@@ -1,1 +1,1 @@
-gdsfactory==5.4.2
+gdsfactory==5.5.2
