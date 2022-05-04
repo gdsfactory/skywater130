@@ -31,32 +31,3 @@ jobs:
           pip install pur pytest bumpversion
           pur -r requirements.txt
           pip install .
-      - name: Test with pytest
-        run: pytest
-      - name: Check if there are changes
-        id: changes
-        uses: UnicornGlobal/has-changes-action@v1.0.11
-
-      # You can now access a variable indicating if there have been changes
-      - name: Process changes
-        if: steps.changes.outputs.changed == 1
-        run: |
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -m "Add changes" -a
-          bumpversion patch
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
-      # - name: Bump version and push tag
-      #   uses: jasonamyers/github-bumpversion-action@v1.0.4
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     DEFAULT_BUMP: 'patch'
-      # - name: Push changes
-      #   uses: ad-m/github-push-action@master
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     tags: true
