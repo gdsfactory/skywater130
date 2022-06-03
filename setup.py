@@ -17,7 +17,7 @@ setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=("tests",)),
-    install_requires=("gdsfactory",),
+    install_requires=("gdsfactory==5.8.8",),
     python_requires=">=3.7",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

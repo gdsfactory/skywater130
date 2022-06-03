@@ -2,7 +2,7 @@ name: demo
 pdk: sky130
 
 settings:
-  metal_width: 0.5
+  metal_width: 0.6
 
 instances:
   a2:
@@ -13,10 +13,11 @@ instances:
 
 placements:
   a2:
-    xmin: 50
+    xmin: 30
   a3:
     xmin: a2,east
-    dx: 5
+    dx: 10
+    dy: 20
 
 routes:
   electrical:
