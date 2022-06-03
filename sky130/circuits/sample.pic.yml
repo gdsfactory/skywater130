@@ -2,7 +2,7 @@ name: demo
 pdk: sky130
 
 settings:
-  metal_width: 0.2
+  metal_width: 0.6
 
 instances:
   a2:
@@ -13,17 +13,18 @@ instances:
 
 placements:
   a2:
-    xmin: 50
+    xmin: 30
   a3:
     xmin: a2,east
-    dx: 5
+    dx: 10
+    dy: 20
 
 routes:
-   electrical:
-      links:
-         a2,VGND: a3,VGND
-      routing_strategy: get_bundle_electrical
+  electrical:
+    links:
+      a2,VGND: a3,VGND
+    routing_strategy: get_bundle_electrical
 
-      settings:
-         cross_section: xs_metal1
-         width: ${settings.metal_width}
+    settings:
+      cross_section: xs_metal1
+      width: ${settings.metal_width}

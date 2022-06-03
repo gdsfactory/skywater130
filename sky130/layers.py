@@ -432,6 +432,14 @@ class LayerMap(BaseModel):
     vianet: Layer = (68, 41)
     viapin: Layer = (68, 58)
 
+    LABEL_INSTANCE: Layer = (66, 0)
+    DEVREC: Layer = (68, 0)
+    PORT: Layer = (1, 10)
+    PORTE: Layer = (1, 11)
+    TE: Layer = (203, 0)
+    TM: Layer = (204, 0)
+    TEXT: Layer = (66, 0)
+
     class Config:
         frozen = True
         extra = "forbid"

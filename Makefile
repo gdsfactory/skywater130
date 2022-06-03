@@ -5,6 +5,9 @@ install:
 	pip install -e .
 	pre-commit install
 
+watch:
+	gf yaml watch sky130
+
 test:
 	flake8 .
 	pytest

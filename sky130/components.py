@@ -25,6 +25,7 @@ add_ports_m1 = gf.partial(
     port_type="electrical",
     port_width=0.2,
     get_name_from_label=True,
+    guess_port_orientation=False,
 )
 add_ports_m2 = gf.partial(
     gf.add_ports.add_ports_from_labels,
@@ -33,6 +34,7 @@ add_ports_m2 = gf.partial(
     port_type="electrical",
     port_width=0.2,
     get_name_from_label=True,
+    guess_port_orientation=False,
 )
 add_ports = gf.compose(add_ports_m1, add_ports_m2)
 
