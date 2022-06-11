@@ -2,6 +2,11 @@ from setuptools import find_packages
 from setuptools import setup
 
 
+def get_install_requires():
+    with open("requirements.txt", "r") as f:
+        return [line.strip() for line in f.readlines() if not line.startswith("-")]
+
+
 with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
 
@@ -17,7 +22,8 @@ setup(
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=("tests",)),
-    install_requires=("gdsfactory==5.8.8",),
+    # install_requires=("gdsfactory==5.8.8",),
+    install_requires=get_install_requires(),
     python_requires=">=3.7",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
