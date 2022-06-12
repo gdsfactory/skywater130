@@ -13,7 +13,7 @@ with open("README.md") as f:
 
 setup(
     name="sky130",
-    version="0.0.8",
+    version="0.0.9",
     url="https://github.com/gdsfactory/skywater130",
     include_package_data=True,
     license="MIT",
