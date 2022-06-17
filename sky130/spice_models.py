@@ -15,7 +15,7 @@ def import_spice(name: str) -> Circuit:
     FIXME!
     """
     fields = name.split("_")
-    library_name = "_".join(fields[0:4])
+    library_name = "_".join(fields[:4])
     library_path = PATH.spice / f"{library_name}.spice"
     circuit = Circuit(name)
     circuit.lib(library_path, name)
