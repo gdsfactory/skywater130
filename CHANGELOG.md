@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [0.0.11](https://github.com/gdsfactory/skywater130/pull/14)
+
+- add spice models
+
 ## 0.0.9
 
 - update to gdsfactory 5.9.0
