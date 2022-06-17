@@ -20,6 +20,8 @@ class Path:
     repo = repo_path
     lyp = module_path / "klayout" / "sky130" / "layers.lyp"
     libs = module_path / "libs"
+    sparameters = module_path / "sparameters"
+    spice = module_path / "spice"
 
     libhd = libs / "sky130hd"
     libhs = libs / "sky130hs"
