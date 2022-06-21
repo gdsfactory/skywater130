@@ -40,7 +40,7 @@ update-pre:
 	pre-commit autoupdate --bleeding-edge
 
 release:
-	git push origin --tags
+	git push --tags
 
 build:
 	python setup.py sdist bdist_wheel
