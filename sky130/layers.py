@@ -1,3 +1,4 @@
+import gdsfactory as gf 
 from gdsfactory.layers import lyp_to_dataclass
 from gdsfactory.types import Layer, LayerStack, LayerLevel
 from pydantic import BaseModel
@@ -656,6 +657,7 @@ def get_layer_stack_generic() -> LayerStack:
 
 
 LAYER_STACK = get_layer_stack_generic()
+LAYER_COLORS = gf.layers.load_lyp(PATH.lyp)
 
 
 if __name__ == "__main__":
