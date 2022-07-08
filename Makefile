@@ -40,6 +40,7 @@ update-pre:
 	pre-commit autoupdate --bleeding-edge
 
 release:
+	git push
 	git push --tags
 
 build:
