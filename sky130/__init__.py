@@ -7,7 +7,7 @@ from gdsfactory.pdk import Pdk
 
 from sky130 import components
 from sky130.config import PATH, module_path
-from sky130.layers import LAYER, LAYER_STACK, LAYER_COLORS
+from sky130.layers import LAYER, LAYER_COLORS, LAYER_STACK
 from sky130.tech import cross_sections
 
 __version__ = "0.0.12"

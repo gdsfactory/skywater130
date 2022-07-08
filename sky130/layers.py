@@ -1,6 +1,5 @@
-import gdsfactory as gf 
-from gdsfactory.layers import lyp_to_dataclass
-from gdsfactory.types import Layer, LayerStack, LayerLevel
+import gdsfactory as gf
+from gdsfactory.types import Layer, LayerLevel, LayerStack
 from pydantic import BaseModel
 
 from sky130.config import PATH

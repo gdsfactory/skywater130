@@ -77,7 +77,7 @@ capm_diel_thickness = 0.04
 cap2m_thickness = 0.06
 cap2m_diel_thickness = 0.04
 passv_thickness = 0.6
-pi_thickness = 6.1 
+pi_thickness = 6.1
 pi_recess = 2.0
 
 
@@ -227,6 +227,3 @@ output("42/0", m_m5)
 
 output("50/0", m_passv)
 output("51/0", m_pi)
-
-
-
