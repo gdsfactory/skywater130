@@ -6,5 +6,6 @@ sky130
     :maxdepth: 2
 
     README
+    tech
     components
-    api
+    notebooks
