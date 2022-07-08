@@ -539,7 +539,7 @@ def get_layer_stack_generic() -> LayerStack:
     zmin_m4 = zmin_m3 + m3_thickness + via3_thickness
     zmin_m5 = zmin_m4 + m4_thickness + via4_thickness
 
-    thickness_nwell = 1.0  # made up number
+    thickness_nwell = sd_impl_depth  # made up number
 
     return LayerStack(
         layers=dict(
@@ -566,6 +566,18 @@ def get_layer_stack_generic() -> LayerStack:
                 zmin=-pwell_depth,
                 material="p",
                 thickness=pwell_depth,
+            ),
+            nsdm=LayerLevel(
+                layer=nsdm,
+                zmin=-sd_impl_depth,
+                material="n",
+                thickness=sd_impl_depth,
+            ),
+            hvtp=LayerLevel(
+                layer=hvtp,
+                zmin=-sd_impl_depth,
+                material="p",
+                thickness=sd_impl_depth,
             ),
             licon1=LayerLevel(
                 layer=licon1,
