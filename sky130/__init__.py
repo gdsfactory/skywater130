@@ -10,7 +10,7 @@ from sky130.config import PATH, module_path
 from sky130.layers import LAYER, LAYER_COLORS, LAYER_STACK
 from sky130.tech import cross_sections
 
-__version__ = "0.0.12"
+__version__ = "0.0.13"
 
 cells = get_cells(components)
 PDK = Pdk(
