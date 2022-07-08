@@ -26,5 +26,5 @@ make install
 ## TODO
 
 - integrate with OpenRoad
-- define port orientation
-- add some sample netlist
+- add spice models
+- add sample netlist
