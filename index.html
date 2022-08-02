@@ -1,0 +1,1165 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="sky130 gdsfactory PDK 0.0.14" href="README.html" />
+
+    <meta name="generator" content="sphinx-5.1.1, furo 2022.06.21"/>
+        <title>sky130 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=40978830699223671f4072448e654b5958f38b89" />
+    <link rel="stylesheet" type="text/css" href="_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">sky130  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+  
+  
+  <span class="sidebar-brand-text">sky130  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">sky130 gdsfactory PDK 0.0.14</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tech.html">Tech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="notebooks.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/intro.html">Layout</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="sky130">
+<h1>sky130<a class="headerlink" href="#sky130" title="Permalink to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="README.html">sky130 gdsfactory PDK 0.0.14</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="README.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="README.html#todo">TODO</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tech.html">Tech</a></li>
+<li class="toctree-l1"><a class="reference internal" href="components.html">Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2111o-1">sky130_fd_sc_hd__a2111o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2111o-2">sky130_fd_sc_hd__a2111o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2111o-4">sky130_fd_sc_hd__a2111o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2111oi-0">sky130_fd_sc_hd__a2111oi_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2111oi-1">sky130_fd_sc_hd__a2111oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2111oi-2">sky130_fd_sc_hd__a2111oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2111oi-4">sky130_fd_sc_hd__a2111oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a211o-1">sky130_fd_sc_hd__a211o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a211o-2">sky130_fd_sc_hd__a211o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a211o-4">sky130_fd_sc_hd__a211o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a211oi-1">sky130_fd_sc_hd__a211oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a211oi-2">sky130_fd_sc_hd__a211oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a211oi-4">sky130_fd_sc_hd__a211oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21bo-1">sky130_fd_sc_hd__a21bo_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21bo-2">sky130_fd_sc_hd__a21bo_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21bo-4">sky130_fd_sc_hd__a21bo_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21boi-0">sky130_fd_sc_hd__a21boi_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21boi-1">sky130_fd_sc_hd__a21boi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21boi-2">sky130_fd_sc_hd__a21boi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21boi-4">sky130_fd_sc_hd__a21boi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21o-1">sky130_fd_sc_hd__a21o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21o-2">sky130_fd_sc_hd__a21o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21o-4">sky130_fd_sc_hd__a21o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21oi-1">sky130_fd_sc_hd__a21oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21oi-2">sky130_fd_sc_hd__a21oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a21oi-4">sky130_fd_sc_hd__a21oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a221o-1">sky130_fd_sc_hd__a221o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a221o-2">sky130_fd_sc_hd__a221o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a221o-4">sky130_fd_sc_hd__a221o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a221oi-1">sky130_fd_sc_hd__a221oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a221oi-2">sky130_fd_sc_hd__a221oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a221oi-4">sky130_fd_sc_hd__a221oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a222oi-1">sky130_fd_sc_hd__a222oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a22o-1">sky130_fd_sc_hd__a22o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a22o-2">sky130_fd_sc_hd__a22o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a22o-4">sky130_fd_sc_hd__a22o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a22oi-1">sky130_fd_sc_hd__a22oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a22oi-2">sky130_fd_sc_hd__a22oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a22oi-4">sky130_fd_sc_hd__a22oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2bb2o-1">sky130_fd_sc_hd__a2bb2o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2bb2o-2">sky130_fd_sc_hd__a2bb2o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2bb2o-4">sky130_fd_sc_hd__a2bb2o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2bb2oi-1">sky130_fd_sc_hd__a2bb2oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2bb2oi-2">sky130_fd_sc_hd__a2bb2oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a2bb2oi-4">sky130_fd_sc_hd__a2bb2oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a311o-1">sky130_fd_sc_hd__a311o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a311o-2">sky130_fd_sc_hd__a311o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a311o-4">sky130_fd_sc_hd__a311o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a311oi-1">sky130_fd_sc_hd__a311oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a311oi-2">sky130_fd_sc_hd__a311oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a311oi-4">sky130_fd_sc_hd__a311oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a31o-1">sky130_fd_sc_hd__a31o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a31o-2">sky130_fd_sc_hd__a31o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a31o-4">sky130_fd_sc_hd__a31o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a31oi-1">sky130_fd_sc_hd__a31oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a31oi-2">sky130_fd_sc_hd__a31oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a31oi-4">sky130_fd_sc_hd__a31oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a32o-1">sky130_fd_sc_hd__a32o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a32o-2">sky130_fd_sc_hd__a32o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a32o-4">sky130_fd_sc_hd__a32o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a32oi-1">sky130_fd_sc_hd__a32oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a32oi-2">sky130_fd_sc_hd__a32oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a32oi-4">sky130_fd_sc_hd__a32oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a41o-1">sky130_fd_sc_hd__a41o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a41o-2">sky130_fd_sc_hd__a41o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a41o-4">sky130_fd_sc_hd__a41o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a41oi-1">sky130_fd_sc_hd__a41oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a41oi-2">sky130_fd_sc_hd__a41oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-a41oi-4">sky130_fd_sc_hd__a41oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and2-0">sky130_fd_sc_hd__and2_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and2-1">sky130_fd_sc_hd__and2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and2-2">sky130_fd_sc_hd__and2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and2-4">sky130_fd_sc_hd__and2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and2b-1">sky130_fd_sc_hd__and2b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and2b-2">sky130_fd_sc_hd__and2b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and2b-4">sky130_fd_sc_hd__and2b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and3-1">sky130_fd_sc_hd__and3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and3-2">sky130_fd_sc_hd__and3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and3-4">sky130_fd_sc_hd__and3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and3b-1">sky130_fd_sc_hd__and3b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and3b-2">sky130_fd_sc_hd__and3b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and3b-4">sky130_fd_sc_hd__and3b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4-1">sky130_fd_sc_hd__and4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4-2">sky130_fd_sc_hd__and4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4-4">sky130_fd_sc_hd__and4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4b-1">sky130_fd_sc_hd__and4b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4b-2">sky130_fd_sc_hd__and4b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4b-4">sky130_fd_sc_hd__and4b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4bb-1">sky130_fd_sc_hd__and4bb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4bb-2">sky130_fd_sc_hd__and4bb_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-and4bb-4">sky130_fd_sc_hd__and4bb_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-buf-1">sky130_fd_sc_hd__buf_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-buf-12">sky130_fd_sc_hd__buf_12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-buf-16">sky130_fd_sc_hd__buf_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-buf-2">sky130_fd_sc_hd__buf_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-buf-4">sky130_fd_sc_hd__buf_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-buf-6">sky130_fd_sc_hd__buf_6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-buf-8">sky130_fd_sc_hd__buf_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-bufbuf-16">sky130_fd_sc_hd__bufbuf_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-bufbuf-8">sky130_fd_sc_hd__bufbuf_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-bufinv-16">sky130_fd_sc_hd__bufinv_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-bufinv-8">sky130_fd_sc_hd__bufinv_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkbuf-1">sky130_fd_sc_hd__clkbuf_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkbuf-16">sky130_fd_sc_hd__clkbuf_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkbuf-2">sky130_fd_sc_hd__clkbuf_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkbuf-4">sky130_fd_sc_hd__clkbuf_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkbuf-8">sky130_fd_sc_hd__clkbuf_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkdlybuf4s15-1">sky130_fd_sc_hd__clkdlybuf4s15_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkdlybuf4s15-2">sky130_fd_sc_hd__clkdlybuf4s15_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkdlybuf4s18-1">sky130_fd_sc_hd__clkdlybuf4s18_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkdlybuf4s18-2">sky130_fd_sc_hd__clkdlybuf4s18_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkdlybuf4s25-1">sky130_fd_sc_hd__clkdlybuf4s25_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkdlybuf4s25-2">sky130_fd_sc_hd__clkdlybuf4s25_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkdlybuf4s50-1">sky130_fd_sc_hd__clkdlybuf4s50_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkdlybuf4s50-2">sky130_fd_sc_hd__clkdlybuf4s50_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkinv-1">sky130_fd_sc_hd__clkinv_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkinv-16">sky130_fd_sc_hd__clkinv_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkinv-2">sky130_fd_sc_hd__clkinv_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkinv-4">sky130_fd_sc_hd__clkinv_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkinv-8">sky130_fd_sc_hd__clkinv_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkinvlp-2">sky130_fd_sc_hd__clkinvlp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-clkinvlp-4">sky130_fd_sc_hd__clkinvlp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-conb-1">sky130_fd_sc_hd__conb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-decap-12">sky130_fd_sc_hd__decap_12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-decap-3">sky130_fd_sc_hd__decap_3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-decap-4">sky130_fd_sc_hd__decap_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-decap-6">sky130_fd_sc_hd__decap_6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-decap-8">sky130_fd_sc_hd__decap_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfbbn-1">sky130_fd_sc_hd__dfbbn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfbbn-2">sky130_fd_sc_hd__dfbbn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfbbp-1">sky130_fd_sc_hd__dfbbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfrbp-1">sky130_fd_sc_hd__dfrbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfrbp-2">sky130_fd_sc_hd__dfrbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfrtn-1">sky130_fd_sc_hd__dfrtn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfrtp-1">sky130_fd_sc_hd__dfrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfrtp-2">sky130_fd_sc_hd__dfrtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfrtp-4">sky130_fd_sc_hd__dfrtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfsbp-1">sky130_fd_sc_hd__dfsbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfsbp-2">sky130_fd_sc_hd__dfsbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfstp-1">sky130_fd_sc_hd__dfstp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfstp-2">sky130_fd_sc_hd__dfstp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfstp-4">sky130_fd_sc_hd__dfstp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfxbp-1">sky130_fd_sc_hd__dfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfxbp-2">sky130_fd_sc_hd__dfxbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfxtp-1">sky130_fd_sc_hd__dfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfxtp-2">sky130_fd_sc_hd__dfxtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dfxtp-4">sky130_fd_sc_hd__dfxtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-diode-2">sky130_fd_sc_hd__diode_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlclkp-1">sky130_fd_sc_hd__dlclkp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlclkp-2">sky130_fd_sc_hd__dlclkp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlclkp-4">sky130_fd_sc_hd__dlclkp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrbn-1">sky130_fd_sc_hd__dlrbn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrbn-2">sky130_fd_sc_hd__dlrbn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrbp-1">sky130_fd_sc_hd__dlrbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrbp-2">sky130_fd_sc_hd__dlrbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrtn-1">sky130_fd_sc_hd__dlrtn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrtn-2">sky130_fd_sc_hd__dlrtn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrtn-4">sky130_fd_sc_hd__dlrtn_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrtp-1">sky130_fd_sc_hd__dlrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrtp-2">sky130_fd_sc_hd__dlrtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlrtp-4">sky130_fd_sc_hd__dlrtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlxbn-1">sky130_fd_sc_hd__dlxbn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlxbn-2">sky130_fd_sc_hd__dlxbn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlxbp-1">sky130_fd_sc_hd__dlxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlxtn-1">sky130_fd_sc_hd__dlxtn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlxtn-2">sky130_fd_sc_hd__dlxtn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlxtn-4">sky130_fd_sc_hd__dlxtn_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlxtp-1">sky130_fd_sc_hd__dlxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlygate4sd1-1">sky130_fd_sc_hd__dlygate4sd1_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlygate4sd2-1">sky130_fd_sc_hd__dlygate4sd2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlygate4sd3-1">sky130_fd_sc_hd__dlygate4sd3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlymetal6s2s-1">sky130_fd_sc_hd__dlymetal6s2s_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlymetal6s4s-1">sky130_fd_sc_hd__dlymetal6s4s_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-dlymetal6s6s-1">sky130_fd_sc_hd__dlymetal6s6s_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-ebufn-1">sky130_fd_sc_hd__ebufn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-ebufn-2">sky130_fd_sc_hd__ebufn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-ebufn-4">sky130_fd_sc_hd__ebufn_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-ebufn-8">sky130_fd_sc_hd__ebufn_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-edfxbp-1">sky130_fd_sc_hd__edfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-edfxtp-1">sky130_fd_sc_hd__edfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvn-0">sky130_fd_sc_hd__einvn_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvn-1">sky130_fd_sc_hd__einvn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvn-2">sky130_fd_sc_hd__einvn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvn-4">sky130_fd_sc_hd__einvn_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvn-8">sky130_fd_sc_hd__einvn_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvp-1">sky130_fd_sc_hd__einvp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvp-2">sky130_fd_sc_hd__einvp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvp-4">sky130_fd_sc_hd__einvp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-einvp-8">sky130_fd_sc_hd__einvp_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fa-1">sky130_fd_sc_hd__fa_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fa-2">sky130_fd_sc_hd__fa_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fa-4">sky130_fd_sc_hd__fa_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fah-1">sky130_fd_sc_hd__fah_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fahcin-1">sky130_fd_sc_hd__fahcin_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fahcon-1">sky130_fd_sc_hd__fahcon_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fill-1">sky130_fd_sc_hd__fill_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fill-2">sky130_fd_sc_hd__fill_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fill-4">sky130_fd_sc_hd__fill_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-fill-8">sky130_fd_sc_hd__fill_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-ha-1">sky130_fd_sc_hd__ha_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-ha-2">sky130_fd_sc_hd__ha_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-ha-4">sky130_fd_sc_hd__ha_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-inv-1">sky130_fd_sc_hd__inv_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-inv-12">sky130_fd_sc_hd__inv_12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-inv-16">sky130_fd_sc_hd__inv_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-inv-2">sky130_fd_sc_hd__inv_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-inv-4">sky130_fd_sc_hd__inv_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-inv-6">sky130_fd_sc_hd__inv_6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-inv-8">sky130_fd_sc_hd__inv_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-bleeder-1">sky130_fd_sc_hd__lpflow_bleeder_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkbufkapwr-1">sky130_fd_sc_hd__lpflow_clkbufkapwr_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkbufkapwr-16">sky130_fd_sc_hd__lpflow_clkbufkapwr_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkbufkapwr-2">sky130_fd_sc_hd__lpflow_clkbufkapwr_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkbufkapwr-4">sky130_fd_sc_hd__lpflow_clkbufkapwr_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkbufkapwr-8">sky130_fd_sc_hd__lpflow_clkbufkapwr_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkinvkapwr-1">sky130_fd_sc_hd__lpflow_clkinvkapwr_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkinvkapwr-16">sky130_fd_sc_hd__lpflow_clkinvkapwr_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkinvkapwr-2">sky130_fd_sc_hd__lpflow_clkinvkapwr_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkinvkapwr-4">sky130_fd_sc_hd__lpflow_clkinvkapwr_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-clkinvkapwr-8">sky130_fd_sc_hd__lpflow_clkinvkapwr_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-decapkapwr-12">sky130_fd_sc_hd__lpflow_decapkapwr_12</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-decapkapwr-3">sky130_fd_sc_hd__lpflow_decapkapwr_3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-decapkapwr-4">sky130_fd_sc_hd__lpflow_decapkapwr_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-decapkapwr-6">sky130_fd_sc_hd__lpflow_decapkapwr_6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-decapkapwr-8">sky130_fd_sc_hd__lpflow_decapkapwr_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-inputiso0n-1">sky130_fd_sc_hd__lpflow_inputiso0n_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-inputiso0p-1">sky130_fd_sc_hd__lpflow_inputiso0p_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-inputiso1n-1">sky130_fd_sc_hd__lpflow_inputiso1n_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-inputiso1p-1">sky130_fd_sc_hd__lpflow_inputiso1p_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-inputisolatch-1">sky130_fd_sc_hd__lpflow_inputisolatch_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-isobufsrc-1">sky130_fd_sc_hd__lpflow_isobufsrc_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-isobufsrc-16">sky130_fd_sc_hd__lpflow_isobufsrc_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-isobufsrc-2">sky130_fd_sc_hd__lpflow_isobufsrc_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-isobufsrc-4">sky130_fd_sc_hd__lpflow_isobufsrc_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-isobufsrc-8">sky130_fd_sc_hd__lpflow_isobufsrc_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-isobufsrckapwr-16">sky130_fd_sc_hd__lpflow_isobufsrckapwr_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-lsbuf-lh-hl-isowell-tap-1">sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-lsbuf-lh-hl-isowell-tap-2">sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-lsbuf-lh-hl-isowell-tap-4">sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-lsbuf-lh-isowell-4">sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-lsbuf-lh-isowell-tap-1">sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-lsbuf-lh-isowell-tap-2">sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-lpflow-lsbuf-lh-isowell-tap-4">sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-macro-sparecell">sky130_fd_sc_hd__macro_sparecell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-maj3-1">sky130_fd_sc_hd__maj3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-maj3-2">sky130_fd_sc_hd__maj3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-maj3-4">sky130_fd_sc_hd__maj3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux2-1">sky130_fd_sc_hd__mux2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux2-2">sky130_fd_sc_hd__mux2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux2-4">sky130_fd_sc_hd__mux2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux2-8">sky130_fd_sc_hd__mux2_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux2i-1">sky130_fd_sc_hd__mux2i_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux2i-2">sky130_fd_sc_hd__mux2i_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux2i-4">sky130_fd_sc_hd__mux2i_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux4-1">sky130_fd_sc_hd__mux4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux4-2">sky130_fd_sc_hd__mux4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-mux4-4">sky130_fd_sc_hd__mux4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand2-1">sky130_fd_sc_hd__nand2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand2-2">sky130_fd_sc_hd__nand2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand2-4">sky130_fd_sc_hd__nand2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand2-8">sky130_fd_sc_hd__nand2_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand2b-1">sky130_fd_sc_hd__nand2b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand2b-2">sky130_fd_sc_hd__nand2b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand2b-4">sky130_fd_sc_hd__nand2b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand3-1">sky130_fd_sc_hd__nand3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand3-2">sky130_fd_sc_hd__nand3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand3-4">sky130_fd_sc_hd__nand3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand3b-1">sky130_fd_sc_hd__nand3b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand3b-2">sky130_fd_sc_hd__nand3b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand3b-4">sky130_fd_sc_hd__nand3b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4-1">sky130_fd_sc_hd__nand4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4-2">sky130_fd_sc_hd__nand4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4-4">sky130_fd_sc_hd__nand4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4b-1">sky130_fd_sc_hd__nand4b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4b-2">sky130_fd_sc_hd__nand4b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4b-4">sky130_fd_sc_hd__nand4b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4bb-1">sky130_fd_sc_hd__nand4bb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4bb-2">sky130_fd_sc_hd__nand4bb_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nand4bb-4">sky130_fd_sc_hd__nand4bb_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor2-1">sky130_fd_sc_hd__nor2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor2-2">sky130_fd_sc_hd__nor2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor2-4">sky130_fd_sc_hd__nor2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor2-8">sky130_fd_sc_hd__nor2_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor2b-1">sky130_fd_sc_hd__nor2b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor2b-2">sky130_fd_sc_hd__nor2b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor2b-4">sky130_fd_sc_hd__nor2b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor3-1">sky130_fd_sc_hd__nor3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor3-2">sky130_fd_sc_hd__nor3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor3-4">sky130_fd_sc_hd__nor3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor3b-1">sky130_fd_sc_hd__nor3b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor3b-2">sky130_fd_sc_hd__nor3b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor3b-4">sky130_fd_sc_hd__nor3b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4-1">sky130_fd_sc_hd__nor4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4-2">sky130_fd_sc_hd__nor4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4-4">sky130_fd_sc_hd__nor4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4b-1">sky130_fd_sc_hd__nor4b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4b-2">sky130_fd_sc_hd__nor4b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4b-4">sky130_fd_sc_hd__nor4b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4bb-1">sky130_fd_sc_hd__nor4bb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4bb-2">sky130_fd_sc_hd__nor4bb_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-nor4bb-4">sky130_fd_sc_hd__nor4bb_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2111a-1">sky130_fd_sc_hd__o2111a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2111a-2">sky130_fd_sc_hd__o2111a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2111a-4">sky130_fd_sc_hd__o2111a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2111ai-1">sky130_fd_sc_hd__o2111ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2111ai-2">sky130_fd_sc_hd__o2111ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2111ai-4">sky130_fd_sc_hd__o2111ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o211a-1">sky130_fd_sc_hd__o211a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o211a-2">sky130_fd_sc_hd__o211a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o211a-4">sky130_fd_sc_hd__o211a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o211ai-1">sky130_fd_sc_hd__o211ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o211ai-2">sky130_fd_sc_hd__o211ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o211ai-4">sky130_fd_sc_hd__o211ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21a-1">sky130_fd_sc_hd__o21a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21a-2">sky130_fd_sc_hd__o21a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21a-4">sky130_fd_sc_hd__o21a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21ai-0">sky130_fd_sc_hd__o21ai_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21ai-1">sky130_fd_sc_hd__o21ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21ai-2">sky130_fd_sc_hd__o21ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21ai-4">sky130_fd_sc_hd__o21ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21ba-1">sky130_fd_sc_hd__o21ba_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21ba-2">sky130_fd_sc_hd__o21ba_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21ba-4">sky130_fd_sc_hd__o21ba_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21bai-1">sky130_fd_sc_hd__o21bai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21bai-2">sky130_fd_sc_hd__o21bai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o21bai-4">sky130_fd_sc_hd__o21bai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o221a-1">sky130_fd_sc_hd__o221a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o221a-2">sky130_fd_sc_hd__o221a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o221a-4">sky130_fd_sc_hd__o221a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o221ai-1">sky130_fd_sc_hd__o221ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o221ai-2">sky130_fd_sc_hd__o221ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o221ai-4">sky130_fd_sc_hd__o221ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o22a-1">sky130_fd_sc_hd__o22a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o22a-2">sky130_fd_sc_hd__o22a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o22a-4">sky130_fd_sc_hd__o22a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o22ai-1">sky130_fd_sc_hd__o22ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o22ai-2">sky130_fd_sc_hd__o22ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o22ai-4">sky130_fd_sc_hd__o22ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2bb2a-1">sky130_fd_sc_hd__o2bb2a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2bb2a-2">sky130_fd_sc_hd__o2bb2a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2bb2a-4">sky130_fd_sc_hd__o2bb2a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2bb2ai-1">sky130_fd_sc_hd__o2bb2ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2bb2ai-2">sky130_fd_sc_hd__o2bb2ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o2bb2ai-4">sky130_fd_sc_hd__o2bb2ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o311a-1">sky130_fd_sc_hd__o311a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o311a-2">sky130_fd_sc_hd__o311a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o311a-4">sky130_fd_sc_hd__o311a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o311ai-0">sky130_fd_sc_hd__o311ai_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o311ai-1">sky130_fd_sc_hd__o311ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o311ai-2">sky130_fd_sc_hd__o311ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o311ai-4">sky130_fd_sc_hd__o311ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o31a-1">sky130_fd_sc_hd__o31a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o31a-2">sky130_fd_sc_hd__o31a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o31a-4">sky130_fd_sc_hd__o31a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o31ai-1">sky130_fd_sc_hd__o31ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o31ai-2">sky130_fd_sc_hd__o31ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o31ai-4">sky130_fd_sc_hd__o31ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o32a-1">sky130_fd_sc_hd__o32a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o32a-2">sky130_fd_sc_hd__o32a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o32a-4">sky130_fd_sc_hd__o32a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o32ai-1">sky130_fd_sc_hd__o32ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o32ai-2">sky130_fd_sc_hd__o32ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o32ai-4">sky130_fd_sc_hd__o32ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o41a-1">sky130_fd_sc_hd__o41a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o41a-2">sky130_fd_sc_hd__o41a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o41a-4">sky130_fd_sc_hd__o41a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o41ai-1">sky130_fd_sc_hd__o41ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o41ai-2">sky130_fd_sc_hd__o41ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-o41ai-4">sky130_fd_sc_hd__o41ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or2-0">sky130_fd_sc_hd__or2_0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or2-1">sky130_fd_sc_hd__or2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or2-2">sky130_fd_sc_hd__or2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or2-4">sky130_fd_sc_hd__or2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or2b-1">sky130_fd_sc_hd__or2b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or2b-2">sky130_fd_sc_hd__or2b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or2b-4">sky130_fd_sc_hd__or2b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or3-1">sky130_fd_sc_hd__or3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or3-2">sky130_fd_sc_hd__or3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or3-4">sky130_fd_sc_hd__or3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or3b-1">sky130_fd_sc_hd__or3b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or3b-2">sky130_fd_sc_hd__or3b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or3b-4">sky130_fd_sc_hd__or3b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4-1">sky130_fd_sc_hd__or4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4-2">sky130_fd_sc_hd__or4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4-4">sky130_fd_sc_hd__or4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4b-1">sky130_fd_sc_hd__or4b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4b-2">sky130_fd_sc_hd__or4b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4b-4">sky130_fd_sc_hd__or4b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4bb-1">sky130_fd_sc_hd__or4bb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4bb-2">sky130_fd_sc_hd__or4bb_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-or4bb-4">sky130_fd_sc_hd__or4bb_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-probe-p-8">sky130_fd_sc_hd__probe_p_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-probec-p-8">sky130_fd_sc_hd__probec_p_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfbbn-1">sky130_fd_sc_hd__sdfbbn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfbbn-2">sky130_fd_sc_hd__sdfbbn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfbbp-1">sky130_fd_sc_hd__sdfbbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfrbp-1">sky130_fd_sc_hd__sdfrbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfrbp-2">sky130_fd_sc_hd__sdfrbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfrtn-1">sky130_fd_sc_hd__sdfrtn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfrtp-1">sky130_fd_sc_hd__sdfrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfrtp-2">sky130_fd_sc_hd__sdfrtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfrtp-4">sky130_fd_sc_hd__sdfrtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfsbp-1">sky130_fd_sc_hd__sdfsbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfsbp-2">sky130_fd_sc_hd__sdfsbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfstp-1">sky130_fd_sc_hd__sdfstp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfstp-2">sky130_fd_sc_hd__sdfstp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfstp-4">sky130_fd_sc_hd__sdfstp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfxbp-1">sky130_fd_sc_hd__sdfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfxbp-2">sky130_fd_sc_hd__sdfxbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfxtp-1">sky130_fd_sc_hd__sdfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfxtp-2">sky130_fd_sc_hd__sdfxtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdfxtp-4">sky130_fd_sc_hd__sdfxtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdlclkp-1">sky130_fd_sc_hd__sdlclkp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdlclkp-2">sky130_fd_sc_hd__sdlclkp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sdlclkp-4">sky130_fd_sc_hd__sdlclkp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sedfxbp-1">sky130_fd_sc_hd__sedfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sedfxbp-2">sky130_fd_sc_hd__sedfxbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sedfxtp-1">sky130_fd_sc_hd__sedfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sedfxtp-2">sky130_fd_sc_hd__sedfxtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-sedfxtp-4">sky130_fd_sc_hd__sedfxtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-tap-1">sky130_fd_sc_hd__tap_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-tap-2">sky130_fd_sc_hd__tap_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-tapvgnd2-1">sky130_fd_sc_hd__tapvgnd2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-tapvgnd-1">sky130_fd_sc_hd__tapvgnd_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-tapvpwrvgnd-1">sky130_fd_sc_hd__tapvpwrvgnd_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xnor2-1">sky130_fd_sc_hd__xnor2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xnor2-2">sky130_fd_sc_hd__xnor2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xnor2-4">sky130_fd_sc_hd__xnor2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xnor3-1">sky130_fd_sc_hd__xnor3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xnor3-2">sky130_fd_sc_hd__xnor3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xnor3-4">sky130_fd_sc_hd__xnor3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xor2-1">sky130_fd_sc_hd__xor2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xor2-2">sky130_fd_sc_hd__xor2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xor2-4">sky130_fd_sc_hd__xor2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xor3-1">sky130_fd_sc_hd__xor3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xor3-2">sky130_fd_sc_hd__xor3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hd-xor3-4">sky130_fd_sc_hd__xor3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2111o-1">sky130_fd_sc_hs__a2111o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2111o-2">sky130_fd_sc_hs__a2111o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2111o-4">sky130_fd_sc_hs__a2111o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2111oi-1">sky130_fd_sc_hs__a2111oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2111oi-2">sky130_fd_sc_hs__a2111oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2111oi-4">sky130_fd_sc_hs__a2111oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a211o-1">sky130_fd_sc_hs__a211o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a211o-2">sky130_fd_sc_hs__a211o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a211o-4">sky130_fd_sc_hs__a211o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a211oi-1">sky130_fd_sc_hs__a211oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a211oi-2">sky130_fd_sc_hs__a211oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a211oi-4">sky130_fd_sc_hs__a211oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21bo-1">sky130_fd_sc_hs__a21bo_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21bo-2">sky130_fd_sc_hs__a21bo_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21bo-4">sky130_fd_sc_hs__a21bo_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21boi-1">sky130_fd_sc_hs__a21boi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21boi-2">sky130_fd_sc_hs__a21boi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21boi-4">sky130_fd_sc_hs__a21boi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21o-1">sky130_fd_sc_hs__a21o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21o-2">sky130_fd_sc_hs__a21o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21o-4">sky130_fd_sc_hs__a21o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21oi-1">sky130_fd_sc_hs__a21oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21oi-2">sky130_fd_sc_hs__a21oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a21oi-4">sky130_fd_sc_hs__a21oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a221o-1">sky130_fd_sc_hs__a221o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a221o-2">sky130_fd_sc_hs__a221o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a221o-4">sky130_fd_sc_hs__a221o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a221oi-1">sky130_fd_sc_hs__a221oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a221oi-2">sky130_fd_sc_hs__a221oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a221oi-4">sky130_fd_sc_hs__a221oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a222o-1">sky130_fd_sc_hs__a222o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a222o-2">sky130_fd_sc_hs__a222o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a222oi-1">sky130_fd_sc_hs__a222oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a222oi-2">sky130_fd_sc_hs__a222oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a22o-1">sky130_fd_sc_hs__a22o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a22o-2">sky130_fd_sc_hs__a22o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a22o-4">sky130_fd_sc_hs__a22o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a22oi-1">sky130_fd_sc_hs__a22oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a22oi-2">sky130_fd_sc_hs__a22oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a22oi-4">sky130_fd_sc_hs__a22oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2bb2o-1">sky130_fd_sc_hs__a2bb2o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2bb2o-2">sky130_fd_sc_hs__a2bb2o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2bb2o-4">sky130_fd_sc_hs__a2bb2o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2bb2oi-1">sky130_fd_sc_hs__a2bb2oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2bb2oi-2">sky130_fd_sc_hs__a2bb2oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a2bb2oi-4">sky130_fd_sc_hs__a2bb2oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a311o-1">sky130_fd_sc_hs__a311o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a311o-2">sky130_fd_sc_hs__a311o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a311o-4">sky130_fd_sc_hs__a311o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a311oi-1">sky130_fd_sc_hs__a311oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a311oi-2">sky130_fd_sc_hs__a311oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a311oi-4">sky130_fd_sc_hs__a311oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a31o-1">sky130_fd_sc_hs__a31o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a31o-2">sky130_fd_sc_hs__a31o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a31o-4">sky130_fd_sc_hs__a31o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a31oi-1">sky130_fd_sc_hs__a31oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a31oi-2">sky130_fd_sc_hs__a31oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a31oi-4">sky130_fd_sc_hs__a31oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a32o-1">sky130_fd_sc_hs__a32o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a32o-2">sky130_fd_sc_hs__a32o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a32o-4">sky130_fd_sc_hs__a32o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a32oi-1">sky130_fd_sc_hs__a32oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a32oi-2">sky130_fd_sc_hs__a32oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a32oi-4">sky130_fd_sc_hs__a32oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a41o-1">sky130_fd_sc_hs__a41o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a41o-2">sky130_fd_sc_hs__a41o_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a41o-4">sky130_fd_sc_hs__a41o_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a41oi-1">sky130_fd_sc_hs__a41oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a41oi-2">sky130_fd_sc_hs__a41oi_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-a41oi-4">sky130_fd_sc_hs__a41oi_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and2-1">sky130_fd_sc_hs__and2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and2-2">sky130_fd_sc_hs__and2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and2-4">sky130_fd_sc_hs__and2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and2b-1">sky130_fd_sc_hs__and2b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and2b-2">sky130_fd_sc_hs__and2b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and2b-4">sky130_fd_sc_hs__and2b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and3-1">sky130_fd_sc_hs__and3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and3-2">sky130_fd_sc_hs__and3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and3-4">sky130_fd_sc_hs__and3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and3b-1">sky130_fd_sc_hs__and3b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and3b-2">sky130_fd_sc_hs__and3b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and3b-4">sky130_fd_sc_hs__and3b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4-1">sky130_fd_sc_hs__and4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4-2">sky130_fd_sc_hs__and4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4-4">sky130_fd_sc_hs__and4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4b-1">sky130_fd_sc_hs__and4b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4b-2">sky130_fd_sc_hs__and4b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4b-4">sky130_fd_sc_hs__and4b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4bb-1">sky130_fd_sc_hs__and4bb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4bb-2">sky130_fd_sc_hs__and4bb_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-and4bb-4">sky130_fd_sc_hs__and4bb_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-buf-1">sky130_fd_sc_hs__buf_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-buf-16">sky130_fd_sc_hs__buf_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-buf-2">sky130_fd_sc_hs__buf_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-buf-4">sky130_fd_sc_hs__buf_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-buf-8">sky130_fd_sc_hs__buf_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-bufbuf-16">sky130_fd_sc_hs__bufbuf_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-bufbuf-8">sky130_fd_sc_hs__bufbuf_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-bufinv-16">sky130_fd_sc_hs__bufinv_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-bufinv-8">sky130_fd_sc_hs__bufinv_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkbuf-1">sky130_fd_sc_hs__clkbuf_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkbuf-16">sky130_fd_sc_hs__clkbuf_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkbuf-2">sky130_fd_sc_hs__clkbuf_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkbuf-4">sky130_fd_sc_hs__clkbuf_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkbuf-8">sky130_fd_sc_hs__clkbuf_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkdlyinv3sd1-1">sky130_fd_sc_hs__clkdlyinv3sd1_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkdlyinv3sd2-1">sky130_fd_sc_hs__clkdlyinv3sd2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkdlyinv3sd3-1">sky130_fd_sc_hs__clkdlyinv3sd3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkdlyinv5sd1-1">sky130_fd_sc_hs__clkdlyinv5sd1_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkdlyinv5sd2-1">sky130_fd_sc_hs__clkdlyinv5sd2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkdlyinv5sd3-1">sky130_fd_sc_hs__clkdlyinv5sd3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkinv-1">sky130_fd_sc_hs__clkinv_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkinv-16">sky130_fd_sc_hs__clkinv_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkinv-2">sky130_fd_sc_hs__clkinv_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkinv-4">sky130_fd_sc_hs__clkinv_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-clkinv-8">sky130_fd_sc_hs__clkinv_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-conb-1">sky130_fd_sc_hs__conb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-decap-4">sky130_fd_sc_hs__decap_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-decap-8">sky130_fd_sc_hs__decap_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfbbn-1">sky130_fd_sc_hs__dfbbn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfbbn-2">sky130_fd_sc_hs__dfbbn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfbbp-1">sky130_fd_sc_hs__dfbbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfrbp-1">sky130_fd_sc_hs__dfrbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfrbp-2">sky130_fd_sc_hs__dfrbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfrtn-1">sky130_fd_sc_hs__dfrtn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfrtp-1">sky130_fd_sc_hs__dfrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfrtp-2">sky130_fd_sc_hs__dfrtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfrtp-4">sky130_fd_sc_hs__dfrtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfsbp-1">sky130_fd_sc_hs__dfsbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfsbp-2">sky130_fd_sc_hs__dfsbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfstp-1">sky130_fd_sc_hs__dfstp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfstp-2">sky130_fd_sc_hs__dfstp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfstp-4">sky130_fd_sc_hs__dfstp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfxbp-1">sky130_fd_sc_hs__dfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfxbp-2">sky130_fd_sc_hs__dfxbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfxtp-1">sky130_fd_sc_hs__dfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfxtp-2">sky130_fd_sc_hs__dfxtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dfxtp-4">sky130_fd_sc_hs__dfxtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-diode-2">sky130_fd_sc_hs__diode_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlclkp-1">sky130_fd_sc_hs__dlclkp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlclkp-2">sky130_fd_sc_hs__dlclkp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlclkp-4">sky130_fd_sc_hs__dlclkp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrbn-1">sky130_fd_sc_hs__dlrbn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrbn-2">sky130_fd_sc_hs__dlrbn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrbp-1">sky130_fd_sc_hs__dlrbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrbp-2">sky130_fd_sc_hs__dlrbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrtn-1">sky130_fd_sc_hs__dlrtn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrtn-2">sky130_fd_sc_hs__dlrtn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrtn-4">sky130_fd_sc_hs__dlrtn_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrtp-1">sky130_fd_sc_hs__dlrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrtp-2">sky130_fd_sc_hs__dlrtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlrtp-4">sky130_fd_sc_hs__dlrtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlxbn-1">sky130_fd_sc_hs__dlxbn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlxbn-2">sky130_fd_sc_hs__dlxbn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlxbp-1">sky130_fd_sc_hs__dlxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlxtn-1">sky130_fd_sc_hs__dlxtn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlxtn-2">sky130_fd_sc_hs__dlxtn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlxtn-4">sky130_fd_sc_hs__dlxtn_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlxtp-1">sky130_fd_sc_hs__dlxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlygate4sd1-1">sky130_fd_sc_hs__dlygate4sd1_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlygate4sd2-1">sky130_fd_sc_hs__dlygate4sd2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlygate4sd3-1">sky130_fd_sc_hs__dlygate4sd3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlymetal6s2s-1">sky130_fd_sc_hs__dlymetal6s2s_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlymetal6s4s-1">sky130_fd_sc_hs__dlymetal6s4s_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-dlymetal6s6s-1">sky130_fd_sc_hs__dlymetal6s6s_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-ebufn-1">sky130_fd_sc_hs__ebufn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-ebufn-2">sky130_fd_sc_hs__ebufn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-ebufn-4">sky130_fd_sc_hs__ebufn_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-ebufn-8">sky130_fd_sc_hs__ebufn_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-edfxbp-1">sky130_fd_sc_hs__edfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-edfxtp-1">sky130_fd_sc_hs__edfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-einvn-1">sky130_fd_sc_hs__einvn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-einvn-2">sky130_fd_sc_hs__einvn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-einvn-4">sky130_fd_sc_hs__einvn_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-einvn-8">sky130_fd_sc_hs__einvn_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-einvp-1">sky130_fd_sc_hs__einvp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-einvp-2">sky130_fd_sc_hs__einvp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-einvp-4">sky130_fd_sc_hs__einvp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-einvp-8">sky130_fd_sc_hs__einvp_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fa-1">sky130_fd_sc_hs__fa_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fa-2">sky130_fd_sc_hs__fa_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fa-4">sky130_fd_sc_hs__fa_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fah-1">sky130_fd_sc_hs__fah_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fah-2">sky130_fd_sc_hs__fah_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fah-4">sky130_fd_sc_hs__fah_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fahcin-1">sky130_fd_sc_hs__fahcin_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fahcon-1">sky130_fd_sc_hs__fahcon_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fill-1">sky130_fd_sc_hs__fill_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fill-2">sky130_fd_sc_hs__fill_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fill-4">sky130_fd_sc_hs__fill_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fill-8">sky130_fd_sc_hs__fill_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fill-diode-2">sky130_fd_sc_hs__fill_diode_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fill-diode-4">sky130_fd_sc_hs__fill_diode_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-fill-diode-8">sky130_fd_sc_hs__fill_diode_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-ha-1">sky130_fd_sc_hs__ha_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-ha-2">sky130_fd_sc_hs__ha_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-ha-4">sky130_fd_sc_hs__ha_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-inv-1">sky130_fd_sc_hs__inv_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-inv-16">sky130_fd_sc_hs__inv_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-inv-2">sky130_fd_sc_hs__inv_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-inv-4">sky130_fd_sc_hs__inv_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-inv-8">sky130_fd_sc_hs__inv_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-maj3-1">sky130_fd_sc_hs__maj3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-maj3-2">sky130_fd_sc_hs__maj3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-maj3-4">sky130_fd_sc_hs__maj3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux2-1">sky130_fd_sc_hs__mux2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux2-2">sky130_fd_sc_hs__mux2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux2-4">sky130_fd_sc_hs__mux2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux2i-1">sky130_fd_sc_hs__mux2i_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux2i-2">sky130_fd_sc_hs__mux2i_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux2i-4">sky130_fd_sc_hs__mux2i_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux4-1">sky130_fd_sc_hs__mux4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux4-2">sky130_fd_sc_hs__mux4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-mux4-4">sky130_fd_sc_hs__mux4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand2-1">sky130_fd_sc_hs__nand2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand2-2">sky130_fd_sc_hs__nand2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand2-4">sky130_fd_sc_hs__nand2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand2-8">sky130_fd_sc_hs__nand2_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand2b-1">sky130_fd_sc_hs__nand2b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand2b-2">sky130_fd_sc_hs__nand2b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand2b-4">sky130_fd_sc_hs__nand2b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand3-1">sky130_fd_sc_hs__nand3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand3-2">sky130_fd_sc_hs__nand3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand3-4">sky130_fd_sc_hs__nand3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand3b-1">sky130_fd_sc_hs__nand3b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand3b-2">sky130_fd_sc_hs__nand3b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand3b-4">sky130_fd_sc_hs__nand3b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4-1">sky130_fd_sc_hs__nand4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4-2">sky130_fd_sc_hs__nand4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4-4">sky130_fd_sc_hs__nand4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4b-1">sky130_fd_sc_hs__nand4b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4b-2">sky130_fd_sc_hs__nand4b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4b-4">sky130_fd_sc_hs__nand4b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4bb-1">sky130_fd_sc_hs__nand4bb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4bb-2">sky130_fd_sc_hs__nand4bb_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nand4bb-4">sky130_fd_sc_hs__nand4bb_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor2-1">sky130_fd_sc_hs__nor2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor2-2">sky130_fd_sc_hs__nor2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor2-4">sky130_fd_sc_hs__nor2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor2-8">sky130_fd_sc_hs__nor2_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor2b-1">sky130_fd_sc_hs__nor2b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor2b-2">sky130_fd_sc_hs__nor2b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor2b-4">sky130_fd_sc_hs__nor2b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor3-1">sky130_fd_sc_hs__nor3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor3-2">sky130_fd_sc_hs__nor3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor3-4">sky130_fd_sc_hs__nor3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor3b-1">sky130_fd_sc_hs__nor3b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor3b-2">sky130_fd_sc_hs__nor3b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor3b-4">sky130_fd_sc_hs__nor3b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4-1">sky130_fd_sc_hs__nor4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4-2">sky130_fd_sc_hs__nor4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4-4">sky130_fd_sc_hs__nor4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4b-1">sky130_fd_sc_hs__nor4b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4b-2">sky130_fd_sc_hs__nor4b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4b-4">sky130_fd_sc_hs__nor4b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4bb-1">sky130_fd_sc_hs__nor4bb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4bb-2">sky130_fd_sc_hs__nor4bb_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-nor4bb-4">sky130_fd_sc_hs__nor4bb_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2111a-1">sky130_fd_sc_hs__o2111a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2111a-2">sky130_fd_sc_hs__o2111a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2111a-4">sky130_fd_sc_hs__o2111a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2111ai-1">sky130_fd_sc_hs__o2111ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2111ai-2">sky130_fd_sc_hs__o2111ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2111ai-4">sky130_fd_sc_hs__o2111ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o211a-1">sky130_fd_sc_hs__o211a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o211a-2">sky130_fd_sc_hs__o211a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o211a-4">sky130_fd_sc_hs__o211a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o211ai-1">sky130_fd_sc_hs__o211ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o211ai-2">sky130_fd_sc_hs__o211ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o211ai-4">sky130_fd_sc_hs__o211ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21a-1">sky130_fd_sc_hs__o21a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21a-2">sky130_fd_sc_hs__o21a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21a-4">sky130_fd_sc_hs__o21a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21ai-1">sky130_fd_sc_hs__o21ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21ai-2">sky130_fd_sc_hs__o21ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21ai-4">sky130_fd_sc_hs__o21ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21ba-1">sky130_fd_sc_hs__o21ba_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21ba-2">sky130_fd_sc_hs__o21ba_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21ba-4">sky130_fd_sc_hs__o21ba_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21bai-1">sky130_fd_sc_hs__o21bai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21bai-2">sky130_fd_sc_hs__o21bai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o21bai-4">sky130_fd_sc_hs__o21bai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o221a-1">sky130_fd_sc_hs__o221a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o221a-2">sky130_fd_sc_hs__o221a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o221a-4">sky130_fd_sc_hs__o221a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o221ai-1">sky130_fd_sc_hs__o221ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o221ai-2">sky130_fd_sc_hs__o221ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o221ai-4">sky130_fd_sc_hs__o221ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o22a-1">sky130_fd_sc_hs__o22a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o22a-2">sky130_fd_sc_hs__o22a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o22a-4">sky130_fd_sc_hs__o22a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o22ai-1">sky130_fd_sc_hs__o22ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o22ai-2">sky130_fd_sc_hs__o22ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o22ai-4">sky130_fd_sc_hs__o22ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2bb2a-1">sky130_fd_sc_hs__o2bb2a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2bb2a-2">sky130_fd_sc_hs__o2bb2a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2bb2a-4">sky130_fd_sc_hs__o2bb2a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2bb2ai-1">sky130_fd_sc_hs__o2bb2ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2bb2ai-2">sky130_fd_sc_hs__o2bb2ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o2bb2ai-4">sky130_fd_sc_hs__o2bb2ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o311a-1">sky130_fd_sc_hs__o311a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o311a-2">sky130_fd_sc_hs__o311a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o311a-4">sky130_fd_sc_hs__o311a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o311ai-1">sky130_fd_sc_hs__o311ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o311ai-2">sky130_fd_sc_hs__o311ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o311ai-4">sky130_fd_sc_hs__o311ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o31a-1">sky130_fd_sc_hs__o31a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o31a-2">sky130_fd_sc_hs__o31a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o31a-4">sky130_fd_sc_hs__o31a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o31ai-1">sky130_fd_sc_hs__o31ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o31ai-2">sky130_fd_sc_hs__o31ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o31ai-4">sky130_fd_sc_hs__o31ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o32a-1">sky130_fd_sc_hs__o32a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o32a-2">sky130_fd_sc_hs__o32a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o32a-4">sky130_fd_sc_hs__o32a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o32ai-1">sky130_fd_sc_hs__o32ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o32ai-2">sky130_fd_sc_hs__o32ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o32ai-4">sky130_fd_sc_hs__o32ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o41a-1">sky130_fd_sc_hs__o41a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o41a-2">sky130_fd_sc_hs__o41a_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o41a-4">sky130_fd_sc_hs__o41a_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o41ai-1">sky130_fd_sc_hs__o41ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o41ai-2">sky130_fd_sc_hs__o41ai_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-o41ai-4">sky130_fd_sc_hs__o41ai_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or2-1">sky130_fd_sc_hs__or2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or2-2">sky130_fd_sc_hs__or2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or2-4">sky130_fd_sc_hs__or2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or2b-1">sky130_fd_sc_hs__or2b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or2b-2">sky130_fd_sc_hs__or2b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or2b-4">sky130_fd_sc_hs__or2b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or3-1">sky130_fd_sc_hs__or3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or3-2">sky130_fd_sc_hs__or3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or3-4">sky130_fd_sc_hs__or3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or3b-1">sky130_fd_sc_hs__or3b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or3b-2">sky130_fd_sc_hs__or3b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or3b-4">sky130_fd_sc_hs__or3b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4-1">sky130_fd_sc_hs__or4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4-2">sky130_fd_sc_hs__or4_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4-4">sky130_fd_sc_hs__or4_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4b-1">sky130_fd_sc_hs__or4b_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4b-2">sky130_fd_sc_hs__or4b_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4b-4">sky130_fd_sc_hs__or4b_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4bb-1">sky130_fd_sc_hs__or4bb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4bb-2">sky130_fd_sc_hs__or4bb_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-or4bb-4">sky130_fd_sc_hs__or4bb_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfbbn-1">sky130_fd_sc_hs__sdfbbn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfbbn-2">sky130_fd_sc_hs__sdfbbn_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfbbp-1">sky130_fd_sc_hs__sdfbbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfrbp-1">sky130_fd_sc_hs__sdfrbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfrbp-2">sky130_fd_sc_hs__sdfrbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfrtn-1">sky130_fd_sc_hs__sdfrtn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfrtp-1">sky130_fd_sc_hs__sdfrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfrtp-2">sky130_fd_sc_hs__sdfrtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfrtp-4">sky130_fd_sc_hs__sdfrtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfsbp-1">sky130_fd_sc_hs__sdfsbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfsbp-2">sky130_fd_sc_hs__sdfsbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfstp-1">sky130_fd_sc_hs__sdfstp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfstp-2">sky130_fd_sc_hs__sdfstp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfstp-4">sky130_fd_sc_hs__sdfstp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfxbp-1">sky130_fd_sc_hs__sdfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfxbp-2">sky130_fd_sc_hs__sdfxbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfxtp-1">sky130_fd_sc_hs__sdfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfxtp-2">sky130_fd_sc_hs__sdfxtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdfxtp-4">sky130_fd_sc_hs__sdfxtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdlclkp-1">sky130_fd_sc_hs__sdlclkp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdlclkp-2">sky130_fd_sc_hs__sdlclkp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sdlclkp-4">sky130_fd_sc_hs__sdlclkp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sedfxbp-1">sky130_fd_sc_hs__sedfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sedfxbp-2">sky130_fd_sc_hs__sedfxbp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sedfxtp-1">sky130_fd_sc_hs__sedfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sedfxtp-2">sky130_fd_sc_hs__sedfxtp_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-sedfxtp-4">sky130_fd_sc_hs__sedfxtp_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-tap-1">sky130_fd_sc_hs__tap_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-tap-2">sky130_fd_sc_hs__tap_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-tapmet1-2">sky130_fd_sc_hs__tapmet1_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-tapvgnd2-1">sky130_fd_sc_hs__tapvgnd2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-tapvgnd-1">sky130_fd_sc_hs__tapvgnd_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-tapvpwrvgnd-1">sky130_fd_sc_hs__tapvpwrvgnd_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xnor2-1">sky130_fd_sc_hs__xnor2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xnor2-2">sky130_fd_sc_hs__xnor2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xnor2-4">sky130_fd_sc_hs__xnor2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xnor3-1">sky130_fd_sc_hs__xnor3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xnor3-2">sky130_fd_sc_hs__xnor3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xnor3-4">sky130_fd_sc_hs__xnor3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xor2-1">sky130_fd_sc_hs__xor2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xor2-2">sky130_fd_sc_hs__xor2_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xor2-4">sky130_fd_sc_hs__xor2_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xor3-1">sky130_fd_sc_hs__xor3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xor3-2">sky130_fd_sc_hs__xor3_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hs-xor3-4">sky130_fd_sc_hs__xor3_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-a21o-1">sky130_fd_sc_hvl__a21o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-a21oi-1">sky130_fd_sc_hvl__a21oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-a22o-1">sky130_fd_sc_hvl__a22o_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-a22oi-1">sky130_fd_sc_hvl__a22oi_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-and2-1">sky130_fd_sc_hvl__and2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-and3-1">sky130_fd_sc_hvl__and3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-buf-1">sky130_fd_sc_hvl__buf_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-buf-16">sky130_fd_sc_hvl__buf_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-buf-2">sky130_fd_sc_hvl__buf_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-buf-32">sky130_fd_sc_hvl__buf_32</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-buf-4">sky130_fd_sc_hvl__buf_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-buf-8">sky130_fd_sc_hvl__buf_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-conb-1">sky130_fd_sc_hvl__conb_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-decap-4">sky130_fd_sc_hvl__decap_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-decap-8">sky130_fd_sc_hvl__decap_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dfrbp-1">sky130_fd_sc_hvl__dfrbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dfrtp-1">sky130_fd_sc_hvl__dfrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dfsbp-1">sky130_fd_sc_hvl__dfsbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dfstp-1">sky130_fd_sc_hvl__dfstp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dfxbp-1">sky130_fd_sc_hvl__dfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dfxtp-1">sky130_fd_sc_hvl__dfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-diode-2">sky130_fd_sc_hvl__diode_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dlclkp-1">sky130_fd_sc_hvl__dlclkp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dlrtp-1">sky130_fd_sc_hvl__dlrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-dlxtp-1">sky130_fd_sc_hvl__dlxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-einvn-1">sky130_fd_sc_hvl__einvn_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-einvp-1">sky130_fd_sc_hvl__einvp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-fill-1">sky130_fd_sc_hvl__fill_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-fill-2">sky130_fd_sc_hvl__fill_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-fill-4">sky130_fd_sc_hvl__fill_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-fill-8">sky130_fd_sc_hvl__fill_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-inv-1">sky130_fd_sc_hvl__inv_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-inv-16">sky130_fd_sc_hvl__inv_16</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-inv-2">sky130_fd_sc_hvl__inv_2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-inv-4">sky130_fd_sc_hvl__inv_4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-inv-8">sky130_fd_sc_hvl__inv_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-lsbufhv2hv-hl-1">sky130_fd_sc_hvl__lsbufhv2hv_hl_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-lsbufhv2hv-lh-1">sky130_fd_sc_hvl__lsbufhv2hv_lh_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-lsbufhv2lv-1">sky130_fd_sc_hvl__lsbufhv2lv_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-lsbufhv2lv-simple-1">sky130_fd_sc_hvl__lsbufhv2lv_simple_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-lsbuflv2hv-1">sky130_fd_sc_hvl__lsbuflv2hv_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-lsbuflv2hv-clkiso-hlkg-3">sky130_fd_sc_hvl__lsbuflv2hv_clkiso_hlkg_3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-lsbuflv2hv-isosrchvaon-1">sky130_fd_sc_hvl__lsbuflv2hv_isosrchvaon_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-lsbuflv2hv-symmetric-1">sky130_fd_sc_hvl__lsbuflv2hv_symmetric_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-mux2-1">sky130_fd_sc_hvl__mux2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-mux4-1">sky130_fd_sc_hvl__mux4_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-nand2-1">sky130_fd_sc_hvl__nand2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-nand3-1">sky130_fd_sc_hvl__nand3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-nor2-1">sky130_fd_sc_hvl__nor2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-nor3-1">sky130_fd_sc_hvl__nor3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-o21a-1">sky130_fd_sc_hvl__o21a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-o21ai-1">sky130_fd_sc_hvl__o21ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-o22a-1">sky130_fd_sc_hvl__o22a_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-o22ai-1">sky130_fd_sc_hvl__o22ai_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-or2-1">sky130_fd_sc_hvl__or2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-or3-1">sky130_fd_sc_hvl__or3_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-probe-p-8">sky130_fd_sc_hvl__probe_p_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-probec-p-8">sky130_fd_sc_hvl__probec_p_8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-schmittbuf-1">sky130_fd_sc_hvl__schmittbuf_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-sdfrbp-1">sky130_fd_sc_hvl__sdfrbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-sdfrtp-1">sky130_fd_sc_hvl__sdfrtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-sdfsbp-1">sky130_fd_sc_hvl__sdfsbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-sdfstp-1">sky130_fd_sc_hvl__sdfstp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-sdfxbp-1">sky130_fd_sc_hvl__sdfxbp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-sdfxtp-1">sky130_fd_sc_hvl__sdfxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-sdlclkp-1">sky130_fd_sc_hvl__sdlclkp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-sdlxtp-1">sky130_fd_sc_hvl__sdlxtp_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-xnor2-1">sky130_fd_sc_hvl__xnor2_1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="components.html#sky130-fd-sc-hvl-xor2-1">sky130_fd_sc_hvl__xor2_1</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/intro.html">Layout</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="README.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">sky130 gdsfactory PDK 0.0.14</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2020, gdsfactory
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
+</html>
