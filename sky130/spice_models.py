@@ -1,3 +1,7 @@
+"""FIXME.
+
+https://github.com/chipsalliance/silicon-notebooks/blob/main/analog-inverter-magic.ipynb
+"""
 from functools import partial
 
 import matplotlib.pyplot as plt
@@ -9,8 +13,6 @@ from sky130.config import PATH
 
 def import_spice(name: str) -> Circuit:
     """Returns a Spice circuit model from a component name.
-    based on
-    https://github.com/chipsalliance/silicon-notebooks/blob/main/analog-inverter-magic.ipynb
 
     FIXME!
     """
@@ -1044,12 +1046,13 @@ sky130_fd_sc_hvl__xor2_1 = partial(import_spice, "sky130_fd_sc_hvl__xor2_1")
 
 
 if __name__ == "__main__":
-    circuit = sky130_fd_sc_hd__a2111o_1()
+    # circuit = sky130_fd_sc_hd__a2111o_1()
 
-    # circuit = Circuit('mosfet0')
-    # circuit.lib(, 'tt')
-    # circuit.include('mosfet.spice')
-    # circuit.X('mosfet0', 'mosfet', 'DRAIN', 'GATE', 'VGND')
+    circuit = Circuit("mosfet0")
+    circuit.lib(PATH.libs_ngspice / "sky130.lib.spice", "tt")
+    circuit.include(PATH.spice / "sky130_fd_sc_hd.spice")
+    # circuit.X("sky130_fd_sc_hd__a2111o_1", "sky130_fd_sc_hd__a2111o_1 ", "DRAIN", "GATE", "VGND")
+    circuit.X("DRAIN", "GATE", 1, circuit.gnd)
     circuit.V("gnd", "VGND", 0, 0)
     circuit.V("dd", "VPWR", "VGND", 1.8)
     circuit.R("", "VPWR", "DRAIN", "10k")
