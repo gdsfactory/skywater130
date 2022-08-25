@@ -18,10 +18,13 @@ def nmos(
     diff_spacing : float = 0.27 ,
     diff_enclosure : Float2 = (0.18,0.18) ,
     diffp_layer : LayerSpec = (65,44) ,
-    pwell_layer : LayerSpec = (64,20),
+    pwell_layer : LayerSpec = (64,22),
     dnwell_enclosure: float = (0.4,0.4),
     dnwell_layer : LayerSpec = (64,18) ,
-    nf : int =  1 
+    nf : int =  1 ,
+    sdm_enclosure : Float2 = (0.125,0.125) ,
+    nsdm_layer : LayerSpec = (93,44),
+    psdm_layer : LayerSpec = (94,20)
 
 ) -> gf.Component:
 
@@ -74,6 +77,12 @@ def nmos(
     poly.movex(sd_width)
     poly.movey(-end_cap)
 
+    # generating n+ implant 
+    rect_nm = gf.components.rectangle(size = (l_d+ 2*sdm_enclosure[0] ,gate_width+ 2*sdm_enclosure[1]), layer= nsdm_layer) 
+    nsdm = c.add_ref(rect_nm)
+    nsdm.movex(-sdm_enclosure[0])
+    nsdm.movey(-sdm_enclosure[1])
+
      # generating contacts of poly and n+ diffusion 
     rect_c = gf.components.rectangle(size = contact_size, layer = contact_layer) 
     
@@ -89,10 +98,16 @@ def nmos(
     cont_arr1 = c.add_array(rect_c, rows= nr , columns= nc , spacing= con_sp)
     cont_arr2 = c.add_array(rect_c, rows= nr , columns= nc , spacing= con_sp)
 
-    cont_arr1.movex((sd_width_min-contact_size[0])/2)
     cont_arr1.movey((min_gate_wid - contact_size[1])/2)
-    cont_arr2.movex((nf*(sd_width+ gate_length) )+ ((sd_width_min- contact_size[0])/2)) 
     cont_arr2.movey((min_gate_wid - contact_size[1])/2)
+
+    if nc > 1 : 
+        cont_arr1.movex ((sd_width  - (cont_arr1.xmax - cont_arr1.xmin))/2)
+        cont_arr2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - (cont_arr2.xmax - cont_arr2.xmin))/2)) 
+    else : 
+        cont_arr1.movex ((sd_width  - contact_size[0])/2)
+        cont_arr2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - contact_size[0])/2) )
+
     
     
 
@@ -110,10 +125,10 @@ def nmos(
         nc_p = floor (pc_x / (2* contact_size[0])) +1 
         for i in range(nf):
             cont_arr3 = c.add_array(rect_c, rows= 1 , columns= nc_p , spacing= con_sp)
-            cont_arr3.movex(sd_width + contact_enclosure[0] + (i* (gate_length + sd_width)) )
+            cont_arr3.movex(sd_width +  ((gate_length - (cont_arr3.xmax - cont_arr3.xmin))/2)+ (i* (gate_length + sd_width)) )
             cont_arr3.movey(gate_width + end_cap + contact_enclosure[1] )
             cont_arr5 = c.add_array(rect_c, rows= 1 , columns= nc_p , spacing= con_sp)
-            cont_arr5.movex(sd_width + contact_enclosure[0]+ (i* (gate_length + sd_width))  )
+            cont_arr5.movex(sd_width +  ((gate_length - (cont_arr5.xmax - cont_arr5.xmin))/2)+ (i* (gate_length + sd_width))  )
             cont_arr5.movey(-contact_size[1] - end_cap - contact_enclosure[1] )
 
 
@@ -136,8 +151,19 @@ def nmos(
     diff_p.movex(diff_spacing)
 
     cont_arr4 = c.add_array(rect_c, rows= nr , columns= nc , spacing= con_sp)
-    cont_arr4.movex(l_d + diff_spacing + ((sd_width_min - contact_size[0])/2)) 
     cont_arr4.movey((min_gate_wid - contact_size[1])/2 ) 
+
+    if nc > 1 : 
+        cont_arr4.movex(l_d + diff_spacing +  ((sd_width  - (cont_arr4.xmax - cont_arr4.xmin))/2)) 
+    else :
+        cont_arr4.movex(l_d + diff_spacing +  ((sd_width  - contact_size[0])/2)) 
+
+    # generating p+ implant for bulk tie 
+    rect_pm = gf.components.rectangle(size = (sd_width+ 2*sdm_enclosure[0],gate_width+ 2*sdm_enclosure[1]), layer= psdm_layer)
+    psdm = c.add_ref(rect_pm)
+    psdm.connect("e1",destination= diff_n.ports["e3"])
+    psdm.movex(diff_spacing - sdm_enclosure[0])
+    
 
     # generating pwell 
     rect_pw = gf.components.rectangle(size = (2*diff_enclosure[0] + l_d + diff_spacing + sd_width , 2*diff_enclosure[1] + gate_width), layer= pwell_layer) 
@@ -155,6 +181,6 @@ def nmos(
 
 
 if __name__ == "__main__":
-    #c = nmos(gate_length= 2, gate_width=10) 
+    #c = nmos(gate_length= 2, gate_width=10, sd_width=  5, nf = 3) 
     c = nmos()
     c.show()
