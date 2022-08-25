@@ -120,6 +120,7 @@
   </mag>
  </reader-options>
  <writer-options>
+  <format>GDS2</format>
   <gds2>
    <write-timestamps>true</write-timestamps>
    <write-cell-properties>false</write-cell-properties>
@@ -216,6 +217,7 @@
 71/20: 4.0211 4.866099999999999
 71/44: 4.866099999999999 5.371099999999999
 72/20: 5.371099999999999 6.631099999999999
+
 
 </src>
  </d25>

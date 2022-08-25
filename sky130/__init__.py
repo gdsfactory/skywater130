@@ -30,5 +30,11 @@ logger.info(f"load sky130 PDK {__version__!r} installed at {str(module_path)!r}"
 __all__ = ["cells", "PDK"]
 
 if __name__ == "__main__":
-    f = PDK.cells
-    print(f.keys())
+    # f = PDK.cells
+    # print(f.keys())
+    import gdsfactory as gf
+
+    script = gf.write_cells.get_import_gds_script("gds", module="sky130.components")
+    filepath = pathlib.Path("components2.py")
+    filepath.write_text(script)
+    print(script)

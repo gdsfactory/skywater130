@@ -36,6 +36,12 @@ Here are the components available in the PDK
 
 Components
 =============================
+
+.. currentmodule:: sky130.components
+
+.. autosummary::
+   :toctree: _autosummary/
+
 """
     )
 
@@ -52,33 +58,4 @@ Components
                 and p not in skip_settings
             ]
         )
-        if name in skip_plot:
-            f.write(
-                f"""
-
-{name}
-----------------------------------------------------
-
-.. autofunction:: sky130.components.{name}
-
-"""
-            )
-        else:
-            f.write(
-                f"""
-
-{name}
-----------------------------------------------------
-
-.. autofunction:: sky130.components.{name}
-
-.. plot::
-  :include-source:
-
-  import sky130
-
-  c = sky130.components.{name}({kwargs})
-  c.plot()
-
-"""
-            )
+        f.write(f"   {name}\n")

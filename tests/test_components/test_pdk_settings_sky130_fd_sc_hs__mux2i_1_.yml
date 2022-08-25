@@ -1,3 +1,12 @@
 name: sky130_fd_sc_hs__mux2i_1
-settings: {}
+settings:
+  changed: {}
+  child: null
+  default: {}
+  full: {}
+  function_name: sky130_fd_sc_hs__mux2i_1
+  info: {}
+  info_version: 2
+  module: sky130.components
+  name: sky130_fd_sc_hs__mux2i_1
 version: 0.0.1
