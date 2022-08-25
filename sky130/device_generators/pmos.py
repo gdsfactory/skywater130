@@ -4,7 +4,7 @@ import numpy as np
 from gdsfactory.types import Float2, LayerSpec
 
 @gf.cell
-def nmos(
+def pmos(
     diffusion_layer: LayerSpec = (65, 20),
     poly_layer: LayerSpec = (66, 20),
     gate_width: float = 0.42,
@@ -17,15 +17,15 @@ def nmos(
     contact_enclosure: float = (0.04,0.06),
     diff_spacing : float = 0.27 ,
     diff_enclosure : Float2 = (0.18,0.18) ,
-    diffp_layer : LayerSpec = (65,44) ,
-    pwell_layer : LayerSpec = (64,20),
+    diffn_layer : LayerSpec = (65,44) ,
+    nwell_layer : LayerSpec = (64,20),
     dnwell_enclosure: float = (0.4,0.4),
     dnwell_layer : LayerSpec = (64,18) ,
     nf : int =  1 
 
 ) -> gf.Component:
 
-    """Return NMOS.
+    """Return PMOS.
 
     Args:
         diffusion_layer: spec.
@@ -39,9 +39,8 @@ def nmos(
         contact_enclosure : for contacts within diffusion or poly 
         diff_spacing : for two adjacent diffusions
         diff_enclosure : for diffusion within well 
-        diffp_layer : for bulk tie 
+        diffn_layer : for bulk tie 
         dnwell layer : for deep nwell 
-        nf : for finger option 
         
 
     .. code::
@@ -56,6 +55,7 @@ def nmos(
                     |______|
 
     """
+    
     c = gf.Component()
 
     # generating poly and n+ diffusion 
@@ -69,7 +69,7 @@ def nmos(
 
     l_d = (nf + 1)*(sd_width + gate_length ) - gate_length # n diffution total length 
     rect_d = gf.components.rectangle(size = (l_d,gate_width), layer= diffusion_layer)  
-    diff_n= c.add_ref(rect_d)
+    diff_p= c.add_ref(rect_d)
 
     poly.movex(sd_width)
     poly.movey(-end_cap)
@@ -128,33 +128,37 @@ def nmos(
     pc_d.movey(-pc_size[1]- end_cap)
 
 
-
-    # generaing p+ bulk tie and its contact 
-    rect_dp = gf.components.rectangle(size = (sd_width,gate_width), layer= diffp_layer) 
-    diff_p = c.add_ref(rect_dp)
-    diff_p.connect("e1",destination= diff_n.ports["e3"])
-    diff_p.movex(diff_spacing)
+    # generaing n+ bulk tie and its contact 
+    rect_dn = gf.components.rectangle(size = (sd_width,gate_width), layer= diffn_layer) 
+    diff_n = c.add_ref(rect_dn)
+    diff_n.connect("e1",destination= diff_p.ports["e3"])
+    diff_n.movex(diff_spacing)
 
     cont_arr4 = c.add_array(rect_c, rows= nr , columns= nc , spacing= con_sp)
     cont_arr4.movex(l_d + diff_spacing + ((sd_width_min - contact_size[0])/2)) 
     cont_arr4.movey((min_gate_wid - contact_size[1])/2 ) 
 
-    # generating pwell 
-    rect_pw = gf.components.rectangle(size = (2*diff_enclosure[0] + l_d + diff_spacing + sd_width , 2*diff_enclosure[1] + gate_width), layer= pwell_layer) 
-    pwell = c.add_ref(rect_pw) 
-    pwell.movex(-diff_enclosure[0])
-    pwell.movey(-diff_enclosure[1])
-    
+    # generating nwell 
+    rect_nw = gf.components.rectangle(size = (2*diff_enclosure[0] + l_d + diff_spacing + sd_width , 2*diff_enclosure[1] + gate_width), layer= nwell_layer) 
+    nwell = c.add_ref(rect_nw) 
+    nwell.movex(-diff_enclosure[0])
+    nwell.movey(-diff_enclosure[1])
+
     # generating deep nwell 
-    rect_dnw =  gf.components.rectangle(size = (rect_pw.xmax - rect_pw.xmin + 2*dnwell_enclosure[0] , rect_pw.ymax - rect_pw.ymin + 2*dnwell_enclosure[1]), layer= dnwell_layer) 
+    rect_dnw =  gf.components.rectangle(size = (rect_nw.xmax - rect_nw.xmin + 2*dnwell_enclosure[0] , rect_nw.ymax - rect_nw.ymin + 2*dnwell_enclosure[1]), layer= dnwell_layer) 
     dnwell = c.add_ref(rect_dnw)
     dnwell.movex(-diff_enclosure[0]- dnwell_enclosure[0])
     dnwell.movey(-diff_enclosure[1]- dnwell_enclosure[1])
 
-    return c
+
+
+
+    return c 
 
 
 if __name__ == "__main__":
-    #c = nmos(gate_length= 2, gate_width=10) 
-    c = nmos()
+    #c = pmos(gate_length= 2, gate_width=5,sd_width= 5 )
+    c = pmos()
     c.show()
+
+
