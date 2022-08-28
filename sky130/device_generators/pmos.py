@@ -32,7 +32,9 @@ def pmos(
     li_enclosure : float = 0.08,
     mcon_layer : LayerSpec = (67,44) ,
     mcon_enclosure : Float2 = (0.03,0.06),
-    m1_layer : LayerSpec = (68,20)
+    m1_layer : LayerSpec = (68,20),
+    npc_layer : LayerSpec = (95,20),
+    npc_spacing : float = 0.09
 
 
 ) -> gf.Component:
@@ -216,6 +218,19 @@ def pmos(
     lip_d = c.add_array(rect_lip, rows= 1 , columns= nf , spacing= [sd_width + gate_length, 0] )
     lip_d.movex(sd_width- ((pc_x - gate_length)/2) - li_enclosure/2)
     lip_d.movey(-pc_size[1]- end_cap + contact_enclosure[1])
+
+    # generating npc for poly contacts 
+
+    npc_en = end_cap - npc_spacing 
+    rect_npc = gf.components.rectangle(size = (pc_size[0] + npc_en, pc_size[1] + npc_en), layer = npc_layer) 
+
+    npc_u = c.add_array(rect_npc, rows= 1 , columns= nf , spacing= [sd_width + gate_length, 0] )
+    npc_u.movex(sd_width- ((pc_x - gate_length)/2) - npc_en/2)
+    npc_u.movey(gate_width + npc_spacing + npc_en/2)
+
+    npc_d = c.add_array(rect_npc, rows= 1 , columns= nf , spacing= [sd_width + gate_length, 0] )
+    npc_d.movex(sd_width- ((pc_x - gate_length)/2) - npc_en/2)
+    npc_d.movey(-pc_size[1] - npc_en - npc_spacing - npc_en/2)
 
 
     # generaing n+ bulk tie and its contact and mcon and m1 
