@@ -14,7 +14,7 @@ def nmos_5v(
     contact_size: Float2 = (0.17, 0.17),
     contact_spacing: Float2 = (0.17, 0.17),
     contact_layer: LayerSpec = (66, 44),
-    contact_enclosure: float = (0.04,0.06),
+    contact_enclosure: float = (0.06,0.06),
     diff_spacing : float = 0.37 ,
     diff_enclosure : Float2 = (0.33,0.33) ,
     diffp_layer : LayerSpec = (65,44) ,
@@ -32,10 +32,15 @@ def nmos_5v(
     li_width : float = 0.17 ,
     li_spacing : float = 0.17 ,
     li_layer : LayerSpec = (67,20),
-    li_enclosure : float = 0.08
+    li_enclosure : float = 0.08,
+    mcon_layer : LayerSpec = (67,44) ,
+    mcon_enclosure : Float2 = (0.03,0.06),
+    m1_layer : LayerSpec = (68,20)
+
+    
 
 ) -> gf.Component:
-    """Return NMOS.
+    """Return NMOS_5v.
 
     Args:
         diffusion_layer: spec.
@@ -78,8 +83,9 @@ def nmos_5v(
     nsdm.movex(-sdm_enclosure[0])
     nsdm.movey(-sdm_enclosure[1])
 
-     # generating contacts and local interconnects of  n+ diffusion 
+     # generating contacts and local interconnects and mcon and m1 of  n+ diffusion 
     rect_c = gf.components.rectangle(size = contact_size, layer = contact_layer) 
+    rect_mc = gf.components.rectangle(size = contact_size, layer = mcon_layer) 
     
    
     nr =  floor (gate_width / (2* contact_size[1])) 
@@ -96,26 +102,44 @@ def nmos_5v(
     cont_arr1.movey((min_gate_wid - contact_size[1])/2)
     cont_arr2.movey((min_gate_wid - contact_size[1])/2)
 
+    mcont_arr1 = c.add_array(rect_mc, rows= nr , columns= nc , spacing= con_sp)
+    mcont_arr2 = c.add_array(rect_mc, rows= nr , columns= nc , spacing= con_sp)
+
+    mcont_arr1.movey((min_gate_wid - contact_size[1])/2)
+    mcont_arr2.movey((min_gate_wid - contact_size[1])/2)
+
     rect_lid = gf.components.rectangle(size= (li_width , gate_width+ li_enclosure), layer= li_layer)
     li1 = c.add_array(rect_lid, rows= 1 , columns= nc , spacing= con_sp)
     li2 = c.add_array(rect_lid, rows= 1 , columns= nc , spacing= con_sp)
+
+    rect_m1d = gf.components.rectangle(size= ( contact_size[0] + 2*mcon_enclosure[0],gate_width), layer=m1_layer)
+    m1d1 = c.add_array(rect_m1d, rows= 1 , columns= nc , spacing= con_sp)
+    m1d2 = c.add_array(rect_m1d, rows= 1 , columns= nc , spacing= con_sp)
 
 
     if nc > 1 : 
         cont_arr1.movex ((sd_width  - (cont_arr1.xmax - cont_arr1.xmin))/2)
         cont_arr2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - (cont_arr2.xmax - cont_arr2.xmin))/2)) 
+        mcont_arr1.movex ((sd_width  - (cont_arr1.xmax - cont_arr1.xmin))/2)
+        mcont_arr2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - (cont_arr2.xmax - cont_arr2.xmin))/2)) 
         li1.movex ((sd_width  - (cont_arr1.xmax - cont_arr1.xmin))/2)
         li2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - (cont_arr2.xmax - cont_arr2.xmin))/2)) 
+        m1d1.movex ((sd_width  - (cont_arr1.xmax - cont_arr1.xmin))/2 - mcon_enclosure[0])
+        m1d2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - (cont_arr2.xmax - cont_arr2.xmin))/2) - mcon_enclosure[0]) 
     else : 
         cont_arr1.movex ((sd_width  - contact_size[0])/2)
         cont_arr2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - contact_size[0])/2) )
+        mcont_arr1.movex ((sd_width  - contact_size[0])/2)
+        mcont_arr2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - contact_size[0])/2) )
         li1.movex ((sd_width  - contact_size[0])/2)
         li2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - contact_size[0])/2) )
+        m1d1.movex ((sd_width  - contact_size[0])/2 - mcon_enclosure[0])
+        m1d2.movex((nf*(sd_width+ gate_length) )+  ((sd_width  - contact_size[0])/2) - mcon_enclosure[0])
 
     li1.movey(-li_enclosure/2)
     li2.movey(-li_enclosure/2)
 
-    # generating contacts and local interconnects of poly
+    # generating contacts and local interconnects and mcon and m1 of poly
     
     nc_p = floor (gate_length / (2* contact_size[0])) 
     for i in range(nf):
@@ -126,9 +150,20 @@ def nmos_5v(
         cont_arr5.movex(sd_width +  ((gate_length - (cont_arr5.xmax - cont_arr5.xmin))/2)+ (i* (gate_length + sd_width))  )
         cont_arr5.movey(-contact_size[1] - end_cap - contact_enclosure[1] )
 
+        mcont_arr3 = c.add_array(rect_mc, rows= 1 , columns= nc_p , spacing= con_sp)
+        mcont_arr3.movex(sd_width +  ((gate_length - (cont_arr3.xmax - cont_arr3.xmin))/2)+ (i* (gate_length + sd_width)) )
+        mcont_arr3.movey(gate_width + end_cap + contact_enclosure[1] )
+        mcont_arr5 = c.add_array(rect_mc, rows= 1 , columns= nc_p , spacing= con_sp)
+        mcont_arr5.movex(sd_width +  ((gate_length - (cont_arr5.xmax - cont_arr5.xmin))/2)+ (i* (gate_length + sd_width))  )
+        mcont_arr5.movey(-contact_size[1] - end_cap - contact_enclosure[1] )
+
+
 
     pc_size = (gate_length, contact_enclosure[1] +contact_size[1]+contact_enclosure[1])  # poly size to contain contact
     rect_pc = gf.components.rectangle(size = pc_size, layer = poly_layer) 
+    rect_m1p = gf.components.rectangle(size = (gate_length + 2*mcon_enclosure[0] - 2*contact_enclosure[0],contact_size[1]+2*mcon_enclosure[1]), layer = m1_layer) 
+
+
     pc_u = c.add_array(rect_pc, rows= 1 , columns= nf , spacing= [sd_width + gate_length, 0] )
     pc_u.movex(sd_width)
     pc_u.movey(gate_width + end_cap)
@@ -136,6 +171,14 @@ def nmos_5v(
     pc_d = c.add_array(rect_pc, rows= 1 , columns= nf , spacing= [sd_width + gate_length, 0] )
     pc_d.movex(sd_width)
     pc_d.movey(-pc_size[1]- end_cap)
+
+    m1p_u = c.add_array(rect_m1p, rows= 1 , columns= nf , spacing= [sd_width + gate_length, 0] )
+    m1p_u.movex(sd_width + contact_enclosure[0] - mcon_enclosure[0])
+    m1p_u.movey(gate_width + end_cap + contact_enclosure[1] - mcon_enclosure[1])
+
+    m1p_d = c.add_array(rect_m1p, rows= 1 , columns= nf , spacing= [sd_width + gate_length, 0] )
+    m1p_d.movex(sd_width + contact_enclosure[0] - mcon_enclosure[0])
+    m1p_d.movey(-pc_size[1]- end_cap + contact_enclosure[1] - contact_enclosure[1])
 
     rect_lip = gf.components.rectangle(size = (pc_size[0]+ li_enclosure, li_width), layer = li_layer) 
     lip_u = c.add_array(rect_lip, rows= 1 , columns= nf , spacing= [sd_width + gate_length, 0] )
@@ -147,7 +190,7 @@ def nmos_5v(
     lip_d.movey(-contact_size[1] - end_cap - contact_enclosure[1] )
 
 
-    # generaing p+ bulk tie and its contact 
+    # generaing p+ bulk tie and its contact and mcon and m1 
     rect_dp = gf.components.rectangle(size = (sd_width,gate_width), layer= diffp_layer) 
     diff_p = c.add_ref(rect_dp)
     diff_p.connect("e1",destination= diff_n.ports["e3"])
@@ -156,16 +199,27 @@ def nmos_5v(
     cont_arr4 = c.add_array(rect_c, rows= nr , columns= nc , spacing= con_sp)
     cont_arr4.movey((min_gate_wid - contact_size[1])/2 ) 
 
+    mcont_arr4 = c.add_array(rect_mc, rows= nr , columns= nc , spacing= con_sp)
+    mcont_arr4.movey((min_gate_wid - contact_size[1])/2 ) 
+
+    rect_m1dp = gf.components.rectangle(size= ( contact_size[0] + 2*mcon_enclosure[0],gate_width), layer=m1_layer)
+    m1dp = c.add_array(rect_m1dp, rows= 1 , columns= nc , spacing= con_sp)
+    
+
     # generate its local interconnects 
     li4 = c.add_array(rect_lid, rows= 1 , columns= nc , spacing= con_sp)
     
 
     if nc > 1 : 
         cont_arr4.movex(l_d + diff_spacing + sdm_spacing + ((sd_width  - (cont_arr4.xmax - cont_arr4.xmin))/2)) 
+        mcont_arr4.movex(l_d + diff_spacing + sdm_spacing + ((sd_width  - (cont_arr4.xmax - cont_arr4.xmin))/2)) 
         li4.movex(l_d + diff_spacing + sdm_spacing + ((sd_width  - (cont_arr4.xmax - cont_arr4.xmin))/2)) 
+        m1dp.movex(l_d + diff_spacing + sdm_spacing + ((sd_width  - (cont_arr4.xmax - cont_arr4.xmin))/2) - mcon_enclosure[0]) 
     else :
         cont_arr4.movex(l_d + diff_spacing + sdm_spacing +  ((sd_width  - contact_size[0])/2)) 
+        mcont_arr4.movex(l_d + diff_spacing + sdm_spacing +  ((sd_width  - contact_size[0])/2)) 
         li4.movex(l_d + diff_spacing + sdm_spacing +  ((sd_width  - contact_size[0])/2)) 
+        m1dp.movex(l_d + diff_spacing + sdm_spacing +  ((sd_width  - contact_size[0])/2) - mcon_enclosure[0]) 
 
     li4.movey(-li_enclosure/2)
 
@@ -205,7 +259,7 @@ def nmos_5v(
     return c
 
 if __name__ == "__main__":
-    #c = nmos_5v(gate_length= 2, gate_width=10) 
+    #c = nmos_5v(gate_length= 2, gate_width=5) 
     c = nmos_5v()
     c.show()
 
