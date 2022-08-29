@@ -10,11 +10,11 @@ def mimcap_1(
     via3_layer : LayerSpec = (70,44),
     via3_enclosure : Float2 = (0.09,0.09),
     via3_spacing : Float2 = (0.2,0.2),#(0.2,0.35),
-    m4_spacing : float = 0.4,
+    m4_spacing : float = 0.3,
     m4_r_length : float = 0.4,
     m4_layer : LayerSpec = (71,20),
-    m4_length : float = 1.2,
-    m4_width : float = 1.2,
+    m4_length : float = 1,
+    m4_width : float = 1,
     capm_layer : LayerSpec = (89,44),
     m4_enclosure : float = (0.14,0.14),
     capm_enclosure : float = (0.5,0.5)
@@ -71,6 +71,10 @@ def mimcap_1(
     # for the right m4 plate
     nr2 = floor ((m3_width - en[1]) / (via3_size[1]+ via3_spacing[1])) 
     nc2 = floor ((m4_r_length) / (via3_size[0]+via3_spacing[0]))
+    
+    if nc2<1 : 
+        nc2 = 1
+
     via3_arr2 = c.add_array(rect_via3 , rows= nr2 , columns= nc2 , spacing= (via3_spacing[0]+ via3_size[0], via3_spacing[1]+ via3_size[1]))
     via3_arr2.movex(m3_length - en[0]/2 - m4_r_length)
     via3_arr2.movex((m4_r_length - nc2*via3_size[0] - (nc2-1)*via3_spacing[0])/2)
@@ -83,5 +87,5 @@ def mimcap_1(
 if __name__ == "__main__":
     
     c = mimcap_1()
-    #c = mimcap_1 (m4_length=1.8, m4_width=1.8 , m4_r_length=0.5)
+    #c = mimcap_1 (m4_length=5,m4_width=5,m4_r_length=1)
     c.show()
