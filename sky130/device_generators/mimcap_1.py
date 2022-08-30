@@ -86,6 +86,6 @@ def mimcap_1(
 
 if __name__ == "__main__":
     
-    c = mimcap_1()
-    #c = mimcap_1 (m4_length=5,m4_width=5,m4_r_length=1)
+    #c = mimcap_1()
+    c = mimcap_1 (m4_length=5,m4_width=5,m4_r_length= 1)
     c.show()
