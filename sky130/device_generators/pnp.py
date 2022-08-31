@@ -4,9 +4,9 @@ import numpy as np
 from gdsfactory.types import Float2, LayerSpec
 
 @gf.cell
-def npn_W1L2(
-    E_width : float = 1 ,
-    E_length : float = 2 ,
+def pnp(
+    E_width : float = 0.68 ,
+    E_length : float = 0.68 ,
     B_width : float = 0.4 ,
     C_width : float = 0.4 ,
     np_spacing : float = 0.27,
@@ -17,14 +17,12 @@ def npn_W1L2(
     contact_spacing: Float2 = (0.17, 0.17),
     contact_layer: LayerSpec = (66, 44),
     contact_enclosure: float = (0.06,0.06),
-    pwell_layer : LayerSpec = (64,22),
-    dnwell_enclosure: float = (0.4,0.4),
-    dnwell_layer : LayerSpec = (64,18) ,
+    nwell_layer : LayerSpec = (64,20),
     sdm_enclosure : Float2 = (0.125,0.125) ,
     nsdm_layer : LayerSpec = (93,44),
     sdm_spacing : float = 0.13,
     psdm_layer : LayerSpec = (94,20),
-    npn_layer : LayerSpec = (82,20),
+    pnp_layer : LayerSpec = (82,44),
     li_width : float = 0.17 ,
     li_spacing : float = 0.17 ,
     li_layer : LayerSpec = (67,20),
@@ -35,23 +33,23 @@ def npn_W1L2(
 
 ) -> gf.Component:
 
-    """Return npn_W1L2
+    """Return pnp
 
-    npn device with emitter size 1*2
+    pnp device 
 
    
     """
     c = gf.Component()
 
-    # generate emitter 
+    #generating Emitter 
 
     rect_E = gf.components.rectangle(size = (E_width,E_length), layer = diffusion_layer)
     E = c.add_ref(rect_E)
 
-    # generate its n+ implant 
-    rect_nme = gf.components.rectangle(size= (E_width + 2*sdm_enclosure[0] , E_length+2*sdm_enclosure[1]), layer= nsdm_layer)
-    nsdm_e = c.add_ref(rect_nme)
-    nsdm_e.move((-sdm_enclosure[0],-sdm_enclosure[1]))
+    # generate its p+ implant 
+    rect_pme = gf.components.rectangle(size= (E_width + 2*sdm_enclosure[0] , E_length+2*sdm_enclosure[1]), layer= psdm_layer)
+    psdm_e = c.add_ref(rect_pme)
+    psdm_e.move((-sdm_enclosure[0],-sdm_enclosure[1]))
 
     # generate its contacts and local interconnects and mcon and metal1 
 
@@ -75,18 +73,17 @@ def npn_W1L2(
         cont_e_arr.movex((E_width - nc_e*contact_size[0] - (nc_e -1)*contact_spacing[0])/2)
         cont_e_arr.movey((E_length - nr_e*contact_size[1] - (nr_e -1)*contact_spacing[1])/2)
 
-    rect_eli = gf.components.rectangle(size = (nc_e*contact_size[0] + (nc_e -1)*contact_spacing[0] + 2*li_enclosure, nr_e*contact_size[1] + (nr_e-1)*contact_spacing[1] + 2*li_enclosure), layer= li_layer)
-    li_e = c.add_ref(rect_eli)
-    li_e.movex((E_width - nc_e*contact_size[0] - (nc_e -1)*contact_spacing[0] - 2*li_enclosure)/2)
-    li_e.movey((E_length - nr_e*contact_size[1] - (nr_e -1)*contact_spacing[1] - 2*li_enclosure)/2)
+    
+    rect_layer = [li_layer , m1_layer]
+    for i in range(2):
+        rect_eli_m1 = gf.components.rectangle(size = (nc_e*contact_size[0] + (nc_e -1)*contact_spacing[0] + 2*(1-i)*li_enclosure + 2*i*mcon_enclosure[0],
+         nr_e*contact_size[1] + (nr_e-1)*contact_spacing[1] + 2*(1-i)*li_enclosure + 2*i*mcon_enclosure[1]), layer= rect_layer[i])
+        li_m1_e = c.add_ref(rect_eli_m1)
+        li_m1_e.movex((E_width - nc_e*contact_size[0] - (nc_e -1)*contact_spacing[0] - 2*(1-i)*li_enclosure - 2*i*mcon_enclosure[0])/2)
+        li_m1_e.movey((E_length - nr_e*contact_size[1] - (nr_e -1)*contact_spacing[1] - 2*(1-i)*li_enclosure - 2*i*mcon_enclosure[1])/2)
 
-    rect_em1 = gf.components.rectangle(size = (nc_e*contact_size[0] + (nc_e -1)*contact_spacing[0] + 2*mcon_enclosure[0],
-     nr_e*contact_size[1] + (nr_e-1)*contact_spacing[1] + 2*mcon_enclosure[1]), layer= m1_layer)
-    m1_e = c.add_ref(rect_em1)
-    m1_e.movex((E_width - nc_e*contact_size[0] - (nc_e -1)*contact_spacing[0] - 2*mcon_enclosure[0])/2)
-    m1_e.movey((E_length - nr_e*contact_size[1] - (nr_e -1)*contact_spacing[1] - 2*mcon_enclosure[1])/2)
 
-    #generate base 
+    # generating base 
 
     rect_B_in = gf.components.rectangle(size = (E_width + 2*np_spacing, E_length + 2*np_spacing), layer= tap_layer)
     rect_B_out = gf.components.rectangle(size = (E_width + 2*np_spacing + 2*B_width , E_length + 2*np_spacing + 2*B_width), layer= tap_layer)
@@ -104,21 +101,21 @@ def npn_W1L2(
 
     B = c.add_ref(gf.geometry.boolean(A= B_out , B = B_in , operation= "A-B", layer= tap_layer) )
 
-    # generate its p+ implants 
+    # generate its n+ implants 
 
-    rect_pmB_in = gf.components.rectangle(size = (E_width + 2*np_spacing - 2*sdm_enclosure[0], E_length + 2*np_spacing - 2*sdm_enclosure[1]), layer= psdm_layer)
-    rect_pmB_out = gf.components.rectangle(size = (E_width + 2*np_spacing + 2*B_width + 2*sdm_enclosure[0], E_length + 2*np_spacing + 2*B_width + 2*sdm_enclosure[1]), layer= psdm_layer)
+    rect_nmB_in = gf.components.rectangle(size = (E_width + 2*np_spacing - 2*sdm_enclosure[0], E_length + 2*np_spacing - 2*sdm_enclosure[1]), layer= nsdm_layer)
+    rect_nmB_out = gf.components.rectangle(size = (E_width + 2*np_spacing + 2*B_width + 2*sdm_enclosure[0], E_length + 2*np_spacing + 2*B_width + 2*sdm_enclosure[1]), layer= nsdm_layer)
     
-    pmB_in = c_B.add_ref(rect_pmB_in)
-    pmB_out = c_B.add_ref(rect_pmB_out)
+    nmB_in = c_B.add_ref(rect_nmB_in)
+    nmB_out = c_B.add_ref(rect_nmB_out)
 
-    pmB_in.connect("e1", destination= E.ports["e1"])
-    pmB_in .movex(E_width + np_spacing - sdm_enclosure[0])
+    nmB_in.connect("e1", destination= E.ports["e1"])
+    nmB_in .movex(E_width + np_spacing - sdm_enclosure[0])
 
-    pmB_out.connect("e1", destination= E.ports["e1"])
-    pmB_out .movex(E_width + np_spacing+ B_width +sdm_enclosure[1])   
+    nmB_out.connect("e1", destination= E.ports["e1"])
+    nmB_out .movex(E_width + np_spacing+ B_width +sdm_enclosure[1])   
 
-    pmB = c.add_ref(gf.geometry.boolean(A= pmB_out , B = pmB_in , operation= "A-B", layer= psdm_layer) )
+    nmB = c.add_ref(gf.geometry.boolean(A= nmB_out , B = nmB_in , operation= "A-B", layer= nsdm_layer) )
 
     # generate its contacts and local interconnects and mcon and metal1 
 
@@ -140,8 +137,8 @@ def npn_W1L2(
     
     if ((B_in.xmax - B_in.xmin - nc_h*contact_size[1] - (nc_h-1)*contact_spacing[1])/2) < contact_enclosure[1]:
         nc_h -= 1    
-    
-    rect_layer = [li_layer , m1_layer]
+
+   
     for i in range(2) : 
         rect_in = gf.components.rectangle(size = (E_width + 2*np_spacing + ((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])) - 2*i*mcon_enclosure[0] - 2*(1-i)*li_enclosure,
         E_length + 2*np_spacing + ((B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1]) - 2*i*mcon_enclosure[1] - 2*(1-i)*li_enclosure) ), layer= rect_layer[i])
@@ -160,8 +157,7 @@ def npn_W1L2(
         li_m1_b = c.add_ref(gf.geometry.boolean(A= li_m1_b_out , B = li_m1_b_in , operation= "A-B", layer= rect_layer[i]) )
 
     for i in rect_c_mc : 
-
-         
+ 
         cont_B_arr1 = c.add_array(i ,rows=nr_v , columns=nc_v , spacing= con_sp )      # left side 
         cont_B_arr1.move ((-np_spacing - B_width, -np_spacing ))
         cont_B_arr1.movex ((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2)
@@ -199,7 +195,7 @@ def npn_W1L2(
         cont_B_arrc4.move(((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2 ))
 
 
-    #generate collector
+    # generating collector 
 
     rect_C_in = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width, E_length + 4.5*np_spacing + 2*B_width), layer= tap_layer)
     rect_C_out = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width + 2*C_width , E_length + 4.5*np_spacing + 2*B_width + 2*C_width), layer= tap_layer)
@@ -217,21 +213,21 @@ def npn_W1L2(
 
     C = c.add_ref(gf.geometry.boolean(A= C_out , B = C_in , operation= "A-B", layer= tap_layer) )
 
-    # generate its n+ implants 
+    # generate its p+ implants 
 
-    rect_nmC_in = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width - 2*sdm_enclosure[0], E_length + 4.5*np_spacing + 2*B_width - 2*sdm_enclosure[1]), layer= nsdm_layer)
-    rect_nmC_out = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width + 2*C_width + 2*sdm_enclosure[0] , E_length + 4.5*np_spacing + 2*B_width + 2*C_width + 2*sdm_enclosure[1]), layer= nsdm_layer)
+    rect_pmC_in = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width - 2*sdm_enclosure[0], E_length + 4.5*np_spacing + 2*B_width - 2*sdm_enclosure[1]), layer= psdm_layer)
+    rect_pmC_out = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width + 2*C_width + 2*sdm_enclosure[0] , E_length + 4.5*np_spacing + 2*B_width + 2*C_width + 2*sdm_enclosure[1]), layer= psdm_layer)
     
-    nmC_in = c_C.add_ref(rect_nmC_in)
-    nmC_out = c_C.add_ref(rect_nmC_out)
+    pmC_in = c_C.add_ref(rect_pmC_in)
+    pmC_out = c_C.add_ref(rect_pmC_out)
 
-    nmC_in.connect("e1", destination= E.ports["e1"])
-    nmC_in .movex(E_width + 2.25*np_spacing + B_width - sdm_enclosure[0])
+    pmC_in.connect("e1", destination= E.ports["e1"])
+    pmC_in .movex(E_width + 2.25*np_spacing + B_width - sdm_enclosure[0])
 
-    nmC_out.connect("e1", destination= E.ports["e1"])
-    nmC_out .movex(E_width + 2.25*np_spacing+ B_width + C_width + sdm_enclosure[0])
+    pmC_out.connect("e1", destination= E.ports["e1"])
+    pmC_out .movex(E_width + 2.25*np_spacing+ B_width + C_width + sdm_enclosure[0])
 
-    nmC = c.add_ref(gf.geometry.boolean(A= nmC_out , B = nmC_in , operation= "A-B", layer= nsdm_layer) )
+    pmC = c.add_ref(gf.geometry.boolean(A= pmC_out , B = pmC_in , operation= "A-B", layer= psdm_layer) )
 
     # generate its contact and local interconnects 
     nr_v = ceil((C_in.ymax - C_in.ymin )/ (contact_size[1]+ contact_spacing[1]))
@@ -311,24 +307,15 @@ def npn_W1L2(
         cont_C_arrc4.move(((C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(C_width - nc_v*contact_size[1] - (nc_v-1)*contact_spacing[1])/2 ))
 
 
+    # generating nwell around E & B 
 
-    # generating pwell around E & B 
+    rect_nwell = gf.components.rectangle(size = (B_out.xmax - B_out.xmin + 2*diff_enclosure[0], B_out.ymax - B_out.ymin + 2*diff_enclosure[1]), layer= nwell_layer)
+    nwell = c.add_ref(rect_nwell)
+    nwell.connect("e1", destination= B_out.ports["e3"])
+    nwell.movex (B_out.xmax - B_out.xmin + diff_enclosure[0])
 
-    rect_pwell = gf.components.rectangle(size = (B_out.xmax - B_out.xmin + 2*diff_enclosure[0], B_out.ymax - B_out.ymin + 2*diff_enclosure[1]), layer= pwell_layer)
-    pwell = c.add_ref(rect_pwell)
-    pwell.connect("e1", destination= B_out.ports["e3"])
-    pwell.movex (B_out.xmax - B_out.xmin + diff_enclosure[0])
-
-    # generating deep nwell 
-
-    rect_dnw = gf.components.rectangle(size = (C_out.xmax - C_out.xmin + 2*diff_enclosure[0], C_out.ymax - C_out.ymin + 2*diff_enclosure[1]), layer= dnwell_layer)
-    dnwell = c.add_ref(rect_dnw)
-    dnwell.connect("e1", destination= C_out.ports["e3"])
-    dnwell.movex (C_out.xmax - C_out.xmin + diff_enclosure[0])
-
-    # generating npn identifier 
-
-    npn = c.add_ref(gf.components.rectangle(size = (C_out.xmax - C_out.xmin , C_out.ymax - C_out.ymin), layer= npn_layer))
+    # generating pnp identifier 
+    npn = c.add_ref(gf.components.rectangle(size = (C_out.xmax - C_out.xmin , C_out.ymax - C_out.ymin), layer= pnp_layer))
     npn.connect("e1", destination= C_out.ports["e3"])
     npn.movex(C_out.xmax - C_out.xmin)
 
@@ -336,7 +323,8 @@ def npn_W1L2(
 
 if __name__ == "__main__":
     
-    #c=npn_W1L2()
-    c = npn_W1L2(np_spacing=1)
+    c = pnp(E_length=3.4,E_width=3.4)
+    #c = pnp(np_spacing=1)
     c.show()
+
 
