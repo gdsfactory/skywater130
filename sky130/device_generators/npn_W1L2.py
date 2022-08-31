@@ -4,9 +4,9 @@ import numpy as np
 from gdsfactory.types import Float2, LayerSpec
 
 @gf.cell
-def npn_W1L1(
+def npn_W1L2(
     E_width : float = 1 ,
-    E_length : float = 1 ,
+    E_length : float = 2 ,
     B_width : float = 0.4 ,
     C_width : float = 0.4 ,
     np_spacing : float = 0.27,
@@ -35,15 +35,15 @@ def npn_W1L1(
 
 ) -> gf.Component:
 
-    """Return npn_W1L1
+    """Return npn_W1L2
 
-    npn device with emitter size 1u*1u
+    npn device with emitter size 1*2
 
    
     """
     c = gf.Component()
 
-    # generating Emitter
+    # generate emitter 
 
     rect_E = gf.components.rectangle(size = (E_width,E_length), layer = diffusion_layer)
     E = c.add_ref(rect_E)
@@ -75,7 +75,6 @@ def npn_W1L1(
         cont_e_arr.movex((E_width - nc_e*contact_size[0] - (nc_e -1)*contact_spacing[0])/2)
         cont_e_arr.movey((E_length - nr_e*contact_size[1] - (nr_e -1)*contact_spacing[1])/2)
 
-    #rect_eli = gf.components.rectangle(size = (nc_e*contact_size[0] + (nc_e -1)*contact_spacing[0] + 2*li_enclosure, nr_e*contact_size[1] + (nr_e-1)*contact_spacing[1] + 2*li_enclosure), layer= li_layer)
     rect_eli = gf.components.rectangle(size = (nc_e*contact_size[0] + (nc_e -1)*contact_spacing[0] , nr_e*contact_size[1] + (nr_e-1)*contact_spacing[1] ), layer= li_layer)
     li_e = c.add_ref(rect_eli)
     li_e.movex((E_width - nc_e*contact_size[0] - (nc_e -1)*contact_spacing[0] )/2) #- 2*li_enclosure)/2)
@@ -87,8 +86,8 @@ def npn_W1L1(
     m1_e.movex((E_width - nc_e*contact_size[0] - (nc_e -1)*contact_spacing[0] - 2*mcon_enclosure[0])/2)
     m1_e.movey((E_length - nr_e*contact_size[1] - (nr_e -1)*contact_spacing[1] - 2*mcon_enclosure[1])/2)
 
-    # generating Base 
- 
+    #generate base 
+
     rect_B_in = gf.components.rectangle(size = (E_width + 2*np_spacing, E_length + 2*np_spacing), layer= tap_layer)
     rect_B_out = gf.components.rectangle(size = (E_width + 2*np_spacing + 2*B_width , E_length + 2*np_spacing + 2*B_width), layer= tap_layer)
     c_B = gf.Component()
@@ -121,87 +120,86 @@ def npn_W1L1(
 
     pmB = c.add_ref(gf.geometry.boolean(A= pmB_out , B = pmB_in , operation= "A-B", layer= psdm_layer) )
 
- 
-
     # generate its contacts and local interconnects and mcon and metal1 
 
-    nr = ceil((B_in.ymax - B_in.ymin )/ (contact_size[1]+ contact_spacing[1]))
-    nc = ceil((B_width) / (contact_size[0]+ contact_spacing[0]))
+    nr_v = ceil((B_in.ymax - B_in.ymin )/ (contact_size[1]+ contact_spacing[1]))
+    nc_v = ceil((B_width) / (contact_size[0]+ contact_spacing[0]))
 
-    if ((B_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2) < contact_enclosure[0]:
-        nc -= 1
+    if ((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2) < contact_enclosure[0]:
+        nc_v -= 1
     
-    if ((B_in.ymax - B_in.ymin - nr*contact_size[1] - (nr-1)*contact_spacing[1])/2) < contact_enclosure[1]:
-        nr -= 1    
+    if ((B_in.ymax - B_in.ymin - nr_v*contact_size[1] - (nr_v-1)*contact_spacing[1])/2) < contact_enclosure[1]:
+        nr_v -= 1    
+
+
+    nc_h = ceil((B_in.xmax - B_in.xmin )/ (contact_size[0]+ contact_spacing[0]))
+    nr_h = ceil((B_width) / (contact_size[1]+ contact_spacing[1]))
+
+    if ((B_width - nr_h*contact_size[0] - (nr_h-1)*contact_spacing[0])/2) < contact_enclosure[0]:
+        nr_h -= 1
+    
+    if ((B_in.xmax - B_in.xmin - nc_h*contact_size[1] - (nc_h-1)*contact_spacing[1])/2) < contact_enclosure[1]:
+        nc_h -= 1    
     
     rect_layer = [li_layer , m1_layer]
     for i in range(2) : 
-        rect_in = gf.components.rectangle(size = (E_width + 2*np_spacing + ((B_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])) - 2*i*mcon_enclosure[0],
-        E_length + 2*np_spacing + ((B_width - nc*contact_size[1] - (nc-1)*contact_spacing[1]) - 2*i*mcon_enclosure[1] ) ), layer= rect_layer[i])
-        rect_out = gf.components.rectangle(size = (E_width + 2*np_spacing + 2*B_width - ((B_width - nc*contact_size[0] - (nc-1)*contact_spacing[0]) )+ 2*i*mcon_enclosure[0] ,
-        E_length + 2*np_spacing + 2*B_width - ((B_width - nc*contact_size[1] - (nc-1)*contact_spacing[1])) + 2*i*mcon_enclosure[1] ), layer= rect_layer[i])
+        rect_in = gf.components.rectangle(size = (E_width + 2*np_spacing + ((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])) - 2*i*mcon_enclosure[0],
+        E_length + 2*np_spacing + ((B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1]) - 2*i*mcon_enclosure[1] ) ), layer= rect_layer[i])
+        rect_out = gf.components.rectangle(size = (E_width + 2*np_spacing + 2*B_width - ((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0]) )+ 2*i*mcon_enclosure[0] ,
+        E_length + 2*np_spacing + 2*B_width - ((B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])) + 2*i*mcon_enclosure[1] ), layer= rect_layer[i])
     
         li_m1_b_in = c_B.add_ref(rect_in)
         li_m1_b_out = c_B.add_ref(rect_out)
 
         li_m1_b_in.connect("e1", destination= E.ports["e1"])
-        li_m1_b_in .movex((E_width + np_spacing + (B_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2 )- i*mcon_enclosure[0])
+        li_m1_b_in .movex((E_width + np_spacing + (B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2 )- i*mcon_enclosure[0])
 
         li_m1_b_out.connect("e1", destination= E.ports["e1"])
-        li_m1_b_out .movex((E_width + np_spacing+ B_width - ((B_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2) + i*mcon_enclosure[0]) )
+        li_m1_b_out .movex((E_width + np_spacing+ B_width - ((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2) + i*mcon_enclosure[0]) )
 
         li_m1_b = c.add_ref(gf.geometry.boolean(A= li_m1_b_out , B = li_m1_b_in , operation= "A-B", layer= rect_layer[i]) )
 
-    
-
     for i in rect_c_mc : 
 
-        nr_b = nr
-        nc_b = nc
-
-          
-        cont_B_arr1 = c.add_array(i ,rows=nr_b , columns=nc_b , spacing= con_sp )      # left side 
+         
+        cont_B_arr1 = c.add_array(i ,rows=nr_v , columns=nc_v , spacing= con_sp )      # left side 
         cont_B_arr1.move ((-np_spacing - B_width, -np_spacing ))
-        cont_B_arr1.movex ((B_width - nc_b*contact_size[0] - (nc_b-1)*contact_spacing[0])/2)
-        cont_B_arr1.movey((B_in.ymax - B_in.ymin - nr_b*contact_size[1] - (nr_b-1)*contact_spacing[1])/2)
+        cont_B_arr1.movex ((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2)
+        cont_B_arr1.movey((B_in.ymax - B_in.ymin - nr_v*contact_size[1] - (nr_v-1)*contact_spacing[1])/2)
 
-
-        cont_B_arr2 = c.add_array(i ,rows=nr_b , columns=nc_b , spacing= con_sp )      # right side 
+        cont_B_arr2 = c.add_array(i ,rows=nr_v , columns=nc_v , spacing= con_sp )      # right side 
         cont_B_arr2.move ((E_width + np_spacing, -np_spacing ))
-        cont_B_arr2.movex ((B_width - nc_b*contact_size[0] - (nc_b-1)*contact_spacing[0])/2)
-        cont_B_arr2.movey((B_in.ymax - B_in.ymin - nr_b*contact_size[1] - (nr_b-1)*contact_spacing[1])/2)    
+        cont_B_arr2.movex ((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2)
+        cont_B_arr2.movey((B_in.ymax - B_in.ymin - nr_v*contact_size[1] - (nr_v-1)*contact_spacing[1])/2)  
 
-        nr_temp = nr_b   # fo r switching nr & nc
-        nr_b = nc_b 
-        nc_b = nr_temp
-
-        cont_B_arr3 = c.add_array(i ,rows=nr_b , columns=nc_b , spacing= con_sp )      # upper side    
+        cont_B_arr3 = c.add_array(i ,rows=nr_h , columns=nc_h , spacing= con_sp )      # upper side    
         cont_B_arr3.move((-np_spacing , E_length + np_spacing ))
-        cont_B_arr3.movex ((B_in.xmax - B_in.xmin - nc_b*contact_size[0] - (nc_b-1)*contact_spacing[0])/2)
-        cont_B_arr3.movey ((B_width - nr_b*contact_size[1] - (nr_b-1)*contact_spacing[1])/2)
+        cont_B_arr3.movex ((B_in.xmax - B_in.xmin - nc_h*contact_size[0] - (nc_h-1)*contact_spacing[0])/2)
+        cont_B_arr3.movey ((B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2)
 
-        cont_B_arr4 = c.add_array(i ,rows=nr_b , columns=nc_b , spacing= con_sp )      # bottom side    
+        cont_B_arr4 = c.add_array(i ,rows=nr_h , columns=nc_h , spacing= con_sp )      # bottom side    
         cont_B_arr4.move((-np_spacing , -np_spacing - B_width ))
-        cont_B_arr4.movex ((B_in.xmax - B_in.xmin - nc_b*contact_size[0] - (nc_b-1)*contact_spacing[0])/2)
-        cont_B_arr4.movey ((B_width - nr_b*contact_size[1] - (nr_b-1)*contact_spacing[1])/2)
+        cont_B_arr4.movex ((B_in.xmax - B_in.xmin - nc_h*contact_size[0] - (nc_h-1)*contact_spacing[0])/2)
+        cont_B_arr4.movey ((B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2)
 
-        cont_B_arrc1 = c.add_array(i,rows=nr_b , columns=nr_b , spacing= con_sp )      # corners     
+        cont_B_arrc1 = c.add_array(i,rows=nr_h , columns=nc_v , spacing= con_sp )      # corners     
         cont_B_arrc1.move((-np_spacing - B_width , -np_spacing - B_width))
-        cont_B_arrc1.move(((B_width - nr_b*contact_size[0] - (nr_b-1)*contact_spacing[0])/2,(B_width - nr_b*contact_size[1] - (nr_b-1)*contact_spacing[1])/2 ))
-    
-        cont_B_arrc2 = c.add_array(i ,rows=nr_b , columns=nr_b , spacing= con_sp ) 
-        cont_B_arrc2.move((-np_spacing - B_width , E_length+np_spacing))
-        cont_B_arrc2.move(((B_width - nr_b*contact_size[0] - (nr_b-1)*contact_spacing[0])/2,(B_width - nr_b*contact_size[1] - (nr_b-1)*contact_spacing[1])/2 ))
-    
-        cont_B_arrc3 = c.add_array(i ,rows=nr_b , columns=nr_b , spacing= con_sp ) 
-        cont_B_arrc3.move((E_width + np_spacing  , -np_spacing - B_width))
-        cont_B_arrc3.move(((B_width - nr_b*contact_size[0] - (nr_b-1)*contact_spacing[0])/2,(B_width - nr_b*contact_size[1] - (nr_b-1)*contact_spacing[1])/2 ))
-    
-        cont_B_arrc4 = c.add_array(i ,rows=nr_b , columns=nr_b , spacing= con_sp ) 
-        cont_B_arrc4.move((E_width + np_spacing, E_length +np_spacing))
-        cont_B_arrc4.move(((B_width - nr_b*contact_size[0] - (nr_b-1)*contact_spacing[0])/2,(B_width - nr_b*contact_size[1] - (nr_b-1)*contact_spacing[1])/2 ))
+        cont_B_arrc1.move(((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2 ))
 
-    # generating Collector 
+        cont_B_arrc2 = c.add_array(i ,rows=nr_h , columns=nc_v , spacing= con_sp ) 
+        cont_B_arrc2.move((-np_spacing - B_width , E_length+np_spacing))
+        cont_B_arrc2.move(((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2 ))
+    
+        cont_B_arrc3 = c.add_array(i ,rows=nr_h , columns=nc_v , spacing= con_sp ) 
+        cont_B_arrc3.move((E_width + np_spacing  , -np_spacing - B_width))
+        cont_B_arrc3.move(((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2 ))
+    
+        cont_B_arrc4 = c.add_array(i ,rows=nr_h , columns=nc_v , spacing= con_sp ) 
+        cont_B_arrc4.move((E_width + np_spacing, E_length +np_spacing))
+        cont_B_arrc4.move(((B_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(B_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2 ))
+
+
+    #generate collector
 
     rect_C_in = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width, E_length + 4.5*np_spacing + 2*B_width), layer= tap_layer)
     rect_C_out = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width + 2*C_width , E_length + 4.5*np_spacing + 2*B_width + 2*C_width), layer= tap_layer)
@@ -236,77 +234,81 @@ def npn_W1L1(
     nmC = c.add_ref(gf.geometry.boolean(A= nmC_out , B = nmC_in , operation= "A-B", layer= nsdm_layer) )
 
     # generate its contact and local interconnects 
-    nr = ceil((C_in.ymax - C_in.ymin )/ (contact_size[1]+ contact_spacing[1]))
-    nc = ceil((C_width) / (contact_size[0]+ contact_spacing[0]))
+    nr_v = ceil((C_in.ymax - C_in.ymin )/ (contact_size[1]+ contact_spacing[1]))
+    nc_v = ceil((C_width) / (contact_size[0]+ contact_spacing[0]))
 
-    if ((C_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2) < contact_enclosure[0]:
-        nc -= 1
+    if ((C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2) < contact_enclosure[0]:
+        nc_v -= 1
     
-    if ((C_in.ymax - C_in.ymin - nr*contact_size[1] - (nr-1)*contact_spacing[1])/2) < contact_enclosure[1]:
-        nr -= 1    
-   
+    if ((C_in.ymax - C_in.ymin - nr_v*contact_size[1] - (nr_v-1)*contact_spacing[1])/2) < contact_enclosure[1]:
+        nr_v -= 1    
+
+
+    nc_h = ceil((C_in.xmax - C_in.xmin )/ (contact_size[0]+ contact_spacing[0]))
+    nr_h = ceil((C_width) / (contact_size[1]+ contact_spacing[1]))
+
+    if ((C_width - nr_h*contact_size[0] - (nr_h-1)*contact_spacing[1])/2) < contact_enclosure[1]:
+        nr_h -= 1
+    
+    if ((C_in.xmax - C_in.xmin - nc_h*contact_size[1] - (nc_h-1)*contact_spacing[0])/2) < contact_enclosure[0]:
+        nc_h -= 1    
 
     for i in range(2):
 
-        rect_in = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width + (C_width - nc*contact_size[0] - (nc-1)*contact_spacing[0]) - 2*i*mcon_enclosure[0],
-        E_length + 4.5*np_spacing + 2*B_width  + (C_width - nc*contact_size[1] - (nc-1)*contact_spacing[1]) - 2*i*mcon_enclosure[1]), layer= rect_layer[i])
+        rect_in = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width + (C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0]) - 2*i*mcon_enclosure[0],
+        E_length + 4.5*np_spacing + 2*B_width  + (C_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1]) - 2*i*mcon_enclosure[1]), layer= rect_layer[i])
    
-        rect_out = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width + 2*C_width - (C_width - nc*contact_size[0] - (nc-1)*contact_spacing[0]) + 2*i*mcon_enclosure[0], 
-        E_length + 4.5*np_spacing + 2*B_width + 2*C_width - (C_width - nc*contact_size[0] - (nc-1)*contact_spacing[0]) + 2*i*mcon_enclosure[1]), layer= rect_layer[i])
+        rect_out = gf.components.rectangle(size = (E_width + 4.5*np_spacing + 2*B_width + 2*C_width - (C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0]) + 2*i*mcon_enclosure[0], 
+        E_length + 4.5*np_spacing + 2*B_width + 2*C_width - (C_width - nr_h*contact_size[0] - (nr_h-1)*contact_spacing[0]) + 2*i*mcon_enclosure[1]), layer= rect_layer[i])
     
         li_m1_c_in = c_C.add_ref(rect_in)
         li_m1_c_out = c_C.add_ref(rect_out)
 
         li_m1_c_in.connect("e1", destination= E.ports["e1"])
-        li_m1_c_in .movex(E_width + 2.25*np_spacing + B_width + (C_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2 - i*mcon_enclosure[0])
+        li_m1_c_in .movex(E_width + 2.25*np_spacing + B_width + (C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2 - i*mcon_enclosure[0])
 
         li_m1_c_out.connect("e1", destination= E.ports["e1"])
-        li_m1_c_out .movex(E_width + 2.25*np_spacing+ B_width + C_width - (C_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2 + i*mcon_enclosure[0])
+        li_m1_c_out .movex(E_width + 2.25*np_spacing+ B_width + C_width - (C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2 + i*mcon_enclosure[0])
 
         li_m1_c = c.add_ref(gf.geometry.boolean(A= li_m1_c_out , B = li_m1_c_in , operation= "A-B", layer= rect_layer[i]) )
 
     for i in rect_c_mc : 
-        nr_c = nr 
-        nc_c = nc
-        cont_C_arr1 = c.add_array(i ,rows=nr_c , columns=nc_c , spacing= con_sp )      # left side 
+    
+        cont_C_arr1 = c.add_array(i ,rows=nr_v , columns=nc_v , spacing= con_sp )      # left side 
         cont_C_arr1.move ((-2.25*np_spacing -B_width -C_width, -2.25*np_spacing - B_width ))
-        cont_C_arr1.movex ((C_width - nc_c*contact_size[0] - (nc_c-1)*contact_spacing[0])/2)
-        cont_C_arr1.movey((C_in.ymax - C_in.ymin - nr_c*contact_size[1] - (nr_c-1)*contact_spacing[1])/2)
+        cont_C_arr1.movex ((C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2)
+        cont_C_arr1.movey((C_in.ymax - C_in.ymin - nr_v*contact_size[1] - (nr_v-1)*contact_spacing[1])/2)
 
-        cont_C_arr2 = c.add_array(i ,rows=nr_c , columns=nc_c , spacing= con_sp )      # right side 
+        cont_C_arr2 = c.add_array(i ,rows=nr_v , columns=nc_v , spacing= con_sp )      # right side 
         cont_C_arr2.move ((E_width + 2.25*np_spacing + B_width, -2.25*np_spacing - B_width ))
-        cont_C_arr2.movex ((C_width - nc_c*contact_size[0] - (nc_c-1)*contact_spacing[0])/2)
-        cont_C_arr2.movey((C_in.ymax - C_in.ymin - nr_c*contact_size[1] - (nr_c-1)*contact_spacing[1])/2)
+        cont_C_arr2.movex ((C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2)
+        cont_C_arr2.movey((C_in.ymax - C_in.ymin - nr_v*contact_size[1] - (nr_v-1)*contact_spacing[1])/2)
 
-        nr_temp = nr_c   # fo r switching nr & nc
-        nr_c = nc_c 
-        nc_c = nr_temp 
-
-        cont_C_arr3 = c.add_array(i ,rows=nr_c , columns=nc_c , spacing= con_sp )      # upper side    
+        cont_C_arr3 = c.add_array(i ,rows=nr_h , columns=nc_h , spacing= con_sp )      # upper side    
         cont_C_arr3.move((-2.25*np_spacing - B_width , E_length + 2.25*np_spacing + B_width))
-        cont_C_arr3.movex ((C_in.xmax - C_in.xmin - nc_c*contact_size[0] - (nc_c-1)*contact_spacing[0])/2)
-        cont_C_arr3.movey ((C_width - nr_c*contact_size[1] - (nr_c-1)*contact_spacing[1])/2)
+        cont_C_arr3.movex ((C_in.xmax - C_in.xmin - nc_h*contact_size[0] - (nc_h-1)*contact_spacing[0])/2)
+        cont_C_arr3.movey ((C_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2)
 
-        cont_C_arr4 = c.add_array(i ,rows=nr_c , columns=nc_c , spacing= con_sp )      # bottom side    
+        cont_C_arr4 = c.add_array(i ,rows=nr_h , columns=nc_h , spacing= con_sp )      # bottom side    
         cont_C_arr4.move((-2.25*np_spacing - B_width , - 2.25*np_spacing - B_width - C_width))
-        cont_C_arr4.movex ((C_in.xmax - C_in.xmin - nc_c*contact_size[0] - (nc_c-1)*contact_spacing[0])/2)
-        cont_C_arr4.movey ((C_width - nr_c*contact_size[1] - (nr_c-1)*contact_spacing[1])/2)
+        cont_C_arr4.movex ((C_in.xmax - C_in.xmin - nc_h*contact_size[0] - (nc_h-1)*contact_spacing[0])/2)
+        cont_C_arr4.movey ((C_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2)
 
-        cont_C_arrc1 = c.add_array(i ,rows=nr_c , columns=nr_c , spacing= con_sp)      # corners     
+        cont_C_arrc1 = c.add_array(i ,rows=nr_h , columns=nc_v , spacing= con_sp)      # corners     
         cont_C_arrc1.move((-2.25*np_spacing - B_width - C_width , -2.25*np_spacing - B_width - C_width))
-        cont_C_arrc1.move(((C_width - nr_c*contact_size[0] - (nr_c-1)*contact_spacing[0])/2,(C_width - nr_c*contact_size[1] - (nr_c-1)*contact_spacing[1])/2 ))
+        cont_C_arrc1.move(((C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(C_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2 ))
 
-        cont_C_arrc2 = c.add_array(i ,rows=nr_c , columns=nr_c , spacing= con_sp)      # corners     
+        cont_C_arrc2 = c.add_array(i ,rows=nr_h , columns=nc_v , spacing= con_sp)      # corners     
         cont_C_arrc2.move((-2.25*np_spacing - B_width - C_width , E_length +2.25*np_spacing + B_width ))
-        cont_C_arrc2.move(((C_width - nr_c*contact_size[0] - (nr_c-1)*contact_spacing[0])/2,(C_width - nr_c*contact_size[1] - (nr_c-1)*contact_spacing[1])/2 ))
+        cont_C_arrc2.move(((C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(C_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2 ))
 
-        cont_C_arrc3 = c.add_array(i ,rows=nr_c , columns=nr_c , spacing= con_sp)      # corners     
+        cont_C_arrc3 = c.add_array(i ,rows=nr_h , columns=nc_v , spacing= con_sp)      # corners     
         cont_C_arrc3.move((E_width + 2.25*np_spacing + B_width , E_length +2.25*np_spacing + B_width ))
-        cont_C_arrc3.move(((C_width - nr_c*contact_size[0] - (nr_c-1)*contact_spacing[0])/2,(C_width - nr_c*contact_size[1] - (nr_c-1)*contact_spacing[1])/2 ))
+        cont_C_arrc3.move(((C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(C_width - nr_h*contact_size[1] - (nr_h-1)*contact_spacing[1])/2 ))
 
-        cont_C_arrc4 = c.add_array(i ,rows=nr_c , columns=nr_c , spacing= con_sp)      # corners     
+        cont_C_arrc4 = c.add_array(i ,rows=nr_h , columns=nc_v , spacing= con_sp)      # corners     
         cont_C_arrc4.move((E_width + 2.25*np_spacing + B_width , -2.25*np_spacing - B_width - C_width))
-        cont_C_arrc4.move(((C_width - nr_c*contact_size[0] - (nr_c-1)*contact_spacing[0])/2,(C_width - nr_c*contact_size[1] - (nr_c-1)*contact_spacing[1])/2 ))
+        cont_C_arrc4.move(((C_width - nc_v*contact_size[0] - (nc_v-1)*contact_spacing[0])/2,(C_width - nc_v*contact_size[1] - (nc_v-1)*contact_spacing[1])/2 ))
 
 
 
@@ -330,14 +332,11 @@ def npn_W1L1(
     npn.connect("e1", destination= C_out.ports["e3"])
     npn.movex(C_out.xmax - C_out.xmin)
 
-   
-
     return c
-
 
 if __name__ == "__main__":
     
-    #c=npn_W1L1()
-    c = npn_W1L1(np_spacing=1, B_width=0.8, C_width=0.8, E_length=2)
+    #c=npn_W1L2()
+    c = npn_W1L2(np_spacing=1)
     c.show()
 
