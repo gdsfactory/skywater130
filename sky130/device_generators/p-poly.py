@@ -34,7 +34,7 @@ def p_n_poly (
 ) -> gf.Component :  
 
     """
-    return p- poly resistance 
+    return p- poly resistance with sheet resostance of 2000 ohms/square
     """
     c = gf.Component()
 
@@ -134,6 +134,6 @@ def p_n_poly (
 
 if __name__ == "__main__":
     
-    c = p_n_poly(p_poly_width= 5.73, p_poly_length=2) 
-    #c = p_n_poly()
+    #c = p_n_poly(p_poly_width= 5.73, p_poly_length=2) 
+    c = p_n_poly()
     c.show()

@@ -34,7 +34,7 @@ def p_p_poly (
 ) -> gf.Component :  
 
     """
-    return p- poly resistance 
+    return p+ poly resistance with sheet resistance of 300 ohms/square
     """
     c = gf.Component()
 
