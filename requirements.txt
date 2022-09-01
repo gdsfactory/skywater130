@@ -1,2 +1,2 @@
-gdsfactory==5.22.2
+gdsfactory==5.24.1
 PySpice
