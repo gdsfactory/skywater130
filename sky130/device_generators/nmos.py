@@ -18,7 +18,7 @@ def nmos(
     diff_spacing : float = 0.27 ,
     diff_enclosure : Float2 = (0.18,0.18) ,
     diffp_layer : LayerSpec = (65,44) ,
-    pwell_layer : LayerSpec = (64,22),
+    pwell_layer : LayerSpec = (64,13),
     dnwell_enclosure: float = (0.4,0.4),
     dnwell_layer : LayerSpec = (64,18) ,
     nf : int =  1 ,

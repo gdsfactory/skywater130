@@ -18,7 +18,7 @@ def nmos_5v(
     diff_spacing : float = 0.37 ,
     diff_enclosure : Float2 = (0.33,0.33) ,
     diffp_layer : LayerSpec = (65,44) ,
-    pwell_layer : LayerSpec = (64,22),
+    pwell_layer : LayerSpec = (64,13),
     dnwell_enclosure: float = (0.4,0.4),
     dnwell_layer : LayerSpec = (64,18) ,
     nf : int =  1 ,
