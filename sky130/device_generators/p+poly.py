@@ -4,7 +4,7 @@ import numpy as np
 from gdsfactory.types import Float2 , LayerSpec 
 
 @gf.cell
-def p_n_poly ( 
+def p_p_poly ( 
     p_poly_width : float = 0.35 ,
     p_poly_length : float = 0.5 ,
     poly_res_layer : LayerSpec =  (66,13),
@@ -22,9 +22,9 @@ def p_n_poly (
     mcon_layer : LayerSpec = (67,44),
     mcon_enclosure : Float2 = (0.09,0.09),
     m1_layer : LayerSpec = (68,20),
-    urpm_layer : LayerSpec = (79,20),
-    urpm_min_width : float = 1.27, 
-    urpm_enclosure : Float2 = (0.2,0.2),
+    rpm_layer : LayerSpec = (86,20),
+    rpm_min_width : float = 1.27, 
+    rpm_enclosure : Float2 = (0.2,0.2),
     npc_layer : LayerSpec = (95,20),
     npc_enclosure : Float2 = (0.095,0.095),
 
@@ -111,29 +111,29 @@ def p_n_poly (
     npc.movex(p_poly_width + npc_enclosure[0])
 
     # generate rpm (poly resistor implant)
-    if (p_poly_width <= urpm_min_width):
-        urpm_width = urpm_min_width + 2*urpm_enclosure[0]
+    if (p_poly_width <= rpm_min_width):
+        rpm_width = rpm_min_width + 2*rpm_enclosure[0]
     else:
-        urpm_width = p_poly_width + 2*urpm_enclosure[0]
+        rpm_width = p_poly_width + 2*rpm_enclosure[0]
 
-    urpm_length = p_poly_length + 2*p_length + 2* urpm_enclosure[1]
+    rpm_length = p_poly_length + 2*p_length + 2* rpm_enclosure[1]
 
-    rect_urpm = gf.components.rectangle(size= (urpm_width , urpm_length), layer= urpm_layer)
-    urpm = c.add_ref(rect_urpm)
-    urpm.connect("e1",destination= R_0.ports["e1"])
-    urpm.movex(p_poly_width + ((urpm_width - p_poly_width)/2))
+    rect_rpm = gf.components.rectangle(size= (rpm_width , rpm_length), layer= rpm_layer)
+    rpm = c.add_ref(rect_rpm)
+    rpm.connect("e1",destination= R_0.ports["e1"])
+    rpm.movex(p_poly_width + ((rpm_width - p_poly_width)/2))
 
     # generate p+ implants 
-    rect_psdm = gf.components.rectangle(size= (urpm_width + 2*sdm_enclosure[0], urpm_length + 2*sdm_enclosure[1]), layer= psdm_layer)
+    rect_psdm = gf.components.rectangle(size= (rpm_width + 2*sdm_enclosure[0], rpm_length + 2*sdm_enclosure[1]), layer= psdm_layer)
     psdm = c.add_ref(rect_psdm)
-    psdm.connect("e1",destination= urpm.ports["e3"])
-    psdm.movex(urpm_width+ sdm_enclosure[0])
+    psdm.connect("e1",destination= rpm.ports["e3"])
+    psdm.movex(rpm_width+ sdm_enclosure[0])
 
     return c
 
 
 if __name__ == "__main__":
     
-    c = p_n_poly(p_poly_width= 5.73, p_poly_length=2) 
-    #c = p_n_poly()
+    #c = p_p_poly(p_poly_width= 5.73, p_poly_length=2) 
+    c = p_p_poly()
     c.show()
