@@ -17,7 +17,7 @@ def npn_W1L2(
     contact_spacing: Float2 = (0.17, 0.17),
     contact_layer: LayerSpec = (66, 44),
     contact_enclosure: float = (0.06,0.06),
-    pwell_layer : LayerSpec = (64,22),
+    pwell_layer : LayerSpec = (64,13),
     dnwell_enclosure: float = (0.4,0.4),
     dnwell_layer : LayerSpec = (64,18) ,
     sdm_enclosure : Float2 = (0.125,0.125) ,
@@ -337,6 +337,6 @@ def npn_W1L2(
 if __name__ == "__main__":
     
     #c=npn_W1L2()
-    c = npn_W1L2(np_spacing=1)
+    c = npn_W1L2(B_width=0.8, C_width=0.8 ,np_spacing=1)
     c.show()
 
