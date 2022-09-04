@@ -237,8 +237,8 @@ def pmos(
 
 
 if __name__ == "__main__":
-    c = pmos(gate_length= 2, gate_width=10 , nf=3)
-    #c = pmos(nf=3)
+    #c = pmos(gate_length= 2, gate_width=10 , sd_width=5)
+    c = pmos(nf=3)
     c.show()
 
 

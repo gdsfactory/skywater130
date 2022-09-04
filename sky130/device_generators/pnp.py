@@ -323,7 +323,7 @@ def pnp(
 
 if __name__ == "__main__":
     
-    c = pnp(E_length=3.4,E_width=3.4, np_spacing=1, B_width=1,C_width=1)
+    c = pnp(E_length=3.4, E_width=3.4, np_spacing=1)
     #c = pnp(np_spacing=1, B_width= 0.65, C_width=0.65)
     c.show()
 

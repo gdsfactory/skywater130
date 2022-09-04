@@ -238,6 +238,6 @@ def nmos(
 
 if __name__ == "__main__":
     
-    c = nmos(gate_length= 2, gate_width=10, nf=3) 
+    c = nmos(gate_length= 2, gate_width=10,sd_width=5) 
     #c = nmos(nf = 3)
     c.show()

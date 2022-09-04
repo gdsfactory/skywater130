@@ -62,18 +62,27 @@ def mimcap_1(
     rect_via3 = gf.components.rectangle(size= via3_size, layer= via3_layer)
 
     # for the left m4 plate
-    nc1 = floor ((m4_length) / (via3_size[0] + via3_spacing[0]))
-    nr1 = floor ((m4_width) / (via3_size[1] + via3_spacing[1]))
+    nc1 = ceil ((m4_length) / (via3_size[0] + via3_spacing[0]))
+    if (m4_length - nc1*via3_size[0] - (nc1-1)*via3_spacing[0])/2 < via3_enclosure[0] :
+        nc1 -= 1
+    
+    nr1 = ceil ((m4_width) / (via3_size[1] + via3_spacing[1]))
+    if (m4_width - nr1*via3_size[1] - (nr1-1)*via3_spacing[1])/2 < via3_enclosure[1] :
+        nr1 -= 1
+
     via3_arr1 = c.add_array(rect_via3 , rows= nr1 , columns= nc1 , spacing= (via3_spacing[0]+ via3_size[0], via3_spacing[1]+ via3_size[1]))
     via3_arr1.movex (capm_enclosure[0] + m4_enclosure[0] + ((m4_length - nc1*via3_size[0] - (nc1-1)*via3_spacing[0])/2))
     via3_arr1.movey(capm_enclosure[1] + m4_enclosure[1] + ((m4_width  - nr1*via3_size[1] - (nr1-1)*via3_spacing[1])/2 ))
 
     # for the right m4 plate
-    nr2 = floor ((m3_width - en[1]) / (via3_size[1]+ via3_spacing[1])) 
-    nc2 = floor ((m4_r_length) / (via3_size[0]+via3_spacing[0]))
+    nr2 = ceil ((m3_width - en[1]) / (via3_size[1]+ via3_spacing[1])) 
+    nc2 = ceil ((m4_r_length) / (via3_size[0]+via3_spacing[0]))
     
-    if nc2<1 : 
-        nc2 = 1
+    if ((m3_width - en[1] - nr2*via3_size[1] - (nr2-1)*via3_spacing[1])/2) < via3_enclosure[1]:
+        nr2 -= 1
+    
+    if (m4_r_length - nc2*via3_size[0] - (nc2-1)*via3_spacing[0])/2 < via3_enclosure[0]: 
+        nc2 -= 1
 
     via3_arr2 = c.add_array(rect_via3 , rows= nr2 , columns= nc2 , spacing= (via3_spacing[0]+ via3_size[0], via3_spacing[1]+ via3_size[1]))
     via3_arr2.movex(m3_length - en[0]/2 - m4_r_length)
@@ -86,6 +95,6 @@ def mimcap_1(
 
 if __name__ == "__main__":
     
-    #c = mimcap_1()
-    c = mimcap_1 (m4_length=5,m4_width=5,m4_r_length= 1)
+    c = mimcap_1()
+    #c = mimcap_1 (m4_length=5,m4_width=5,m4_r_length= 1)
     c.show()

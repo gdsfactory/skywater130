@@ -18,7 +18,7 @@ def pmos_5v(
     diff_spacing : float = 0.37 ,
     diff_enclosure : Float2 = (0.33,0.33) ,
     diffn_layer : LayerSpec = (65,44) ,
-    nwell_layer : LayerSpec = (64,22),
+    nwell_layer : LayerSpec = (64,20),
     dnwell_enclosure: float = (0.4,0.4),
     dnwell_layer : LayerSpec = (64,18) ,
     nf : int =  1 ,
@@ -218,6 +218,6 @@ def pmos_5v(
     return c
 
 if __name__ == "__main__":
-    c = pmos_5v(gate_length= 2, gate_width=5 , nf=3 )
-    #c = pmos_5v(nf = 3)
+    #c = pmos_5v(gate_length= 2, gate_width=10 , sd_width=5 )
+    c = pmos_5v()
     c.show()

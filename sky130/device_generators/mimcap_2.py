@@ -61,26 +61,39 @@ def mimcap_2(
     rect_via4 = gf.components.rectangle(size= via4_size, layer= via4_layer)
 
     # for the left m5 plate
-    nc1 = floor ((m5_length) / (via4_size[0] + via4_spacing[0]))
-    nr1 = floor ((m5_width) / (via4_size[1] + via4_spacing[1]))
+    nc1 = ceil ((m5_length) / (via4_size[0] + via4_spacing[0]))
+    if (m5_length - nc1*via4_size[0] - (nc1-1)*via4_spacing[0])/2 < via4_enclosure[0] :
+        nc1 -= 1 
+
+    nr1 = ceil ((m5_width) / (via4_size[1] + via4_spacing[1]))
+    if (m5_width - nr1*via4_size[1] - (nr1-1)*via4_spacing[1])/2 < via4_enclosure[1]:
+        nr1 -= 1
+
+
     via4_arr1 = c.add_array(rect_via4 , rows= nr1 , columns= nc1 , spacing= (via4_spacing[0]+ via4_size[0], via4_spacing[1]+ via4_size[1]))
     via4_arr1.movex (capm2_enclosure[0] + m5_enclosure[0] + ((m5_length - nc1*via4_size[0] - (nc1-1)*via4_spacing[0])/2))
     via4_arr1.movey(capm2_enclosure[1] + m5_enclosure[1] + ((m5_width  - nr1*via4_size[1] - (nr1-1)*via4_spacing[1])/2 ))
 
     # for the right m4 plate
-    nr2 = floor ((m4_width - en[1]) / (via4_size[1]+ via4_spacing[1])) 
-    nc2 = floor ((m5_r_length) / (via4_size[0]+via4_spacing[0]))
+    nr2 = ceil ((m4_width - en[1]) / (via4_size[1]+ via4_spacing[1])) 
+    if (m4_width - en[1] - nr2*via4_size[1] - (nr2-1)*via4_spacing[1])/2 < via4_enclosure[1]:
+        nr2 -= 1
+    
+    nc2 = ceil ((m5_r_length) / (via4_size[0]+via4_spacing[0]))
+    if (m5_r_length - nc2*via4_size[0] - (nc2-1)*via4_spacing[0])/2 < via4_enclosure[0] :
+        nc2 -= 1
+
     via3_arr2 = c.add_array(rect_via4 , rows= nr2 , columns= nc2 , spacing= (via4_spacing[0]+ via4_size[0], via4_spacing[1]+ via4_size[1]))
     via3_arr2.movex(m4_length - en[0]/2 - m5_r_length)
     via3_arr2.movex((m5_r_length - nc2*via4_size[0] - (nc2-1)*via4_spacing[0])/2)
     via3_arr2.movey((m4_width - en[1]/2 - nr2*via4_size[1] - (nr2 - 1)*via4_spacing[1])/2 )
-
+ 
     return c
 
 
 
 if __name__ == "__main__":
     
-    #c = mimcap_2()
-    c = mimcap_2 (m5_length=15, m5_width=15, m5_r_length= 5)
+    c = mimcap_2()
+    #c = mimcap_2 (m5_length=15, m5_width=15, m5_r_length= 5)
     c.show()

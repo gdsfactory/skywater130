@@ -232,7 +232,7 @@ def nmos_5v(
     return c
 
 if __name__ == "__main__":
-    #c = nmos_5v(gate_length= 2, gate_width=10, nf=3, sd_width=5) 
-    c = nmos_5v(nf = 3)
+    c = nmos_5v(gate_length= 2, gate_width=10, sd_width=5) 
+    #c = nmos_5v(nf=3)
     c.show()
 

@@ -336,7 +336,7 @@ def npn_W1L2(
 
 if __name__ == "__main__":
     
-    #c=npn_W1L2()
-    c = npn_W1L2(B_width=0.8, C_width=0.8 ,np_spacing=1)
+    c=npn_W1L2( np_spacing=1)
+    #c = npn_W1L2(B_width=0.8, C_width=0.8 ,np_spacing=1)
     c.show()
 

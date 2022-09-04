@@ -1,13 +1,12 @@
 from math import ceil
-from sqlite3 import Row
 import gdsfactory as gf
 import numpy as np
 from gdsfactory.types import Float2 , LayerSpec
 
 @gf.cell
 def via_generator(
-    width : float = 1 ,
-    length : float = 1 ,
+    x_range : Float2 = [0,1] ,
+    y_range : Float2 = [0,1] ,
     via_size : Float2 = (0.17,0.17),
     via_layer : LayerSpec = (66,44),
     via_enclosure : Float2 = (0.06,0.06),
@@ -22,8 +21,8 @@ def via_generator(
     """
     c = gf.Component()
 
-    global nr 
-    global nc 
+    width = x_range[1] - x_range[0]
+    length = y_range[1] - y_range[0]
     nr = ceil(length / (via_size[1] + via_spacing[1]))
     if (length - nr*via_size[1] - (nr-1)*via_spacing[1])/2 < via_enclosure[1]:
         nr -= 1
@@ -44,6 +43,11 @@ def via_generator(
 
     via_arr = c.add_array(rect_via, rows= nr, columns= nc , spacing=via_sp)
 
+    via_arr.move((x_range[0],y_range[0]))
+
+    via_arr.movex((width - nc*via_size[0] - (nc-1)*via_spacing[0])/2)
+    via_arr.movey((length - nr*via_size[1] - (nr-1)*via_spacing[1])/2)
+
     return c
 
 
@@ -51,58 +55,43 @@ if __name__ == "__main__":
     
     width =1.5
     length = 1.5
-    via_size = (0.17,0.17) # via4:(0.8,0.8),via3,via2 : (0.2,0.2) ,via1 : (0.15,0.15),licon: (0.17,0.17) 
+    via_size = (0.15,0.15) # via4:(0.8,0.8),via3,via2 : (0.2,0.2) ,via1 : (0.15,0.15),licon: (0.17,0.17) 
     via_spacing =(0.17,0.17) # via4:(0.8,0.8) via2 :(0.2,0.2), via1,licon :(0.17,0.17)
-    via_layer =(66,44) # via4:(71,44),via3 :(70,44)via2 : (69,44) ,via1 : (68,44),licon: (66,44)
-    via_enclosure =(0.06,0.06) # via4: (0.19,0.19)via2 : (0.04,0.04) via1 : (0.055,0.055),via3,licon: (0.06,0.06)
-    bottom_layer : LayerSpec =(65,44)# m4 :(71,20),m3:(70:20) , m2 :(69,20),  m1 :(68,20),tap: (65,44) 
+    via_layer =(68,44) # via4:(71,44),via3 :(70,44)via2 : (69,44) ,via1 : (68,44),licon: (66,44)
+    via_enclosure =(0.055,0.055) # via4: (0.19,0.19)via2 : (0.04,0.04) via1 : (0.055,0.055),via3,licon: (0.06,0.06)
+    bottom_layer : LayerSpec =(68,20)# m4 :(71,20),m3:(70:20) , m2 :(69,20),  m1 :(68,20),tap: (65,44) 
 
     rect = gf.components.rectangle(size= (width,length), layer= bottom_layer) 
     
     c1 = gf.Component("via test for rectangle")
-    c1.add_label(f"test for via4 over met4 withen {width} x {length} area" , position= (width/2, length + via_enclosure[1]))
+    c1.add_label(f"test for via1 over met1 withen {width} x {length} area" , position= (width/2, length + via_enclosure[1]))
     c1.add_ref(rect)
-    c = via_generator(width= width , length= length , via_size= via_size , via_spacing= via_spacing , via_layer= via_layer)
-    v = c1.add_ref(c)
-    v.move(((width - nc*via_size[0] - (nc-1)*via_spacing[0])/2, (length - nr*via_size[1] - (nr-1)*via_spacing[1])/2))
   
+    #c = via_generator(width= width , length= length , via_size= via_size , via_spacing= via_spacing , via_layer= via_layer)
+    c = via_generator(x_range= (c1.xmin, c1.xmax) , y_range=(c1.ymin,c1.ymax))
+    v = c1.add_ref(c)
 
     c2 = gf.Component("via test for bending structure")
-    rect_out = gf.components.rectangle(size= (4*width, 4*length))
+    rect_out = gf.components.rectangle(size= (2*width, 2*length))
     d = gf.Component()
     x1 = d.add_ref(rect)
     x2 = d.add_ref(rect_out)
-    x1.move((1.5*width,1.5*length))
+    x1.move((0.5*width,0.5*length))
     c2.add_ref(gf.geometry.boolean(A= x2, B= x1,operation="A-B", layer= bottom_layer))
-    c2.add_label(f"test for via4 over met4 withe a bending area" , position= (width, 4*length + via_enclosure[1]))
+    #c2.add_label(f"test for via4 over met4 withe a bending area" , position= (width, 4*length + via_enclosure[1]))
+    v1 = via_generator (x_range=(x2.xmin , x1.xmin), y_range=(x1.ymin, x1.ymax))
+    c2.add_array(v1, rows=1 , columns=2 , spacing=[x2.xmax-x1.xmin,0])
+    v2 = via_generator (x_range=(x1.xmin , x1.xmax), y_range=(x2.ymin, x1.ymin))
+    c2.add_array(v2, rows=2 , columns= 1 , spacing= [0,x2.ymax - x1.ymin])
+    v3 = via_generator (x_range=(x2.xmin , x1.xmin), y_range=(x2.ymin, x1.ymin))
+    c2.add_array(v3, rows=2 , columns=2 , spacing= [x2.xmax-x1.xmin,x2.ymax - x1.ymin])
 
-    for i in range(2):
-        v = via_generator(width=x2.xmax - x1.xmax , length = x1.ymax - x1.ymin, via_enclosure= via_enclosure , 
-        via_size= via_size, via_spacing= via_spacing, via_layer= via_layer)
-        vi = c2.add_ref(v)
-        vi.movex((x2.xmax - x1.xmax - nc*via_size[0] - (nc-1)*via_spacing[0])/2 + i*(x2.xmax-x1.xmin))
-        vi.movey(x1.ymin - x2.ymin + (x1.ymax-x1.ymin - nr*via_size[1] - (nr-1)*via_spacing[1])/2)
 
-    for i in range(2):
-        h = via_generator(width=x1.xmax - x1.xmin , length = x2.ymax - x1.ymax, via_enclosure= via_enclosure , 
-        via_size= via_size, via_spacing= via_spacing, via_layer= via_layer)
-        vi = c2.add_ref(h)
-        vi.movey((x2.ymax - x1.ymax - nr*via_size[1] - (nr-1)*via_spacing[1])/2 + i*(x2.ymax-x1.ymin))
-        vi.movex(x1.xmin - x2.xmin + (x1.xmax-x1.xmin - nc*via_size[0] - (nc-1)*via_spacing[0])/2)
+ 
 
-    for i in range(2):
-        for j in range(2):
-            cor = via_generator (width=x2.xmax - x1.xmax , length = x2.ymax - x1.ymax, via_enclosure= via_enclosure , 
-            via_size= via_size, via_spacing= via_spacing, via_layer= via_layer)
+  
+c1.show() 
+#c2.show()
 
-            co = c2.add_ref(cor)
-            co.movex((x2.xmax - x1.xmax - nc*via_size[0] - (nc-1)*via_spacing[0])/2)
-            co.movey((x1.ymin - x2.ymin - nr*via_size[1] - (nr-1)*via_spacing[1])/2)
-            co.movex(j*(x2.xmax - x1.xmin))
-            co.movey(i*(x2.ymax - x1.ymin))
-        
-        
-#c1.show() 
-c2.show()
 
 
