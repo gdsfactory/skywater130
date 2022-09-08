@@ -62,16 +62,16 @@ def p_n_poly (
         nc-=1 
 
     lic_sp = (licon_slots_size[0]+licon_slots_spacing[0],licon_slots_size[1]+licon_slots_spacing[1])
-    
+
     for i in range(2):
         cont_arr = c.add_array(rect_lc ,rows=1, columns=nc , spacing= lic_sp )
         cont_arr.movex((p_poly_width - nc*licon_slots_size[0] - (nc-1)*licon_slots_spacing[0])/2)
         cont_arr.movey (i*(p_poly_length + (p_length- licon_slots_size[1] )/2 ) - (1-i)* (licon_slots_size[1] + (p_length- licon_slots_size[1] )/2 ))
 
     # generate li (local interconnects) and m1
-    
+
     rect_layer = [m1_layer, li_layer]
-   
+
     for i in range(2):
         rect_li_m1 = gf.components.rectangle(size= (p_poly_width + 2*(1-i)*(mcon_enclosure[0]-li_enclosure)
         ,licon_slots_size[1] + 2*i*li_enclosure +2*(1-i)*mcon_enclosure[1]), layer= rect_layer[i])
@@ -87,7 +87,7 @@ def p_n_poly (
     nr_m = ceil ((rect_li_m1.ymax - rect_li_m1.ymin)/(contact_size[1]+ contact_spacing[1]))
     if (rect_li_m1.ymax - rect_li_m1.ymin - nr_m*contact_size[1]- (nr_m-1)*contact_spacing[1])/2 < contact_enclosure[1] :
         nr_m -= 1
-    
+
     nc_m = ceil ((rect_li_m1.xmax - rect_li_m1.xmin)/ (contact_size[0]+contact_spacing[0]))
     if (rect_li_m1.xmax - rect_li_m1.xmin - nc_m*contact_size[0] - (nc_m-1)*contact_spacing[0]) < contact_enclosure[0] :
         nc_m -= 1

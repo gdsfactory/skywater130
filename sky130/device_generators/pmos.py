@@ -69,7 +69,7 @@ def pmos(
                     |______|
 
     """
-    
+
     c = gf.Component()
 
     # generating poly and p+ diffusion 
@@ -97,11 +97,11 @@ def pmos(
      # generating contacts and local interconnect and mcon and m1 of p+ diffusion 
     rect_c = gf.components.rectangle(size = contact_size, layer = contact_layer) 
     rect_mc = gf.components.rectangle(size = contact_size, layer = mcon_layer) 
-    
-   
+
+
     nr =  floor (gate_width / (2* contact_size[1])) 
     nc = floor (sd_width / (2* contact_size[0])) 
-    
+
     con_sp = list(contact_spacing)
     con_sp[0] = con_sp[1] = contact_spacing[0] + contact_size[0]
 
@@ -151,7 +151,7 @@ def pmos(
     li1.movey(-li_enclosure/2)
     li2.movey(-li_enclosure/2)
 
-    
+
     # generating contacts and local interconnects  and mcon and m1 of poly
 
     if (gate_length <= contact_size[0]) :

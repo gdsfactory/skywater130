@@ -41,14 +41,14 @@ def mimcap_1(
 
     # generate m4 plates 
 
-    rect_m4_r = gf.components.rectangle(size= (m4_r_length,m3_width- en[1] ), layer= m4_layer) 
-    m4_r = c.add_ref(rect_m4_r) 
+    rect_m4_r = gf.components.rectangle(size= (m4_r_length,m3_width- en[1] ), layer= m4_layer)
+    m4_r = c.add_ref(rect_m4_r)
     m4_r.movex (m3_length - m4_r_length- en[0]/2)
     m4_r.movey (en[1]/2)
 
-    rect_m4_l = gf.components.rectangle(size= (m4_length,m4_width), layer= m4_layer) 
+    rect_m4_l = gf.components.rectangle(size= (m4_length,m4_width), layer= m4_layer)
     m4_l = c.add_ref(rect_m4_l)
-    m4_l.connect("e3", destination= m3.ports["e1"]) 
+    m4_l.connect("e3", destination= m3.ports["e1"])
     m4_l.movex(m4_length + capm_enclosure[0] + m4_enclosure[0] + en[0]/2 )
 
     # generate capm 
@@ -69,18 +69,16 @@ def mimcap_1(
     via3_arr1.movey(capm_enclosure[1] + m4_enclosure[1] + ((m4_width  - nr1*via3_size[1] - (nr1-1)*via3_spacing[1])/2 ))
 
     # for the right m4 plate
-    nr2 = floor ((m3_width - en[1]) / (via3_size[1]+ via3_spacing[1])) 
+    nr2 = floor ((m3_width - en[1]) / (via3_size[1]+ via3_spacing[1]))
     nc2 = floor ((m4_r_length) / (via3_size[0]+via3_spacing[0]))
-    
-    if nc2<1 : 
-        nc2 = 1
 
+    nc2 = max(nc2, 1)
     via3_arr2 = c.add_array(rect_via3 , rows= nr2 , columns= nc2 , spacing= (via3_spacing[0]+ via3_size[0], via3_spacing[1]+ via3_size[1]))
     via3_arr2.movex(m3_length - en[0]/2 - m4_r_length)
     via3_arr2.movex((m4_r_length - nc2*via3_size[0] - (nc2-1)*via3_spacing[0])/2)
     via3_arr2.movey((m3_width - en[1]/2 - nr2*via3_size[1] - (nr2 - 1)*via3_spacing[1])/2 )
- 
-    
+
+
 
     return c
 
