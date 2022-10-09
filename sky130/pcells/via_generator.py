@@ -12,7 +12,7 @@ def via_generator(
     via_layer: LayerSpec = (66, 44),
     via_enclosure: Float2 = (0.06, 0.06),
     via_spacing: Float2 = (0.17, 0.17),
-) -> gf.Component():
+) -> gf.Component:
     """Return vias withen the area of width x length \
     and set number of rows and number of coloumns as a \
     global variable to be used outside the function

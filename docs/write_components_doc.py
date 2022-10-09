@@ -31,10 +31,38 @@ with open(filepath, "w+") as f:
     f.write(
         """
 
-Here are the components available in the PDK
+Here are the cells and Pcells available in the PDK
 
+PCells
+=============================
 
-Components
+.. currentmodule:: sky130.pcells
+
+.. autosummary::
+   :toctree: _autosummary/
+
+"""
+    )
+
+    for name in sorted(sky130.pcells.__all__):
+        if name in skip or name.startswith("_"):
+            continue
+        print(name)
+        sig = inspect.signature(sky130.PDK.cells[name])
+        kwargs = ", ".join(
+            [
+                f"{p}={repr(sig.parameters[p].default)}"
+                for p in sig.parameters
+                if isinstance(sig.parameters[p].default, (int, float, str, tuple))
+                and p not in skip_settings
+            ]
+        )
+        f.write(f"   {name}\n")
+
+    f.write(
+        """
+
+Cells
 =============================
 
 .. currentmodule:: sky130.components
