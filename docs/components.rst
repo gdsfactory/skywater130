@@ -1,9 +1,30 @@
 
 
-Here are the components available in the PDK
+Here are the cells and Pcells available in the PDK
+
+PCells
+=============================
+
+.. currentmodule:: sky130.pcells
+
+.. autosummary::
+   :toctree: _autosummary/
+
+   mimcap_1
+   mimcap_2
+   nmos
+   nmos_5v
+   npn_W1L1
+   npn_W1L2
+   p_n_poly
+   p_p_poly
+   pmos
+   pmos_5v
+   pnp
+   via_generator
 
 
-Components
+Cells
 =============================
 
 .. currentmodule:: sky130.components
@@ -11,6 +32,17 @@ Components
 .. autosummary::
    :toctree: _autosummary/
 
+   mimcap_1
+   mimcap_2
+   nmos
+   nmos_5v
+   npn_W1L1
+   npn_W1L2
+   p_n_poly
+   p_p_poly
+   pmos
+   pmos_5v
+   pnp
    sky130_fd_sc_hd__a2111o_1
    sky130_fd_sc_hd__a2111o_2
    sky130_fd_sc_hd__a2111o_4
@@ -907,3 +939,4 @@ Components
    sky130_fd_sc_hvl__sdlxtp_1
    sky130_fd_sc_hvl__xnor2_1
    sky130_fd_sc_hvl__xor2_1
+   via_generator

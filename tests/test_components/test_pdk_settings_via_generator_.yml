@@ -1,0 +1,39 @@
+name: via_generator
+settings:
+  changed: {}
+  child: null
+  default:
+    length: 1
+    via_enclosure:
+    - 0.06
+    - 0.06
+    via_layer:
+    - 66
+    - 44
+    via_size:
+    - 0.17
+    - 0.17
+    via_spacing:
+    - 0.17
+    - 0.17
+    width: 1
+  full:
+    length: 1
+    via_enclosure:
+    - 0.06
+    - 0.06
+    via_layer:
+    - 66
+    - 44
+    via_size:
+    - 0.17
+    - 0.17
+    via_spacing:
+    - 0.17
+    - 0.17
+    width: 1
+  function_name: via_generator
+  info: {}
+  info_version: 2
+  module: sky130.pcells.via_generator
+  name: via_generator
