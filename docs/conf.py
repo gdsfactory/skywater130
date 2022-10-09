@@ -1,5 +1,5 @@
 project = "sky130"
-version = "0.0.15"
+version = "0.0.16"
 copyright = "2020, gdsfactory"
 author = "gdsfactory"
 
