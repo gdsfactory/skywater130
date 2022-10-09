@@ -39,7 +39,7 @@ def nmos_5v(
     npc_layer : LayerSpec = (95,20),
     npc_spacing : float = 0.09
 
-    
+
 
 ) -> gf.Component:
     """Return NMOS_5v.
@@ -78,7 +78,7 @@ def nmos_5v(
 
     poly.movex(sd_width)
     poly.movey(-end_cap)
-    
+
      # generating n+ implant 
     rect_nm = gf.components.rectangle(size = (l_d+ 2*sdm_enclosure[0] ,gate_width+ 2*sdm_enclosure[1]), layer= nsdm_layer) 
     nsdm = c.add_ref(rect_nm)
@@ -88,8 +88,8 @@ def nmos_5v(
      # generating contacts and local interconnects and mcon and m1 of  n+ diffusion 
     rect_c = gf.components.rectangle(size = contact_size, layer = contact_layer) 
     rect_mc = gf.components.rectangle(size = contact_size, layer = mcon_layer) 
-    
-   
+
+
     nr = ceil(gate_width / (contact_size[1]+contact_spacing[1]))
     if (gate_width - nr*contact_size[1] - (nr-1)*contact_spacing[1] )/2 <  contact_enclosure[1] :
         nr -= 1
@@ -108,7 +108,7 @@ def nmos_5v(
             cont_arr1.movex((sd_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2)
             cont_arr1.movey((gate_width - nr*contact_size[1] - (nr-1)*contact_spacing[1])/2)
             cont_arr1.movex(j*nf*(sd_width + gate_length))
-    
+
     if nr <= 1 :
         nr = 1
         li_w = li_width
@@ -132,15 +132,15 @@ def nmos_5v(
         lid_m1_arr.movex((sd_width - nc*contact_size[0]-(nc-1)*contact_spacing[0])/2 - li_en -i*mcon_enclosure[0])
         lid_m1_arr.movey(-(1-i)*li_enclosure/2)
 
-    
+
     # generating contacts and local interconnects and mcon and m1 of poly
-    
+
     pc_x = gate_length 
     nc_p = ceil (pc_x / (contact_size[0] + contact_spacing[0]))
 
     if (pc_x - nc_p*contact_size[0] - (nc_p-1)*contact_spacing[0])/2 < contact_enclosure[0]:
         nc_p -= 1
-    
+
     for i in range(nf):
         for j in range (2): 
             cont_arr3 = c.add_array(rect_con[j], rows= 2 , columns= nc_p , spacing= [con_sp[0],contact_size[1]+ gate_width + 2*end_cap + 2*contact_enclosure[1]])
@@ -184,7 +184,7 @@ def nmos_5v(
         cont_arr2.movex((nf+1)*sd_width + nf*gate_length + diff_spacing + sdm_spacing)
         cont_arr2.movex((sd_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2)
         cont_arr2.movey((gate_width - nr*contact_size[0] - (nr-1)*contact_spacing[0])/2)
-    
+
 
     # generate its local interconnects 
      # generate its local interconnects and m1 

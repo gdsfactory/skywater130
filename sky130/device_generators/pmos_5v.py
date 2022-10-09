@@ -84,8 +84,8 @@ def pmos_5v(
      # generating contacts and interconnects and mcon and m1 of p+ diffusion 
     rect_c = gf.components.rectangle(size = contact_size, layer = contact_layer) 
     rect_mc = gf.components.rectangle(size = contact_size, layer = mcon_layer) 
-    
-   
+
+
     nr = ceil(gate_width / (contact_size[1]+contact_spacing[1]))
     if (gate_width - nr*contact_size[1] - (nr-1)*contact_spacing[1] )/2 <  contact_enclosure[1] :
         nr -= 1
@@ -133,7 +133,7 @@ def pmos_5v(
 
 
     # generating contacts and local interconnects and mcon of poly
-    
+
     pc_x = gate_length 
     nc_p = ceil (pc_x / (2* contact_size[0])) 
     if (pc_x - nc_p*contact_size[0] - (nc_p-1)*contact_spacing[0])/2 < contact_enclosure[0]:
@@ -182,7 +182,7 @@ def pmos_5v(
         cont_arr2.movex((nf+1)*sd_width + nf*gate_length + diff_spacing + sdm_spacing)
         cont_arr2.movex((sd_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2)
         cont_arr2.movey((gate_width - nr*contact_size[0] - (nr-1)*contact_spacing[0])/2)
-    
+
     for i in range(2):
         rect_li2_m1 = gf.components.rectangle(size= (li_l + 2*i*mcon_enclosure[0], gate_width+(1-i)*li_enclosure ), layer= rect_layer[i])
         li2_m1 = c.add_ref(rect_li2_m1)
@@ -202,7 +202,7 @@ def pmos_5v(
     nwell = c.add_ref(rect_nw) 
     nwell.movex(-diff_enclosure[0])
     nwell.movey(-diff_enclosure[1])
-    
+
     # generating deep nwell 
     rect_dnw =  gf.components.rectangle(size = (rect_nw.xmax - rect_nw.xmin + 2*dnwell_enclosure[0] , rect_nw.ymax - rect_nw.ymin + 2*dnwell_enclosure[1]), layer= dnwell_layer) 
     dnwell = c.add_ref(rect_dnw)

@@ -31,7 +31,7 @@ def mimcap_2(
    
     """
     c = gf.Component()
- 
+
     en = (0.02,0.04)  # for enclosure 
     #generating m4 plate 
     m4_length = capm2_enclosure[0] + 2*m5_enclosure[0] +  m5_length + m5_spacing + m5_r_length +en[0]
@@ -78,7 +78,7 @@ def mimcap_2(
     nr2 = ceil ((m4_width - en[1]) / (via4_size[1]+ via4_spacing[1])) 
     if (m4_width - en[1] - nr2*via4_size[1] - (nr2-1)*via4_spacing[1])/2 < via4_enclosure[1]:
         nr2 -= 1
-    
+
     nc2 = ceil ((m5_r_length) / (via4_size[0]+via4_spacing[0]))
     if (m5_r_length - nc2*via4_size[0] - (nc2-1)*via4_spacing[0])/2 < via4_enclosure[0] :
         nc2 -= 1
@@ -87,7 +87,7 @@ def mimcap_2(
     via3_arr2.movex(m4_length - en[0]/2 - m5_r_length)
     via3_arr2.movex((m5_r_length - nc2*via4_size[0] - (nc2-1)*via4_spacing[0])/2)
     via3_arr2.movey((m4_width - en[1]/2 - nr2*via4_size[1] - (nr2 - 1)*via4_spacing[1])/2 )
- 
+
     return c
 
 

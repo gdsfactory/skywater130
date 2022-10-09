@@ -13,7 +13,7 @@ def via_generator(
     via_spacing : Float2 = (0.17,0.17)
 
 ) -> gf.Component():
-    
+
     """
     return vias withen the area of width x length 
     and set number of rows and number of coloumns as a global variable to be used outside the function 
@@ -27,16 +27,12 @@ def via_generator(
     if (length - nr*via_size[1] - (nr-1)*via_spacing[1])/2 < via_enclosure[1]:
         nr -= 1
 
-    if nr <1 :
-        nr = 1
-    
+    nr = max(nr, 1)
     nc = ceil(width / (via_size[0]+via_spacing[0]))
     if (width - nc*via_size[0] - (nc-1)*via_spacing[0])/2 < via_enclosure[0]:
         nc -= 1
-    
-    if nc<1 :
-        nc =1 
 
+    nc = max(nc, 1)
     via_sp = (via_size[0]+via_spacing[0],via_size[1]+via_spacing[1])
 
     rect_via = gf.components.rectangle(size = via_size , layer= via_layer)
@@ -52,7 +48,7 @@ def via_generator(
 
 
 if __name__ == "__main__":
-    
+
     width =1.5
     length = 1.5
     via_size = (0.15,0.15) # via4:(0.8,0.8),via3,via2 : (0.2,0.2) ,via1 : (0.15,0.15),licon: (0.17,0.17) 
@@ -62,11 +58,11 @@ if __name__ == "__main__":
     bottom_layer : LayerSpec =(68,20)# m4 :(71,20),m3:(70:20) , m2 :(69,20),  m1 :(68,20),tap: (65,44) 
 
     rect = gf.components.rectangle(size= (width,length), layer= bottom_layer) 
-    
+
     c1 = gf.Component("via test for rectangle")
     c1.add_label(f"test for via1 over met1 withen {width} x {length} area" , position= (width/2, length + via_enclosure[1]))
     c1.add_ref(rect)
-  
+
     #c = via_generator(width= width , length= length , via_size= via_size , via_spacing= via_spacing , via_layer= via_layer)
     c = via_generator(x_range= (c1.xmin, c1.xmax) , y_range=(c1.ymin,c1.ymax))
     v = c1.add_ref(c)
@@ -87,9 +83,9 @@ if __name__ == "__main__":
     c2.add_array(v3, rows=2 , columns=2 , spacing= [x2.xmax-x1.xmin,x2.ymax - x1.ymin])
 
 
- 
 
-  
+
+
 c1.show() 
 #c2.show()
 

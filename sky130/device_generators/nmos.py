@@ -96,7 +96,7 @@ def nmos(
      # generating contacts and local interconnects and mcon and m1 of  n+ diffusion 
     rect_c = gf.components.rectangle(size = contact_size, layer = contact_layer) 
     rect_mc = gf.components.rectangle(size = contact_size, layer = mcon_layer) 
-    
+
     nr = ceil(gate_width / (contact_size[1]+contact_spacing[1]))
     if (gate_width - nr*contact_size[1] - (nr-1)*contact_spacing[1] )/2 <  contact_enclosure[1] :
         nr -= 1
@@ -106,7 +106,7 @@ def nmos(
         nc -= 1
 
     con_sp = (contact_size[0]+contact_spacing[0], contact_size[1]+contact_spacing[1])
-    
+
     rect_con = [rect_c, rect_mc]
     for i in range(2):
         for j in range(2):
@@ -137,9 +137,9 @@ def nmos(
         lid_m1_arr = c.add_array(rect_lid_m1, rows= 1 , columns= 2 , spacing= (nf*(sd_width + gate_length) , 0))
         lid_m1_arr.movex((sd_width - nc*contact_size[0]-(nc-1)*contact_spacing[0])/2 - li_en -i*mcon_enclosure[0])
         lid_m1_arr.movey(-(1-i)*li_enclosure/2)
-        
 
-    
+
+
     # generating contacts and local interconnects and mcon and m1 of poly 
 
 
@@ -166,7 +166,7 @@ def nmos(
 
     pc_size = (pc_x, contact_enclosure[1] +contact_size[1]+contact_enclosure[1])  # poly size to contain contact
     rect_pc = gf.components.rectangle(size = pc_size, layer = poly_layer) 
-    
+
     pc = c.add_array(rect_pc, rows= 2 , columns= nf , spacing= [sd_width + gate_length, pc_size[1]+ gate_width + 2*end_cap] )
     pc.movex(sd_width- ((pc_x - gate_length)/2))
     pc.movey(-pc_size[1] - end_cap)
@@ -177,7 +177,7 @@ def nmos(
         lip_m1.movex(sd_width- ((pc_x - gate_length)/2) - (1-i)*li_enclosure/2 + i*(contact_enclosure[0]-mcon_enclosure[0]))
         lip_m1.movey(-pc_size[1]- end_cap + (1-i)*contact_enclosure[1] )
 
-    
+
     # generating npc for poly contacts 
 
     npc_en = end_cap - npc_spacing 
@@ -200,7 +200,7 @@ def nmos(
         cont_arr2.movex((nf+1)*sd_width + nf*gate_length + diff_spacing + sdm_spacing)
         cont_arr2.movex((sd_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2)
         cont_arr2.movey((gate_width - nr*contact_size[0] - (nr-1)*contact_spacing[0])/2)
-    
+
 
 
     # generate its local interconnects and m1 
@@ -217,21 +217,21 @@ def nmos(
     psdm = c.add_ref(rect_pm)
     psdm.connect("e1",destination= diff_n.ports["e3"])
     psdm.movex(diff_spacing+ sdm_spacing - sdm_enclosure[0])
-    
+
 
     # generating pwell 
     rect_pw = gf.components.rectangle(size = (2*diff_enclosure[0] + l_d + diff_spacing + sdm_spacing+ sd_width , 2*diff_enclosure[1] + gate_width), layer= pwell_layer) 
     pwell = c.add_ref(rect_pw) 
     pwell.movex(-diff_enclosure[0])
     pwell.movey(-diff_enclosure[1])
-    
+
     # generating deep nwell 
     rect_dnw =  gf.components.rectangle(size = (rect_pw.xmax - rect_pw.xmin + 2*dnwell_enclosure[0] , rect_pw.ymax - rect_pw.ymin + 2*dnwell_enclosure[1]), layer= dnwell_layer) 
     dnwell = c.add_ref(rect_dnw)
     dnwell.movex(-diff_enclosure[0]- dnwell_enclosure[0])
     dnwell.movey(-diff_enclosure[1]- dnwell_enclosure[1])
 
-    
+
 
     return c
 

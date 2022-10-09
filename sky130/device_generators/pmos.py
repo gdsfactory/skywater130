@@ -69,7 +69,7 @@ def pmos(
                     |______|
 
     """
-    
+
     c = gf.Component()
 
     # generating poly and p+ diffusion 
@@ -97,8 +97,8 @@ def pmos(
      # generating contacts and local interconnect and mcon and m1 of p+ diffusion 
     rect_c = gf.components.rectangle(size = contact_size, layer = contact_layer) 
     rect_mc = gf.components.rectangle(size = contact_size, layer = mcon_layer) 
-    
-   
+
+
     nr = ceil(gate_width / (contact_size[1]+contact_spacing[1]))
     if (gate_width - nr*contact_size[1] - (nr-1)*contact_spacing[1] )/2 <  contact_enclosure[1] :
         nr -= 1
@@ -108,7 +108,7 @@ def pmos(
         nc -= 1
 
     con_sp = (contact_size[0]+contact_spacing[0], contact_size[1]+contact_spacing[1])
-    
+
 
     rect_con = [rect_c, rect_mc]
     for i in range(2):
@@ -142,8 +142,8 @@ def pmos(
         lid_m1_arr.movey(-(1-i)*li_enclosure/2)
 
 
-   
-    
+
+
     # generating contacts and local interconnects  and mcon and m1 of poly
 
     if (gate_length <= contact_size[0]) :
@@ -179,7 +179,7 @@ def pmos(
         lip_m1 = c.add_array(rect_lip_m1, rows= 2 , columns= nf , spacing= [sd_width + gate_length,pc_size[1]+gate_width+ 2*end_cap ] )
         lip_m1.movex(sd_width- ((pc_x - gate_length)/2) - (1-i)*li_enclosure/2 + i*(contact_enclosure[0]-mcon_enclosure[0]))
         lip_m1.movey(-pc_size[1]- end_cap + (1-i)*contact_enclosure[1] )
-    
+
     # generating npc for poly contacts 
 
     npc_en = end_cap - npc_spacing 
@@ -201,7 +201,7 @@ def pmos(
         cont_arr2.movex((nf+1)*sd_width + nf*gate_length + diff_spacing + sdm_spacing)
         cont_arr2.movex((sd_width - nc*contact_size[0] - (nc-1)*contact_spacing[0])/2)
         cont_arr2.movey((gate_width - nr*contact_size[0] - (nr-1)*contact_spacing[0])/2)
-    
+
 
     # generate its local interconnects and m1
     for i in range(2):
