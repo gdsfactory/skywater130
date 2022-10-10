@@ -57,6 +57,15 @@ def nmos_5v(
         diffp_layer: for bulk tie.
         dnwell layer: for deep nwell.
         nf: for finger option.
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.nmos_5v(gate_length= 2, gate_width=10)
+      c.plot()
+
     """
 
     c = gf.Component()

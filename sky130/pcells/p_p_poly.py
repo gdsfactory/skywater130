@@ -34,6 +34,15 @@ def p_p_poly(
 
     Args:
         p_poly_width: in um.
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.p_p_poly(p_poly_width= 5.73, p_poly_length=2)
+      c.plot()
+
     """
     c = gf.Component()
 

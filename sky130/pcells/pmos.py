@@ -67,6 +67,14 @@ def pmos(
                     |<---->|
                     |______|
 
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.pmos(gate_length= 2, gate_width=10, sd_width=5)
+      c.plot()
     """
 
     c = gf.Component()

@@ -68,6 +68,14 @@ def nmos(
                     |<---->|
                     |______|
 
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.nmos(gate_length= 2, gate_width=10)
+      c.plot()
+
     """
     c = gf.Component()
 

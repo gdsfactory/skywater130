@@ -33,7 +33,16 @@ def pnp(
     m1_layer: LayerSpec = (68, 20),
 ) -> gf.Component:
 
-    """Return pnp."""
+    """Return pnp.
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.pnp(E_length=3.4, E_width=3.4, np_spacing=1, B_width=1, C_width=1)
+      c.plot()
+    """
     c = gf.Component()
 
     # generating Emitter

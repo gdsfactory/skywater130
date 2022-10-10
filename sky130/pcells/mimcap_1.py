@@ -24,6 +24,29 @@ def mimcap_1(
     """Return mimcap_1 Pcell
 
     mim cap between metal 3 and 4
+
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.mimcap_1(
+            m3_layer=(70, 20),
+            via3_size=(0.2, 0.2),
+            via3_layer=(70, 44),
+            via3_enclosure=(0.09, 0.09),
+            via3_spacing=(0.2, 0.2),
+            m4_spacing=0.3,
+            m4_r_length=0.4,
+            m4_layer=(71, 20),
+            m4_length=1,
+            m4_width=1,
+            capm_layer=(89, 44),
+            m4_enclosure=(0.14, 0.14),
+            capm_enclosure=(0.5, 0.5),
+      )
+      c.plot()
     """
     c = gf.Component()
 
@@ -113,4 +136,19 @@ if __name__ == "__main__":
 
     # c = mimcap_1()
     c = mimcap_1(m4_length=5, m4_width=5, m4_r_length=1)
+    # c = mimcap_1(
+    #     m3_layer=(70, 20),
+    #     via3_size=(0.2, 0.2),
+    #     via3_layer=(70, 44),
+    #     via3_enclosure=(0.09, 0.09),
+    #     via3_spacing=(0.2, 0.2),
+    #     m4_spacing=0.3,
+    #     m4_r_length=0.4,
+    #     m4_layer=(71, 20),
+    #     m4_length=1,
+    #     m4_width=1,
+    #     capm_layer=(89, 44),
+    #     m4_enclosure=(0.14, 0.14),
+    #     capm_enclosure=(0.5, 0.5),
+    # )
     c.show(show_ports=True)

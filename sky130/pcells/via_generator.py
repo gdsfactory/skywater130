@@ -13,9 +13,17 @@ def via_generator(
     via_enclosure: Float2 = (0.06, 0.06),
     via_spacing: Float2 = (0.17, 0.17),
 ) -> gf.Component:
-    """Return vias withen the area of width x length \
+    """Return vias within the area of width x length \
     and set number of rows and number of coloumns as a \
-    global variable to be used outside the function
+    global variable to be used outside the function.
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.via_generator()
+      c.plot()
     """
     c = gf.Component()
 

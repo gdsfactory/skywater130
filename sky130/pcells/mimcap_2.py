@@ -24,6 +24,14 @@ def mimcap_2(
     """Return mimcap_2.
 
     mim cap between metal 4 and 5
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.mimcap_2(m5_length=15, m5_width=15, m5_r_length=5)
+      c.plot()
     """
     c = gf.Component()
 

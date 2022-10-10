@@ -35,9 +35,17 @@ def npn_W1L1(
     m1_layer: LayerSpec = (68, 20),
 ) -> gf.Component:
 
-    """Return npn_W1L1
+    """Return npn_W1L1.
 
     npn device with emitter size 1u*1u
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.npn_W1L1(np_spacing=1, B_width=0.8, C_width=0.8, E_length=2)
+      c.plot()
 
 
     """

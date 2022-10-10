@@ -30,7 +30,16 @@ def p_n_poly(
     npc_enclosure: Float2 = (0.095, 0.095),
 ) -> gf.Component:
 
-    """Return p- poly resistor with sheet resistance of 2000 ohms/square."""
+    """Return p- poly resistor with sheet resistance of 2000 ohms/square.
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.p_n_poly(p_poly_width= 5.73, p_poly_length=2)
+      c.plot()
+    """
     c = gf.Component()
 
     # generate poly res R1

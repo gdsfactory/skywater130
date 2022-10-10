@@ -55,6 +55,14 @@ def pmos_5v(
         diffp_layer : for bulk tie
         dnwell layer : for deep nwell
         nf : for finger option
+
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.pmos_5v(gate_length= 2, gate_width=10, sd_width=5)
+      c.plot()
     """
 
     c = gf.Component()
@@ -376,6 +384,6 @@ def pmos_5v(
 
 
 if __name__ == "__main__":
-    # c = pmos_5v(gate_length= 2, gate_width=10, sd_width=5  )
+    # c = pmos_5v(gate_length= 2, gate_width=10, sd_width=5)
     c = pmos_5v()
     c.show(show_ports=True)

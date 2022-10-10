@@ -39,6 +39,13 @@ def npn_W1L2(
 
     npn device with emitter size 1*2
 
+    .. plot::
+      :include-source:
+
+      import sky130
+
+      c = sky130.pcells.npn_W1L2(B_width=0.8, C_width=0.8, np_spacing=1)
+      c.plot()
 
     """
     c = gf.Component()
