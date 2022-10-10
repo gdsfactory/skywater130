@@ -22,3 +22,4 @@ sphinx-markdown-tables==0.0.16
 types-PyYAML
 types-waitress
 xdoctest
+gdsfactory[full]
