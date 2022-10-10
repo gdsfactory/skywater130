@@ -1,8 +1,9 @@
 # CHANGELOG
 
-## 0.0.16
+## 0.1.0
 
-- update to gdsfactory 5.40.0
+- update to gdsfactory 5.41.0
+- added Pcells
 
 ## [0.0.13](https://github.com/gdsfactory/skywater130/pull/31)
 
