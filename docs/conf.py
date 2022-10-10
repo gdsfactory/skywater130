@@ -1,7 +1,7 @@
 project = "sky130"
 version = "0.1.0"
-copyright = "2020, gdsfactory"
-author = "gdsfactory"
+copyright = "2020"
+# author = "gdsfactory"
 
 # html_theme = "furo"
 html_theme = "sphinx_book_theme"
