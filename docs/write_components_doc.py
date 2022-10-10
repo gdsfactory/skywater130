@@ -3,7 +3,8 @@ import inspect
 import sky130
 
 
-filepath = pathlib.Path(__file__).parent.absolute() / "components.rst"
+cells = pathlib.Path(__file__).parent.absolute() / "components.rst"
+pcells = pathlib.Path(__file__).parent.absolute() / "pcells.rst"
 
 skip = {
     "LIBRARY",
@@ -27,11 +28,11 @@ skip_plot = {}
 skip_settings = {"flatten", "safe_cell_names"}
 
 
-with open(filepath, "w+") as f:
+with open(pcells, "w+") as f:
     f.write(
         """
 
-Here are the cells and Pcells available in the PDK
+Here are the Pcells available in the PDK
 
 PCells
 =============================
@@ -58,6 +59,8 @@ PCells
             ]
         )
         f.write(f"   {name}\n")
+
+with open(cells, "w+") as f:
 
     f.write(
         """

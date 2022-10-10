@@ -7,5 +7,6 @@ sky130
 
     README
     tech
+    pcells
     components
     notebooks
