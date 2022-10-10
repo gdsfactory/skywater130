@@ -800,4 +800,4 @@ if __name__ == "__main__":
 
     # c=npn_W1L2()
     c = npn_W1L2(B_width=0.8, C_width=0.8, np_spacing=1)
-    c.show()
+    c.show(show_ports=True)

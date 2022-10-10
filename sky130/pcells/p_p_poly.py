@@ -30,7 +30,7 @@ def p_p_poly(
     npc_enclosure: Float2 = (0.095, 0.095),
 ) -> gf.Component:
 
-    """Return p+ poly resistance with sheet resistance of 300 ohms/square.
+    """Return p+ poly resistor with sheet resistance of 300 ohms/square.
 
     Args:
         p_poly_width: in um.
@@ -220,4 +220,4 @@ if __name__ == "__main__":
 
     # c = p_p_poly(p_poly_width= 5.73, p_poly_length=2)
     c = p_p_poly()
-    c.show()
+    c.show(show_ports=True)

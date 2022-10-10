@@ -378,4 +378,4 @@ def pmos_5v(
 if __name__ == "__main__":
     # c = pmos_5v(gate_length= 2, gate_width=10, sd_width=5  )
     c = pmos_5v()
-    c.show()
+    c.show(show_ports=True)

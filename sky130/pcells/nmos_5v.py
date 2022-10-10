@@ -48,15 +48,15 @@ def nmos_5v(
         gate_width: for poly.
         gate_length: for poly.
         sd_width: source drain length.
-        end_cap : end cap length.
-        contact_size : contact dimension (length and width)
-        contact_layer : for contacts
-        contact_enclosure : for contacts within diffusion or poly
-        diff_spacing : for two adjacent diffusions
-        diff_enclosure : for diffusion within well
-        diffp_layer : for bulk tie
-        dnwell layer : for deep nwell
-        nf : for finger option
+        end_cap: end cap length.
+        contact_size: contact dimension (length and width).
+        contact_layer: for contacts.
+        contact_enclosure: for contacts within diffusion or poly.
+        diff_spacing: for two adjacent diffusions.
+        diff_enclosure: for diffusion within well.
+        diffp_layer: for bulk tie.
+        dnwell layer: for deep nwell.
+        nf: for finger option.
     """
 
     c = gf.Component()
@@ -394,4 +394,4 @@ def nmos_5v(
 if __name__ == "__main__":
     # c = nmos_5v(gate_length= 2, gate_width=5)
     c = nmos_5v()
-    c.show()
+    c.show(show_ports=True)

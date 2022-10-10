@@ -30,7 +30,7 @@ def p_n_poly(
     npc_enclosure: Float2 = (0.095, 0.095),
 ) -> gf.Component:
 
-    """Return p- poly resistance with sheet resostance of 2000 ohms/square."""
+    """Return p- poly resistor with sheet resistance of 2000 ohms/square."""
     c = gf.Component()
 
     # generate poly res R1
@@ -41,7 +41,6 @@ def p_n_poly(
     c.add_ref(rect_r)
 
     # generate polysilicon R0
-
     p_length = licon_slots_size[1] + 2 * contact_enclosure[1]
     rect_p = gf.components.rectangle(
         size=(p_poly_width, p_poly_length + 2 * p_length), layer=poly_layer
@@ -218,4 +217,4 @@ if __name__ == "__main__":
 
     # c = p_n_poly(p_poly_width= 5.73, p_poly_length=2)
     c = p_n_poly()
-    c.show()
+    c.show(show_ports=True)

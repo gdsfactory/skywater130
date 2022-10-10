@@ -757,4 +757,4 @@ if __name__ == "__main__":
 
     c = npn_W1L1()
     # c = npn_W1L1(np_spacing=1, B_width=0.8, C_width=0.8, E_length=2)
-    c.show()
+    c.show(show_ports=True)

@@ -86,4 +86,4 @@ def nmos(
 
 if __name__ == "__main__":
     c = nmos(gate_width=10, gate_length=1, sd_width=5)
-    c.show()
+    c.show(show_ports=True)

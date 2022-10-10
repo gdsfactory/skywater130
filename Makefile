@@ -45,3 +45,6 @@ release:
 
 build:
 	python setup.py sdist bdist_wheel
+
+tech:
+	python3 install_tech.py
