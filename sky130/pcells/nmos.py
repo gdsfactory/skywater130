@@ -15,12 +15,12 @@ def nmos(
     contact_size: Float2 = (0.17, 0.17),
     contact_spacing: Float2 = (0.17, 0.17),
     contact_layer: LayerSpec = (66, 44),
-    contact_enclosure: float = (0.06, 0.06),
+    contact_enclosure: Float2 = (0.06, 0.06),
     diff_spacing: float = 0.27,
     diff_enclosure: Float2 = (0.18, 0.18),
     diffp_layer: LayerSpec = (65, 44),
     pwell_layer: LayerSpec = (64, 13),
-    dnwell_enclosure: float = (0.4, 0.4),
+    dnwell_enclosure: Float2 = (0.4, 0.4),
     dnwell_layer: LayerSpec = (64, 18),
     nf: int = 1,
     sdm_enclosure: Float2 = (0.125, 0.125),
@@ -37,7 +37,6 @@ def nmos(
     npc_layer: LayerSpec = (95, 20),
     npc_spacing: float = 0.09,
 ) -> gf.Component:
-
     """Return NMOS.
 
     Args:

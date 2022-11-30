@@ -17,7 +17,7 @@ def pnp(
     contact_size: Float2 = (0.17, 0.17),
     contact_spacing: Float2 = (0.17, 0.17),
     contact_layer: LayerSpec = (66, 44),
-    contact_enclosure: float = (0.06, 0.06),
+    contact_enclosure: Float2 = (0.06, 0.06),
     nwell_layer: LayerSpec = (64, 20),
     sdm_enclosure: Float2 = (0.125, 0.125),
     nsdm_layer: LayerSpec = (93, 44),
@@ -32,7 +32,6 @@ def pnp(
     mcon_enclosure: Float2 = (0.09, 0.09),
     m1_layer: LayerSpec = (68, 20),
 ) -> gf.Component:
-
     """Return pnp.
 
     .. plot::

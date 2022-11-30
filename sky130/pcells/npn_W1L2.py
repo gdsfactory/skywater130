@@ -17,9 +17,9 @@ def npn_W1L2(
     contact_size: Float2 = (0.17, 0.17),
     contact_spacing: Float2 = (0.17, 0.17),
     contact_layer: LayerSpec = (66, 44),
-    contact_enclosure: float = (0.06, 0.06),
+    contact_enclosure: Float2 = (0.06, 0.06),
     pwell_layer: LayerSpec = (64, 13),
-    dnwell_enclosure: float = (0.4, 0.4),
+    dnwell_enclosure: Float2 = (0.4, 0.4),
     dnwell_layer: LayerSpec = (64, 18),
     sdm_enclosure: Float2 = (0.125, 0.125),
     nsdm_layer: LayerSpec = (93, 44),
@@ -34,10 +34,7 @@ def npn_W1L2(
     mcon_enclosure: Float2 = (0.09, 0.09),
     m1_layer: LayerSpec = (68, 20),
 ) -> gf.Component:
-
-    """Return npn_W1L2
-
-    npn device with emitter size 1*2
+    """Return npn device with emitter size 1*2.
 
     .. plot::
       :include-source:

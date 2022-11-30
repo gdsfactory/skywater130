@@ -7,7 +7,7 @@ from gdsfactory.types import Float2, LayerSpec
 @gf.cell
 def mimcap_1(
     m3_layer: LayerSpec = (70, 20),
-    via3_size: float = (0.2, 0.2),
+    via3_size: Float2 = (0.2, 0.2),
     via3_layer: LayerSpec = (70, 44),
     via3_enclosure: Float2 = (0.09, 0.09),
     via3_spacing: Float2 = (0.2, 0.2),  # (0.2,0.35),
@@ -17,8 +17,8 @@ def mimcap_1(
     m4_length: float = 1,
     m4_width: float = 1,
     capm_layer: LayerSpec = (89, 44),
-    m4_enclosure: float = (0.14, 0.14),
-    capm_enclosure: float = (0.5, 0.5),
+    m4_enclosure: Float2 = (0.14, 0.14),
+    capm_enclosure: Float2 = (0.5, 0.5),
 ) -> gf.Component:
 
     """Return mimcap_1 Pcell

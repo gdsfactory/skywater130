@@ -7,7 +7,7 @@ from gdsfactory.types import Float2, LayerSpec
 @gf.cell
 def mimcap_2(
     m4_layer: LayerSpec = (71, 20),
-    via4_size: float = (0.8, 0.8),
+    via4_size: Float2 = (0.8, 0.8),
     via4_layer: LayerSpec = (71, 44),
     via4_enclosure: Float2 = (0.32, 0.32),
     via4_spacing: Float2 = (0.8, 0.8),
@@ -17,13 +17,10 @@ def mimcap_2(
     m5_length: float = 1.6,
     m5_width: float = 1.6,
     capm2_layer: LayerSpec = (97, 44),
-    m5_enclosure: float = (0.14, 0.14),
-    capm2_enclosure: float = (0.5, 0.5),
+    m5_enclosure: Float2 = (0.14, 0.14),
+    capm2_enclosure: Float2 = (0.5, 0.5),
 ) -> gf.Component:
-
-    """Return mimcap_2.
-
-    mim cap between metal 4 and 5
+    """Return mim cap between metal 4 and 5.
 
     .. plot::
       :include-source:

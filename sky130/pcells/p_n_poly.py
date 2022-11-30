@@ -29,7 +29,6 @@ def p_n_poly(
     npc_layer: LayerSpec = (95, 20),
     npc_enclosure: Float2 = (0.095, 0.095),
 ) -> gf.Component:
-
     """Return p- poly resistor with sheet resistance of 2000 ohms/square.
 
     .. plot::
