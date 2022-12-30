@@ -14,7 +14,7 @@ def via_generator(
     via_spacing: Float2 = (0.17, 0.17),
 ) -> gf.Component:
     """Return vias within the area of width x length \
-    and set number of rows and number of coloumns as a \
+    and set number of rows and number of columns as a \
     global variable to be used outside the function.
 
     .. plot::
@@ -75,7 +75,7 @@ def demo_via():
 
     c1 = gf.Component("via test for rectangle")
     c1.add_label(
-        f"test for via4 over met4 withen {width} x {length} area",
+        f"test for via4 over met4 within {width} x {length} area",
         position=(width / 2, length + via_enclosure[1]),
     )
     c1.add_ref(rect)
@@ -102,7 +102,7 @@ def demo_via():
     x1.move((1.5 * width, 1.5 * length))
     c2.add_ref(gf.geometry.boolean(A=x2, B=x1, operation="A-B", layer=bottom_layer))
     c2.add_label(
-        "test for via4 over met4 withe a bending area",
+        "test for via4 over met4 within a bending area",
         position=(width, 4 * length + via_enclosure[1]),
     )
 

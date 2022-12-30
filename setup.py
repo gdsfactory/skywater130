@@ -3,7 +3,7 @@ from setuptools import setup
 
 
 def get_install_requires():
-    with open("requirements.txt", "r") as f:
+    with open("requirements.txt") as f:
         return [line.strip() for line in f.readlines() if not line.startswith("-")]
 
 
