@@ -231,7 +231,7 @@ def npn_W1L1(
             size=(
                 E_width
                 + 2 * np_spacing
-                + ((B_width - nc * contact_size[0] - (nc - 1) * contact_spacing[0]))
+                + (B_width - nc * contact_size[0] - (nc - 1) * contact_spacing[0])
                 - 2 * i * mcon_enclosure[0]
                 - 2 * (1 - i) * li_enclosure,
                 E_length
@@ -249,13 +249,13 @@ def npn_W1L1(
                 E_width
                 + 2 * np_spacing
                 + 2 * B_width
-                - ((B_width - nc * contact_size[0] - (nc - 1) * contact_spacing[0]))
+                - (B_width - nc * contact_size[0] - (nc - 1) * contact_spacing[0])
                 + 2 * i * mcon_enclosure[0]
                 + 2 * (1 - i) * li_enclosure,
                 E_length
                 + 2 * np_spacing
                 + 2 * B_width
-                - ((B_width - nc * contact_size[1] - (nc - 1) * contact_spacing[1]))
+                - (B_width - nc * contact_size[1] - (nc - 1) * contact_spacing[1])
                 + 2 * i * mcon_enclosure[1]
                 + 2 * (1 - i) * li_enclosure,
             ),
