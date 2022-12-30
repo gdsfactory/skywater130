@@ -19,6 +19,9 @@ def remove_path_or_dir(dest: pathlib.Path):
 
 def make_link(src, dest, overwrite: bool = True) -> None:
     dest = pathlib.Path(dest)
+    src = pathlib.Path(src)
+    if not src.exists():
+        raise ValueError(f"{src} does not exist")
     if dest.exists() and not overwrite:
         print(f"{dest} already exists")
         return
