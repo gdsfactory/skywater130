@@ -22,7 +22,7 @@ authors = [
 keywords = ["python"]
 license = {file = "LICENSE"}
 dependencies = [
-    "gdsfactory[full]==6.16.1",
+    "gdsfactory[full]==6.16.2",
     "PySpice"
 ]
 readme = "README.md"
