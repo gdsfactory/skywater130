@@ -58,7 +58,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytest klayout lytest scikit-image pytest-cov pytest_regressions
-          pytest --cov=sky130 --cov-report=xml --cov-config=.coveragerc sky130
+          pytest --cov-report=xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
