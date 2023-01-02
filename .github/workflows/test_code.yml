@@ -58,7 +58,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytest klayout lytest scikit-image pytest-cov pytest_regressions
-          pytest --cov app
+          pytest --cov=sky130 tests/
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:

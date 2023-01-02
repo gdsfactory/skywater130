@@ -93,7 +93,7 @@ testpaths = ["sky130", "tests"]
 python_files = ["sky130/*.py", "tests/*.py"]
 # python_files = ["tests/*.py"]
 # norecursedirs = ["extra/*.py", 'sky130/simulations/*.py']
-addopts = '--cov=tests --cov-report html'
+# addopts = '--cov=tests --cov-report html'
 
 [tool.flake8]
 max-line-length = 88
