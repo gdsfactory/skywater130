@@ -44,7 +44,12 @@ release:
 	git push --tags
 
 build:
-	python setup.py sdist bdist_wheel
+	rm -rf dist
+	pip install build
+	python -m build
 
 tech:
 	python3 install_tech.py
+
+
+.PHONY: gdsdiff build conda
