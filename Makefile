@@ -1,8 +1,5 @@
-
 install:
-	pip install -r requirements.txt --upgrade
-	pip install -r requirements_dev.txt --upgrade
-	pip install -e .
+	pip install -e .[docs]
 	pre-commit install
 
 watch:
@@ -38,6 +35,9 @@ update:
 
 update-pre:
 	pre-commit autoupdate --bleeding-edge
+
+git-rm-merged:
+	git branch -D `git branch --merged | grep -v \* | xargs`
 
 release:
 	git push
