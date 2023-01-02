@@ -1,8 +1,5 @@
-
 install:
-	pip install -r requirements.txt --upgrade
-	pip install -r requirements_dev.txt --upgrade
-	pip install -e .
+	pip install -e . pre-commit
 	pre-commit install
 
 watch:
@@ -39,12 +36,20 @@ update:
 update-pre:
 	pre-commit autoupdate --bleeding-edge
 
+git-rm-merged:
+	git branch -D `git branch --merged | grep -v \* | xargs`
+
 release:
 	git push
 	git push --tags
 
 build:
-	python setup.py sdist bdist_wheel
+	rm -rf dist
+	pip install build
+	python -m build
 
 tech:
 	python3 install_tech.py
+
+
+.PHONY: gdsdiff build conda

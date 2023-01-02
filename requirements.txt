@@ -1,2 +1,0 @@
-gdsfactory[full]==6.15.3
-PySpice
