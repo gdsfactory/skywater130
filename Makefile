@@ -1,5 +1,5 @@
 install:
-	pip install -e .[docs]
+	pip install -e . pre-commit
 	pre-commit install
 
 watch:
