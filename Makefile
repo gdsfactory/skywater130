@@ -1,6 +1,7 @@
 install:
 	pip install -e . pre-commit
 	pre-commit install
+	gf tool install
 
 watch:
 	gf yaml watch sky130

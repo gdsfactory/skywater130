@@ -26,6 +26,8 @@ cd skywater130
 make install
 ```
 
+Then you need to restart Klayout to make sure the new technology installed appears.
+
 ## TODO
 
 - integrate with OpenRoad
