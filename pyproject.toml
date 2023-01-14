@@ -22,7 +22,7 @@ authors = [
 keywords = ["python"]
 license = {file = "LICENSE"}
 dependencies = [
-    "gdsfactory[full]==6.16.3",
+    "gdsfactory==6.19.3",
     "PySpice"
 ]
 readme = "README.md"
@@ -30,6 +30,7 @@ requires-python = ">=3.7"
 
 [project.optional-dependencies]
 dev = [
+    "gdsfactory[full]",
     "autotyping",
     "black>=21",
     "doc8",
