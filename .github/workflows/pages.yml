@@ -27,7 +27,7 @@ jobs:
         shell: bash -l {0}
         run: |
           sudo apt install pandoc
-          pip install -e .[docs]
+          pip install -e .[dev,docs]
       - name: Running the Sphinx to gh-pages Action
         uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
         env:

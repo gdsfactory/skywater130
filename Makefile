@@ -1,6 +1,5 @@
 install:
 	pip install -e .[dev]
-	pip install -e .
 	pre-commit install
 	gf tool install
 
