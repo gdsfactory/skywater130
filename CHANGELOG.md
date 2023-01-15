@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.4.0
+
+- update to gdsfactory 6.20.5
+
 ## 0.3.0
 
 - update to gdsfactory 6.16.2
