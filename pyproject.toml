@@ -148,3 +148,20 @@ inherit = false
 match = "(?!test).*\\.py"
 add-ignore = ["D100","D101","D102","D103","D104","D203","D405","D417"]
 convention = "google"
+
+[tool.ruff]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    # "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+    "B905",  # `zip()` without an explicit `strict=` parameter
+    "C408",  # C408 Unnecessary `dict` call (rewrite as a literal)
+]
