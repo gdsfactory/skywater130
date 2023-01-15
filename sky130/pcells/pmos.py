@@ -72,7 +72,7 @@ def pmos(
 
       import sky130
 
-      c = sky130.pcells.pmos(gate_length= 2, gate_width=10, sd_width=5)
+      c = sky130.pcells.pmos()
       c.plot()
     """
 

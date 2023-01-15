@@ -56,5 +56,8 @@ build:
 tech:
 	python3 install_tech.py
 
+notebooks:
+	nbstripout --drop-empty-cells docs/notebooks/intro.ipynb
+
 
 .PHONY: gdsdiff build conda
