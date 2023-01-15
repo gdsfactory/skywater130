@@ -7,7 +7,7 @@ from gdsfactory.pdk import Pdk
 
 from sky130 import components, pcells
 from sky130.config import PATH, module_path
-from sky130.layers import LAYER, LAYER_COLORS, LAYER_STACK
+from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS
 from sky130.tech import cross_sections
 
 __version__ = "0.3.0"
@@ -19,7 +19,7 @@ PDK = Pdk(
     cross_sections=cross_sections,
     layers=LAYER.dict(),
     layer_stack=LAYER_STACK,
-    layer_colors=LAYER_COLORS,
+    layer_views=LAYER_VIEWS,
     sparameters_path=PATH.sparameters,
 )
 PDK.register_cells_yaml(dirpath=pathlib.Path(__file__).parent.absolute())

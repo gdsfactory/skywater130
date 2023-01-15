@@ -72,7 +72,7 @@ def nmos(
 
       import sky130
 
-      c = sky130.pcells.nmos(gate_length= 2, gate_width=10)
+      c = sky130.pcells.nmos(gate_length=0.15, gate_width=0.42)
       c.plot()
 
     """
@@ -418,6 +418,5 @@ def nmos(
 
 if __name__ == "__main__":
 
-    # c = nmos(gate_length= 2, gate_width=10)
-    c = nmos()
+    c = nmos(gate_length=2, gate_width=10)
     c.show(show_ports=True)

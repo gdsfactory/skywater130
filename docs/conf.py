@@ -1,11 +1,8 @@
 project = "sky130"
 version = "0.3.0"
 copyright = "2020"
-# author = "gdsfactory"
 
-# html_theme = "furo"
 html_theme = "sphinx_book_theme"
-# html_theme = "sphinx_rtd_theme"
 
 source_suffix = {
     ".rst": "restructuredtext",
@@ -47,19 +44,12 @@ exclude_patterns = [
 napoleon_use_param = True
 nbsphinx_timeout = 60
 
-source_suffix = {
-    ".rst": "restructuredtext",
-    ".txt": "markdown",
-    ".md": "markdown",
-}
-
 language = "en"
 myst_html_meta = {
     "description lang=en": "metadata description",
     "keywords": "Sphinx, MyST",
     "property=og:locale": "en_US",
 }
-
 
 html_theme_options = {
     "path_to_docs": "docs",
@@ -82,7 +72,13 @@ autodoc_pydantic_model_show_config_summary = False
 autodoc_pydantic_model_show_validator_summary = False
 autodoc_pydantic_model_show_validator_members = False
 autodoc_typehints = "description"
+autodoc_typehints_format = "short"
 
+autodoc_type_aliases = {
+    "ComponentSpec": "ComponentSpec",
+    "LayerSpec": "LayerSpec",
+    "CrossSectionSpec": "CrossSectionSpec",
+}
 
 autodoc_default_options = {
     "member-order": "bysource",

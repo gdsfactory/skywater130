@@ -78,7 +78,6 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.9
-          mamba-version: "*"
           channels: conda-forge,defaults
           channel-priority: true
           activate-environment: anaconda-client-env
@@ -89,7 +88,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           sudo apt install pandoc
-          pip install -e .[docs]
+          pip install -e .[docs,dev]
+          conda list > requirements.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: requirements
+          path: requirements.txt
       - name: Test documentation
         env:
           TIDY3D_USER: ${{ secrets.TIDY3D_EMAIL }}

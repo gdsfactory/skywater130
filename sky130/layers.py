@@ -656,7 +656,7 @@ def get_layer_stack_generic() -> LayerStack:
 
 
 LAYER_STACK = get_layer_stack_generic()
-LAYER_COLORS = gf.layers.load_lyp(PATH.lyp)
+LAYER_VIEWS = gf.technology.LayerViews.from_lyp(PATH.lyp)
 
 
 if __name__ == "__main__":

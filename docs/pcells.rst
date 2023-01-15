@@ -1,6 +1,6 @@
 
 
-Here are the Pcells available in the PDK
+Here are the Parametric Pcells available in the PDK
 
 PCells
 =============================

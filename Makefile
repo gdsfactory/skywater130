@@ -1,5 +1,5 @@
 install:
-	pip install -e . pre-commit
+	pip install -e .[dev]
 	pre-commit install
 	gf tool install
 
@@ -28,6 +28,9 @@ lintd2:
 lintd:
 	pydocstyle sky130
 
+doc:
+	python docs/write_components_doc.py
+
 doc8:
 	doc8 docs/
 
@@ -51,6 +54,9 @@ build:
 
 tech:
 	python3 install_tech.py
+
+notebooks:
+	nbstripout --drop-empty-cells docs/notebooks/intro.ipynb
 
 
 .PHONY: gdsdiff build conda
