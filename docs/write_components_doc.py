@@ -27,12 +27,15 @@ skip = {
 skip_plot = {}
 skip_settings = {"flatten", "safe_cell_names"}
 
+pcell_names = set(sky130.pcells.__all__)
+cell_names = set(sky130.cells.keys()) - pcell_names
+
 
 with open(pcells, "w+") as f:
     f.write(
         """
 
-Here are the Pcells available in the PDK
+Here are the Parametric Pcells available in the PDK
 
 PCells
 =============================
@@ -45,7 +48,7 @@ PCells
 """
     )
 
-    for name in sorted(sky130.pcells.__all__):
+    for name in sorted(pcell_names):
         if name in skip or name.startswith("_"):
             continue
         print(name)
@@ -76,7 +79,7 @@ Cells
 """
     )
 
-    for name in sorted(sky130.cells.keys()):
+    for name in sorted(cell_names):
         if name in skip or name.startswith("_"):
             continue
         print(name)

@@ -29,6 +29,9 @@ lintd2:
 lintd:
 	pydocstyle sky130
 
+doc:
+	python docs/write_components_doc.py
+
 doc8:
 	doc8 docs/
 
