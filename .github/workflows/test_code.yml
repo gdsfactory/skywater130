@@ -89,6 +89,11 @@ jobs:
           python -m pip install --upgrade pip
           sudo apt install pandoc
           pip install -e .[docs]
+          conda list > requirements.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: requirements
+          path: requirements.txt
       - name: Test documentation
         env:
           TIDY3D_USER: ${{ secrets.TIDY3D_EMAIL }}
