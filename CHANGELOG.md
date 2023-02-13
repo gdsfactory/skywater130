@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.5.0
+
+- update to gdsfactory 6.37.3 [PR](https://github.com/gdsfactory/skywater130/pull/58)
+
 ## 0.4.0
 
 - update to gdsfactory 6.20.5
