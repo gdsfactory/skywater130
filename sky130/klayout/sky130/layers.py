@@ -1,4 +1,4 @@
-from gdsfactory.types import Layer
+from gdsfactory.typings import Layer
 from pydantic import BaseModel
 
 

@@ -1,7 +1,7 @@
 from math import floor
 
 import gdsfactory as gf
-from gdsfactory.types import Float2, LayerSpec
+from gdsfactory.typings import Float2, LayerSpec
 
 
 @gf.cell

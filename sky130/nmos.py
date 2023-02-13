@@ -1,6 +1,6 @@
 import gdsfactory as gf
 import numpy as np
-from gdsfactory.types import Float2, LayerSpec
+from gdsfactory.typings import Float2, LayerSpec
 
 
 @gf.cell
