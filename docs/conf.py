@@ -1,5 +1,5 @@
 project = "sky130"
-version = "0.4.0"
+version = "0.5.0"
 copyright = "2020"
 
 html_theme = "sphinx_book_theme"
