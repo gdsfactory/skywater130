@@ -3,7 +3,7 @@
  <name>sky130</name>
  <token/>
  <hidden>false</hidden>
- <version>0.5.0</version>
+ <version>0.6.0</version>
  <api-version/>
  <title>gf180mcu</title>
  <doc>Skywater 130nm libraries</doc>
