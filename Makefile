@@ -58,5 +58,7 @@ tech:
 notebooks:
 	nbstripout --drop-empty-cells docs/notebooks/intro.ipynb
 
+link:
+	ln -sf ${PWD}/sky130/klayout/sky130 ${HOME}/.klayout/tech/sky130
 
 .PHONY: gdsdiff build conda

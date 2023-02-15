@@ -60,7 +60,8 @@ try:
     import sky130.components as gfc
     import gdsfactory as gf
 except Exception as e:
-    pya.MessageBox.info('import error', str(e), pya.MessageBox.Ok)
+    error = f"{e}\n" + "Make sure you installed sky130 using the same python as klayout uses."
+    pya.MessageBox.info('import error', error, pya.MessageBox.Ok, )
 
 # Create layout for the library
 layout = pya.Layout()
