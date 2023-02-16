@@ -18,7 +18,7 @@ repo_path = module_path.parent
 class Path:
     module = module_path
     repo = repo_path
-    lyp = module_path / "klayout" / "sky130" / "layers.lyp"
+    lyp = module_path / "klayout" / "layers.lyp"
     libs = module_path / "sky130A"
     sparameters = module_path / "sparameters"
 
