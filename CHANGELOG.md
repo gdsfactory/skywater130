@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.7.0
+
+- update to gdsfactory 6.42.0 [PR](https://github.com/gdsfactory/skywater130/pull/60)
+- nice YAML based layer_views
+
 ## 0.5.0
 
 - update to gdsfactory 6.37.3 [PR](https://github.com/gdsfactory/skywater130/pull/58)
