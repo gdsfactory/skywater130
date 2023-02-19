@@ -660,6 +660,7 @@ LAYER_VIEWS = gf.technology.LayerViews.from_lyp(PATH.lyp)
 
 
 if __name__ == "__main__":
+    LAYER_VIEWS.to_yaml(PATH.lyp_yaml)
     # print(PATH.lyp)
     # print(lyp_to_dataclass(PATH.lyp))
-    print(LAYER_STACK.get_klayout_3d_script())
+    # print(LAYER_STACK.get_klayout_3d_script())

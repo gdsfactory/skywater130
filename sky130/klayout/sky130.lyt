@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <technology>
  <name>sky130</name>
- <description/>
+ <description>SkyWater 130nm technology</description>
  <group/>
  <dbu>0.001</dbu>
- <base-path/>
- <original-base-path>/home/jmatres/sky130/sky130/klayout/sky130</original-base-path>
- <layer-properties_file>layers.lyp</layer-properties_file>
+ <base-path>$(appdata_path)/tech/sky130</base-path>
+ <original-base-path>$(appdata_path)/tech/sky130</original-base-path>
+ <layer-properties_file>sky130.lyp</layer-properties_file>
  <add-other-layers>true</add-other-layers>
  <reader-options>
   <gds2>
@@ -37,40 +37,24 @@
    <produce-regions>true</produce-regions>
    <region-layer>REGIONS</region-layer>
    <produce-via-geometry>true</produce-via-geometry>
-   <via_geometry-suffix-string/>
-   <via_geometry-datatype-string>0</via_geometry-datatype-string>
+   <via-geometry-suffix>.drawing</via-geometry-suffix>
+   <via-geometry-datatype>0</via-geometry-datatype>
    <produce-pins>true</produce-pins>
-   <pins-suffix-string>.PIN</pins-suffix-string>
-   <pins-datatype-string>2</pins-datatype-string>
-   <produce-lef-pins>true</produce-lef-pins>
-   <lef_pins-suffix-string>.PIN</lef_pins-suffix-string>
-   <lef_pins-datatype-string>2</lef_pins-datatype-string>
-   <produce-fills>true</produce-fills>
-   <fills-suffix-string>.FILL</fills-suffix-string>
-   <fills-datatype-string>5</fills-datatype-string>
+   <pins-suffix>.pin</pins-suffix>
+   <pins-datatype>2</pins-datatype>
    <produce-obstructions>true</produce-obstructions>
-   <obstructions-suffix>.OBS</obstructions-suffix>
+   <obstructions-suffix>.blockage</obstructions-suffix>
    <obstructions-datatype>3</obstructions-datatype>
    <produce-blockages>true</produce-blockages>
-   <blockages-suffix>.BLK</blockages-suffix>
+   <blockages-suffix>.blockage</blockages-suffix>
    <blockages-datatype>4</blockages-datatype>
    <produce-labels>true</produce-labels>
-   <labels-suffix>.LABEL</labels-suffix>
+   <labels-suffix>.label</labels-suffix>
    <labels-datatype>1</labels-datatype>
-   <produce-lef-labels>true</produce-lef-labels>
-   <lef-labels-suffix>.LABEL</lef-labels-suffix>
-   <lef-labels-datatype>1</lef-labels-datatype>
    <produce-routing>true</produce-routing>
-   <routing-suffix-string/>
-   <routing-datatype-string>0</routing-datatype-string>
-   <produce-special-routing>true</produce-special-routing>
-   <special-routing-suffix-string/>
-   <special-routing-datatype-string>0</special-routing-datatype-string>
-   <via-cellname-prefix>VIA_</via-cellname-prefix>
-   <read-lef-with-def>true</read-lef-with-def>
-   <macro-resolution-mode>default</macro-resolution-mode>
-   <separate-groups>false</separate-groups>
-   <map-file/>
+   <routing-suffix>.drawing</routing-suffix>
+   <routing-datatype>0</routing-datatype>
+   <lef-files>merged.lef</lef-files>
   </lefdef>
   <mebes>
    <invert>false</invert>
@@ -120,14 +104,12 @@
   </mag>
  </reader-options>
  <writer-options>
-  <format>GDS2</format>
   <gds2>
    <write-timestamps>true</write-timestamps>
    <write-cell-properties>false</write-cell-properties>
    <write-file-properties>false</write-file-properties>
    <no-zero-length-paths>false</no-zero-length-paths>
    <multi-xy-records>false</multi-xy-records>
-   <resolve-skew-arrays>false</resolve-skew-arrays>
    <max-vertex-count>8000</max-vertex-count>
    <max-cellname-length>32000</max-cellname-length>
    <libname>LIB</libname>
@@ -222,5 +204,17 @@
 </src>
  </d25>
  <connectivity>
+  <connection>66/20,66/44,li</connection>
+  <connection>li,67/44,met1</connection>
+  <connection>met1,68/44,met2</connection>
+  <connection>met2,69/44,met3</connection>
+  <connection>met3,70/44,met4</connection>
+  <connection>met4,71/44,met5</connection>
+  <symbols>met1='67/20+67/5'</symbols>
+  <symbols>met1='68/20+68/5'</symbols>
+  <symbols>met2='69/20+69/5'</symbols>
+  <symbols>met3='70/20+70/5'</symbols>
+  <symbols>met4='71/20+71/5'</symbols>
+  <symbols>met5='72/20+72/5'</symbols>
  </connectivity>
 </technology>
