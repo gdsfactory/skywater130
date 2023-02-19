@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <technology>
  <name>sky130</name>
- <description>SkyWater 130nm technology</description>
+ <description/>
  <group/>
  <dbu>0.001</dbu>
- <base-path>$(appdata_path)/tech/sky130</base-path>
- <original-base-path>/home/jmatres/pdks/sky130/sky130/klayout</original-base-path>
- <layer-properties_file>sky130.lyp</layer-properties_file>
+ <base-path/>
+ <original-base-path>/home/jmatres/sky130/sky130/klayout/sky130</original-base-path>
+ <layer-properties_file>layers.lyp</layer-properties_file>
  <add-other-layers>true</add-other-layers>
  <reader-options>
   <gds2>
@@ -49,13 +49,13 @@
    <fills-suffix-string>.FILL</fills-suffix-string>
    <fills-datatype-string>5</fills-datatype-string>
    <produce-obstructions>true</produce-obstructions>
-   <obstructions-suffix>.blockage</obstructions-suffix>
+   <obstructions-suffix>.OBS</obstructions-suffix>
    <obstructions-datatype>3</obstructions-datatype>
    <produce-blockages>true</produce-blockages>
-   <blockages-suffix>.blockage</blockages-suffix>
+   <blockages-suffix>.BLK</blockages-suffix>
    <blockages-datatype>4</blockages-datatype>
    <produce-labels>true</produce-labels>
-   <labels-suffix>.label</labels-suffix>
+   <labels-suffix>.LABEL</labels-suffix>
    <labels-datatype>1</labels-datatype>
    <produce-lef-labels>true</produce-lef-labels>
    <lef-labels-suffix>.LABEL</lef-labels-suffix>
@@ -67,7 +67,6 @@
    <special-routing-suffix-string/>
    <special-routing-datatype-string>0</special-routing-datatype-string>
    <via-cellname-prefix>VIA_</via-cellname-prefix>
-   <lef-files>merged.lef</lef-files>
    <read-lef-with-def>true</read-lef-with-def>
    <macro-resolution-mode>default</macro-resolution-mode>
    <separate-groups>false</separate-groups>
@@ -154,34 +153,74 @@
    <write-timestamp>true</write-timestamp>
   </mag>
  </writer-options>
+ <d25>
+  <src># Provide z stack information here
+#
+# Each line is one layer. The specification consists of a layer specification, a colon and arguments.
+# The arguments are named (like "x=...") or in serial. Parameters are separated by comma or blanks.
+# Named arguments are:
+#
+#   zstart   The lower z position of the extruded layer in µm
+#   zstop    The upper z position of the extruded layer in µm
+#   height   The height of the extruded layer in µm
+#
+# 'height', 'zstart' and 'zstop' can be used in any combination. If no value is given for 'zstart',
+# the upper level of the previous layer will be used.
+#
+# If a single unnamed parameter is given, it corresponds to 'height'. Two parameters correspond to
+# 'zstart' and 'zstop'.
+#
+# Examples:
+#   1: 0.5 1.5                    # extrude layer 1/0 from 0.5 to 1.5 vertically
+#   1/0: 0.5 1.5                  # same with explicit datatype
+#   1: zstop=1.5, zstart=0.5      # same with named parameters
+#   1: height=1.0, zstop=1.5      # same with z stop minus height
+#   1: 1.0 zstop=1.5              # same with height as unnamed parameter
+#
+# VARIABLES
+#
+# You can declare variables with:
+#   var name = value
+#
+# You can use variables inside numeric expressions.
+# Example:
+#   var hmetal = 0.48
+#   7/0: 0.5 0.5+hmetal*2        # 2x thick metal
+#
+# You cannot use variables inside layer specifications currently.
+#
+# CONDITIONALS
+#
+# You can enable or disable branches of the table using 'if', 'else', 'elseif' and 'end':
+# Example:
+#   var thick_m1 = true
+#   if thickm1
+#     1: 0.5 1.5
+#   else
+#     1: 0.5 1.2
+#   end
+66/20: 0.0 0.18
+64/18: -1.2 0.0
+64/20: -0.12 0.0
+19/44: -0.7 0.0
+93/44: -0.12 0.0
+78/44: -0.12 0.0
+66/44: 0.0 0.9361
+67/20: 0.9361 1.0361
+67/44: 1.0361 1.3761
+68/20: 1.3761 1.7361
+68/44: 1.7361 2.0061
+69/20: 2.0061 2.3661
+69/44: 2.3661 2.7861
+70/20: 2.7861 3.6311
+70/44: 3.6311 4.0211
+71/20: 4.0211 4.866099999999999
+71/44: 4.866099999999999 5.371099999999999
+72/20: 5.371099999999999 6.631099999999999
+
+
+</src>
+ </d25>
  <connectivity>
-  <stack>
-   <name/>
-   <description/>
-   <connection>66/20,66/44,li</connection>
-   <connection>li,67/44,met1</connection>
-   <connection>met1,68/44,met2</connection>
-   <connection>met2,69/44,met3</connection>
-   <connection>met3,70/44,met4</connection>
-   <connection>met4,71/44,met5</connection>
-   <symbols>met1='67/20+67/5'</symbols>
-   <symbols>met1='68/20+68/5'</symbols>
-   <symbols>met2='69/20+69/5'</symbols>
-   <symbols>met3='70/20+70/5'</symbols>
-   <symbols>met4='71/20+71/5'</symbols>
-   <symbols>met5='72/20+72/5'</symbols>
-  </stack>
-  <connection>66/20,66/44,li</connection>
-  <connection>li,67/44,met1</connection>
-  <connection>met1,68/44,met2</connection>
-  <connection>met2,69/44,met3</connection>
-  <connection>met3,70/44,met4</connection>
-  <connection>met4,71/44,met5</connection>
-  <symbols>met1='67/20+67/5'</symbols>
-  <symbols>met1='68/20+68/5'</symbols>
-  <symbols>met2='69/20+69/5'</symbols>
-  <symbols>met3='70/20+70/5'</symbols>
-  <symbols>met4='71/20+71/5'</symbols>
-  <symbols>met5='72/20+72/5'</symbols>
  </connectivity>
 </technology>

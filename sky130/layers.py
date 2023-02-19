@@ -531,7 +531,7 @@ capm = (89, 44)  # MiM capacitor plate over metal 3
 cap2m = (97, 44)  # MiM capacitor plate over metal 4
 
 
-def get_layer_stack_generic() -> LayerStack:
+def get_layer_stack() -> LayerStack:
     """Returns sky LayerStack."""
     zmin_m1 = licon1_thickness + li_thickness + mcon_thickness
     zmin_m2 = zmin_m1 + m1_thickness + via1_thickness
@@ -655,12 +655,13 @@ def get_layer_stack_generic() -> LayerStack:
     )
 
 
-LAYER_STACK = get_layer_stack_generic()
-LAYER_VIEWS = gf.technology.LayerViews.from_lyp(PATH.lyp)
+LAYER_STACK = get_layer_stack()
+LAYER_VIEWS = gf.technology.LayerViews(filepath=PATH.lyp_yaml)
 
 
 if __name__ == "__main__":
-    LAYER_VIEWS.to_yaml(PATH.lyp_yaml)
+    # LAYER_VIEWS.to_yaml(PATH.lyp_yaml)
+    LAYER_VIEWS.to_lyp(PATH.lyp)
     # print(PATH.lyp)
     # print(lyp_to_dataclass(PATH.lyp))
     # print(LAYER_STACK.get_klayout_3d_script())
