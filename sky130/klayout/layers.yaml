@@ -1,0 +1,4000 @@
+LayerViews:
+  prBoundaryboundary_m:
+    layer: [235, 4]
+    layer_in_name: true
+    width: 1
+    color: "#ccccd9"
+  pwelldrawing_m:
+    layer: [64, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "cyan"
+  pwellpin_m:
+    layer: [122, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffbff2"
+  pwelllabel_m:
+    layer: [64, 59]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#9900e6"
+  pwellres_m:
+    layer: [64, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffbff2"
+  pwellcut_m:
+    layer: [64, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffbff2"
+  pwellisopin_m:
+    layer: [44, 16]
+    layer_in_name: true
+    frame_color: "white"
+    fill_color: "#96c8ff"
+    hatch_pattern: hollow
+    width: 1
+  pwellisolabel_m:
+    layer: [44, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#9900e6"
+  nwelldrawing_m:
+    layer: [64, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#00cc66"
+  nwellnet_m:
+    layer: [84, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "magenta"
+  nwellpin_m:
+    layer: [64, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#268c6b"
+  nwelllabel_m:
+    layer: [64, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#333399"
+  dnwelldrawing_m:
+    layer: [64, 18]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#c8ffc8"
+  vhvidrawing_m:
+    layer: [74, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "cyan"
+  diffdrawing_m:
+    layer: [65, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "lime"
+  diffres_m:
+    layer: [65, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "lime"
+  diffcut_m:
+    layer: [65, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "lime"
+  diffpin_m:
+    layer: [65, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "#268c6b"
+  difflabel_m:
+    layer: [65, 6]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "#c8ffc8"
+  diffnet_m:
+    layer: [65, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "lime"
+  diffboundary_m:
+    layer: [65, 4]
+    layer_in_name: true
+
+    valid: false
+    width: 1
+    color: "lime"
+  diffhv_m:
+    layer: [65, 8]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#9900e6"
+  tapdrawing_m:
+    layer: [65, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#d9cc00"
+  tappin_m:
+    layer: [65, 48]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  tapnet_m:
+    layer: [65, 41]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  tapboundary_m:
+    layer: [65, 60]
+    layer_in_name: true
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  taplabel_m:
+    layer: [65, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "#fff464"
+  psdmdrawing_m:
+    layer: [94, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#9900e6"
+  nsdmdrawing_m:
+    layer: [93, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#e61f0d"
+  polydrawing_m:
+    layer: [66, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "red"
+  polypin_m:
+    layer: [66, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ff8000"
+  polyres_m:
+    layer: [66, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "red"
+  polycut_m:
+    layer: [66, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "red"
+  polygate_m:
+    layer: [66, 9]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "red"
+  polylabel_m:
+    layer: [66, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffafaf"
+  polyboundary_m:
+    layer: [66, 4]
+    layer_in_name: true
+
+    width: 1
+    color: "red"
+  polyprobe_m:
+    layer: [66, 25]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "red"
+  polyshort_m:
+    layer: [66, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "red"
+  polynet_m:
+    layer: [66, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "red"
+  polymodel_m:
+    layer: [66, 83]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "red"
+  ldntmdrawing_m:
+    layer: [11, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#00cc66"
+  lvtndrawing_m:
+    layer: [125, 44]
+    layer_in_name: true
+    frame_color: "#96c8ff"
+    fill_color: "white"
+    hatch_pattern: hollow
+    width: 1
+  hvtpdrawing_m:
+    layer: [78, 44]
+    layer_in_name: true
+    frame_color: "#ff8000"
+    fill_color: "white"
+    hatch_pattern: hollow
+    width: 1
+  hvtrdrawing_m:
+    layer: [18, 20]
+    layer_in_name: true
+    frame_color: "red"
+    fill_color: "#e61f0d"
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+  tunmdrawing_m:
+    layer: [80, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#9900e6"
+  licon1drawing_m:
+    layer: [66, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffffcc"
+  licon1boundary_m:
+    layer: [66, 60]
+    layer_in_name: true
+
+    width: 1
+    color: "#ffffcc"
+  licon1pin_m:
+    layer: [66, 58]
+    layer_in_name: true
+    frame_color: "#ffe6bf"
+    fill_color: "#c8ffff"
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+  licon1net_m:
+    layer: [66, 41]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffffcc"
+  npcdrawing_m:
+    layer: [95, 20]
+    layer_in_name: true
+
+    width: 1
+    color: "#bf4026"
+  li1drawing_m:
+    layer: [67, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffe6bf"
+  li1pin_m:
+    layer: [67, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#bf4026"
+  li1res_m:
+    layer: [67, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "#ffe6bf"
+  li1cut_m:
+    layer: [67, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "#ffe6bf"
+  li1label_m:
+    layer: [67, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#bf4026"
+  li1net_m:
+    layer: [67, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffe6bf"
+  li1boundary_m:
+    layer: [67, 4]
+    layer_in_name: true
+
+    width: 1
+    color: "#d9e6ff"
+  li1blockage_m:
+    layer: [67, 10]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#bf4026"
+  li1short_m:
+    layer: [67, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffe6bf"
+  li1probe_m:
+    layer: [67, 25]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ffe6bf"
+  mcondrawing_m:
+    layer: [67, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ccccd9"
+  mconboundary_m:
+    layer: [67, 60]
+    layer_in_name: true
+
+    width: 1
+    color: "#ccccd9"
+  mconpin_m:
+    layer: [67, 48]
+    layer_in_name: true
+    frame_color: "#ffffcc"
+    fill_color: "#d9e6ff"
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+  mconnet_m:
+    layer: [67, 41]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#ccccd9"
+  met1drawing_m:
+    layer: [68, 20]
+    layer_in_name: true
+    width: 1
+    color: "blue"
+  met1res_m:
+    layer: [68, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1cut_m:
+    layer: [68, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1pin_m:
+    layer: [68, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#5e00e6"
+  met1label_m:
+    layer: [68, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#96c8ff"
+  met1net_m:
+    layer: [68, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#5e00e6"
+  met1boundary_m:
+    layer: [68, 4]
+    layer_in_name: true
+
+    width: 1
+    color: "blue"
+  met1blockage_m:
+    layer: [68, 10]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "blue"
+  met1short_m:
+    layer: [68, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "blue"
+  met1probe_m:
+    layer: [68, 25]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "blue"
+  met1option1_m:
+    layer: [68, 32]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1option2_m:
+    layer: [68, 33]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1option3_m:
+    layer: [68, 34]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1option4_m:
+    layer: [68, 35]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1option5_m:
+    layer: [68, 36]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1option6_m:
+    layer: [68, 37]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1option7_m:
+    layer: [68, 38]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  met1option8_m:
+    layer: [68, 39]
+    layer_in_name: true
+    hatch_pattern: hollow
+    valid: false
+    width: 1
+    color: "blue"
+  viadrawing_m:
+    layer: [68, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#5e00e6"
+  viaboundary_m:
+    layer: [68, 60]
+    layer_in_name: true
+
+    width: 1
+    color: "#5e00e6"
+  vianet_m:
+    layer: [68, 41]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 1
+    color: "#5e00e6"
+  viapin_m:
+    layer: [68, 58]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ae7dff"
+  met2drawing_m:
+    layer: [69, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "magenta"
+  met2res_m:
+    layer: [69, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2cut_m:
+    layer: [69, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2pin_m:
+    layer: [69, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "magenta"
+  met2label_m:
+    layer: [69, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffc8ff"
+  met2net_m:
+    layer: [69, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "magenta"
+  met2boundary_m:
+    layer: [69, 4]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "magenta"
+  met2blockage_m:
+    layer: [69, 10]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "magenta"
+  met2short_m:
+    layer: [69, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "magenta"
+  met2probe_m:
+    layer: [69, 25]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "magenta"
+  met2option1_m:
+    layer: [69, 32]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2option2_m:
+    layer: [69, 33]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2option3_m:
+    layer: [69, 34]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2option4_m:
+    layer: [69, 35]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2option5_m:
+    layer: [69, 36]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2option6_m:
+    layer: [69, 37]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2option7_m:
+    layer: [69, 38]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  met2option8_m:
+    layer: [69, 39]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "magenta"
+  via2drawing_m:
+    layer: [69, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#ff8000"
+  via2boundary_m:
+    layer: [69, 60]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  via2pin_m:
+    layer: [69, 58]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ff8000"
+  via2net_m:
+    layer: [69, 41]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  met3drawing_m:
+    layer: [70, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  met3res_m:
+    layer: [70, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3cut_m:
+    layer: [70, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3pin_m:
+    layer: [70, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  met3label_m:
+    layer: [70, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#c8ffff"
+  met3net_m:
+    layer: [70, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  met3boundary_m:
+    layer: [70, 4]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  met3blockage_m:
+    layer: [70, 10]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  met3short_m:
+    layer: [70, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  met3fuse_m:
+    layer: [70, 17]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3probe_m:
+    layer: [70, 25]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  met3option1_m:
+    layer: [70, 32]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3option2_m:
+    layer: [70, 33]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3option3_m:
+    layer: [70, 34]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3option4_m:
+    layer: [70, 35]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3option5_m:
+    layer: [70, 36]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3option6_m:
+    layer: [70, 37]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3option7_m:
+    layer: [70, 38]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  met3option8_m:
+    layer: [70, 39]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  via3drawing_m:
+    layer: [70, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#268c6b"
+  via3boundary_m:
+    layer: [70, 60]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#268c6b"
+  via3pin_m:
+    layer: [70, 48]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#268c6b"
+  via3net_m:
+    layer: [70, 41]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#268c6b"
+  met4drawing_m:
+    layer: [71, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  met4res_m:
+    layer: [71, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4cut_m:
+    layer: [71, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4pin_m:
+    layer: [71, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  met4label_m:
+    layer: [71, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ae7dff"
+  met4net_m:
+    layer: [71, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  met4boundary_m:
+    layer: [71, 4]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  met4blockage_m:
+    layer: [71, 10]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  met4short_m:
+    layer: [71, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  met4fuse_m:
+    layer: [71, 17]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4probe_m:
+    layer: [71, 25]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  met4option1_m:
+    layer: [71, 32]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4option2_m:
+    layer: [71, 33]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4option3_m:
+    layer: [71, 34]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4option4_m:
+    layer: [71, 35]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4option5_m:
+    layer: [71, 36]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4option6_m:
+    layer: [71, 37]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4option7_m:
+    layer: [71, 38]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  met4option8_m:
+    layer: [71, 39]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  via4drawing_m:
+    layer: [71, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "yellow"
+  via4boundary_m:
+    layer: [71, 60]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "yellow"
+  via4pin_m:
+    layer: [71, 48]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "yellow"
+  via4net_m:
+    layer: [71, 41]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "yellow"
+  met5drawing_m:
+    layer: [72, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  met5res_m:
+    layer: [72, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5cut_m:
+    layer: [72, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5pin_m:
+    layer: [72, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  met5label_m:
+    layer: [72, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#fff464"
+  met5net_m:
+    layer: [72, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  met5boundary_m:
+    layer: [72, 4]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  met5blockage_m:
+    layer: [72, 10]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  met5short_m:
+    layer: [72, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  met5fuse_m:
+    layer: [72, 17]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5probe_m:
+    layer: [72, 25]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  met5option1_m:
+    layer: [72, 32]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5option2_m:
+    layer: [72, 33]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5option3_m:
+    layer: [72, 34]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5option4_m:
+    layer: [72, 35]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5option5_m:
+    layer: [72, 36]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5option6_m:
+    layer: [72, 37]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5option7_m:
+    layer: [72, 38]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  met5option8_m:
+    layer: [72, 39]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  nsmdrawing_m:
+    layer: [61, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  paddrawing_m:
+    layer: [76, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffffcc"
+  padlabel_m:
+    layer: [76, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9e6ff"
+  padpin_m:
+    layer: [76, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9e6ff"
+  pnpdrawing_m:
+    layer: [82, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "magenta"
+  pnplabel_m:
+    layer: [82, 59]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffc8ff"
+  npndrawing_m:
+    layer: [82, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  npnlabel_m:
+    layer: [82, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#c8ffff"
+  rpmdrawing_m:
+    layer: [86, 20]
+    layer_in_name: true
+    frame_color: "white"
+    fill_color: "#96c8ff"
+    hatch_pattern: hollow
+
+    width: 1
+  hvidrawing_m:
+    layer: [75, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#9900e6"
+  capacitordrawing_m:
+    layer: [82, 64]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#ffb232"
+  ncmdrawing_m:
+    layer: [92, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffe6bf"
+  cncmdrawing_m:
+    layer: [96, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  cncmmask_m:
+    layer: [17, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "red"
+  pmmdrawing_m:
+    layer: [85, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffe6bf"
+  pmm2drawing_m:
+    layer: [77, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#bf4026"
+  rdldrawing_m:
+    layer: [74, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#e61f0d"
+  rdlpin_m:
+    layer: [74, 16]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#e61f0d"
+  rdllabel_m:
+    layer: [74, 5]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff6464"
+  rdlres_m:
+    layer: [74, 13]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffbff2"
+  rdlcut_m:
+    layer: [74, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffbff2"
+  rdlshort_m:
+    layer: [74, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  rdloption1_m:
+    layer: [89, 32]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  rdloption2_m:
+    layer: [89, 33]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  rdloption3_m:
+    layer: [89, 34]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  rdloption4_m:
+    layer: [89, 35]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  rdloption5_m:
+    layer: [89, 36]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  rdloption6_m:
+    layer: [89, 37]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  rdloption7_m:
+    layer: [89, 38]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  rdloption8_m:
+    layer: [89, 39]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  ubmdrawing_m:
+    layer: [127, 21]
+    layer_in_name: true
+    frame_color: "#ccccd9"
+    fill_color: "#333399"
+
+    width: 1
+  bumpdrawing_m:
+    layer: [127, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffbff2"
+  inductordrawing_m:
+    layer: [82, 24]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  inductorlabel_m:
+    layer: [82, 25]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#fff464"
+  inductorterm1_m:
+    layer: [82, 26]
+    layer_in_name: true
+    frame_color: "#333399"
+    fill_color: "white"
+    hatch_pattern: hollow
+
+    width: 1
+  inductorterm2_m:
+    layer: [82, 27]
+    layer_in_name: true
+    frame_color: "#333399"
+    fill_color: "white"
+    hatch_pattern: hollow
+
+    width: 1
+  inductorterm3_m:
+    layer: [82, 28]
+    layer_in_name: true
+    frame_color: "#333399"
+    fill_color: "white"
+    hatch_pattern: hollow
+
+    width: 1
+  capmdrawing_m:
+    layer: [89, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#c3ccd9"
+  capm2drawing_m:
+    layer: [97, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#c33cd9"
+  cfomdrawing_m:
+    layer: [22, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ccccd9"
+  cfommask_m:
+    layer: [23, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ccccd9"
+  cfommaskAdd_m:
+    layer: [22, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ccccd9"
+  cfommaskDrop_m:
+    layer: [22, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ccccd9"
+  cfomwaffleDrop_m:
+    layer: [22, 24]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#268c6b"
+  fomdummy_m:
+    layer: [22, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ccccd9"
+  cnwmdrawing_m:
+    layer: [109, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#268c6b"
+  cnwmmask_m:
+    layer: [21, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#268c6b"
+  cnwmmaskAdd_m:
+    layer: [109, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#268c6b"
+  cnwmmaskDrop_m:
+    layer: [109, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#268c6b"
+  cdnmdrawing_m:
+    layer: [110, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  cdnmmask_m:
+    layer: [48, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  cdnmmaskAdd_m:
+    layer: [110, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  cdnmmaskDrop_m:
+    layer: [110, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  clvtnmdrawing_m:
+    layer: [25, 44]
+    layer_in_name: true
+    frame_color: "#96c8ff"
+    fill_color: "#ffffcc"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  clvtnmmask_m:
+    layer: [25, 0]
+    layer_in_name: true
+    frame_color: "#96c8ff"
+    fill_color: "white"
+    hatch_pattern: hollow
+
+    width: 1
+  clvtnmmaskAdd_m:
+    layer: [25, 43]
+    layer_in_name: true
+    frame_color: "#96c8ff"
+    fill_color: "white"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  clvtnmmaskDrop_m:
+    layer: [25, 42]
+    layer_in_name: true
+    frame_color: "#96c8ff"
+    fill_color: "blue"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  chvtpmdrawing_m:
+    layer: [88, 44]
+    layer_in_name: true
+    frame_color: "#ff8000"
+    fill_color: "#ffffcc"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  chvtpmmask_m:
+    layer: [97, 0]
+    layer_in_name: true
+    frame_color: "#ff8000"
+    fill_color: "white"
+    hatch_pattern: hollow
+
+    width: 1
+  chvtpmmaskAdd_m:
+    layer: [97, 43]
+    layer_in_name: true
+    frame_color: "#ff8000"
+    fill_color: "white"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  chvtpmmaskDrop_m:
+    layer: [97, 42]
+    layer_in_name: true
+    frame_color: "#ff8000"
+    fill_color: "blue"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  chvtrmdrawing_m:
+    layer: [98, 44]
+    layer_in_name: true
+    frame_color: "red"
+    fill_color: "#d9e6ff"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  chvtrmmask_m:
+    layer: [98, 0]
+    layer_in_name: true
+    frame_color: "red"
+    fill_color: "#e61f0d"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  chvtrmmaskAdd_m:
+    layer: [98, 43]
+    layer_in_name: true
+    frame_color: "red"
+    fill_color: "#e61f0d"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  chvtrmmaskDrop_m:
+    layer: [98, 42]
+    layer_in_name: true
+    frame_color: "red"
+    fill_color: "#d9e6ff"
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+  ctunmdrawing_m:
+    layer: [96, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  ctunmmask_m:
+    layer: [20, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#8c8ca6"
+  ctunmmaskAdd_m:
+    layer: [96, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  ctunmmaskDrop_m:
+    layer: [96, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  conomdrawing_m:
+    layer: [87, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "red"
+  conommask_m:
+    layer: [88, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "red"
+  conommaskAdd_m:
+    layer: [87, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "red"
+  conommaskDrop_m:
+    layer: [87, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "red"
+  cnsdmdrawing_m:
+    layer: [29, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cnsdmmask_m:
+    layer: [30, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cnsdmmaskAdd_m:
+    layer: [29, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cnsdmmaskDrop_m:
+    layer: [29, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cpsdmdrawing_m:
+    layer: [31, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "yellow"
+  cpsdmmask_m:
+    layer: [32, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "yellow"
+  cpsdmmaskAdd_m:
+    layer: [31, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "yellow"
+  cpsdmmaskDrop_m:
+    layer: [31, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "yellow"
+  cntmdrawing_m:
+    layer: [26, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  cntmmask_m:
+    layer: [27, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9cc00"
+  cntmmaskAdd_m:
+    layer: [26, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  cntmmaskDrop_m:
+    layer: [26, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#d9cc00"
+  hvntmdrawing_m:
+    layer: [125, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "yellow"
+  chvntmdrawing_m:
+    layer: [38, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#fff5e6"
+  chvntmmask_m:
+    layer: [39, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#fff5e6"
+  chvntmmaskAdd_m:
+    layer: [38, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#fff5e6"
+  chvntmmaskDrop_m:
+    layer: [38, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#fff5e6"
+  cldntmdrawing_m:
+    layer: [11, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#00cc66"
+  cldntmmask_m:
+    layer: [11, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  clvomdrawing_m:
+    layer: [45, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  clvommask_m:
+    layer: [46, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#268c6b"
+  clvommaskAdd_m:
+    layer: [45, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#268c6b"
+  clvommaskDrop_m:
+    layer: [45, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#8c8ca6"
+  cp1mdrawing_m:
+    layer: [33, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ff8000"
+  cp1mmask_m:
+    layer: [28, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  cp1mmaskAdd_m:
+    layer: [33, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  cp1mwaffleDrop_m:
+    layer: [33, 24]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#9900e6"
+  cp1mmaskDrop_m:
+    layer: [33, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  cli1mdrawing_m:
+    layer: [115, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "white"
+  cli1mmask_m:
+    layer: [56, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  cli1mmaskAdd_m:
+    layer: [115, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  cli1mmaskDrop_m:
+    layer: [115, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  clicm1drawing_m:
+    layer: [106, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "white"
+  clicm1mask_m:
+    layer: [43, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9e6ff"
+  clicm1maskAdd_m:
+    layer: [106, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9e6ff"
+  clicm1maskDrop_m:
+    layer: [106, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#d9e6ff"
+  cmm1drawing_m:
+    layer: [62, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "blue"
+  cmm1mask_m:
+    layer: [36, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "blue"
+  cmm1maskAdd_m:
+    layer: [62, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "blue"
+  cmm1maskDrop_m:
+    layer: [62, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "blue"
+  cmm1waffleDrop_m:
+    layer: [62, 24]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "blue"
+  cviamdrawing_m:
+    layer: [105, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffffcc"
+  cviammask_m:
+    layer: [40, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffffcc"
+  cviammaskAdd_m:
+    layer: [105, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffffcc"
+  cviammaskDrop_m:
+    layer: [105, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffffcc"
+  cmm2drawing_m:
+    layer: [105, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffbff2"
+  cmm2mask_m:
+    layer: [41, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffbff2"
+  cmm2maskAdd_m:
+    layer: [105, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffbff2"
+  cmm2maskDrop_m:
+    layer: [105, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffbff2"
+  cmm2waffleDrop_m:
+    layer: [105, 52]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffbff2"
+  cviam2drawing_m:
+    layer: [108, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#333399"
+  cviam2mask_m:
+    layer: [44, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#333399"
+  cviam2maskAdd_m:
+    layer: [108, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#333399"
+  cviam2maskDrop_m:
+    layer: [108, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#333399"
+  cmm3drawing_m:
+    layer: [107, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  cmm3mask_m:
+    layer: [34, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  cmm3maskAdd_m:
+    layer: [107, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  cmm3maskDrop_m:
+    layer: [107, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#5e00e6"
+  cmm3waffleDrop_m:
+    layer: [107, 24]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#5e00e6"
+  cnpcdrawing_m:
+    layer: [44, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  cnpcmask_m:
+    layer: [49, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#e61f0d"
+  cnpcmaskAdd_m:
+    layer: [44, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  cnpcmaskDrop_m:
+    layer: [44, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  cviam3drawing_m:
+    layer: [112, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#268c6b"
+  cviam3mask_m:
+    layer: [50, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#268c6b"
+  cviam3maskAdd_m:
+    layer: [112, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#268c6b"
+  cviam3maskDrop_m:
+    layer: [112, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#268c6b"
+  cnsmmask_m:
+    layer: [22, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cpdmdrawing_m:
+    layer: [104, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffe6bf"
+  cpdmmask_m:
+    layer: [37, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffe6bf"
+  cpdmmaskAdd_m:
+    layer: [104, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffe6bf"
+  cpdmmaskDrop_m:
+    layer: [104, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffe6bf"
+  cpmmdrawing_m:
+    layer: [91, 44]
+    layer_in_name: true
+    frame_color: "#8c8ca6"
+    fill_color: "blue"
+    hatch_pattern: hollow
+
+    width: 1
+  cpbomask_m:
+    layer: [99, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#8c8ca6"
+  cmm4mask_m:
+    layer: [51, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cmm4maskAdd_m:
+    layer: [112, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cmm4maskDrop_m:
+    layer: [112, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cmm4waffleDrop_m:
+    layer: [112, 4]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  cviam4drawing_m:
+    layer: [117, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  cviam4mask_m:
+    layer: [58, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "cyan"
+  cviam4maskAdd_m:
+    layer: [117, 21]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  cviam4maskDrop_m:
+    layer: [117, 22]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "cyan"
+  cmm5mask_m:
+    layer: [59, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  cmm5waffleDrop_m:
+    layer: [117, 4]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  targetdrawing_m:
+    layer: [76, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "blue"
+  cctm1drawing_m:
+    layer: [101, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "white"
+  cctm1mask_m:
+    layer: [35, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  cctm1maskAdd_m:
+    layer: [101, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "white"
+  cctm1maskDrop_m:
+    layer: [101, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "white"
+  crpmdrawing_m:
+    layer: [53, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  crpmmask_m:
+    layer: [96, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  crpmmaskAdd_m:
+    layer: [53, 43]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  crpmmaskDrop_m:
+    layer: [53, 42]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  ccu1mmask_m:
+    layer: [93, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#e61f0d"
+  cpmm2mask_m:
+    layer: [94, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#bf4026"
+  cubmmask_m:
+    layer: [100, 0]
+    layer_in_name: true
+    frame_color: "#ccccd9"
+    fill_color: "#333399"
+
+    valid: false
+    width: 1
+  cbumpmask_m:
+    layer: [101, 0]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffbff2"
+  overlapdrawing_m:
+    layer: [90, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "deepskyblue"
+  overlapboundary_m:
+    layer: [90, 4]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "coral"
+  areaidlowTapDensity_m:
+    layer: [81, 14]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#ff8000"
+  areaidnotCritSide_m:
+    layer: [81, 15]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#ffbff2"
+  areaidinjection_m:
+    layer: [81, 17]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "greenyellow"
+  areaidrfdiode_m:
+    layer: [81, 125]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#bebed8"
+  areaidseal_m:
+    layer: [81, 1]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "white"
+  areaidcore_m:
+    layer: [81, 2]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#d9e6ff"
+  areaidframe_m:
+    layer: [81, 3]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#ffffcc"
+  areaidesd_m:
+    layer: [81, 19]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#d9cc00"
+  areaiddieCut_m:
+    layer: [81, 11]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#ffe6bf"
+  areaidmoduleCut_m:
+    layer: [81, 10]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "lime"
+  areaidframeRect_m:
+    layer: [81, 12]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "cyan"
+  areaidsubstrateCut_m:
+    layer: [81, 53]
+    layer_in_name: true
+    frame_color: "#333399"
+    fill_color: "#ccccd9"
+    hatch_pattern: hollow
+    width: 1
+  areaiddiode_m:
+    layer: [81, 23]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "yellow"
+  areaidstandardc_m:
+    layer: [81, 4]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "magenta"
+  areaiddeadZon_m:
+    layer: [81, 50]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffe6bf"
+  areaidcritCorner_m:
+    layer: [81, 51]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ff8000"
+  areaidcritSid_m:
+    layer: [81, 52]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffffcc"
+  areaidopcDrop_m:
+    layer: [81, 54]
+    layer_in_name: true
+    frame_color: "#8c8ca6"
+    fill_color: "#c8ffc8"
+    hatch_pattern: hollow
+    width: 3
+  areaidwaffleWindow_m:
+    layer: [81, 13]
+    layer_in_name: true
+    frame_color: "deepskyblue"
+    fill_color: "#00ffe7"
+    hatch_pattern: hollow
+    width: 3
+  areaidextendedDrain_m:
+    layer: [81, 57]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "goldenrod"
+  areaidlvNative_m:
+    layer: [81, 60]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#ffbff2"
+  areaidphoto_m:
+    layer: [81, 81]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#9900e6"
+  areaidetest_m:
+    layer: [81, 101]
+    layer_in_name: true
+    frame_color: "magenta"
+    fill_color: "lime"
+    hatch_pattern: hollow
+    width: 3
+  areaidhvnwell_m:
+    layer: [81, 63]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "red"
+  areaidrdlprobepad_m:
+    layer: [81, 27]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#9900e6"
+  areaidsigPadDiff_m:
+    layer: [81, 6]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "deepskyblue"
+  areaidsigPadWell_m:
+    layer: [81, 7]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#c8ffc8"
+  areaidsigPadMetNtr_m:
+    layer: [81, 8]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "coral"
+  areaidanalog_m:
+    layer: [81, 79]
+    layer_in_name: true
+    hatch_pattern: hollow
+    width: 3
+    color: "#ff6464"
+  prunedrawing_m:
+    layer: [84, 44]
+    layer_in_name: true
+    frame_color: "yellow"
+    fill_color: "white"
+    hatch_pattern: hollow
+
+    width: 1
+  padCenterdrawing_m:
+    layer: [81, 20]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "blue"
+  met1psa1_m:
+    layer: [68, 88]
+    layer_in_name: true
+    width: 1
+    color: "#8c8ca6"
+  met2psa1_m:
+    layer: [69, 88]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#8c8ca6"
+  met3psa1_m:
+    layer: [70, 88]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#8c8ca6"
+  met4psa1_m:
+    layer: [71, 88]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#8c8ca6"
+  met5psa1_m:
+    layer: [72, 88]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#8c8ca6"
+  met1psa2_m:
+    layer: [68, 89]
+    layer_in_name: true
+    width: 1
+    color: "#00ffe7"
+  met2psa2_m:
+    layer: [69, 89]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00ffe7"
+  met3psa2_m:
+    layer: [70, 89]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00ffe7"
+  met4psa2_m:
+    layer: [71, 89]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00ffe7"
+  met5psa2_m:
+    layer: [72, 89]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00ffe7"
+  met1psa3_m:
+    layer: [68, 90]
+    layer_in_name: true
+    width: 1
+    color: "#ffffcc"
+  met2psa3_m:
+    layer: [69, 90]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffffcc"
+  met3psa3_m:
+    layer: [70, 90]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffffcc"
+  met4psa3_m:
+    layer: [71, 90]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffffcc"
+  met5psa3_m:
+    layer: [72, 90]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#ffffcc"
+  met1psa4_m:
+    layer: [68, 91]
+    layer_in_name: true
+    width: 1
+    color: "#802626"
+  met2psa4_m:
+    layer: [69, 91]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#802626"
+  met3psa4_m:
+    layer: [70, 91]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#802626"
+  met4psa4_m:
+    layer: [71, 91]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#802626"
+  met5psa4_m:
+    layer: [72, 91]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#802626"
+  met1psa5_m:
+    layer: [68, 92]
+    layer_in_name: true
+
+    width: 1
+    color: "#333399"
+  met2psa5_m:
+    layer: [69, 92]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#333399"
+  met3psa5_m:
+    layer: [70, 92]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#333399"
+  met4psa5_m:
+    layer: [71, 92]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#333399"
+  met5psa5_m:
+    layer: [72, 92]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#333399"
+  met1psa6_m:
+    layer: [68, 93]
+    layer_in_name: true
+
+    width: 1
+    color: "salmon"
+  met2psa6_m:
+    layer: [69, 93]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "salmon"
+  met3psa6_m:
+    layer: [70, 93]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "salmon"
+  met4psa6_m:
+    layer: [71, 93]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "salmon"
+  met5psa6_m:
+    layer: [72, 93]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "salmon"
+  rdlpsa1_m:
+    layer: [74, 88]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "red"
+  rdlpsa2_m:
+    layer: [74, 89]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "blue"
+  rdlpsa3_m:
+    layer: [74, 90]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#00cc66"
+  rdlpsa4_m:
+    layer: [74, 91]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "white"
+  rdlpsa5_m:
+    layer: [74, 92]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "yellow"
+  rdlpsa6_m:
+    layer: [74, 93]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    width: 1
+    color: "#bf4026"
+  blankingdrawing_m:
+    layer: [124, 40]
+    layer_in_name: true
+    hatch_pattern: hollow
+
+    valid: false
+    width: 1
+    color: "#ffe6bf"
+CustomDitherPatterns:
+  blank:
+    order: 1
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+  solid:
+    order: 2
+    custom_pattern: |-
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+      ****************
+  dots:
+    order: 3
+    custom_pattern: |-
+      ..*...*...*...*.
+      ................
+      *...*...*...*...
+      ................
+      ..*...*...*...*.
+      ................
+      *...*...*...*...
+      ................
+      ..*...*...*...*.
+      ................
+      *...*...*...*...
+      ................
+      ..*...*...*...*.
+      ................
+      *...*...*...*...
+      ................
+  hLine:
+    order: 4
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ****************
+      ................
+      ................
+      ................
+      ****************
+      ................
+      ................
+      ................
+      ****************
+      ................
+      ................
+      ................
+      ****************
+  vLine:
+    order: 5
+    custom_pattern: |-
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+      ..*...*...*...*.
+  cross:
+    order: 6
+    custom_pattern: |-
+      *...*...*...*...
+      .*.*.*.*.*.*.*.*
+      ..*...*...*...*.
+      .*.*.*.*.*.*.*.*
+      *...*...*...*...
+      .*.*.*.*.*.*.*.*
+      ..*...*...*...*.
+      .*.*.*.*.*.*.*.*
+      *...*...*...*...
+      .*.*.*.*.*.*.*.*
+      ..*...*...*...*.
+      .*.*.*.*.*.*.*.*
+      *...*...*...*...
+      .*.*.*.*.*.*.*.*
+      ..*...*...*...*.
+      .*.*.*.*.*.*.*.*
+  grid:
+    order: 7
+    custom_pattern: |-
+      ...*...*...*...*
+      ...*...*...*...*
+      ...*...*...*...*
+      ****************
+      ...*...*...*...*
+      ...*...*...*...*
+      ...*...*...*...*
+      ****************
+      ...*...*...*...*
+      ...*...*...*...*
+      ...*...*...*...*
+      ****************
+      ...*...*...*...*
+      ...*...*...*...*
+      ...*...*...*...*
+      ****************
+  slash:
+    order: 8
+    custom_pattern: |-
+      ...*...*...*...*
+      ..*...*...*...*.
+      .*...*...*...*..
+      *...*...*...*...
+      ...*...*...*...*
+      ..*...*...*...*.
+      .*...*...*...*..
+      *...*...*...*...
+      ...*...*...*...*
+      ..*...*...*...*.
+      .*...*...*...*..
+      *...*...*...*...
+      ...*...*...*...*
+      ..*...*...*...*.
+      .*...*...*...*..
+      *...*...*...*...
+  backSlash:
+    order: 9
+    custom_pattern: |-
+      *...*...*...*...
+      .*...*...*...*..
+      ..*...*...*...*.
+      ...*...*...*...*
+      *...*...*...*...
+      .*...*...*...*..
+      ..*...*...*...*.
+      ...*...*...*...*
+      *...*...*...*...
+      .*...*...*...*..
+      ..*...*...*...*.
+      ...*...*...*...*
+      *...*...*...*...
+      .*...*...*...*..
+      ..*...*...*...*.
+      ...*...*...*...*
+  hZigZag:
+    order: 10
+    custom_pattern: |-
+      **......**......
+      ..*.......*.....
+      ...**......**...
+      .....*.......*..
+      ......**......**
+      *.......*.......
+      .**......**.....
+      ...*.......*....
+      ....**......**..
+      ......*.......*.
+      *......**......*
+      .*.......*......
+      ..**......**....
+      ....*.......*...
+      .....**......**.
+      .......*.......*
+  vZigZag:
+    order: 11
+    custom_pattern: |-
+      *....*....*.....
+      *.....*....*....
+      .*....*.....*...
+      ..*....*....*...
+      ..*.....*....*..
+      ...*....*.....*.
+      ....*....*....*.
+      ....*.....*....*
+      *....*....*.....
+      *.....*....*....
+      .*....*.....*...
+      ..*....*....*...
+      ..*.....*....*..
+      ...*....*.....*.
+      ....*....*....*.
+      ....*.....*....*
+  hCurb:
+    order: 12
+    custom_pattern: |-
+      ................
+      ................
+      ...*****...*****
+      ...*...*...*...*
+      ...*...*...*...*
+      ****...*****...*
+      ................
+      ................
+      ................
+      ................
+      ...*****...*****
+      ...*...*...*...*
+      ...*...*...*...*
+      ****...*****...*
+      ................
+      ................
+  vCurb:
+    order: 13
+    custom_pattern: |-
+      .....*.......*..
+      .....*.......*..
+      .....*.......*..
+      ..****....****..
+      ..*.......*.....
+      ..*.......*.....
+      ..*.......*.....
+      ..****....****..
+      .....*.......*..
+      .....*.......*..
+      .....*.......*..
+      ..****....****..
+      ..*.......*.....
+      ..*.......*.....
+      ..*.......*.....
+      ..****....****..
+  brick:
+    order: 14
+    custom_pattern: |-
+      ****************
+      ..*.......*.....
+      ..*.......*.....
+      ..*.......*.....
+      ****************
+      ......*.......*.
+      ......*.......*.
+      ......*.......*.
+      ****************
+      ..*.......*.....
+      ..*.......*.....
+      ..*.......*.....
+      ****************
+      ......*.......*.
+      ......*.......*.
+      ......*.......*.
+  dagger:
+    order: 15
+    custom_pattern: |-
+      ................
+      ..*.......*.....
+      ..*.......*.....
+      ..*.......*.....
+      *****...*****...
+      ..*.......*.....
+      ..*.......*.....
+      ..*.......*.....
+      ................
+      .....*.......*..
+      .....*.......*..
+      .....*.......*..
+      ...*****...*****
+      .....*.......*..
+      .....*.......*..
+      .....*.......*..
+  sparseDagger:
+    order: 16
+    custom_pattern: |-
+      ................
+      ..*.............
+      ..*.............
+      ..*.............
+      *****...........
+      ..*.............
+      ..*.............
+      ..*.............
+      ................
+      .............*..
+      .............*..
+      .............*..
+      ...........*****
+      .............*..
+      .............*..
+      .............*..
+  sparseDagger2:
+    order: 17
+    custom_pattern: |-
+      ................
+      ..........*.....
+      ..........*.....
+      ..........*.....
+      ........*****...
+      ..........*.....
+      ..........*.....
+      ..........*.....
+      ................
+      .....*..........
+      .....*..........
+      .....*..........
+      ...*****........
+      .....*..........
+      .....*..........
+      .....*..........
+  triangle:
+    order: 18
+    custom_pattern: |-
+      ................
+      ....*...........
+      ...*.*..........
+      ..*...*.........
+      .*.....*........
+      *********.......
+      ................
+      ................
+      ................
+      ...........*....
+      ..........*.*...
+      .........*...*..
+      ........*.....*.
+      .......*********
+      ................
+      ................
+  x:
+    order: 19
+    custom_pattern: |-
+      *...*...*...*...
+      .*.*.*.*.*.*.*.*
+      ..*...*...*...*.
+      .*.*.*.*.*.*.*.*
+      *...*...*...*...
+      .*.*.*.*.*.*.*.*
+      ..*...*...*...*.
+      .*.*.*.*.*.*.*.*
+      *...*...*...*...
+      .*.*.*.*.*.*.*.*
+      ..*...*...*...*.
+      .*.*.*.*.*.*.*.*
+      *...*...*...*...
+      .*.*.*.*.*.*.*.*
+      ..*...*...*...*.
+      .*.*.*.*.*.*.*.*
+  Xone:
+    order: 20
+    custom_pattern: |-
+      ................
+      .*.....*.....*..
+      ..*...**....*...
+      ...*.*.*...*....
+      ....*..*..*.....
+      .....*.*.*......
+      ......***.......
+      .......*........
+      ......***.......
+      .....*.*.*......
+      ....*..*..*.....
+      ...*...*...*....
+      ..*....*....*...
+      .*..*******..*..
+      ................
+      ................
+  Xtwo:
+    order: 21
+    custom_pattern: |-
+      ................
+      .*....**.....*..
+      ..*..*..*...*...
+      ...**....*.*....
+      ....*....**.....
+      .....*...*......
+      ......*.*.......
+      .......*........
+      ......*.*.......
+      .....*...*......
+      ....*.....*.....
+      ...**......*....
+      ..*.*.......*...
+      .*..******...*..
+      ................
+      ................
+  spareDots:
+    order: 22
+    custom_pattern: |-
+      ................
+      ................
+      ......*.......*.
+      ................
+      ................
+      ................
+      ..*.......*.....
+      ................
+      ................
+      ................
+      ......*.......*.
+      ................
+      ................
+      ................
+      ..*.......*.....
+      ................
+  spareDots21:
+    order: 23
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      ................
+      ......*.......*.
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ..*.......*.....
+      ................
+      ................
+      ................
+  spareDots22:
+    order: 24
+    custom_pattern: |-
+      ................
+      ................
+      ......*.......*.
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ..*.......*.....
+      ................
+      ................
+      ................
+      ................
+      ................
+  checker:
+    order: 25
+    custom_pattern: |-
+      ****....****....
+      ****....****....
+      ****....****....
+      ****....****....
+      ....****....****
+      ....****....****
+      ....****....****
+      ....****....****
+      ****....****....
+      ****....****....
+      ****....****....
+      ****....****....
+      ....****....****
+      ....****....****
+      ....****....****
+      ....****....****
+  checker2:
+    order: 26
+    custom_pattern: |-
+      ....****....****
+      ....****....****
+      ....****....****
+      ....****....****
+      ****....****....
+      ****....****....
+      ****....****....
+      ****....****....
+      ....****....****
+      ....****....****
+      ....****....****
+      ....****....****
+      ****....****....
+      ****....****....
+      ****....****....
+      ****....****....
+  one:
+    order: 27
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      .......*........
+      ......**........
+      .......*........
+      .......*........
+      .......*........
+      .......*........
+      ......***.......
+      ................
+      ................
+      ................
+      ................
+      ................
+  two:
+    order: 28
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      ................
+      .......**.......
+      ......*..*......
+      .........*......
+      ........*.......
+      .......*........
+      ......*.........
+      ......****......
+      ................
+      ................
+      ................
+      ................
+  three:
+    order: 29
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      ................
+      ......***.......
+      .....*...*......
+      .........*......
+      .......**.......
+      .........*......
+      .....*...*......
+      ......***.......
+      ................
+      ................
+      ................
+      ................
+  four:
+    order: 30
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      .............*..
+      ............**..
+      ...........*.*..
+      ..........*..*..
+      .........******.
+      .............*..
+      .............*..
+      ................
+  five:
+    order: 31
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ......***.......
+      .....*..........
+      .....*..........
+      .....***........
+      ........*.......
+      ........*.......
+      .....***........
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+  six:
+    order: 32
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      .......***......
+      ......*.........
+      ......*.........
+      ......****......
+      ......*...*.....
+      ......*...*.....
+      .......***......
+      ................
+      ................
+      ................
+      ................
+      ................
+  seven:
+    order: 33
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      .....******.....
+      ..........*.....
+      .........*......
+      .........*......
+      ........*.......
+      ........*.......
+      .......*........
+      ......*.........
+      .....*..........
+      ................
+      ................
+      ................
+      ................
+  eight:
+    order: 34
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      ......***.......
+      .....*...*......
+      .....*...*......
+      ......***.......
+      .....*...*......
+      .....*...*......
+      ......***.......
+      ................
+      ................
+      ................
+      ................
+      ................
+  box45:
+    order: 35
+    custom_pattern: |-
+      *..............*
+      .*............*.
+      ..*..........*..
+      ...*........*...
+      ....*......*....
+      .....*....*.....
+      ......*..*......
+      .......**.......
+      .......**.......
+      ......*..*......
+      .....*....*.....
+      ....*......*....
+      ...*........*...
+      ..*..........*..
+      .*............*.
+      *..............*
+  gray50:
+    order: 36
+    custom_pattern: |-
+      .*.*.*.*.*.*.*.*
+      *.*.*.*.*.*.*.*.
+      .*.*.*.*.*.*.*.*
+      *.*.*.*.*.*.*.*.
+      .*.*.*.*.*.*.*.*
+      *.*.*.*.*.*.*.*.
+      .*.*.*.*.*.*.*.*
+      *.*.*.*.*.*.*.*.
+      .*.*.*.*.*.*.*.*
+      *.*.*.*.*.*.*.*.
+      .*.*.*.*.*.*.*.*
+      *.*.*.*.*.*.*.*.
+      .*.*.*.*.*.*.*.*
+      *.*.*.*.*.*.*.*.
+      .*.*.*.*.*.*.*.*
+      *.*.*.*.*.*.*.*.
+  gray25:
+    order: 37
+    custom_pattern: |-
+      *...*...*...*...
+      ................
+      ..*...*...*...*.
+      ................
+      *...*...*...*...
+      ................
+      ..*...*...*...*.
+      ................
+      *...*...*...*...
+      ................
+      ..*...*...*...*.
+      ................
+      *...*...*...*...
+      ................
+      ..*...*...*...*.
+      ................
+  snow:
+    order: 38
+    custom_pattern: |-
+      .*.*.*...*.*.*..
+      ................
+      ...*...*...*...*
+      ................
+      .*...*.*.*...*.*
+      ................
+      ...*...*...*...*
+      ................
+      .*.*.*...*.*.*..
+      ................
+      ...*...*...*...*
+      ................
+      .*...*.*.*...*.*
+      ................
+      ...*...*...*...*
+      ................
+  backSlash2:
+    order: 39
+    custom_pattern: |-
+      ..*.......*.....
+      ...*.......*....
+      ....*.......*...
+      .....*.......*..
+      ......*.......*.
+      .......*.......*
+      *.......*.......
+      .*.......*......
+      ..*.......*.....
+      ...*.......*....
+      ....*.......*...
+      .....*.......*..
+      ......*.......*.
+      .......*.......*
+      *.......*.......
+      .*.......*......
+  lattice:
+    order: 40
+    custom_pattern: |-
+      *.....*.*.....*.
+      .*...*...*...*..
+      ..*.*.....*.*...
+      ...*...*...*...*
+      ..*.*.....*.*...
+      .*...*...*...*..
+      *.....*.*.....*.
+      ...*...*...*...*
+      *.....*.*.....*.
+      .*...*...*...*..
+      ..*.*.....*.*...
+      ...*...*...*...*
+      ..*.*.....*.*...
+      .*...*...*...*..
+      *.....*.*.....*.
+      ...*...*...*...*
+  smallChecker:
+    order: 41
+    custom_pattern: |-
+      **..**..**..**..
+      **..**..**..**..
+      ..**..**..**..**
+      ..**..**..**..**
+      **..**..**..**..
+      **..**..**..**..
+      ..**..**..**..**
+      ..**..**..**..**
+      **..**..**..**..
+      **..**..**..**..
+      ..**..**..**..**
+      ..**..**..**..**
+      **..**..**..**..
+      **..**..**..**..
+      ..**..**..**..**
+      ..**..**..**..**
+  slantBox:
+    order: 42
+    custom_pattern: |-
+      ....*...........
+      ...*.*..........
+      ..*...*.........
+      .*.....*........
+      *.......*.......
+      .*.......*......
+      ..*.......*.....
+      ...*.......*....
+      ....*.......*...
+      .....*.......*..
+      ......*.......*.
+      .......*.......*
+      ........*.....*.
+      .........*...*..
+      ..........*.*...
+      ...........*....
+  slash2:
+    order: 43
+    custom_pattern: |-
+      .*...*...*...*..
+      *...*...*...*...
+      ...*...*...*...*
+      ..*...*...*...*.
+      .*...*...*...*..
+      *...*...*...*...
+      ...*...*...*...*
+      ..*...*...*...*.
+      .*...*...*...*..
+      *...*...*...*...
+      ...*...*...*...*
+      ..*...*...*...*.
+      .*...*...*...*..
+      *...*...*...*...
+      ...*...*...*...*
+      ..*...*...*...*.
+  bigSlash:
+    order: 44
+    custom_pattern: |-
+      ...*.......*....
+      ..*.......*.....
+      .*.......*......
+      *.......*.......
+      .......*.......*
+      ......*.......*.
+      .....*.......*..
+      ....*.......*...
+      ...*.......*....
+      ..*.......*.....
+      .*.......*......
+      *.......*.......
+      .......*.......*
+      ......*.......*.
+      .....*.......*..
+      ....*.......*...
+  boxes:
+    order: 45
+    custom_pattern: |-
+      ****....****....
+      *..*....*..*....
+      *..*....*..*....
+      ****....****....
+      ................
+      ................
+      ................
+      ................
+      ****....****....
+      *..*....*..*....
+      *..*....*..*....
+      ****....****....
+      ................
+      ................
+      ................
+      ................
+  circles:
+    order: 46
+    custom_pattern: |-
+      ..**......**....
+      .*..*....*..*...
+      *....*..*....*..
+      *....*..*....*..
+      .*..*....*..*...
+      ..**......**....
+      ................
+      ................
+      ..**......**....
+      .*..*....*..*...
+      *....*..*....*..
+      *....*..*....*..
+      .*..*....*..*...
+      ..**......**....
+      ................
+      ................
+  zigzag:
+    order: 47
+    custom_pattern: |-
+      .**..**..**..**.
+      ...*...*...*...*
+      *...*...*...*...
+      .**..**..**..**.
+      .**..**..**..**.
+      *...*...*...*...
+      ...*...*...*...*
+      .**..**..**..**.
+      .**..**..**..**.
+      ...*...*...*...*
+      *...*...*...*...
+      .**..**..**..**.
+      .**..**..**..**.
+      *...*...*...*...
+      ...*...*...*...*
+      .**..**..**..**.
+  lightMesh:
+    order: 48
+    custom_pattern: |-
+      ................
+      *.*.*.*.*.*.*.*.
+      ................
+      ...*....*....*..
+      ................
+      *.*.*.*.*.*.*.*.
+      ................
+      ...*....*....*..
+      ................
+      *.*.*.*.*.*.*.*.
+      ................
+      ...*....*....*..
+      ................
+      *.*.*.*.*.*.*.*.
+      ................
+      ...*....*....*..
+  hugeSlash:
+    order: 49
+    custom_pattern: |-
+      ...............*
+      ..............*.
+      .............*..
+      ............*...
+      ...........*....
+      ..........*.....
+      .........*......
+      ........*.......
+      .......*........
+      ......*.........
+      .....*..........
+      ....*...........
+      ...*............
+      ..*.............
+      .*..............
+      *...............
+  hugeSlash2:
+    order: 50
+    custom_pattern: |-
+      *...............
+      .*..............
+      ..*.............
+      ...*............
+      ....*...........
+      .....*..........
+      ......*.........
+      .......*........
+      ........*.......
+      .........*......
+      ..........*.....
+      ...........*....
+      ............*...
+      .............*..
+      ..............*.
+      ...............*
+  curve:
+    order: 51
+    custom_pattern: |-
+      *.........*.....
+      .....*..........
+      ..*.........*...
+      .......*........
+      ....*.........*.
+      .*.......*......
+      ......*.........
+      ...*.......*....
+      ........*.......
+      .....*.......*..
+      *.........*.....
+      .......*........
+      ..*.........*...
+      .........*......
+      ....*.........*.
+      ...........*....
+  curve2:
+    order: 52
+    custom_pattern: |-
+      ....*....*....*.
+      ..*.............
+      *.......*.......
+      .............*..
+      .......*........
+      ............*...
+      .....*..........
+      ...*.......*....
+      *...............
+      ................
+      .........*......
+      ................
+      ......*........*
+      ...*............
+      *............*..
+      ..........*.....
+  diams:
+    order: 53
+    custom_pattern: |-
+      ...........*....
+      ..........*.*...
+      .........*...*..
+      ........*.....*.
+      .........*...*..
+      ..........*.*...
+      ...........*....
+      ................
+      ................
+      ...*............
+      ..*.*...........
+      .*...*..........
+      *.....*.........
+      .*...*..........
+      ..*.*...........
+      ...*............
+  sparsediam:
+    order: 54
+    custom_pattern: |-
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ................
+      ...*............
+      ..*.*...........
+      .*...*..........
+      *.....*.........
+      .*...*..........
+      ..*.*...........
+      ...*............
+  rain:
+    order: 55
+    custom_pattern: |-
+      .......*.......*
+      ......*.........
+      .....*..........
+      ................
+      ................
+      ................
+      .*..............
+      *...............
+      .......*.......*
+      ..............*.
+      .............*..
+      ................
+      ................
+      ................
+      .........*......
+      ........*.......
+CustomLineStyles:
+  solid:
+    order: 1
+    custom_style: "***"
+  dashed:
+    order: 2
+    custom_style: "****.."
+  dots:
+    order: 3
+    custom_style: "*.."
+  dashDot:
+    order: 4
+    custom_style: "***..*.."
+  shortDash:
+    order: 5
+    custom_style: "**.."
+  doubleDash:
+    order: 6
+    custom_style: "****..**.."
+  hidden:
+    order: 7
+    custom_style: "*..."
+  thickLine:
+    order: 8
+    custom_style: "***"
