@@ -22,7 +22,7 @@ authors = [
 keywords = ["python"]
 license = {file = "LICENSE"}
 dependencies = [
-    "gdsfactory==6.42.0",
+    "gdsfactory==6.55.0",
     "PySpice"
 ]
 readme = "README.md"
@@ -30,37 +30,13 @@ requires-python = ">=3.7"
 
 [project.optional-dependencies]
 dev = [
-    "gdsfactory[full]",
-    "autotyping",
-    "black>=21",
-    "doc8",
-    "mypy",
-    "pre-commit",
-    "pylsp-mypy",
-    "types-cachetools",
-    "flake8",
-    "flake8-bugbear",
-    "ipykernel",
+    "gdsfactory[full,docs]",
     "pytest",
     "pytest-cov",
     "pytest_regressions",
-    "types-PyYAML",
-    "xdoctest",
-    "pyproject-flake8",
     ]
 docs = [
-    "autodoc_pydantic",
-    "docutils==0.17.1",
-    "matplotlib",
-    "myst-parser",
-    "nbsphinx",
-    "sphinx",
-    "sphinx-autodoc-typehints",
-    "sphinx-book-theme==0.3.3",
-    "sphinx-click",
-    "sphinx-copybutton",
-    "sphinx-markdown-tables==0.0.16",
-    "sphinxcontrib-video",
+    "gdsfactory[full,docs]",
     ]
 
 
