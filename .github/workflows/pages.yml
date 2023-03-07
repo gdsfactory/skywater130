@@ -7,34 +7,40 @@ on:
   workflow_dispatch:
 
 jobs:
-  sphinx_docs_to_gh-pages:
+  build-docs:
     runs-on: ubuntu-latest
     name: Sphinx docs to gh-pages
     steps:
-      - name: Cancel Workflow Action
-        uses: styfle/cancel-workflow-action@0.11.0
       - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          python-version: 3.9
-          channels: conda-forge,defaults
-          channel-priority: true
-          activate-environment: anaconda-client-env
       - name: Add conda to system path
         run: |
           echo $CONDA/bin >> $GITHUB_PATH
       - name: Installing the library
+        env:
+          DOCS: True
+          GDSFACTORY_LAYOUT_PLOTTER: klayout
         shell: bash -l {0}
         run: |
-          sudo apt install pandoc
-          pip install -e .[dev,docs]
-      - name: Running the Sphinx to gh-pages Action
-        uses: uibcdf/action-sphinx-docs-to-gh-pages@v1.0-beta.2
-        env:
-          TIDY3D_USER: ${{ secrets.TIDY3D_EMAIL }}
-          TIDY3D_PASS: ${{ secrets.TIDY3D_PASSWORD }}
-          DISPLAY: 1.0
+          sudo apt install libglu1-mesa
+          make plugins
+          make docs
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
         with:
-          branch: main
-          dir_docs: docs
-          sphinxopts: ""
+          path: "./docs/_build/html/"
+
+  deploy-docs:
+    needs: build-docs
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

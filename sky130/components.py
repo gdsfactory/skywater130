@@ -13492,3 +13492,4 @@ if __name__ == "__main__":
     # c = sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2()
     c = sky130_fd_sc_hd__conb_1()
     # c.show(show_ports=True)
+    c.show()

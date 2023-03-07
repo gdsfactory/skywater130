@@ -61,4 +61,11 @@ notebooks:
 link:
 	ln -sf ${PWD}/sky130/klayout/sky130 ${HOME}/.klayout/tech/sky130
 
-.PHONY: gdsdiff build conda
+plugins:
+	pip install -e .[docs]
+	sudo apt install magic
+
+docs:
+	jb build docs
+
+.PHONY: gdsdiff build conda docs
