@@ -30,6 +30,6 @@ Then you need to restart Klayout to make sure the new technology installed appea
 
 ## TODO
 
-- integrate with OpenRoad
-- add spice models
-- add sample netlist
+- [X] add layout
+- [ ] link spice models
+- [ ] add sample netlist and circuit simulation
