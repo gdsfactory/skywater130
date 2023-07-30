@@ -1,4 +1,29 @@
 name: sky130_fd_sc_hd__o21ai_2
+ports:
+  VGND:
+    center:
+    - 0.225
+    - 0.0
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 0.225
+    - 2.72
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null

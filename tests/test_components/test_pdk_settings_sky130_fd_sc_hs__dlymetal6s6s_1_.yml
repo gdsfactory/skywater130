@@ -1,4 +1,41 @@
 name: sky130_fd_sc_hs__dlymetal6s6s_1
+ports:
+  VGND:
+    center:
+    - 1.925
+    - 0.123
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 1.925
+    - 3.208
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  X:
+    center:
+    - 2.59
+    - 2.405
+    layer:
+    - 68
+    - 20
+    name: X
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null

@@ -1,4 +1,5 @@
 name: pnp
+ports: {}
 settings:
   changed: {}
   child: null

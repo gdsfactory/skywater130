@@ -1,4 +1,5 @@
 name: via_generator
+ports: {}
 settings:
   changed: {}
   child: null

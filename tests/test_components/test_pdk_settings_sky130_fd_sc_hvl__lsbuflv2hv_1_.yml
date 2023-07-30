@@ -1,4 +1,101 @@
 name: sky130_fd_sc_hvl__lsbuflv2hv_1
+ports:
+  LVPWR:
+    center:
+    - 4.8
+    - 3.165
+    layer:
+    - 68
+    - 20
+    name: LVPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VGND:
+    center:
+    - 4.7
+    - 7.7
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VGND1:
+    center:
+    - 4.8
+    - 0.44
+    layer:
+    - 68
+    - 20
+    name: VGND1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VNB:
+    center:
+    - 4.8
+    - 0.058
+    layer:
+    - 68
+    - 20
+    name: VNB
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VNB1:
+    center:
+    - 4.8
+    - 8.082
+    layer:
+    - 68
+    - 20
+    name: VNB1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPB:
+    center:
+    - 4.8
+    - 4.068
+    layer:
+    - 68
+    - 20
+    name: VPB
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 4.8
+    - 4.51
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR1:
+    center:
+    - 4.8
+    - 3.63
+    layer:
+    - 68
+    - 20
+    name: VPWR1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null

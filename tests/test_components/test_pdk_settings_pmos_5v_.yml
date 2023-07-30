@@ -1,4 +1,5 @@
 name: pmos_5v
+ports: {}
 settings:
   changed: {}
   child: null

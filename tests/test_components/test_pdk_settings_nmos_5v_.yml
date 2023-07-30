@@ -1,4 +1,5 @@
 name: nmos_5v
+ports: {}
 settings:
   changed: {}
   child: null

@@ -7,23 +7,16 @@ watch:
 	gf yaml watch sky130
 
 test:
-	flake8 .
-	pytest
+	pytest -s
 
 cov:
-	pytest --cov= sky130
+	pytest --cov=sky130
 
 mypy:
 	mypy . --ignore-missing-imports
 
-lint:
-	flake8
-
 pylint:
 	pylint sky130
-
-lintd2:
-	flake8 --select RST
 
 lintd:
 	pydocstyle sky130

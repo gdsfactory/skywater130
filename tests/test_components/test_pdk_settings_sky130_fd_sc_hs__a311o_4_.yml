@@ -1,4 +1,41 @@
 name: sky130_fd_sc_hs__a311o_4
+ports:
+  VGND:
+    center:
+    - 3.84
+    - 0.123
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 3.84
+    - 3.208
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  X:
+    center:
+    - 0.24
+    - 0.925
+    layer:
+    - 68
+    - 20
+    name: X
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null

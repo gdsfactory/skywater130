@@ -1,4 +1,101 @@
 name: sky130_fd_sc_hvl__inv_16
+ports:
+  A:
+    center:
+    - 6.47
+    - 1.665
+    layer:
+    - 68
+    - 20
+    name: A
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VGND:
+    center:
+    - 6.72
+    - 0.44
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VNB:
+    center:
+    - 6.72
+    - 0.058
+    layer:
+    - 68
+    - 20
+    name: VNB
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VNB1:
+    center:
+    - 6.72
+    - 0.058
+    layer:
+    - 68
+    - 20
+    name: VNB1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPB:
+    center:
+    - 6.72
+    - 4.013
+    layer:
+    - 68
+    - 20
+    name: VPB
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPB1:
+    center:
+    - 6.72
+    - 4.013
+    layer:
+    - 68
+    - 20
+    name: VPB1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 6.72
+    - 3.63
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  Y:
+    center:
+    - 6.53
+    - 2.405
+    layer:
+    - 68
+    - 20
+    name: Y
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null

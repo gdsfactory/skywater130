@@ -1,4 +1,77 @@
 name: sky130_fd_sc_hvl__probe_p_8
+ports:
+  VGND:
+    center:
+    - 4.8
+    - 0.44
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VNB:
+    center:
+    - 4.8
+    - 0.058
+    layer:
+    - 68
+    - 20
+    name: VNB
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VNB1:
+    center:
+    - 4.8
+    - 0.058
+    layer:
+    - 68
+    - 20
+    name: VNB1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPB:
+    center:
+    - 4.8
+    - 4.013
+    layer:
+    - 68
+    - 20
+    name: VPB
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPB1:
+    center:
+    - 4.8
+    - 4.013
+    layer:
+    - 68
+    - 20
+    name: VPB1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 4.8
+    - 3.63
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null

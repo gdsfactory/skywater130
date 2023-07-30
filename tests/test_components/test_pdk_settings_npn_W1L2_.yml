@@ -1,4 +1,5 @@
 name: npn_W1L2
+ports: {}
 settings:
   changed: {}
   child: null
