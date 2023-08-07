@@ -1,10 +1,8 @@
 install:
-	pip install -e .[dev]
+	pip install -e .[dev,docs]
 	pre-commit install
-	gf tool install
 
-watch:
-	gf yaml watch sky130
+dev: install
 
 test:
 	pytest -s
@@ -15,20 +13,8 @@ cov:
 mypy:
 	mypy . --ignore-missing-imports
 
-pylint:
-	pylint sky130
-
-lintd:
-	pydocstyle sky130
-
 doc:
 	python docs/write_components_doc.py
-
-doc8:
-	doc8 docs/
-
-update:
-	pur
 
 update-pre:
 	pre-commit autoupdate --bleeding-edge
@@ -47,16 +33,6 @@ build:
 
 tech:
 	python3 install_tech.py
-
-notebooks:
-	nbstripout --drop-empty-cells docs/notebooks/intro.ipynb
-
-link:
-	ln -sf ${PWD}/sky130/klayout/sky130 ${HOME}/.klayout/tech/sky130
-
-plugins:
-	pip install -e .[docs]
-	sudo apt install magic
 
 docs:
 	jb build docs
