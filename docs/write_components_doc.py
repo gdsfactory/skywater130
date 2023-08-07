@@ -1,7 +1,7 @@
-import pathlib
 import inspect
-import sky130
+import pathlib
 
+import sky130
 
 cells = pathlib.Path(__file__).parent.absolute() / "components.rst"
 pcells = pathlib.Path(__file__).parent.absolute() / "pcells.rst"
@@ -57,14 +57,13 @@ PCells
             [
                 f"{p}={repr(sig.parameters[p].default)}"
                 for p in sig.parameters
-                if isinstance(sig.parameters[p].default, (int, float, str, tuple))
+                if isinstance(sig.parameters[p].default, int | float | str | tuple)
                 and p not in skip_settings
             ]
         )
         f.write(f"   {name}\n")
 
 with open(cells, "w+") as f:
-
     f.write(
         """
 
@@ -88,7 +87,7 @@ Cells
             [
                 f"{p}={repr(sig.parameters[p].default)}"
                 for p in sig.parameters
-                if isinstance(sig.parameters[p].default, (int, float, str, tuple))
+                if isinstance(sig.parameters[p].default, int | float | str | tuple)
                 and p not in skip_settings
             ]
         )

@@ -296,7 +296,6 @@ def pnp(
         )
 
     for i in rect_c_mc:
-
         cont_B_arr1 = c.add_array(
             i, rows=nr_v, columns=nc_v, spacing=con_sp
         )  # left side
@@ -519,7 +518,6 @@ def pnp(
         nc_h -= 1
 
     for i in range(2):
-
         rect_in = gf.components.rectangle(
             size=(
                 E_width
@@ -589,7 +587,6 @@ def pnp(
         )
 
     for i in rect_c_mc:
-
         cont_C_arr1 = c.add_array(
             i, rows=nr_v, columns=nc_v, spacing=con_sp
         )  # left side
@@ -764,7 +761,6 @@ def pnp(
 
 
 if __name__ == "__main__":
-
     c = pnp(E_length=3.4, E_width=3.4, np_spacing=1, B_width=1, C_width=1)
     # c = pnp(np_spacing=1, B_width= 0.65, C_width=0.65)
     c.show(show_ports=True)

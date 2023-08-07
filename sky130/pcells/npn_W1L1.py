@@ -295,7 +295,6 @@ def npn_W1L1(
         )
 
     for i in rect_c_mc:
-
         nr_b = nr
         nc_b = nc
 
@@ -498,7 +497,6 @@ def npn_W1L1(
         nr -= 1
 
     for i in range(2):
-
         rect_in = gf.components.rectangle(
             size=(
                 E_width
@@ -759,7 +757,6 @@ def npn_W1L1(
 
 
 if __name__ == "__main__":
-
     c = npn_W1L1()
     # c = npn_W1L1(np_spacing=1, B_width=0.8, C_width=0.8, E_length=2)
     c.show(show_ports=True)

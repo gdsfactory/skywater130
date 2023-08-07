@@ -16,7 +16,6 @@ def nmos(
     contact_layer: LayerSpec = (66, 44),
     contact_enclosure: float = 0.1,
 ) -> gf.Component:
-
     """Return NMOS.
 
     Args:

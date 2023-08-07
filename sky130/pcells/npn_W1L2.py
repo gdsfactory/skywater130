@@ -321,7 +321,6 @@ def npn_W1L2(
         )
 
     for i in rect_c_mc:
-
         cont_B_arr1 = c.add_array(
             i, rows=nr_v, columns=nc_v, spacing=con_sp
         )  # left side
@@ -544,7 +543,6 @@ def npn_W1L2(
         nc_h -= 1
 
     for i in range(2):
-
         rect_in = gf.components.rectangle(
             size=(
                 E_width
@@ -614,7 +612,6 @@ def npn_W1L2(
         )
 
     for i in rect_c_mc:
-
         cont_C_arr1 = c.add_array(
             i, rows=nr_v, columns=nc_v, spacing=con_sp
         )  # left side
@@ -801,7 +798,6 @@ def npn_W1L2(
 
 
 if __name__ == "__main__":
-
     # c=npn_W1L2()
     c = npn_W1L2(B_width=0.8, C_width=0.8, np_spacing=1)
     c.show(show_ports=True)

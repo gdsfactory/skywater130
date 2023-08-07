@@ -222,7 +222,6 @@ def p_n_poly(
 
 
 if __name__ == "__main__":
-
     # c = p_n_poly(p_poly_width= 5.73, p_poly_length=2)
     c = p_n_poly()
     c.show(show_ports=True)

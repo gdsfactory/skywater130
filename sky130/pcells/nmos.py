@@ -417,6 +417,5 @@ def nmos(
 
 
 if __name__ == "__main__":
-
     c = nmos(gate_length=2, gate_width=10)
     c.show(show_ports=True)

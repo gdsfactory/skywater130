@@ -1,10 +1,10 @@
 """Symlink tech to klayout."""
 
-import shutil
-import sys
 import os
-import subprocess
 import pathlib
+import shutil
+import subprocess
+import sys
 
 
 def remove_path_or_dir(dest: pathlib.Path):
