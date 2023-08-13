@@ -24,7 +24,7 @@ license = {file = "LICENSE"}
 name = "sky130"
 readme = "README.md"
 requires-python = ">=3.10"
-version = "0.7.1"
+version = "0.8.0"
 
 [project.optional-dependencies]
 dev = [
