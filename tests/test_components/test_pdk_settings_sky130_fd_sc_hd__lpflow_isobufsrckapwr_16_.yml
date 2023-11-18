@@ -1,4 +1,4 @@
-name: sky130_fd_sc_hd__lpflow_e0e933ba
+name: sky130_fd_sc_hd__lpflow_isobufsrckapwr_16
 ports:
   KAPWR:
     center:
@@ -45,4 +45,4 @@ settings:
   info: {}
   info_version: 2
   module: sky130.components
-  name: sky130_fd_sc_hd__lpflow_e0e933ba
+  name: sky130_fd_sc_hd__lpflow_isobufsrckapwr_16

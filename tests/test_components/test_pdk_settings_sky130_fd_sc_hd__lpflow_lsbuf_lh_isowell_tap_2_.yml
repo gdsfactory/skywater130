@@ -1,4 +1,4 @@
-name: sky130_fd_sc_hd__lpflow_e793b2d8
+name: sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2
 ports:
   LOWLVPWR:
     center:
@@ -69,4 +69,4 @@ settings:
   info: {}
   info_version: 2
   module: sky130.components
-  name: sky130_fd_sc_hd__lpflow_e793b2d8
+  name: sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2

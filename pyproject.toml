@@ -15,7 +15,7 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "gdsfactory[cad]==7.3.0",
+  "gdsfactory[cad]==7.8.17",
   "PySpice"
 ]
 description = "skywater130 pdk"
@@ -30,10 +30,10 @@ version = "0.8.0"
 dev = [
   "pytest",
   "pytest-cov",
-  "pytest_regressions"
+  "pytest_regressions",
+  "pre-commit"
 ]
 docs = [
-  "autodoc_pydantic",
   "jupytext",
   "jupyter-book==0.15.1"
 ]
@@ -80,6 +80,7 @@ python_files = ["sky130/*.py", "tests/*.py"]
 testpaths = ["sky130", "tests"]
 
 [tool.ruff]
+fix = true
 ignore = [
   "E501",  # line too long, handled by black
   "B008",  # do not perform function calls in argument defaults

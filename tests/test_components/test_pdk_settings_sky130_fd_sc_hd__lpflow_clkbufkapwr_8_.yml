@@ -1,4 +1,4 @@
-name: sky130_fd_sc_hd__lpflow_d31d8da7
+name: sky130_fd_sc_hd__lpflow_clkbufkapwr_8
 ports:
   KAPWR:
     center:
@@ -45,4 +45,4 @@ settings:
   info: {}
   info_version: 2
   module: sky130.components
-  name: sky130_fd_sc_hd__lpflow_d31d8da7
+  name: sky130_fd_sc_hd__lpflow_clkbufkapwr_8
