@@ -1,6 +1,6 @@
 # [Changelog](https://keepachangelog.com/en/1.0.0/)
 
-## [Unreleased](https://github.com/gdsfactory/skywater130/compare/v0.8.0...main)
+<!-- towncrier release notes start -->
 
 ## [0.8.0](https://github.com/gdsfactory/skywater130/compare/v0.8.0...v0.7.0)
 
