@@ -15,7 +15,7 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "gdsfactory[cad]==7.3.0",
+  "gdsfactory[cad]==7.8.17",
   "PySpice"
 ]
 description = "skywater130 pdk"
@@ -33,7 +33,6 @@ dev = [
   "pytest_regressions"
 ]
 docs = [
-  "autodoc_pydantic",
   "jupytext",
   "jupyter-book==0.15.1"
 ]

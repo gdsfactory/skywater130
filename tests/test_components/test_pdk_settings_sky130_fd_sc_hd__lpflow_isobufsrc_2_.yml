@@ -1,4 +1,4 @@
-name: sky130_fd_sc_hd__lpflow_ac6cd163
+name: sky130_fd_sc_hd__lpflow_isobufsrc_2
 ports:
   VGND:
     center:
@@ -33,4 +33,4 @@ settings:
   info: {}
   info_version: 2
   module: sky130.components
-  name: sky130_fd_sc_hd__lpflow_ac6cd163
+  name: sky130_fd_sc_hd__lpflow_isobufsrc_2

@@ -1,4 +1,4 @@
-name: sky130_fd_sc_hvl__lsbuf_0e3579e0
+name: sky130_fd_sc_hvl__lsbufhv2hv_lh_1
 ports:
   LOWHVPWR:
     center:
@@ -105,4 +105,4 @@ settings:
   info: {}
   info_version: 2
   module: sky130.components
-  name: sky130_fd_sc_hvl__lsbuf_0e3579e0
+  name: sky130_fd_sc_hvl__lsbufhv2hv_lh_1

@@ -47,7 +47,6 @@ sphinx:
     - "sphinx.ext.napoleon"
     - "sphinx.ext.viewcode"
     - "matplotlib.sphinxext.plot_directive"
-    - "sphinxcontrib.autodoc_pydantic"
   config:
     #autodoc_typehints: description
     autodoc_type_aliases:
