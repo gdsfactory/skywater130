@@ -1,4 +1,77 @@
 name: sky130_fd_sc_hvl__diode_2
+ports:
+  VGND:
+    center:
+    - 0.48
+    - 0.44
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VNB:
+    center:
+    - 0.48
+    - 0.058
+    layer:
+    - 68
+    - 20
+    name: VNB
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VNB1:
+    center:
+    - 0.48
+    - 0.058
+    layer:
+    - 68
+    - 20
+    name: VNB1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPB:
+    center:
+    - 0.48
+    - 4.013
+    layer:
+    - 68
+    - 20
+    name: VPB
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPB1:
+    center:
+    - 0.48
+    - 4.013
+    layer:
+    - 68
+    - 20
+    name: VPB1
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 0.48
+    - 3.63
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null
@@ -9,4 +82,3 @@ settings:
   info_version: 2
   module: sky130.components
   name: sky130_fd_sc_hvl__diode_2
-version: 0.0.1

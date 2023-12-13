@@ -1,0 +1,138 @@
+name: npn_W1L2
+ports: {}
+settings:
+  changed: {}
+  child: null
+  default:
+    B_width: 0.4
+    C_width: 0.4
+    E_length: 2
+    E_width: 1
+    contact_enclosure:
+    - 0.06
+    - 0.06
+    contact_layer:
+    - 66
+    - 44
+    contact_size:
+    - 0.17
+    - 0.17
+    contact_spacing:
+    - 0.17
+    - 0.17
+    diff_enclosure:
+    - 0.18
+    - 0.18
+    diffusion_layer:
+    - 65
+    - 20
+    dnwell_enclosure:
+    - 0.4
+    - 0.4
+    dnwell_layer:
+    - 64
+    - 18
+    li_enclosure: 0.08
+    li_layer:
+    - 67
+    - 20
+    li_spacing: 0.17
+    li_width: 0.17
+    m1_layer:
+    - 68
+    - 20
+    mcon_enclosure:
+    - 0.09
+    - 0.09
+    mcon_layer:
+    - 67
+    - 44
+    np_spacing: 0.27
+    npn_layer:
+    - 82
+    - 20
+    nsdm_layer:
+    - 93
+    - 44
+    psdm_layer:
+    - 94
+    - 20
+    pwell_layer:
+    - 64
+    - 13
+    sdm_enclosure:
+    - 0.125
+    - 0.125
+    sdm_spacing: 0.13
+    tap_layer:
+    - 65
+    - 44
+  full:
+    B_width: 0.4
+    C_width: 0.4
+    E_length: 2
+    E_width: 1
+    contact_enclosure:
+    - 0.06
+    - 0.06
+    contact_layer:
+    - 66
+    - 44
+    contact_size:
+    - 0.17
+    - 0.17
+    contact_spacing:
+    - 0.17
+    - 0.17
+    diff_enclosure:
+    - 0.18
+    - 0.18
+    diffusion_layer:
+    - 65
+    - 20
+    dnwell_enclosure:
+    - 0.4
+    - 0.4
+    dnwell_layer:
+    - 64
+    - 18
+    li_enclosure: 0.08
+    li_layer:
+    - 67
+    - 20
+    li_spacing: 0.17
+    li_width: 0.17
+    m1_layer:
+    - 68
+    - 20
+    mcon_enclosure:
+    - 0.09
+    - 0.09
+    mcon_layer:
+    - 67
+    - 44
+    np_spacing: 0.27
+    npn_layer:
+    - 82
+    - 20
+    nsdm_layer:
+    - 93
+    - 44
+    psdm_layer:
+    - 94
+    - 20
+    pwell_layer:
+    - 64
+    - 13
+    sdm_enclosure:
+    - 0.125
+    - 0.125
+    sdm_spacing: 0.13
+    tap_layer:
+    - 65
+    - 44
+  function_name: npn_W1L2
+  info: {}
+  info_version: 2
+  module: sky130.pcells.npn_W1L2
+  name: npn_W1L2

@@ -1,4 +1,41 @@
 name: sky130_fd_sc_hs__dfbbn_2
+ports:
+  SET_B:
+    center:
+    - 8.88
+    - 2.035
+    layer:
+    - 68
+    - 20
+    name: SET_B
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VGND:
+    center:
+    - 7.2
+    - 0.123
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 7.2
+    - 3.208
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null
@@ -9,4 +46,3 @@ settings:
   info_version: 2
   module: sky130.components
   name: sky130_fd_sc_hs__dfbbn_2
-version: 0.0.1

@@ -1,9 +1,6 @@
 
 
-Here are the components available in the PDK
-
-
-Components
+Cells
 =============================
 
 .. currentmodule:: sky130.components

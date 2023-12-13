@@ -1,4 +1,41 @@
 name: sky130_fd_sc_hs__ha_4
+ports:
+  SUM:
+    center:
+    - 9.84
+    - 2.035
+    layer:
+    - 68
+    - 20
+    name: SUM
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VGND:
+    center:
+    - 5.04
+    - 0.123
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 5.04
+    - 3.208
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null
@@ -9,4 +46,3 @@ settings:
   info_version: 2
   module: sky130.components
   name: sky130_fd_sc_hs__ha_4
-version: 0.0.1

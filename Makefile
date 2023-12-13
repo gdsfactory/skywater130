@@ -1,47 +1,40 @@
-
 install:
-	pip install -r requirements.txt --upgrade
-	pip install -r requirements_dev.txt --upgrade
-	pip install -e .
+	pip install -e .[dev,docs]
 	pre-commit install
 
-watch:
-	gf yaml watch sky130
+dev: install
 
 test:
-	flake8 .
-	pytest
+	pytest -s
 
 cov:
-	pytest --cov= sky130
+	pytest --cov=sky130
 
 mypy:
 	mypy . --ignore-missing-imports
 
-lint:
-	flake8
-
-pylint:
-	pylint sky130
-
-lintd2:
-	flake8 --select RST
-
-lintd:
-	pydocstyle sky130
-
-doc8:
-	doc8 docs/
-
-update:
-	pur
+doc:
+	python docs/write_components_doc.py
 
 update-pre:
 	pre-commit autoupdate --bleeding-edge
+
+git-rm-merged:
+	git branch -D `git branch --merged | grep -v \* | xargs`
 
 release:
 	git push
 	git push --tags
 
 build:
-	python setup.py sdist bdist_wheel
+	rm -rf dist
+	pip install build
+	python -m build
+
+tech:
+	python3 install_tech.py
+
+docs:
+	jb build docs
+
+.PHONY: gdsdiff build conda docs

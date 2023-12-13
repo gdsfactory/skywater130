@@ -1,4 +1,29 @@
 name: sky130_fd_sc_hd__xnor3_1
+ports:
+  VGND:
+    center:
+    - 0.23
+    - 0.0
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 0.23
+    - 2.72
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null
@@ -9,4 +34,3 @@ settings:
   info_version: 2
   module: sky130.components
   name: sky130_fd_sc_hd__xnor3_1
-version: 0.0.1

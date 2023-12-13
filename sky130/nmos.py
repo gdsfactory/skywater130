@@ -1,6 +1,6 @@
 import gdsfactory as gf
 import numpy as np
-from gdsfactory.types import Float2, LayerSpec
+from gdsfactory.typings import Float2, LayerSpec
 
 
 @gf.cell
@@ -16,7 +16,6 @@ def nmos(
     contact_layer: LayerSpec = (66, 44),
     contact_enclosure: float = 0.1,
 ) -> gf.Component:
-
     """Return NMOS.
 
     Args:
@@ -86,4 +85,4 @@ def nmos(
 
 if __name__ == "__main__":
     c = nmos(gate_width=10, gate_length=1, sd_width=5)
-    c.show()
+    c.show(show_ports=True)

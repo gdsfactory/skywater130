@@ -1,4 +1,29 @@
 name: sky130_fd_sc_hs__or4b_2
+ports:
+  VGND:
+    center:
+    - 2.16
+    - 0.123
+    layer:
+    - 68
+    - 20
+    name: VGND
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
+  VPWR:
+    center:
+    - 2.16
+    - 3.208
+    layer:
+    - 68
+    - 20
+    name: VPWR
+    orientation: null
+    port_type: electrical
+    shear_angle: null
+    width: 0.2
 settings:
   changed: {}
   child: null
@@ -9,4 +34,3 @@ settings:
   info_version: 2
   module: sky130.components
   name: sky130_fd_sc_hs__or4b_2
-version: 0.0.1

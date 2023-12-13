@@ -1,9 +1,10 @@
-import pathlib
 import inspect
+import pathlib
+
 import sky130
 
-
-filepath = pathlib.Path(__file__).parent.absolute() / "components.rst"
+cells = pathlib.Path(__file__).parent.absolute() / "components.rst"
+pcells = pathlib.Path(__file__).parent.absolute() / "pcells.rst"
 
 skip = {
     "LIBRARY",
@@ -26,15 +27,47 @@ skip = {
 skip_plot = {}
 skip_settings = {"flatten", "safe_cell_names"}
 
+pcell_names = set(sky130.pcells.__all__)
+cell_names = set(sky130.cells.keys()) - pcell_names
 
-with open(filepath, "w+") as f:
+
+with open(pcells, "w+") as f:
     f.write(
         """
 
-Here are the components available in the PDK
+Here are the Parametric Pcells available in the PDK
 
+PCells
+=============================
 
-Components
+.. currentmodule:: sky130.pcells
+
+.. autosummary::
+   :toctree: _autosummary/
+
+"""
+    )
+
+    for name in sorted(pcell_names):
+        if name in skip or name.startswith("_"):
+            continue
+        print(name)
+        sig = inspect.signature(sky130.PDK.cells[name])
+        kwargs = ", ".join(
+            [
+                f"{p}={repr(sig.parameters[p].default)}"
+                for p in sig.parameters
+                if isinstance(sig.parameters[p].default, int | float | str | tuple)
+                and p not in skip_settings
+            ]
+        )
+        f.write(f"   {name}\n")
+
+with open(cells, "w+") as f:
+    f.write(
+        """
+
+Cells
 =============================
 
 .. currentmodule:: sky130.components
@@ -45,7 +78,7 @@ Components
 """
     )
 
-    for name in sorted(sky130.cells.keys()):
+    for name in sorted(cell_names):
         if name in skip or name.startswith("_"):
             continue
         print(name)
@@ -54,7 +87,7 @@ Components
             [
                 f"{p}={repr(sig.parameters[p].default)}"
                 for p in sig.parameters
-                if isinstance(sig.parameters[p].default, (int, float, str, tuple))
+                if isinstance(sig.parameters[p].default, int | float | str | tuple)
                 and p not in skip_settings
             ]
         )
