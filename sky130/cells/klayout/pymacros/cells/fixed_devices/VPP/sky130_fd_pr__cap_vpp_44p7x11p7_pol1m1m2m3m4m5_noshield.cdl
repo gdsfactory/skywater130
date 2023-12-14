@@ -1,4 +1,4 @@
- 
+
 # Copyright 2022 SkyWater PDK Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-.SUBCKT sky130_fd_pr__cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield 
+.SUBCKT sky130_fd_pr__cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield
 
 Cx  sky130_fd_pr__cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield
 
-.ENDS 
+.ENDS

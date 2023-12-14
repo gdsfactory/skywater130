@@ -1,26 +1,41 @@
 import gdsfactory as gf
 
-from .via_generator import *
-from .layers_def import *
+from .layers_def import (
+    cap2m_layer,
+    capm_layer,
+    hvtp_layer,
+    li_layer,
+    licon_layer,
+    m3_layer,
+    m4_layer,
+    m5_layer,
+    nsdm_layer,
+    nwell_layer,
+    poly_layer,
+    psdm_layer,
+    tap_layer,
+    via3_layer,
+    via4_layer,
+)
+from .via_generator import via_generator, via_stack
 
 
 def draw_cap_var(
     layout,
     type="sky130_fd_pr__cap_var_lvt",
-    l: float = 0.18,
+    l_c: float = 0.18,
     w: float = 1,
     tap_con_col: int = 1,
     gr: int = 1,
     grw: float = 0.17,
     nf: int = 1,
 ):
-
     """
     Retern varactor
 
     Args:
         layout : layout object
-        l : float of gate length
+        l_c : float of gate length
         w : float of gate width
         tap_con_col : int of tap contacts columns
         gr : boolaen of having guard ring
@@ -58,7 +73,7 @@ def draw_cap_var(
     tap_w = gate_con_spacing + tap_con
 
     tap = c_inst.add_ref(
-        gf.components.rectangle(size=(l + 2 * tap_w, w), layer=tap_layer)
+        gf.components.rectangle(size=(l_c + 2 * tap_w, w), layer=tap_layer)
     )
 
     # adding nsdm
@@ -80,18 +95,21 @@ def draw_cap_var(
         metal_level=1,
     )
     c_inst.add_array(
-        component=tap_con, columns=2, rows=1, spacing=(tap_w + l + gate_con_spacing, 0)
+        component=tap_con,
+        columns=2,
+        rows=1,
+        spacing=(tap_w + l_c + gate_con_spacing, 0),
     )
 
     poly = c_inst.add_ref(
-        gf.components.rectangle(size=(l, w + 2 * end_cap), layer=poly_layer)
+        gf.components.rectangle(size=(l_c, w + 2 * end_cap), layer=poly_layer)
     )
     poly.move((tap_w, -end_cap))
 
-    if l < (con_size[0] + 2 * con_enc[0]):
+    if l_c < (con_size[0] + 2 * con_enc[0]):
         pc_x = con_size[0] + 2 * con_enc[0]
     else:
-        pc_x = l
+        pc_x = l_c
 
     pc_y = con_size[1] + 2 * con_enc[1]
 
@@ -111,7 +129,7 @@ def draw_cap_var(
     pc = c_inst.add_array(
         component=c_pc, rows=2, columns=1, spacing=(0, pc_y + w + 2 * end_cap)
     )
-    pc.move((tap_w - ((pc_x - l) / 2), -pc_y - end_cap))
+    pc.move((tap_w - ((pc_x - l_c) / 2), -pc_y - end_cap))
 
     # adding nwell
     nwell = c_inst.add_ref(
@@ -154,11 +172,11 @@ def draw_cap_var(
             )
         )
         g_r_out.move((g_r_in.xmin - grw, g_r_in.ymin - grw))
-        g_r = c.add_ref(
+        c.add_ref(
             gf.geometry.boolean(A=g_r_out, B=g_r_in, operation="A-B", layer=tap_layer)
         )
 
-        g_r_li = c.add_ref(
+        c.add_ref(
             gf.geometry.boolean(A=g_r_out, B=g_r_in, operation="A-B", layer=li_layer)
         )
 
@@ -183,7 +201,7 @@ def draw_cap_var(
         )
         g_psdm_out.move((g_r_out.xmin - tap_nsdm_enc, g_r_out.ymin - tap_nsdm_enc))
 
-        g_psdm = c.add_ref(
+        c.add_ref(
             gf.geometry.boolean(
                 A=g_psdm_out, B=g_psdm_in, operation="A-B", layer=psdm_layer
             )
@@ -194,7 +212,7 @@ def draw_cap_var(
         else:
             g_con_range = (g_r_out.ymin, g_r_out.ymax)
 
-        g_licon_u = c.add_ref(
+        c.add_ref(
             via_generator(
                 x_range=(g_r_in.xmin + 0.17, g_r_in.xmax - 0.17),
                 y_range=(g_r_in.ymax, g_r_out.ymax),
@@ -205,7 +223,7 @@ def draw_cap_var(
             )
         )
 
-        g_licon_d = c.add_ref(
+        c.add_ref(
             via_generator(
                 x_range=(g_r_in.xmin + 0.17, g_r_in.xmax - 0.17),
                 y_range=(g_r_out.ymin, g_r_in.ymin),
@@ -216,7 +234,7 @@ def draw_cap_var(
             )
         )
 
-        g_licon_l = c.add_ref(
+        c.add_ref(
             via_generator(
                 x_range=(g_r_out.xmin, g_r_in.xmin),
                 y_range=g_con_range,
@@ -227,7 +245,7 @@ def draw_cap_var(
             )
         )
 
-        g_licon_r = c.add_ref(
+        c.add_ref(
             via_generator(
                 x_range=(g_r_in.xmax, g_r_out.xmax),
                 y_range=g_con_range,
@@ -241,7 +259,7 @@ def draw_cap_var(
     if type == "sky130_fd_pr__cap_var_hvt":
         hvtp = c_inst.add_ref(
             gf.components.rectangle(
-                size=(l + 2 * hv_enc, w + 2 * hv_enc), layer=hvtp_layer
+                size=(l_c + 2 * hv_enc, w + 2 * hv_enc), layer=hvtp_layer
             )
         )
         hvtp.move((poly.xmin - hv_enc, tap.ymin - hv_enc))
@@ -256,16 +274,15 @@ def draw_cap_var(
 def draw_mim_cap(
     layout,
     type="sky130_fd_pr__model__cap_mim",
-    l: float = 2,
+    l_c: float = 2,
     w: float = 2,
 ):
-
     """
     Retern mim cap
 
     Args:
         layout : layout object
-        l : float of capm length
+        l_c : float of capm length
         w : float of capm width
 
 
@@ -277,7 +294,6 @@ def draw_mim_cap(
 
     bottom_layer = m3_layer
     upper_layer = m4_layer
-    lbl = m4_lbl
     via_layer = via3_layer
     via_size = (0.2, 0.2)
     via_enc = (0.09, 0.065)
@@ -291,7 +307,6 @@ def draw_mim_cap(
     if type == "sky130_fd_pr__model__cap_mim_m4":
         bottom_layer = m4_layer
         upper_layer = m5_layer
-        lbl = m5_lbl
         via_layer = via4_layer
         via_size = (0.8, 0.8)
         via_enc = (0.31, 0.31)
@@ -305,7 +320,7 @@ def draw_mim_cap(
     side_enc = (0.02, 0.06)
 
     # drawing cap identifier and bottom , upper layers
-    cap = c.add_ref(gf.components.rectangle(size=(w, l), layer=cap_layer))
+    cap = c.add_ref(gf.components.rectangle(size=(w, l_c), layer=cap_layer))
 
     m_up1 = c.add_ref(
         gf.components.rectangle(

@@ -14,11 +14,12 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from .res_klayout_panel import res
 from .res_poly_child import res_poly_draw
+
 # ################constants################
 L_MIN = 1.65
 W_MIN = 0.33
-L_MIN_ISO=26.5
-W_MIN_ISO=2.65
+L_MIN_ISO = 26.5
+W_MIN_ISO = 2.65
 L_MIN_PO = 0.5
 W_MIN_0P35 = 0.35
 W_MIN_0P69 = 0.69
@@ -65,7 +66,7 @@ class res_poly(res):
         )
         self.Type_handle.add_choice(
             "sky130_fd_pr__res_iso_pw", "sky130_fd_pr__res_iso_pw"
-        )        
+        )
         self.Type_handle.add_choice(
             "sky130_fd_pr__res_high_po_0p35", "sky130_fd_pr__res_high_po_0p35"
         )
@@ -119,7 +120,7 @@ class res_poly(res):
         if self.type == "sky130_fd_pr__res_generic_po":
             super().coerce_parameters_impl(L_MIN, W_MIN)  # (l_min,w_min)
             self.res_value = RES_GEN * self.area
-        
+
         elif self.type == "sky130_fd_pr__res_iso_pw":
             super().coerce_parameters_impl(L_MIN_ISO, W_MIN_ISO)
             self.res_value = RES_ISO * self.area
@@ -167,6 +168,6 @@ class res_poly(res):
         """
         drw = res_poly_draw(self.type)
         instance = drw.your_res(
-            self.layout, l=self.len, w=self.w, type=self.type, gr=self.gr
+            self.layout, l_res=self.len, w=self.w, type=self.type, gr=self.gr
         )
         super().produce_impl(instance)

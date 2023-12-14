@@ -17,25 +17,23 @@
 # res Generator for skywater130
 
 import math
-from .layers_def import (
 
-    tap_layer,
-    psdm_layer,
-    nsdm_layer,
+from .layers_def import (
+    dnwell_layer,
     li_layer,
     licon_layer,
     m1_layer,
     mcon_layer,
-    rpm_drawing,
-    rpm_high_drawing,
     npc_layer,
+    nsdm_layer,
+    nwell_layer,
     poly_layer,
     poly_res,
+    psdm_layer,
     pwell_res,
-    dnwell_layer,
-    nwell_layer,
-
-
+    rpm_drawing,
+    rpm_high_drawing,
+    tap_layer,
 )
 from .parent_res import draw_res
 
@@ -69,22 +67,22 @@ L_MIN_ISO = 26.5
 W_MIN_ISO = 2.65
 
 # react
-DNWELL=[1.82,1.03]
+DNWELL = [1.82, 1.03]
 # FRAME
-NWELL=[2.22,1.43,1.43]
+NWELL = [2.22, 1.43, 1.43]
 TAP_LI_LAYER_ISO = [1.59, 0.8, 0.17]
 NSDM_LAYER_ISO = [1.715, 0.925, 0.42]
 # CONTACTS H
-TAP_ISO=[0,0.53,0,0,0]
-PSDM_ISO=[-0.125,0.78,0,0,0]
-LI_ISO=[0,0.53,0,0,0]
-M1_ISO=[0.055,0.325,0,0,0]
-LICON_ISO=[0.01,0.17,0.17,0,0.17]
-LICON_ISO2=0.35
-LICON_ISO3=1.42
-MCON_ISO=[0.13,0.17,0.17,0,0.19]
+TAP_ISO = [0, 0.53, 0, 0, 0]
+PSDM_ISO = [-0.125, 0.78, 0, 0, 0]
+LI_ISO = [0, 0.53, 0, 0, 0]
+M1_ISO = [0.055, 0.325, 0, 0, 0]
+LICON_ISO = [0.01, 0.17, 0.17, 0, 0.17]
+LICON_ISO2 = 0.35
+LICON_ISO3 = 1.42
+MCON_ISO = [0.13, 0.17, 0.17, 0, 0.19]
 # CONTACTS H
-LICON_ISO_H=[0.63,0.17,0.17,2.1,0.17]
+LICON_ISO_H = [0.63, 0.17, 0.17, 2.1, 0.17]
 # ###############################
 # THE REST OF THE RES
 L_MIN = 0.5
@@ -136,7 +134,7 @@ class res_poly_draw(draw_res):
 
     def poly_res(
         self,
-        l: float = L_MIN,
+        l_res: float = L_MIN,
         w: float = W_MIN,
         gr: int = GR,
         n_mcon: int = 0,
@@ -146,7 +144,7 @@ class res_poly_draw(draw_res):
         """draw the res the specific res with right data
 
         Args:
-            l(float):  length of the resistor
+            l_res(float):  length of the resistor
             w(float):  width of the resistor
             gr(int):  guard ring of the resistor
             n_mcon(float):  mcon_layer number of columns
@@ -155,7 +153,7 @@ class res_poly_draw(draw_res):
 
         """
         # rects
-        self.set_l_w(l + EXTRA_LEN, w)
+        self.set_l_w(l_res + EXTRA_LEN, w)
         rpm_layer = rpm_drawing
         if xhigh:
             rpm_layer = rpm_high_drawing
@@ -180,7 +178,6 @@ class res_poly_draw(draw_res):
         w1 = [TAP_LI_LAYER[1], TAP_LI_LAYER[1]]
         thick = [TAP_LI_LAYER[2], TAP_LI_LAYER[2]]
         if gr:
-
             self.draw_frame_layer(layer_names, l1, w1, thick)
 
         # countacts
@@ -210,11 +207,10 @@ class res_poly_draw(draw_res):
         l1 = [LICON_LAYER[0]]
         sizes_l = [LICON_LAYER[1]]
         sizes_w = [LICON_LAYER[2]]
-        space_fit_in = [l + LICON_LAYER[3]]
+        space_fit_in = [l_res + LICON_LAYER[3]]
         spaces = [LICON_LAYER[4]]
 
         if gr:
-
             self.draw_contact_layer_v(
                 layer_names, l1, sizes_w, sizes_l, space_fit_in, spaces
             )
@@ -228,7 +224,7 @@ class res_poly_draw(draw_res):
         self,
         layout,
         type="sky130_fd_pr__res_generic_po",
-        l: float = L_MIN_G,
+        l_res: float = L_MIN_G,
         w: float = W_MIN_G,
         gr: int = GR,
     ):
@@ -237,12 +233,12 @@ class res_poly_draw(draw_res):
         Args:
             layout(layout):  drawing layout
             type(str):  type of the resistor
-            l(float):  length of the resistor
+            l_res(float):  length of the resistor
             w(float):  width of the resistor
             gr(int):  guard ring of the resistor
 
         """
-        self.set_l_w(l, w)
+        self.set_l_w(l_res, w)
 
         if type == "sky130_fd_pr__res_generic_po":
             # rects
@@ -258,7 +254,6 @@ class res_poly_draw(draw_res):
             w1 = [TAP_LI_LAYER_G[1], PSDM_LAYER_G[1], TAP_LI_LAYER_G[1]]
             thick = [TAP_LI_LAYER_G[2], PSDM_LAYER_G[2], TAP_LI_LAYER_G[2]]
             if gr:
-
                 self.draw_frame_layer(layer_names, l1, w1, thick)
 
             # countacts
@@ -359,11 +354,10 @@ class res_poly_draw(draw_res):
             l1 = [LICON_LAYER_G[0]]
             sizes_l = [LICON_LAYER_G[1]]
             sizes_w = [LICON_LAYER_G[2]]
-            space_fit_in = [l + LICON_LAYER_G[3]]
+            space_fit_in = [l_res + LICON_LAYER_G[3]]
             spaces = [LICON_LAYER_G[4]]
 
             if gr:
-
                 self.draw_contact_layer_v(
                     layer_names, l1, sizes_w, sizes_l, space_fit_in, spaces
                 )
@@ -377,13 +371,13 @@ class res_poly_draw(draw_res):
             layout.read("res_temp.gds")
             cell_name = type
             return layout.cell(cell_name)
- 
+
         elif type == "sky130_fd_pr__res_iso_pw":
             # rects
             layer_names = [pwell_res, dnwell_layer]
             l1 = [0, DNWELL[0]]
             w1 = [0, DNWELL[1]]
-            if gr==0:
+            if gr == 0:
                 layer_names = [pwell_res]
                 l1 = [0]
                 w1 = [0]
@@ -391,13 +385,17 @@ class res_poly_draw(draw_res):
             self.draw_rect_layer(layer_names, l1, w1)
 
             # frams
-            layer_names = [nwell_layer, tap_layer,nsdm_layer ,li_layer]
-            l1 = [NWELL[0], TAP_LI_LAYER_ISO[0], NSDM_LAYER_ISO[0],TAP_LI_LAYER_ISO[0]]
-            w1 = [NWELL[1], TAP_LI_LAYER_ISO[1], NSDM_LAYER_ISO[1],TAP_LI_LAYER_ISO[1]]
-            thick = [NWELL[2], TAP_LI_LAYER_ISO[2], NSDM_LAYER_ISO[2],TAP_LI_LAYER_ISO[2]]
-           
-            if gr:
+            layer_names = [nwell_layer, tap_layer, nsdm_layer, li_layer]
+            l1 = [NWELL[0], TAP_LI_LAYER_ISO[0], NSDM_LAYER_ISO[0], TAP_LI_LAYER_ISO[0]]
+            w1 = [NWELL[1], TAP_LI_LAYER_ISO[1], NSDM_LAYER_ISO[1], TAP_LI_LAYER_ISO[1]]
+            thick = [
+                NWELL[2],
+                TAP_LI_LAYER_ISO[2],
+                NSDM_LAYER_ISO[2],
+                TAP_LI_LAYER_ISO[2],
+            ]
 
+            if gr:
                 self.draw_frame_layer(layer_names, l1, w1, thick)
 
             # countacts
@@ -410,7 +408,7 @@ class res_poly_draw(draw_res):
                 licon_layer,
                 licon_layer,
                 licon_layer,
-                mcon_layer
+                mcon_layer,
             ]
 
             l1 = [
@@ -421,7 +419,7 @@ class res_poly_draw(draw_res):
                 LICON_ISO[0],
                 LICON_ISO2,
                 LICON_ISO3,
-                MCON_ISO[0]
+                MCON_ISO[0],
             ]
             sizes_l = [
                 TAP_ISO[1],
@@ -431,18 +429,27 @@ class res_poly_draw(draw_res):
                 LICON_ISO[1],
                 LICON_ISO[1],
                 LICON_ISO[1],
-                MCON_ISO[1]
+                MCON_ISO[1],
             ]
-            sizes_w = [w-0.4, w-0.15, w-0.48, w - 0.4, LICON_ISO[2],LICON_ISO[2],LICON_ISO[2],MCON_ISO[2]]
+            sizes_w = [
+                w - 0.4,
+                w - 0.15,
+                w - 0.48,
+                w - 0.4,
+                LICON_ISO[2],
+                LICON_ISO[2],
+                LICON_ISO[2],
+                MCON_ISO[2],
+            ]
             space_fit_in = [
                 TAP_ISO[3],
                 PSDM_ISO[3],
                 LI_ISO[3],
                 M1_ISO[3],
-                w-0.6,
-                w-0.6,
-                w+0.76,
-                w-0.49
+                w - 0.6,
+                w - 0.6,
+                w + 0.76,
+                w - 0.49,
             ]
             spaces = [
                 TAP_ISO[4],
@@ -452,7 +459,7 @@ class res_poly_draw(draw_res):
                 LICON_ISO[4],
                 LICON_ISO[4],
                 LICON_ISO[4],
-                MCON_ISO[4]
+                MCON_ISO[4],
             ]
 
             if gr == 0:
@@ -463,7 +470,7 @@ class res_poly_draw(draw_res):
                     m1_layer,
                     licon_layer,
                     licon_layer,
-                    mcon_layer
+                    mcon_layer,
                 ]
 
                 l1 = [
@@ -473,7 +480,7 @@ class res_poly_draw(draw_res):
                     M1_ISO[0],
                     LICON_ISO[0],
                     LICON_ISO2,
-                    MCON_ISO[0]
+                    MCON_ISO[0],
                 ]
                 sizes_l = [
                     TAP_ISO[1],
@@ -482,17 +489,25 @@ class res_poly_draw(draw_res):
                     M1_ISO[1],
                     LICON_ISO[1],
                     LICON_ISO[1],
-                    MCON_ISO[1]
+                    MCON_ISO[1],
                 ]
-                sizes_w = [w-0.4, w-0.15, w-0.48, w - 0.4, LICON_ISO[2],LICON_ISO[2],MCON_ISO[2]]
+                sizes_w = [
+                    w - 0.4,
+                    w - 0.15,
+                    w - 0.48,
+                    w - 0.4,
+                    LICON_ISO[2],
+                    LICON_ISO[2],
+                    MCON_ISO[2],
+                ]
                 space_fit_in = [
                     TAP_ISO[3],
                     PSDM_ISO[3],
                     LI_ISO[3],
                     M1_ISO[3],
-                    w-0.6,
-                    w-0.6,
-                    w-0.49
+                    w - 0.6,
+                    w - 0.6,
+                    w - 0.49,
                 ]
                 spaces = [
                     TAP_ISO[4],
@@ -501,8 +516,8 @@ class res_poly_draw(draw_res):
                     M1_ISO[4],
                     LICON_ISO[4],
                     LICON_ISO[4],
-                    MCON_ISO[4]
-                ]    
+                    MCON_ISO[4],
+                ]
 
             self.draw_contact_layer_h(
                 layer_names, l1, sizes_w, sizes_l, space_fit_in, spaces
@@ -512,15 +527,13 @@ class res_poly_draw(draw_res):
             l1 = [LICON_ISO_H[0]]
             sizes_l = [LICON_ISO_H[1]]
             sizes_w = [LICON_ISO_H[2]]
-            space_fit_in = [l + LICON_ISO_H[3]]
+            space_fit_in = [l_res + LICON_ISO_H[3]]
             spaces = [LICON_ISO_H[4]]
 
             if gr:
-
                 self.draw_contact_layer_v(
                     layer_names, l1, sizes_w, sizes_l, space_fit_in, spaces
                 )
-
 
             c = self.get_c()
             c.write_gds("res_temp.gds")
@@ -528,29 +541,28 @@ class res_poly_draw(draw_res):
             cell_name = type
             return layout.cell(cell_name)
 
- 
         elif type == "sky130_fd_pr__res_high_po_0p35":
-            self.poly_res(l, W_MIN_0P35, gr, 0, RPM_FOR_LAYERS[0])
+            self.poly_res(l_res, W_MIN_0P35, gr, 0, RPM_FOR_LAYERS[0])
         elif type == "sky130_fd_pr__res_high_po_0p69":
-            self.poly_res(l, W_MIN_0P69, gr, 1, RPM_FOR_LAYERS[1])
+            self.poly_res(l_res, W_MIN_0P69, gr, 1, RPM_FOR_LAYERS[1])
         elif type == "sky130_fd_pr__res_high_po_1p41":
-            self.poly_res(l, W_MIN_1P41, gr, 1, RPM_FOR_LAYERS[2])
+            self.poly_res(l_res, W_MIN_1P41, gr, 1, RPM_FOR_LAYERS[2])
         elif type == "sky130_fd_pr__res_high_po_2p85":
-            self.poly_res(l, W_MIN_2P85, gr, 1, RPM_FOR_LAYERS[3])
+            self.poly_res(l_res, W_MIN_2P85, gr, 1, RPM_FOR_LAYERS[3])
         elif type == "sky130_fd_pr__res_high_po_5p73":
-            self.poly_res(l, W_MIN_5P73, gr, 1, RPM_FOR_LAYERS[4])
+            self.poly_res(l_res, W_MIN_5P73, gr, 1, RPM_FOR_LAYERS[4])
         # high
 
         elif type == "sky130_fd_pr__res_xhigh_po_0p35":
-            self.poly_res(l, W_MIN_0P35, gr, 0, RPM_FOR_LAYERS[0], 1)
+            self.poly_res(l_res, W_MIN_0P35, gr, 0, RPM_FOR_LAYERS[0], 1)
         elif type == "sky130_fd_pr__res_xhigh_po_0p69":
-            self.poly_res(l, W_MIN_0P69, gr, 1, RPM_FOR_LAYERS[1], 1)
+            self.poly_res(l_res, W_MIN_0P69, gr, 1, RPM_FOR_LAYERS[1], 1)
         elif type == "sky130_fd_pr__res_xhigh_po_1p41":
-            self.poly_res(l, W_MIN_1P41, gr, 1, RPM_FOR_LAYERS[2], 1)
+            self.poly_res(l_res, W_MIN_1P41, gr, 1, RPM_FOR_LAYERS[2], 1)
         elif type == "sky130_fd_pr__res_xhigh_po_2p85":
-            self.poly_res(l, W_MIN_2P85, gr, 1, RPM_FOR_LAYERS[3], 1)
+            self.poly_res(l_res, W_MIN_2P85, gr, 1, RPM_FOR_LAYERS[3], 1)
         elif type == "sky130_fd_pr__res_xhigh_po_5p73":
-            self.poly_res(l, W_MIN_5P73, gr, 1, RPM_FOR_LAYERS[4], 1)
+            self.poly_res(l_res, W_MIN_5P73, gr, 1, RPM_FOR_LAYERS[4], 1)
 
         c = self.get_c()
         c.write_gds("res_temp.gds")
