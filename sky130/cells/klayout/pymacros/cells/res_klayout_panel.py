@@ -27,7 +27,7 @@ class res(pya.PCellDeclarationHelper):
 
     def __init__(self, l_min, w_min):
         # Initialize super class.
-        super(res, self).__init__()
+        super().__init__()
 
         # ===================== PARAMETERS DECLARATIONS =====================
 
@@ -37,9 +37,7 @@ class res(pya.PCellDeclarationHelper):
         self.param("w", self.TypeDouble, "width", default=w_min, unit="um")
 
         self.param("gr", self.TypeBoolean, "Gaurd Ring", default=1)
-        self.param(
-            "area", self.TypeDouble, "Area", readonly=True, unit="um^2"
-        )
+        self.param("area", self.TypeDouble, "Area", readonly=True, unit="um^2")
         self.param(
             "res_value",
             self.TypeDouble,
@@ -92,11 +90,7 @@ class res(pya.PCellDeclarationHelper):
         we can use any shape which has a finite bounding box
         """
 
-        return (
-            self.shape.is_box()
-            or self.shape.is_polygon()
-            or self.shape.is_path()
-        )
+        return self.shape.is_box() or self.shape.is_polygon() or self.shape.is_path()
 
     def parameters_from_shape_impl(self):
         """Implement the "Create PCell from shape" protocol:

@@ -19,16 +19,16 @@
 from .layers_def import (
     diff_layer,
     diff_res,
-    nsdm_layer,
-    tap_layer,
-    psdm_layer,
+    hvi_layer,
+    hvntm_layer,
     li_layer,
     licon_layer,
     m1_layer,
     mcon_layer,
-    hvi_layer,
-    hvntm_layer,
+    nsdm_layer,
     nwell_layer,
+    psdm_layer,
+    tap_layer,
 )
 from .parent_res import draw_res
 
@@ -93,7 +93,7 @@ class res_diff_draw(draw_res):
         self,
         layout,
         type="sky130_fd_pr__res_nd_lvt",
-        l: float = 2.1,
+        l_res: float = 2.1,
         w: float = 0.42,
         gr: int = 1,
     ):
@@ -102,14 +102,13 @@ class res_diff_draw(draw_res):
         Args:
             layout(layout):  drawing layout
             type(float):  type of the resistor
-            l(float):  length of the resistor
+            l_res(float):  length of the resistor
             w(float):  width of the resistor
             gr(int):  guard ring of the resistor
 
         """
-        self.set_l_w(l, w)
+        self.set_l_w(l_res, w)
         if type == "sky130_fd_pr__res_nd_lvt":
-
             # rects
             layer_names = [diff_res, diff_layer, nsdm_layer]
             l1 = [DIFF_RES, DIFF_LAYER_ND[0], NSDM_LAYER_ND[0]]
@@ -229,7 +228,7 @@ class res_diff_draw(draw_res):
                 l1 = [LICON3_ND_LVT[0]]
                 sizes_l = [LICON3_ND_LVT[1]]
                 sizes_w = [LICON3_ND_LVT[2]]
-                space_fit_in = [l + LICON3_ND_LVT[3]]
+                space_fit_in = [l_res + LICON3_ND_LVT[3]]
                 spaces = [LICON3_ND_LVT[4]]
                 self.draw_contact_layer_v(
                     layer_names, l1, sizes_w, sizes_l, space_fit_in, spaces
@@ -404,7 +403,7 @@ class res_diff_draw(draw_res):
             l1 = [LICON3_ND_HVT]
             sizes_l = [LICON3_ND_LVT[1]]
             sizes_w = [LICON3_ND_LVT[2]]
-            space_fit_in = [l + LICON3_ND_LVT[3]]
+            space_fit_in = [l_res + LICON3_ND_LVT[3]]
             spaces = [LICON3_ND_LVT[4]]
 
             if gr:
@@ -418,7 +417,6 @@ class res_diff_draw(draw_res):
             cell_name = type
             return layout.cell(cell_name)
         elif type == "sky130_fd_pr__res_pd_lvt":
-
             # rects
             layer_names = [
                 diff_res,
@@ -448,7 +446,6 @@ class res_diff_draw(draw_res):
             thick = [TAP_ND_LVT[2], PSDM_ND_LVT[2], LI_ND_LVT[2]]
 
             if gr:
-
                 self.draw_frame_layer(layer_names, l1, w1, thick)
 
             # countacts
@@ -503,7 +500,6 @@ class res_diff_draw(draw_res):
             ]
 
             if gr == 0:
-
                 layer_names = [
                     licon_layer,
                     mcon_layer,
@@ -555,10 +551,9 @@ class res_diff_draw(draw_res):
             l1 = [LICON3_ND_LVT[0]]
             sizes_l = [LICON3_ND_LVT[1]]
             sizes_w = [LICON3_ND_LVT[2]]
-            space_fit_in = [l + LICON3_ND_LVT[3]]
+            space_fit_in = [l_res + LICON3_ND_LVT[3]]
             spaces = [LICON3_ND_LVT[4]]
             if gr:
-
                 self.draw_contact_layer_v(
                     layer_names, l1, sizes_w, sizes_l, space_fit_in, spaces
                 )
@@ -569,7 +564,6 @@ class res_diff_draw(draw_res):
             cell_name = type
             return layout.cell(cell_name)
         elif type == "sky130_fd_pr__res_pd_hvt":
-
             # rects
             layer_names = [
                 diff_res,
@@ -611,7 +605,6 @@ class res_diff_draw(draw_res):
             thick = [TAP_PD_HVT[2], PSDM_PD_HVT[2], LI_PD_HVT[2]]
 
             if gr:
-
                 self.draw_frame_layer(layer_names, l1, w1, thick)
 
             # countacts
@@ -716,10 +709,9 @@ class res_diff_draw(draw_res):
             l1 = [LICON3_ND_HVT]
             sizes_l = [LICON3_ND_LVT[1]]
             sizes_w = [LICON3_ND_LVT[2]]
-            space_fit_in = [l + LICON3_ND_LVT[3]]
+            space_fit_in = [l_res + LICON3_ND_LVT[3]]
             spaces = [LICON3_ND_LVT[4]]
             if gr:
-
                 self.draw_contact_layer_v(
                     layer_names, l1, sizes_w, sizes_l, space_fit_in, spaces
                 )

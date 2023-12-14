@@ -15,17 +15,19 @@
 
 # res Generator for skywater130
 
-import gdsfactory as gf
 import math
-
 from abc import ABC, abstractmethod
+
+import gdsfactory as gf
 
 # ##############CONSTANT############3
 
 
-CONTACT_SPACE=0.19
-CONTACT_S=0.18
-CONTACT_N=10
+CONTACT_SPACE = 0.19
+CONTACT_S = 0.18
+CONTACT_N = 10
+
+
 ############################3
 class draw_res(ABC):
     """parent abstracted class for the backend of the res
@@ -57,10 +59,10 @@ class draw_res(ABC):
                 [0.5*width of the layers - 0.5*width of the marked layer]
 
         """
-        for layer_, l, w in zip(layer_names, l_space, w_space):
+        for layer_, l_rect, w in zip(layer_names, l_space, w_space):
             self.c.add_ref(
                 gf.components.rectangle(
-                    size=(self.w_res + 2 * w, self.l_res + 2 * l),
+                    size=(self.w_res + 2 * w, self.l_res + 2 * l_rect),
                     layer=layer_,
                     centered=True,
                 )
@@ -79,36 +81,28 @@ class draw_res(ABC):
                 list of the thickness of the frame
 
         """
-        for layer_, l, w, thick in zip(lay_nm, l_sp, w_sp, thi):
+        for layer_, l_frame, w, thick in zip(lay_nm, l_sp, w_sp, thi):
             l_h = thick
             w_h = self.w_res + 2 * w
 
-            l_v = self.l_res + 2 * l - 2 * thick
+            l_v = self.l_res + 2 * l_frame - 2 * thick
             w_v = thick
 
             res1 = self.c.add_ref(
-                gf.components.rectangle(
-                    size=(w_h, l_h), layer=layer_, centered=True
-                )
+                gf.components.rectangle(size=(w_h, l_h), layer=layer_, centered=True)
             )
             res2 = self.c.add_ref(
-                gf.components.rectangle(
-                    size=(w_h, l_h), layer=layer_, centered=True
-                )
+                gf.components.rectangle(size=(w_h, l_h), layer=layer_, centered=True)
             )
 
             res1.movey(0.5 * l_v + 0.5 * l_h)
             res2.movey(-1 * (0.5 * l_v + 0.5 * l_h))
 
             res1 = self.c.add_ref(
-                gf.components.rectangle(
-                    size=(w_v, l_v), layer=layer_, centered=True
-                )
+                gf.components.rectangle(size=(w_v, l_v), layer=layer_, centered=True)
             )
             res2 = self.c.add_ref(
-                gf.components.rectangle(
-                    size=(w_v, l_v), layer=layer_, centered=True
-                )
+                gf.components.rectangle(size=(w_v, l_v), layer=layer_, centered=True)
             )
 
             res1.movex(0.5 * w_h - 0.5 * w_v)
@@ -133,10 +127,9 @@ class draw_res(ABC):
                 list of the spaces btw the contacts
 
         """
-        for layer_, l, size_l, size_w, space_fit, space_btw in zip(
+        for layer_, l_h, size_l, size_w, space_fit, space_btw in zip(
             layer_names, l_space, sizes_l, sizes_w, s_fit_in, s_btw
         ):
-
             counts = math.floor((space_fit) / (size_w + space_btw))
             if counts < 1:
                 counts = 1
@@ -156,8 +149,8 @@ class draw_res(ABC):
                 spacing=(size_w + space_btw, size_w + space_btw),
             )
 
-            res_ar1.movey(size_l * 0.5 + l + self.l_res * 0.5)
-            res_ar2.movey(-1 * (size_l * 0.5 + l + self.l_res * 0.5))
+            res_ar1.movey(size_l * 0.5 + l_h + self.l_res * 0.5)
+            res_ar2.movey(-1 * (size_l * 0.5 + l_h + self.l_res * 0.5))
 
             res_ar1.movex(-(counts - 1) * (size_w + space_btw) * 0.5)
             res_ar2.movex(-(counts - 1) * (size_w + space_btw) * 0.5)
@@ -188,7 +181,7 @@ class draw_res(ABC):
         """
         if spaces_btw is None:
             spaces_btw = sizes_w
-        for layer_, l, size_l, size_w, space_fit, space_btw in zip(
+        for layer_, l_v, size_l, size_w, space_fit, space_btw in zip(
             layer_names,
             l_space,
             sizes_l,
@@ -196,7 +189,6 @@ class draw_res(ABC):
             space_fit_in,
             spaces_btw,
         ):
-
             counts = math.floor((space_fit) / (size_w + space_btw))
             res = gf.components.rectangle(
                 size=(size_w, size_l), layer=layer_, centered=True
@@ -217,8 +209,8 @@ class draw_res(ABC):
             res_ar1.movey(-(counts - 1) * size_l)
             res_ar2.movey(-(counts - 1) * size_l)
 
-            res_ar1.movex(0.5 * self.w_res + l + 0.5 * size_w)
-            res_ar2.movex(-(0.5 * self.w_res + l + 0.5 * size_w))
+            res_ar1.movex(0.5 * self.w_res + l_v + 0.5 * size_w)
+            res_ar2.movex(-(0.5 * self.w_res + l_v + 0.5 * size_w))
 
     def draw_2dArr_layer(self, layer_names, mcon_d, l_up=0, l_down=0, n=0):
         """draw the 2d contact layers of the res
@@ -233,7 +225,7 @@ class draw_res(ABC):
             size=(mcon_d, mcon_d), layer=layer_names, centered=True
         )
 
-        counts_arr = math.floor(self.w_res / (2*CONTACT_S))
+        counts_arr = math.floor(self.w_res / (2 * CONTACT_S))
         if counts_arr <= 0:
             counts_arr = 1
         if counts_arr % 2 == 0 and counts_arr > CONTACT_N:

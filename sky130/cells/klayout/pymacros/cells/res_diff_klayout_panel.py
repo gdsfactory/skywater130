@@ -12,8 +12,8 @@
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-from .res_klayout_panel import res
 from .res_diff_child import res_diff_draw
+from .res_klayout_panel import res
 
 # ################constants################
 L_MIN = 2.1
@@ -82,6 +82,6 @@ class res_diff(res):
         """
         drw = res_diff_draw(self.type)
         instance = drw.your_res(
-            self.layout, l=self.len, w=self.w, type=self.type, gr=self.gr
+            self.layout, l_res=self.len, w=self.w, type=self.type, gr=self.gr
         )
         super().produce_impl(instance)

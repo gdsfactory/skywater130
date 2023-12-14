@@ -16,22 +16,23 @@
 
 # res Generator for skywater130
 
+from gdsfactory.types import LayerSpec
+
 from .layers_def import (
     li1_res,
     li_layer,
-    met1_res,
-    met2_res,
-    met3_res,
-    met4_res,
-    met5_res,
     m1_layer,
     m2_layer,
     m3_layer,
     m4_layer,
     m5_layer,
+    met1_res,
+    met2_res,
+    met3_res,
+    met4_res,
+    met5_res,
 )
 from .parent_res import draw_res
-from gdsfactory.types import LayerSpec
 
 # ########constants##########
 # ONLY FOR GENERIC RES
@@ -71,7 +72,7 @@ class res_metal_draw(draw_res):
         self,
         layout,
         type="sky130_fd_pr__res_generic_l1",
-        l: float = L_MIN_G,
+        l_res: float = L_MIN_G,
         w: float = W_MIN_G,
     ):
         """draw the res with calling the parent func with right data
@@ -83,7 +84,7 @@ class res_metal_draw(draw_res):
             w(float):  width of the resistor
 
         """
-        self.set_l_w(l, w)
+        self.set_l_w(l_res, w)
 
         if type == "sky130_fd_pr__res_generic_l1":
             self.gen_res(li1_res, li_layer)

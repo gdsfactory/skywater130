@@ -113,7 +113,5 @@ class res_metal(res):
 
         """
         drw = res_metal_draw(self.type)
-        instance = drw.your_res(
-            self.layout, l=self.len, w=self.w, type=self.type
-        )
+        instance = drw.your_res(self.layout, l_res=self.len, w=self.w, type=self.type)
         super().produce_impl(instance)
