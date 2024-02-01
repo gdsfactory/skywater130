@@ -35,7 +35,7 @@ dev = [
 ]
 docs = [
   "jupytext",
-  "jupyter-book==0.15.1"
+  "jupyter-book==1.0.0"
 ]
 
 [tool.black]
