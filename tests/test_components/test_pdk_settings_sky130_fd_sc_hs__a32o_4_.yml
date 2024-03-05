@@ -1,36 +1,5 @@
+function: sky130_fd_sc_hs__a32o_4
+info: {}
+module: sky130.components
 name: sky130_fd_sc_hs__a32o_4
-ports:
-  VGND:
-    center:
-    - 4.08
-    - 0.123
-    layer:
-    - 68
-    - 20
-    name: VGND
-    orientation: null
-    port_type: electrical
-    shear_angle: null
-    width: 0.2
-  VPWR:
-    center:
-    - 4.08
-    - 3.208
-    layer:
-    - 68
-    - 20
-    name: VPWR
-    orientation: null
-    port_type: electrical
-    shear_angle: null
-    width: 0.2
-settings:
-  changed: {}
-  child: null
-  default: {}
-  full: {}
-  function_name: sky130_fd_sc_hs__a32o_4
-  info: {}
-  info_version: 2
-  module: sky130.components
-  name: sky130_fd_sc_hs__a32o_4
+settings: {}

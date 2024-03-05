@@ -1,8 +1,8 @@
 install:
 	pip install -e .[dev,docs]
-	pre-commit install
 
 dev: install
+	pre-commit install
 
 test:
 	pytest -s

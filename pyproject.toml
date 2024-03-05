@@ -15,7 +15,7 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "gdsfactory[cad]==7.8.17",
+  "gdsfactory==7.16.0",
   "PySpice"
 ]
 description = "skywater130 pdk"
@@ -35,28 +35,8 @@ dev = [
 ]
 docs = [
   "jupytext",
-  "jupyter-book==0.15.1"
+  "jupyter-book==1.0.0"
 ]
-
-[tool.black]
-exclude = '''  # Specify the files/dirs that should be ignored by the black formatter
-/(
-    \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | env
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
-include = '\.pyi?$'
-line-length = 88
-target-version = ['py310']
 
 [tool.mypy]
 python_version = "3.10"

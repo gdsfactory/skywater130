@@ -1,74 +1,36 @@
+function: mimcap_1
+info: {}
+module: sky130.pcells.mimcap_1
 name: mimcap_1
-ports: {}
 settings:
-  changed: {}
-  child: null
-  default:
-    capm_enclosure:
-    - 0.5
-    - 0.5
-    capm_layer:
-    - 89
-    - 44
-    m3_layer:
-    - 70
-    - 20
-    m4_enclosure:
-    - 0.14
-    - 0.14
-    m4_layer:
-    - 71
-    - 20
-    m4_length: 1
-    m4_r_length: 0.4
-    m4_spacing: 0.3
-    m4_width: 1
-    via3_enclosure:
-    - 0.09
-    - 0.09
-    via3_layer:
-    - 70
-    - 44
-    via3_size:
-    - 0.2
-    - 0.2
-    via3_spacing:
-    - 0.2
-    - 0.2
-  full:
-    capm_enclosure:
-    - 0.5
-    - 0.5
-    capm_layer:
-    - 89
-    - 44
-    m3_layer:
-    - 70
-    - 20
-    m4_enclosure:
-    - 0.14
-    - 0.14
-    m4_layer:
-    - 71
-    - 20
-    m4_length: 1
-    m4_r_length: 0.4
-    m4_spacing: 0.3
-    m4_width: 1
-    via3_enclosure:
-    - 0.09
-    - 0.09
-    via3_layer:
-    - 70
-    - 44
-    via3_size:
-    - 0.2
-    - 0.2
-    via3_spacing:
-    - 0.2
-    - 0.2
-  function_name: mimcap_1
-  info: {}
-  info_version: 2
-  module: sky130.pcells.mimcap_1
-  name: mimcap_1
+  capm_enclosure:
+  - 0.5
+  - 0.5
+  capm_layer:
+  - 89
+  - 44
+  m3_layer:
+  - 70
+  - 20
+  m4_enclosure:
+  - 0.14
+  - 0.14
+  m4_layer:
+  - 71
+  - 20
+  m4_length: 1
+  m4_r_length: 0.4
+  m4_spacing: 0.3
+  m4_width: 1
+  via3_enclosure:
+  - 0.09
+  - 0.09
+  via3_layer:
+  - 70
+  - 44
+  via3_size:
+  - 0.2
+  - 0.2
+  via3_spacing:
+  - 0.2
+  - 0.2

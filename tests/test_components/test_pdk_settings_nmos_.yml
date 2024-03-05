@@ -1,148 +1,73 @@
+function: nmos
+info: {}
+module: sky130.pcells.nmos
 name: nmos
-ports: {}
 settings:
-  changed: {}
-  child: null
-  default:
-    contact_enclosure:
-    - 0.06
-    - 0.06
-    contact_layer:
-    - 66
-    - 44
-    contact_size:
-    - 0.17
-    - 0.17
-    contact_spacing:
-    - 0.17
-    - 0.17
-    diff_enclosure:
-    - 0.18
-    - 0.18
-    diff_spacing: 0.27
-    diffp_layer:
-    - 65
-    - 44
-    diffusion_layer:
-    - 65
-    - 20
-    dnwell_enclosure:
-    - 0.4
-    - 0.4
-    dnwell_layer:
-    - 64
-    - 18
-    end_cap: 0.13
-    gate_length: 0.15
-    gate_width: 0.42
-    li_enclosure: 0.08
-    li_layer:
-    - 67
-    - 20
-    li_spacing: 0.17
-    li_width: 0.17
-    m1_layer:
-    - 68
-    - 20
-    mcon_enclosure:
-    - 0.03
-    - 0.06
-    mcon_layer:
-    - 67
-    - 44
-    nf: 1
-    npc_layer:
-    - 95
-    - 20
-    npc_spacing: 0.09
-    nsdm_layer:
-    - 93
-    - 44
-    poly_layer:
-    - 66
-    - 20
-    psdm_layer:
-    - 94
-    - 20
-    pwell_layer:
-    - 64
-    - 13
-    sd_width: 0.3
-    sdm_enclosure:
-    - 0.125
-    - 0.125
-    sdm_spacing: 0.13
-  full:
-    contact_enclosure:
-    - 0.06
-    - 0.06
-    contact_layer:
-    - 66
-    - 44
-    contact_size:
-    - 0.17
-    - 0.17
-    contact_spacing:
-    - 0.17
-    - 0.17
-    diff_enclosure:
-    - 0.18
-    - 0.18
-    diff_spacing: 0.27
-    diffp_layer:
-    - 65
-    - 44
-    diffusion_layer:
-    - 65
-    - 20
-    dnwell_enclosure:
-    - 0.4
-    - 0.4
-    dnwell_layer:
-    - 64
-    - 18
-    end_cap: 0.13
-    gate_length: 0.15
-    gate_width: 0.42
-    li_enclosure: 0.08
-    li_layer:
-    - 67
-    - 20
-    li_spacing: 0.17
-    li_width: 0.17
-    m1_layer:
-    - 68
-    - 20
-    mcon_enclosure:
-    - 0.03
-    - 0.06
-    mcon_layer:
-    - 67
-    - 44
-    nf: 1
-    npc_layer:
-    - 95
-    - 20
-    npc_spacing: 0.09
-    nsdm_layer:
-    - 93
-    - 44
-    poly_layer:
-    - 66
-    - 20
-    psdm_layer:
-    - 94
-    - 20
-    pwell_layer:
-    - 64
-    - 13
-    sd_width: 0.3
-    sdm_enclosure:
-    - 0.125
-    - 0.125
-    sdm_spacing: 0.13
-  function_name: nmos
-  info: {}
-  info_version: 2
-  module: sky130.pcells.nmos
-  name: nmos
+  contact_enclosure:
+  - 0.06
+  - 0.06
+  contact_layer:
+  - 66
+  - 44
+  contact_size:
+  - 0.17
+  - 0.17
+  contact_spacing:
+  - 0.17
+  - 0.17
+  diff_enclosure:
+  - 0.18
+  - 0.18
+  diff_spacing: 0.27
+  diffp_layer:
+  - 65
+  - 44
+  diffusion_layer:
+  - 65
+  - 20
+  dnwell_enclosure:
+  - 0.4
+  - 0.4
+  dnwell_layer:
+  - 64
+  - 18
+  end_cap: 0.13
+  gate_length: 0.15
+  gate_width: 0.42
+  li_enclosure: 0.08
+  li_layer:
+  - 67
+  - 20
+  li_spacing: 0.17
+  li_width: 0.17
+  m1_layer:
+  - 68
+  - 20
+  mcon_enclosure:
+  - 0.03
+  - 0.06
+  mcon_layer:
+  - 67
+  - 44
+  nf: 1
+  npc_layer:
+  - 95
+  - 20
+  npc_spacing: 0.09
+  nsdm_layer:
+  - 93
+  - 44
+  poly_layer:
+  - 66
+  - 20
+  psdm_layer:
+  - 94
+  - 20
+  pwell_layer:
+  - 64
+  - 13
+  sd_width: 0.3
+  sdm_enclosure:
+  - 0.125
+  - 0.125
+  sdm_spacing: 0.13

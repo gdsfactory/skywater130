@@ -1,48 +1,5 @@
+function: sky130_fd_sc_hs__sdfrbp_1
+info: {}
+module: sky130.components
 name: sky130_fd_sc_hs__sdfrbp_1
-ports:
-  RESET_B:
-    center:
-    - 10.8
-    - 2.035
-    layer:
-    - 68
-    - 20
-    name: RESET_B
-    orientation: null
-    port_type: electrical
-    shear_angle: null
-    width: 0.2
-  VGND:
-    center:
-    - 6.96
-    - 0.123
-    layer:
-    - 68
-    - 20
-    name: VGND
-    orientation: null
-    port_type: electrical
-    shear_angle: null
-    width: 0.2
-  VPWR:
-    center:
-    - 6.96
-    - 3.208
-    layer:
-    - 68
-    - 20
-    name: VPWR
-    orientation: null
-    port_type: electrical
-    shear_angle: null
-    width: 0.2
-settings:
-  changed: {}
-  child: null
-  default: {}
-  full: {}
-  function_name: sky130_fd_sc_hs__sdfrbp_1
-  info: {}
-  info_version: 2
-  module: sky130.components
-  name: sky130_fd_sc_hs__sdfrbp_1
+settings: {}
