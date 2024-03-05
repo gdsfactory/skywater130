@@ -1,12 +1,10 @@
 """sky130 - skywater gdsfactory pdk"""
 import pathlib
 
-from gdsfactory.config import logger
 from gdsfactory.get_factories import get_cells
 from gdsfactory.pdk import Pdk
 
 from sky130 import components, pcells
-from sky130.config import PATH, module_path
 from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS
 from sky130.tech import cross_sections
 
@@ -17,15 +15,12 @@ PDK = Pdk(
     name="sky130",
     cells=cells,
     cross_sections=cross_sections,
-    layers=LAYER.dict(),
+    layers=dict(LAYER),
     layer_stack=LAYER_STACK,
     layer_views=LAYER_VIEWS,
-    sparameters_path=PATH.sparameters,
 )
 PDK.register_cells_yaml(dirpath=pathlib.Path(__file__).parent.absolute())
 PDK.activate()
-
-logger.info(f"load sky130 PDK {__version__!r} installed at {str(module_path)!r}")
 
 __all__ = ["cells", "PDK"]
 
