@@ -1,6 +1,7 @@
-name: Sphinx docs to gh-pages
+name: build docs
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -10,29 +11,20 @@ jobs:
   build-docs:
     runs-on: ubuntu-latest
     name: Sphinx docs to gh-pages
+    container: ghcr.io/gdsfactory/gdsfactory:main
     steps:
-      - name: Cancel Workflow Action
-        uses: styfle/cancel-workflow-action@0.11.0
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gdsfactory/
-          key: 0.0.1
-          restore-keys: 0.0.1
+      - uses: actions/checkout@v4
       - name: Installing the library
-        env:
-          GDSFACTORY_DISPLAY_TYPE: klayout
-          KFACTORY_DISPLAY_TYPE: image
         shell: bash -l {0}
         run: |
           make dev
+      - name: make docs
+        run: |
           make docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: "./docs/_build/html/"
-
   deploy-docs:
     needs: build-docs
     permissions:
