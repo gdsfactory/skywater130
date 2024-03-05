@@ -29,6 +29,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install dependencies
         run: |
-          make dev
+          make install
       - name: Test with pytest
         run: pytest tests/
