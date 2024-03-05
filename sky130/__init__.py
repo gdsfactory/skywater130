@@ -8,7 +8,7 @@ from sky130 import components, pcells
 from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS
 from sky130.tech import cross_sections
 
-__version__ = "0.10.0"
+__version__ = "0.10.1"
 
 cells = get_cells([components, pcells])
 PDK = Pdk(
