@@ -656,7 +656,7 @@ def get_layer_stack() -> LayerStack:
 
 
 LAYER_STACK = get_layer_stack()
-LAYER_VIEWS = gf.technology.LayerViews(filepath=PATH.lyp_yaml)
+LAYER_VIEWS = gf.technology.LayerViews(PATH.lyp_yaml)
 
 
 if __name__ == "__main__":
