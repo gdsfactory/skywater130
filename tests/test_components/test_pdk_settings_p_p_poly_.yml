@@ -1,128 +1,63 @@
+function: p_p_poly
+info: {}
+module: sky130.pcells.p_p_poly
 name: p_p_poly
-ports: {}
 settings:
-  changed: {}
-  child: null
-  default:
-    contact_enclosure:
-    - 0.06
-    - 0.06
-    contact_layer:
-    - 66
-    - 44
-    contact_size:
-    - 0.17
-    - 0.17
-    contact_spacing:
-    - 0.17
-    - 0.17
-    li_enclosure: 0.08
-    li_layer:
-    - 67
-    - 20
-    licon_slots_size:
-    - 0.19
-    - 2
-    licon_slots_spacing:
-    - 0.51
-    - 0.51
-    m1_layer:
-    - 68
-    - 20
-    mcon_enclosure:
-    - 0.09
-    - 0.09
-    mcon_layer:
-    - 67
-    - 44
-    npc_enclosure:
-    - 0.095
-    - 0.095
-    npc_layer:
-    - 95
-    - 20
-    p_poly_length: 0.5
-    p_poly_width: 0.35
-    poly_layer:
-    - 66
-    - 20
-    poly_res_layer:
-    - 66
-    - 13
-    psdm_layer:
-    - 94
-    - 20
-    rpm_enclosure:
-    - 0.2
-    - 0.2
-    rpm_layer:
-    - 86
-    - 20
-    rpm_min_width: 1.27
-    sdm_enclosure:
-    - 0.125
-    - 0.125
-  full:
-    contact_enclosure:
-    - 0.06
-    - 0.06
-    contact_layer:
-    - 66
-    - 44
-    contact_size:
-    - 0.17
-    - 0.17
-    contact_spacing:
-    - 0.17
-    - 0.17
-    li_enclosure: 0.08
-    li_layer:
-    - 67
-    - 20
-    licon_slots_size:
-    - 0.19
-    - 2
-    licon_slots_spacing:
-    - 0.51
-    - 0.51
-    m1_layer:
-    - 68
-    - 20
-    mcon_enclosure:
-    - 0.09
-    - 0.09
-    mcon_layer:
-    - 67
-    - 44
-    npc_enclosure:
-    - 0.095
-    - 0.095
-    npc_layer:
-    - 95
-    - 20
-    p_poly_length: 0.5
-    p_poly_width: 0.35
-    poly_layer:
-    - 66
-    - 20
-    poly_res_layer:
-    - 66
-    - 13
-    psdm_layer:
-    - 94
-    - 20
-    rpm_enclosure:
-    - 0.2
-    - 0.2
-    rpm_layer:
-    - 86
-    - 20
-    rpm_min_width: 1.27
-    sdm_enclosure:
-    - 0.125
-    - 0.125
-  function_name: p_p_poly
-  info: {}
-  info_version: 2
-  module: sky130.pcells.p_p_poly
-  name: p_p_poly
+  contact_enclosure:
+  - 0.06
+  - 0.06
+  contact_layer:
+  - 66
+  - 44
+  contact_size:
+  - 0.17
+  - 0.17
+  contact_spacing:
+  - 0.17
+  - 0.17
+  li_enclosure: 0.08
+  li_layer:
+  - 67
+  - 20
+  licon_slots_size:
+  - 0.19
+  - 2
+  licon_slots_spacing:
+  - 0.51
+  - 0.51
+  m1_layer:
+  - 68
+  - 20
+  mcon_enclosure:
+  - 0.09
+  - 0.09
+  mcon_layer:
+  - 67
+  - 44
+  npc_enclosure:
+  - 0.095
+  - 0.095
+  npc_layer:
+  - 95
+  - 20
+  p_poly_length: 0.5
+  p_poly_width: 0.35
+  poly_layer:
+  - 66
+  - 20
+  poly_res_layer:
+  - 66
+  - 13
+  psdm_layer:
+  - 94
+  - 20
+  rpm_enclosure:
+  - 0.2
+  - 0.2
+  rpm_layer:
+  - 86
+  - 20
+  rpm_min_width: 1.27
+  sdm_enclosure:
+  - 0.125
+  - 0.125

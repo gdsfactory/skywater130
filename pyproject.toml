@@ -15,7 +15,7 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "gdsfactory==7.15.1",
+  "gdsfactory==7.16.0",
   "PySpice"
 ]
 description = "skywater130 pdk"
