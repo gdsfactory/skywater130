@@ -1,18 +1,4 @@
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__a21o_1 A1 A2 B1 VGND VNB VPB VPWR X
@@ -29,21 +15,7 @@ X7 a_469_443# A1 VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__a21oi_1 A1 A2 B1 VGND VNB VPB VPWR Y
@@ -58,21 +30,7 @@ X5 VPWR A1 a_56_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__a22o_1 A1 A2 B1 B2 VGND VNB VPB VPWR X
@@ -91,21 +49,7 @@ X9 VPWR A2 a_316_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__a22oi_1 A1 A2 B1 B2 VGND VNB VPB VPWR Y
@@ -122,21 +66,7 @@ X7 a_33_443# A1 VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__and2_1 A B VGND VNB VPB VPWR X
@@ -151,21 +81,7 @@ X5 a_30_107# B VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=420000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__and3_1 A B C VGND VNB VPB VPWR X
@@ -182,21 +98,7 @@ X7 a_343_173# C VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__buf_1 A VGND VNB VPB VPWR X
@@ -209,21 +111,7 @@ X3 X a_84_81# VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__buf_2 A VGND VNB VPB VPWR X
@@ -238,21 +126,7 @@ X5 VGND a_129_279# X VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__buf_4 A VGND VNB VPB VPWR X
@@ -271,21 +145,7 @@ X9 VPWR a_149_81# X VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__buf_8 A VGND VNB VPB VPWR X
@@ -316,21 +176,7 @@ X21 VPWR a_45_443# X VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__buf_16 A VGND VNB VPB VPWR X
@@ -383,21 +229,7 @@ X43 X a_183_141# VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__buf_32 A VGND VNB VPB VPWR X
@@ -490,21 +322,7 @@ X83 VGND a_183_141# X VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__conb_1 VGND VNB VPB VPWR HI LO
@@ -515,21 +333,7 @@ R1 VGND LO sky130_fd_pr__res_generic_po w=510000u l=45000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__decap_4 VGND VNB VPB VPWR
@@ -540,21 +344,7 @@ X1 VPWR VGND VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=1e+06u l=1e+06u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__decap_8 VGND VNB VPB VPWR
@@ -567,21 +357,7 @@ X3 VGND VPWR VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=1e+06u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dfrbp_1 CLK D RESET_B VGND VNB VPB VPWR Q Q_N
@@ -624,21 +400,7 @@ X33 VPWR D a_509_608# VPB sky130_fd_pr__pfet_g5v0d10v5 w=420000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dfrtp_1 CLK D RESET_B VGND VNB VPB VPWR Q
@@ -679,21 +441,7 @@ X31 a_452_632# a_30_107# a_921_632# VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dfsbp_1 CLK D SET_B VGND VNB VPB VPWR Q Q_N
@@ -736,21 +484,7 @@ X33 a_30_112# CLK VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dfstp_1 CLK D SET_B VGND VNB VPB VPWR Q
@@ -791,21 +525,7 @@ X31 a_1787_137# a_30_131# a_1989_203# VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dfxbp_1 CLK D VGND VNB VPB VPWR Q Q_N
@@ -842,21 +562,7 @@ X27 VGND a_2365_443# Q_N VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dfxtp_1 CLK D VGND VNB VPB VPWR Q
@@ -889,21 +595,7 @@ X23 VPWR a_30_127# a_339_559# VPB sky130_fd_pr__pfet_g5v0d10v5 w=750000u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__diode_2 DIODE VGND VNB VPB VPWR
@@ -913,21 +605,7 @@ D0 VNB DIODE sky130_fd_pr__diode_pw2nd_11v0 pj=5.88e+06u area=6.072e+11p
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dlclkp_1 CLK GATE VGND VNB VPB VPWR GCLK
@@ -956,21 +634,7 @@ X19 a_1027_159# a_1069_133# VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=50
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dlrtp_1 D GATE RESET_B VGND VNB VPB VPWR Q
@@ -999,21 +663,7 @@ X19 a_1512_107# RESET_B VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=500000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__dlxtp_1 D GATE VGND VNB VPB VPWR Q
@@ -1038,21 +688,7 @@ X15 VGND a_30_443# a_384_107# VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__einvn_1 A TE_B VGND VNB VPB VPWR Z
@@ -1067,21 +703,7 @@ X5 a_413_443# A Z VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__einvp_1 A TE VGND VNB VPB VPWR Z
@@ -1096,21 +718,7 @@ X5 VPWR a_30_189# a_413_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__fill_1 VGND VNB VPB VPWR
@@ -1119,21 +727,7 @@ X5 VPWR a_30_189# a_413_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__fill_2 VGND VNB VPB VPWR
@@ -1142,21 +736,7 @@ X5 VPWR a_30_189# a_413_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__fill_4 VGND VNB VPB VPWR
@@ -1165,21 +745,7 @@ X5 VPWR a_30_189# a_413_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__fill_8 VGND VNB VPB VPWR
@@ -1188,21 +754,7 @@ X5 VPWR a_30_189# a_413_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__inv_1 A VGND VNB VPB VPWR Y
@@ -1213,21 +765,7 @@ X1 VGND A Y VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__inv_2 A VGND VNB VPB VPWR Y
@@ -1240,21 +778,7 @@ X3 Y A VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__inv_4 A VGND VNB VPB VPWR Y
@@ -1271,21 +795,7 @@ X7 Y A VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__inv_8 A VGND VNB VPB VPWR Y
@@ -1310,21 +820,7 @@ X15 VGND A Y VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__inv_16 A VGND VNB VPB VPWR Y
@@ -1365,21 +861,7 @@ X31 VPWR A Y VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__lsbufhv2hv_hl_1 A LOWHVPWR VGND VNB VPB VPWR X
@@ -1392,21 +874,7 @@ X3 a_762_107# A a_662_81# VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__lsbufhv2hv_lh_1 A LOWHVPWR VGND VNB VPB VPWR X
@@ -1431,21 +899,7 @@ X15 a_779_141# a_626_141# a_935_141# VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u 
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__lsbufhv2lv_1 A LVPWR VGND VNB VPB VPWR X
@@ -1470,21 +924,7 @@ X15 VGND a_30_1337# a_389_1337# VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__lsbufhv2lv_simple_1 A LVPWR VGND VNB VPB VPWR X
@@ -1497,21 +937,7 @@ X3 LVPWR A a_662_81# LVPWR sky130_fd_pr__pfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__lsbuflv2hv_1 A LVPWR VGND VNB VPB VPWR X
@@ -1540,21 +966,7 @@ X19 a_1197_107# a_772_151# a_686_151# VNB sky130_fd_pr__nfet_g5v0d10v5 w=1.5e+06
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__lsbuflv2hv_clkiso_hlkg_3 A SLEEP_B LVPWR VGND VNB VPB VPWR
@@ -1612,21 +1024,7 @@ X47 X a_262_107# a_362_133# VNB sky130_fd_pr__nfet_g5v0d10v5 w=1e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__lsbuflv2hv_isosrchvaon_1 A SLEEP_B LVPWR VGND VNB VPB VPWR
@@ -1653,21 +1051,7 @@ X16 a_229_967# a_553_1225# a_188_1293# VNB sky130_fd_pr__nfet_g5v0d10v5 w=1e+06u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__lsbuflv2hv_symmetric_1 A LVPWR VGND VNB VPB VPWR X
@@ -1695,21 +1079,7 @@ X18 a_1197_107# a_1406_429# a_1400_777# VNB sky130_fd_pr__nfet_g5v0d10v5 w=1.5e+
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__mux2_1 A0 A1 S VGND VNB VPB VPWR X
@@ -1730,21 +1100,7 @@ X11 VGND S a_713_81# VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__mux4_1 A0 A1 A2 A3 S0 S1 VGND VNB VPB VPWR X
@@ -1779,21 +1135,7 @@ X25 a_1669_615# S1 a_481_107# VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__nand2_1 A B VGND VNB VPB VPWR Y
@@ -1806,21 +1148,7 @@ X3 Y A VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__nand3_1 A B C VGND VNB VPB VPWR Y
@@ -1835,21 +1163,7 @@ X5 Y B VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__nor2_1 A B VGND VNB VPB VPWR Y
@@ -1862,21 +1176,7 @@ X3 a_251_443# B Y VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__nor3_1 A B C VGND VNB VPB VPWR Y
@@ -1891,21 +1191,7 @@ X5 VPWR A a_205_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__o21a_1 A1 A2 B1 VGND VNB VPB VPWR X
@@ -1922,21 +1208,7 @@ X7 VPWR B1 a_83_87# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__o21ai_1 A1 A2 B1 VGND VNB VPB VPWR Y
@@ -1951,21 +1223,7 @@ X5 VPWR A1 a_205_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__o22a_1 A1 A2 B1 B2 VGND VNB VPB VPWR X
@@ -1984,21 +1242,7 @@ X9 a_533_443# B2 a_87_81# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__o22ai_1 A1 A2 B1 B2 VGND VNB VPB VPWR Y
@@ -2015,21 +1259,7 @@ X7 Y A2 a_520_443# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__or2_1 A B VGND VNB VPB VPWR X
@@ -2044,21 +1274,7 @@ X5 VGND a_84_443# X VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__or3_1 A B C VGND VNB VPB VPWR X
@@ -2075,21 +1291,7 @@ X7 a_190_464# B a_341_464# VPB sky130_fd_pr__pfet_g5v0d10v5 w=420000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__probe_p_8 A VGND VNB VPB VPWR X
@@ -2120,21 +1322,7 @@ X21 VPWR a_45_443# X VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__probec_p_8 A VGND VNB VPB VPWR X
@@ -2165,21 +1353,7 @@ X21 VPWR a_45_443# X VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__schmittbuf_1 A VGND VNB VPB VPWR X
@@ -2198,21 +1372,7 @@ X9 a_78_463# a_117_181# a_231_463# VPB sky130_fd_pr__pfet_g5v0d10v5 w=750000u l=
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__sdfrbp_1 CLK D RESET_B SCD SCE VGND VNB VPB VPWR Q Q_N
@@ -2263,21 +1423,7 @@ X41 a_816_107# SCD a_361_107# VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=50000
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__sdfrtp_1 CLK D RESET_B SCD SCE VGND VNB VPB VPWR Q
@@ -2326,21 +1472,7 @@ X39 a_1510_100# a_1212_100# a_2360_115# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1e+06
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__sdfsbp_1 CLK D SCD SCE SET_B VGND VNB VPB VPWR Q Q_N
@@ -2391,21 +1523,7 @@ X41 VGND a_1513_120# a_2394_107# VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=50
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__sdfstp_1 CLK D SCD SCE SET_B VGND VNB VPB VPWR Q
@@ -2454,21 +1572,7 @@ X39 a_637_107# SCD VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__sdfxbp_1 CLK D SCD SCE VGND VNB VPB VPWR Q Q_N
@@ -2513,21 +1617,7 @@ X35 a_2518_445# a_1570_457# a_1067_107# VPB sky130_fd_pr__pfet_g5v0d10v5 w=1e+06
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__sdfxtp_1 CLK D SCD SCE VGND VNB VPB VPWR Q
@@ -2568,21 +1658,7 @@ X31 VGND a_2123_543# a_2352_81# VNB sky130_fd_pr__nfet_g5v0d10v5 w=750000u l=500
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__sdlclkp_1 CLK GATE SCE VGND VNB VPB VPWR GCLK
@@ -2613,21 +1689,7 @@ X21 a_1219_159# a_1261_133# VGND VNB sky130_fd_pr__nfet_g5v0d10v5 w=420000u l=50
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__sdlxtp_1 D GATE SCD SCE VGND VNB VPB VPWR Q
@@ -2660,21 +1722,7 @@ X23 a_362_587# D a_489_107# VPB sky130_fd_pr__pfet_g5v0d10v5 w=750000u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__xnor2_1 A B VGND VNB VPB VPWR Y
@@ -2693,21 +1741,7 @@ X9 a_30_107# A VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 w=1.5e+06u l=500000u
 
 ******* EOF
 
-* Copyright 2020 The SkyWater PDK Authors
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*     https://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*
-* SPDX-License-Identifier: Apache-2.0
+
 
 
 .subckt sky130_fd_sc_hvl__xor2_1 A B VGND VNB VPB VPWR X

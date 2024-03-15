@@ -1,0 +1,8 @@
+
+
+
+.SUBCKT sky130_fd_pr__cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top C0 C1 M4 SUB
+
+Cx C0 C1 M4 SUB sky130_fd_pr__cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top
+
+.ENDS
