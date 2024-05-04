@@ -9,7 +9,6 @@ def mimcap_2(
     m4_layer: LayerSpec = (71, 20),
     via4_size: Float2 = (0.8, 0.8),
     via4_layer: LayerSpec = (71, 44),
-    via4_enclosure: Float2 = (0.32, 0.32),
     via4_spacing: Float2 = (0.8, 0.8),
     m5_spacing: float = 1.6,
     m5_r_length: float = 1.6,
@@ -21,6 +20,21 @@ def mimcap_2(
     capm2_enclosure: Float2 = (0.5, 0.5),
 ) -> gf.Component:
     """Return mim cap between metal 4 and 5.
+
+    Args:
+        m4_layer: metal 4 layer.
+        via4_size: via4 size.
+        via4_layer: via4 layer.
+        via4_spacing: via4 spacing.
+        m5_spacing: metal 5 spacing.
+        m5_r_length: metal 5 right length.
+        m5_layer: metal 5 layer.
+        m5_length: metal 5 length.
+        m5_width: metal 5 width.
+        capm2_layer: cap metal 2 layer.
+        m5_enclosure: metal 5 enclosure.
+        capm2_enclosure: cap metal 2 enclosure.
+
 
     .. plot::
       :include-source:
@@ -57,7 +71,7 @@ def mimcap_2(
 
     rect_m5_l = gf.components.rectangle(size=(m5_length, m5_width), layer=m5_layer)
     m5_l = c.add_ref(rect_m5_l)
-    m5_l.connect("e3", destination=m4.ports["e1"])
+    m5_l.connect("e3", destination=m4.ports["e1"], allow_layer_mismatch=True)
     m5_l.movex(m5_length + capm2_enclosure[0] + m5_enclosure[0] + en[0] / 2)
 
     # generate capm2
@@ -66,7 +80,7 @@ def mimcap_2(
         layer=capm2_layer,
     )
     capm2 = c.add_ref(rect_capm2)
-    capm2.connect("e3", destination=m5_l.ports["e1"])
+    capm2.connect("e3", destination=m5_l.ports["e1"], allow_layer_mismatch=True)
     capm2.movex(m5_length + m5_enclosure[0])
 
     # generat3 via4
@@ -108,7 +122,6 @@ def mimcap_2(
     via3_arr2.movey(
         (m4_width - en[1] / 2 - nr2 * via4_size[1] - (nr2 - 1) * via4_spacing[1]) / 2
     )
-
     return c
 
 

@@ -22,9 +22,6 @@ settings:
   m4_r_length: 0.4
   m4_spacing: 0.3
   m4_width: 1
-  via3_enclosure:
-  - 0.09
-  - 0.09
   via3_layer:
   - 70
   - 44

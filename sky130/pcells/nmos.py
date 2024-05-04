@@ -28,7 +28,6 @@ def nmos(
     sdm_spacing: float = 0.13,
     psdm_layer: LayerSpec = (94, 20),
     li_width: float = 0.17,
-    li_spacing: float = 0.17,
     li_layer: LayerSpec = (67, 20),
     li_enclosure: float = 0.08,
     mcon_layer: LayerSpec = (67, 44),
@@ -318,7 +317,7 @@ def nmos(
     # generaing p+ bulk tie and its contact  and mcon and m1
     rect_dp = gf.components.rectangle(size=(sd_width, gate_width), layer=diffp_layer)
     diff_p = c.add_ref(rect_dp)
-    diff_p.connect("e1", destination=diff_n.ports["e3"])
+    diff_p.connect("e1", destination=diff_n.ports["e3"], allow_layer_mismatch=True)
     diff_p.movex(diff_spacing + sdm_spacing)
 
     cont_arr4 = c.add_array(rect_c, rows=nr, columns=nc, spacing=con_sp)
@@ -386,7 +385,7 @@ def nmos(
         layer=psdm_layer,
     )
     psdm = c.add_ref(rect_pm)
-    psdm.connect("e1", destination=diff_n.ports["e3"])
+    psdm.connect("e1", destination=diff_n.ports["e3"], allow_layer_mismatch=True)
     psdm.movex(diff_spacing + sdm_spacing - sdm_enclosure[0])
 
     # generating pwell

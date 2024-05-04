@@ -21,11 +21,8 @@ def pnp(
     nwell_layer: LayerSpec = (64, 20),
     sdm_enclosure: Float2 = (0.125, 0.125),
     nsdm_layer: LayerSpec = (93, 44),
-    sdm_spacing: float = 0.13,
     psdm_layer: LayerSpec = (94, 20),
     pnp_layer: LayerSpec = (82, 44),
-    li_width: float = 0.17,
-    li_spacing: float = 0.17,
     li_layer: LayerSpec = (67, 20),
     li_enclosure: float = 0.08,
     mcon_layer: LayerSpec = (67, 44),
@@ -33,6 +30,7 @@ def pnp(
     m1_layer: LayerSpec = (68, 20),
 ) -> gf.Component:
     """Return pnp.
+
 
     .. plot::
       :include-source:
@@ -145,10 +143,10 @@ def pnp(
     B_in = c_B.add_ref(rect_B_in)
     B_out = c_B.add_ref(rect_B_out)
 
-    B_in.connect("e1", destination=E.ports["e1"])
+    B_in.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
     B_in.movex(E_width + np_spacing)
 
-    B_out.connect("e1", destination=E.ports["e1"])
+    B_out.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
     B_out.movex(E_width + np_spacing + B_width)
 
     c.add_ref(gf.geometry.boolean(A=B_out, B=B_in, operation="A-B", layer=tap_layer))
@@ -173,10 +171,10 @@ def pnp(
     nmB_in = c_B.add_ref(rect_nmB_in)
     nmB_out = c_B.add_ref(rect_nmB_out)
 
-    nmB_in.connect("e1", destination=E.ports["e1"])
+    nmB_in.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
     nmB_in.movex(E_width + np_spacing - sdm_enclosure[0])
 
-    nmB_out.connect("e1", destination=E.ports["e1"])
+    nmB_out.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
     nmB_out.movex(E_width + np_spacing + B_width + sdm_enclosure[1])
 
     c.add_ref(
@@ -262,7 +260,7 @@ def pnp(
         li_m1_b_in = c_B.add_ref(rect_in)
         li_m1_b_out = c_B.add_ref(rect_out)
 
-        li_m1_b_in.connect("e1", destination=E.ports["e1"])
+        li_m1_b_in.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
         li_m1_b_in.movex(
             (
                 E_width
@@ -274,7 +272,7 @@ def pnp(
             - (1 - i) * li_enclosure
         )
 
-        li_m1_b_out.connect("e1", destination=E.ports["e1"])
+        li_m1_b_out.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
         li_m1_b_out.movex(
             (
                 E_width
@@ -432,10 +430,10 @@ def pnp(
     C_in = c_C.add_ref(rect_C_in)
     C_out = c_C.add_ref(rect_C_out)
 
-    C_in.connect("e1", destination=E.ports["e1"])
+    C_in.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
     C_in.movex(E_width + 2.25 * np_spacing + B_width)
 
-    C_out.connect("e1", destination=E.ports["e1"])
+    C_out.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
     C_out.movex(E_width + 2.25 * np_spacing + B_width + C_width)
 
     c.add_ref(gf.geometry.boolean(A=C_out, B=C_in, operation="A-B", layer=tap_layer))
@@ -468,10 +466,10 @@ def pnp(
     pmC_in = c_C.add_ref(rect_pmC_in)
     pmC_out = c_C.add_ref(rect_pmC_out)
 
-    pmC_in.connect("e1", destination=E.ports["e1"])
+    pmC_in.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
     pmC_in.movex(E_width + 2.25 * np_spacing + B_width - sdm_enclosure[0])
 
-    pmC_out.connect("e1", destination=E.ports["e1"])
+    pmC_out.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
     pmC_out.movex(E_width + 2.25 * np_spacing + B_width + C_width + sdm_enclosure[0])
 
     c.add_ref(
@@ -559,7 +557,7 @@ def pnp(
         li_m1_c_in = c_C.add_ref(rect_in)
         li_m1_c_out = c_C.add_ref(rect_out)
 
-        li_m1_c_in.connect("e1", destination=E.ports["e1"])
+        li_m1_c_in.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
         li_m1_c_in.movex(
             E_width
             + 2.25 * np_spacing
@@ -569,7 +567,7 @@ def pnp(
             - (1 - i) * li_enclosure
         )
 
-        li_m1_c_out.connect("e1", destination=E.ports["e1"])
+        li_m1_c_out.connect("e1", destination=E.ports["e1"], allow_layer_mismatch=True)
         li_m1_c_out.movex(
             E_width
             + 2.25 * np_spacing
@@ -745,7 +743,7 @@ def pnp(
         layer=nwell_layer,
     )
     nwell = c.add_ref(rect_nwell)
-    nwell.connect("e1", destination=B_out.ports["e3"])
+    nwell.connect("e1", destination=B_out.ports["e3"], allow_layer_mismatch=True)
     nwell.movex(B_out.xmax - B_out.xmin + diff_enclosure[0])
 
     # generating pnp identifier
@@ -754,9 +752,8 @@ def pnp(
             size=(C_out.xmax - C_out.xmin, C_out.ymax - C_out.ymin), layer=pnp_layer
         )
     )
-    npn.connect("e1", destination=C_out.ports["e3"])
+    npn.connect("e1", destination=C_out.ports["e3"], allow_layer_mismatch=True)
     npn.movex(C_out.xmax - C_out.xmin)
-
     return c
 
 

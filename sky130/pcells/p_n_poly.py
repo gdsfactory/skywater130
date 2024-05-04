@@ -191,7 +191,7 @@ def p_n_poly(
         layer=npc_layer,
     )
     npc = c.add_ref(rect_npc)
-    npc.connect("e1", destination=R_0.ports["e1"])
+    npc.connect("e1", destination=R_0.ports["e1"], allow_layer_mismatch=True)
     npc.movex(p_poly_width + npc_enclosure[0])
 
     # generate rpm (poly resistor implant)
@@ -206,7 +206,7 @@ def p_n_poly(
         size=(urpm_width, urpm_length), layer=urpm_layer
     )
     urpm = c.add_ref(rect_urpm)
-    urpm.connect("e1", destination=R_0.ports["e1"])
+    urpm.connect("e1", destination=R_0.ports["e1"], allow_layer_mismatch=True)
     urpm.movex(p_poly_width + ((urpm_width - p_poly_width) / 2))
 
     # generate p+ implants
@@ -215,7 +215,7 @@ def p_n_poly(
         layer=psdm_layer,
     )
     psdm = c.add_ref(rect_psdm)
-    psdm.connect("e1", destination=urpm.ports["e3"])
+    psdm.connect("e1", destination=urpm.ports["e3"], allow_layer_mismatch=True)
     psdm.movex(urpm_width + sdm_enclosure[0])
 
     return c

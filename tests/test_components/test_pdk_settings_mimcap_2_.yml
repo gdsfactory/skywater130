@@ -22,9 +22,6 @@ settings:
   m5_r_length: 1.6
   m5_spacing: 1.6
   m5_width: 1.6
-  via4_enclosure:
-  - 0.32
-  - 0.32
   via4_layer:
   - 71
   - 44
