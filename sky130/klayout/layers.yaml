@@ -10,6 +10,11 @@ LayerViews:
     hatch_pattern: hollow
     width: 1
     color: "cyan"
+  pwelld:
+    layer: [19, 44]
+    layer_in_name: true
+    hatch_pattern: hollow
+    color: "blue"
   pwellpin_m:
     layer: [122, 16]
     layer_in_name: true
@@ -310,14 +315,12 @@ LayerViews:
   npcdrawing_m:
     layer: [95, 20]
     layer_in_name: true
-
     width: 1
     color: "#bf4026"
   li1drawing_m:
     layer: [67, 20]
     layer_in_name: true
     hatch_pattern: hollow
-
     width: 1
     color: "#ffe6bf"
   li1pin_m:
@@ -402,7 +405,7 @@ LayerViews:
     hatch_pattern: hollow
     width: 1
     color: "#ccccd9"
-  met1drawing_m:
+  met1:
     layer: [68, 20]
     layer_in_name: true
     width: 1
