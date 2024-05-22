@@ -439,6 +439,7 @@ class LayerMap(BaseModel):
     TE: Layer = (203, 0)
     TM: Layer = (204, 0)
     TEXT: Layer = (66, 0)
+    WG: Layer = (203, 0) # TODO remove when updating gdsfactory7
 
     class Config:
         frozen = True

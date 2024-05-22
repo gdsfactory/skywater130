@@ -21,21 +21,21 @@ class Path:
     lyp = module_path / "klayout" / "layers.lyp"
     lyp_yaml = module_path / "klayout" / "layers.yaml"
     libs = module_path / "sky130A"
-    sparameters = module_path / "sparameters"
+    # sparameters = module_path / "sparameters"
 
-    libs_tech = libs / "libs.tech"
-    libs_ref = libs / "libs.ref"
-    libs_ngspice = libs_tech / "ngspice"
+    # libs_tech = libs / "libs.tech"
+    # libs_ref = libs / "libs.ref"
+    # libs_ngspice = libs_tech / "ngspice"
     spice = module_path / "spice"
 
-    libhd = libs / "sky130hd"
-    libhs = libs / "sky130hs"
-    libhvl = libs / "sky130hvl"
+    # libhd = libs / "sky130hd"
+    # libhs = libs / "sky130hs"
+    # libhvl = libs / "sky130hvl"
 
-    gds = module_path / "gds"
-    gdshd = libhd / "gds" / "sky130_fd_sc_hd.gds"
-    gdshs = libhs / "gds" / "sky130_fd_sc_hs.gds"
-    gdshvl = libhvl / "gds" / "sky130_fd_sc_hvl.gds"
+    # gds = module_path / "gds"
+    # gdshd = libhd / "gds" / "sky130_fd_sc_hd.gds"
+    # gdshs = libhs / "gds" / "sky130_fd_sc_hs.gds"
+    # gdshvl = libhvl / "gds" / "sky130_fd_sc_hvl.gds"
 
 
 PATH = Path()

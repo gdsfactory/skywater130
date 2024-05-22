@@ -6,7 +6,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.11.2
+#       jupytext_version: 1.16.2
 #   kernelspec:
 #     display_name: Python 3 (ipykernel)
 #     language: python
@@ -22,10 +22,59 @@
 
 # %%
 import gdsfactory as gf
+from gdsfactory.config import rich_output
+gf.config.rich_output()
 
 # %%
+import sky130
 import sky130.components as sc
 import sky130.tech as st
+
+# %% [markdown]
+# If you want to see what are the cells available:
+
+# %%
+# sky130.cells
+
+# %%
+# sky130.cross_sections
+
+# %% [markdown]
+# Let's explore the available layers:
+
+# %%
+# help(gf.pdk)
+# help(gf.get_active_pdk().get_layer_stack)
+# gf.pdk.get_layer_stack()
+
+# %% [markdown]
+# You can also verify this is the active PDK on `gdsfactory`:
+
+# %%
+gf.pdk.get_active_pdk().name
+
+# %% [markdown]
+# Now, let's explore available symbols for the components:
+
+# %%
+# dir(sky130)
+sky130
+
+# %% [markdown]
+# Let's try exploring an example basic `nfet`:
+
+# %%
+c = sc.sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p15()
+c
+
+# %% [markdown]
+# Explore it's ports:
+
+# %%
+c.ports
+
+# %% [markdown]
+# We can also explore the digital cells:
 
 # %%
 c = sc.sky130_fd_sc_hd__a2111o_1()
