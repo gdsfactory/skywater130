@@ -1,9 +1,7 @@
 import os
-import re
-from functools import partial
 
 # Define the PDK directories
-pdk_directories = ['src/sky130_fd_pr', 'src/sky130_fd_sc_hd']
+pdk_directories = ["src/sky130_fd_pr", "src/sky130_fd_sc_hd"]
 
 # List to store gds file paths
 gds_files = []
@@ -12,8 +10,9 @@ gds_files = []
 for pdk_dir in pdk_directories:
     for subdir, _, files in os.walk(pdk_dir):
         for file in files:
-            if file.endswith('.gds'):
+            if file.endswith(".gds"):
                 gds_files.append(os.path.join(subdir, file))
+
 
 # Function to create Python code for each gds file
 def create_code(file_path):
@@ -36,6 +35,7 @@ def {cell_name}() -> gf.Component:
     return import_gds("{file_path}", cellname="{cell_name}")
 """
     return code
+
 
 # Prelude to add at the top of the file
 prelude = """from functools import partial
