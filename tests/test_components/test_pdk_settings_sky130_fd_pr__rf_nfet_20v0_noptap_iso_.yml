@@ -1,0 +1,5 @@
+function: sky130_fd_pr__rf_nfet_20v0_noptap_iso
+info: {}
+module: sky130.components
+name: sky130_fd_pr__rf_nfet_20v0_noptap_iso
+settings: {}

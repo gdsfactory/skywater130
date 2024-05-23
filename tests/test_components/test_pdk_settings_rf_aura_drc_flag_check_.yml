@@ -1,5 +1,0 @@
-function: rf_aura_drc_flag_check
-info: {}
-module: sky130.components
-name: rf_aura_drc_flag_check
-settings: {}

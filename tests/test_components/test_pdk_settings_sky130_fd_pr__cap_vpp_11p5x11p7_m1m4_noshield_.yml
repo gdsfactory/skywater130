@@ -1,0 +1,5 @@
+function: sky130_fd_pr__cap_vpp_11p5x11p7_m1m4_noshield
+info: {}
+module: sky130.components
+name: sky130_fd_pr__cap_vpp_11p5x11p7_m1m4_noshield
+settings: {}

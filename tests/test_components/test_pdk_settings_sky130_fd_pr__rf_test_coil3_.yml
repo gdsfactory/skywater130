@@ -1,0 +1,5 @@
+function: sky130_fd_pr__rf_test_coil3
+info: {}
+module: sky130.components
+name: sky130_fd_pr__rf_test_coil3
+settings: {}

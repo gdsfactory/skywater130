@@ -1,5 +1,0 @@
-function: rf_pfet_20v0_withptap
-info: {}
-module: sky130.components
-name: rf_pfet_20v0_withptap
-settings: {}

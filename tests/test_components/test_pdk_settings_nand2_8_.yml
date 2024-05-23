@@ -1,5 +1,0 @@
-function: nand2_8
-info: {}
-module: sky130.components
-name: nand2_8
-settings: {}

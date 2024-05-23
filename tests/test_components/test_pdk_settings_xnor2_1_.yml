@@ -1,5 +1,0 @@
-function: xnor2_1
-info: {}
-module: sky130.components
-name: xnor2_1
-settings: {}

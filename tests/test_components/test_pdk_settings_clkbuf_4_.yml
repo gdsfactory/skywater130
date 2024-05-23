@@ -1,5 +1,0 @@
-function: clkbuf_4
-info: {}
-module: sky130.components
-name: clkbuf_4
-settings: {}

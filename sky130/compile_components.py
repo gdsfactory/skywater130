@@ -28,6 +28,9 @@ def compile_components(pdk_directories=pdk_directories):
                 cell_name = raw_cell_name[len(prefix) :]
                 break
 
+        # For old compatibility:
+        cell_name = raw_cell_name
+
         code = f"""
 @cell
 def {cell_name}() -> gf.Component:

@@ -44,15 +44,15 @@ import_gds = partial(gf.import_gds, gdsdir=gdsdir, decorator=add_ports)
 
 
 @cell
-def rf_nfet_20v0_withptap_iso() -> gf.Component:
-    """Returns rf_nfet_20v0_withptap_iso fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_withptap_iso() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_withptap_iso fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_withptap_iso()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_withptap_iso()
       c.plot()
     """
     return import_gds(
@@ -62,15 +62,15 @@ def rf_nfet_20v0_withptap_iso() -> gf.Component:
 
 
 @cell
-def rf_aura_lvs_drc() -> gf.Component:
-    """Returns rf_aura_lvs_drc fixed cell.
+def sky130_fd_pr__rf_aura_lvs_drc() -> gf.Component:
+    """Returns sky130_fd_pr__rf_aura_lvs_drc fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_aura_lvs_drc()
+      c = sky130.components.sky130_fd_pr__rf_aura_lvs_drc()
       c.plot()
     """
     return import_gds(
@@ -80,15 +80,15 @@ def rf_aura_lvs_drc() -> gf.Component:
 
 
 @cell
-def rf_pnp_05v5_W0p68L0p68() -> gf.Component:
-    """Returns rf_pnp_05v5_W0p68L0p68 fixed cell.
+def sky130_fd_pr__rf_pnp_05v5_W0p68L0p68() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pnp_05v5_W0p68L0p68 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pnp_05v5_W0p68L0p68()
+      c = sky130.components.sky130_fd_pr__rf_pnp_05v5_W0p68L0p68()
       c.plot()
     """
     return import_gds(
@@ -98,15 +98,15 @@ def rf_pnp_05v5_W0p68L0p68() -> gf.Component:
 
 
 @cell
-def rf_pnp_05v5_W3p40L3p40() -> gf.Component:
-    """Returns rf_pnp_05v5_W3p40L3p40 fixed cell.
+def sky130_fd_pr__rf_pnp_05v5_W3p40L3p40() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pnp_05v5_W3p40L3p40 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pnp_05v5_W3p40L3p40()
+      c = sky130.components.sky130_fd_pr__rf_pnp_05v5_W3p40L3p40()
       c.plot()
     """
     return import_gds(
@@ -116,15 +116,15 @@ def rf_pnp_05v5_W3p40L3p40() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -134,15 +134,15 @@ def rf_nfet_01v8_aM02W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -152,15 +152,15 @@ def rf_nfet_01v8_bM04W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -170,15 +170,15 @@ def rf_nfet_01v8_bM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -188,15 +188,15 @@ def rf_nfet_01v8_aM04W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -206,15 +206,15 @@ def rf_nfet_01v8_aM04W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -224,15 +224,15 @@ def rf_nfet_01v8_bM04W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -242,15 +242,15 @@ def rf_nfet_01v8_bM02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -260,15 +260,15 @@ def rf_nfet_01v8_aM02W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -278,15 +278,15 @@ def rf_nfet_01v8_aM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -296,15 +296,15 @@ def rf_nfet_01v8_aM02W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -314,15 +314,15 @@ def rf_nfet_01v8_aM04W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_mcM04W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_mcM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_mcM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_mcM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_mcM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_mcM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -332,15 +332,15 @@ def rf_nfet_01v8_mcM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -350,15 +350,15 @@ def rf_nfet_01v8_aM02W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -368,15 +368,15 @@ def rf_nfet_01v8_aM02W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -386,15 +386,15 @@ def rf_nfet_01v8_bM04W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -404,15 +404,15 @@ def rf_nfet_01v8_bM04W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -422,15 +422,15 @@ def rf_nfet_01v8_bM02W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_mcM04W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_mcM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_mcM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_mcM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_mcM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_mcM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -440,15 +440,15 @@ def rf_nfet_01v8_mcM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -458,15 +458,15 @@ def rf_nfet_01v8_bM04W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -476,15 +476,15 @@ def rf_nfet_01v8_aM02W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_hcM04W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_hcM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_hcM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_hcM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_hcM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_hcM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -494,15 +494,15 @@ def rf_nfet_01v8_hcM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -512,15 +512,15 @@ def rf_nfet_01v8_aM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -530,15 +530,15 @@ def rf_nfet_01v8_aM02W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -548,15 +548,15 @@ def rf_nfet_01v8_aM02W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM02W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_aM02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -566,15 +566,15 @@ def rf_nfet_01v8_aM02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -584,15 +584,15 @@ def rf_nfet_01v8_bM02W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -602,15 +602,15 @@ def rf_nfet_01v8_aM04W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -620,15 +620,15 @@ def rf_nfet_01v8_aM04W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -638,15 +638,15 @@ def rf_nfet_01v8_aM04W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -656,15 +656,15 @@ def rf_nfet_01v8_bM04W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -674,15 +674,15 @@ def rf_nfet_01v8_bM02W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -692,15 +692,15 @@ def rf_nfet_01v8_bM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_hcM04W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_hcM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_hcM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_hcM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_hcM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_hcM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -710,15 +710,15 @@ def rf_nfet_01v8_hcM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM04W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_bM04W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM04W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM04W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -728,15 +728,15 @@ def rf_nfet_01v8_bM04W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -746,15 +746,15 @@ def rf_nfet_01v8_bM02W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_aM04W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_aM04W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_aM04W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_aM04W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -764,15 +764,15 @@ def rf_nfet_01v8_aM04W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -782,15 +782,15 @@ def rf_nfet_01v8_bM02W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -800,15 +800,15 @@ def rf_nfet_01v8_bM02W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -818,15 +818,15 @@ def rf_nfet_01v8_bM02W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_bM02W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_bM02W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_bM02W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_bM02W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -836,15 +836,15 @@ def rf_nfet_01v8_bM02W1p65L0p15() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5()
       c.plot()
     """
     return import_gds(
@@ -854,15 +854,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5_top() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5_top fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5_top()
       c.plot()
     """
     return import_gds(
@@ -872,15 +872,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldm5_top() -> gf.Component:
 
 
 @cell
-def rf_test_coil1() -> gf.Component:
-    """Returns rf_test_coil1 fixed cell.
+def sky130_fd_pr__rf_test_coil1() -> gf.Component:
+    """Returns sky130_fd_pr__rf_test_coil1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_test_coil1()
+      c = sky130.components.sky130_fd_pr__rf_test_coil1()
       c.plot()
     """
     return import_gds(
@@ -890,15 +890,15 @@ def rf_test_coil1() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_m1m2m3_shieldl1() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_m1m2m3_shieldl1 fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_m1m2m3_shieldl1()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1()
       c.plot()
     """
     return import_gds(
@@ -908,15 +908,15 @@ def cap_vpp_04p4x04p6_m1m2m3_shieldl1() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_l1m1m2_noshield_o2subcell() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_l1m1m2_noshield_o2subcell fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_noshield_o2subcell() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_noshield_o2subcell fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_l1m1m2_noshield_o2subcell()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_noshield_o2subcell()
       c.plot()
     """
     return import_gds(
@@ -926,15 +926,15 @@ def cap_vpp_04p4x04p6_l1m1m2_noshield_o2subcell() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_l1m1m2_noshield() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_l1m1m2_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_l1m1m2_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_noshield()
       c.plot()
     """
     return import_gds(
@@ -944,15 +944,15 @@ def cap_vpp_04p4x04p6_l1m1m2_noshield() -> gf.Component:
 
 
 @cell
-def rf_nfet_20v0_aup() -> gf.Component:
-    """Returns rf_nfet_20v0_aup fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_aup() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_aup fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_aup()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_aup()
       c.plot()
     """
     return import_gds(
@@ -962,15 +962,15 @@ def rf_nfet_20v0_aup() -> gf.Component:
 
 
 @cell
-def rf_nfet_20v0_nvt_noptap_iso() -> gf.Component:
-    """Returns rf_nfet_20v0_nvt_noptap_iso fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_nvt_noptap_iso() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_nvt_noptap_iso fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_nvt_noptap_iso()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_nvt_noptap_iso()
       c.plot()
     """
     return import_gds(
@@ -980,15 +980,15 @@ def rf_nfet_20v0_nvt_noptap_iso() -> gf.Component:
 
 
 @cell
-def cap_vpp_44p7x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_44p7x23p1_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_44p7x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_44p7x23p1_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_44p7x23p1_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_44p7x23p1_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -998,15 +998,15 @@ def cap_vpp_44p7x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_lvt_aM02W3p00L0p35() -> gf.Component:
-    """Returns rf_pfet_01v8_lvt_aM02W3p00L0p35 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_lvt_aM02W3p00L0p35() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_lvt_aM02W3p00L0p35 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_lvt_aM02W3p00L0p35()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_lvt_aM02W3p00L0p35()
       c.plot()
     """
     return import_gds(
@@ -1016,15 +1016,15 @@ def rf_pfet_01v8_lvt_aM02W3p00L0p35() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_lvt_aM04W5p00L0p50() -> gf.Component:
-    """Returns rf_pfet_01v8_lvt_aM04W5p00L0p50 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_lvt_aM04W5p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_lvt_aM04W5p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_lvt_aM04W5p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_lvt_aM04W5p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -1034,15 +1034,15 @@ def rf_pfet_01v8_lvt_aM04W5p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_lvt_aM02W3p00L0p50() -> gf.Component:
-    """Returns rf_pfet_01v8_lvt_aM02W3p00L0p50 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_lvt_aM02W3p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_lvt_aM02W3p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_lvt_aM02W3p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_lvt_aM02W3p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -1052,15 +1052,15 @@ def rf_pfet_01v8_lvt_aM02W3p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_lvt_aM04W3p00L0p50() -> gf.Component:
-    """Returns rf_pfet_01v8_lvt_aM04W3p00L0p50 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_lvt_aM04W3p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_lvt_aM04W3p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_lvt_aM04W3p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_lvt_aM04W3p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -1070,15 +1070,15 @@ def rf_pfet_01v8_lvt_aM04W3p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_lvt_aM02W5p00L0p50() -> gf.Component:
-    """Returns rf_pfet_01v8_lvt_aM02W5p00L0p50 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_lvt_aM02W5p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_lvt_aM02W5p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_lvt_aM02W5p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_lvt_aM02W5p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -1088,15 +1088,15 @@ def rf_pfet_01v8_lvt_aM02W5p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_lvt_aM04W3p00L0p35() -> gf.Component:
-    """Returns rf_pfet_01v8_lvt_aM04W3p00L0p35 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_lvt_aM04W3p00L0p35() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_lvt_aM04W3p00L0p35 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_lvt_aM04W3p00L0p35()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_lvt_aM04W3p00L0p35()
       c.plot()
     """
     return import_gds(
@@ -1106,15 +1106,15 @@ def rf_pfet_01v8_lvt_aM04W3p00L0p35() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_lvt_aM04W5p00L0p35() -> gf.Component:
-    """Returns rf_pfet_01v8_lvt_aM04W5p00L0p35 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_lvt_aM04W5p00L0p35() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_lvt_aM04W5p00L0p35 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_lvt_aM04W5p00L0p35()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_lvt_aM04W5p00L0p35()
       c.plot()
     """
     return import_gds(
@@ -1124,15 +1124,15 @@ def rf_pfet_01v8_lvt_aM04W5p00L0p35() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_lvt_aM02W5p00L0p35() -> gf.Component:
-    """Returns rf_pfet_01v8_lvt_aM02W5p00L0p35 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_lvt_aM02W5p00L0p35() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_lvt_aM02W5p00L0p35 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_lvt_aM02W5p00L0p35()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_lvt_aM02W5p00L0p35()
       c.plot()
     """
     return import_gds(
@@ -1142,15 +1142,15 @@ def rf_pfet_01v8_lvt_aM02W5p00L0p35() -> gf.Component:
 
 
 @cell
-def cap_vpp_33p6x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_33p6x11p7_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_33p6x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_33p6x11p7_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_33p6x11p7_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_33p6x11p7_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -1160,15 +1160,15 @@ def cap_vpp_33p6x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W1p65L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -1178,15 +1178,15 @@ def rf_pfet_01v8_bM02W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W3p00L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -1196,15 +1196,15 @@ def rf_pfet_01v8_bM04W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W3p00L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -1214,15 +1214,15 @@ def rf_pfet_01v8_bM02W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W5p00L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -1232,15 +1232,15 @@ def rf_pfet_01v8_aM02W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_mcM04W5p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_mcM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_mcM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_mcM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_mcM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_mcM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1250,15 +1250,15 @@ def rf_pfet_01v8_mcM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W5p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1268,15 +1268,15 @@ def rf_pfet_01v8_bM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W3p00L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -1286,15 +1286,15 @@ def rf_pfet_01v8_aM04W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W3p00L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -1304,15 +1304,15 @@ def rf_pfet_01v8_aM04W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_mcM04W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_mcM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_mcM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_mcM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_mcM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_mcM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1322,15 +1322,15 @@ def rf_pfet_01v8_mcM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF02W5p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF02W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF02W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF02W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF02W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF02W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1340,15 +1340,15 @@ def rf_pfet_01v8_aF02W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W3p00L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -1358,15 +1358,15 @@ def rf_pfet_01v8_bM04W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_hcM04W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_hcM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_hcM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_hcM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_hcM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_hcM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1376,15 +1376,15 @@ def rf_pfet_01v8_hcM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF02W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1394,15 +1394,15 @@ def rf_pfet_01v8_aF02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W3p00L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -1412,15 +1412,15 @@ def rf_pfet_01v8_aM02W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W1p65L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -1430,15 +1430,15 @@ def rf_pfet_01v8_aM04W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF08W0p84L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF08W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF08W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF08W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF08W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF08W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -1448,15 +1448,15 @@ def rf_pfet_01v8_aF08W0p84L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W1p65L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -1466,15 +1466,15 @@ def rf_pfet_01v8_aM02W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W1p65L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -1484,15 +1484,15 @@ def rf_pfet_01v8_bM02W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W1p65L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -1502,15 +1502,15 @@ def rf_pfet_01v8_bM04W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W1p65L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -1520,15 +1520,15 @@ def rf_pfet_01v8_bM02W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W5p00L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -1538,15 +1538,15 @@ def rf_pfet_01v8_bM04W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF04W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1556,15 +1556,15 @@ def rf_pfet_01v8_aF04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF04W2p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF04W2p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF04W2p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF04W2p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF04W2p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF04W2p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1574,15 +1574,15 @@ def rf_pfet_01v8_aF04W2p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W1p65L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -1592,15 +1592,15 @@ def rf_pfet_01v8_aM04W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W5p00L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -1610,15 +1610,15 @@ def rf_pfet_01v8_bM04W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W1p65L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -1628,15 +1628,15 @@ def rf_pfet_01v8_aM02W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF06W1p68L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF06W1p68L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF06W1p68L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF06W1p68L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF06W1p68L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF06W1p68L0p15()
       c.plot()
     """
     return import_gds(
@@ -1646,15 +1646,15 @@ def rf_pfet_01v8_aF06W1p68L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF04W1p68L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF04W1p68L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF04W1p68L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF04W1p68L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF04W1p68L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF04W1p68L0p15()
       c.plot()
     """
     return import_gds(
@@ -1664,15 +1664,15 @@ def rf_pfet_01v8_aF04W1p68L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W1p65L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -1682,15 +1682,15 @@ def rf_pfet_01v8_aM04W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF04W0p84L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF04W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF04W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF04W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF04W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF04W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -1700,15 +1700,15 @@ def rf_pfet_01v8_aF04W0p84L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1718,15 +1718,15 @@ def rf_pfet_01v8_bM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF06W0p84L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF06W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF06W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF06W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF06W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF06W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -1736,15 +1736,15 @@ def rf_pfet_01v8_aF06W0p84L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W5p00L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -1754,15 +1754,15 @@ def rf_pfet_01v8_aM04W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF06W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF06W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF06W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF06W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF06W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF06W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1772,15 +1772,15 @@ def rf_pfet_01v8_aF06W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W3p00L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -1790,15 +1790,15 @@ def rf_pfet_01v8_bM02W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF02W0p84L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF02W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF02W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF02W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF02W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF02W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -1808,15 +1808,15 @@ def rf_pfet_01v8_aF02W0p84L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W5p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1826,15 +1826,15 @@ def rf_pfet_01v8_bM02W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF02W1p68L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF02W1p68L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF02W1p68L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF02W1p68L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF02W1p68L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF02W1p68L0p15()
       c.plot()
     """
     return import_gds(
@@ -1844,15 +1844,15 @@ def rf_pfet_01v8_aF02W1p68L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1862,15 +1862,15 @@ def rf_pfet_01v8_aM02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W3p00L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -1880,15 +1880,15 @@ def rf_pfet_01v8_aM02W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF06W2p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF06W2p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF06W2p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF06W2p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF06W2p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF06W2p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1898,15 +1898,15 @@ def rf_pfet_01v8_aF06W2p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W1p65L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -1916,15 +1916,15 @@ def rf_pfet_01v8_bM04W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF02W2p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF02W2p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF02W2p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF02W2p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF02W2p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF02W2p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1934,15 +1934,15 @@ def rf_pfet_01v8_aF02W2p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1952,15 +1952,15 @@ def rf_pfet_01v8_aM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W5p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1970,15 +1970,15 @@ def rf_pfet_01v8_aM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_hcM04W5p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_hcM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_hcM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_hcM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_hcM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_hcM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -1988,15 +1988,15 @@ def rf_pfet_01v8_hcM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM04W1p65L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_bM04W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM04W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM04W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -2006,15 +2006,15 @@ def rf_pfet_01v8_bM04W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W5p00L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -2024,15 +2024,15 @@ def rf_pfet_01v8_aM02W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM04W5p00L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_aM04W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM04W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -2042,15 +2042,15 @@ def rf_pfet_01v8_aM04W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W5p00L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -2060,15 +2060,15 @@ def rf_pfet_01v8_bM02W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W3p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -2078,15 +2078,15 @@ def rf_pfet_01v8_bM02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_bM02W5p00L0p25() -> gf.Component:
-    """Returns rf_pfet_01v8_bM02W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_bM02W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_bM02W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -2096,15 +2096,15 @@ def rf_pfet_01v8_bM02W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF04W5p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -2114,15 +2114,15 @@ def rf_pfet_01v8_aF04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W5p00L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -2132,15 +2132,15 @@ def rf_pfet_01v8_aM02W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aM02W1p65L0p18() -> gf.Component:
-    """Returns rf_pfet_01v8_aM02W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aM02W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aM02W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -2150,15 +2150,15 @@ def rf_pfet_01v8_aM02W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_aF08W1p68L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_aF08W1p68L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_aF08W1p68L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_aF08W1p68L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_aF08W1p68L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_aF08W1p68L0p15()
       c.plot()
     """
     return import_gds(
@@ -2168,15 +2168,15 @@ def rf_pfet_01v8_aF08W1p68L0p15() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_m1m2_noshield_o2() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_m1m2_noshield_o2 fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_noshield_o2() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_noshield_o2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_m1m2_noshield_o2()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_noshield_o2()
       c.plot()
     """
     return import_gds(
@@ -2186,15 +2186,15 @@ def cap_vpp_04p4x04p6_m1m2_noshield_o2() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_m1m2_noshield() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_m1m2_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_m1m2_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_noshield()
       c.plot()
     """
     return import_gds(
@@ -2204,15 +2204,15 @@ def cap_vpp_04p4x04p6_m1m2_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_m1m2_shieldl1() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_m1m2_shieldl1 fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_shieldl1() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_shieldl1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_m1m2_shieldl1()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_m1m2_shieldl1()
       c.plot()
     """
     return import_gds(
@@ -2222,15 +2222,15 @@ def cap_vpp_04p4x04p6_m1m2_shieldl1() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4_top() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4_top fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4_top()
       c.plot()
     """
     return import_gds(
@@ -2240,15 +2240,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4_top() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4()
       c.plot()
     """
     return import_gds(
@@ -2258,15 +2258,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3_shieldpom4() -> gf.Component:
 
 
 @cell
-def rf_nfet_20v0_nvt_withptap_iso() -> gf.Component:
-    """Returns rf_nfet_20v0_nvt_withptap_iso fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_nvt_withptap_iso() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_nvt_withptap_iso fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_nvt_withptap_iso()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_nvt_withptap_iso()
       c.plot()
     """
     return import_gds(
@@ -2276,15 +2276,15 @@ def rf_nfet_20v0_nvt_withptap_iso() -> gf.Component:
 
 
 @cell
-def rf_test_coil2() -> gf.Component:
-    """Returns rf_test_coil2 fixed cell.
+def sky130_fd_pr__rf_test_coil2() -> gf.Component:
+    """Returns sky130_fd_pr__rf_test_coil2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_test_coil2()
+      c = sky130.components.sky130_fd_pr__rf_test_coil2()
       c.plot()
     """
     return import_gds(
@@ -2294,15 +2294,15 @@ def rf_test_coil2() -> gf.Component:
 
 
 @cell
-def cap_vpp_02p9x06p1_m1m2m3m4_shieldl1_fingercap2() -> gf.Component:
-    """Returns cap_vpp_02p9x06p1_m1m2m3m4_shieldl1_fingercap2 fixed cell.
+def sky130_fd_pr__cap_vpp_02p9x06p1_m1m2m3m4_shieldl1_fingercap2() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_02p9x06p1_m1m2m3m4_shieldl1_fingercap2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_02p9x06p1_m1m2m3m4_shieldl1_fingercap2()
+      c = sky130.components.sky130_fd_pr__cap_vpp_02p9x06p1_m1m2m3m4_shieldl1_fingercap2()
       c.plot()
     """
     return import_gds(
@@ -2312,15 +2312,15 @@ def cap_vpp_02p9x06p1_m1m2m3m4_shieldl1_fingercap2() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5()
       c.plot()
     """
     return import_gds(
@@ -2330,15 +2330,15 @@ def cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5_top() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5_top fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5_top()
       c.plot()
     """
     return import_gds(
@@ -2348,15 +2348,15 @@ def cap_vpp_11p5x11p7_m1m2m3m4_shieldl1m5_top() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_11p5x23p1_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x23p1_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x23p1_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x23p1_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -2366,15 +2366,15 @@ def cap_vpp_11p5x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def rf_test_coil3() -> gf.Component:
-    """Returns rf_test_coil3 fixed cell.
+def sky130_fd_pr__rf_test_coil3() -> gf.Component:
+    """Returns sky130_fd_pr__rf_test_coil3 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_test_coil3()
+      c = sky130.components.sky130_fd_pr__rf_test_coil3()
       c.plot()
     """
     return import_gds(
@@ -2384,15 +2384,15 @@ def rf_test_coil3() -> gf.Component:
 
 
 @cell
-def cap_vpp_02p7x11p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
-    """Returns cap_vpp_02p7x11p1_m1m2m3m4_shieldl1_fingercap fixed cell.
+def sky130_fd_pr__cap_vpp_02p7x11p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_02p7x11p1_m1m2m3m4_shieldl1_fingercap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_02p7x11p1_m1m2m3m4_shieldl1_fingercap()
+      c = sky130.components.sky130_fd_pr__cap_vpp_02p7x11p1_m1m2m3m4_shieldl1_fingercap()
       c.plot()
     """
     return import_gds(
@@ -2402,15 +2402,15 @@ def cap_vpp_02p7x11p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
 
 
 @cell
-def cap_vpp_02p7x41p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
-    """Returns cap_vpp_02p7x41p1_m1m2m3m4_shieldl1_fingercap fixed cell.
+def sky130_fd_pr__cap_vpp_02p7x41p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_02p7x41p1_m1m2m3m4_shieldl1_fingercap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_02p7x41p1_m1m2m3m4_shieldl1_fingercap()
+      c = sky130.components.sky130_fd_pr__cap_vpp_02p7x41p1_m1m2m3m4_shieldl1_fingercap()
       c.plot()
     """
     return import_gds(
@@ -2420,15 +2420,15 @@ def cap_vpp_02p7x41p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
 
 
 @cell
-def rf_nfet_20v0_withptap() -> gf.Component:
-    """Returns rf_nfet_20v0_withptap fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_withptap() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_withptap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_withptap()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_withptap()
       c.plot()
     """
     return import_gds(
@@ -2438,15 +2438,15 @@ def rf_nfet_20v0_withptap() -> gf.Component:
 
 
 @cell
-def esd_rf_nfet_20v0_iec_32vW60p00() -> gf.Component:
-    """Returns esd_rf_nfet_20v0_iec_32vW60p00 fixed cell.
+def sky130_fd_pr__esd_rf_nfet_20v0_iec_32vW60p00() -> gf.Component:
+    """Returns sky130_fd_pr__esd_rf_nfet_20v0_iec_32vW60p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.esd_rf_nfet_20v0_iec_32vW60p00()
+      c = sky130.components.sky130_fd_pr__esd_rf_nfet_20v0_iec_32vW60p00()
       c.plot()
     """
     return import_gds(
@@ -2456,15 +2456,15 @@ def esd_rf_nfet_20v0_iec_32vW60p00() -> gf.Component:
 
 
 @cell
-def esd_rf_nfet_20v0_iec_21vW60p00() -> gf.Component:
-    """Returns esd_rf_nfet_20v0_iec_21vW60p00 fixed cell.
+def sky130_fd_pr__esd_rf_nfet_20v0_iec_21vW60p00() -> gf.Component:
+    """Returns sky130_fd_pr__esd_rf_nfet_20v0_iec_21vW60p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.esd_rf_nfet_20v0_iec_21vW60p00()
+      c = sky130.components.sky130_fd_pr__esd_rf_nfet_20v0_iec_21vW60p00()
       c.plot()
     """
     return import_gds(
@@ -2474,15 +2474,15 @@ def esd_rf_nfet_20v0_iec_21vW60p00() -> gf.Component:
 
 
 @cell
-def rf_pfet_20v0_withptap() -> gf.Component:
-    """Returns rf_pfet_20v0_withptap fixed cell.
+def sky130_fd_pr__rf_pfet_20v0_withptap() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_20v0_withptap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_20v0_withptap()
+      c = sky130.components.sky130_fd_pr__rf_pfet_20v0_withptap()
       c.plot()
     """
     return import_gds(
@@ -2492,15 +2492,15 @@ def rf_pfet_20v0_withptap() -> gf.Component:
 
 
 @cell
-def rf_nfet_20v0_nvt_withptap() -> gf.Component:
-    """Returns rf_nfet_20v0_nvt_withptap fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_nvt_withptap() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_nvt_withptap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_nvt_withptap()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_nvt_withptap()
       c.plot()
     """
     return import_gds(
@@ -2510,15 +2510,15 @@ def rf_nfet_20v0_nvt_withptap() -> gf.Component:
 
 
 @cell
-def cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
-    """Returns cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4 fixed cell.
+def sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4()
+      c = sky130.components.sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4()
       c.plot()
     """
     return import_gds(
@@ -2528,15 +2528,15 @@ def cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
 
 
 @cell
-def cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
-    """Returns cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4_top fixed cell.
+def sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4_top()
       c.plot()
     """
     return import_gds(
@@ -2546,15 +2546,15 @@ def cap_vpp_08p6x07p8_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m2m3m4_shieldm5() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m2m3m4_shieldm5 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldm5() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldm5 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m2m3m4_shieldm5()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3m4_shieldm5()
       c.plot()
     """
     return import_gds(
@@ -2564,15 +2564,15 @@ def cap_vpp_11p5x11p7_m1m2m3m4_shieldm5() -> gf.Component:
 
 
 @cell
-def cap_vpp_22p5x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_22p5x23p1_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_22p5x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_22p5x23p1_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_22p5x23p1_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_22p5x23p1_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -2582,15 +2582,15 @@ def cap_vpp_22p5x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_08p6x07p8_l1m1m2_noshield_o2subcell() -> gf.Component:
-    """Returns cap_vpp_08p6x07p8_l1m1m2_noshield_o2subcell fixed cell.
+def sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield_o2subcell() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield_o2subcell fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_08p6x07p8_l1m1m2_noshield_o2subcell()
+      c = sky130.components.sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield_o2subcell()
       c.plot()
     """
     return import_gds(
@@ -2600,15 +2600,15 @@ def cap_vpp_08p6x07p8_l1m1m2_noshield_o2subcell() -> gf.Component:
 
 
 @cell
-def cap_vpp_08p6x07p8_l1m1m2_noshield() -> gf.Component:
-    """Returns cap_vpp_08p6x07p8_l1m1m2_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_08p6x07p8_l1m1m2_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_noshield()
       c.plot()
     """
     return import_gds(
@@ -2618,15 +2618,15 @@ def cap_vpp_08p6x07p8_l1m1m2_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin() -> gf.Component:
-    """Returns cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin fixed cell.
+def sky130_fd_pr__cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin()
+      c = sky130.components.sky130_fd_pr__cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin()
       c.plot()
     """
     return import_gds(
@@ -2636,15 +2636,15 @@ def cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin() -> gf.Component:
 
 
 @cell
-def cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -2654,15 +2654,15 @@ def cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4()
       c.plot()
     """
     return import_gds(
@@ -2672,15 +2672,15 @@ def cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4_top fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4_top()
       c.plot()
     """
     return import_gds(
@@ -2690,15 +2690,15 @@ def cap_vpp_11p5x11p7_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4_top fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4_top()
       c.plot()
     """
     return import_gds(
@@ -2708,15 +2708,15 @@ def cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4_top() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4 fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4()
       c.plot()
     """
     return import_gds(
@@ -2726,15 +2726,15 @@ def cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4() -> gf.Component:
 
 
 @cell
-def cap_vpp_02p7x06p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
-    """Returns cap_vpp_02p7x06p1_m1m2m3m4_shieldl1_fingercap fixed cell.
+def sky130_fd_pr__cap_vpp_02p7x06p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_02p7x06p1_m1m2m3m4_shieldl1_fingercap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_02p7x06p1_m1m2m3m4_shieldl1_fingercap()
+      c = sky130.components.sky130_fd_pr__cap_vpp_02p7x06p1_m1m2m3m4_shieldl1_fingercap()
       c.plot()
     """
     return import_gds(
@@ -2744,15 +2744,15 @@ def cap_vpp_02p7x06p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
 
 
 @cell
-def cap_vpp_02p7x21p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
-    """Returns cap_vpp_02p7x21p1_m1m2m3m4_shieldl1_fingercap fixed cell.
+def sky130_fd_pr__cap_vpp_02p7x21p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_02p7x21p1_m1m2m3m4_shieldl1_fingercap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_02p7x21p1_m1m2m3m4_shieldl1_fingercap()
+      c = sky130.components.sky130_fd_pr__cap_vpp_02p7x21p1_m1m2m3m4_shieldl1_fingercap()
       c.plot()
     """
     return import_gds(
@@ -2762,15 +2762,15 @@ def cap_vpp_02p7x21p1_m1m2m3m4_shieldl1_fingercap() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x8() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x8 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x8() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x8()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x8()
       c.plot()
     """
     return import_gds(
@@ -2780,15 +2780,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x8() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x7() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x7 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x7() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x7 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x7()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x7()
       c.plot()
     """
     return import_gds(
@@ -2798,15 +2798,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x7() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_xtop() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_xtop fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_xtop() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_xtop fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_xtop()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_xtop()
       c.plot()
     """
     return import_gds(
@@ -2816,15 +2816,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_xtop() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_top() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_top fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_top()
       c.plot()
     """
     return import_gds(
@@ -2834,15 +2834,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_top() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x()
       c.plot()
     """
     return import_gds(
@@ -2852,15 +2852,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5()
       c.plot()
     """
     return import_gds(
@@ -2870,15 +2870,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x9() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x9 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x9() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x9 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x9()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x9()
       c.plot()
     """
     return import_gds(
@@ -2888,15 +2888,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x9() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x6() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x6 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x6() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x6 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x6()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x6()
       c.plot()
     """
     return import_gds(
@@ -2906,15 +2906,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3m4_shieldpom5_x6() -> gf.Component:
 
 
 @cell
-def cap_vpp_22p5x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_22p5x11p7_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_22p5x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_22p5x11p7_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_22p5x11p7_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_22p5x11p7_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -2924,15 +2924,15 @@ def cap_vpp_22p5x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_05p9x05p9_m1m2m3m4_shieldl1_wafflecap() -> gf.Component:
-    """Returns cap_vpp_05p9x05p9_m1m2m3m4_shieldl1_wafflecap fixed cell.
+def sky130_fd_pr__cap_vpp_05p9x05p9_m1m2m3m4_shieldl1_wafflecap() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_05p9x05p9_m1m2m3m4_shieldl1_wafflecap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_05p9x05p9_m1m2m3m4_shieldl1_wafflecap()
+      c = sky130.components.sky130_fd_pr__cap_vpp_05p9x05p9_m1m2m3m4_shieldl1_wafflecap()
       c.plot()
     """
     return import_gds(
@@ -2942,15 +2942,15 @@ def cap_vpp_05p9x05p9_m1m2m3m4_shieldl1_wafflecap() -> gf.Component:
 
 
 @cell
-def rf_nfet_20v0_noptap_iso() -> gf.Component:
-    """Returns rf_nfet_20v0_noptap_iso fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_noptap_iso() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_noptap_iso fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_noptap_iso()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_noptap_iso()
       c.plot()
     """
     return import_gds(
@@ -2960,15 +2960,15 @@ def rf_nfet_20v0_noptap_iso() -> gf.Component:
 
 
 @cell
-def rf_npn_05v5_W1p00L1p00() -> gf.Component:
-    """Returns rf_npn_05v5_W1p00L1p00 fixed cell.
+def sky130_fd_pr__rf_npn_05v5_W1p00L1p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_05v5_W1p00L1p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_05v5_W1p00L1p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_05v5_W1p00L1p00()
       c.plot()
     """
     return import_gds(
@@ -2978,15 +2978,15 @@ def rf_npn_05v5_W1p00L1p00() -> gf.Component:
 
 
 @cell
-def rf_npn_05v5_W2p00L2p00() -> gf.Component:
-    """Returns rf_npn_05v5_W2p00L2p00 fixed cell.
+def sky130_fd_pr__rf_npn_05v5_W2p00L2p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_05v5_W2p00L2p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_05v5_W2p00L2p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_05v5_W2p00L2p00()
       c.plot()
     """
     return import_gds(
@@ -2996,15 +2996,15 @@ def rf_npn_05v5_W2p00L2p00() -> gf.Component:
 
 
 @cell
-def rf_npn_05v5_W1p00L8p00() -> gf.Component:
-    """Returns rf_npn_05v5_W1p00L8p00 fixed cell.
+def sky130_fd_pr__rf_npn_05v5_W1p00L8p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_05v5_W1p00L8p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_05v5_W1p00L8p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_05v5_W1p00L8p00()
       c.plot()
     """
     return import_gds(
@@ -3014,15 +3014,15 @@ def rf_npn_05v5_W1p00L8p00() -> gf.Component:
 
 
 @cell
-def rf_npn_05v5_W1p00L4p00() -> gf.Component:
-    """Returns rf_npn_05v5_W1p00L4p00 fixed cell.
+def sky130_fd_pr__rf_npn_05v5_W1p00L4p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_05v5_W1p00L4p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_05v5_W1p00L4p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_05v5_W1p00L4p00()
       c.plot()
     """
     return import_gds(
@@ -3032,15 +3032,15 @@ def rf_npn_05v5_W1p00L4p00() -> gf.Component:
 
 
 @cell
-def rf_npn_05v5_W2p00L8p00() -> gf.Component:
-    """Returns rf_npn_05v5_W2p00L8p00 fixed cell.
+def sky130_fd_pr__rf_npn_05v5_W2p00L8p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_05v5_W2p00L8p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_05v5_W2p00L8p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_05v5_W2p00L8p00()
       c.plot()
     """
     return import_gds(
@@ -3050,15 +3050,15 @@ def rf_npn_05v5_W2p00L8p00() -> gf.Component:
 
 
 @cell
-def rf_npn_05v5_W2p00L4p00() -> gf.Component:
-    """Returns rf_npn_05v5_W2p00L4p00 fixed cell.
+def sky130_fd_pr__rf_npn_05v5_W2p00L4p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_05v5_W2p00L4p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_05v5_W2p00L4p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_05v5_W2p00L4p00()
       c.plot()
     """
     return import_gds(
@@ -3068,15 +3068,15 @@ def rf_npn_05v5_W2p00L4p00() -> gf.Component:
 
 
 @cell
-def rf_npn_05v5_W1p00L2p00() -> gf.Component:
-    """Returns rf_npn_05v5_W1p00L2p00 fixed cell.
+def sky130_fd_pr__rf_npn_05v5_W1p00L2p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_05v5_W1p00L2p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_05v5_W1p00L2p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_05v5_W1p00L2p00()
       c.plot()
     """
     return import_gds(
@@ -3086,15 +3086,15 @@ def rf_npn_05v5_W1p00L2p00() -> gf.Component:
 
 
 @cell
-def rf_npn_05v5_W5p00L5p00() -> gf.Component:
-    """Returns rf_npn_05v5_W5p00L5p00 fixed cell.
+def sky130_fd_pr__rf_npn_05v5_W5p00L5p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_05v5_W5p00L5p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_05v5_W5p00L5p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_05v5_W5p00L5p00()
       c.plot()
     """
     return import_gds(
@@ -3104,15 +3104,15 @@ def rf_npn_05v5_W5p00L5p00() -> gf.Component:
 
 
 @cell
-def cap_vpp_08p6x07p8_m1m2_noshield() -> gf.Component:
-    """Returns cap_vpp_08p6x07p8_m1m2_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_08p6x07p8_m1m2_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_08p6x07p8_m1m2_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_08p6x07p8_m1m2_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_08p6x07p8_m1m2_noshield()
       c.plot()
     """
     return import_gds(
@@ -3122,15 +3122,15 @@ def cap_vpp_08p6x07p8_m1m2_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop() -> gf.Component:
-    """Returns cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop fixed cell.
+def sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop()
       c.plot()
     """
     return import_gds(
@@ -3140,15 +3140,15 @@ def cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv() -> gf.Component:
-    """Returns cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv fixed cell.
+def sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv()
       c.plot()
     """
     return import_gds(
@@ -3158,15 +3158,15 @@ def cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv() -> gf.Component:
 
 
 @cell
-def cap_vpp_33p6x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_33p6x23p1_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_33p6x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_33p6x23p1_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_33p6x23p1_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_33p6x23p1_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -3176,15 +3176,15 @@ def cap_vpp_33p6x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m4_noshield() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m4_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m4_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m4_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m4_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m4_noshield()
       c.plot()
     """
     return import_gds(
@@ -3194,15 +3194,15 @@ def cap_vpp_11p5x11p7_m1m4_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -3212,15 +3212,15 @@ def cap_vpp_44p7x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_03p9x03p9_m1m2_shieldl1_floatm3() -> gf.Component:
-    """Returns cap_vpp_03p9x03p9_m1m2_shieldl1_floatm3 fixed cell.
+def sky130_fd_pr__cap_vpp_03p9x03p9_m1m2_shieldl1_floatm3() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_03p9x03p9_m1m2_shieldl1_floatm3 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_03p9x03p9_m1m2_shieldl1_floatm3()
+      c = sky130.components.sky130_fd_pr__cap_vpp_03p9x03p9_m1m2_shieldl1_floatm3()
       c.plot()
     """
     return import_gds(
@@ -3230,15 +3230,15 @@ def cap_vpp_03p9x03p9_m1m2_shieldl1_floatm3() -> gf.Component:
 
 
 @cell
-def cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4() -> gf.Component:
-    """Returns cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4 fixed cell.
+def sky130_fd_pr__cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4()
+      c = sky130.components.sky130_fd_pr__cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4()
       c.plot()
     """
     return import_gds(
@@ -3248,15 +3248,15 @@ def cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4() -> gf.Component:
 
 
 @cell
-def cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4_top() -> gf.Component:
-    """Returns cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4_top fixed cell.
+def sky130_fd_pr__cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4_top()
       c.plot()
     """
     return import_gds(
@@ -3266,15 +3266,15 @@ def cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4_top() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -3284,15 +3284,15 @@ def cap_vpp_11p5x11p7_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2_shieldpom3() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2_shieldpom3 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2_shieldpom3() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2_shieldpom3 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2_shieldpom3()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2_shieldpom3()
       c.plot()
     """
     return import_gds(
@@ -3302,15 +3302,15 @@ def cap_vpp_11p5x11p7_l1m1m2_shieldpom3() -> gf.Component:
 
 
 @cell
-def rf_aura_drc_flag_check() -> gf.Component:
-    """Returns rf_aura_drc_flag_check fixed cell.
+def sky130_fd_pr__rf_aura_drc_flag_check() -> gf.Component:
+    """Returns sky130_fd_pr__rf_aura_drc_flag_check fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_aura_drc_flag_check()
+      c = sky130.components.sky130_fd_pr__rf_aura_drc_flag_check()
       c.plot()
     """
     return import_gds(
@@ -3320,15 +3320,15 @@ def rf_aura_drc_flag_check() -> gf.Component:
 
 
 @cell
-def cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_test() -> gf.Component:
-    """Returns cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_test fixed cell.
+def sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_test() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_test fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_test()
+      c = sky130.components.sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_test()
       c.plot()
     """
     return import_gds(
@@ -3338,15 +3338,15 @@ def cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_test() -> gf.Component:
 
 
 @cell
-def cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
-    """Returns cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield()
       c.plot()
     """
     return import_gds(
@@ -3356,15 +3356,15 @@ def cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_m5pullin() -> gf.Component:
-    """Returns cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_m5pullin fixed cell.
+def sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_m5pullin() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_m5pullin fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_m5pullin()
+      c = sky130.components.sky130_fd_pr__cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_m5pullin()
       c.plot()
     """
     return import_gds(
@@ -3374,15 +3374,15 @@ def cap_vpp_55p8x23p1_pol1m1m2m3m4m5_noshield_m5pullin() -> gf.Component:
 
 
 @cell
-def cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top() -> gf.Component:
-    """Returns cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top fixed cell.
+def sky130_fd_pr__cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top()
       c.plot()
     """
     return import_gds(
@@ -3392,15 +3392,15 @@ def cap_vpp_06p8x06p1_m1m2m3_shieldl1m4_top() -> gf.Component:
 
 
 @cell
-def cap_vpp_06p8x06p1_m1m2m3_shieldl1m4() -> gf.Component:
-    """Returns cap_vpp_06p8x06p1_m1m2m3_shieldl1m4 fixed cell.
+def sky130_fd_pr__cap_vpp_06p8x06p1_m1m2m3_shieldl1m4() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_06p8x06p1_m1m2m3_shieldl1m4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_06p8x06p1_m1m2m3_shieldl1m4()
+      c = sky130.components.sky130_fd_pr__cap_vpp_06p8x06p1_m1m2m3_shieldl1m4()
       c.plot()
     """
     return import_gds(
@@ -3410,15 +3410,15 @@ def cap_vpp_06p8x06p1_m1m2m3_shieldl1m4() -> gf.Component:
 
 
 @cell
-def rf_pfet_01v8_mvt_aF02W0p84L0p15() -> gf.Component:
-    """Returns rf_pfet_01v8_mvt_aF02W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_pfet_01v8_mvt_aF02W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_pfet_01v8_mvt_aF02W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_pfet_01v8_mvt_aF02W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_pfet_01v8_mvt_aF02W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -3428,15 +3428,15 @@ def rf_pfet_01v8_mvt_aF02W0p84L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_20v0_nvt_aup() -> gf.Component:
-    """Returns rf_nfet_20v0_nvt_aup fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_nvt_aup() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_nvt_aup fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_nvt_aup()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_nvt_aup()
       c.plot()
     """
     return import_gds(
@@ -3446,15 +3446,15 @@ def rf_nfet_20v0_nvt_aup() -> gf.Component:
 
 
 @cell
-def cap_vpp_08p6x07p8_m1m2_shieldl1() -> gf.Component:
-    """Returns cap_vpp_08p6x07p8_m1m2_shieldl1 fixed cell.
+def sky130_fd_pr__cap_vpp_08p6x07p8_m1m2_shieldl1() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_08p6x07p8_m1m2_shieldl1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_08p6x07p8_m1m2_shieldl1()
+      c = sky130.components.sky130_fd_pr__cap_vpp_08p6x07p8_m1m2_shieldl1()
       c.plot()
     """
     return import_gds(
@@ -3464,15 +3464,15 @@ def cap_vpp_08p6x07p8_m1m2_shieldl1() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap() -> gf.Component:
-    """Returns cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap fixed cell.
+def sky130_fd_pr__cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap()
       c.plot()
     """
     return import_gds(
@@ -3482,15 +3482,15 @@ def cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap() -> gf.Component:
 
 
 @cell
-def cap_vpp_08p6x07p8_l1m1m2_shieldpo_floatm3() -> gf.Component:
-    """Returns cap_vpp_08p6x07p8_l1m1m2_shieldpo_floatm3 fixed cell.
+def sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_shieldpo_floatm3() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_shieldpo_floatm3 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_08p6x07p8_l1m1m2_shieldpo_floatm3()
+      c = sky130.components.sky130_fd_pr__cap_vpp_08p6x07p8_l1m1m2_shieldpo_floatm3()
       c.plot()
     """
     return import_gds(
@@ -3500,15 +3500,15 @@ def cap_vpp_08p6x07p8_l1m1m2_shieldpo_floatm3() -> gf.Component:
 
 
 @cell
-def rf_aura_blocking() -> gf.Component:
-    """Returns rf_aura_blocking fixed cell.
+def sky130_fd_pr__rf_aura_blocking() -> gf.Component:
+    """Returns sky130_fd_pr__rf_aura_blocking fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_aura_blocking()
+      c = sky130.components.sky130_fd_pr__rf_aura_blocking()
       c.plot()
     """
     return import_gds(
@@ -3518,15 +3518,15 @@ def rf_aura_blocking() -> gf.Component:
 
 
 @cell
-def cap_vpp_04p4x04p6_l1m1m2_shieldpo_floatm3() -> gf.Component:
-    """Returns cap_vpp_04p4x04p6_l1m1m2_shieldpo_floatm3 fixed cell.
+def sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_shieldpo_floatm3() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_shieldpo_floatm3 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_04p4x04p6_l1m1m2_shieldpo_floatm3()
+      c = sky130.components.sky130_fd_pr__cap_vpp_04p4x04p6_l1m1m2_shieldpo_floatm3()
       c.plot()
     """
     return import_gds(
@@ -3536,15 +3536,15 @@ def cap_vpp_04p4x04p6_l1m1m2_shieldpo_floatm3() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m2m3_shieldl1() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m2m3_shieldl1 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m2m3_shieldl1()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m2m3_shieldl1()
       c.plot()
     """
     return import_gds(
@@ -3554,15 +3554,15 @@ def cap_vpp_11p5x11p7_m1m2m3_shieldl1() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3_shieldm4() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3_shieldm4 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldm4() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldm4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3_shieldm4()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldm4()
       c.plot()
     """
     return import_gds(
@@ -3572,15 +3572,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3_shieldm4() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2m3_shieldm4_top() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2m3_shieldm4_top fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldm4_top() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldm4_top fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2m3_shieldm4_top()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2m3_shieldm4_top()
       c.plot()
     """
     return import_gds(
@@ -3590,15 +3590,15 @@ def cap_vpp_11p5x11p7_l1m1m2m3_shieldm4_top() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -3608,15 +3608,15 @@ def rf_nfet_01v8_lvt_bM04W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF02W0p84L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF02W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF02W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF02W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF02W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF02W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -3626,15 +3626,15 @@ def rf_nfet_01v8_lvt_aF02W0p84L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -3644,15 +3644,15 @@ def rf_nfet_01v8_lvt_aM02W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -3662,15 +3662,15 @@ def rf_nfet_01v8_lvt_aM04W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -3680,15 +3680,15 @@ def rf_nfet_01v8_lvt_bM02W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF08W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF08W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF08W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF08W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF08W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF08W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -3698,15 +3698,15 @@ def rf_nfet_01v8_lvt_aF08W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -3716,15 +3716,15 @@ def rf_nfet_01v8_lvt_cM02W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -3734,15 +3734,15 @@ def rf_nfet_01v8_lvt_cM04W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF02W0p42L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF02W0p42L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF02W0p42L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF02W0p42L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF02W0p42L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF02W0p42L0p15()
       c.plot()
     """
     return import_gds(
@@ -3752,15 +3752,15 @@ def rf_nfet_01v8_lvt_aF02W0p42L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -3770,15 +3770,15 @@ def rf_nfet_01v8_lvt_bM02W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -3788,15 +3788,15 @@ def rf_nfet_01v8_lvt_aM02W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -3806,15 +3806,15 @@ def rf_nfet_01v8_lvt_cM02W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF08W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF08W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF08W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF08W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF08W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF08W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -3824,15 +3824,15 @@ def rf_nfet_01v8_lvt_aF08W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -3842,15 +3842,15 @@ def rf_nfet_01v8_lvt_aM02W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -3860,15 +3860,15 @@ def rf_nfet_01v8_lvt_cM02W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -3878,15 +3878,15 @@ def rf_nfet_01v8_lvt_aM04W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -3896,15 +3896,15 @@ def rf_nfet_01v8_lvt_bM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -3914,15 +3914,15 @@ def rf_nfet_01v8_lvt_cM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -3932,15 +3932,15 @@ def rf_nfet_01v8_lvt_cM02W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF02W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF02W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF02W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF02W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF02W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF02W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -3950,15 +3950,15 @@ def rf_nfet_01v8_lvt_aF02W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -3968,15 +3968,15 @@ def rf_nfet_01v8_lvt_cM02W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -3986,15 +3986,15 @@ def rf_nfet_01v8_lvt_aM04W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4004,15 +4004,15 @@ def rf_nfet_01v8_lvt_aM04W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF08W0p42L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF08W0p42L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF08W0p42L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF08W0p42L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF08W0p42L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF08W0p42L0p15()
       c.plot()
     """
     return import_gds(
@@ -4022,15 +4022,15 @@ def rf_nfet_01v8_lvt_aF08W0p42L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -4040,15 +4040,15 @@ def rf_nfet_01v8_lvt_bM04W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -4058,15 +4058,15 @@ def rf_nfet_01v8_lvt_bM04W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF04W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4076,15 +4076,15 @@ def rf_nfet_01v8_lvt_aF04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -4094,15 +4094,15 @@ def rf_nfet_01v8_lvt_cM02W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4112,15 +4112,15 @@ def rf_nfet_01v8_lvt_aM04W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4130,15 +4130,15 @@ def rf_nfet_01v8_lvt_cM02W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -4148,15 +4148,15 @@ def rf_nfet_01v8_lvt_aM02W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4166,15 +4166,15 @@ def rf_nfet_01v8_lvt_aM02W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF06W0p84L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF06W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF06W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF06W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF06W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF06W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -4184,15 +4184,15 @@ def rf_nfet_01v8_lvt_aF06W0p84L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF06W0p42L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF06W0p42L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF06W0p42L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF06W0p42L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF06W0p42L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF06W0p42L0p15()
       c.plot()
     """
     return import_gds(
@@ -4202,15 +4202,15 @@ def rf_nfet_01v8_lvt_aF06W0p42L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -4220,15 +4220,15 @@ def rf_nfet_01v8_lvt_cM04W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W3p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W3p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W3p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -4238,15 +4238,15 @@ def rf_nfet_01v8_lvt_aM02W3p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF06W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF06W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF06W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF06W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF06W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF06W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -4256,15 +4256,15 @@ def rf_nfet_01v8_lvt_aF06W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -4274,15 +4274,15 @@ def rf_nfet_01v8_lvt_cM04W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4292,15 +4292,15 @@ def rf_nfet_01v8_lvt_bM02W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -4310,15 +4310,15 @@ def rf_nfet_01v8_lvt_bM02W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4328,15 +4328,15 @@ def rf_nfet_01v8_lvt_bM02W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -4346,15 +4346,15 @@ def rf_nfet_01v8_lvt_bM04W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4364,15 +4364,15 @@ def rf_nfet_01v8_lvt_aM04W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4382,15 +4382,15 @@ def rf_nfet_01v8_lvt_bM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4400,15 +4400,15 @@ def rf_nfet_01v8_lvt_bM04W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF06W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF06W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF06W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF06W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF06W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF06W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4418,15 +4418,15 @@ def rf_nfet_01v8_lvt_aF06W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF04W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF04W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF04W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF04W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF04W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF04W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -4436,15 +4436,15 @@ def rf_nfet_01v8_lvt_aF04W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -4454,15 +4454,15 @@ def rf_nfet_01v8_lvt_bM02W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4472,15 +4472,15 @@ def rf_nfet_01v8_lvt_cM02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -4490,15 +4490,15 @@ def rf_nfet_01v8_lvt_aM04W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4508,15 +4508,15 @@ def rf_nfet_01v8_lvt_bM04W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM04W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM04W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM04W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM04W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -4526,15 +4526,15 @@ def rf_nfet_01v8_lvt_bM04W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -4544,15 +4544,15 @@ def rf_nfet_01v8_lvt_aM04W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4562,15 +4562,15 @@ def rf_nfet_01v8_lvt_aM02W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4580,15 +4580,15 @@ def rf_nfet_01v8_lvt_aM02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM02W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM02W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM02W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM02W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -4598,15 +4598,15 @@ def rf_nfet_01v8_lvt_cM02W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM02W1p65L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM02W1p65L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM02W1p65L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM02W1p65L0p18()
       c.plot()
     """
     return import_gds(
@@ -4616,15 +4616,15 @@ def rf_nfet_01v8_lvt_aM02W1p65L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W1p65L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W1p65L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W1p65L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p25()
       c.plot()
     """
     return import_gds(
@@ -4634,15 +4634,15 @@ def rf_nfet_01v8_lvt_cM04W1p65L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4652,15 +4652,15 @@ def rf_nfet_01v8_lvt_bM02W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4670,15 +4670,15 @@ def rf_nfet_01v8_lvt_cM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W3p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W3p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W3p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W3p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4688,15 +4688,15 @@ def rf_nfet_01v8_lvt_cM04W3p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aM04W5p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aM04W5p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aM04W5p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aM04W5p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4706,15 +4706,15 @@ def rf_nfet_01v8_lvt_aM04W5p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W1p65L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W1p65L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W1p65L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p15()
       c.plot()
     """
     return import_gds(
@@ -4724,15 +4724,15 @@ def rf_nfet_01v8_lvt_cM04W1p65L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_cM04W5p00L0p18() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_cM04W5p00L0p18 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p18() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p18 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_cM04W5p00L0p18()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_cM04W5p00L0p18()
       c.plot()
     """
     return import_gds(
@@ -4742,15 +4742,15 @@ def rf_nfet_01v8_lvt_cM04W5p00L0p18() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF04W0p84L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF04W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF04W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF04W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF04W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF04W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -4760,15 +4760,15 @@ def rf_nfet_01v8_lvt_aF04W0p84L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W5p00L0p25() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W5p00L0p25 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p25() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p25 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W5p00L0p25()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W5p00L0p25()
       c.plot()
     """
     return import_gds(
@@ -4778,15 +4778,15 @@ def rf_nfet_01v8_lvt_bM02W5p00L0p25() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF02W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4796,15 +4796,15 @@ def rf_nfet_01v8_lvt_aF02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_bM02W3p00L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_bM02W3p00L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_bM02W3p00L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_bM02W3p00L0p15()
       c.plot()
     """
     return import_gds(
@@ -4814,15 +4814,15 @@ def rf_nfet_01v8_lvt_bM02W3p00L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF04W0p42L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF04W0p42L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF04W0p42L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF04W0p42L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF04W0p42L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF04W0p42L0p15()
       c.plot()
     """
     return import_gds(
@@ -4832,15 +4832,15 @@ def rf_nfet_01v8_lvt_aF04W0p42L0p15() -> gf.Component:
 
 
 @cell
-def rf_nfet_01v8_lvt_aF08W0p84L0p15() -> gf.Component:
-    """Returns rf_nfet_01v8_lvt_aF08W0p84L0p15 fixed cell.
+def sky130_fd_pr__rf_nfet_01v8_lvt_aF08W0p84L0p15() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_01v8_lvt_aF08W0p84L0p15 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_01v8_lvt_aF08W0p84L0p15()
+      c = sky130.components.sky130_fd_pr__rf_nfet_01v8_lvt_aF08W0p84L0p15()
       c.plot()
     """
     return import_gds(
@@ -4850,15 +4850,15 @@ def rf_nfet_01v8_lvt_aF08W0p84L0p15() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m2_noshield() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m2_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m2_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m2_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m2_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m2_noshield()
       c.plot()
     """
     return import_gds(
@@ -4868,15 +4868,15 @@ def cap_vpp_11p5x11p7_m1m2_noshield() -> gf.Component:
 
 
 @cell
-def rf_npn_11v0_W1p00L1p00() -> gf.Component:
-    """Returns rf_npn_11v0_W1p00L1p00 fixed cell.
+def sky130_fd_pr__rf_npn_11v0_W1p00L1p00() -> gf.Component:
+    """Returns sky130_fd_pr__rf_npn_11v0_W1p00L1p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_npn_11v0_W1p00L1p00()
+      c = sky130.components.sky130_fd_pr__rf_npn_11v0_W1p00L1p00()
       c.plot()
     """
     return import_gds(
@@ -4886,15 +4886,15 @@ def rf_npn_11v0_W1p00L1p00() -> gf.Component:
 
 
 @cell
-def rf_nfet_20v0_zvt_withptap() -> gf.Component:
-    """Returns rf_nfet_20v0_zvt_withptap fixed cell.
+def sky130_fd_pr__rf_nfet_20v0_zvt_withptap() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_20v0_zvt_withptap fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_20v0_zvt_withptap()
+      c = sky130.components.sky130_fd_pr__rf_nfet_20v0_zvt_withptap()
       c.plot()
     """
     return import_gds(
@@ -4904,15 +4904,15 @@ def rf_nfet_20v0_zvt_withptap() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_m1m2_shieldl1() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_m1m2_shieldl1 fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_m1m2_shieldl1() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_m1m2_shieldl1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_m1m2_shieldl1()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_m1m2_shieldl1()
       c.plot()
     """
     return import_gds(
@@ -4922,15 +4922,15 @@ def cap_vpp_11p5x11p7_m1m2_shieldl1() -> gf.Component:
 
 
 @cell
-def esd_rf_nfet_20v0_hbm_21vW60p00() -> gf.Component:
-    """Returns esd_rf_nfet_20v0_hbm_21vW60p00 fixed cell.
+def sky130_fd_pr__esd_rf_nfet_20v0_hbm_21vW60p00() -> gf.Component:
+    """Returns sky130_fd_pr__esd_rf_nfet_20v0_hbm_21vW60p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.esd_rf_nfet_20v0_hbm_21vW60p00()
+      c = sky130.components.sky130_fd_pr__esd_rf_nfet_20v0_hbm_21vW60p00()
       c.plot()
     """
     return import_gds(
@@ -4940,15 +4940,15 @@ def esd_rf_nfet_20v0_hbm_21vW60p00() -> gf.Component:
 
 
 @cell
-def esd_rf_nfet_20v0_hbm_32vW60p00() -> gf.Component:
-    """Returns esd_rf_nfet_20v0_hbm_32vW60p00 fixed cell.
+def sky130_fd_pr__esd_rf_nfet_20v0_hbm_32vW60p00() -> gf.Component:
+    """Returns sky130_fd_pr__esd_rf_nfet_20v0_hbm_32vW60p00 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.esd_rf_nfet_20v0_hbm_32vW60p00()
+      c = sky130.components.sky130_fd_pr__esd_rf_nfet_20v0_hbm_32vW60p00()
       c.plot()
     """
     return import_gds(
@@ -4958,15 +4958,15 @@ def esd_rf_nfet_20v0_hbm_32vW60p00() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_aM10W7p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_aM10W7p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W7p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W7p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_aM10W7p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W7p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -4976,15 +4976,15 @@ def rf_nfet_g5v0d10v5_aM10W7p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_bM10W5p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_bM10W5p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W5p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W5p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_bM10W5p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W5p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -4994,15 +4994,15 @@ def rf_nfet_g5v0d10v5_bM10W5p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_aM10W5p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_aM10W5p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W5p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W5p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_aM10W5p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W5p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5012,15 +5012,15 @@ def rf_nfet_g5v0d10v5_aM10W5p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_aM04W5p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_aM04W5p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W5p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W5p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_aM04W5p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W5p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5030,15 +5030,15 @@ def rf_nfet_g5v0d10v5_aM04W5p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_aM04W7p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_aM04W7p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W7p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W7p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_aM04W7p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W7p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5048,15 +5048,15 @@ def rf_nfet_g5v0d10v5_aM04W7p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_bM10W7p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_bM10W7p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W7p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W7p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_bM10W7p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W7p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5066,15 +5066,15 @@ def rf_nfet_g5v0d10v5_bM10W7p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_aM10W3p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_aM10W3p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W3p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W3p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_aM10W3p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_aM10W3p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5084,15 +5084,15 @@ def rf_nfet_g5v0d10v5_aM10W3p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_bM02W3p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_bM02W3p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_bM02W3p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_bM02W3p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_bM02W3p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_bM02W3p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5102,15 +5102,15 @@ def rf_nfet_g5v0d10v5_bM02W3p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_aM04W3p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_aM04W3p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W3p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W3p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_aM04W3p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_aM04W3p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5120,15 +5120,15 @@ def rf_nfet_g5v0d10v5_aM04W3p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_bM10W3p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_bM10W3p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W3p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W3p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_bM10W3p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_bM10W3p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5138,15 +5138,15 @@ def rf_nfet_g5v0d10v5_bM10W3p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_bM04W5p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_bM04W5p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W5p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W5p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_bM04W5p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W5p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5156,15 +5156,15 @@ def rf_nfet_g5v0d10v5_bM04W5p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_bM04W3p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_bM04W3p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W3p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W3p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_bM04W3p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W3p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5174,15 +5174,15 @@ def rf_nfet_g5v0d10v5_bM04W3p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_bM02W5p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_bM02W5p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_bM02W5p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_bM02W5p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_bM02W5p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_bM02W5p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5192,15 +5192,15 @@ def rf_nfet_g5v0d10v5_bM02W5p00L0p50() -> gf.Component:
 
 
 @cell
-def rf_nfet_g5v0d10v5_bM04W7p00L0p50() -> gf.Component:
-    """Returns rf_nfet_g5v0d10v5_bM04W7p00L0p50 fixed cell.
+def sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W7p00L0p50() -> gf.Component:
+    """Returns sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W7p00L0p50 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.rf_nfet_g5v0d10v5_bM04W7p00L0p50()
+      c = sky130.components.sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W7p00L0p50()
       c.plot()
     """
     return import_gds(
@@ -5210,15 +5210,15 @@ def rf_nfet_g5v0d10v5_bM04W7p00L0p50() -> gf.Component:
 
 
 @cell
-def cap_vpp_11p5x11p7_l1m1m2_noshield() -> gf.Component:
-    """Returns cap_vpp_11p5x11p7_l1m1m2_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_11p5x11p7_l1m1m2_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_11p5x11p7_l1m1m2_noshield()
       c.plot()
     """
     return import_gds(
@@ -5228,15 +5228,15 @@ def cap_vpp_11p5x11p7_l1m1m2_noshield() -> gf.Component:
 
 
 @cell
-def cap_vpp_08p6x07p8_m1m2m3_shieldl1() -> gf.Component:
-    """Returns cap_vpp_08p6x07p8_m1m2m3_shieldl1 fixed cell.
+def sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_08p6x07p8_m1m2m3_shieldl1()
+      c = sky130.components.sky130_fd_pr__cap_vpp_08p6x07p8_m1m2m3_shieldl1()
       c.plot()
     """
     return import_gds(
@@ -5246,15 +5246,15 @@ def cap_vpp_08p6x07p8_m1m2m3_shieldl1() -> gf.Component:
 
 
 @cell
-def cap_vpp_02p4x04p6_m1m2_noshield() -> gf.Component:
-    """Returns cap_vpp_02p4x04p6_m1m2_noshield fixed cell.
+def sky130_fd_pr__cap_vpp_02p4x04p6_m1m2_noshield() -> gf.Component:
+    """Returns sky130_fd_pr__cap_vpp_02p4x04p6_m1m2_noshield fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.cap_vpp_02p4x04p6_m1m2_noshield()
+      c = sky130.components.sky130_fd_pr__cap_vpp_02p4x04p6_m1m2_noshield()
       c.plot()
     """
     return import_gds(
@@ -5264,15 +5264,15 @@ def cap_vpp_02p4x04p6_m1m2_noshield() -> gf.Component:
 
 
 @cell
-def clkinv_8() -> gf.Component:
-    """Returns clkinv_8 fixed cell.
+def sky130_fd_sc_hd__clkinv_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkinv_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkinv_8()
+      c = sky130.components.sky130_fd_sc_hd__clkinv_8()
       c.plot()
     """
     return import_gds(
@@ -5282,15 +5282,15 @@ def clkinv_8() -> gf.Component:
 
 
 @cell
-def clkinv_4() -> gf.Component:
-    """Returns clkinv_4 fixed cell.
+def sky130_fd_sc_hd__clkinv_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkinv_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkinv_4()
+      c = sky130.components.sky130_fd_sc_hd__clkinv_4()
       c.plot()
     """
     return import_gds(
@@ -5300,15 +5300,15 @@ def clkinv_4() -> gf.Component:
 
 
 @cell
-def clkinv_1() -> gf.Component:
-    """Returns clkinv_1 fixed cell.
+def sky130_fd_sc_hd__clkinv_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkinv_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkinv_1()
+      c = sky130.components.sky130_fd_sc_hd__clkinv_1()
       c.plot()
     """
     return import_gds(
@@ -5318,15 +5318,15 @@ def clkinv_1() -> gf.Component:
 
 
 @cell
-def clkinv_16() -> gf.Component:
-    """Returns clkinv_16 fixed cell.
+def sky130_fd_sc_hd__clkinv_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkinv_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkinv_16()
+      c = sky130.components.sky130_fd_sc_hd__clkinv_16()
       c.plot()
     """
     return import_gds(
@@ -5336,15 +5336,15 @@ def clkinv_16() -> gf.Component:
 
 
 @cell
-def clkinv_2() -> gf.Component:
-    """Returns clkinv_2 fixed cell.
+def sky130_fd_sc_hd__clkinv_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkinv_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkinv_2()
+      c = sky130.components.sky130_fd_sc_hd__clkinv_2()
       c.plot()
     """
     return import_gds(
@@ -5354,15 +5354,15 @@ def clkinv_2() -> gf.Component:
 
 
 @cell
-def o311ai_1() -> gf.Component:
-    """Returns o311ai_1 fixed cell.
+def sky130_fd_sc_hd__o311ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o311ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o311ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o311ai_1()
       c.plot()
     """
     return import_gds(
@@ -5372,15 +5372,15 @@ def o311ai_1() -> gf.Component:
 
 
 @cell
-def o311ai_2() -> gf.Component:
-    """Returns o311ai_2 fixed cell.
+def sky130_fd_sc_hd__o311ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o311ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o311ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o311ai_2()
       c.plot()
     """
     return import_gds(
@@ -5390,15 +5390,15 @@ def o311ai_2() -> gf.Component:
 
 
 @cell
-def o311ai_4() -> gf.Component:
-    """Returns o311ai_4 fixed cell.
+def sky130_fd_sc_hd__o311ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o311ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o311ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o311ai_4()
       c.plot()
     """
     return import_gds(
@@ -5408,15 +5408,15 @@ def o311ai_4() -> gf.Component:
 
 
 @cell
-def o311ai_0() -> gf.Component:
-    """Returns o311ai_0 fixed cell.
+def sky130_fd_sc_hd__o311ai_0() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o311ai_0 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o311ai_0()
+      c = sky130.components.sky130_fd_sc_hd__o311ai_0()
       c.plot()
     """
     return import_gds(
@@ -5426,15 +5426,15 @@ def o311ai_0() -> gf.Component:
 
 
 @cell
-def dlygate4sd1_1() -> gf.Component:
-    """Returns dlygate4sd1_1 fixed cell.
+def sky130_fd_sc_hd__dlygate4sd1_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlygate4sd1_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlygate4sd1_1()
+      c = sky130.components.sky130_fd_sc_hd__dlygate4sd1_1()
       c.plot()
     """
     return import_gds(
@@ -5444,15 +5444,15 @@ def dlygate4sd1_1() -> gf.Component:
 
 
 @cell
-def einvn_2() -> gf.Component:
-    """Returns einvn_2 fixed cell.
+def sky130_fd_sc_hd__einvn_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvn_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvn_2()
+      c = sky130.components.sky130_fd_sc_hd__einvn_2()
       c.plot()
     """
     return import_gds(
@@ -5462,15 +5462,15 @@ def einvn_2() -> gf.Component:
 
 
 @cell
-def einvn_0() -> gf.Component:
-    """Returns einvn_0 fixed cell.
+def sky130_fd_sc_hd__einvn_0() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvn_0 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvn_0()
+      c = sky130.components.sky130_fd_sc_hd__einvn_0()
       c.plot()
     """
     return import_gds(
@@ -5480,15 +5480,15 @@ def einvn_0() -> gf.Component:
 
 
 @cell
-def einvn_8() -> gf.Component:
-    """Returns einvn_8 fixed cell.
+def sky130_fd_sc_hd__einvn_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvn_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvn_8()
+      c = sky130.components.sky130_fd_sc_hd__einvn_8()
       c.plot()
     """
     return import_gds(
@@ -5498,15 +5498,15 @@ def einvn_8() -> gf.Component:
 
 
 @cell
-def einvn_4() -> gf.Component:
-    """Returns einvn_4 fixed cell.
+def sky130_fd_sc_hd__einvn_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvn_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvn_4()
+      c = sky130.components.sky130_fd_sc_hd__einvn_4()
       c.plot()
     """
     return import_gds(
@@ -5516,15 +5516,15 @@ def einvn_4() -> gf.Component:
 
 
 @cell
-def einvn_1() -> gf.Component:
-    """Returns einvn_1 fixed cell.
+def sky130_fd_sc_hd__einvn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvn_1()
+      c = sky130.components.sky130_fd_sc_hd__einvn_1()
       c.plot()
     """
     return import_gds(
@@ -5534,15 +5534,15 @@ def einvn_1() -> gf.Component:
 
 
 @cell
-def fahcon_1() -> gf.Component:
-    """Returns fahcon_1 fixed cell.
+def sky130_fd_sc_hd__fahcon_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fahcon_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fahcon_1()
+      c = sky130.components.sky130_fd_sc_hd__fahcon_1()
       c.plot()
     """
     return import_gds(
@@ -5552,15 +5552,15 @@ def fahcon_1() -> gf.Component:
 
 
 @cell
-def dlygate4sd3_1() -> gf.Component:
-    """Returns dlygate4sd3_1 fixed cell.
+def sky130_fd_sc_hd__dlygate4sd3_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlygate4sd3_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlygate4sd3_1()
+      c = sky130.components.sky130_fd_sc_hd__dlygate4sd3_1()
       c.plot()
     """
     return import_gds(
@@ -5570,15 +5570,15 @@ def dlygate4sd3_1() -> gf.Component:
 
 
 @cell
-def clkdlybuf4s15_2() -> gf.Component:
-    """Returns clkdlybuf4s15_2 fixed cell.
+def sky130_fd_sc_hd__clkdlybuf4s15_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkdlybuf4s15_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkdlybuf4s15_2()
+      c = sky130.components.sky130_fd_sc_hd__clkdlybuf4s15_2()
       c.plot()
     """
     return import_gds(
@@ -5588,15 +5588,15 @@ def clkdlybuf4s15_2() -> gf.Component:
 
 
 @cell
-def clkdlybuf4s15_1() -> gf.Component:
-    """Returns clkdlybuf4s15_1 fixed cell.
+def sky130_fd_sc_hd__clkdlybuf4s15_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkdlybuf4s15_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkdlybuf4s15_1()
+      c = sky130.components.sky130_fd_sc_hd__clkdlybuf4s15_1()
       c.plot()
     """
     return import_gds(
@@ -5606,15 +5606,15 @@ def clkdlybuf4s15_1() -> gf.Component:
 
 
 @cell
-def a2111o_2() -> gf.Component:
-    """Returns a2111o_2 fixed cell.
+def sky130_fd_sc_hd__a2111o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2111o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2111o_2()
+      c = sky130.components.sky130_fd_sc_hd__a2111o_2()
       c.plot()
     """
     return import_gds(
@@ -5624,15 +5624,15 @@ def a2111o_2() -> gf.Component:
 
 
 @cell
-def a2111o_1() -> gf.Component:
-    """Returns a2111o_1 fixed cell.
+def sky130_fd_sc_hd__a2111o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2111o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2111o_1()
+      c = sky130.components.sky130_fd_sc_hd__a2111o_1()
       c.plot()
     """
     return import_gds(
@@ -5642,15 +5642,15 @@ def a2111o_1() -> gf.Component:
 
 
 @cell
-def a2111o_4() -> gf.Component:
-    """Returns a2111o_4 fixed cell.
+def sky130_fd_sc_hd__a2111o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2111o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2111o_4()
+      c = sky130.components.sky130_fd_sc_hd__a2111o_4()
       c.plot()
     """
     return import_gds(
@@ -5660,15 +5660,15 @@ def a2111o_4() -> gf.Component:
 
 
 @cell
-def o2111ai_1() -> gf.Component:
-    """Returns o2111ai_1 fixed cell.
+def sky130_fd_sc_hd__o2111ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2111ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2111ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o2111ai_1()
       c.plot()
     """
     return import_gds(
@@ -5678,15 +5678,15 @@ def o2111ai_1() -> gf.Component:
 
 
 @cell
-def o2111ai_2() -> gf.Component:
-    """Returns o2111ai_2 fixed cell.
+def sky130_fd_sc_hd__o2111ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2111ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2111ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o2111ai_2()
       c.plot()
     """
     return import_gds(
@@ -5696,15 +5696,15 @@ def o2111ai_2() -> gf.Component:
 
 
 @cell
-def o2111ai_4() -> gf.Component:
-    """Returns o2111ai_4 fixed cell.
+def sky130_fd_sc_hd__o2111ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2111ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2111ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o2111ai_4()
       c.plot()
     """
     return import_gds(
@@ -5714,15 +5714,15 @@ def o2111ai_4() -> gf.Component:
 
 
 @cell
-def sdfxbp_2() -> gf.Component:
-    """Returns sdfxbp_2 fixed cell.
+def sky130_fd_sc_hd__sdfxbp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfxbp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfxbp_2()
+      c = sky130.components.sky130_fd_sc_hd__sdfxbp_2()
       c.plot()
     """
     return import_gds(
@@ -5732,15 +5732,15 @@ def sdfxbp_2() -> gf.Component:
 
 
 @cell
-def sdfxbp_1() -> gf.Component:
-    """Returns sdfxbp_1 fixed cell.
+def sky130_fd_sc_hd__sdfxbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfxbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfxbp_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfxbp_1()
       c.plot()
     """
     return import_gds(
@@ -5750,15 +5750,15 @@ def sdfxbp_1() -> gf.Component:
 
 
 @cell
-def sdfxtp_2() -> gf.Component:
-    """Returns sdfxtp_2 fixed cell.
+def sky130_fd_sc_hd__sdfxtp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfxtp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfxtp_2()
+      c = sky130.components.sky130_fd_sc_hd__sdfxtp_2()
       c.plot()
     """
     return import_gds(
@@ -5768,15 +5768,15 @@ def sdfxtp_2() -> gf.Component:
 
 
 @cell
-def sdfxtp_1() -> gf.Component:
-    """Returns sdfxtp_1 fixed cell.
+def sky130_fd_sc_hd__sdfxtp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfxtp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfxtp_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfxtp_1()
       c.plot()
     """
     return import_gds(
@@ -5786,15 +5786,15 @@ def sdfxtp_1() -> gf.Component:
 
 
 @cell
-def sdfxtp_4() -> gf.Component:
-    """Returns sdfxtp_4 fixed cell.
+def sky130_fd_sc_hd__sdfxtp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfxtp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfxtp_4()
+      c = sky130.components.sky130_fd_sc_hd__sdfxtp_4()
       c.plot()
     """
     return import_gds(
@@ -5804,15 +5804,15 @@ def sdfxtp_4() -> gf.Component:
 
 
 @cell
-def clkdlybuf4s25_1() -> gf.Component:
-    """Returns clkdlybuf4s25_1 fixed cell.
+def sky130_fd_sc_hd__clkdlybuf4s25_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkdlybuf4s25_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkdlybuf4s25_1()
+      c = sky130.components.sky130_fd_sc_hd__clkdlybuf4s25_1()
       c.plot()
     """
     return import_gds(
@@ -5822,15 +5822,15 @@ def clkdlybuf4s25_1() -> gf.Component:
 
 
 @cell
-def clkdlybuf4s25_2() -> gf.Component:
-    """Returns clkdlybuf4s25_2 fixed cell.
+def sky130_fd_sc_hd__clkdlybuf4s25_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkdlybuf4s25_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkdlybuf4s25_2()
+      c = sky130.components.sky130_fd_sc_hd__clkdlybuf4s25_2()
       c.plot()
     """
     return import_gds(
@@ -5840,15 +5840,15 @@ def clkdlybuf4s25_2() -> gf.Component:
 
 
 @cell
-def nand2_8() -> gf.Component:
-    """Returns nand2_8 fixed cell.
+def sky130_fd_sc_hd__nand2_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand2_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand2_8()
+      c = sky130.components.sky130_fd_sc_hd__nand2_8()
       c.plot()
     """
     return import_gds(
@@ -5858,15 +5858,15 @@ def nand2_8() -> gf.Component:
 
 
 @cell
-def nand2_2() -> gf.Component:
-    """Returns nand2_2 fixed cell.
+def sky130_fd_sc_hd__nand2_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand2_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand2_2()
+      c = sky130.components.sky130_fd_sc_hd__nand2_2()
       c.plot()
     """
     return import_gds(
@@ -5876,15 +5876,15 @@ def nand2_2() -> gf.Component:
 
 
 @cell
-def nand2_4() -> gf.Component:
-    """Returns nand2_4 fixed cell.
+def sky130_fd_sc_hd__nand2_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand2_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand2_4()
+      c = sky130.components.sky130_fd_sc_hd__nand2_4()
       c.plot()
     """
     return import_gds(
@@ -5894,15 +5894,15 @@ def nand2_4() -> gf.Component:
 
 
 @cell
-def nand2_1() -> gf.Component:
-    """Returns nand2_1 fixed cell.
+def sky130_fd_sc_hd__nand2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand2_1()
+      c = sky130.components.sky130_fd_sc_hd__nand2_1()
       c.plot()
     """
     return import_gds(
@@ -5912,15 +5912,15 @@ def nand2_1() -> gf.Component:
 
 
 @cell
-def conb_1() -> gf.Component:
-    """Returns conb_1 fixed cell.
+def sky130_fd_sc_hd__conb_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__conb_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.conb_1()
+      c = sky130.components.sky130_fd_sc_hd__conb_1()
       c.plot()
     """
     return import_gds(
@@ -5930,15 +5930,15 @@ def conb_1() -> gf.Component:
 
 
 @cell
-def a311oi_2() -> gf.Component:
-    """Returns a311oi_2 fixed cell.
+def sky130_fd_sc_hd__a311oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a311oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a311oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a311oi_2()
       c.plot()
     """
     return import_gds(
@@ -5948,15 +5948,15 @@ def a311oi_2() -> gf.Component:
 
 
 @cell
-def a311oi_1() -> gf.Component:
-    """Returns a311oi_1 fixed cell.
+def sky130_fd_sc_hd__a311oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a311oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a311oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a311oi_1()
       c.plot()
     """
     return import_gds(
@@ -5966,15 +5966,15 @@ def a311oi_1() -> gf.Component:
 
 
 @cell
-def a311oi_4() -> gf.Component:
-    """Returns a311oi_4 fixed cell.
+def sky130_fd_sc_hd__a311oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a311oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a311oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a311oi_4()
       c.plot()
     """
     return import_gds(
@@ -5984,15 +5984,15 @@ def a311oi_4() -> gf.Component:
 
 
 @cell
-def einvp_2() -> gf.Component:
-    """Returns einvp_2 fixed cell.
+def sky130_fd_sc_hd__einvp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvp_2()
+      c = sky130.components.sky130_fd_sc_hd__einvp_2()
       c.plot()
     """
     return import_gds(
@@ -6002,15 +6002,15 @@ def einvp_2() -> gf.Component:
 
 
 @cell
-def einvp_8() -> gf.Component:
-    """Returns einvp_8 fixed cell.
+def sky130_fd_sc_hd__einvp_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvp_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvp_8()
+      c = sky130.components.sky130_fd_sc_hd__einvp_8()
       c.plot()
     """
     return import_gds(
@@ -6020,15 +6020,15 @@ def einvp_8() -> gf.Component:
 
 
 @cell
-def einvp_1() -> gf.Component:
-    """Returns einvp_1 fixed cell.
+def sky130_fd_sc_hd__einvp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvp_1()
+      c = sky130.components.sky130_fd_sc_hd__einvp_1()
       c.plot()
     """
     return import_gds(
@@ -6038,15 +6038,15 @@ def einvp_1() -> gf.Component:
 
 
 @cell
-def einvp_4() -> gf.Component:
-    """Returns einvp_4 fixed cell.
+def sky130_fd_sc_hd__einvp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__einvp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.einvp_4()
+      c = sky130.components.sky130_fd_sc_hd__einvp_4()
       c.plot()
     """
     return import_gds(
@@ -6056,15 +6056,15 @@ def einvp_4() -> gf.Component:
 
 
 @cell
-def or4b_4() -> gf.Component:
-    """Returns or4b_4 fixed cell.
+def sky130_fd_sc_hd__or4b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4b_4()
+      c = sky130.components.sky130_fd_sc_hd__or4b_4()
       c.plot()
     """
     return import_gds(
@@ -6074,15 +6074,15 @@ def or4b_4() -> gf.Component:
 
 
 @cell
-def or4b_1() -> gf.Component:
-    """Returns or4b_1 fixed cell.
+def sky130_fd_sc_hd__or4b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4b_1()
+      c = sky130.components.sky130_fd_sc_hd__or4b_1()
       c.plot()
     """
     return import_gds(
@@ -6092,15 +6092,15 @@ def or4b_1() -> gf.Component:
 
 
 @cell
-def or4b_2() -> gf.Component:
-    """Returns or4b_2 fixed cell.
+def sky130_fd_sc_hd__or4b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4b_2()
+      c = sky130.components.sky130_fd_sc_hd__or4b_2()
       c.plot()
     """
     return import_gds(
@@ -6110,15 +6110,15 @@ def or4b_2() -> gf.Component:
 
 
 @cell
-def lpflow_lsbuf_lh_isowell_tap_4() -> gf.Component:
-    """Returns lpflow_lsbuf_lh_isowell_tap_4 fixed cell.
+def sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_lsbuf_lh_isowell_tap_4()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4()
       c.plot()
     """
     return import_gds(
@@ -6128,15 +6128,15 @@ def lpflow_lsbuf_lh_isowell_tap_4() -> gf.Component:
 
 
 @cell
-def lpflow_lsbuf_lh_isowell_tap_2() -> gf.Component:
-    """Returns lpflow_lsbuf_lh_isowell_tap_2 fixed cell.
+def sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_lsbuf_lh_isowell_tap_2()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2()
       c.plot()
     """
     return import_gds(
@@ -6146,15 +6146,15 @@ def lpflow_lsbuf_lh_isowell_tap_2() -> gf.Component:
 
 
 @cell
-def lpflow_lsbuf_lh_isowell_tap_1() -> gf.Component:
-    """Returns lpflow_lsbuf_lh_isowell_tap_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_lsbuf_lh_isowell_tap_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1()
       c.plot()
     """
     return import_gds(
@@ -6164,15 +6164,15 @@ def lpflow_lsbuf_lh_isowell_tap_1() -> gf.Component:
 
 
 @cell
-def tapvgnd2_1() -> gf.Component:
-    """Returns tapvgnd2_1 fixed cell.
+def sky130_fd_sc_hd__tapvgnd2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__tapvgnd2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.tapvgnd2_1()
+      c = sky130.components.sky130_fd_sc_hd__tapvgnd2_1()
       c.plot()
     """
     return import_gds(
@@ -6182,15 +6182,15 @@ def tapvgnd2_1() -> gf.Component:
 
 
 @cell
-def tap_2() -> gf.Component:
-    """Returns tap_2 fixed cell.
+def sky130_fd_sc_hd__tap_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__tap_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.tap_2()
+      c = sky130.components.sky130_fd_sc_hd__tap_2()
       c.plot()
     """
     return import_gds(
@@ -6200,15 +6200,15 @@ def tap_2() -> gf.Component:
 
 
 @cell
-def tap_1() -> gf.Component:
-    """Returns tap_1 fixed cell.
+def sky130_fd_sc_hd__tap_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__tap_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.tap_1()
+      c = sky130.components.sky130_fd_sc_hd__tap_1()
       c.plot()
     """
     return import_gds(
@@ -6218,15 +6218,15 @@ def tap_1() -> gf.Component:
 
 
 @cell
-def o22ai_2() -> gf.Component:
-    """Returns o22ai_2 fixed cell.
+def sky130_fd_sc_hd__o22ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o22ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o22ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o22ai_2()
       c.plot()
     """
     return import_gds(
@@ -6236,15 +6236,15 @@ def o22ai_2() -> gf.Component:
 
 
 @cell
-def o22ai_4() -> gf.Component:
-    """Returns o22ai_4 fixed cell.
+def sky130_fd_sc_hd__o22ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o22ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o22ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o22ai_4()
       c.plot()
     """
     return import_gds(
@@ -6254,15 +6254,15 @@ def o22ai_4() -> gf.Component:
 
 
 @cell
-def o22ai_1() -> gf.Component:
-    """Returns o22ai_1 fixed cell.
+def sky130_fd_sc_hd__o22ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o22ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o22ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o22ai_1()
       c.plot()
     """
     return import_gds(
@@ -6272,15 +6272,15 @@ def o22ai_1() -> gf.Component:
 
 
 @cell
-def dlymetal6s4s_1() -> gf.Component:
-    """Returns dlymetal6s4s_1 fixed cell.
+def sky130_fd_sc_hd__dlymetal6s4s_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlymetal6s4s_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlymetal6s4s_1()
+      c = sky130.components.sky130_fd_sc_hd__dlymetal6s4s_1()
       c.plot()
     """
     return import_gds(
@@ -6290,15 +6290,15 @@ def dlymetal6s4s_1() -> gf.Component:
 
 
 @cell
-def o31ai_1() -> gf.Component:
-    """Returns o31ai_1 fixed cell.
+def sky130_fd_sc_hd__o31ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o31ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o31ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o31ai_1()
       c.plot()
     """
     return import_gds(
@@ -6308,15 +6308,15 @@ def o31ai_1() -> gf.Component:
 
 
 @cell
-def o31ai_2() -> gf.Component:
-    """Returns o31ai_2 fixed cell.
+def sky130_fd_sc_hd__o31ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o31ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o31ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o31ai_2()
       c.plot()
     """
     return import_gds(
@@ -6326,15 +6326,15 @@ def o31ai_2() -> gf.Component:
 
 
 @cell
-def o31ai_4() -> gf.Component:
-    """Returns o31ai_4 fixed cell.
+def sky130_fd_sc_hd__o31ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o31ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o31ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o31ai_4()
       c.plot()
     """
     return import_gds(
@@ -6344,15 +6344,15 @@ def o31ai_4() -> gf.Component:
 
 
 @cell
-def a22oi_2() -> gf.Component:
-    """Returns a22oi_2 fixed cell.
+def sky130_fd_sc_hd__a22oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a22oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a22oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a22oi_2()
       c.plot()
     """
     return import_gds(
@@ -6362,15 +6362,15 @@ def a22oi_2() -> gf.Component:
 
 
 @cell
-def a22oi_1() -> gf.Component:
-    """Returns a22oi_1 fixed cell.
+def sky130_fd_sc_hd__a22oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a22oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a22oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a22oi_1()
       c.plot()
     """
     return import_gds(
@@ -6380,15 +6380,15 @@ def a22oi_1() -> gf.Component:
 
 
 @cell
-def a22oi_4() -> gf.Component:
-    """Returns a22oi_4 fixed cell.
+def sky130_fd_sc_hd__a22oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a22oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a22oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a22oi_4()
       c.plot()
     """
     return import_gds(
@@ -6398,15 +6398,15 @@ def a22oi_4() -> gf.Component:
 
 
 @cell
-def a21o_4() -> gf.Component:
-    """Returns a21o_4 fixed cell.
+def sky130_fd_sc_hd__a21o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21o_4()
+      c = sky130.components.sky130_fd_sc_hd__a21o_4()
       c.plot()
     """
     return import_gds(
@@ -6416,15 +6416,15 @@ def a21o_4() -> gf.Component:
 
 
 @cell
-def a21o_2() -> gf.Component:
-    """Returns a21o_2 fixed cell.
+def sky130_fd_sc_hd__a21o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21o_2()
+      c = sky130.components.sky130_fd_sc_hd__a21o_2()
       c.plot()
     """
     return import_gds(
@@ -6434,15 +6434,15 @@ def a21o_2() -> gf.Component:
 
 
 @cell
-def a21o_1() -> gf.Component:
-    """Returns a21o_1 fixed cell.
+def sky130_fd_sc_hd__a21o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21o_1()
+      c = sky130.components.sky130_fd_sc_hd__a21o_1()
       c.plot()
     """
     return import_gds(
@@ -6452,15 +6452,15 @@ def a21o_1() -> gf.Component:
 
 
 @cell
-def mux2i_4() -> gf.Component:
-    """Returns mux2i_4 fixed cell.
+def sky130_fd_sc_hd__mux2i_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux2i_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux2i_4()
+      c = sky130.components.sky130_fd_sc_hd__mux2i_4()
       c.plot()
     """
     return import_gds(
@@ -6470,15 +6470,15 @@ def mux2i_4() -> gf.Component:
 
 
 @cell
-def mux2i_2() -> gf.Component:
-    """Returns mux2i_2 fixed cell.
+def sky130_fd_sc_hd__mux2i_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux2i_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux2i_2()
+      c = sky130.components.sky130_fd_sc_hd__mux2i_2()
       c.plot()
     """
     return import_gds(
@@ -6488,15 +6488,15 @@ def mux2i_2() -> gf.Component:
 
 
 @cell
-def mux2i_1() -> gf.Component:
-    """Returns mux2i_1 fixed cell.
+def sky130_fd_sc_hd__mux2i_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux2i_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux2i_1()
+      c = sky130.components.sky130_fd_sc_hd__mux2i_1()
       c.plot()
     """
     return import_gds(
@@ -6506,15 +6506,15 @@ def mux2i_1() -> gf.Component:
 
 
 @cell
-def nor4b_2() -> gf.Component:
-    """Returns nor4b_2 fixed cell.
+def sky130_fd_sc_hd__nor4b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4b_2()
+      c = sky130.components.sky130_fd_sc_hd__nor4b_2()
       c.plot()
     """
     return import_gds(
@@ -6524,15 +6524,15 @@ def nor4b_2() -> gf.Component:
 
 
 @cell
-def nor4b_1() -> gf.Component:
-    """Returns nor4b_1 fixed cell.
+def sky130_fd_sc_hd__nor4b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4b_1()
+      c = sky130.components.sky130_fd_sc_hd__nor4b_1()
       c.plot()
     """
     return import_gds(
@@ -6542,15 +6542,15 @@ def nor4b_1() -> gf.Component:
 
 
 @cell
-def nor4b_4() -> gf.Component:
-    """Returns nor4b_4 fixed cell.
+def sky130_fd_sc_hd__nor4b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4b_4()
+      c = sky130.components.sky130_fd_sc_hd__nor4b_4()
       c.plot()
     """
     return import_gds(
@@ -6560,15 +6560,15 @@ def nor4b_4() -> gf.Component:
 
 
 @cell
-def a211o_4() -> gf.Component:
-    """Returns a211o_4 fixed cell.
+def sky130_fd_sc_hd__a211o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a211o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a211o_4()
+      c = sky130.components.sky130_fd_sc_hd__a211o_4()
       c.plot()
     """
     return import_gds(
@@ -6578,15 +6578,15 @@ def a211o_4() -> gf.Component:
 
 
 @cell
-def a211o_2() -> gf.Component:
-    """Returns a211o_2 fixed cell.
+def sky130_fd_sc_hd__a211o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a211o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a211o_2()
+      c = sky130.components.sky130_fd_sc_hd__a211o_2()
       c.plot()
     """
     return import_gds(
@@ -6596,15 +6596,15 @@ def a211o_2() -> gf.Component:
 
 
 @cell
-def a211o_1() -> gf.Component:
-    """Returns a211o_1 fixed cell.
+def sky130_fd_sc_hd__a211o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a211o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a211o_1()
+      c = sky130.components.sky130_fd_sc_hd__a211o_1()
       c.plot()
     """
     return import_gds(
@@ -6614,15 +6614,15 @@ def a211o_1() -> gf.Component:
 
 
 @cell
-def dfxtp_2() -> gf.Component:
-    """Returns dfxtp_2 fixed cell.
+def sky130_fd_sc_hd__dfxtp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfxtp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfxtp_2()
+      c = sky130.components.sky130_fd_sc_hd__dfxtp_2()
       c.plot()
     """
     return import_gds(
@@ -6632,15 +6632,15 @@ def dfxtp_2() -> gf.Component:
 
 
 @cell
-def dfxtp_1() -> gf.Component:
-    """Returns dfxtp_1 fixed cell.
+def sky130_fd_sc_hd__dfxtp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfxtp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfxtp_1()
+      c = sky130.components.sky130_fd_sc_hd__dfxtp_1()
       c.plot()
     """
     return import_gds(
@@ -6650,15 +6650,15 @@ def dfxtp_1() -> gf.Component:
 
 
 @cell
-def dfxtp_4() -> gf.Component:
-    """Returns dfxtp_4 fixed cell.
+def sky130_fd_sc_hd__dfxtp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfxtp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfxtp_4()
+      c = sky130.components.sky130_fd_sc_hd__dfxtp_4()
       c.plot()
     """
     return import_gds(
@@ -6668,15 +6668,15 @@ def dfxtp_4() -> gf.Component:
 
 
 @cell
-def dfstp_4() -> gf.Component:
-    """Returns dfstp_4 fixed cell.
+def sky130_fd_sc_hd__dfstp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfstp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfstp_4()
+      c = sky130.components.sky130_fd_sc_hd__dfstp_4()
       c.plot()
     """
     return import_gds(
@@ -6686,15 +6686,15 @@ def dfstp_4() -> gf.Component:
 
 
 @cell
-def dfstp_2() -> gf.Component:
-    """Returns dfstp_2 fixed cell.
+def sky130_fd_sc_hd__dfstp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfstp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfstp_2()
+      c = sky130.components.sky130_fd_sc_hd__dfstp_2()
       c.plot()
     """
     return import_gds(
@@ -6704,15 +6704,15 @@ def dfstp_2() -> gf.Component:
 
 
 @cell
-def dfstp_1() -> gf.Component:
-    """Returns dfstp_1 fixed cell.
+def sky130_fd_sc_hd__dfstp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfstp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfstp_1()
+      c = sky130.components.sky130_fd_sc_hd__dfstp_1()
       c.plot()
     """
     return import_gds(
@@ -6722,15 +6722,15 @@ def dfstp_1() -> gf.Component:
 
 
 @cell
-def lpflow_inputiso0p_1() -> gf.Component:
-    """Returns lpflow_inputiso0p_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_inputiso0p_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_inputiso0p_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_inputiso0p_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_inputiso0p_1()
       c.plot()
     """
     return import_gds(
@@ -6740,15 +6740,15 @@ def lpflow_inputiso0p_1() -> gf.Component:
 
 
 @cell
-def o211ai_4() -> gf.Component:
-    """Returns o211ai_4 fixed cell.
+def sky130_fd_sc_hd__o211ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o211ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o211ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o211ai_4()
       c.plot()
     """
     return import_gds(
@@ -6758,15 +6758,15 @@ def o211ai_4() -> gf.Component:
 
 
 @cell
-def o211ai_2() -> gf.Component:
-    """Returns o211ai_2 fixed cell.
+def sky130_fd_sc_hd__o211ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o211ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o211ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o211ai_2()
       c.plot()
     """
     return import_gds(
@@ -6776,15 +6776,15 @@ def o211ai_2() -> gf.Component:
 
 
 @cell
-def o211ai_1() -> gf.Component:
-    """Returns o211ai_1 fixed cell.
+def sky130_fd_sc_hd__o211ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o211ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o211ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o211ai_1()
       c.plot()
     """
     return import_gds(
@@ -6794,15 +6794,15 @@ def o211ai_1() -> gf.Component:
 
 
 @cell
-def dfrbp_2() -> gf.Component:
-    """Returns dfrbp_2 fixed cell.
+def sky130_fd_sc_hd__dfrbp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfrbp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfrbp_2()
+      c = sky130.components.sky130_fd_sc_hd__dfrbp_2()
       c.plot()
     """
     return import_gds(
@@ -6812,15 +6812,15 @@ def dfrbp_2() -> gf.Component:
 
 
 @cell
-def dfrbp_1() -> gf.Component:
-    """Returns dfrbp_1 fixed cell.
+def sky130_fd_sc_hd__dfrbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfrbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfrbp_1()
+      c = sky130.components.sky130_fd_sc_hd__dfrbp_1()
       c.plot()
     """
     return import_gds(
@@ -6830,15 +6830,15 @@ def dfrbp_1() -> gf.Component:
 
 
 @cell
-def o211a_4() -> gf.Component:
-    """Returns o211a_4 fixed cell.
+def sky130_fd_sc_hd__o211a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o211a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o211a_4()
+      c = sky130.components.sky130_fd_sc_hd__o211a_4()
       c.plot()
     """
     return import_gds(
@@ -6848,15 +6848,15 @@ def o211a_4() -> gf.Component:
 
 
 @cell
-def o211a_1() -> gf.Component:
-    """Returns o211a_1 fixed cell.
+def sky130_fd_sc_hd__o211a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o211a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o211a_1()
+      c = sky130.components.sky130_fd_sc_hd__o211a_1()
       c.plot()
     """
     return import_gds(
@@ -6866,15 +6866,15 @@ def o211a_1() -> gf.Component:
 
 
 @cell
-def o211a_2() -> gf.Component:
-    """Returns o211a_2 fixed cell.
+def sky130_fd_sc_hd__o211a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o211a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o211a_2()
+      c = sky130.components.sky130_fd_sc_hd__o211a_2()
       c.plot()
     """
     return import_gds(
@@ -6884,15 +6884,15 @@ def o211a_2() -> gf.Component:
 
 
 @cell
-def edfxbp_1() -> gf.Component:
-    """Returns edfxbp_1 fixed cell.
+def sky130_fd_sc_hd__edfxbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__edfxbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.edfxbp_1()
+      c = sky130.components.sky130_fd_sc_hd__edfxbp_1()
       c.plot()
     """
     return import_gds(
@@ -6902,15 +6902,15 @@ def edfxbp_1() -> gf.Component:
 
 
 @cell
-def or2_0() -> gf.Component:
-    """Returns or2_0 fixed cell.
+def sky130_fd_sc_hd__or2_0() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or2_0 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or2_0()
+      c = sky130.components.sky130_fd_sc_hd__or2_0()
       c.plot()
     """
     return import_gds(
@@ -6920,15 +6920,15 @@ def or2_0() -> gf.Component:
 
 
 @cell
-def or2_4() -> gf.Component:
-    """Returns or2_4 fixed cell.
+def sky130_fd_sc_hd__or2_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or2_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or2_4()
+      c = sky130.components.sky130_fd_sc_hd__or2_4()
       c.plot()
     """
     return import_gds(
@@ -6938,15 +6938,15 @@ def or2_4() -> gf.Component:
 
 
 @cell
-def or2_1() -> gf.Component:
-    """Returns or2_1 fixed cell.
+def sky130_fd_sc_hd__or2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or2_1()
+      c = sky130.components.sky130_fd_sc_hd__or2_1()
       c.plot()
     """
     return import_gds(
@@ -6956,15 +6956,15 @@ def or2_1() -> gf.Component:
 
 
 @cell
-def or2_2() -> gf.Component:
-    """Returns or2_2 fixed cell.
+def sky130_fd_sc_hd__or2_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or2_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or2_2()
+      c = sky130.components.sky130_fd_sc_hd__or2_2()
       c.plot()
     """
     return import_gds(
@@ -6974,15 +6974,15 @@ def or2_2() -> gf.Component:
 
 
 @cell
-def nor4_2() -> gf.Component:
-    """Returns nor4_2 fixed cell.
+def sky130_fd_sc_hd__nor4_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4_2()
+      c = sky130.components.sky130_fd_sc_hd__nor4_2()
       c.plot()
     """
     return import_gds(
@@ -6992,15 +6992,15 @@ def nor4_2() -> gf.Component:
 
 
 @cell
-def nor4_1() -> gf.Component:
-    """Returns nor4_1 fixed cell.
+def sky130_fd_sc_hd__nor4_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4_1()
+      c = sky130.components.sky130_fd_sc_hd__nor4_1()
       c.plot()
     """
     return import_gds(
@@ -7010,15 +7010,15 @@ def nor4_1() -> gf.Component:
 
 
 @cell
-def nor4_4() -> gf.Component:
-    """Returns nor4_4 fixed cell.
+def sky130_fd_sc_hd__nor4_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4_4()
+      c = sky130.components.sky130_fd_sc_hd__nor4_4()
       c.plot()
     """
     return import_gds(
@@ -7028,15 +7028,15 @@ def nor4_4() -> gf.Component:
 
 
 @cell
-def dlxtn_2() -> gf.Component:
-    """Returns dlxtn_2 fixed cell.
+def sky130_fd_sc_hd__dlxtn_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlxtn_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlxtn_2()
+      c = sky130.components.sky130_fd_sc_hd__dlxtn_2()
       c.plot()
     """
     return import_gds(
@@ -7046,15 +7046,15 @@ def dlxtn_2() -> gf.Component:
 
 
 @cell
-def dlxtn_4() -> gf.Component:
-    """Returns dlxtn_4 fixed cell.
+def sky130_fd_sc_hd__dlxtn_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlxtn_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlxtn_4()
+      c = sky130.components.sky130_fd_sc_hd__dlxtn_4()
       c.plot()
     """
     return import_gds(
@@ -7064,15 +7064,15 @@ def dlxtn_4() -> gf.Component:
 
 
 @cell
-def dlxtn_1() -> gf.Component:
-    """Returns dlxtn_1 fixed cell.
+def sky130_fd_sc_hd__dlxtn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlxtn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlxtn_1()
+      c = sky130.components.sky130_fd_sc_hd__dlxtn_1()
       c.plot()
     """
     return import_gds(
@@ -7082,15 +7082,15 @@ def dlxtn_1() -> gf.Component:
 
 
 @cell
-def a41o_4() -> gf.Component:
-    """Returns a41o_4 fixed cell.
+def sky130_fd_sc_hd__a41o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a41o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a41o_4()
+      c = sky130.components.sky130_fd_sc_hd__a41o_4()
       c.plot()
     """
     return import_gds(
@@ -7100,15 +7100,15 @@ def a41o_4() -> gf.Component:
 
 
 @cell
-def a41o_2() -> gf.Component:
-    """Returns a41o_2 fixed cell.
+def sky130_fd_sc_hd__a41o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a41o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a41o_2()
+      c = sky130.components.sky130_fd_sc_hd__a41o_2()
       c.plot()
     """
     return import_gds(
@@ -7118,15 +7118,15 @@ def a41o_2() -> gf.Component:
 
 
 @cell
-def a41o_1() -> gf.Component:
-    """Returns a41o_1 fixed cell.
+def sky130_fd_sc_hd__a41o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a41o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a41o_1()
+      c = sky130.components.sky130_fd_sc_hd__a41o_1()
       c.plot()
     """
     return import_gds(
@@ -7136,15 +7136,15 @@ def a41o_1() -> gf.Component:
 
 
 @cell
-def a21boi_1() -> gf.Component:
-    """Returns a21boi_1 fixed cell.
+def sky130_fd_sc_hd__a21boi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21boi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21boi_1()
+      c = sky130.components.sky130_fd_sc_hd__a21boi_1()
       c.plot()
     """
     return import_gds(
@@ -7154,15 +7154,15 @@ def a21boi_1() -> gf.Component:
 
 
 @cell
-def a21boi_2() -> gf.Component:
-    """Returns a21boi_2 fixed cell.
+def sky130_fd_sc_hd__a21boi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21boi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21boi_2()
+      c = sky130.components.sky130_fd_sc_hd__a21boi_2()
       c.plot()
     """
     return import_gds(
@@ -7172,15 +7172,15 @@ def a21boi_2() -> gf.Component:
 
 
 @cell
-def a21boi_0() -> gf.Component:
-    """Returns a21boi_0 fixed cell.
+def sky130_fd_sc_hd__a21boi_0() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21boi_0 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21boi_0()
+      c = sky130.components.sky130_fd_sc_hd__a21boi_0()
       c.plot()
     """
     return import_gds(
@@ -7190,15 +7190,15 @@ def a21boi_0() -> gf.Component:
 
 
 @cell
-def a21boi_4() -> gf.Component:
-    """Returns a21boi_4 fixed cell.
+def sky130_fd_sc_hd__a21boi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21boi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21boi_4()
+      c = sky130.components.sky130_fd_sc_hd__a21boi_4()
       c.plot()
     """
     return import_gds(
@@ -7208,15 +7208,15 @@ def a21boi_4() -> gf.Component:
 
 
 @cell
-def o32a_2() -> gf.Component:
-    """Returns o32a_2 fixed cell.
+def sky130_fd_sc_hd__o32a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o32a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o32a_2()
+      c = sky130.components.sky130_fd_sc_hd__o32a_2()
       c.plot()
     """
     return import_gds(
@@ -7226,15 +7226,15 @@ def o32a_2() -> gf.Component:
 
 
 @cell
-def o32a_1() -> gf.Component:
-    """Returns o32a_1 fixed cell.
+def sky130_fd_sc_hd__o32a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o32a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o32a_1()
+      c = sky130.components.sky130_fd_sc_hd__o32a_1()
       c.plot()
     """
     return import_gds(
@@ -7244,15 +7244,15 @@ def o32a_1() -> gf.Component:
 
 
 @cell
-def o32a_4() -> gf.Component:
-    """Returns o32a_4 fixed cell.
+def sky130_fd_sc_hd__o32a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o32a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o32a_4()
+      c = sky130.components.sky130_fd_sc_hd__o32a_4()
       c.plot()
     """
     return import_gds(
@@ -7262,15 +7262,15 @@ def o32a_4() -> gf.Component:
 
 
 @cell
-def lpflow_clkbufkapwr_2() -> gf.Component:
-    """Returns lpflow_clkbufkapwr_2 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkbufkapwr_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkbufkapwr_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkbufkapwr_2()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkbufkapwr_2()
       c.plot()
     """
     return import_gds(
@@ -7280,15 +7280,15 @@ def lpflow_clkbufkapwr_2() -> gf.Component:
 
 
 @cell
-def lpflow_clkbufkapwr_1() -> gf.Component:
-    """Returns lpflow_clkbufkapwr_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkbufkapwr_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkbufkapwr_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkbufkapwr_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkbufkapwr_1()
       c.plot()
     """
     return import_gds(
@@ -7298,15 +7298,15 @@ def lpflow_clkbufkapwr_1() -> gf.Component:
 
 
 @cell
-def lpflow_clkbufkapwr_16() -> gf.Component:
-    """Returns lpflow_clkbufkapwr_16 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkbufkapwr_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkbufkapwr_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkbufkapwr_16()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkbufkapwr_16()
       c.plot()
     """
     return import_gds(
@@ -7316,15 +7316,15 @@ def lpflow_clkbufkapwr_16() -> gf.Component:
 
 
 @cell
-def lpflow_clkbufkapwr_4() -> gf.Component:
-    """Returns lpflow_clkbufkapwr_4 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkbufkapwr_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkbufkapwr_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkbufkapwr_4()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkbufkapwr_4()
       c.plot()
     """
     return import_gds(
@@ -7334,15 +7334,15 @@ def lpflow_clkbufkapwr_4() -> gf.Component:
 
 
 @cell
-def lpflow_clkbufkapwr_8() -> gf.Component:
-    """Returns lpflow_clkbufkapwr_8 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkbufkapwr_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkbufkapwr_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkbufkapwr_8()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkbufkapwr_8()
       c.plot()
     """
     return import_gds(
@@ -7352,15 +7352,15 @@ def lpflow_clkbufkapwr_8() -> gf.Component:
 
 
 @cell
-def nor2b_4() -> gf.Component:
-    """Returns nor2b_4 fixed cell.
+def sky130_fd_sc_hd__nor2b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor2b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor2b_4()
+      c = sky130.components.sky130_fd_sc_hd__nor2b_4()
       c.plot()
     """
     return import_gds(
@@ -7370,15 +7370,15 @@ def nor2b_4() -> gf.Component:
 
 
 @cell
-def nor2b_2() -> gf.Component:
-    """Returns nor2b_2 fixed cell.
+def sky130_fd_sc_hd__nor2b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor2b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor2b_2()
+      c = sky130.components.sky130_fd_sc_hd__nor2b_2()
       c.plot()
     """
     return import_gds(
@@ -7388,15 +7388,15 @@ def nor2b_2() -> gf.Component:
 
 
 @cell
-def nor2b_1() -> gf.Component:
-    """Returns nor2b_1 fixed cell.
+def sky130_fd_sc_hd__nor2b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor2b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor2b_1()
+      c = sky130.components.sky130_fd_sc_hd__nor2b_1()
       c.plot()
     """
     return import_gds(
@@ -7406,15 +7406,15 @@ def nor2b_1() -> gf.Component:
 
 
 @cell
-def mux2_2() -> gf.Component:
-    """Returns mux2_2 fixed cell.
+def sky130_fd_sc_hd__mux2_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux2_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux2_2()
+      c = sky130.components.sky130_fd_sc_hd__mux2_2()
       c.plot()
     """
     return import_gds(
@@ -7424,15 +7424,15 @@ def mux2_2() -> gf.Component:
 
 
 @cell
-def mux2_4() -> gf.Component:
-    """Returns mux2_4 fixed cell.
+def sky130_fd_sc_hd__mux2_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux2_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux2_4()
+      c = sky130.components.sky130_fd_sc_hd__mux2_4()
       c.plot()
     """
     return import_gds(
@@ -7442,15 +7442,15 @@ def mux2_4() -> gf.Component:
 
 
 @cell
-def mux2_1() -> gf.Component:
-    """Returns mux2_1 fixed cell.
+def sky130_fd_sc_hd__mux2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux2_1()
+      c = sky130.components.sky130_fd_sc_hd__mux2_1()
       c.plot()
     """
     return import_gds(
@@ -7460,15 +7460,15 @@ def mux2_1() -> gf.Component:
 
 
 @cell
-def mux2_8() -> gf.Component:
-    """Returns mux2_8 fixed cell.
+def sky130_fd_sc_hd__mux2_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux2_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux2_8()
+      c = sky130.components.sky130_fd_sc_hd__mux2_8()
       c.plot()
     """
     return import_gds(
@@ -7478,15 +7478,15 @@ def mux2_8() -> gf.Component:
 
 
 @cell
-def o22a_2() -> gf.Component:
-    """Returns o22a_2 fixed cell.
+def sky130_fd_sc_hd__o22a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o22a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o22a_2()
+      c = sky130.components.sky130_fd_sc_hd__o22a_2()
       c.plot()
     """
     return import_gds(
@@ -7496,15 +7496,15 @@ def o22a_2() -> gf.Component:
 
 
 @cell
-def o22a_4() -> gf.Component:
-    """Returns o22a_4 fixed cell.
+def sky130_fd_sc_hd__o22a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o22a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o22a_4()
+      c = sky130.components.sky130_fd_sc_hd__o22a_4()
       c.plot()
     """
     return import_gds(
@@ -7514,15 +7514,15 @@ def o22a_4() -> gf.Component:
 
 
 @cell
-def o22a_1() -> gf.Component:
-    """Returns o22a_1 fixed cell.
+def sky130_fd_sc_hd__o22a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o22a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o22a_1()
+      c = sky130.components.sky130_fd_sc_hd__o22a_1()
       c.plot()
     """
     return import_gds(
@@ -7532,15 +7532,15 @@ def o22a_1() -> gf.Component:
 
 
 @cell
-def a22o_1() -> gf.Component:
-    """Returns a22o_1 fixed cell.
+def sky130_fd_sc_hd__a22o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a22o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a22o_1()
+      c = sky130.components.sky130_fd_sc_hd__a22o_1()
       c.plot()
     """
     return import_gds(
@@ -7550,15 +7550,15 @@ def a22o_1() -> gf.Component:
 
 
 @cell
-def a22o_4() -> gf.Component:
-    """Returns a22o_4 fixed cell.
+def sky130_fd_sc_hd__a22o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a22o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a22o_4()
+      c = sky130.components.sky130_fd_sc_hd__a22o_4()
       c.plot()
     """
     return import_gds(
@@ -7568,15 +7568,15 @@ def a22o_4() -> gf.Component:
 
 
 @cell
-def a22o_2() -> gf.Component:
-    """Returns a22o_2 fixed cell.
+def sky130_fd_sc_hd__a22o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a22o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a22o_2()
+      c = sky130.components.sky130_fd_sc_hd__a22o_2()
       c.plot()
     """
     return import_gds(
@@ -7586,15 +7586,15 @@ def a22o_2() -> gf.Component:
 
 
 @cell
-def dlygate4sd2_1() -> gf.Component:
-    """Returns dlygate4sd2_1 fixed cell.
+def sky130_fd_sc_hd__dlygate4sd2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlygate4sd2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlygate4sd2_1()
+      c = sky130.components.sky130_fd_sc_hd__dlygate4sd2_1()
       c.plot()
     """
     return import_gds(
@@ -7604,15 +7604,15 @@ def dlygate4sd2_1() -> gf.Component:
 
 
 @cell
-def dlrtn_4() -> gf.Component:
-    """Returns dlrtn_4 fixed cell.
+def sky130_fd_sc_hd__dlrtn_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrtn_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrtn_4()
+      c = sky130.components.sky130_fd_sc_hd__dlrtn_4()
       c.plot()
     """
     return import_gds(
@@ -7622,15 +7622,15 @@ def dlrtn_4() -> gf.Component:
 
 
 @cell
-def dlrtn_2() -> gf.Component:
-    """Returns dlrtn_2 fixed cell.
+def sky130_fd_sc_hd__dlrtn_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrtn_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrtn_2()
+      c = sky130.components.sky130_fd_sc_hd__dlrtn_2()
       c.plot()
     """
     return import_gds(
@@ -7640,15 +7640,15 @@ def dlrtn_2() -> gf.Component:
 
 
 @cell
-def dlrtn_1() -> gf.Component:
-    """Returns dlrtn_1 fixed cell.
+def sky130_fd_sc_hd__dlrtn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrtn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrtn_1()
+      c = sky130.components.sky130_fd_sc_hd__dlrtn_1()
       c.plot()
     """
     return import_gds(
@@ -7658,15 +7658,15 @@ def dlrtn_1() -> gf.Component:
 
 
 @cell
-def diode_2() -> gf.Component:
-    """Returns diode_2 fixed cell.
+def sky130_fd_sc_hd__diode_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__diode_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.diode_2()
+      c = sky130.components.sky130_fd_sc_hd__diode_2()
       c.plot()
     """
     return import_gds(
@@ -7676,15 +7676,15 @@ def diode_2() -> gf.Component:
 
 
 @cell
-def o21ba_1() -> gf.Component:
-    """Returns o21ba_1 fixed cell.
+def sky130_fd_sc_hd__o21ba_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21ba_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21ba_1()
+      c = sky130.components.sky130_fd_sc_hd__o21ba_1()
       c.plot()
     """
     return import_gds(
@@ -7694,15 +7694,15 @@ def o21ba_1() -> gf.Component:
 
 
 @cell
-def o21ba_2() -> gf.Component:
-    """Returns o21ba_2 fixed cell.
+def sky130_fd_sc_hd__o21ba_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21ba_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21ba_2()
+      c = sky130.components.sky130_fd_sc_hd__o21ba_2()
       c.plot()
     """
     return import_gds(
@@ -7712,15 +7712,15 @@ def o21ba_2() -> gf.Component:
 
 
 @cell
-def o21ba_4() -> gf.Component:
-    """Returns o21ba_4 fixed cell.
+def sky130_fd_sc_hd__o21ba_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21ba_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21ba_4()
+      c = sky130.components.sky130_fd_sc_hd__o21ba_4()
       c.plot()
     """
     return import_gds(
@@ -7730,15 +7730,15 @@ def o21ba_4() -> gf.Component:
 
 
 @cell
-def xor2_4() -> gf.Component:
-    """Returns xor2_4 fixed cell.
+def sky130_fd_sc_hd__xor2_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xor2_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xor2_4()
+      c = sky130.components.sky130_fd_sc_hd__xor2_4()
       c.plot()
     """
     return import_gds(
@@ -7748,15 +7748,15 @@ def xor2_4() -> gf.Component:
 
 
 @cell
-def xor2_2() -> gf.Component:
-    """Returns xor2_2 fixed cell.
+def sky130_fd_sc_hd__xor2_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xor2_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xor2_2()
+      c = sky130.components.sky130_fd_sc_hd__xor2_2()
       c.plot()
     """
     return import_gds(
@@ -7766,15 +7766,15 @@ def xor2_2() -> gf.Component:
 
 
 @cell
-def xor2_1() -> gf.Component:
-    """Returns xor2_1 fixed cell.
+def sky130_fd_sc_hd__xor2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xor2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xor2_1()
+      c = sky130.components.sky130_fd_sc_hd__xor2_1()
       c.plot()
     """
     return import_gds(
@@ -7784,15 +7784,15 @@ def xor2_1() -> gf.Component:
 
 
 @cell
-def a41oi_2() -> gf.Component:
-    """Returns a41oi_2 fixed cell.
+def sky130_fd_sc_hd__a41oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a41oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a41oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a41oi_2()
       c.plot()
     """
     return import_gds(
@@ -7802,15 +7802,15 @@ def a41oi_2() -> gf.Component:
 
 
 @cell
-def a41oi_1() -> gf.Component:
-    """Returns a41oi_1 fixed cell.
+def sky130_fd_sc_hd__a41oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a41oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a41oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a41oi_1()
       c.plot()
     """
     return import_gds(
@@ -7820,15 +7820,15 @@ def a41oi_1() -> gf.Component:
 
 
 @cell
-def a41oi_4() -> gf.Component:
-    """Returns a41oi_4 fixed cell.
+def sky130_fd_sc_hd__a41oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a41oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a41oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a41oi_4()
       c.plot()
     """
     return import_gds(
@@ -7838,15 +7838,15 @@ def a41oi_4() -> gf.Component:
 
 
 @cell
-def sdfstp_1() -> gf.Component:
-    """Returns sdfstp_1 fixed cell.
+def sky130_fd_sc_hd__sdfstp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfstp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfstp_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfstp_1()
       c.plot()
     """
     return import_gds(
@@ -7856,15 +7856,15 @@ def sdfstp_1() -> gf.Component:
 
 
 @cell
-def sdfstp_2() -> gf.Component:
-    """Returns sdfstp_2 fixed cell.
+def sky130_fd_sc_hd__sdfstp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfstp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfstp_2()
+      c = sky130.components.sky130_fd_sc_hd__sdfstp_2()
       c.plot()
     """
     return import_gds(
@@ -7874,15 +7874,15 @@ def sdfstp_2() -> gf.Component:
 
 
 @cell
-def sdfstp_4() -> gf.Component:
-    """Returns sdfstp_4 fixed cell.
+def sky130_fd_sc_hd__sdfstp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfstp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfstp_4()
+      c = sky130.components.sky130_fd_sc_hd__sdfstp_4()
       c.plot()
     """
     return import_gds(
@@ -7892,15 +7892,15 @@ def sdfstp_4() -> gf.Component:
 
 
 @cell
-def and4b_2() -> gf.Component:
-    """Returns and4b_2 fixed cell.
+def sky130_fd_sc_hd__and4b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4b_2()
+      c = sky130.components.sky130_fd_sc_hd__and4b_2()
       c.plot()
     """
     return import_gds(
@@ -7910,15 +7910,15 @@ def and4b_2() -> gf.Component:
 
 
 @cell
-def and4b_4() -> gf.Component:
-    """Returns and4b_4 fixed cell.
+def sky130_fd_sc_hd__and4b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4b_4()
+      c = sky130.components.sky130_fd_sc_hd__and4b_4()
       c.plot()
     """
     return import_gds(
@@ -7928,15 +7928,15 @@ def and4b_4() -> gf.Component:
 
 
 @cell
-def and4b_1() -> gf.Component:
-    """Returns and4b_1 fixed cell.
+def sky130_fd_sc_hd__and4b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4b_1()
+      c = sky130.components.sky130_fd_sc_hd__and4b_1()
       c.plot()
     """
     return import_gds(
@@ -7946,15 +7946,15 @@ def and4b_1() -> gf.Component:
 
 
 @cell
-def lpflow_clkinvkapwr_4() -> gf.Component:
-    """Returns lpflow_clkinvkapwr_4 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkinvkapwr_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkinvkapwr_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkinvkapwr_4()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkinvkapwr_4()
       c.plot()
     """
     return import_gds(
@@ -7964,15 +7964,15 @@ def lpflow_clkinvkapwr_4() -> gf.Component:
 
 
 @cell
-def lpflow_clkinvkapwr_1() -> gf.Component:
-    """Returns lpflow_clkinvkapwr_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkinvkapwr_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkinvkapwr_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkinvkapwr_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkinvkapwr_1()
       c.plot()
     """
     return import_gds(
@@ -7982,15 +7982,15 @@ def lpflow_clkinvkapwr_1() -> gf.Component:
 
 
 @cell
-def lpflow_clkinvkapwr_16() -> gf.Component:
-    """Returns lpflow_clkinvkapwr_16 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkinvkapwr_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkinvkapwr_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkinvkapwr_16()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkinvkapwr_16()
       c.plot()
     """
     return import_gds(
@@ -8000,15 +8000,15 @@ def lpflow_clkinvkapwr_16() -> gf.Component:
 
 
 @cell
-def lpflow_clkinvkapwr_2() -> gf.Component:
-    """Returns lpflow_clkinvkapwr_2 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkinvkapwr_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkinvkapwr_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkinvkapwr_2()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkinvkapwr_2()
       c.plot()
     """
     return import_gds(
@@ -8018,15 +8018,15 @@ def lpflow_clkinvkapwr_2() -> gf.Component:
 
 
 @cell
-def lpflow_clkinvkapwr_8() -> gf.Component:
-    """Returns lpflow_clkinvkapwr_8 fixed cell.
+def sky130_fd_sc_hd__lpflow_clkinvkapwr_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_clkinvkapwr_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_clkinvkapwr_8()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_clkinvkapwr_8()
       c.plot()
     """
     return import_gds(
@@ -8036,15 +8036,15 @@ def lpflow_clkinvkapwr_8() -> gf.Component:
 
 
 @cell
-def lpflow_decapkapwr_6() -> gf.Component:
-    """Returns lpflow_decapkapwr_6 fixed cell.
+def sky130_fd_sc_hd__lpflow_decapkapwr_6() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_decapkapwr_6 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_decapkapwr_6()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_decapkapwr_6()
       c.plot()
     """
     return import_gds(
@@ -8054,15 +8054,15 @@ def lpflow_decapkapwr_6() -> gf.Component:
 
 
 @cell
-def lpflow_decapkapwr_3() -> gf.Component:
-    """Returns lpflow_decapkapwr_3 fixed cell.
+def sky130_fd_sc_hd__lpflow_decapkapwr_3() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_decapkapwr_3 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_decapkapwr_3()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_decapkapwr_3()
       c.plot()
     """
     return import_gds(
@@ -8072,15 +8072,15 @@ def lpflow_decapkapwr_3() -> gf.Component:
 
 
 @cell
-def lpflow_decapkapwr_8() -> gf.Component:
-    """Returns lpflow_decapkapwr_8 fixed cell.
+def sky130_fd_sc_hd__lpflow_decapkapwr_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_decapkapwr_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_decapkapwr_8()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_decapkapwr_8()
       c.plot()
     """
     return import_gds(
@@ -8090,15 +8090,15 @@ def lpflow_decapkapwr_8() -> gf.Component:
 
 
 @cell
-def lpflow_decapkapwr_12() -> gf.Component:
-    """Returns lpflow_decapkapwr_12 fixed cell.
+def sky130_fd_sc_hd__lpflow_decapkapwr_12() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_decapkapwr_12 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_decapkapwr_12()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_decapkapwr_12()
       c.plot()
     """
     return import_gds(
@@ -8108,15 +8108,15 @@ def lpflow_decapkapwr_12() -> gf.Component:
 
 
 @cell
-def lpflow_decapkapwr_4() -> gf.Component:
-    """Returns lpflow_decapkapwr_4 fixed cell.
+def sky130_fd_sc_hd__lpflow_decapkapwr_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_decapkapwr_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_decapkapwr_4()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_decapkapwr_4()
       c.plot()
     """
     return import_gds(
@@ -8126,15 +8126,15 @@ def lpflow_decapkapwr_4() -> gf.Component:
 
 
 @cell
-def a221oi_4() -> gf.Component:
-    """Returns a221oi_4 fixed cell.
+def sky130_fd_sc_hd__a221oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a221oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a221oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a221oi_4()
       c.plot()
     """
     return import_gds(
@@ -8144,15 +8144,15 @@ def a221oi_4() -> gf.Component:
 
 
 @cell
-def a221oi_1() -> gf.Component:
-    """Returns a221oi_1 fixed cell.
+def sky130_fd_sc_hd__a221oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a221oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a221oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a221oi_1()
       c.plot()
     """
     return import_gds(
@@ -8162,15 +8162,15 @@ def a221oi_1() -> gf.Component:
 
 
 @cell
-def a221oi_2() -> gf.Component:
-    """Returns a221oi_2 fixed cell.
+def sky130_fd_sc_hd__a221oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a221oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a221oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a221oi_2()
       c.plot()
     """
     return import_gds(
@@ -8180,15 +8180,15 @@ def a221oi_2() -> gf.Component:
 
 
 @cell
-def o21bai_1() -> gf.Component:
-    """Returns o21bai_1 fixed cell.
+def sky130_fd_sc_hd__o21bai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21bai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21bai_1()
+      c = sky130.components.sky130_fd_sc_hd__o21bai_1()
       c.plot()
     """
     return import_gds(
@@ -8198,15 +8198,15 @@ def o21bai_1() -> gf.Component:
 
 
 @cell
-def o21bai_2() -> gf.Component:
-    """Returns o21bai_2 fixed cell.
+def sky130_fd_sc_hd__o21bai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21bai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21bai_2()
+      c = sky130.components.sky130_fd_sc_hd__o21bai_2()
       c.plot()
     """
     return import_gds(
@@ -8216,15 +8216,15 @@ def o21bai_2() -> gf.Component:
 
 
 @cell
-def o21bai_4() -> gf.Component:
-    """Returns o21bai_4 fixed cell.
+def sky130_fd_sc_hd__o21bai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21bai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21bai_4()
+      c = sky130.components.sky130_fd_sc_hd__o21bai_4()
       c.plot()
     """
     return import_gds(
@@ -8234,15 +8234,15 @@ def o21bai_4() -> gf.Component:
 
 
 @cell
-def dlxbn_1() -> gf.Component:
-    """Returns dlxbn_1 fixed cell.
+def sky130_fd_sc_hd__dlxbn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlxbn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlxbn_1()
+      c = sky130.components.sky130_fd_sc_hd__dlxbn_1()
       c.plot()
     """
     return import_gds(
@@ -8252,15 +8252,15 @@ def dlxbn_1() -> gf.Component:
 
 
 @cell
-def dlxbn_2() -> gf.Component:
-    """Returns dlxbn_2 fixed cell.
+def sky130_fd_sc_hd__dlxbn_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlxbn_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlxbn_2()
+      c = sky130.components.sky130_fd_sc_hd__dlxbn_2()
       c.plot()
     """
     return import_gds(
@@ -8270,15 +8270,15 @@ def dlxbn_2() -> gf.Component:
 
 
 @cell
-def edfxtp_1() -> gf.Component:
-    """Returns edfxtp_1 fixed cell.
+def sky130_fd_sc_hd__edfxtp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__edfxtp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.edfxtp_1()
+      c = sky130.components.sky130_fd_sc_hd__edfxtp_1()
       c.plot()
     """
     return import_gds(
@@ -8288,15 +8288,15 @@ def edfxtp_1() -> gf.Component:
 
 
 @cell
-def dfsbp_1() -> gf.Component:
-    """Returns dfsbp_1 fixed cell.
+def sky130_fd_sc_hd__dfsbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfsbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfsbp_1()
+      c = sky130.components.sky130_fd_sc_hd__dfsbp_1()
       c.plot()
     """
     return import_gds(
@@ -8306,15 +8306,15 @@ def dfsbp_1() -> gf.Component:
 
 
 @cell
-def dfsbp_2() -> gf.Component:
-    """Returns dfsbp_2 fixed cell.
+def sky130_fd_sc_hd__dfsbp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfsbp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfsbp_2()
+      c = sky130.components.sky130_fd_sc_hd__dfsbp_2()
       c.plot()
     """
     return import_gds(
@@ -8324,15 +8324,15 @@ def dfsbp_2() -> gf.Component:
 
 
 @cell
-def nor2_1() -> gf.Component:
-    """Returns nor2_1 fixed cell.
+def sky130_fd_sc_hd__nor2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor2_1()
+      c = sky130.components.sky130_fd_sc_hd__nor2_1()
       c.plot()
     """
     return import_gds(
@@ -8342,15 +8342,15 @@ def nor2_1() -> gf.Component:
 
 
 @cell
-def nor2_4() -> gf.Component:
-    """Returns nor2_4 fixed cell.
+def sky130_fd_sc_hd__nor2_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor2_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor2_4()
+      c = sky130.components.sky130_fd_sc_hd__nor2_4()
       c.plot()
     """
     return import_gds(
@@ -8360,15 +8360,15 @@ def nor2_4() -> gf.Component:
 
 
 @cell
-def nor2_2() -> gf.Component:
-    """Returns nor2_2 fixed cell.
+def sky130_fd_sc_hd__nor2_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor2_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor2_2()
+      c = sky130.components.sky130_fd_sc_hd__nor2_2()
       c.plot()
     """
     return import_gds(
@@ -8378,15 +8378,15 @@ def nor2_2() -> gf.Component:
 
 
 @cell
-def nor2_8() -> gf.Component:
-    """Returns nor2_8 fixed cell.
+def sky130_fd_sc_hd__nor2_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor2_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor2_8()
+      c = sky130.components.sky130_fd_sc_hd__nor2_8()
       c.plot()
     """
     return import_gds(
@@ -8396,15 +8396,15 @@ def nor2_8() -> gf.Component:
 
 
 @cell
-def dfrtp_4() -> gf.Component:
-    """Returns dfrtp_4 fixed cell.
+def sky130_fd_sc_hd__dfrtp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfrtp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfrtp_4()
+      c = sky130.components.sky130_fd_sc_hd__dfrtp_4()
       c.plot()
     """
     return import_gds(
@@ -8414,15 +8414,15 @@ def dfrtp_4() -> gf.Component:
 
 
 @cell
-def dfrtp_2() -> gf.Component:
-    """Returns dfrtp_2 fixed cell.
+def sky130_fd_sc_hd__dfrtp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfrtp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfrtp_2()
+      c = sky130.components.sky130_fd_sc_hd__dfrtp_2()
       c.plot()
     """
     return import_gds(
@@ -8432,15 +8432,15 @@ def dfrtp_2() -> gf.Component:
 
 
 @cell
-def dfrtp_1() -> gf.Component:
-    """Returns dfrtp_1 fixed cell.
+def sky130_fd_sc_hd__dfrtp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfrtp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfrtp_1()
+      c = sky130.components.sky130_fd_sc_hd__dfrtp_1()
       c.plot()
     """
     return import_gds(
@@ -8450,15 +8450,15 @@ def dfrtp_1() -> gf.Component:
 
 
 @cell
-def and4bb_4() -> gf.Component:
-    """Returns and4bb_4 fixed cell.
+def sky130_fd_sc_hd__and4bb_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4bb_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4bb_4()
+      c = sky130.components.sky130_fd_sc_hd__and4bb_4()
       c.plot()
     """
     return import_gds(
@@ -8468,15 +8468,15 @@ def and4bb_4() -> gf.Component:
 
 
 @cell
-def and4bb_2() -> gf.Component:
-    """Returns and4bb_2 fixed cell.
+def sky130_fd_sc_hd__and4bb_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4bb_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4bb_2()
+      c = sky130.components.sky130_fd_sc_hd__and4bb_2()
       c.plot()
     """
     return import_gds(
@@ -8486,15 +8486,15 @@ def and4bb_2() -> gf.Component:
 
 
 @cell
-def and4bb_1() -> gf.Component:
-    """Returns and4bb_1 fixed cell.
+def sky130_fd_sc_hd__and4bb_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4bb_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4bb_1()
+      c = sky130.components.sky130_fd_sc_hd__and4bb_1()
       c.plot()
     """
     return import_gds(
@@ -8504,15 +8504,15 @@ def and4bb_1() -> gf.Component:
 
 
 @cell
-def or3b_4() -> gf.Component:
-    """Returns or3b_4 fixed cell.
+def sky130_fd_sc_hd__or3b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or3b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or3b_4()
+      c = sky130.components.sky130_fd_sc_hd__or3b_4()
       c.plot()
     """
     return import_gds(
@@ -8522,15 +8522,15 @@ def or3b_4() -> gf.Component:
 
 
 @cell
-def or3b_1() -> gf.Component:
-    """Returns or3b_1 fixed cell.
+def sky130_fd_sc_hd__or3b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or3b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or3b_1()
+      c = sky130.components.sky130_fd_sc_hd__or3b_1()
       c.plot()
     """
     return import_gds(
@@ -8540,15 +8540,15 @@ def or3b_1() -> gf.Component:
 
 
 @cell
-def or3b_2() -> gf.Component:
-    """Returns or3b_2 fixed cell.
+def sky130_fd_sc_hd__or3b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or3b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or3b_2()
+      c = sky130.components.sky130_fd_sc_hd__or3b_2()
       c.plot()
     """
     return import_gds(
@@ -8558,15 +8558,15 @@ def or3b_2() -> gf.Component:
 
 
 @cell
-def o311a_2() -> gf.Component:
-    """Returns o311a_2 fixed cell.
+def sky130_fd_sc_hd__o311a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o311a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o311a_2()
+      c = sky130.components.sky130_fd_sc_hd__o311a_2()
       c.plot()
     """
     return import_gds(
@@ -8576,15 +8576,15 @@ def o311a_2() -> gf.Component:
 
 
 @cell
-def o311a_4() -> gf.Component:
-    """Returns o311a_4 fixed cell.
+def sky130_fd_sc_hd__o311a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o311a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o311a_4()
+      c = sky130.components.sky130_fd_sc_hd__o311a_4()
       c.plot()
     """
     return import_gds(
@@ -8594,15 +8594,15 @@ def o311a_4() -> gf.Component:
 
 
 @cell
-def o311a_1() -> gf.Component:
-    """Returns o311a_1 fixed cell.
+def sky130_fd_sc_hd__o311a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o311a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o311a_1()
+      c = sky130.components.sky130_fd_sc_hd__o311a_1()
       c.plot()
     """
     return import_gds(
@@ -8612,15 +8612,15 @@ def o311a_1() -> gf.Component:
 
 
 @cell
-def a21oi_1() -> gf.Component:
-    """Returns a21oi_1 fixed cell.
+def sky130_fd_sc_hd__a21oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a21oi_1()
       c.plot()
     """
     return import_gds(
@@ -8630,15 +8630,15 @@ def a21oi_1() -> gf.Component:
 
 
 @cell
-def a21oi_2() -> gf.Component:
-    """Returns a21oi_2 fixed cell.
+def sky130_fd_sc_hd__a21oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a21oi_2()
       c.plot()
     """
     return import_gds(
@@ -8648,15 +8648,15 @@ def a21oi_2() -> gf.Component:
 
 
 @cell
-def a21oi_4() -> gf.Component:
-    """Returns a21oi_4 fixed cell.
+def sky130_fd_sc_hd__a21oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a21oi_4()
       c.plot()
     """
     return import_gds(
@@ -8666,15 +8666,15 @@ def a21oi_4() -> gf.Component:
 
 
 @cell
-def o221ai_4() -> gf.Component:
-    """Returns o221ai_4 fixed cell.
+def sky130_fd_sc_hd__o221ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o221ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o221ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o221ai_4()
       c.plot()
     """
     return import_gds(
@@ -8684,15 +8684,15 @@ def o221ai_4() -> gf.Component:
 
 
 @cell
-def o221ai_2() -> gf.Component:
-    """Returns o221ai_2 fixed cell.
+def sky130_fd_sc_hd__o221ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o221ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o221ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o221ai_2()
       c.plot()
     """
     return import_gds(
@@ -8702,15 +8702,15 @@ def o221ai_2() -> gf.Component:
 
 
 @cell
-def o221ai_1() -> gf.Component:
-    """Returns o221ai_1 fixed cell.
+def sky130_fd_sc_hd__o221ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o221ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o221ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o221ai_1()
       c.plot()
     """
     return import_gds(
@@ -8720,15 +8720,15 @@ def o221ai_1() -> gf.Component:
 
 
 @cell
-def lpflow_inputiso0n_1() -> gf.Component:
-    """Returns lpflow_inputiso0n_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_inputiso0n_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_inputiso0n_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_inputiso0n_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_inputiso0n_1()
       c.plot()
     """
     return import_gds(
@@ -8738,15 +8738,15 @@ def lpflow_inputiso0n_1() -> gf.Component:
 
 
 @cell
-def lpflow_inputiso1n_1() -> gf.Component:
-    """Returns lpflow_inputiso1n_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_inputiso1n_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_inputiso1n_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_inputiso1n_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_inputiso1n_1()
       c.plot()
     """
     return import_gds(
@@ -8756,15 +8756,15 @@ def lpflow_inputiso1n_1() -> gf.Component:
 
 
 @cell
-def nand4bb_2() -> gf.Component:
-    """Returns nand4bb_2 fixed cell.
+def sky130_fd_sc_hd__nand4bb_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4bb_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4bb_2()
+      c = sky130.components.sky130_fd_sc_hd__nand4bb_2()
       c.plot()
     """
     return import_gds(
@@ -8774,15 +8774,15 @@ def nand4bb_2() -> gf.Component:
 
 
 @cell
-def nand4bb_4() -> gf.Component:
-    """Returns nand4bb_4 fixed cell.
+def sky130_fd_sc_hd__nand4bb_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4bb_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4bb_4()
+      c = sky130.components.sky130_fd_sc_hd__nand4bb_4()
       c.plot()
     """
     return import_gds(
@@ -8792,15 +8792,15 @@ def nand4bb_4() -> gf.Component:
 
 
 @cell
-def nand4bb_1() -> gf.Component:
-    """Returns nand4bb_1 fixed cell.
+def sky130_fd_sc_hd__nand4bb_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4bb_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4bb_1()
+      c = sky130.components.sky130_fd_sc_hd__nand4bb_1()
       c.plot()
     """
     return import_gds(
@@ -8810,15 +8810,15 @@ def nand4bb_1() -> gf.Component:
 
 
 @cell
-def lpflow_inputisolatch_1() -> gf.Component:
-    """Returns lpflow_inputisolatch_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_inputisolatch_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_inputisolatch_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_inputisolatch_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_inputisolatch_1()
       c.plot()
     """
     return import_gds(
@@ -8828,15 +8828,15 @@ def lpflow_inputisolatch_1() -> gf.Component:
 
 
 @cell
-def nand3_1() -> gf.Component:
-    """Returns nand3_1 fixed cell.
+def sky130_fd_sc_hd__nand3_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand3_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand3_1()
+      c = sky130.components.sky130_fd_sc_hd__nand3_1()
       c.plot()
     """
     return import_gds(
@@ -8846,15 +8846,15 @@ def nand3_1() -> gf.Component:
 
 
 @cell
-def nand3_4() -> gf.Component:
-    """Returns nand3_4 fixed cell.
+def sky130_fd_sc_hd__nand3_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand3_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand3_4()
+      c = sky130.components.sky130_fd_sc_hd__nand3_4()
       c.plot()
     """
     return import_gds(
@@ -8864,15 +8864,15 @@ def nand3_4() -> gf.Component:
 
 
 @cell
-def nand3_2() -> gf.Component:
-    """Returns nand3_2 fixed cell.
+def sky130_fd_sc_hd__nand3_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand3_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand3_2()
+      c = sky130.components.sky130_fd_sc_hd__nand3_2()
       c.plot()
     """
     return import_gds(
@@ -8882,15 +8882,15 @@ def nand3_2() -> gf.Component:
 
 
 @cell
-def a2bb2oi_1() -> gf.Component:
-    """Returns a2bb2oi_1 fixed cell.
+def sky130_fd_sc_hd__a2bb2oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2bb2oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2bb2oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a2bb2oi_1()
       c.plot()
     """
     return import_gds(
@@ -8900,15 +8900,15 @@ def a2bb2oi_1() -> gf.Component:
 
 
 @cell
-def a2bb2oi_4() -> gf.Component:
-    """Returns a2bb2oi_4 fixed cell.
+def sky130_fd_sc_hd__a2bb2oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2bb2oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2bb2oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a2bb2oi_4()
       c.plot()
     """
     return import_gds(
@@ -8918,15 +8918,15 @@ def a2bb2oi_4() -> gf.Component:
 
 
 @cell
-def a2bb2oi_2() -> gf.Component:
-    """Returns a2bb2oi_2 fixed cell.
+def sky130_fd_sc_hd__a2bb2oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2bb2oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2bb2oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a2bb2oi_2()
       c.plot()
     """
     return import_gds(
@@ -8936,15 +8936,15 @@ def a2bb2oi_2() -> gf.Component:
 
 
 @cell
-def sdfbbp_1() -> gf.Component:
-    """Returns sdfbbp_1 fixed cell.
+def sky130_fd_sc_hd__sdfbbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfbbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfbbp_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfbbp_1()
       c.plot()
     """
     return import_gds(
@@ -8954,15 +8954,15 @@ def sdfbbp_1() -> gf.Component:
 
 
 @cell
-def sedfxtp_4() -> gf.Component:
-    """Returns sedfxtp_4 fixed cell.
+def sky130_fd_sc_hd__sedfxtp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sedfxtp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sedfxtp_4()
+      c = sky130.components.sky130_fd_sc_hd__sedfxtp_4()
       c.plot()
     """
     return import_gds(
@@ -8972,15 +8972,15 @@ def sedfxtp_4() -> gf.Component:
 
 
 @cell
-def sedfxtp_2() -> gf.Component:
-    """Returns sedfxtp_2 fixed cell.
+def sky130_fd_sc_hd__sedfxtp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sedfxtp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sedfxtp_2()
+      c = sky130.components.sky130_fd_sc_hd__sedfxtp_2()
       c.plot()
     """
     return import_gds(
@@ -8990,15 +8990,15 @@ def sedfxtp_2() -> gf.Component:
 
 
 @cell
-def sedfxtp_1() -> gf.Component:
-    """Returns sedfxtp_1 fixed cell.
+def sky130_fd_sc_hd__sedfxtp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sedfxtp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sedfxtp_1()
+      c = sky130.components.sky130_fd_sc_hd__sedfxtp_1()
       c.plot()
     """
     return import_gds(
@@ -9008,15 +9008,15 @@ def sedfxtp_1() -> gf.Component:
 
 
 @cell
-def nor4bb_2() -> gf.Component:
-    """Returns nor4bb_2 fixed cell.
+def sky130_fd_sc_hd__nor4bb_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4bb_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4bb_2()
+      c = sky130.components.sky130_fd_sc_hd__nor4bb_2()
       c.plot()
     """
     return import_gds(
@@ -9026,15 +9026,15 @@ def nor4bb_2() -> gf.Component:
 
 
 @cell
-def nor4bb_1() -> gf.Component:
-    """Returns nor4bb_1 fixed cell.
+def sky130_fd_sc_hd__nor4bb_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4bb_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4bb_1()
+      c = sky130.components.sky130_fd_sc_hd__nor4bb_1()
       c.plot()
     """
     return import_gds(
@@ -9044,15 +9044,15 @@ def nor4bb_1() -> gf.Component:
 
 
 @cell
-def nor4bb_4() -> gf.Component:
-    """Returns nor4bb_4 fixed cell.
+def sky130_fd_sc_hd__nor4bb_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor4bb_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor4bb_4()
+      c = sky130.components.sky130_fd_sc_hd__nor4bb_4()
       c.plot()
     """
     return import_gds(
@@ -9062,15 +9062,15 @@ def nor4bb_4() -> gf.Component:
 
 
 @cell
-def buf_8() -> gf.Component:
-    """Returns buf_8 fixed cell.
+def sky130_fd_sc_hd__buf_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__buf_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.buf_8()
+      c = sky130.components.sky130_fd_sc_hd__buf_8()
       c.plot()
     """
     return import_gds(
@@ -9080,15 +9080,15 @@ def buf_8() -> gf.Component:
 
 
 @cell
-def buf_2() -> gf.Component:
-    """Returns buf_2 fixed cell.
+def sky130_fd_sc_hd__buf_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__buf_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.buf_2()
+      c = sky130.components.sky130_fd_sc_hd__buf_2()
       c.plot()
     """
     return import_gds(
@@ -9098,15 +9098,15 @@ def buf_2() -> gf.Component:
 
 
 @cell
-def buf_6() -> gf.Component:
-    """Returns buf_6 fixed cell.
+def sky130_fd_sc_hd__buf_6() -> gf.Component:
+    """Returns sky130_fd_sc_hd__buf_6 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.buf_6()
+      c = sky130.components.sky130_fd_sc_hd__buf_6()
       c.plot()
     """
     return import_gds(
@@ -9116,15 +9116,15 @@ def buf_6() -> gf.Component:
 
 
 @cell
-def buf_16() -> gf.Component:
-    """Returns buf_16 fixed cell.
+def sky130_fd_sc_hd__buf_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__buf_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.buf_16()
+      c = sky130.components.sky130_fd_sc_hd__buf_16()
       c.plot()
     """
     return import_gds(
@@ -9134,15 +9134,15 @@ def buf_16() -> gf.Component:
 
 
 @cell
-def buf_1() -> gf.Component:
-    """Returns buf_1 fixed cell.
+def sky130_fd_sc_hd__buf_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__buf_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.buf_1()
+      c = sky130.components.sky130_fd_sc_hd__buf_1()
       c.plot()
     """
     return import_gds(
@@ -9152,15 +9152,15 @@ def buf_1() -> gf.Component:
 
 
 @cell
-def buf_4() -> gf.Component:
-    """Returns buf_4 fixed cell.
+def sky130_fd_sc_hd__buf_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__buf_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.buf_4()
+      c = sky130.components.sky130_fd_sc_hd__buf_4()
       c.plot()
     """
     return import_gds(
@@ -9170,15 +9170,15 @@ def buf_4() -> gf.Component:
 
 
 @cell
-def buf_12() -> gf.Component:
-    """Returns buf_12 fixed cell.
+def sky130_fd_sc_hd__buf_12() -> gf.Component:
+    """Returns sky130_fd_sc_hd__buf_12 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.buf_12()
+      c = sky130.components.sky130_fd_sc_hd__buf_12()
       c.plot()
     """
     return import_gds(
@@ -9188,15 +9188,15 @@ def buf_12() -> gf.Component:
 
 
 @cell
-def or2b_1() -> gf.Component:
-    """Returns or2b_1 fixed cell.
+def sky130_fd_sc_hd__or2b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or2b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or2b_1()
+      c = sky130.components.sky130_fd_sc_hd__or2b_1()
       c.plot()
     """
     return import_gds(
@@ -9206,15 +9206,15 @@ def or2b_1() -> gf.Component:
 
 
 @cell
-def or2b_2() -> gf.Component:
-    """Returns or2b_2 fixed cell.
+def sky130_fd_sc_hd__or2b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or2b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or2b_2()
+      c = sky130.components.sky130_fd_sc_hd__or2b_2()
       c.plot()
     """
     return import_gds(
@@ -9224,15 +9224,15 @@ def or2b_2() -> gf.Component:
 
 
 @cell
-def or2b_4() -> gf.Component:
-    """Returns or2b_4 fixed cell.
+def sky130_fd_sc_hd__or2b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or2b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or2b_4()
+      c = sky130.components.sky130_fd_sc_hd__or2b_4()
       c.plot()
     """
     return import_gds(
@@ -9242,15 +9242,15 @@ def or2b_4() -> gf.Component:
 
 
 @cell
-def lpflow_lsbuf_lh_hl_isowell_tap_4() -> gf.Component:
-    """Returns lpflow_lsbuf_lh_hl_isowell_tap_4 fixed cell.
+def sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_lsbuf_lh_hl_isowell_tap_4()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4()
       c.plot()
     """
     return import_gds(
@@ -9260,15 +9260,15 @@ def lpflow_lsbuf_lh_hl_isowell_tap_4() -> gf.Component:
 
 
 @cell
-def lpflow_lsbuf_lh_hl_isowell_tap_1() -> gf.Component:
-    """Returns lpflow_lsbuf_lh_hl_isowell_tap_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_lsbuf_lh_hl_isowell_tap_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1()
       c.plot()
     """
     return import_gds(
@@ -9278,15 +9278,15 @@ def lpflow_lsbuf_lh_hl_isowell_tap_1() -> gf.Component:
 
 
 @cell
-def lpflow_lsbuf_lh_hl_isowell_tap_2() -> gf.Component:
-    """Returns lpflow_lsbuf_lh_hl_isowell_tap_2 fixed cell.
+def sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_lsbuf_lh_hl_isowell_tap_2()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2()
       c.plot()
     """
     return import_gds(
@@ -9296,15 +9296,15 @@ def lpflow_lsbuf_lh_hl_isowell_tap_2() -> gf.Component:
 
 
 @cell
-def and2_1() -> gf.Component:
-    """Returns and2_1 fixed cell.
+def sky130_fd_sc_hd__and2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and2_1()
+      c = sky130.components.sky130_fd_sc_hd__and2_1()
       c.plot()
     """
     return import_gds(
@@ -9314,15 +9314,15 @@ def and2_1() -> gf.Component:
 
 
 @cell
-def and2_2() -> gf.Component:
-    """Returns and2_2 fixed cell.
+def sky130_fd_sc_hd__and2_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and2_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and2_2()
+      c = sky130.components.sky130_fd_sc_hd__and2_2()
       c.plot()
     """
     return import_gds(
@@ -9332,15 +9332,15 @@ def and2_2() -> gf.Component:
 
 
 @cell
-def and2_4() -> gf.Component:
-    """Returns and2_4 fixed cell.
+def sky130_fd_sc_hd__and2_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and2_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and2_4()
+      c = sky130.components.sky130_fd_sc_hd__and2_4()
       c.plot()
     """
     return import_gds(
@@ -9350,15 +9350,15 @@ def and2_4() -> gf.Component:
 
 
 @cell
-def and2_0() -> gf.Component:
-    """Returns and2_0 fixed cell.
+def sky130_fd_sc_hd__and2_0() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and2_0 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and2_0()
+      c = sky130.components.sky130_fd_sc_hd__and2_0()
       c.plot()
     """
     return import_gds(
@@ -9368,15 +9368,15 @@ def and2_0() -> gf.Component:
 
 
 @cell
-def and3b_1() -> gf.Component:
-    """Returns and3b_1 fixed cell.
+def sky130_fd_sc_hd__and3b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and3b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and3b_1()
+      c = sky130.components.sky130_fd_sc_hd__and3b_1()
       c.plot()
     """
     return import_gds(
@@ -9386,15 +9386,15 @@ def and3b_1() -> gf.Component:
 
 
 @cell
-def and3b_2() -> gf.Component:
-    """Returns and3b_2 fixed cell.
+def sky130_fd_sc_hd__and3b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and3b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and3b_2()
+      c = sky130.components.sky130_fd_sc_hd__and3b_2()
       c.plot()
     """
     return import_gds(
@@ -9404,15 +9404,15 @@ def and3b_2() -> gf.Component:
 
 
 @cell
-def and3b_4() -> gf.Component:
-    """Returns and3b_4 fixed cell.
+def sky130_fd_sc_hd__and3b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and3b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and3b_4()
+      c = sky130.components.sky130_fd_sc_hd__and3b_4()
       c.plot()
     """
     return import_gds(
@@ -9422,15 +9422,15 @@ def and3b_4() -> gf.Component:
 
 
 @cell
-def a32o_1() -> gf.Component:
-    """Returns a32o_1 fixed cell.
+def sky130_fd_sc_hd__a32o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a32o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a32o_1()
+      c = sky130.components.sky130_fd_sc_hd__a32o_1()
       c.plot()
     """
     return import_gds(
@@ -9440,15 +9440,15 @@ def a32o_1() -> gf.Component:
 
 
 @cell
-def a32o_4() -> gf.Component:
-    """Returns a32o_4 fixed cell.
+def sky130_fd_sc_hd__a32o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a32o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a32o_4()
+      c = sky130.components.sky130_fd_sc_hd__a32o_4()
       c.plot()
     """
     return import_gds(
@@ -9458,15 +9458,15 @@ def a32o_4() -> gf.Component:
 
 
 @cell
-def a32o_2() -> gf.Component:
-    """Returns a32o_2 fixed cell.
+def sky130_fd_sc_hd__a32o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a32o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a32o_2()
+      c = sky130.components.sky130_fd_sc_hd__a32o_2()
       c.plot()
     """
     return import_gds(
@@ -9476,15 +9476,15 @@ def a32o_2() -> gf.Component:
 
 
 @cell
-def nand4_4() -> gf.Component:
-    """Returns nand4_4 fixed cell.
+def sky130_fd_sc_hd__nand4_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4_4()
+      c = sky130.components.sky130_fd_sc_hd__nand4_4()
       c.plot()
     """
     return import_gds(
@@ -9494,15 +9494,15 @@ def nand4_4() -> gf.Component:
 
 
 @cell
-def nand4_1() -> gf.Component:
-    """Returns nand4_1 fixed cell.
+def sky130_fd_sc_hd__nand4_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4_1()
+      c = sky130.components.sky130_fd_sc_hd__nand4_1()
       c.plot()
     """
     return import_gds(
@@ -9512,15 +9512,15 @@ def nand4_1() -> gf.Component:
 
 
 @cell
-def nand4_2() -> gf.Component:
-    """Returns nand4_2 fixed cell.
+def sky130_fd_sc_hd__nand4_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4_2()
+      c = sky130.components.sky130_fd_sc_hd__nand4_2()
       c.plot()
     """
     return import_gds(
@@ -9530,15 +9530,15 @@ def nand4_2() -> gf.Component:
 
 
 @cell
-def nand2b_1() -> gf.Component:
-    """Returns nand2b_1 fixed cell.
+def sky130_fd_sc_hd__nand2b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand2b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand2b_1()
+      c = sky130.components.sky130_fd_sc_hd__nand2b_1()
       c.plot()
     """
     return import_gds(
@@ -9548,15 +9548,15 @@ def nand2b_1() -> gf.Component:
 
 
 @cell
-def nand2b_2() -> gf.Component:
-    """Returns nand2b_2 fixed cell.
+def sky130_fd_sc_hd__nand2b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand2b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand2b_2()
+      c = sky130.components.sky130_fd_sc_hd__nand2b_2()
       c.plot()
     """
     return import_gds(
@@ -9566,15 +9566,15 @@ def nand2b_2() -> gf.Component:
 
 
 @cell
-def nand2b_4() -> gf.Component:
-    """Returns nand2b_4 fixed cell.
+def sky130_fd_sc_hd__nand2b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand2b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand2b_4()
+      c = sky130.components.sky130_fd_sc_hd__nand2b_4()
       c.plot()
     """
     return import_gds(
@@ -9584,15 +9584,15 @@ def nand2b_4() -> gf.Component:
 
 
 @cell
-def lpflow_isobufsrc_8() -> gf.Component:
-    """Returns lpflow_isobufsrc_8 fixed cell.
+def sky130_fd_sc_hd__lpflow_isobufsrc_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_isobufsrc_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_isobufsrc_8()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_isobufsrc_8()
       c.plot()
     """
     return import_gds(
@@ -9602,15 +9602,15 @@ def lpflow_isobufsrc_8() -> gf.Component:
 
 
 @cell
-def lpflow_isobufsrc_4() -> gf.Component:
-    """Returns lpflow_isobufsrc_4 fixed cell.
+def sky130_fd_sc_hd__lpflow_isobufsrc_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_isobufsrc_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_isobufsrc_4()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_isobufsrc_4()
       c.plot()
     """
     return import_gds(
@@ -9620,15 +9620,15 @@ def lpflow_isobufsrc_4() -> gf.Component:
 
 
 @cell
-def lpflow_isobufsrc_2() -> gf.Component:
-    """Returns lpflow_isobufsrc_2 fixed cell.
+def sky130_fd_sc_hd__lpflow_isobufsrc_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_isobufsrc_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_isobufsrc_2()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_isobufsrc_2()
       c.plot()
     """
     return import_gds(
@@ -9638,15 +9638,15 @@ def lpflow_isobufsrc_2() -> gf.Component:
 
 
 @cell
-def lpflow_isobufsrc_16() -> gf.Component:
-    """Returns lpflow_isobufsrc_16 fixed cell.
+def sky130_fd_sc_hd__lpflow_isobufsrc_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_isobufsrc_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_isobufsrc_16()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_isobufsrc_16()
       c.plot()
     """
     return import_gds(
@@ -9656,15 +9656,15 @@ def lpflow_isobufsrc_16() -> gf.Component:
 
 
 @cell
-def lpflow_isobufsrc_1() -> gf.Component:
-    """Returns lpflow_isobufsrc_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_isobufsrc_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_isobufsrc_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_isobufsrc_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_isobufsrc_1()
       c.plot()
     """
     return import_gds(
@@ -9674,15 +9674,15 @@ def lpflow_isobufsrc_1() -> gf.Component:
 
 
 @cell
-def and3_4() -> gf.Component:
-    """Returns and3_4 fixed cell.
+def sky130_fd_sc_hd__and3_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and3_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and3_4()
+      c = sky130.components.sky130_fd_sc_hd__and3_4()
       c.plot()
     """
     return import_gds(
@@ -9692,15 +9692,15 @@ def and3_4() -> gf.Component:
 
 
 @cell
-def and3_1() -> gf.Component:
-    """Returns and3_1 fixed cell.
+def sky130_fd_sc_hd__and3_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and3_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and3_1()
+      c = sky130.components.sky130_fd_sc_hd__and3_1()
       c.plot()
     """
     return import_gds(
@@ -9710,15 +9710,15 @@ def and3_1() -> gf.Component:
 
 
 @cell
-def and3_2() -> gf.Component:
-    """Returns and3_2 fixed cell.
+def sky130_fd_sc_hd__and3_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and3_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and3_2()
+      c = sky130.components.sky130_fd_sc_hd__and3_2()
       c.plot()
     """
     return import_gds(
@@ -9728,15 +9728,15 @@ def and3_2() -> gf.Component:
 
 
 @cell
-def o2111a_1() -> gf.Component:
-    """Returns o2111a_1 fixed cell.
+def sky130_fd_sc_hd__o2111a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2111a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2111a_1()
+      c = sky130.components.sky130_fd_sc_hd__o2111a_1()
       c.plot()
     """
     return import_gds(
@@ -9746,15 +9746,15 @@ def o2111a_1() -> gf.Component:
 
 
 @cell
-def o2111a_4() -> gf.Component:
-    """Returns o2111a_4 fixed cell.
+def sky130_fd_sc_hd__o2111a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2111a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2111a_4()
+      c = sky130.components.sky130_fd_sc_hd__o2111a_4()
       c.plot()
     """
     return import_gds(
@@ -9764,15 +9764,15 @@ def o2111a_4() -> gf.Component:
 
 
 @cell
-def o2111a_2() -> gf.Component:
-    """Returns o2111a_2 fixed cell.
+def sky130_fd_sc_hd__o2111a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2111a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2111a_2()
+      c = sky130.components.sky130_fd_sc_hd__o2111a_2()
       c.plot()
     """
     return import_gds(
@@ -9782,15 +9782,15 @@ def o2111a_2() -> gf.Component:
 
 
 @cell
-def a311o_4() -> gf.Component:
-    """Returns a311o_4 fixed cell.
+def sky130_fd_sc_hd__a311o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a311o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a311o_4()
+      c = sky130.components.sky130_fd_sc_hd__a311o_4()
       c.plot()
     """
     return import_gds(
@@ -9800,15 +9800,15 @@ def a311o_4() -> gf.Component:
 
 
 @cell
-def a311o_2() -> gf.Component:
-    """Returns a311o_2 fixed cell.
+def sky130_fd_sc_hd__a311o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a311o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a311o_2()
+      c = sky130.components.sky130_fd_sc_hd__a311o_2()
       c.plot()
     """
     return import_gds(
@@ -9818,15 +9818,15 @@ def a311o_2() -> gf.Component:
 
 
 @cell
-def a311o_1() -> gf.Component:
-    """Returns a311o_1 fixed cell.
+def sky130_fd_sc_hd__a311o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a311o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a311o_1()
+      c = sky130.components.sky130_fd_sc_hd__a311o_1()
       c.plot()
     """
     return import_gds(
@@ -9836,15 +9836,15 @@ def a311o_1() -> gf.Component:
 
 
 @cell
-def fa_4() -> gf.Component:
-    """Returns fa_4 fixed cell.
+def sky130_fd_sc_hd__fa_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fa_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fa_4()
+      c = sky130.components.sky130_fd_sc_hd__fa_4()
       c.plot()
     """
     return import_gds(
@@ -9854,15 +9854,15 @@ def fa_4() -> gf.Component:
 
 
 @cell
-def fa_1() -> gf.Component:
-    """Returns fa_1 fixed cell.
+def sky130_fd_sc_hd__fa_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fa_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fa_1()
+      c = sky130.components.sky130_fd_sc_hd__fa_1()
       c.plot()
     """
     return import_gds(
@@ -9872,15 +9872,15 @@ def fa_1() -> gf.Component:
 
 
 @cell
-def fa_2() -> gf.Component:
-    """Returns fa_2 fixed cell.
+def sky130_fd_sc_hd__fa_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fa_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fa_2()
+      c = sky130.components.sky130_fd_sc_hd__fa_2()
       c.plot()
     """
     return import_gds(
@@ -9890,15 +9890,15 @@ def fa_2() -> gf.Component:
 
 
 @cell
-def o32ai_1() -> gf.Component:
-    """Returns o32ai_1 fixed cell.
+def sky130_fd_sc_hd__o32ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o32ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o32ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o32ai_1()
       c.plot()
     """
     return import_gds(
@@ -9908,15 +9908,15 @@ def o32ai_1() -> gf.Component:
 
 
 @cell
-def o32ai_2() -> gf.Component:
-    """Returns o32ai_2 fixed cell.
+def sky130_fd_sc_hd__o32ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o32ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o32ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o32ai_2()
       c.plot()
     """
     return import_gds(
@@ -9926,15 +9926,15 @@ def o32ai_2() -> gf.Component:
 
 
 @cell
-def o32ai_4() -> gf.Component:
-    """Returns o32ai_4 fixed cell.
+def sky130_fd_sc_hd__o32ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o32ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o32ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o32ai_4()
       c.plot()
     """
     return import_gds(
@@ -9944,15 +9944,15 @@ def o32ai_4() -> gf.Component:
 
 
 @cell
-def a2bb2o_4() -> gf.Component:
-    """Returns a2bb2o_4 fixed cell.
+def sky130_fd_sc_hd__a2bb2o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2bb2o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2bb2o_4()
+      c = sky130.components.sky130_fd_sc_hd__a2bb2o_4()
       c.plot()
     """
     return import_gds(
@@ -9962,15 +9962,15 @@ def a2bb2o_4() -> gf.Component:
 
 
 @cell
-def a2bb2o_1() -> gf.Component:
-    """Returns a2bb2o_1 fixed cell.
+def sky130_fd_sc_hd__a2bb2o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2bb2o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2bb2o_1()
+      c = sky130.components.sky130_fd_sc_hd__a2bb2o_1()
       c.plot()
     """
     return import_gds(
@@ -9980,15 +9980,15 @@ def a2bb2o_1() -> gf.Component:
 
 
 @cell
-def a2bb2o_2() -> gf.Component:
-    """Returns a2bb2o_2 fixed cell.
+def sky130_fd_sc_hd__a2bb2o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2bb2o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2bb2o_2()
+      c = sky130.components.sky130_fd_sc_hd__a2bb2o_2()
       c.plot()
     """
     return import_gds(
@@ -9998,15 +9998,15 @@ def a2bb2o_2() -> gf.Component:
 
 
 @cell
-def lpflow_bleeder_1() -> gf.Component:
-    """Returns lpflow_bleeder_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_bleeder_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_bleeder_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_bleeder_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_bleeder_1()
       c.plot()
     """
     return import_gds(
@@ -10016,15 +10016,15 @@ def lpflow_bleeder_1() -> gf.Component:
 
 
 @cell
-def sedfxbp_1() -> gf.Component:
-    """Returns sedfxbp_1 fixed cell.
+def sky130_fd_sc_hd__sedfxbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sedfxbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sedfxbp_1()
+      c = sky130.components.sky130_fd_sc_hd__sedfxbp_1()
       c.plot()
     """
     return import_gds(
@@ -10034,15 +10034,15 @@ def sedfxbp_1() -> gf.Component:
 
 
 @cell
-def sedfxbp_2() -> gf.Component:
-    """Returns sedfxbp_2 fixed cell.
+def sky130_fd_sc_hd__sedfxbp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sedfxbp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sedfxbp_2()
+      c = sky130.components.sky130_fd_sc_hd__sedfxbp_2()
       c.plot()
     """
     return import_gds(
@@ -10052,15 +10052,15 @@ def sedfxbp_2() -> gf.Component:
 
 
 @cell
-def nor3b_2() -> gf.Component:
-    """Returns nor3b_2 fixed cell.
+def sky130_fd_sc_hd__nor3b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor3b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor3b_2()
+      c = sky130.components.sky130_fd_sc_hd__nor3b_2()
       c.plot()
     """
     return import_gds(
@@ -10070,15 +10070,15 @@ def nor3b_2() -> gf.Component:
 
 
 @cell
-def nor3b_1() -> gf.Component:
-    """Returns nor3b_1 fixed cell.
+def sky130_fd_sc_hd__nor3b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor3b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor3b_1()
+      c = sky130.components.sky130_fd_sc_hd__nor3b_1()
       c.plot()
     """
     return import_gds(
@@ -10088,15 +10088,15 @@ def nor3b_1() -> gf.Component:
 
 
 @cell
-def nor3b_4() -> gf.Component:
-    """Returns nor3b_4 fixed cell.
+def sky130_fd_sc_hd__nor3b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor3b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor3b_4()
+      c = sky130.components.sky130_fd_sc_hd__nor3b_4()
       c.plot()
     """
     return import_gds(
@@ -10106,15 +10106,15 @@ def nor3b_4() -> gf.Component:
 
 
 @cell
-def a31oi_2() -> gf.Component:
-    """Returns a31oi_2 fixed cell.
+def sky130_fd_sc_hd__a31oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a31oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a31oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a31oi_2()
       c.plot()
     """
     return import_gds(
@@ -10124,15 +10124,15 @@ def a31oi_2() -> gf.Component:
 
 
 @cell
-def a31oi_4() -> gf.Component:
-    """Returns a31oi_4 fixed cell.
+def sky130_fd_sc_hd__a31oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a31oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a31oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a31oi_4()
       c.plot()
     """
     return import_gds(
@@ -10142,15 +10142,15 @@ def a31oi_4() -> gf.Component:
 
 
 @cell
-def a31oi_1() -> gf.Component:
-    """Returns a31oi_1 fixed cell.
+def sky130_fd_sc_hd__a31oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a31oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a31oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a31oi_1()
       c.plot()
     """
     return import_gds(
@@ -10160,15 +10160,15 @@ def a31oi_1() -> gf.Component:
 
 
 @cell
-def xor3_4() -> gf.Component:
-    """Returns xor3_4 fixed cell.
+def sky130_fd_sc_hd__xor3_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xor3_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xor3_4()
+      c = sky130.components.sky130_fd_sc_hd__xor3_4()
       c.plot()
     """
     return import_gds(
@@ -10178,15 +10178,15 @@ def xor3_4() -> gf.Component:
 
 
 @cell
-def xor3_2() -> gf.Component:
-    """Returns xor3_2 fixed cell.
+def sky130_fd_sc_hd__xor3_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xor3_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xor3_2()
+      c = sky130.components.sky130_fd_sc_hd__xor3_2()
       c.plot()
     """
     return import_gds(
@@ -10196,15 +10196,15 @@ def xor3_2() -> gf.Component:
 
 
 @cell
-def xor3_1() -> gf.Component:
-    """Returns xor3_1 fixed cell.
+def sky130_fd_sc_hd__xor3_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xor3_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xor3_1()
+      c = sky130.components.sky130_fd_sc_hd__xor3_1()
       c.plot()
     """
     return import_gds(
@@ -10214,15 +10214,15 @@ def xor3_1() -> gf.Component:
 
 
 @cell
-def o41ai_1() -> gf.Component:
-    """Returns o41ai_1 fixed cell.
+def sky130_fd_sc_hd__o41ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o41ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o41ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o41ai_1()
       c.plot()
     """
     return import_gds(
@@ -10232,15 +10232,15 @@ def o41ai_1() -> gf.Component:
 
 
 @cell
-def o41ai_4() -> gf.Component:
-    """Returns o41ai_4 fixed cell.
+def sky130_fd_sc_hd__o41ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o41ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o41ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o41ai_4()
       c.plot()
     """
     return import_gds(
@@ -10250,15 +10250,15 @@ def o41ai_4() -> gf.Component:
 
 
 @cell
-def o41ai_2() -> gf.Component:
-    """Returns o41ai_2 fixed cell.
+def sky130_fd_sc_hd__o41ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o41ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o41ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o41ai_2()
       c.plot()
     """
     return import_gds(
@@ -10268,15 +10268,15 @@ def o41ai_2() -> gf.Component:
 
 
 @cell
-def fill_4() -> gf.Component:
-    """Returns fill_4 fixed cell.
+def sky130_fd_sc_hd__fill_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fill_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fill_4()
+      c = sky130.components.sky130_fd_sc_hd__fill_4()
       c.plot()
     """
     return import_gds(
@@ -10286,15 +10286,15 @@ def fill_4() -> gf.Component:
 
 
 @cell
-def fill_1() -> gf.Component:
-    """Returns fill_1 fixed cell.
+def sky130_fd_sc_hd__fill_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fill_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fill_1()
+      c = sky130.components.sky130_fd_sc_hd__fill_1()
       c.plot()
     """
     return import_gds(
@@ -10304,15 +10304,15 @@ def fill_1() -> gf.Component:
 
 
 @cell
-def fill_8() -> gf.Component:
-    """Returns fill_8 fixed cell.
+def sky130_fd_sc_hd__fill_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fill_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fill_8()
+      c = sky130.components.sky130_fd_sc_hd__fill_8()
       c.plot()
     """
     return import_gds(
@@ -10322,15 +10322,15 @@ def fill_8() -> gf.Component:
 
 
 @cell
-def fill_2() -> gf.Component:
-    """Returns fill_2 fixed cell.
+def sky130_fd_sc_hd__fill_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fill_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fill_2()
+      c = sky130.components.sky130_fd_sc_hd__fill_2()
       c.plot()
     """
     return import_gds(
@@ -10340,15 +10340,15 @@ def fill_2() -> gf.Component:
 
 
 @cell
-def sdfrtn_1() -> gf.Component:
-    """Returns sdfrtn_1 fixed cell.
+def sky130_fd_sc_hd__sdfrtn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfrtn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfrtn_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfrtn_1()
       c.plot()
     """
     return import_gds(
@@ -10358,15 +10358,15 @@ def sdfrtn_1() -> gf.Component:
 
 
 @cell
-def decap_3() -> gf.Component:
-    """Returns decap_3 fixed cell.
+def sky130_fd_sc_hd__decap_3() -> gf.Component:
+    """Returns sky130_fd_sc_hd__decap_3 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.decap_3()
+      c = sky130.components.sky130_fd_sc_hd__decap_3()
       c.plot()
     """
     return import_gds(
@@ -10376,15 +10376,15 @@ def decap_3() -> gf.Component:
 
 
 @cell
-def decap_8() -> gf.Component:
-    """Returns decap_8 fixed cell.
+def sky130_fd_sc_hd__decap_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__decap_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.decap_8()
+      c = sky130.components.sky130_fd_sc_hd__decap_8()
       c.plot()
     """
     return import_gds(
@@ -10394,15 +10394,15 @@ def decap_8() -> gf.Component:
 
 
 @cell
-def decap_4() -> gf.Component:
-    """Returns decap_4 fixed cell.
+def sky130_fd_sc_hd__decap_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__decap_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.decap_4()
+      c = sky130.components.sky130_fd_sc_hd__decap_4()
       c.plot()
     """
     return import_gds(
@@ -10412,15 +10412,15 @@ def decap_4() -> gf.Component:
 
 
 @cell
-def decap_12() -> gf.Component:
-    """Returns decap_12 fixed cell.
+def sky130_fd_sc_hd__decap_12() -> gf.Component:
+    """Returns sky130_fd_sc_hd__decap_12 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.decap_12()
+      c = sky130.components.sky130_fd_sc_hd__decap_12()
       c.plot()
     """
     return import_gds(
@@ -10430,15 +10430,15 @@ def decap_12() -> gf.Component:
 
 
 @cell
-def decap_6() -> gf.Component:
-    """Returns decap_6 fixed cell.
+def sky130_fd_sc_hd__decap_6() -> gf.Component:
+    """Returns sky130_fd_sc_hd__decap_6 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.decap_6()
+      c = sky130.components.sky130_fd_sc_hd__decap_6()
       c.plot()
     """
     return import_gds(
@@ -10448,15 +10448,15 @@ def decap_6() -> gf.Component:
 
 
 @cell
-def inv_1() -> gf.Component:
-    """Returns inv_1 fixed cell.
+def sky130_fd_sc_hd__inv_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__inv_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.inv_1()
+      c = sky130.components.sky130_fd_sc_hd__inv_1()
       c.plot()
     """
     return import_gds(
@@ -10466,15 +10466,15 @@ def inv_1() -> gf.Component:
 
 
 @cell
-def inv_12() -> gf.Component:
-    """Returns inv_12 fixed cell.
+def sky130_fd_sc_hd__inv_12() -> gf.Component:
+    """Returns sky130_fd_sc_hd__inv_12 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.inv_12()
+      c = sky130.components.sky130_fd_sc_hd__inv_12()
       c.plot()
     """
     return import_gds(
@@ -10484,15 +10484,15 @@ def inv_12() -> gf.Component:
 
 
 @cell
-def inv_6() -> gf.Component:
-    """Returns inv_6 fixed cell.
+def sky130_fd_sc_hd__inv_6() -> gf.Component:
+    """Returns sky130_fd_sc_hd__inv_6 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.inv_6()
+      c = sky130.components.sky130_fd_sc_hd__inv_6()
       c.plot()
     """
     return import_gds(
@@ -10502,15 +10502,15 @@ def inv_6() -> gf.Component:
 
 
 @cell
-def inv_16() -> gf.Component:
-    """Returns inv_16 fixed cell.
+def sky130_fd_sc_hd__inv_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__inv_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.inv_16()
+      c = sky130.components.sky130_fd_sc_hd__inv_16()
       c.plot()
     """
     return import_gds(
@@ -10520,15 +10520,15 @@ def inv_16() -> gf.Component:
 
 
 @cell
-def inv_4() -> gf.Component:
-    """Returns inv_4 fixed cell.
+def sky130_fd_sc_hd__inv_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__inv_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.inv_4()
+      c = sky130.components.sky130_fd_sc_hd__inv_4()
       c.plot()
     """
     return import_gds(
@@ -10538,15 +10538,15 @@ def inv_4() -> gf.Component:
 
 
 @cell
-def inv_8() -> gf.Component:
-    """Returns inv_8 fixed cell.
+def sky130_fd_sc_hd__inv_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__inv_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.inv_8()
+      c = sky130.components.sky130_fd_sc_hd__inv_8()
       c.plot()
     """
     return import_gds(
@@ -10556,15 +10556,15 @@ def inv_8() -> gf.Component:
 
 
 @cell
-def inv_2() -> gf.Component:
-    """Returns inv_2 fixed cell.
+def sky130_fd_sc_hd__inv_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__inv_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.inv_2()
+      c = sky130.components.sky130_fd_sc_hd__inv_2()
       c.plot()
     """
     return import_gds(
@@ -10574,15 +10574,15 @@ def inv_2() -> gf.Component:
 
 
 @cell
-def macro_sparecell() -> gf.Component:
-    """Returns macro_sparecell fixed cell.
+def sky130_fd_sc_hd__macro_sparecell() -> gf.Component:
+    """Returns sky130_fd_sc_hd__macro_sparecell fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.macro_sparecell()
+      c = sky130.components.sky130_fd_sc_hd__macro_sparecell()
       c.plot()
     """
     return import_gds(
@@ -10592,15 +10592,15 @@ def macro_sparecell() -> gf.Component:
 
 
 @cell
-def and2b_4() -> gf.Component:
-    """Returns and2b_4 fixed cell.
+def sky130_fd_sc_hd__and2b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and2b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and2b_4()
+      c = sky130.components.sky130_fd_sc_hd__and2b_4()
       c.plot()
     """
     return import_gds(
@@ -10610,15 +10610,15 @@ def and2b_4() -> gf.Component:
 
 
 @cell
-def and2b_1() -> gf.Component:
-    """Returns and2b_1 fixed cell.
+def sky130_fd_sc_hd__and2b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and2b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and2b_1()
+      c = sky130.components.sky130_fd_sc_hd__and2b_1()
       c.plot()
     """
     return import_gds(
@@ -10628,15 +10628,15 @@ def and2b_1() -> gf.Component:
 
 
 @cell
-def and2b_2() -> gf.Component:
-    """Returns and2b_2 fixed cell.
+def sky130_fd_sc_hd__and2b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and2b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and2b_2()
+      c = sky130.components.sky130_fd_sc_hd__and2b_2()
       c.plot()
     """
     return import_gds(
@@ -10646,15 +10646,15 @@ def and2b_2() -> gf.Component:
 
 
 @cell
-def nand3b_2() -> gf.Component:
-    """Returns nand3b_2 fixed cell.
+def sky130_fd_sc_hd__nand3b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand3b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand3b_2()
+      c = sky130.components.sky130_fd_sc_hd__nand3b_2()
       c.plot()
     """
     return import_gds(
@@ -10664,15 +10664,15 @@ def nand3b_2() -> gf.Component:
 
 
 @cell
-def nand3b_1() -> gf.Component:
-    """Returns nand3b_1 fixed cell.
+def sky130_fd_sc_hd__nand3b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand3b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand3b_1()
+      c = sky130.components.sky130_fd_sc_hd__nand3b_1()
       c.plot()
     """
     return import_gds(
@@ -10682,15 +10682,15 @@ def nand3b_1() -> gf.Component:
 
 
 @cell
-def nand3b_4() -> gf.Component:
-    """Returns nand3b_4 fixed cell.
+def sky130_fd_sc_hd__nand3b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand3b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand3b_4()
+      c = sky130.components.sky130_fd_sc_hd__nand3b_4()
       c.plot()
     """
     return import_gds(
@@ -10700,15 +10700,15 @@ def nand3b_4() -> gf.Component:
 
 
 @cell
-def dlrtp_1() -> gf.Component:
-    """Returns dlrtp_1 fixed cell.
+def sky130_fd_sc_hd__dlrtp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrtp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrtp_1()
+      c = sky130.components.sky130_fd_sc_hd__dlrtp_1()
       c.plot()
     """
     return import_gds(
@@ -10718,15 +10718,15 @@ def dlrtp_1() -> gf.Component:
 
 
 @cell
-def dlrtp_4() -> gf.Component:
-    """Returns dlrtp_4 fixed cell.
+def sky130_fd_sc_hd__dlrtp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrtp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrtp_4()
+      c = sky130.components.sky130_fd_sc_hd__dlrtp_4()
       c.plot()
     """
     return import_gds(
@@ -10736,15 +10736,15 @@ def dlrtp_4() -> gf.Component:
 
 
 @cell
-def dlrtp_2() -> gf.Component:
-    """Returns dlrtp_2 fixed cell.
+def sky130_fd_sc_hd__dlrtp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrtp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrtp_2()
+      c = sky130.components.sky130_fd_sc_hd__dlrtp_2()
       c.plot()
     """
     return import_gds(
@@ -10754,15 +10754,15 @@ def dlrtp_2() -> gf.Component:
 
 
 @cell
-def dfbbp_1() -> gf.Component:
-    """Returns dfbbp_1 fixed cell.
+def sky130_fd_sc_hd__dfbbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfbbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfbbp_1()
+      c = sky130.components.sky130_fd_sc_hd__dfbbp_1()
       c.plot()
     """
     return import_gds(
@@ -10772,15 +10772,15 @@ def dfbbp_1() -> gf.Component:
 
 
 @cell
-def probe_p_8() -> gf.Component:
-    """Returns probe_p_8 fixed cell.
+def sky130_fd_sc_hd__probe_p_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__probe_p_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.probe_p_8()
+      c = sky130.components.sky130_fd_sc_hd__probe_p_8()
       c.plot()
     """
     return import_gds(
@@ -10790,15 +10790,15 @@ def probe_p_8() -> gf.Component:
 
 
 @cell
-def dlclkp_1() -> gf.Component:
-    """Returns dlclkp_1 fixed cell.
+def sky130_fd_sc_hd__dlclkp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlclkp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlclkp_1()
+      c = sky130.components.sky130_fd_sc_hd__dlclkp_1()
       c.plot()
     """
     return import_gds(
@@ -10808,15 +10808,15 @@ def dlclkp_1() -> gf.Component:
 
 
 @cell
-def dlclkp_4() -> gf.Component:
-    """Returns dlclkp_4 fixed cell.
+def sky130_fd_sc_hd__dlclkp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlclkp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlclkp_4()
+      c = sky130.components.sky130_fd_sc_hd__dlclkp_4()
       c.plot()
     """
     return import_gds(
@@ -10826,15 +10826,15 @@ def dlclkp_4() -> gf.Component:
 
 
 @cell
-def dlclkp_2() -> gf.Component:
-    """Returns dlclkp_2 fixed cell.
+def sky130_fd_sc_hd__dlclkp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlclkp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlclkp_2()
+      c = sky130.components.sky130_fd_sc_hd__dlclkp_2()
       c.plot()
     """
     return import_gds(
@@ -10844,15 +10844,15 @@ def dlclkp_2() -> gf.Component:
 
 
 @cell
-def or4_2() -> gf.Component:
-    """Returns or4_2 fixed cell.
+def sky130_fd_sc_hd__or4_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4_2()
+      c = sky130.components.sky130_fd_sc_hd__or4_2()
       c.plot()
     """
     return import_gds(
@@ -10862,15 +10862,15 @@ def or4_2() -> gf.Component:
 
 
 @cell
-def or4_1() -> gf.Component:
-    """Returns or4_1 fixed cell.
+def sky130_fd_sc_hd__or4_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4_1()
+      c = sky130.components.sky130_fd_sc_hd__or4_1()
       c.plot()
     """
     return import_gds(
@@ -10880,15 +10880,15 @@ def or4_1() -> gf.Component:
 
 
 @cell
-def or4_4() -> gf.Component:
-    """Returns or4_4 fixed cell.
+def sky130_fd_sc_hd__or4_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4_4()
+      c = sky130.components.sky130_fd_sc_hd__or4_4()
       c.plot()
     """
     return import_gds(
@@ -10898,15 +10898,15 @@ def or4_4() -> gf.Component:
 
 
 @cell
-def o221a_1() -> gf.Component:
-    """Returns o221a_1 fixed cell.
+def sky130_fd_sc_hd__o221a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o221a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o221a_1()
+      c = sky130.components.sky130_fd_sc_hd__o221a_1()
       c.plot()
     """
     return import_gds(
@@ -10916,15 +10916,15 @@ def o221a_1() -> gf.Component:
 
 
 @cell
-def o221a_4() -> gf.Component:
-    """Returns o221a_4 fixed cell.
+def sky130_fd_sc_hd__o221a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o221a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o221a_4()
+      c = sky130.components.sky130_fd_sc_hd__o221a_4()
       c.plot()
     """
     return import_gds(
@@ -10934,15 +10934,15 @@ def o221a_4() -> gf.Component:
 
 
 @cell
-def o221a_2() -> gf.Component:
-    """Returns o221a_2 fixed cell.
+def sky130_fd_sc_hd__o221a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o221a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o221a_2()
+      c = sky130.components.sky130_fd_sc_hd__o221a_2()
       c.plot()
     """
     return import_gds(
@@ -10952,15 +10952,15 @@ def o221a_2() -> gf.Component:
 
 
 @cell
-def nor3_2() -> gf.Component:
-    """Returns nor3_2 fixed cell.
+def sky130_fd_sc_hd__nor3_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor3_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor3_2()
+      c = sky130.components.sky130_fd_sc_hd__nor3_2()
       c.plot()
     """
     return import_gds(
@@ -10970,15 +10970,15 @@ def nor3_2() -> gf.Component:
 
 
 @cell
-def nor3_4() -> gf.Component:
-    """Returns nor3_4 fixed cell.
+def sky130_fd_sc_hd__nor3_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor3_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor3_4()
+      c = sky130.components.sky130_fd_sc_hd__nor3_4()
       c.plot()
     """
     return import_gds(
@@ -10988,15 +10988,15 @@ def nor3_4() -> gf.Component:
 
 
 @cell
-def nor3_1() -> gf.Component:
-    """Returns nor3_1 fixed cell.
+def sky130_fd_sc_hd__nor3_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nor3_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nor3_1()
+      c = sky130.components.sky130_fd_sc_hd__nor3_1()
       c.plot()
     """
     return import_gds(
@@ -11006,15 +11006,15 @@ def nor3_1() -> gf.Component:
 
 
 @cell
-def dfrtn_1() -> gf.Component:
-    """Returns dfrtn_1 fixed cell.
+def sky130_fd_sc_hd__dfrtn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfrtn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfrtn_1()
+      c = sky130.components.sky130_fd_sc_hd__dfrtn_1()
       c.plot()
     """
     return import_gds(
@@ -11024,15 +11024,15 @@ def dfrtn_1() -> gf.Component:
 
 
 @cell
-def sdfrbp_1() -> gf.Component:
-    """Returns sdfrbp_1 fixed cell.
+def sky130_fd_sc_hd__sdfrbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfrbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfrbp_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfrbp_1()
       c.plot()
     """
     return import_gds(
@@ -11042,15 +11042,15 @@ def sdfrbp_1() -> gf.Component:
 
 
 @cell
-def sdfrbp_2() -> gf.Component:
-    """Returns sdfrbp_2 fixed cell.
+def sky130_fd_sc_hd__sdfrbp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfrbp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfrbp_2()
+      c = sky130.components.sky130_fd_sc_hd__sdfrbp_2()
       c.plot()
     """
     return import_gds(
@@ -11060,15 +11060,15 @@ def sdfrbp_2() -> gf.Component:
 
 
 @cell
-def clkinvlp_4() -> gf.Component:
-    """Returns clkinvlp_4 fixed cell.
+def sky130_fd_sc_hd__clkinvlp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkinvlp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkinvlp_4()
+      c = sky130.components.sky130_fd_sc_hd__clkinvlp_4()
       c.plot()
     """
     return import_gds(
@@ -11078,15 +11078,15 @@ def clkinvlp_4() -> gf.Component:
 
 
 @cell
-def clkinvlp_2() -> gf.Component:
-    """Returns clkinvlp_2 fixed cell.
+def sky130_fd_sc_hd__clkinvlp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkinvlp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkinvlp_2()
+      c = sky130.components.sky130_fd_sc_hd__clkinvlp_2()
       c.plot()
     """
     return import_gds(
@@ -11096,15 +11096,15 @@ def clkinvlp_2() -> gf.Component:
 
 
 @cell
-def o41a_4() -> gf.Component:
-    """Returns o41a_4 fixed cell.
+def sky130_fd_sc_hd__o41a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o41a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o41a_4()
+      c = sky130.components.sky130_fd_sc_hd__o41a_4()
       c.plot()
     """
     return import_gds(
@@ -11114,15 +11114,15 @@ def o41a_4() -> gf.Component:
 
 
 @cell
-def o41a_1() -> gf.Component:
-    """Returns o41a_1 fixed cell.
+def sky130_fd_sc_hd__o41a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o41a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o41a_1()
+      c = sky130.components.sky130_fd_sc_hd__o41a_1()
       c.plot()
     """
     return import_gds(
@@ -11132,15 +11132,15 @@ def o41a_1() -> gf.Component:
 
 
 @cell
-def o41a_2() -> gf.Component:
-    """Returns o41a_2 fixed cell.
+def sky130_fd_sc_hd__o41a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o41a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o41a_2()
+      c = sky130.components.sky130_fd_sc_hd__o41a_2()
       c.plot()
     """
     return import_gds(
@@ -11150,15 +11150,15 @@ def o41a_2() -> gf.Component:
 
 
 @cell
-def o21a_1() -> gf.Component:
-    """Returns o21a_1 fixed cell.
+def sky130_fd_sc_hd__o21a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21a_1()
+      c = sky130.components.sky130_fd_sc_hd__o21a_1()
       c.plot()
     """
     return import_gds(
@@ -11168,15 +11168,15 @@ def o21a_1() -> gf.Component:
 
 
 @cell
-def o21a_4() -> gf.Component:
-    """Returns o21a_4 fixed cell.
+def sky130_fd_sc_hd__o21a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21a_4()
+      c = sky130.components.sky130_fd_sc_hd__o21a_4()
       c.plot()
     """
     return import_gds(
@@ -11186,15 +11186,15 @@ def o21a_4() -> gf.Component:
 
 
 @cell
-def o21a_2() -> gf.Component:
-    """Returns o21a_2 fixed cell.
+def sky130_fd_sc_hd__o21a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21a_2()
+      c = sky130.components.sky130_fd_sc_hd__o21a_2()
       c.plot()
     """
     return import_gds(
@@ -11204,15 +11204,15 @@ def o21a_2() -> gf.Component:
 
 
 @cell
-def or3_4() -> gf.Component:
-    """Returns or3_4 fixed cell.
+def sky130_fd_sc_hd__or3_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or3_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or3_4()
+      c = sky130.components.sky130_fd_sc_hd__or3_4()
       c.plot()
     """
     return import_gds(
@@ -11222,15 +11222,15 @@ def or3_4() -> gf.Component:
 
 
 @cell
-def or3_1() -> gf.Component:
-    """Returns or3_1 fixed cell.
+def sky130_fd_sc_hd__or3_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or3_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or3_1()
+      c = sky130.components.sky130_fd_sc_hd__or3_1()
       c.plot()
     """
     return import_gds(
@@ -11240,15 +11240,15 @@ def or3_1() -> gf.Component:
 
 
 @cell
-def or3_2() -> gf.Component:
-    """Returns or3_2 fixed cell.
+def sky130_fd_sc_hd__or3_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or3_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or3_2()
+      c = sky130.components.sky130_fd_sc_hd__or3_2()
       c.plot()
     """
     return import_gds(
@@ -11258,15 +11258,15 @@ def or3_2() -> gf.Component:
 
 
 @cell
-def dlxbp_1() -> gf.Component:
-    """Returns dlxbp_1 fixed cell.
+def sky130_fd_sc_hd__dlxbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlxbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlxbp_1()
+      c = sky130.components.sky130_fd_sc_hd__dlxbp_1()
       c.plot()
     """
     return import_gds(
@@ -11276,15 +11276,15 @@ def dlxbp_1() -> gf.Component:
 
 
 @cell
-def bufbuf_16() -> gf.Component:
-    """Returns bufbuf_16 fixed cell.
+def sky130_fd_sc_hd__bufbuf_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__bufbuf_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.bufbuf_16()
+      c = sky130.components.sky130_fd_sc_hd__bufbuf_16()
       c.plot()
     """
     return import_gds(
@@ -11294,15 +11294,15 @@ def bufbuf_16() -> gf.Component:
 
 
 @cell
-def bufbuf_8() -> gf.Component:
-    """Returns bufbuf_8 fixed cell.
+def sky130_fd_sc_hd__bufbuf_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__bufbuf_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.bufbuf_8()
+      c = sky130.components.sky130_fd_sc_hd__bufbuf_8()
       c.plot()
     """
     return import_gds(
@@ -11312,15 +11312,15 @@ def bufbuf_8() -> gf.Component:
 
 
 @cell
-def clkdlybuf4s18_2() -> gf.Component:
-    """Returns clkdlybuf4s18_2 fixed cell.
+def sky130_fd_sc_hd__clkdlybuf4s18_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkdlybuf4s18_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkdlybuf4s18_2()
+      c = sky130.components.sky130_fd_sc_hd__clkdlybuf4s18_2()
       c.plot()
     """
     return import_gds(
@@ -11330,15 +11330,15 @@ def clkdlybuf4s18_2() -> gf.Component:
 
 
 @cell
-def clkdlybuf4s18_1() -> gf.Component:
-    """Returns clkdlybuf4s18_1 fixed cell.
+def sky130_fd_sc_hd__clkdlybuf4s18_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkdlybuf4s18_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkdlybuf4s18_1()
+      c = sky130.components.sky130_fd_sc_hd__clkdlybuf4s18_1()
       c.plot()
     """
     return import_gds(
@@ -11348,15 +11348,15 @@ def clkdlybuf4s18_1() -> gf.Component:
 
 
 @cell
-def sdfrtp_2() -> gf.Component:
-    """Returns sdfrtp_2 fixed cell.
+def sky130_fd_sc_hd__sdfrtp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfrtp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfrtp_2()
+      c = sky130.components.sky130_fd_sc_hd__sdfrtp_2()
       c.plot()
     """
     return import_gds(
@@ -11366,15 +11366,15 @@ def sdfrtp_2() -> gf.Component:
 
 
 @cell
-def sdfrtp_1() -> gf.Component:
-    """Returns sdfrtp_1 fixed cell.
+def sky130_fd_sc_hd__sdfrtp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfrtp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfrtp_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfrtp_1()
       c.plot()
     """
     return import_gds(
@@ -11384,15 +11384,15 @@ def sdfrtp_1() -> gf.Component:
 
 
 @cell
-def sdfrtp_4() -> gf.Component:
-    """Returns sdfrtp_4 fixed cell.
+def sky130_fd_sc_hd__sdfrtp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfrtp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfrtp_4()
+      c = sky130.components.sky130_fd_sc_hd__sdfrtp_4()
       c.plot()
     """
     return import_gds(
@@ -11402,15 +11402,15 @@ def sdfrtp_4() -> gf.Component:
 
 
 @cell
-def a221o_4() -> gf.Component:
-    """Returns a221o_4 fixed cell.
+def sky130_fd_sc_hd__a221o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a221o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a221o_4()
+      c = sky130.components.sky130_fd_sc_hd__a221o_4()
       c.plot()
     """
     return import_gds(
@@ -11420,15 +11420,15 @@ def a221o_4() -> gf.Component:
 
 
 @cell
-def a221o_2() -> gf.Component:
-    """Returns a221o_2 fixed cell.
+def sky130_fd_sc_hd__a221o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a221o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a221o_2()
+      c = sky130.components.sky130_fd_sc_hd__a221o_2()
       c.plot()
     """
     return import_gds(
@@ -11438,15 +11438,15 @@ def a221o_2() -> gf.Component:
 
 
 @cell
-def a221o_1() -> gf.Component:
-    """Returns a221o_1 fixed cell.
+def sky130_fd_sc_hd__a221o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a221o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a221o_1()
+      c = sky130.components.sky130_fd_sc_hd__a221o_1()
       c.plot()
     """
     return import_gds(
@@ -11456,15 +11456,15 @@ def a221o_1() -> gf.Component:
 
 
 @cell
-def a31o_1() -> gf.Component:
-    """Returns a31o_1 fixed cell.
+def sky130_fd_sc_hd__a31o_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a31o_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a31o_1()
+      c = sky130.components.sky130_fd_sc_hd__a31o_1()
       c.plot()
     """
     return import_gds(
@@ -11474,15 +11474,15 @@ def a31o_1() -> gf.Component:
 
 
 @cell
-def a31o_2() -> gf.Component:
-    """Returns a31o_2 fixed cell.
+def sky130_fd_sc_hd__a31o_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a31o_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a31o_2()
+      c = sky130.components.sky130_fd_sc_hd__a31o_2()
       c.plot()
     """
     return import_gds(
@@ -11492,15 +11492,15 @@ def a31o_2() -> gf.Component:
 
 
 @cell
-def a31o_4() -> gf.Component:
-    """Returns a31o_4 fixed cell.
+def sky130_fd_sc_hd__a31o_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a31o_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a31o_4()
+      c = sky130.components.sky130_fd_sc_hd__a31o_4()
       c.plot()
     """
     return import_gds(
@@ -11510,15 +11510,15 @@ def a31o_4() -> gf.Component:
 
 
 @cell
-def fah_1() -> gf.Component:
-    """Returns fah_1 fixed cell.
+def sky130_fd_sc_hd__fah_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fah_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fah_1()
+      c = sky130.components.sky130_fd_sc_hd__fah_1()
       c.plot()
     """
     return import_gds(
@@ -11528,15 +11528,15 @@ def fah_1() -> gf.Component:
 
 
 @cell
-def sdfbbn_1() -> gf.Component:
-    """Returns sdfbbn_1 fixed cell.
+def sky130_fd_sc_hd__sdfbbn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfbbn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfbbn_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfbbn_1()
       c.plot()
     """
     return import_gds(
@@ -11546,15 +11546,15 @@ def sdfbbn_1() -> gf.Component:
 
 
 @cell
-def sdfbbn_2() -> gf.Component:
-    """Returns sdfbbn_2 fixed cell.
+def sky130_fd_sc_hd__sdfbbn_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfbbn_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfbbn_2()
+      c = sky130.components.sky130_fd_sc_hd__sdfbbn_2()
       c.plot()
     """
     return import_gds(
@@ -11564,15 +11564,15 @@ def sdfbbn_2() -> gf.Component:
 
 
 @cell
-def mux4_4() -> gf.Component:
-    """Returns mux4_4 fixed cell.
+def sky130_fd_sc_hd__mux4_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux4_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux4_4()
+      c = sky130.components.sky130_fd_sc_hd__mux4_4()
       c.plot()
     """
     return import_gds(
@@ -11582,15 +11582,15 @@ def mux4_4() -> gf.Component:
 
 
 @cell
-def mux4_1() -> gf.Component:
-    """Returns mux4_1 fixed cell.
+def sky130_fd_sc_hd__mux4_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux4_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux4_1()
+      c = sky130.components.sky130_fd_sc_hd__mux4_1()
       c.plot()
     """
     return import_gds(
@@ -11600,15 +11600,15 @@ def mux4_1() -> gf.Component:
 
 
 @cell
-def mux4_2() -> gf.Component:
-    """Returns mux4_2 fixed cell.
+def sky130_fd_sc_hd__mux4_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__mux4_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.mux4_2()
+      c = sky130.components.sky130_fd_sc_hd__mux4_2()
       c.plot()
     """
     return import_gds(
@@ -11618,15 +11618,15 @@ def mux4_2() -> gf.Component:
 
 
 @cell
-def xnor2_1() -> gf.Component:
-    """Returns xnor2_1 fixed cell.
+def sky130_fd_sc_hd__xnor2_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xnor2_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xnor2_1()
+      c = sky130.components.sky130_fd_sc_hd__xnor2_1()
       c.plot()
     """
     return import_gds(
@@ -11636,15 +11636,15 @@ def xnor2_1() -> gf.Component:
 
 
 @cell
-def xnor2_2() -> gf.Component:
-    """Returns xnor2_2 fixed cell.
+def sky130_fd_sc_hd__xnor2_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xnor2_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xnor2_2()
+      c = sky130.components.sky130_fd_sc_hd__xnor2_2()
       c.plot()
     """
     return import_gds(
@@ -11654,15 +11654,15 @@ def xnor2_2() -> gf.Component:
 
 
 @cell
-def xnor2_4() -> gf.Component:
-    """Returns xnor2_4 fixed cell.
+def sky130_fd_sc_hd__xnor2_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xnor2_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xnor2_4()
+      c = sky130.components.sky130_fd_sc_hd__xnor2_4()
       c.plot()
     """
     return import_gds(
@@ -11672,15 +11672,15 @@ def xnor2_4() -> gf.Component:
 
 
 @cell
-def dlymetal6s2s_1() -> gf.Component:
-    """Returns dlymetal6s2s_1 fixed cell.
+def sky130_fd_sc_hd__dlymetal6s2s_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlymetal6s2s_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlymetal6s2s_1()
+      c = sky130.components.sky130_fd_sc_hd__dlymetal6s2s_1()
       c.plot()
     """
     return import_gds(
@@ -11690,15 +11690,15 @@ def dlymetal6s2s_1() -> gf.Component:
 
 
 @cell
-def o2bb2ai_1() -> gf.Component:
-    """Returns o2bb2ai_1 fixed cell.
+def sky130_fd_sc_hd__o2bb2ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2bb2ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2bb2ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o2bb2ai_1()
       c.plot()
     """
     return import_gds(
@@ -11708,15 +11708,15 @@ def o2bb2ai_1() -> gf.Component:
 
 
 @cell
-def o2bb2ai_4() -> gf.Component:
-    """Returns o2bb2ai_4 fixed cell.
+def sky130_fd_sc_hd__o2bb2ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2bb2ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2bb2ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o2bb2ai_4()
       c.plot()
     """
     return import_gds(
@@ -11726,15 +11726,15 @@ def o2bb2ai_4() -> gf.Component:
 
 
 @cell
-def o2bb2ai_2() -> gf.Component:
-    """Returns o2bb2ai_2 fixed cell.
+def sky130_fd_sc_hd__o2bb2ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2bb2ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2bb2ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o2bb2ai_2()
       c.plot()
     """
     return import_gds(
@@ -11744,15 +11744,15 @@ def o2bb2ai_2() -> gf.Component:
 
 
 @cell
-def and4_2() -> gf.Component:
-    """Returns and4_2 fixed cell.
+def sky130_fd_sc_hd__and4_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4_2()
+      c = sky130.components.sky130_fd_sc_hd__and4_2()
       c.plot()
     """
     return import_gds(
@@ -11762,15 +11762,15 @@ def and4_2() -> gf.Component:
 
 
 @cell
-def and4_1() -> gf.Component:
-    """Returns and4_1 fixed cell.
+def sky130_fd_sc_hd__and4_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4_1()
+      c = sky130.components.sky130_fd_sc_hd__and4_1()
       c.plot()
     """
     return import_gds(
@@ -11780,15 +11780,15 @@ def and4_1() -> gf.Component:
 
 
 @cell
-def and4_4() -> gf.Component:
-    """Returns and4_4 fixed cell.
+def sky130_fd_sc_hd__and4_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__and4_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.and4_4()
+      c = sky130.components.sky130_fd_sc_hd__and4_4()
       c.plot()
     """
     return import_gds(
@@ -11798,15 +11798,15 @@ def and4_4() -> gf.Component:
 
 
 @cell
-def or4bb_1() -> gf.Component:
-    """Returns or4bb_1 fixed cell.
+def sky130_fd_sc_hd__or4bb_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4bb_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4bb_1()
+      c = sky130.components.sky130_fd_sc_hd__or4bb_1()
       c.plot()
     """
     return import_gds(
@@ -11816,15 +11816,15 @@ def or4bb_1() -> gf.Component:
 
 
 @cell
-def or4bb_4() -> gf.Component:
-    """Returns or4bb_4 fixed cell.
+def sky130_fd_sc_hd__or4bb_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4bb_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4bb_4()
+      c = sky130.components.sky130_fd_sc_hd__or4bb_4()
       c.plot()
     """
     return import_gds(
@@ -11834,15 +11834,15 @@ def or4bb_4() -> gf.Component:
 
 
 @cell
-def or4bb_2() -> gf.Component:
-    """Returns or4bb_2 fixed cell.
+def sky130_fd_sc_hd__or4bb_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__or4bb_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.or4bb_2()
+      c = sky130.components.sky130_fd_sc_hd__or4bb_2()
       c.plot()
     """
     return import_gds(
@@ -11852,15 +11852,15 @@ def or4bb_2() -> gf.Component:
 
 
 @cell
-def tapvgnd_1() -> gf.Component:
-    """Returns tapvgnd_1 fixed cell.
+def sky130_fd_sc_hd__tapvgnd_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__tapvgnd_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.tapvgnd_1()
+      c = sky130.components.sky130_fd_sc_hd__tapvgnd_1()
       c.plot()
     """
     return import_gds(
@@ -11870,15 +11870,15 @@ def tapvgnd_1() -> gf.Component:
 
 
 @cell
-def lpflow_lsbuf_lh_isowell_4() -> gf.Component:
-    """Returns lpflow_lsbuf_lh_isowell_4 fixed cell.
+def sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_lsbuf_lh_isowell_4()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4()
       c.plot()
     """
     return import_gds(
@@ -11888,15 +11888,15 @@ def lpflow_lsbuf_lh_isowell_4() -> gf.Component:
 
 
 @cell
-def a32oi_2() -> gf.Component:
-    """Returns a32oi_2 fixed cell.
+def sky130_fd_sc_hd__a32oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a32oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a32oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a32oi_2()
       c.plot()
     """
     return import_gds(
@@ -11906,15 +11906,15 @@ def a32oi_2() -> gf.Component:
 
 
 @cell
-def a32oi_1() -> gf.Component:
-    """Returns a32oi_1 fixed cell.
+def sky130_fd_sc_hd__a32oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a32oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a32oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a32oi_1()
       c.plot()
     """
     return import_gds(
@@ -11924,15 +11924,15 @@ def a32oi_1() -> gf.Component:
 
 
 @cell
-def a32oi_4() -> gf.Component:
-    """Returns a32oi_4 fixed cell.
+def sky130_fd_sc_hd__a32oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a32oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a32oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a32oi_4()
       c.plot()
     """
     return import_gds(
@@ -11942,15 +11942,15 @@ def a32oi_4() -> gf.Component:
 
 
 @cell
-def dfxbp_2() -> gf.Component:
-    """Returns dfxbp_2 fixed cell.
+def sky130_fd_sc_hd__dfxbp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfxbp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfxbp_2()
+      c = sky130.components.sky130_fd_sc_hd__dfxbp_2()
       c.plot()
     """
     return import_gds(
@@ -11960,15 +11960,15 @@ def dfxbp_2() -> gf.Component:
 
 
 @cell
-def dfxbp_1() -> gf.Component:
-    """Returns dfxbp_1 fixed cell.
+def sky130_fd_sc_hd__dfxbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfxbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfxbp_1()
+      c = sky130.components.sky130_fd_sc_hd__dfxbp_1()
       c.plot()
     """
     return import_gds(
@@ -11978,15 +11978,15 @@ def dfxbp_1() -> gf.Component:
 
 
 @cell
-def lpflow_isobufsrckapwr_16() -> gf.Component:
-    """Returns lpflow_isobufsrckapwr_16 fixed cell.
+def sky130_fd_sc_hd__lpflow_isobufsrckapwr_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_isobufsrckapwr_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_isobufsrckapwr_16()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_isobufsrckapwr_16()
       c.plot()
     """
     return import_gds(
@@ -11996,15 +11996,15 @@ def lpflow_isobufsrckapwr_16() -> gf.Component:
 
 
 @cell
-def probec_p_8() -> gf.Component:
-    """Returns probec_p_8 fixed cell.
+def sky130_fd_sc_hd__probec_p_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__probec_p_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.probec_p_8()
+      c = sky130.components.sky130_fd_sc_hd__probec_p_8()
       c.plot()
     """
     return import_gds(
@@ -12014,15 +12014,15 @@ def probec_p_8() -> gf.Component:
 
 
 @cell
-def o21ai_2() -> gf.Component:
-    """Returns o21ai_2 fixed cell.
+def sky130_fd_sc_hd__o21ai_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21ai_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21ai_2()
+      c = sky130.components.sky130_fd_sc_hd__o21ai_2()
       c.plot()
     """
     return import_gds(
@@ -12032,15 +12032,15 @@ def o21ai_2() -> gf.Component:
 
 
 @cell
-def o21ai_0() -> gf.Component:
-    """Returns o21ai_0 fixed cell.
+def sky130_fd_sc_hd__o21ai_0() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21ai_0 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21ai_0()
+      c = sky130.components.sky130_fd_sc_hd__o21ai_0()
       c.plot()
     """
     return import_gds(
@@ -12050,15 +12050,15 @@ def o21ai_0() -> gf.Component:
 
 
 @cell
-def o21ai_1() -> gf.Component:
-    """Returns o21ai_1 fixed cell.
+def sky130_fd_sc_hd__o21ai_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21ai_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21ai_1()
+      c = sky130.components.sky130_fd_sc_hd__o21ai_1()
       c.plot()
     """
     return import_gds(
@@ -12068,15 +12068,15 @@ def o21ai_1() -> gf.Component:
 
 
 @cell
-def o21ai_4() -> gf.Component:
-    """Returns o21ai_4 fixed cell.
+def sky130_fd_sc_hd__o21ai_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o21ai_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o21ai_4()
+      c = sky130.components.sky130_fd_sc_hd__o21ai_4()
       c.plot()
     """
     return import_gds(
@@ -12086,15 +12086,15 @@ def o21ai_4() -> gf.Component:
 
 
 @cell
-def ebufn_4() -> gf.Component:
-    """Returns ebufn_4 fixed cell.
+def sky130_fd_sc_hd__ebufn_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__ebufn_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.ebufn_4()
+      c = sky130.components.sky130_fd_sc_hd__ebufn_4()
       c.plot()
     """
     return import_gds(
@@ -12104,15 +12104,15 @@ def ebufn_4() -> gf.Component:
 
 
 @cell
-def ebufn_8() -> gf.Component:
-    """Returns ebufn_8 fixed cell.
+def sky130_fd_sc_hd__ebufn_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__ebufn_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.ebufn_8()
+      c = sky130.components.sky130_fd_sc_hd__ebufn_8()
       c.plot()
     """
     return import_gds(
@@ -12122,15 +12122,15 @@ def ebufn_8() -> gf.Component:
 
 
 @cell
-def ebufn_1() -> gf.Component:
-    """Returns ebufn_1 fixed cell.
+def sky130_fd_sc_hd__ebufn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__ebufn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.ebufn_1()
+      c = sky130.components.sky130_fd_sc_hd__ebufn_1()
       c.plot()
     """
     return import_gds(
@@ -12140,15 +12140,15 @@ def ebufn_1() -> gf.Component:
 
 
 @cell
-def ebufn_2() -> gf.Component:
-    """Returns ebufn_2 fixed cell.
+def sky130_fd_sc_hd__ebufn_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__ebufn_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.ebufn_2()
+      c = sky130.components.sky130_fd_sc_hd__ebufn_2()
       c.plot()
     """
     return import_gds(
@@ -12158,15 +12158,15 @@ def ebufn_2() -> gf.Component:
 
 
 @cell
-def o31a_1() -> gf.Component:
-    """Returns o31a_1 fixed cell.
+def sky130_fd_sc_hd__o31a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o31a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o31a_1()
+      c = sky130.components.sky130_fd_sc_hd__o31a_1()
       c.plot()
     """
     return import_gds(
@@ -12176,15 +12176,15 @@ def o31a_1() -> gf.Component:
 
 
 @cell
-def o31a_4() -> gf.Component:
-    """Returns o31a_4 fixed cell.
+def sky130_fd_sc_hd__o31a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o31a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o31a_4()
+      c = sky130.components.sky130_fd_sc_hd__o31a_4()
       c.plot()
     """
     return import_gds(
@@ -12194,15 +12194,15 @@ def o31a_4() -> gf.Component:
 
 
 @cell
-def o31a_2() -> gf.Component:
-    """Returns o31a_2 fixed cell.
+def sky130_fd_sc_hd__o31a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o31a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o31a_2()
+      c = sky130.components.sky130_fd_sc_hd__o31a_2()
       c.plot()
     """
     return import_gds(
@@ -12212,15 +12212,15 @@ def o31a_2() -> gf.Component:
 
 
 @cell
-def maj3_2() -> gf.Component:
-    """Returns maj3_2 fixed cell.
+def sky130_fd_sc_hd__maj3_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__maj3_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.maj3_2()
+      c = sky130.components.sky130_fd_sc_hd__maj3_2()
       c.plot()
     """
     return import_gds(
@@ -12230,15 +12230,15 @@ def maj3_2() -> gf.Component:
 
 
 @cell
-def maj3_4() -> gf.Component:
-    """Returns maj3_4 fixed cell.
+def sky130_fd_sc_hd__maj3_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__maj3_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.maj3_4()
+      c = sky130.components.sky130_fd_sc_hd__maj3_4()
       c.plot()
     """
     return import_gds(
@@ -12248,15 +12248,15 @@ def maj3_4() -> gf.Component:
 
 
 @cell
-def maj3_1() -> gf.Component:
-    """Returns maj3_1 fixed cell.
+def sky130_fd_sc_hd__maj3_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__maj3_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.maj3_1()
+      c = sky130.components.sky130_fd_sc_hd__maj3_1()
       c.plot()
     """
     return import_gds(
@@ -12266,15 +12266,15 @@ def maj3_1() -> gf.Component:
 
 
 @cell
-def sdfsbp_1() -> gf.Component:
-    """Returns sdfsbp_1 fixed cell.
+def sky130_fd_sc_hd__sdfsbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfsbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfsbp_1()
+      c = sky130.components.sky130_fd_sc_hd__sdfsbp_1()
       c.plot()
     """
     return import_gds(
@@ -12284,15 +12284,15 @@ def sdfsbp_1() -> gf.Component:
 
 
 @cell
-def sdfsbp_2() -> gf.Component:
-    """Returns sdfsbp_2 fixed cell.
+def sky130_fd_sc_hd__sdfsbp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdfsbp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdfsbp_2()
+      c = sky130.components.sky130_fd_sc_hd__sdfsbp_2()
       c.plot()
     """
     return import_gds(
@@ -12302,15 +12302,15 @@ def sdfsbp_2() -> gf.Component:
 
 
 @cell
-def lpflow_inputiso1p_1() -> gf.Component:
-    """Returns lpflow_inputiso1p_1 fixed cell.
+def sky130_fd_sc_hd__lpflow_inputiso1p_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__lpflow_inputiso1p_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.lpflow_inputiso1p_1()
+      c = sky130.components.sky130_fd_sc_hd__lpflow_inputiso1p_1()
       c.plot()
     """
     return import_gds(
@@ -12320,15 +12320,15 @@ def lpflow_inputiso1p_1() -> gf.Component:
 
 
 @cell
-def ha_1() -> gf.Component:
-    """Returns ha_1 fixed cell.
+def sky130_fd_sc_hd__ha_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__ha_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.ha_1()
+      c = sky130.components.sky130_fd_sc_hd__ha_1()
       c.plot()
     """
     return import_gds(
@@ -12338,15 +12338,15 @@ def ha_1() -> gf.Component:
 
 
 @cell
-def ha_2() -> gf.Component:
-    """Returns ha_2 fixed cell.
+def sky130_fd_sc_hd__ha_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__ha_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.ha_2()
+      c = sky130.components.sky130_fd_sc_hd__ha_2()
       c.plot()
     """
     return import_gds(
@@ -12356,15 +12356,15 @@ def ha_2() -> gf.Component:
 
 
 @cell
-def ha_4() -> gf.Component:
-    """Returns ha_4 fixed cell.
+def sky130_fd_sc_hd__ha_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__ha_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.ha_4()
+      c = sky130.components.sky130_fd_sc_hd__ha_4()
       c.plot()
     """
     return import_gds(
@@ -12374,15 +12374,15 @@ def ha_4() -> gf.Component:
 
 
 @cell
-def a2111oi_2() -> gf.Component:
-    """Returns a2111oi_2 fixed cell.
+def sky130_fd_sc_hd__a2111oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2111oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2111oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a2111oi_2()
       c.plot()
     """
     return import_gds(
@@ -12392,15 +12392,15 @@ def a2111oi_2() -> gf.Component:
 
 
 @cell
-def a2111oi_4() -> gf.Component:
-    """Returns a2111oi_4 fixed cell.
+def sky130_fd_sc_hd__a2111oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2111oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2111oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a2111oi_4()
       c.plot()
     """
     return import_gds(
@@ -12410,15 +12410,15 @@ def a2111oi_4() -> gf.Component:
 
 
 @cell
-def a2111oi_1() -> gf.Component:
-    """Returns a2111oi_1 fixed cell.
+def sky130_fd_sc_hd__a2111oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2111oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2111oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a2111oi_1()
       c.plot()
     """
     return import_gds(
@@ -12428,15 +12428,15 @@ def a2111oi_1() -> gf.Component:
 
 
 @cell
-def a2111oi_0() -> gf.Component:
-    """Returns a2111oi_0 fixed cell.
+def sky130_fd_sc_hd__a2111oi_0() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a2111oi_0 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a2111oi_0()
+      c = sky130.components.sky130_fd_sc_hd__a2111oi_0()
       c.plot()
     """
     return import_gds(
@@ -12446,15 +12446,15 @@ def a2111oi_0() -> gf.Component:
 
 
 @cell
-def o2bb2a_2() -> gf.Component:
-    """Returns o2bb2a_2 fixed cell.
+def sky130_fd_sc_hd__o2bb2a_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2bb2a_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2bb2a_2()
+      c = sky130.components.sky130_fd_sc_hd__o2bb2a_2()
       c.plot()
     """
     return import_gds(
@@ -12464,15 +12464,15 @@ def o2bb2a_2() -> gf.Component:
 
 
 @cell
-def o2bb2a_1() -> gf.Component:
-    """Returns o2bb2a_1 fixed cell.
+def sky130_fd_sc_hd__o2bb2a_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2bb2a_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2bb2a_1()
+      c = sky130.components.sky130_fd_sc_hd__o2bb2a_1()
       c.plot()
     """
     return import_gds(
@@ -12482,15 +12482,15 @@ def o2bb2a_1() -> gf.Component:
 
 
 @cell
-def o2bb2a_4() -> gf.Component:
-    """Returns o2bb2a_4 fixed cell.
+def sky130_fd_sc_hd__o2bb2a_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__o2bb2a_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.o2bb2a_4()
+      c = sky130.components.sky130_fd_sc_hd__o2bb2a_4()
       c.plot()
     """
     return import_gds(
@@ -12500,15 +12500,15 @@ def o2bb2a_4() -> gf.Component:
 
 
 @cell
-def dlymetal6s6s_1() -> gf.Component:
-    """Returns dlymetal6s6s_1 fixed cell.
+def sky130_fd_sc_hd__dlymetal6s6s_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlymetal6s6s_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlymetal6s6s_1()
+      c = sky130.components.sky130_fd_sc_hd__dlymetal6s6s_1()
       c.plot()
     """
     return import_gds(
@@ -12518,15 +12518,15 @@ def dlymetal6s6s_1() -> gf.Component:
 
 
 @cell
-def a222oi_1() -> gf.Component:
-    """Returns a222oi_1 fixed cell.
+def sky130_fd_sc_hd__a222oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a222oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a222oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a222oi_1()
       c.plot()
     """
     return import_gds(
@@ -12536,15 +12536,15 @@ def a222oi_1() -> gf.Component:
 
 
 @cell
-def dfbbn_1() -> gf.Component:
-    """Returns dfbbn_1 fixed cell.
+def sky130_fd_sc_hd__dfbbn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfbbn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfbbn_1()
+      c = sky130.components.sky130_fd_sc_hd__dfbbn_1()
       c.plot()
     """
     return import_gds(
@@ -12554,15 +12554,15 @@ def dfbbn_1() -> gf.Component:
 
 
 @cell
-def dfbbn_2() -> gf.Component:
-    """Returns dfbbn_2 fixed cell.
+def sky130_fd_sc_hd__dfbbn_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dfbbn_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dfbbn_2()
+      c = sky130.components.sky130_fd_sc_hd__dfbbn_2()
       c.plot()
     """
     return import_gds(
@@ -12572,15 +12572,15 @@ def dfbbn_2() -> gf.Component:
 
 
 @cell
-def fahcin_1() -> gf.Component:
-    """Returns fahcin_1 fixed cell.
+def sky130_fd_sc_hd__fahcin_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__fahcin_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.fahcin_1()
+      c = sky130.components.sky130_fd_sc_hd__fahcin_1()
       c.plot()
     """
     return import_gds(
@@ -12590,15 +12590,15 @@ def fahcin_1() -> gf.Component:
 
 
 @cell
-def sdlclkp_2() -> gf.Component:
-    """Returns sdlclkp_2 fixed cell.
+def sky130_fd_sc_hd__sdlclkp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdlclkp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdlclkp_2()
+      c = sky130.components.sky130_fd_sc_hd__sdlclkp_2()
       c.plot()
     """
     return import_gds(
@@ -12608,15 +12608,15 @@ def sdlclkp_2() -> gf.Component:
 
 
 @cell
-def sdlclkp_4() -> gf.Component:
-    """Returns sdlclkp_4 fixed cell.
+def sky130_fd_sc_hd__sdlclkp_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdlclkp_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdlclkp_4()
+      c = sky130.components.sky130_fd_sc_hd__sdlclkp_4()
       c.plot()
     """
     return import_gds(
@@ -12626,15 +12626,15 @@ def sdlclkp_4() -> gf.Component:
 
 
 @cell
-def sdlclkp_1() -> gf.Component:
-    """Returns sdlclkp_1 fixed cell.
+def sky130_fd_sc_hd__sdlclkp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__sdlclkp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.sdlclkp_1()
+      c = sky130.components.sky130_fd_sc_hd__sdlclkp_1()
       c.plot()
     """
     return import_gds(
@@ -12644,15 +12644,15 @@ def sdlclkp_1() -> gf.Component:
 
 
 @cell
-def clkdlybuf4s50_1() -> gf.Component:
-    """Returns clkdlybuf4s50_1 fixed cell.
+def sky130_fd_sc_hd__clkdlybuf4s50_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkdlybuf4s50_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkdlybuf4s50_1()
+      c = sky130.components.sky130_fd_sc_hd__clkdlybuf4s50_1()
       c.plot()
     """
     return import_gds(
@@ -12662,15 +12662,15 @@ def clkdlybuf4s50_1() -> gf.Component:
 
 
 @cell
-def clkdlybuf4s50_2() -> gf.Component:
-    """Returns clkdlybuf4s50_2 fixed cell.
+def sky130_fd_sc_hd__clkdlybuf4s50_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkdlybuf4s50_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkdlybuf4s50_2()
+      c = sky130.components.sky130_fd_sc_hd__clkdlybuf4s50_2()
       c.plot()
     """
     return import_gds(
@@ -12680,15 +12680,15 @@ def clkdlybuf4s50_2() -> gf.Component:
 
 
 @cell
-def dlxtp_1() -> gf.Component:
-    """Returns dlxtp_1 fixed cell.
+def sky130_fd_sc_hd__dlxtp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlxtp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlxtp_1()
+      c = sky130.components.sky130_fd_sc_hd__dlxtp_1()
       c.plot()
     """
     return import_gds(
@@ -12698,15 +12698,15 @@ def dlxtp_1() -> gf.Component:
 
 
 @cell
-def nand4b_2() -> gf.Component:
-    """Returns nand4b_2 fixed cell.
+def sky130_fd_sc_hd__nand4b_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4b_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4b_2()
+      c = sky130.components.sky130_fd_sc_hd__nand4b_2()
       c.plot()
     """
     return import_gds(
@@ -12716,15 +12716,15 @@ def nand4b_2() -> gf.Component:
 
 
 @cell
-def nand4b_1() -> gf.Component:
-    """Returns nand4b_1 fixed cell.
+def sky130_fd_sc_hd__nand4b_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4b_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4b_1()
+      c = sky130.components.sky130_fd_sc_hd__nand4b_1()
       c.plot()
     """
     return import_gds(
@@ -12734,15 +12734,15 @@ def nand4b_1() -> gf.Component:
 
 
 @cell
-def nand4b_4() -> gf.Component:
-    """Returns nand4b_4 fixed cell.
+def sky130_fd_sc_hd__nand4b_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__nand4b_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.nand4b_4()
+      c = sky130.components.sky130_fd_sc_hd__nand4b_4()
       c.plot()
     """
     return import_gds(
@@ -12752,15 +12752,15 @@ def nand4b_4() -> gf.Component:
 
 
 @cell
-def xnor3_4() -> gf.Component:
-    """Returns xnor3_4 fixed cell.
+def sky130_fd_sc_hd__xnor3_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xnor3_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xnor3_4()
+      c = sky130.components.sky130_fd_sc_hd__xnor3_4()
       c.plot()
     """
     return import_gds(
@@ -12770,15 +12770,15 @@ def xnor3_4() -> gf.Component:
 
 
 @cell
-def xnor3_1() -> gf.Component:
-    """Returns xnor3_1 fixed cell.
+def sky130_fd_sc_hd__xnor3_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xnor3_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xnor3_1()
+      c = sky130.components.sky130_fd_sc_hd__xnor3_1()
       c.plot()
     """
     return import_gds(
@@ -12788,15 +12788,15 @@ def xnor3_1() -> gf.Component:
 
 
 @cell
-def xnor3_2() -> gf.Component:
-    """Returns xnor3_2 fixed cell.
+def sky130_fd_sc_hd__xnor3_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__xnor3_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.xnor3_2()
+      c = sky130.components.sky130_fd_sc_hd__xnor3_2()
       c.plot()
     """
     return import_gds(
@@ -12806,15 +12806,15 @@ def xnor3_2() -> gf.Component:
 
 
 @cell
-def clkbuf_2() -> gf.Component:
-    """Returns clkbuf_2 fixed cell.
+def sky130_fd_sc_hd__clkbuf_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkbuf_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkbuf_2()
+      c = sky130.components.sky130_fd_sc_hd__clkbuf_2()
       c.plot()
     """
     return import_gds(
@@ -12824,15 +12824,15 @@ def clkbuf_2() -> gf.Component:
 
 
 @cell
-def clkbuf_1() -> gf.Component:
-    """Returns clkbuf_1 fixed cell.
+def sky130_fd_sc_hd__clkbuf_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkbuf_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkbuf_1()
+      c = sky130.components.sky130_fd_sc_hd__clkbuf_1()
       c.plot()
     """
     return import_gds(
@@ -12842,15 +12842,15 @@ def clkbuf_1() -> gf.Component:
 
 
 @cell
-def clkbuf_4() -> gf.Component:
-    """Returns clkbuf_4 fixed cell.
+def sky130_fd_sc_hd__clkbuf_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkbuf_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkbuf_4()
+      c = sky130.components.sky130_fd_sc_hd__clkbuf_4()
       c.plot()
     """
     return import_gds(
@@ -12860,15 +12860,15 @@ def clkbuf_4() -> gf.Component:
 
 
 @cell
-def clkbuf_16() -> gf.Component:
-    """Returns clkbuf_16 fixed cell.
+def sky130_fd_sc_hd__clkbuf_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkbuf_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkbuf_16()
+      c = sky130.components.sky130_fd_sc_hd__clkbuf_16()
       c.plot()
     """
     return import_gds(
@@ -12878,15 +12878,15 @@ def clkbuf_16() -> gf.Component:
 
 
 @cell
-def clkbuf_8() -> gf.Component:
-    """Returns clkbuf_8 fixed cell.
+def sky130_fd_sc_hd__clkbuf_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__clkbuf_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.clkbuf_8()
+      c = sky130.components.sky130_fd_sc_hd__clkbuf_8()
       c.plot()
     """
     return import_gds(
@@ -12896,15 +12896,15 @@ def clkbuf_8() -> gf.Component:
 
 
 @cell
-def dlrbn_1() -> gf.Component:
-    """Returns dlrbn_1 fixed cell.
+def sky130_fd_sc_hd__dlrbn_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrbn_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrbn_1()
+      c = sky130.components.sky130_fd_sc_hd__dlrbn_1()
       c.plot()
     """
     return import_gds(
@@ -12914,15 +12914,15 @@ def dlrbn_1() -> gf.Component:
 
 
 @cell
-def dlrbn_2() -> gf.Component:
-    """Returns dlrbn_2 fixed cell.
+def sky130_fd_sc_hd__dlrbn_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrbn_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrbn_2()
+      c = sky130.components.sky130_fd_sc_hd__dlrbn_2()
       c.plot()
     """
     return import_gds(
@@ -12932,15 +12932,15 @@ def dlrbn_2() -> gf.Component:
 
 
 @cell
-def bufinv_8() -> gf.Component:
-    """Returns bufinv_8 fixed cell.
+def sky130_fd_sc_hd__bufinv_8() -> gf.Component:
+    """Returns sky130_fd_sc_hd__bufinv_8 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.bufinv_8()
+      c = sky130.components.sky130_fd_sc_hd__bufinv_8()
       c.plot()
     """
     return import_gds(
@@ -12950,15 +12950,15 @@ def bufinv_8() -> gf.Component:
 
 
 @cell
-def bufinv_16() -> gf.Component:
-    """Returns bufinv_16 fixed cell.
+def sky130_fd_sc_hd__bufinv_16() -> gf.Component:
+    """Returns sky130_fd_sc_hd__bufinv_16 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.bufinv_16()
+      c = sky130.components.sky130_fd_sc_hd__bufinv_16()
       c.plot()
     """
     return import_gds(
@@ -12968,15 +12968,15 @@ def bufinv_16() -> gf.Component:
 
 
 @cell
-def a211oi_2() -> gf.Component:
-    """Returns a211oi_2 fixed cell.
+def sky130_fd_sc_hd__a211oi_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a211oi_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a211oi_2()
+      c = sky130.components.sky130_fd_sc_hd__a211oi_2()
       c.plot()
     """
     return import_gds(
@@ -12986,15 +12986,15 @@ def a211oi_2() -> gf.Component:
 
 
 @cell
-def a211oi_4() -> gf.Component:
-    """Returns a211oi_4 fixed cell.
+def sky130_fd_sc_hd__a211oi_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a211oi_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a211oi_4()
+      c = sky130.components.sky130_fd_sc_hd__a211oi_4()
       c.plot()
     """
     return import_gds(
@@ -13004,15 +13004,15 @@ def a211oi_4() -> gf.Component:
 
 
 @cell
-def a211oi_1() -> gf.Component:
-    """Returns a211oi_1 fixed cell.
+def sky130_fd_sc_hd__a211oi_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a211oi_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a211oi_1()
+      c = sky130.components.sky130_fd_sc_hd__a211oi_1()
       c.plot()
     """
     return import_gds(
@@ -13022,15 +13022,15 @@ def a211oi_1() -> gf.Component:
 
 
 @cell
-def dlrbp_2() -> gf.Component:
-    """Returns dlrbp_2 fixed cell.
+def sky130_fd_sc_hd__dlrbp_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrbp_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrbp_2()
+      c = sky130.components.sky130_fd_sc_hd__dlrbp_2()
       c.plot()
     """
     return import_gds(
@@ -13040,15 +13040,15 @@ def dlrbp_2() -> gf.Component:
 
 
 @cell
-def dlrbp_1() -> gf.Component:
-    """Returns dlrbp_1 fixed cell.
+def sky130_fd_sc_hd__dlrbp_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__dlrbp_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.dlrbp_1()
+      c = sky130.components.sky130_fd_sc_hd__dlrbp_1()
       c.plot()
     """
     return import_gds(
@@ -13058,15 +13058,15 @@ def dlrbp_1() -> gf.Component:
 
 
 @cell
-def tapvpwrvgnd_1() -> gf.Component:
-    """Returns tapvpwrvgnd_1 fixed cell.
+def sky130_fd_sc_hd__tapvpwrvgnd_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__tapvpwrvgnd_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.tapvpwrvgnd_1()
+      c = sky130.components.sky130_fd_sc_hd__tapvpwrvgnd_1()
       c.plot()
     """
     return import_gds(
@@ -13076,15 +13076,15 @@ def tapvpwrvgnd_1() -> gf.Component:
 
 
 @cell
-def a21bo_4() -> gf.Component:
-    """Returns a21bo_4 fixed cell.
+def sky130_fd_sc_hd__a21bo_4() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21bo_4 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21bo_4()
+      c = sky130.components.sky130_fd_sc_hd__a21bo_4()
       c.plot()
     """
     return import_gds(
@@ -13094,15 +13094,15 @@ def a21bo_4() -> gf.Component:
 
 
 @cell
-def a21bo_2() -> gf.Component:
-    """Returns a21bo_2 fixed cell.
+def sky130_fd_sc_hd__a21bo_2() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21bo_2 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21bo_2()
+      c = sky130.components.sky130_fd_sc_hd__a21bo_2()
       c.plot()
     """
     return import_gds(
@@ -13112,15 +13112,15 @@ def a21bo_2() -> gf.Component:
 
 
 @cell
-def a21bo_1() -> gf.Component:
-    """Returns a21bo_1 fixed cell.
+def sky130_fd_sc_hd__a21bo_1() -> gf.Component:
+    """Returns sky130_fd_sc_hd__a21bo_1 fixed cell.
 
     .. plot::
       :include-source:
 
       import sky130
 
-      c = sky130.components.a21bo_1()
+      c = sky130.components.sky130_fd_sc_hd__a21bo_1()
       c.plot()
     """
     return import_gds(
