@@ -16,9 +16,10 @@ classifiers = [
 ]
 dependencies = [
   "gdsfactory~=7.26.1",
-  "PySpice"
+  "hdl21 @ git+https://github.com/cascode-labs/Hdl21.git@main",
+  "sky130-hdl21 @ git+https://github.com/cascode-labs/Hdl21.git@main#subdirectory=pdks/Sky130"
 ]
-description = "skywater130 pdk"
+description = "Skywater130 PDK compatible with gdsfactory and related."
 keywords = ["python"]
 license = {file = "LICENSE"}
 name = "sky130"
