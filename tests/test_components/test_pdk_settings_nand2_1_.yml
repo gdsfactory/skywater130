@@ -1,0 +1,5 @@
+function: nand2_1
+info: {}
+module: sky130.components
+name: nand2_1
+settings: {}

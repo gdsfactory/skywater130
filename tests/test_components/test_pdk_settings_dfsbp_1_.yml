@@ -1,0 +1,5 @@
+function: dfsbp_1
+info: {}
+module: sky130.components
+name: dfsbp_1
+settings: {}

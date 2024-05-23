@@ -1,0 +1,5 @@
+function: ha_4
+info: {}
+module: sky130.components
+name: ha_4
+settings: {}

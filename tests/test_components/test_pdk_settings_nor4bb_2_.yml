@@ -1,0 +1,5 @@
+function: nor4bb_2
+info: {}
+module: sky130.components
+name: nor4bb_2
+settings: {}

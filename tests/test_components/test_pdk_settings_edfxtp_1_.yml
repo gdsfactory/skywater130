@@ -1,0 +1,5 @@
+function: edfxtp_1
+info: {}
+module: sky130.components
+name: edfxtp_1
+settings: {}

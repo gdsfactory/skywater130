@@ -1,0 +1,5 @@
+function: clkbuf_2
+info: {}
+module: sky130.components
+name: clkbuf_2
+settings: {}

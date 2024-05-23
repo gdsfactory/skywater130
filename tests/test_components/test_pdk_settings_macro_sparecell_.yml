@@ -1,0 +1,5 @@
+function: macro_sparecell
+info: {}
+module: sky130.components
+name: macro_sparecell
+settings: {}

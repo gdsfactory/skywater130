@@ -1,0 +1,5 @@
+function: clkinv_8
+info: {}
+module: sky130.components
+name: clkinv_8
+settings: {}

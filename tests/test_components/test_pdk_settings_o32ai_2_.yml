@@ -1,0 +1,5 @@
+function: o32ai_2
+info: {}
+module: sky130.components
+name: o32ai_2
+settings: {}

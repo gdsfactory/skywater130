@@ -1,0 +1,5 @@
+function: mux2i_2
+info: {}
+module: sky130.components
+name: mux2i_2
+settings: {}

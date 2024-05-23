@@ -1,0 +1,5 @@
+function: cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop
+info: {}
+module: sky130.components
+name: cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhvtop
+settings: {}

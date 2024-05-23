@@ -1,0 +1,5 @@
+function: buf_8
+info: {}
+module: sky130.components
+name: buf_8
+settings: {}

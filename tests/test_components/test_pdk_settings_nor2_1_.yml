@@ -1,0 +1,5 @@
+function: nor2_1
+info: {}
+module: sky130.components
+name: nor2_1
+settings: {}

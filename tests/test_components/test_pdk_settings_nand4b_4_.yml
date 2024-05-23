@@ -1,0 +1,5 @@
+function: nand4b_4
+info: {}
+module: sky130.components
+name: nand4b_4
+settings: {}

@@ -1,0 +1,5 @@
+function: lpflow_lsbuf_lh_hl_isowell_tap_1
+info: {}
+module: sky130.components
+name: lpflow_lsbuf_lh_hl_isowell_tap_1
+settings: {}

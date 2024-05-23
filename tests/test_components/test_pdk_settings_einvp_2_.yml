@@ -1,0 +1,5 @@
+function: einvp_2
+info: {}
+module: sky130.components
+name: einvp_2
+settings: {}

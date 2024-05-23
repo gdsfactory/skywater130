@@ -1,0 +1,5 @@
+function: sdfrtp_1
+info: {}
+module: sky130.components
+name: sdfrtp_1
+settings: {}

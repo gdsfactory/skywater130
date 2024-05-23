@@ -1,0 +1,5 @@
+function: decap_4
+info: {}
+module: sky130.components
+name: decap_4
+settings: {}

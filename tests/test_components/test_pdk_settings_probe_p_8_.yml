@@ -1,0 +1,5 @@
+function: probe_p_8
+info: {}
+module: sky130.components
+name: probe_p_8
+settings: {}

@@ -1,0 +1,5 @@
+function: cap_vpp_04p4x04p6_m1m2_noshield_o2
+info: {}
+module: sky130.components
+name: cap_vpp_04p4x04p6_m1m2_noshield_o2
+settings: {}

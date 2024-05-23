@@ -1,0 +1,5 @@
+function: cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin
+info: {}
+module: sky130.components
+name: cap_vpp_55p8x11p7_pol1m1m2m3m4m5_noshield_m5pullin
+settings: {}

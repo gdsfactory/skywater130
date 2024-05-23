@@ -1,0 +1,5 @@
+function: sdlclkp_1
+info: {}
+module: sky130.components
+name: sdlclkp_1
+settings: {}
