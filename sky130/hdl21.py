@@ -1,6 +1,7 @@
 """
 Configuration for the hdl21 PDK linking with our source files.
 """
+
 import pathlib
 
 import sky130_hdl21
