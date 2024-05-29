@@ -22,6 +22,7 @@ class Path:
     lyp_yaml = module_path / "klayout" / "layers.yaml"
     libs = module_path / "sky130A"
     sparameters = module_path / "sparameters"
+    klayout = module_path / "klayout"
 
     libs_tech = libs / "libs.tech"
     libs_ref = libs / "libs.ref"
