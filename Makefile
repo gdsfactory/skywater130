@@ -4,6 +4,10 @@ install:
 dev: install
 	pre-commit install
 
+modules:
+	git submodule
+	git submodule update --init --recursive
+
 test:
 	pytest -s
 

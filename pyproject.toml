@@ -38,6 +38,11 @@ docs = [
   "jupyter-book==1.0.0"
 ]
 
+[tool.flit.sdist]
+exclude = [
+  "**/.git/**"
+]
+
 [tool.mypy]
 python_version = "3.10"
 strict = true

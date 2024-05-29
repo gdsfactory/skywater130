@@ -1,0 +1,6 @@
+[submodule "sky130/src/sky130_fd_pr"]
+	path = sky130/src/sky130_fd_pr
+	url = https://github.com/efabless/skywater-pdk-libs-sky130_fd_pr.git
+[submodule "sky130/src/sky130_fd_sc_hd"]
+	path = sky130/src/sky130_fd_sc_hd
+	url = https://github.com/efabless/skywater-pdk-libs-sky130_fd_sc_hd.git

@@ -1,5 +1,3 @@
-import pathlib
-
 import pytest
 from gdsfactory.component import Component
 from pytest_regressions.data_regression import DataRegressionFixture
@@ -13,20 +11,15 @@ skip = [
     "import_gds",
     "sky130_fd_sc_hd__conb_1",
     "sky130_fd_sc_hd__macro_sparecell",
+    "compile_components",
 ]
 
 cell_names = set(cells.keys()) - set(skip)
-dirpath = pathlib.Path(__file__).absolute().with_suffix(".gds")
 
 
 @pytest.fixture(params=cell_names, scope="function")
 def component(request) -> Component:
     return cells[request.param]()
-
-
-# def test_pdk_gds(component: Component) -> None:
-#     """Avoid regressions in GDS geometry shapes and layers."""
-#     difftest(component, dirpath=dirpath)
 
 
 def test_pdk_settings(

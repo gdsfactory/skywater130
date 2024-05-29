@@ -1,4 +1,4 @@
-"""Store configuration."""
+"""Store paths."""
 
 __all__ = ["PATH"]
 
@@ -23,20 +23,7 @@ class Path:
     libs = module_path / "sky130A"
     sparameters = module_path / "sparameters"
     klayout = module_path / "klayout"
-
-    libs_tech = libs / "libs.tech"
-    libs_ref = libs / "libs.ref"
-    libs_ngspice = libs_tech / "ngspice"
     spice = module_path / "spice"
-
-    libhd = libs / "sky130hd"
-    libhs = libs / "sky130hs"
-    libhvl = libs / "sky130hvl"
-
-    gds = module_path / "gds"
-    gdshd = libhd / "gds" / "sky130_fd_sc_hd.gds"
-    gdshs = libhs / "gds" / "sky130_fd_sc_hs.gds"
-    gdshvl = libhvl / "gds" / "sky130_fd_sc_hvl.gds"
 
 
 PATH = Path()
