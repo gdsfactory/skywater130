@@ -432,6 +432,52 @@ class LayerMap(BaseModel):
     vianet: Layer = (68, 41)
     viapin: Layer = (68, 58)
 
+    diff: Layer = (
+        65,
+        20,
+    )  # Active (diffusion) area (type opposite of well/substrate underneath)
+    tap: Layer = (
+        65,
+        44,
+    )  # Active (diffusion) area (type equal to the well/substrate underneath) (N+ and P+)
+    nwell: Layer = (64, 20)  # N-well region
+    dnwell: Layer = (64, 18)  # Deep n-well region
+    pwbm: Layer = (
+        19,
+        44,
+    )  # Regions (in UHVI) blocked from p-well implant (DE MOS devices only)
+    pwde: Layer = (124, 20)  # Regions to receive p-well drain-extended implants
+    hvtr: Layer = (18, 20)  # High-Vt RF transistor implant
+    hvtp: Layer = (78, 44)  # High-Vt LVPMOS implant
+    ldntm: Layer = (11, 44)  # N-tip implant on SONOS devices
+    hvi: Layer = (75, 20)  # High voltage (5.0V) thick oxide gate regions
+    tunm: Layer = (80, 20)  # SONOS device tunnel implant
+
+    lvtn: Layer = (125, 44)  # Low-Vt NMOS device
+    poly: Layer = (66, 20)  # Polysilicon
+    hvntm: Layer = (125, 20)  # High voltage N-tip implant
+    nsdm: Layer = (93, 44)  # N+ source/drain implant
+    psdm: Layer = (94, 20)  # P+ source/drain implant
+    rpm: Layer = (86, 20)  # 300 ohms/square polysilicon resistor implant
+    urpm: Layer = (79, 20)  # 2000 ohms/square polysilicon resistor implant
+    npc: Layer = (95, 20)  # Nitride poly cut (under licon1 areas)
+    licon1: Layer = (66, 44)  # Contact to local interconnect
+    li1: Layer = (67, 20)  # Local interconnect
+    mcon: Layer = (67, 44)  # Contact from local interconnect to metal1
+    met1: Layer = (68, 20)  # Metal 1
+    via: Layer = (68, 44)  # Contact from metal 1 to metal 2
+    met2: Layer = (69, 20)  # Metal 2
+    via2: Layer = (69, 44)  # Contact from metal 2 to metal 3
+    met3: Layer = (70, 20)  # Metal 3
+    via3: Layer = (70, 44)  # Contact from metal 3 to metal 4
+    met4: Layer = (71, 20)  # Metal 4
+    via4: Layer = (71, 44)  # Contact from metal 4 to metal 5
+    met5: Layer = (72, 20)  # Metal 5
+    pad: Layer = (76, 20)  # Passivation cut (opening over pads)
+    nsm: Layer = (61, 20)  # Nitride seal mask
+    capm: Layer = (89, 44)  # MiM capacitor plate over metal 3
+    cap2m: Layer = (97, 44)  # MiM capacitor plate over metal 4
+
     LABEL_INSTANCE: Layer = (66, 0)
     DEVREC: Layer = (68, 0)
     PORT: Layer = (1, 10)
@@ -492,46 +538,6 @@ licon1_thickness = 0.9361
 mcon_thickness = 0.075 + 0.265
 
 
-diff = (65, 20)  # Active (diffusion) area (type opposite of well/substrate underneath)
-tap = (
-    65,
-    44,
-)  # Active (diffusion) area (type equal to the well/substrate underneath) (N+ and P+)
-nwell = (64, 20)  # N-well region
-dnwell = (64, 18)  # Deep n-well region
-pwbm = (19, 44)  # Regions (in UHVI) blocked from p-well implant (DE MOS devices only)
-pwde = (124, 20)  # Regions to receive p-well drain-extended implants
-hvtr = (18, 20)  # High-Vt RF transistor implant
-hvtp = (78, 44)  # High-Vt LVPMOS implant
-ldntm = (11, 44)  # N-tip implant on SONOS devices
-hvi = (75, 20)  # High voltage (5.0V) thick oxide gate regions
-tunm = (80, 20)  # SONOS device tunnel implant
-lvtn = (125, 44)  # Low-Vt NMOS device
-poly = (66, 20)  # Polysilicon
-hvntm = (125, 20)  # High voltage N-tip implant
-nsdm = (93, 44)  # N+ source/drain implant
-psdm = (94, 20)  # P+ source/drain implant
-rpm = (86, 20)  # 300 ohms/square polysilicon resistor implant
-urpm = (79, 20)  # 2000 ohms/square polysilicon resistor implant
-npc = (95, 20)  # Nitride poly cut (under licon1 areas)
-licon1 = (66, 44)  # Contact to local interconnect
-li1 = (67, 20)  # Local interconnect
-mcon = (67, 44)  # Contact from local interconnect to metal1
-met1 = (68, 20)  # Metal 1
-via = (68, 44)  # Contact from metal 1 to metal 2
-met2 = (69, 20)  # Metal 2
-via2 = (69, 44)  # Contact from metal 2 to metal 3
-met3 = (70, 20)  # Metal 3
-via3 = (70, 44)  # Contact from metal 3 to metal 4
-met4 = (71, 20)  # Metal 4
-via4 = (71, 44)  # Contact from metal 4 to metal 5
-met5 = (72, 20)  # Metal 5
-pad = (76, 20)  # Passivation cut (opening over pads)
-nsm = (61, 20)  # Nitride seal mask
-capm = (89, 44)  # MiM capacitor plate over metal 3
-cap2m = (97, 44)  # MiM capacitor plate over metal 4
-
-
 def get_layer_stack() -> LayerStack:
     """Returns sky LayerStack."""
     zmin_m1 = licon1_thickness + li_thickness + mcon_thickness
@@ -545,109 +551,109 @@ def get_layer_stack() -> LayerStack:
     return LayerStack(
         layers=dict(
             poly=LayerLevel(
-                layer=poly,
+                layer=LAYER.poly,
                 thickness=poly_thickness,
                 zmin=0.0,
                 material="psi",
             ),
             dnwell=LayerLevel(
-                layer=dnwell,
+                layer=LAYER.dnwell,
                 zmin=-dnwell_depth,
                 material="n",
                 thickness=dnwell_depth,
             ),
             nwell=LayerLevel(
-                layer=nwell,
+                layer=LAYER.nwell,
                 zmin=-thickness_nwell,
                 material="n",
                 thickness=thickness_nwell,
             ),
             pwell=LayerLevel(
-                layer=pwbm,
+                layer=LAYER.pwbm,
                 zmin=-pwell_depth,
                 material="p",
                 thickness=pwell_depth,
             ),
             nsdm=LayerLevel(
-                layer=nsdm,
+                layer=LAYER.nsdm,
                 zmin=-sd_impl_depth,
                 material="n",
                 thickness=sd_impl_depth,
             ),
             hvtp=LayerLevel(
-                layer=hvtp,
+                layer=LAYER.hvtp,
                 zmin=-sd_impl_depth,
                 material="p",
                 thickness=sd_impl_depth,
             ),
             licon1=LayerLevel(
-                layer=licon1,
+                layer=LAYER.licon1,
                 zmin=0,
                 material="metal",
                 thickness=licon1_thickness,
             ),
             li1=LayerLevel(
-                layer=li1,
+                layer=LAYER.li1,
                 zmin=licon1_thickness,
                 material="metal",
                 thickness=li_thickness,
             ),
             mcon=LayerLevel(
-                layer=mcon,
+                layer=LAYER.mcon,
                 zmin=licon1_thickness + li_thickness,
                 material="metal",
                 thickness=mcon_thickness,
             ),
             met1=LayerLevel(
-                layer=met1,
+                layer=LAYER.met1,
                 zmin=zmin_m1,
                 material="metal",
                 thickness=m1_thickness,
             ),
             via1=LayerLevel(
-                layer=via,
+                layer=LAYER.via,
                 zmin=zmin_m1 + m1_thickness,
                 material="metal",
                 thickness=via1_thickness,
             ),
             met2=LayerLevel(
-                layer=met2,
+                layer=LAYER.met2,
                 zmin=zmin_m2,
                 material="metal",
                 thickness=m2_thickness,
             ),
             via2=LayerLevel(
-                layer=via2,
+                layer=LAYER.via2,
                 zmin=zmin_m2 + m2_thickness,
                 material="metal",
                 thickness=via2_thickness,
             ),
             met3=LayerLevel(
-                layer=met3,
+                layer=LAYER.met3,
                 zmin=zmin_m3,
                 material="metal",
                 thickness=m3_thickness,
             ),
             via3=LayerLevel(
-                layer=via3,
+                layer=LAYER.via3,
                 zmin=zmin_m3 + m3_thickness,
                 material="metal",
                 thickness=via3_thickness,
             ),
             met4=LayerLevel(
-                layer=met4,
+                layer=LAYER.met4,
                 zmin=zmin_m4,
                 material="metal",
                 thickness=m4_thickness,
             ),
             via4=LayerLevel(
-                layer=via4,
+                layer=LAYER.via4,
                 zmin=zmin_m4 + m4_thickness,
                 material="metal",
                 thickness=via4_thickness,
             ),
             met5=LayerLevel(
-                layer=met5,
+                layer=LAYER.met5,
                 zmin=zmin_m5,
                 material="metal",
                 thickness=m5_thickness,
@@ -662,7 +668,23 @@ LAYER_VIEWS = gf.technology.LayerViews(PATH.lyp_yaml)
 
 if __name__ == "__main__":
     # LAYER_VIEWS.to_yaml(PATH.lyp_yaml)
-    LAYER_VIEWS.to_lyp(PATH.lyp)
+    # LAYER_VIEWS.to_lyp(PATH.lyp)
     # print(PATH.lyp)
     # print(lyp_to_dataclass(PATH.lyp))
     # print(LAYER_STACK.get_klayout_3d_script())
+    from gdsfactory.technology.klayout_tech import KLayoutTechnology
+
+    connectivity = [
+        ("met1", "via", "met2"),
+        ("met2", "via2", "met3"),
+        ("met3", "via3", "met4"),
+    ]
+
+    t = KLayoutTechnology(
+        name="sky130",
+        layer_map=dict(LAYER),
+        layer_views=LAYER_VIEWS,
+        layer_stack=LAYER_STACK,
+        connectivity=connectivity,
+    )
+    t.write_tech(tech_dir=PATH.klayout)
