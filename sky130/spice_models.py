@@ -2,6 +2,7 @@
 
 https://github.com/chipsalliance/silicon-notebooks/blob/main/analog-inverter-magic.ipynb
 """
+
 from functools import partial
 
 import matplotlib.pyplot as plt
