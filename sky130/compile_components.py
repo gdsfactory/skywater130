@@ -8,6 +8,7 @@ pdk_directories = ["src/sky130_fd_pr", "src/sky130_fd_sc_hd"]
 
 
 def compile_components(pdk_directories=pdk_directories):
+    """Compile the components from the PDK directories into a Python file."""
     gds_files = []
 
     # Walk through the PDK directories and collect GDS files
