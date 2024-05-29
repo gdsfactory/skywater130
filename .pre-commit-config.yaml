@@ -6,17 +6,19 @@ repos:
       - id: trailing-whitespace
       - id: requirements-txt-fixer
 
-  - repo: https://github.com/psf/black
-    rev: 25d886f52c2bbbb58386ac8050f4e67952507bc7
-    hooks:
-      - id: black
-
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "6a0ba1854991b693612486cc84a2254de82d071d"
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.4.4"
     hooks:
       - id: ruff
+        args: [ --fix, --exit-non-zero-on-fix ]
+      - id: ruff-format
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
     rev: v2.10.0
     hooks:
       - id: pretty-format-toml
         args: [--autofix]
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.7.1
+    hooks:
+      - id: nbstripout
+        files: ".ipynb"

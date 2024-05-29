@@ -1,4 +1,5 @@
-""" Technology definitions."""
+"""Technology definitions."""
+
 import sys
 
 import gdsfactory as gf
