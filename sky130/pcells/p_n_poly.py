@@ -89,7 +89,12 @@ def p_n_poly(
             - (1 - i) * (licon_slots_size[1] + (p_length - licon_slots_size[1]) / 2)
         )
 
-    # generate li (local interconnects) and m1
+        # generate li (local interconnects) and m1
+
+    c.add_ports(ports=cont_arr.ports)
+    c.add_port("p", port=c.ports["e1"])
+    c.add_port("n", port=c.ports["e2"])
+    print(c.ports)
 
     rect_layer = [m1_layer, li_layer]
 
