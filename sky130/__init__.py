@@ -2,6 +2,7 @@
 
 import pathlib
 
+import gdsfactory as gf
 from gdsfactory.get_factories import get_cells
 from gdsfactory.pdk import Pdk
 
@@ -11,12 +12,15 @@ from sky130.tech import cross_sections
 
 __version__ = "0.11.1"
 
+gf.CONF.allow_layer_mismatch = True
+gf.CONF.allow_width_mismatch = True
+
 cells = get_cells([components, pcells])
 PDK = Pdk(
     name="sky130",
     cells=cells,
     cross_sections=cross_sections,
-    layers=dict(LAYER),
+    layers=LAYER,
     layer_stack=LAYER_STACK,
     layer_views=LAYER_VIEWS,
 )

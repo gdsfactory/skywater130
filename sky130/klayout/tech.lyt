@@ -158,11 +158,11 @@
   <connection>met1,via,met2</connection>
   <connection>met2,via2,met3</connection>
   <connection>met3,via3,met4</connection>
-  <symbols>met2='69/20'</symbols>
-  <symbols>via='68/44'</symbols>
-  <symbols>via3='70/44'</symbols>
-  <symbols>via2='69/44'</symbols>
-  <symbols>met3='70/20'</symbols>
   <symbols>met4='71/20'</symbols>
+  <symbols>via3='70/44'</symbols>
+  <symbols>met3='70/20'</symbols>
+  <symbols>met2='69/20'</symbols>
+  <symbols>via2='69/44'</symbols>
+  <symbols>via='68/44'</symbols>
  </connectivity>
 </technology>

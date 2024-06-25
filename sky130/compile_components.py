@@ -52,7 +52,7 @@ def {cell_name}() -> gf.Component:
     # Prelude to add at the top of the file
     prelude = """from functools import partial
 import gdsfactory as gf
-from gdsfactory.cell import cell
+from gdsfactory. import cell
 
 from sky130.config import PATH
 from sky130.layers import LAYER
@@ -116,5 +116,5 @@ if __name__ == "__main__":
 #     # c = sky130_fd_sc_hvl__xor2_1()
 #     # c = sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2()
 #     c = sky130_fd_sc_hd__conb_1()
-#     # c.show(show_ports=True)
+#     # c.show()
 #     c.show()

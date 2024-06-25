@@ -1,7 +1,7 @@
 from functools import partial
 
 import gdsfactory as gf
-from gdsfactory.cell import cell
+from gdsfactory import cell
 
 from sky130.config import PATH
 from sky130.layers import LAYER
