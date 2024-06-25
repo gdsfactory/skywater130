@@ -1,7 +1,5 @@
-function: via_generator
 info: {}
-module: sky130.pcells.via_generator
-name: via_generator
+name: via_generator_W1_L1_VS0_4e5a27c8
 settings:
   length: 1
   via_enclosure:

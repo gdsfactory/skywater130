@@ -1,5 +1,3 @@
-function: sky130_fd_pr__rf_nfet_20v0_nvt_withptap_iso
 info: {}
-module: sky130.components
-name: sky130_fd_pr__rf_nfet_20v0_nvt_withptap_iso
+name: sky130_fd_pr__rf_nfet_2_a161b4f1
 settings: {}
