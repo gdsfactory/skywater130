@@ -24,6 +24,7 @@ class Path:
     sparameters = module_path / "sparameters"
     klayout = module_path / "klayout"
     spice = module_path / "spice"
+    src = module_path / "src"
 
 
 PATH = Path()
