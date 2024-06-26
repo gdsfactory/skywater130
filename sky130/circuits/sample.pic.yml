@@ -23,7 +23,7 @@ routes:
   electrical:
     links:
       a2,VGND: a3,VGND
-    routing_strategy: get_bundle_electrical
+    routing_strategy: route_bundle_electrical
 
     settings:
       cross_section: xs_metal1

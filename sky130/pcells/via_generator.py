@@ -41,7 +41,7 @@ def via_generator(
     via_sp = (via_size[0] + via_spacing[0], via_size[1] + via_spacing[1])
     rect_via = gf.components.rectangle(size=via_size, layer=via_layer)
 
-    c.add_array(rect_via, rows=nr, columns=nc, spacing=via_sp)
+    c.add_ref(rect_via, rows=nr, columns=nc, spacing=via_sp)
     return c
 
 
@@ -87,7 +87,7 @@ def demo_via():
         via_layer=via_layer,
     )
     v = c1.add_ref(c)
-    v.move(
+    v.dmove(
         (
             (width - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2,
             (length - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2,
@@ -99,8 +99,8 @@ def demo_via():
     d = gf.Component()
     x1 = d.add_ref(rect)
     x2 = d.add_ref(rect_out)
-    x1.move((1.5 * width, 1.5 * length))
-    c2.add_ref(gf.geometry.boolean(A=x2, B=x1, operation="A-B", layer=bottom_layer))
+    x1.dmove((1.5 * width, 1.5 * length))
+    c2.add_ref(gf.boolean(A=x2, B=x1, operation="not", layer=bottom_layer))
     c2.add_label(
         "test for via4 over met4 within a bending area",
         position=(width, 4 * length + via_enclosure[1]),
@@ -108,49 +108,49 @@ def demo_via():
 
     for i in range(2):
         v = via_generator(
-            width=x2.xmax - x1.xmax,
-            length=x1.ymax - x1.ymin,
+            width=x2.dxmax - x1.dxmax,
+            length=x1.dymax - x1.dymin,
             via_enclosure=via_enclosure,
             via_size=via_size,
             via_spacing=via_spacing,
             via_layer=via_layer,
         )
         vi = c2.add_ref(v)
-        vi.movex(
-            (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
-            + i * (x2.xmax - x1.xmin)
+        vi.dmovex(
+            (x2.dxmax - x1.dxmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
+            + i * (x2.dxmax - x1.dxmin)
         )
-        vi.movey(
-            x1.ymin
-            - x2.ymin
-            + (x1.ymax - x1.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
+        vi.dmovey(
+            x1.dymin
+            - x2.dymin
+            + (x1.dymax - x1.dymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
         )
 
     for i in range(2):
         h = via_generator(
-            width=x1.xmax - x1.xmin,
-            length=x2.ymax - x1.ymax,
+            width=x1.dxmax - x1.dxmin,
+            length=x2.dymax - x1.dymax,
             via_enclosure=via_enclosure,
             via_size=via_size,
             via_spacing=via_spacing,
             via_layer=via_layer,
         )
         vi = c2.add_ref(h)
-        vi.movey(
-            (x2.ymax - x1.ymax - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
-            + i * (x2.ymax - x1.ymin)
+        vi.dmovey(
+            (x2.dymax - x1.dymax - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
+            + i * (x2.dymax - x1.dymin)
         )
-        vi.movex(
-            x1.xmin
-            - x2.xmin
-            + (x1.xmax - x1.xmin - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
+        vi.dmovex(
+            x1.dxmin
+            - x2.dxmin
+            + (x1.dxmax - x1.dxmin - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
         )
 
     for i in range(2):
         for j in range(2):
             cor = via_generator(
-                width=x2.xmax - x1.xmax,
-                length=x2.ymax - x1.ymax,
+                width=x2.dxmax - x1.dxmax,
+                length=x2.dymax - x1.dymax,
                 via_enclosure=via_enclosure,
                 via_size=via_size,
                 via_spacing=via_spacing,
@@ -158,14 +158,14 @@ def demo_via():
             )
 
             co = c2.add_ref(cor)
-            co.movex(
-                (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
+            co.dmovex(
+                (x2.dxmax - x1.dxmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
             )
-            co.movey(
-                (x1.ymin - x2.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
+            co.dmovey(
+                (x1.dymin - x2.dymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
             )
-            co.movex(j * (x2.xmax - x1.xmin))
-            co.movey(i * (x2.ymax - x1.ymin))
+            co.dmovex(j * (x2.dxmax - x1.dxmin))
+            co.dmovey(i * (x2.dymax - x1.dymin))
 
     return c2
 
@@ -173,4 +173,4 @@ def demo_via():
 if __name__ == "__main__":
     # c = via_generator()
     c = demo_via()
-    c.show(show_ports=True)
+    c.show()

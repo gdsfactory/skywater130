@@ -1081,4 +1081,4 @@ if __name__ == "__main__":
     ax.plot(analysis.DRAIN)
     ax.legend(("GATE", "DRAIN"))
     plt.tight_layout()
-    plt.show(show_ports=True)
+    plt.show()

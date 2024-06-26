@@ -1,7 +1,5 @@
-function: nmos_5v
 info: {}
-module: sky130.pcells.nmos_5v
-name: nmos_5v
+name: nmos_5v_DL65_20_PL66_20_6d78cadc
 settings:
   contact_enclosure:
   - 0.06

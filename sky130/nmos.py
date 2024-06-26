@@ -54,9 +54,9 @@ def nmos(
     )
 
     poly.ymin = -end_cap_length
-    poly.xmin = 0
+    poly.dxmin = 0
 
-    diff.xmin = -sd_width
+    diff.dxmin = -sd_width
 
     spacing = np.array(contact_size) + contact_spacing
     spacing = tuple(spacing)
@@ -75,14 +75,14 @@ def nmos(
     contact_array_left = c << contact_array
     contact_array_right = c << contact_array
 
-    contact_array_left.xmin = -sd_width + contact_enclosure
+    contact_array_left.dxmin = -sd_width + contact_enclosure
     contact_array_left.ymin = contact_enclosure
 
-    contact_array_right.xmax = diff.xmax - contact_enclosure
+    contact_array_right.dxmax = diff.dxmax - contact_enclosure
     contact_array_right.ymin = contact_enclosure
     return c
 
 
 if __name__ == "__main__":
     c = nmos(gate_width=10, gate_length=1, sd_width=5)
-    c.show(show_ports=True)
+    c.show()

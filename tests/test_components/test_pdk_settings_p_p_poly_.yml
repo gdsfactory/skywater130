@@ -1,7 +1,5 @@
-function: p_p_poly
 info: {}
-module: sky130.pcells.p_p_poly
-name: p_p_poly
+name: p_p_poly_PPW0p35_PPL0p5_15dc4c48
 settings:
   contact_enclosure:
   - 0.06

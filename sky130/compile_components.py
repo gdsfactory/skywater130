@@ -45,30 +45,17 @@ def {cell_name}() -> gf.Component:
       c = sky130.components.{cell_name}()
       c.plot()
     \"\"\"
-    return import_gds("{file_path}", cellname="{raw_cell_name}")
+    return import_gds(gdsdir / "{file_path}", cellname="{raw_cell_name}")
 """
         return code
 
     # Prelude to add at the top of the file
     prelude = """from functools import partial
 import gdsfactory as gf
-from gdsfactory.cell import cell
+from gdsfactory import cell
 
 from sky130.config import PATH
 from sky130.layers import LAYER
-
-# add_ports_m1 = gf.partial(
-#     gf.add_ports.add_ports_from_markers_inside,
-#     pin_layer=LAYER.met1pin,
-#     port_layer=LAYER.met1drawing,
-#     port_type="electrical",
-# )
-# add_ports_m2 = gf.partial(
-#     gf.add_ports.add_ports_from_markers_inside,
-#     pin_layer=LAYER.met2pin,
-#     port_layer=LAYER.met2drawing,
-#     port_type="electrical",
-# )
 
 add_ports_m1 = gf.partial(
     gf.add_ports.add_ports_from_labels,
@@ -77,7 +64,7 @@ add_ports_m1 = gf.partial(
     port_type="electrical",
     port_width=0.2,
     get_name_from_label=True,
-    guess_port_orientation=False,
+    guess_port_orientation=True,
 )
 add_ports_m2 = gf.partial(
     gf.add_ports.add_ports_from_labels,
@@ -86,12 +73,12 @@ add_ports_m2 = gf.partial(
     port_type="electrical",
     port_width=0.2,
     get_name_from_label=True,
-    guess_port_orientation=False,
+    guess_port_orientation=True,
 )
 add_ports = gf.compose(add_ports_m1, add_ports_m2)
 
 gdsdir = PATH.module
-import_gds = partial(gf.import_gds, gdsdir=gdsdir, decorator=add_ports)
+import_gds = partial(gf.import_gds, post_process=add_ports)
 """
 
     # TODO delete old file automatically
@@ -116,5 +103,5 @@ if __name__ == "__main__":
 #     # c = sky130_fd_sc_hvl__xor2_1()
 #     # c = sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2()
 #     c = sky130_fd_sc_hd__conb_1()
-#     # c.show(show_ports=True)
+#     # c.show()
 #     c.show()

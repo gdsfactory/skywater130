@@ -1,7 +1,5 @@
-function: npn_W1L1
 info: {}
-module: sky130.pcells.npn_W1L1
-name: npn_W1L1
+name: npn_W1L1_EW1_EL1_BW0p4__1fd7211c
 settings:
   B_width: 0.4
   C_width: 0.4

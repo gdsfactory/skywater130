@@ -1,11 +1,11 @@
 import gdsfactory as gf
+from gdsfactory.technology import LayerMap
 from gdsfactory.typings import Layer, LayerLevel, LayerStack
-from pydantic import BaseModel
 
 from sky130.config import PATH
 
 
-class LayerMap(BaseModel):
+class LayerMapSky130(LayerMap):
     areaidanalog: Layer = (81, 79)
     areaidcore: Layer = (81, 2)
     areaidcritCorner: Layer = (81, 51)
@@ -487,12 +487,8 @@ class LayerMap(BaseModel):
     TEXT: Layer = (66, 0)
     WG: Layer = (203, 0)  # TODO remove when updating gdsfactory7
 
-    class Config:
-        frozen = True
-        extra = "forbid"
 
-
-LAYER = LayerMap()
+LAYER = LayerMapSky130
 
 nm = 1e-3
 poly_spacer_width = 0.03
@@ -682,7 +678,7 @@ if __name__ == "__main__":
 
     t = KLayoutTechnology(
         name="sky130",
-        layer_map=dict(LAYER),
+        layer_map=LAYER,
         layer_views=LAYER_VIEWS,
         layer_stack=LAYER_STACK,
         connectivity=connectivity,

@@ -1,5 +1,3 @@
-function: sky130_fd_pr__cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap
 info: {}
-module: sky130.components
-name: sky130_fd_pr__cap_vpp_11p3x11p3_m1m2m3m4_shieldl1_wafflecap
+name: sky130_fd_pr__cap_vpp_1_65ab9527
 settings: {}
