@@ -131,7 +131,7 @@ def nmos(
     li1 = c.add_ref(rect_lid, rows=1, columns=nc, spacing=con_sp)
     li2 = c.add_ref(rect_lid, rows=1, columns=nc, spacing=con_sp)
 
-    # rect_m1d = gf.components.rectangle(size= ( contact_size[0] + 2*mcon_enclosure[0], cont_arr1.dymax - cont_arr1.ymin + contact_size[1] + 2*mcon_enclosure[1]), layer= m1_layer)
+    # rect_m1d = gf.components.rectangle(size= ( contact_size[0] + 2*mcon_enclosure[0], cont_arr1.dymax - cont_arr1.dymin + contact_size[1] + 2*mcon_enclosure[1]), layer= m1_layer)
     rect_m1d = gf.components.rectangle(
         size=(contact_size[0] + 2 * mcon_enclosure[0], gate_width), layer=m1_layer
     )
@@ -398,7 +398,7 @@ def nmos(
     rect_dnw = gf.components.rectangle(
         size=(
             rect_pw.dxmax - rect_pw.dxmin + 2 * dnwell_enclosure[0],
-            rect_pw.dymax - rect_pw.ymin + 2 * dnwell_enclosure[1],
+            rect_pw.dymax - rect_pw.dymin + 2 * dnwell_enclosure[1],
         ),
         layer=dnwell_layer,
     )

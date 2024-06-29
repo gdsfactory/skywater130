@@ -16,7 +16,7 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "gdsfactory~=8.3.1",
+  "gdsfactory~=8.4.0",
   "PySpice"
 ]
 description = "skywater130 pdk"
@@ -88,7 +88,7 @@ select = [
 "docs/notebooks/intro.py" = ['B018']
 
 [tool.setuptools.package-data]
-mypkg = ["*.csv", "*.yaml"]
+mypkg = ["*.gds"]
 
 [tool.setuptools.packages]
 find = {}

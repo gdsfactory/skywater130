@@ -134,11 +134,11 @@ def p_p_poly(
     rect_mc = gf.components.rectangle(size=contact_size, layer=mcon_layer)
 
     nr_m = ceil(
-        (rect_li_m1.dymax - rect_li_m1.ymin) / (contact_size[1] + contact_spacing[1])
+        (rect_li_m1.dymax - rect_li_m1.dymin) / (contact_size[1] + contact_spacing[1])
     )
     if (
         rect_li_m1.dymax
-        - rect_li_m1.ymin
+        - rect_li_m1.dymin
         - nr_m * contact_size[1]
         - (nr_m - 1) * contact_spacing[1]
     ) / 2 < contact_enclosure[1]:
@@ -179,7 +179,7 @@ def p_p_poly(
         mcon_arr.dmovey(
             (
                 rect_li_m1.dymax
-                - rect_li_m1.ymin
+                - rect_li_m1.dymin
                 - nr_m * contact_size[1]
                 - (nr_m - 1) * contact_spacing[1]
             )
