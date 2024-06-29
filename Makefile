@@ -31,6 +31,8 @@ release:
 	git push --tags
 
 build:
+	rm -rf sky130/src/sky130_fd_sc_hd/timing
+	find . -type d -name "tests" -exec rm -rf {} +
 	rm -rf dist
 	pip install build
 	python -m build
