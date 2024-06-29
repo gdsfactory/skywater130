@@ -181,7 +181,7 @@ def pnp(
 
     # generate its contacts and local interconnects and mcon and metal1
 
-    nr_v = ceil((B_in.dymax - B_in.ymin) / (contact_size[1] + contact_spacing[1]))
+    nr_v = ceil((B_in.dymax - B_in.dymin) / (contact_size[1] + contact_spacing[1]))
     nc_v = ceil((B_width) / (contact_size[0] + contact_spacing[0]))
 
     if (
@@ -192,7 +192,7 @@ def pnp(
     if (
         (
             B_in.dymax
-            - B_in.ymin
+            - B_in.dymin
             - nr_v * contact_size[1]
             - (nr_v - 1) * contact_spacing[1]
         )
@@ -300,7 +300,7 @@ def pnp(
         cont_B_arr1.dmovey(
             (
                 B_in.dymax
-                - B_in.ymin
+                - B_in.dymin
                 - nr_v * contact_size[1]
                 - (nr_v - 1) * contact_spacing[1]
             )
@@ -317,7 +317,7 @@ def pnp(
         cont_B_arr2.dmovey(
             (
                 B_in.dymax
-                - B_in.ymin
+                - B_in.dymin
                 - nr_v * contact_size[1]
                 - (nr_v - 1) * contact_spacing[1]
             )
@@ -469,7 +469,7 @@ def pnp(
     c.add_ref(gf.boolean(A=pmC_out, B=pmC_in, operation="A-B", layer=psdm_layer))
 
     # generate its contact and local interconnects
-    nr_v = ceil((C_in.dymax - C_in.ymin) / (contact_size[1] + contact_spacing[1]))
+    nr_v = ceil((C_in.dymax - C_in.dymin) / (contact_size[1] + contact_spacing[1]))
     nc_v = ceil((C_width) / (contact_size[0] + contact_spacing[0]))
 
     if (
@@ -480,7 +480,7 @@ def pnp(
     if (
         (
             C_in.dymax
-            - C_in.ymin
+            - C_in.dymin
             - nr_v * contact_size[1]
             - (nr_v - 1) * contact_spacing[1]
         )
@@ -587,7 +587,7 @@ def pnp(
         cont_C_arr1.dmovey(
             (
                 C_in.dymax
-                - C_in.ymin
+                - C_in.dymin
                 - nr_v * contact_size[1]
                 - (nr_v - 1) * contact_spacing[1]
             )
@@ -606,7 +606,7 @@ def pnp(
         cont_C_arr2.dmovey(
             (
                 C_in.dymax
-                - C_in.ymin
+                - C_in.dymin
                 - nr_v * contact_size[1]
                 - (nr_v - 1) * contact_spacing[1]
             )
@@ -720,7 +720,7 @@ def pnp(
     rect_nwell = gf.components.rectangle(
         size=(
             B_out.dxmax - B_out.dxmin + 2 * diff_enclosure[0],
-            B_out.dymax - B_out.ymin + 2 * diff_enclosure[1],
+            B_out.dymax - B_out.dymin + 2 * diff_enclosure[1],
         ),
         layer=nwell_layer,
     )
@@ -731,7 +731,7 @@ def pnp(
     # generating pnp identifier
     npn = c.add_ref(
         gf.components.rectangle(
-            size=(C_out.dxmax - C_out.dxmin, C_out.dymax - C_out.ymin), layer=pnp_layer
+            size=(C_out.dxmax - C_out.dxmin, C_out.dymax - C_out.dymin), layer=pnp_layer
         )
     )
     npn.connect("e1", C_out.ports["e3"], allow_layer_mismatch=True)

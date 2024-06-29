@@ -358,7 +358,7 @@ def nmos_5v(
     rect_dnw = gf.components.rectangle(
         size=(
             rect_pw.dxmax - rect_pw.dxmin + 2 * dnwell_enclosure[0],
-            rect_pw.dymax - rect_pw.ymin + 2 * dnwell_enclosure[1],
+            rect_pw.dymax - rect_pw.dymin + 2 * dnwell_enclosure[1],
         ),
         layer=dnwell_layer,
     )
@@ -370,7 +370,7 @@ def nmos_5v(
     rect_hv = gf.components.rectangle(
         size=(
             rect_pw.dxmax - rect_pw.dxmin + 2 * dnwell_enclosure[0],
-            rect_pw.dymax - rect_pw.ymin + 2 * dnwell_enclosure[1],
+            rect_pw.dymax - rect_pw.dymin + 2 * dnwell_enclosure[1],
         ),
         layer=hvi_layer,
     )

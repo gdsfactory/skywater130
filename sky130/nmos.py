@@ -53,7 +53,7 @@ def nmos(
         layer=diffusion_layer,
     )
 
-    poly.ymin = -end_cap_length
+    poly.dymin = -end_cap_length
     poly.dxmin = 0
 
     diff.dxmin = -sd_width
@@ -76,10 +76,10 @@ def nmos(
     contact_array_right = c << contact_array
 
     contact_array_left.dxmin = -sd_width + contact_enclosure
-    contact_array_left.ymin = contact_enclosure
+    contact_array_left.dymin = contact_enclosure
 
     contact_array_right.dxmax = diff.dxmax - contact_enclosure
-    contact_array_right.ymin = contact_enclosure
+    contact_array_right.dymin = contact_enclosure
     return c
 
 

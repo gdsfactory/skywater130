@@ -13454,7 +13454,8 @@ def sky130_fd_sc_hd__lpflow_clkbufkapwr_8() -> gf.Component:
 
 
 if __name__ == "__main__":
-    c = sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p18()
+    c = sky130_fd_sc_hd__a32oi_2()
+    # c = sky130_fd_pr__rf_nfet_01v8_lvt_cM04W1p65L0p18()
     # c = sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p18()
     # c = sky130_fd_sc_hd__inv_1()
     c.show()
