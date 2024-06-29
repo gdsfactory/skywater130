@@ -21,7 +21,7 @@ doc:
 	python docs/write_components_doc.py
 
 update-pre:
-	pre-commit autoupdate --bleeding-edge
+	pre-commit autoupdate
 
 git-rm-merged:
 	git branch -D `git branch --merged | grep -v \* | xargs`
