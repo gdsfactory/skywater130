@@ -36,7 +36,7 @@ dev = [
 ]
 docs = [
   "jupytext",
-  "jupyter-book==1.0.0"
+  "jupyter-book==1.0.2"
 ]
 
 [tool.flit.sdist]
