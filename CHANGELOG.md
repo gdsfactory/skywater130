@@ -2,6 +2,11 @@
 
 <!-- towncrier release notes start -->
 
+## [0.12.2](https://github.com/gdsfactory/skywater130/releases/tag/v0.12.2) - 2024-07-15
+
+No significant changes.
+
+
 ## [0.12.1](https://github.com/gdsfactory/skywater130/releases/tag/v0.12.1) - 2024-06-29
 
 - Update gdsfactory840 [#99](https://github.com/gdsfactory/skywater130/pull/99)
