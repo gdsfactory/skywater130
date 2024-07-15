@@ -4,8 +4,7 @@
 
 ## [0.12.1](https://github.com/gdsfactory/skywater130/releases/tag/v0.12.1) - 2024-06-29
 
-No significant changes.
-
+- Update gdsfactory840 [#99](https://github.com/gdsfactory/skywater130/pull/99)
 
 ## [0.12.0](https://github.com/gdsfactory/skywater130/releases/tag/v0.12.0) - 2024-06-25
 
