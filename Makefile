@@ -1,4 +1,4 @@
-install:
+install: modules
 	pip install -e .[dev,docs]
 
 dev: install
