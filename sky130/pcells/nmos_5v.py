@@ -56,6 +56,22 @@ def nmos_5v(
         diffp_layer: for bulk tie.
         dnwell layer: for deep nwell.
         nf: for finger option.
+        sdm_enclosure: for n+ diffusion.
+        nsdm_layer: for n+ diffusion.
+        psdm_layer: for p+ diffusion.
+        sdm_spacing: for n+ diffusion.
+        hvi_layer: for high voltage implant.
+        hvntm_layer: for high voltage n+ implant.
+        hvntm_enclosure: for high voltage n+ implant.
+        li_width: for local interconnect.
+        li_layer: for local interconnect.
+        li_enclosure: for local interconnect.
+        mcon_layer: for metal contact.
+        mcon_enclosure: for metal contact.
+        m1_layer: for metal1.
+        npc_layer: for poly contact.
+        npc_spacing: for poly contact.
+
 
     .. plot::
       :include-source:

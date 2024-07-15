@@ -46,14 +46,28 @@ def pmos_5v(
         gate_length: for poly.
         sd_width: source drain length.
         end_cap : end cap length.
-        contact_size : contact dimension (length and width)
-        contact_layer : for contacts
-        contact_enclosure : for contacts within diffusion or poly
-        diff_spacing : for two adjacent diffusions
-        diff_enclosure : for diffusion within well
-        diffp_layer : for bulk tie
-        dnwell layer : for deep nwell
-        nf : for finger option
+        contact_size : contact dimension (length and width).
+        contact_layer : for contacts.
+        contact_enclosure : for contacts within diffusion or poly.
+        diff_spacing : for two adjacent diffusions.
+        diff_enclosure : for diffusion within well.
+        diffp_layer : for bulk tie.
+        dnwell layer : for deep nwell.
+        nf: for finger option.
+        sdm_enclosure: for source drain metal.
+        nsdm_layer: for source drain metal.
+        psdm_layer: for source drain metal.
+        sdm_spacing: for source drain metal.
+        hvi_layer: for high voltage implant.
+        li_width: for local interconnect.
+        li_layer: for local interconnect.
+        li_enclosure: for local interconnect.
+        mcon_layer: for metal contact.
+        mcon_enclosure: for metal contact.
+        m1_layer: for metal1.
+        npc_layer: for poly contact.
+        npc_spacing: for poly contact.
+
 
     .. plot::
       :include-source:
@@ -261,7 +275,9 @@ def pmos_5v(
     # generaing n+ bulk tie and its contact and mcon and m1
     rect_dn = gf.components.rectangle(size=(sd_width, gate_width), layer=diffn_layer)
     diff_n = c.add_ref(rect_dn)
-    diff_n.connect("e1", diff_p.ports["e3"], allow_layer_mismatch=True)
+    diff_n.connect(
+        "e1", diff_p.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     diff_n.dmovex(diff_spacing + sdm_spacing)
 
     cont_arr4 = c.add_ref(rect_c, rows=nr, columns=nc, spacing=con_sp)
@@ -330,7 +346,9 @@ def pmos_5v(
         layer=nsdm_layer,
     )
     nsdm = c.add_ref(rect_nm)
-    nsdm.connect("e1", diff_p.ports["e3"], allow_layer_mismatch=True)
+    nsdm.connect(
+        "e1", diff_p.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     nsdm.dmovex(diff_spacing + sdm_spacing - sdm_enclosure[0])
 
     # generating nwell
@@ -368,7 +386,6 @@ def pmos_5v(
     dnwell = c.add_ref(rect_hv)
     dnwell.dmovex(-diff_enclosure[0] - dnwell_enclosure[0])
     dnwell.dmovey(-diff_enclosure[1] - dnwell_enclosure[1])
-
     return c
 
 

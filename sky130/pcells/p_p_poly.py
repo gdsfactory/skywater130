@@ -33,6 +33,28 @@ def p_p_poly(
 
     Args:
         p_poly_width: in um.
+        p_poly_length: in um.
+        poly_res_layer: layer of the p+ poly resistor.
+        poly_layer: layer of the polysilicon.
+        psdm_layer: layer of the p+ implants.
+        sdm_enclosure: enclosure of the p+ implants.
+        contact_size: size of the contact.
+        contact_spacing: spacing between the contacts.
+        licon_slots_size: size of the licon slots.
+        licon_slots_spacing: spacing between the licon slots.
+        contact_layer: layer of the contacts.
+        contact_enclosure: enclosure of the contacts.
+        li_layer: layer of the local interconnects.
+        li_enclosure: enclosure of the local interconnects.
+        mcon_layer: layer of the mcon.
+        mcon_enclosure: enclosure of the mcon.
+        m1_layer: layer of the m1.
+        rpm_layer: layer of the poly resistor implant.
+        rpm_min_width: minimum width of the poly resistor implant.
+        rpm_enclosure: enclosure of the poly resistor implant.
+        npc_layer: layer of the nitride poly cut.
+        npc_enclosure: enclosure of the nitride poly cut.
+
 
     .. plot::
       :include-source:
@@ -196,7 +218,9 @@ def p_p_poly(
         layer=npc_layer,
     )
     npc = c.add_ref(rect_npc)
-    npc.connect("e1", R_0.ports["e1"], allow_layer_mismatch=True)
+    npc.connect(
+        "e1", R_0.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     npc.dmovex(p_poly_width + npc_enclosure[0])
 
     # generate rpm (poly resistor implant)
@@ -209,7 +233,9 @@ def p_p_poly(
 
     rect_rpm = gf.components.rectangle(size=(rpm_width, rpm_length), layer=rpm_layer)
     rpm = c.add_ref(rect_rpm)
-    rpm.connect("e1", R_0.ports["e1"], allow_layer_mismatch=True)
+    rpm.connect(
+        "e1", R_0.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     rpm.dmovex(p_poly_width + ((rpm_width - p_poly_width) / 2))
 
     # generate p+ implants
@@ -218,7 +244,9 @@ def p_p_poly(
         layer=psdm_layer,
     )
     psdm = c.add_ref(rect_psdm)
-    psdm.connect("e1", rpm.ports["e3"], allow_layer_mismatch=True)
+    psdm.connect(
+        "e1", rpm.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     psdm.dmovex(rpm_width + sdm_enclosure[0])
     return c
 

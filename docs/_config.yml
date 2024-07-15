@@ -31,7 +31,7 @@ html:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/gdsfactory/ubc
+  url: https://github.com/gdsfactory/skywater130
   path_to_book: docs # Optional path to your book, relative to the repository root
   branch: main # Which branch of the repository should be used when creating links (optional)
 
@@ -52,7 +52,7 @@ sphinx:
     autodoc_type_aliases:
       "ComponentSpec": "ComponentSpec"
     nb_execution_show_tb: True
-    nb_custom_formats:
-        .py:
-            - jupytext.reads
-            - fmt: py
+    # nb_custom_formats:
+    #     .py:
+    #         - jupytext.reads
+    #         - fmt: py

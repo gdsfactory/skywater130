@@ -34,6 +34,31 @@ def npn_W1L1(
 
     npn device with emitter size 1u*1u
 
+    Args:
+        E_width: width of the emitter.
+        E_length: length of the emitter.
+        B_width: width of the base.
+        C_width: width of the collector.
+        np_spacing: spacing between np regions.
+        diffusion_layer: layer of the diffusion.
+        tap_layer: layer of the tap.
+        diff_enclosure: enclosure of the diffusion.
+        contact_size: size of the contact.
+        contact_spacing: spacing between the contacts.
+        contact_layer: layer of the contact.
+        contact_enclosure: enclosure of the contact.
+        pwell_layer: layer of the pwell.
+        dnwell_layer: layer of the dnwell.
+        sdm_enclosure: enclosure of the sdm.
+        nsdm_layer: layer of the nsdm.
+        psdm_layer: layer of the psdm.
+        npn_layer: layer of the npn.
+        li_layer: layer of the li.
+        li_enclosure: enclosure of the li.
+        mcon_layer: layer of the mcon.
+        mcon_enclosure: enclosure of the mcon.
+        m1_layer: layer of the m1.
+
     .. plot::
       :include-source:
 

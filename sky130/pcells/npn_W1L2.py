@@ -19,15 +19,11 @@ def npn_W1L2(
     contact_layer: LayerSpec = (66, 44),
     contact_enclosure: Float2 = (0.06, 0.06),
     pwell_layer: LayerSpec = (64, 13),
-    dnwell_enclosure: Float2 = (0.4, 0.4),
     dnwell_layer: LayerSpec = (64, 18),
     sdm_enclosure: Float2 = (0.125, 0.125),
     nsdm_layer: LayerSpec = (93, 44),
-    sdm_spacing: float = 0.13,
     psdm_layer: LayerSpec = (94, 20),
     npn_layer: LayerSpec = (82, 20),
-    li_width: float = 0.17,
-    li_spacing: float = 0.17,
     li_layer: LayerSpec = (67, 20),
     li_enclosure: float = 0.08,
     mcon_layer: LayerSpec = (67, 44),
@@ -35,6 +31,31 @@ def npn_W1L2(
     m1_layer: LayerSpec = (68, 20),
 ) -> gf.Component:
     """Return npn device with emitter size 1*2.
+
+    Args:
+        E_width: width of the emitter.
+        E_length: length of the emitter.
+        B_width: width of the base.
+        C_width: width of the collector.
+        np_spacing: spacing between np regions.
+        diffusion_layer: layer of the diffusion.
+        tap_layer: layer of the tap.
+        diff_enclosure: enclosure of the diffusion.
+        contact_size: size of the contact.
+        contact_spacing: spacing between the contacts.
+        contact_layer: layer of the contact.
+        contact_enclosure: enclosure of the contact.
+        pwell_layer: layer of the pwell.
+        dnwell_layer: layer of the dnwell.
+        sdm_enclosure: enclosure of the sdm.
+        nsdm_layer: layer of the nsdm.
+        psdm_layer: layer of the psdm.
+        npn_layer: layer of the npn.
+        li_layer: layer of the local interconnect.
+        li_enclosure: enclosure of the local interconnect.
+        mcon_layer: layer of the mcon.
+        mcon_enclosure: enclosure of the mcon.
+        m1_layer: layer of the metal1.
 
     .. plot::
       :include-source:
@@ -169,10 +190,14 @@ def npn_W1L2(
     B_in = c_B.add_ref(rect_B_in)
     B_out = c_B.add_ref(rect_B_out)
 
-    B_in.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+    B_in.connect(
+        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     B_in.dmovex(E_width + np_spacing)
 
-    B_out.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+    B_out.connect(
+        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     B_out.dmovex(E_width + np_spacing + B_width)
 
     c.add_ref(gf.boolean(A=B_out, B=B_in, operation="A-B", layer=tap_layer))
@@ -197,10 +222,14 @@ def npn_W1L2(
     pmB_in = c_B.add_ref(rect_pmB_in)
     pmB_out = c_B.add_ref(rect_pmB_out)
 
-    pmB_in.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+    pmB_in.connect(
+        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     pmB_in.dmovex(E_width + np_spacing - sdm_enclosure[0])
 
-    pmB_out.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+    pmB_out.connect(
+        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     pmB_out.dmovex(E_width + np_spacing + B_width + sdm_enclosure[1])
 
     c.add_ref(gf.boolean(A=pmB_out, B=pmB_in, operation="A-B", layer=psdm_layer))
@@ -285,7 +314,9 @@ def npn_W1L2(
         li_m1_b_in = c_B.add_ref(rect_in)
         li_m1_b_out = c_B.add_ref(rect_out)
 
-        li_m1_b_in.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+        li_m1_b_in.connect(
+            "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        )
         li_m1_b_in.dmovex(
             (
                 E_width
@@ -297,7 +328,9 @@ def npn_W1L2(
             - (1 - i) * li_enclosure
         )
 
-        li_m1_b_out.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+        li_m1_b_out.connect(
+            "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        )
         li_m1_b_out.dmovex(
             (
                 E_width
@@ -451,10 +484,14 @@ def npn_W1L2(
     C_in = c_C.add_ref(rect_C_in)
     C_out = c_C.add_ref(rect_C_out)
 
-    C_in.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+    C_in.connect(
+        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     C_in.dmovex(E_width + 2.25 * np_spacing + B_width)
 
-    C_out.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+    C_out.connect(
+        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     C_out.dmovex(E_width + 2.25 * np_spacing + B_width + C_width)
 
     c.add_ref(gf.boolean(A=C_out, B=C_in, operation="A-B", layer=tap_layer))
@@ -487,10 +524,14 @@ def npn_W1L2(
     nmC_in = c_C.add_ref(rect_nmC_in)
     nmC_out = c_C.add_ref(rect_nmC_out)
 
-    nmC_in.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+    nmC_in.connect(
+        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     nmC_in.dmovex(E_width + 2.25 * np_spacing + B_width - sdm_enclosure[0])
 
-    nmC_out.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+    nmC_out.connect(
+        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     nmC_out.dmovex(E_width + 2.25 * np_spacing + B_width + C_width + sdm_enclosure[0])
 
     c.add_ref(gf.boolean(A=nmC_out, B=nmC_in, operation="A-B", layer=nsdm_layer))
@@ -576,7 +617,9 @@ def npn_W1L2(
         li_m1_c_in = c_C.add_ref(rect_in)
         li_m1_c_out = c_C.add_ref(rect_out)
 
-        li_m1_c_in.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+        li_m1_c_in.connect(
+            "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        )
         li_m1_c_in.dmovex(
             E_width
             + 2.25 * np_spacing
@@ -586,7 +629,9 @@ def npn_W1L2(
             - (1 - i) * li_enclosure
         )
 
-        li_m1_c_out.connect("e1", E.ports["e1"], allow_layer_mismatch=True)
+        li_m1_c_out.connect(
+            "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        )
         li_m1_c_out.dmovex(
             E_width
             + 2.25 * np_spacing
@@ -752,7 +797,9 @@ def npn_W1L2(
         layer=pwell_layer,
     )
     pwell = c.add_ref(rect_pwell)
-    pwell.connect("e1", B_out.ports["e3"], allow_layer_mismatch=True)
+    pwell.connect(
+        "e1", B_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     pwell.dmovex(B_out.dxmax - B_out.dxmin + diff_enclosure[0])
 
     # generating deep nwell
@@ -764,7 +811,9 @@ def npn_W1L2(
         layer=dnwell_layer,
     )
     dnwell = c.add_ref(rect_dnw)
-    dnwell.connect("e1", C_out.ports["e3"], allow_layer_mismatch=True)
+    dnwell.connect(
+        "e1", C_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     dnwell.dmovex(C_out.dxmax - C_out.dxmin + diff_enclosure[0])
 
     # generating npn identifier
@@ -773,9 +822,10 @@ def npn_W1L2(
             size=(C_out.dxmax - C_out.dxmin, C_out.dymax - C_out.dymin), layer=npn_layer
         )
     )
-    npn.connect("e1", C_out.ports["e3"], allow_layer_mismatch=True)
+    npn.connect(
+        "e1", C_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     npn.dmovex(C_out.dxmax - C_out.dxmin)
-
     return c
 
 

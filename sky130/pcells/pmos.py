@@ -304,7 +304,9 @@ def pmos(
     # generaing n+ bulk tie and its contact and mcon and m1
     rect_dn = gf.components.rectangle(size=(sd_width, gate_width), layer=diffn_layer)
     diff_n = c.add_ref(rect_dn)
-    diff_n.connect("e1", diff_p.ports["e3"], allow_layer_mismatch=True)
+    diff_n.connect(
+        "e1", diff_p.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     diff_n.dmovex(diff_spacing + sdm_spacing)
 
     cont_arr4 = c.add_ref(rect_c, rows=nr, columns=nc, spacing=con_sp)
@@ -373,7 +375,9 @@ def pmos(
         layer=nsdm_layer,
     )
     nsdm = c.add_ref(rect_nm)
-    nsdm.connect("e1", diff_p.ports["e3"], allow_layer_mismatch=True)
+    nsdm.connect(
+        "e1", diff_p.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     nsdm.dmovex(diff_spacing + sdm_spacing - sdm_enclosure[0])
 
     # generating nwell

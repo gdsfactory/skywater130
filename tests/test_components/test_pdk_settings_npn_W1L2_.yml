@@ -1,5 +1,5 @@
 info: {}
-name: npn_W1L2_EW1_EL2_BW0p4__41968916
+name: npn_W1L2_EW1_EL2_BW0p4__7e7949df
 settings:
   B_width: 0.4
   C_width: 0.4
@@ -23,9 +23,6 @@ settings:
   diffusion_layer:
   - 65
   - 20
-  dnwell_enclosure:
-  - 0.4
-  - 0.4
   dnwell_layer:
   - 64
   - 18
@@ -33,8 +30,6 @@ settings:
   li_layer:
   - 67
   - 20
-  li_spacing: 0.17
-  li_width: 0.17
   m1_layer:
   - 68
   - 20
@@ -60,7 +55,6 @@ settings:
   sdm_enclosure:
   - 0.125
   - 0.125
-  sdm_spacing: 0.13
   tap_layer:
   - 65
   - 44

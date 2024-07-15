@@ -17,6 +17,14 @@ def via_generator(
     and set number of rows and number of columns as a \
     global variable to be used outside the function.
 
+    Args:
+        width: width of the area.
+        length: length of the area.
+        via_size: size of the via.
+        via_layer: layer of the via.
+        via_enclosure: enclosure of the via.
+        via_spacing: spacing between the vias.
+
     .. plot::
       :include-source:
 

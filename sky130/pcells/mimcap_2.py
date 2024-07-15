@@ -71,7 +71,9 @@ def mimcap_2(
 
     rect_m5_l = gf.components.rectangle(size=(m5_length, m5_width), layer=m5_layer)
     m5_l = c.add_ref(rect_m5_l)
-    m5_l.connect("e3", m4.ports["e1"], allow_layer_mismatch=True)
+    m5_l.connect(
+        "e3", m4.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     m5_l.dmovex(m5_length + capm2_enclosure[0] + m5_enclosure[0] + en[0] / 2)
 
     # generate capm2
@@ -80,7 +82,9 @@ def mimcap_2(
         layer=capm2_layer,
     )
     capm2 = c.add_ref(rect_capm2)
-    capm2.connect("e3", m5_l.ports["e1"], allow_layer_mismatch=True)
+    capm2.connect(
+        "e3", m5_l.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+    )
     capm2.dmovex(m5_length + m5_enclosure[0])
 
     # generat3 via4
