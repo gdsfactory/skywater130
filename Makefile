@@ -43,6 +43,6 @@ tech:
 	python3 install_tech.py
 
 docs:
-	jb build docs
+	uv run jb build docs
 
 .PHONY: gdsdiff build conda docs
