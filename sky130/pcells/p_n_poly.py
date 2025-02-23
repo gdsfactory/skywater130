@@ -100,7 +100,9 @@ def p_n_poly(
     )
 
     for i in range(2):
-        cont_arr = c.add_ref(rect_lc, rows=1, columns=nc, spacing=lic_sp)
+        cont_arr = c.add_ref(
+            rect_lc, rows=1, columns=nc, column_pitch=lic_sp[0], row_pitch=lic_sp[1]
+        )
         cont_arr.dmovex(
             (
                 p_poly_width
@@ -132,14 +134,10 @@ def p_n_poly(
         li_m1 = c.add_ref(
             rect_li_m1,
             rows=2,
-            columns=1,
-            spacing=(
-                0,
-                p_poly_length
-                + 2 * contact_enclosure[1]
-                + licon_slots_size[1]
-                - (1 - i) * (mcon_enclosure[1] - li_enclosure),
-            ),
+            row_pitch=p_poly_length
+            + 2 * contact_enclosure[1]
+            + licon_slots_size[1]
+            - (1 - i) * (mcon_enclosure[1] - li_enclosure),
         )
         li_m1.dmovey(
             -licon_slots_size[1]
@@ -181,7 +179,13 @@ def p_n_poly(
     )
 
     for i in range(2):
-        mcon_arr = c.add_ref(rect_mc, rows=nr_m, columns=nc_m, spacing=con_sp)
+        mcon_arr = c.add_ref(
+            rect_mc,
+            rows=nr_m,
+            columns=nc_m,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
+        )
         # mcon_arr.dmovex((p_poly_width - nc*licon_slots_size[0] - (nc-1)*licon_slots_spacing[0] - 2*li_enclosure )/2)
         mcon_arr.dmovey(
             (1 - i) * (-licon_slots_size[1] - contact_enclosure[1] - li_enclosure)

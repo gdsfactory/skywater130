@@ -27,7 +27,7 @@ PDK = Pdk(
 PDK.register_cells_yaml(dirpath=pathlib.Path(__file__).parent.absolute())
 PDK.activate()
 
-__all__ = ["cells", "PDK"]
+__all__ = ["cells", "PDK", "components"]
 
 if __name__ == "__main__":
     f = PDK.cells

@@ -14,13 +14,10 @@ jobs:
     container: ghcr.io/gdsfactory/gdsfactory:main
     steps:
       - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
       - name: Installing the library
-        shell: bash -l {0}
-        run: |
-          make install
-      - name: make docs
-        run: |
-          make docs
+        run: uv sync --all-extras
+      - run: make docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

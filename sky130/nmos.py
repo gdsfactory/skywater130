@@ -64,7 +64,8 @@ def nmos(
     contact = gf.components.via(
         size=contact_size,
         layer=contact_layer,
-        spacing=spacing,
+        column_pitch=spacing[0],
+        row_pitch=spacing[1],
         enclosure=contact_enclosure,
     )
     contact_array = gf.components.via_stack(

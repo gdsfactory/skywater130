@@ -1,6 +1,6 @@
 import gdsfactory as gf
-from gdsfactory.technology import LayerMap
-from gdsfactory.typings import Layer, LayerLevel, LayerStack
+from gdsfactory.technology import LayerLevel, LayerMap, LayerStack
+from gdsfactory.typings import Layer
 
 from sky130.config import PATH
 
