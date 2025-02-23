@@ -112,7 +112,8 @@ def mimcap_1(
         rect_via3,
         rows=nr1,
         columns=nc1,
-        spacing=(via3_spacing[0] + via3_size[0], via3_spacing[1] + via3_size[1]),
+        column_pitch=via3_spacing[0] + via3_size[0],
+        row_pitch=via3_spacing[1] + via3_size[1],
     )
     via3_arr1.dmovex(
         capm_enclosure[0]
@@ -134,7 +135,8 @@ def mimcap_1(
         rect_via3,
         rows=nr2,
         columns=nc2,
-        spacing=(via3_spacing[0] + via3_size[0], via3_spacing[1] + via3_size[1]),
+        column_pitch=via3_spacing[0] + via3_size[0],
+        row_pitch=via3_spacing[1] + via3_size[1],
     )
     via3_arr2.dmovex(m3_length - en[0] / 2 - m4_r_length)
     via3_arr2.dmovex(

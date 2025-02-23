@@ -1,3 +1,5 @@
+import pathlib
+
 import pytest
 from gdsfactory.component import Component
 from pytest_regressions.data_regression import DataRegressionFixture
@@ -15,6 +17,7 @@ skip = [
 ]
 
 cell_names = set(cells.keys()) - set(skip)
+dirpath = pathlib.Path(__file__).absolute().parent / "gds_ref"
 
 
 @pytest.fixture(params=cell_names, scope="function")

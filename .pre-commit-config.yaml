@@ -7,7 +7,7 @@ repos:
       - id: requirements-txt-fixer
 
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
-    rev: v2.10.0
+    rev: v2.14.0
     hooks:
       - id: pretty-format-toml
         args: [--autofix]
@@ -20,5 +20,5 @@ repos:
     rev: "v0.4.4"
     hooks:
       - id: ruff
-        args: [ --fix, --exit-non-zero-on-fix ]
+        args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format

@@ -5,9 +5,7 @@ build-backend = "flit_core.buildapi"
 requires = ["flit_core >=3.2,<4"]
 
 [project]
-authors = [
-  {name = "gdsfactory", email = "contact@gdsfactory.com"}
-]
+authors = [{name = "gdsfactory", email = "contact@gdsfactory.com"}]
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3.10",
@@ -15,16 +13,13 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Operating System :: OS Independent"
 ]
-dependencies = [
-  "gdsfactory~=8.5.2",
-  "PySpice"
-]
+dependencies = ["gdsfactory~=9.0.1", "PySpice"]
 description = "skywater130 pdk"
 keywords = ["python"]
 license = {file = "LICENSE"}
 name = "sky130"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 version = "0.12.2"
 
 [project.optional-dependencies]
@@ -32,17 +27,14 @@ dev = [
   "pytest",
   "pytest-cov",
   "pytest_regressions",
-  "pre-commit"
+  "pre-commit",
+  "pytest-randomly",
+  "pytest-xdist"
 ]
-docs = [
-  "jupytext",
-  "jupyter-book==1.0.2"
-]
+docs = ["jupytext", "jupyter-book==1.0.2"]
 
 [tool.flit.sdist]
-exclude = [
-  "**/.git/**"
-]
+exclude = ["**/.git/**"]
 
 [tool.mypy]
 python_version = "3.10"

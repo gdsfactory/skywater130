@@ -49,7 +49,9 @@ def via_generator(
     via_sp = (via_size[0] + via_spacing[0], via_size[1] + via_spacing[1])
     rect_via = gf.components.rectangle(size=via_size, layer=via_layer)
 
-    c.add_ref(rect_via, rows=nr, columns=nc, spacing=via_sp)
+    c.add_ref(
+        rect_via, rows=nr, columns=nc, column_pitch=via_sp[0], row_pitch=via_sp[1]
+    )
     return c
 
 

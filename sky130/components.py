@@ -27,7 +27,7 @@ add_ports_m2 = gf.partial(
 add_ports = gf.compose(add_ports_m1, add_ports_m2)
 
 gdsdir = PATH.module
-import_gds = partial(gf.import_gds, post_process=add_ports)
+import_gds = partial(gf.import_gds, post_process=[add_ports])
 
 
 @cell

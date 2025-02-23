@@ -1,18 +1,20 @@
 install: modules
 	pip install -e .[dev,docs]
 
-dev: install
-	pre-commit install
+dev:
+	uv sync --all-extras
+	uv pip install -e .
+	uv run pre-commit install
 
 modules:
 	git submodule
 	git submodule update --init --recursive
 
 test:
-	pytest -s
+	uv run pytest -s -n logical
 
 cov:
-	pytest --cov=sky130
+	uv run pytest --cov=sky130
 
 mypy:
 	mypy . --ignore-missing-imports

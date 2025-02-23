@@ -83,7 +83,7 @@ def nmos(
 
     # adding fingers
     # poly = c.add_ref(rect_p)
-    poly = c.add_ref(rect_p, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    poly = c.add_ref(rect_p, columns=nf, column_pitch=sd_width + gate_length)
 
     l_d = (nf + 1) * (sd_width + gate_length) - gate_length  # n diffution total length
     rect_d = gf.components.rectangle(size=(l_d, gate_width), layer=diffusion_layer)
@@ -113,14 +113,22 @@ def nmos(
 
     min_gate_wid = 0.42
 
-    cont_arr1 = c.add_ref(rect_c, rows=nr, columns=nc, spacing=con_sp)
-    cont_arr2 = c.add_ref(rect_c, rows=nr, columns=nc, spacing=con_sp)
+    cont_arr1 = c.add_ref(
+        rect_c, rows=nr, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
+    cont_arr2 = c.add_ref(
+        rect_c, rows=nr, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
 
     cont_arr1.dmovey((min_gate_wid - contact_size[1]) / 2)
     cont_arr2.dmovey((min_gate_wid - contact_size[1]) / 2)
 
-    mcont_arr1 = c.add_ref(rect_mc, rows=nr, columns=nc, spacing=con_sp)
-    mcont_arr2 = c.add_ref(rect_mc, rows=nr, columns=nc, spacing=con_sp)
+    mcont_arr1 = c.add_ref(
+        rect_mc, rows=nr, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
+    mcont_arr2 = c.add_ref(
+        rect_mc, rows=nr, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
 
     mcont_arr1.dmovey((min_gate_wid - contact_size[1]) / 2)
     mcont_arr2.dmovey((min_gate_wid - contact_size[1]) / 2)
@@ -128,15 +136,23 @@ def nmos(
     rect_lid = gf.components.rectangle(
         size=(li_width, gate_width + li_enclosure), layer=li_layer
     )
-    li1 = c.add_ref(rect_lid, rows=1, columns=nc, spacing=con_sp)
-    li2 = c.add_ref(rect_lid, rows=1, columns=nc, spacing=con_sp)
+    li1 = c.add_ref(
+        rect_lid, rows=1, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
+    li2 = c.add_ref(
+        rect_lid, rows=1, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
 
     # rect_m1d = gf.components.rectangle(size= ( contact_size[0] + 2*mcon_enclosure[0], cont_arr1.dymax - cont_arr1.dymin + contact_size[1] + 2*mcon_enclosure[1]), layer= m1_layer)
     rect_m1d = gf.components.rectangle(
         size=(contact_size[0] + 2 * mcon_enclosure[0], gate_width), layer=m1_layer
     )
-    m1d1 = c.add_ref(rect_m1d, rows=1, columns=nc, spacing=con_sp)
-    m1d2 = c.add_ref(rect_m1d, rows=1, columns=nc, spacing=con_sp)
+    m1d1 = c.add_ref(
+        rect_m1d, rows=1, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
+    m1d2 = c.add_ref(
+        rect_m1d, rows=1, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
 
     if nc > 1:
         cont_arr1.dmovex((sd_width - (cont_arr1.dxmax - cont_arr1.dxmin)) / 2)
@@ -189,23 +205,23 @@ def nmos(
     if gate_length <= contact_size[0]:
         pc_x = contact_enclosure[0] + contact_size[0] + contact_enclosure[0]
         cont_p = c.add_ref(
-            rect_c, rows=1, columns=nf, spacing=[sd_width + gate_length, 0]
+            rect_c, rows=1, columns=nf, column_pitch=sd_width + gate_length
         )
         cont_p.dmovex(sd_width - ((pc_x - gate_length) / 2) + contact_enclosure[0])
         cont_p.dmovey(gate_width + end_cap + contact_enclosure[1])
         cont_p2 = c.add_ref(
-            rect_c, rows=1, columns=nf, spacing=[sd_width + gate_length, 0]
+            rect_c, rows=1, columns=nf, column_pitch=sd_width + gate_length
         )
         cont_p2.dmovex(sd_width - ((pc_x - gate_length) / 2) + contact_enclosure[0])
         cont_p2.dmovey(-end_cap - contact_enclosure[1] - contact_size[1])
 
         mcont_p = c.add_ref(
-            rect_mc, rows=1, columns=nf, spacing=[sd_width + gate_length, 0]
+            rect_mc, rows=1, columns=nf, column_pitch=sd_width + gate_length
         )
         mcont_p.dmovex(sd_width - ((pc_x - gate_length) / 2) + contact_enclosure[0])
         mcont_p.dmovey(gate_width + end_cap + contact_enclosure[1])
         mcont_p2 = c.add_ref(
-            rect_mc, rows=1, columns=nf, spacing=[sd_width + gate_length, 0]
+            rect_mc, rows=1, columns=nf, column_pitch=sd_width + gate_length
         )
         mcont_p2.dmovex(sd_width - ((pc_x - gate_length) / 2) + contact_enclosure[0])
         mcont_p2.dmovey(-end_cap - contact_enclosure[1] - contact_size[1])
@@ -214,28 +230,52 @@ def nmos(
         pc_x = gate_length
         nc_p = floor(pc_x / (2 * contact_size[0]))
         for i in range(nf):
-            cont_arr3 = c.add_ref(rect_c, rows=1, columns=nc_p, spacing=con_sp)
+            cont_arr3 = c.add_ref(
+                rect_c,
+                rows=1,
+                columns=nc_p,
+                column_pitch=con_sp[0],
+                row_pitch=con_sp[1],
+            )
             cont_arr3.dmovex(
                 sd_width
                 + ((gate_length - (cont_arr3.dxmax - cont_arr3.dxmin)) / 2)
                 + (i * (gate_length + sd_width))
             )
             cont_arr3.dmovey(gate_width + end_cap + contact_enclosure[1])
-            cont_arr5 = c.add_ref(rect_c, rows=1, columns=nc_p, spacing=con_sp)
+            cont_arr5 = c.add_ref(
+                rect_c,
+                rows=1,
+                columns=nc_p,
+                column_pitch=con_sp[0],
+                row_pitch=con_sp[1],
+            )
             cont_arr5.dmovex(
                 sd_width
                 + ((gate_length - (cont_arr5.dxmax - cont_arr5.dxmin)) / 2)
                 + (i * (gate_length + sd_width))
             )
             cont_arr5.dmovey(-contact_size[1] - end_cap - contact_enclosure[1])
-            mcont_arr3 = c.add_ref(rect_mc, rows=1, columns=nc_p, spacing=con_sp)
+            mcont_arr3 = c.add_ref(
+                rect_mc,
+                rows=1,
+                columns=nc_p,
+                column_pitch=con_sp[0],
+                row_pitch=con_sp[1],
+            )
             mcont_arr3.dmovex(
                 sd_width
                 + ((gate_length - (cont_arr3.dxmax - cont_arr3.dxmin)) / 2)
                 + (i * (gate_length + sd_width))
             )
             mcont_arr3.dmovey(gate_width + end_cap + contact_enclosure[1])
-            mcont_arr5 = c.add_ref(rect_mc, rows=1, columns=nc_p, spacing=con_sp)
+            mcont_arr5 = c.add_ref(
+                rect_mc,
+                rows=1,
+                columns=nc_p,
+                column_pitch=con_sp[0],
+                row_pitch=con_sp[1],
+            )
             mcont_arr5.dmovex(
                 sd_width
                 + ((gate_length - (cont_arr5.dxmax - cont_arr5.dxmin)) / 2)
@@ -256,21 +296,21 @@ def nmos(
         layer=m1_layer,
     )
 
-    pc_u = c.add_ref(rect_pc, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    pc_u = c.add_ref(rect_pc, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     pc_u.dmovex(sd_width - ((pc_x - gate_length) / 2))
     pc_u.dmovey(gate_width + end_cap)
 
-    pc_d = c.add_ref(rect_pc, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    pc_d = c.add_ref(rect_pc, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     pc_d.dmovex(sd_width - ((pc_x - gate_length) / 2))
     pc_d.dmovey(-pc_size[1] - end_cap)
 
-    m1p_u = c.add_ref(rect_m1p, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    m1p_u = c.add_ref(rect_m1p, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     m1p_u.dmovex(
         sd_width - ((pc_x - gate_length) / 2) + contact_enclosure[0] - mcon_enclosure[0]
     )
     m1p_u.dmovey(gate_width + end_cap + contact_enclosure[1] - mcon_enclosure[1])
 
-    m1p_d = c.add_ref(rect_m1p, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    m1p_d = c.add_ref(rect_m1p, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     m1p_d.dmovex(
         sd_width - ((pc_x - gate_length) / 2) + contact_enclosure[0] - mcon_enclosure[0]
     )
@@ -279,11 +319,11 @@ def nmos(
     rect_lip = gf.components.rectangle(
         size=(pc_size[0] + li_enclosure, li_width), layer=li_layer
     )
-    lip_u = c.add_ref(rect_lip, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    lip_u = c.add_ref(rect_lip, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     lip_u.dmovex(sd_width - ((pc_x - gate_length) / 2) - li_enclosure / 2)
     lip_u.dmovey(gate_width + end_cap + contact_enclosure[1])
 
-    lip_d = c.add_ref(rect_lip, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    lip_d = c.add_ref(rect_lip, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     lip_d.dmovex(sd_width - ((pc_x - gate_length) / 2) - li_enclosure / 2)
     lip_d.dmovey(-pc_size[1] - end_cap + contact_enclosure[1])
 
@@ -294,11 +334,11 @@ def nmos(
         size=(pc_size[0] + npc_en, pc_size[1] + npc_en), layer=npc_layer
     )
 
-    npc_u = c.add_ref(rect_npc, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    npc_u = c.add_ref(rect_npc, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     npc_u.dmovex(sd_width - ((pc_x - gate_length) / 2) - npc_en / 2)
     npc_u.dmovey(gate_width + npc_spacing + npc_en / 2)
 
-    npc_d = c.add_ref(rect_npc, rows=1, columns=nf, spacing=[sd_width + gate_length, 0])
+    npc_d = c.add_ref(rect_npc, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     npc_d.dmovex(sd_width - ((pc_x - gate_length) / 2) - npc_en / 2)
     npc_d.dmovey(-pc_size[1] - npc_en - npc_spacing - npc_en / 2)
 
@@ -310,19 +350,27 @@ def nmos(
     )
     diff_p.dmovex(diff_spacing + sdm_spacing)
 
-    cont_arr4 = c.add_ref(rect_c, rows=nr, columns=nc, spacing=con_sp)
+    cont_arr4 = c.add_ref(
+        rect_c, rows=nr, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
     cont_arr4.dmovey((min_gate_wid - contact_size[1]) / 2)
 
-    mcont_arr4 = c.add_ref(rect_mc, rows=nr, columns=nc, spacing=con_sp)
+    mcont_arr4 = c.add_ref(
+        rect_mc, rows=nr, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
     mcont_arr4.dmovey((min_gate_wid - contact_size[1]) / 2)
 
     rect_m1dp = gf.components.rectangle(
         size=(contact_size[0] + 2 * mcon_enclosure[0], gate_width), layer=m1_layer
     )
-    m1dp = c.add_ref(rect_m1dp, rows=1, columns=nc, spacing=con_sp)
+    m1dp = c.add_ref(
+        rect_m1dp, rows=1, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
 
     # generate its local interconnects
-    li4 = c.add_ref(rect_lid, rows=1, columns=nc, spacing=con_sp)
+    li4 = c.add_ref(
+        rect_lid, rows=1, columns=nc, column_pitch=con_sp[0], row_pitch=con_sp[1]
+    )
 
     if nc > 1:
         cont_arr4.dmovex(

@@ -106,7 +106,9 @@ def npn_W1L2(
             contact_size[0] + contact_spacing[0],
             contact_size[1] + contact_spacing[1],
         )
-        cont_e_arr = c.add_ref(i, rows=nr_e, columns=nc_e, spacing=con_sp)
+        cont_e_arr = c.add_ref(
+            i, rows=nr_e, columns=nc_e, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )
         cont_e_arr.dmovex(
             (E_width - nc_e * contact_size[0] - (nc_e - 1) * contact_spacing[0]) / 2
         )
@@ -352,7 +354,9 @@ def npn_W1L2(
         )
 
     for i in rect_c_mc:
-        cont_B_arr1 = c.add_ref(i, rows=nr_v, columns=nc_v, spacing=con_sp)  # left side
+        cont_B_arr1 = c.add_ref(
+            i, rows=nr_v, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )  # left side
         cont_B_arr1.dmove((-np_spacing - B_width, -np_spacing))
         cont_B_arr1.dmovex(
             (B_width - nc_v * contact_size[0] - (nc_v - 1) * contact_spacing[0]) / 2
@@ -368,7 +372,7 @@ def npn_W1L2(
         )
 
         cont_B_arr2 = c.add_ref(
-            i, rows=nr_v, columns=nc_v, spacing=con_sp
+            i, rows=nr_v, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
         )  # right side
         cont_B_arr2.dmove((E_width + np_spacing, -np_spacing))
         cont_B_arr2.dmovex(
@@ -385,7 +389,7 @@ def npn_W1L2(
         )
 
         cont_B_arr3 = c.add_ref(
-            i, rows=nr_h, columns=nc_h, spacing=con_sp
+            i, rows=nr_h, columns=nc_h, column_pitch=con_sp[0], row_pitch=con_sp[1]
         )  # upper side
         cont_B_arr3.dmove((-np_spacing, E_length + np_spacing))
         cont_B_arr3.dmovex(
@@ -402,7 +406,7 @@ def npn_W1L2(
         )
 
         cont_B_arr4 = c.add_ref(
-            i, rows=nr_h, columns=nc_h, spacing=con_sp
+            i, rows=nr_h, columns=nc_h, column_pitch=con_sp[0], row_pitch=con_sp[1]
         )  # bottom side
         cont_B_arr4.dmove((-np_spacing, -np_spacing - B_width))
         cont_B_arr4.dmovex(
@@ -418,7 +422,9 @@ def npn_W1L2(
             (B_width - nr_h * contact_size[1] - (nr_h - 1) * contact_spacing[1]) / 2
         )
 
-        cont_B_arrc1 = c.add_ref(i, rows=nr_h, columns=nc_v, spacing=con_sp)  # corners
+        cont_B_arrc1 = c.add_ref(
+            i, rows=nr_h, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )  # corners
         cont_B_arrc1.dmove((-np_spacing - B_width, -np_spacing - B_width))
         cont_B_arrc1.dmove(
             (
@@ -429,7 +435,9 @@ def npn_W1L2(
             )
         )
 
-        cont_B_arrc2 = c.add_ref(i, rows=nr_h, columns=nc_v, spacing=con_sp)
+        cont_B_arrc2 = c.add_ref(
+            i, rows=nr_h, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )
         cont_B_arrc2.dmove((-np_spacing - B_width, E_length + np_spacing))
         cont_B_arrc2.dmove(
             (
@@ -440,7 +448,9 @@ def npn_W1L2(
             )
         )
 
-        cont_B_arrc3 = c.add_ref(i, rows=nr_h, columns=nc_v, spacing=con_sp)
+        cont_B_arrc3 = c.add_ref(
+            i, rows=nr_h, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )
         cont_B_arrc3.dmove((E_width + np_spacing, -np_spacing - B_width))
         cont_B_arrc3.dmove(
             (
@@ -451,7 +461,9 @@ def npn_W1L2(
             )
         )
 
-        cont_B_arrc4 = c.add_ref(i, rows=nr_h, columns=nc_v, spacing=con_sp)
+        cont_B_arrc4 = c.add_ref(
+            i, rows=nr_h, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )
         cont_B_arrc4.dmove((E_width + np_spacing, E_length + np_spacing))
         cont_B_arrc4.dmove(
             (
@@ -649,7 +661,9 @@ def npn_W1L2(
         )
 
     for i in rect_c_mc:
-        cont_C_arr1 = c.add_ref(i, rows=nr_v, columns=nc_v, spacing=con_sp)  # left side
+        cont_C_arr1 = c.add_ref(
+            i, rows=nr_v, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )  # left side
         cont_C_arr1.dmove(
             (-2.25 * np_spacing - B_width - C_width, -2.25 * np_spacing - B_width)
         )
@@ -667,7 +681,7 @@ def npn_W1L2(
         )
 
         cont_C_arr2 = c.add_ref(
-            i, rows=nr_v, columns=nc_v, spacing=con_sp
+            i, rows=nr_v, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
         )  # right side
         cont_C_arr2.dmove(
             (E_width + 2.25 * np_spacing + B_width, -2.25 * np_spacing - B_width)
@@ -686,7 +700,7 @@ def npn_W1L2(
         )
 
         cont_C_arr3 = c.add_ref(
-            i, rows=nr_h, columns=nc_h, spacing=con_sp
+            i, rows=nr_h, columns=nc_h, column_pitch=con_sp[0], row_pitch=con_sp[1]
         )  # upper side
         cont_C_arr3.dmove(
             (-2.25 * np_spacing - B_width, E_length + 2.25 * np_spacing + B_width)
@@ -705,7 +719,7 @@ def npn_W1L2(
         )
 
         cont_C_arr4 = c.add_ref(
-            i, rows=nr_h, columns=nc_h, spacing=con_sp
+            i, rows=nr_h, columns=nc_h, column_pitch=con_sp[0], row_pitch=con_sp[1]
         )  # bottom side
         cont_C_arr4.dmove(
             (-2.25 * np_spacing - B_width, -2.25 * np_spacing - B_width - C_width)
@@ -723,7 +737,9 @@ def npn_W1L2(
             (C_width - nr_h * contact_size[1] - (nr_h - 1) * contact_spacing[1]) / 2
         )
 
-        cont_C_arrc1 = c.add_ref(i, rows=nr_h, columns=nc_v, spacing=con_sp)  # corners
+        cont_C_arrc1 = c.add_ref(
+            i, rows=nr_h, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )  # corners
         cont_C_arrc1.dmove(
             (
                 -2.25 * np_spacing - B_width - C_width,
@@ -739,7 +755,9 @@ def npn_W1L2(
             )
         )
 
-        cont_C_arrc2 = c.add_ref(i, rows=nr_h, columns=nc_v, spacing=con_sp)  # corners
+        cont_C_arrc2 = c.add_ref(
+            i, rows=nr_h, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )  # corners
         cont_C_arrc2.dmove(
             (
                 -2.25 * np_spacing - B_width - C_width,
@@ -755,7 +773,9 @@ def npn_W1L2(
             )
         )
 
-        cont_C_arrc3 = c.add_ref(i, rows=nr_h, columns=nc_v, spacing=con_sp)  # corners
+        cont_C_arrc3 = c.add_ref(
+            i, rows=nr_h, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )  # corners
         cont_C_arrc3.dmove(
             (
                 E_width + 2.25 * np_spacing + B_width,
@@ -771,7 +791,9 @@ def npn_W1L2(
             )
         )
 
-        cont_C_arrc4 = c.add_ref(i, rows=nr_h, columns=nc_v, spacing=con_sp)  # corners
+        cont_C_arrc4 = c.add_ref(
+            i, rows=nr_h, columns=nc_v, column_pitch=con_sp[0], row_pitch=con_sp[1]
+        )  # corners
         cont_C_arrc4.dmove(
             (
                 E_width + 2.25 * np_spacing + B_width,
