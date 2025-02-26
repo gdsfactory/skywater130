@@ -12,24 +12,40 @@ gdsfactory pdk based on [skywater130](https://github.com/google/skywater-pdk)
 
 ## Installation
 
-For users:
+We recommend `uv`
+
+```bash
+# On macOS and Linux.
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```bash
+# On Windows.
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+### Installation for users
+
+Use python 3.11, 3.12 or 3.13. We recommend [VSCode](https://code.visualstudio.com/) as an IDE.
 
 ```
-pip install sky130
-```
-
-For developers:
-
-```
-git clone https://github.com/gdsfactory/skywater130.git
-cd skywater130
-make install
+uv pip install sky130 --upgrade
 ```
 
 Then you need to restart Klayout to make sure the new technology installed appears.
 
-## TODO
+### Installation for contributors
 
-- [X] add layout
-- [ ] link spice models
-- [ ] add sample netlist and circuit simulation
+
+Then you can install with:
+
+```bash
+git clone https://github.com/gdsfactory/sky130.git
+cd sky130
+uv venv --python 3.12
+uv sync --extra docs --extra dev
+```
+
+## Documentation
+
+- [gdsfactory docs](https://gdsfactory.github.io/gdsfactory/)
