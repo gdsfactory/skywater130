@@ -28,3 +28,26 @@ jobs:
         run: |
           make build
           twine upload dist/*
+  release_environment:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
+      - name: Install dependencies
+        run: |
+          pip install .
+          pip freeze > requirements.txt
+      - name: Publish Latest Draft
+        run: |
+          gh release edit ${{ github.ref_name }} --draft=false
+          gh release upload ${{ github.ref_name }} requirements.txt --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
