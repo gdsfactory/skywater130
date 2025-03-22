@@ -238,7 +238,7 @@ def npn_W1L2(
 
     # generate its contacts and local interconnects and mcon and metal1
 
-    nr_v = ceil((B_in.dymax - B_in.dymin) / (contact_size[1] + contact_spacing[1]))
+    nr_v = ceil((B_in.ymax - B_in.ymin) / (contact_size[1] + contact_spacing[1]))
     nc_v = ceil((B_width) / (contact_size[0] + contact_spacing[0]))
 
     if (
@@ -248,8 +248,8 @@ def npn_W1L2(
 
     if (
         (
-            B_in.dymax
-            - B_in.dymin
+            B_in.ymax
+            - B_in.ymin
             - nr_v * contact_size[1]
             - (nr_v - 1) * contact_spacing[1]
         )
@@ -257,7 +257,7 @@ def npn_W1L2(
     ) < contact_enclosure[1]:
         nr_v -= 1
 
-    nc_h = ceil((B_in.dxmax - B_in.dxmin) / (contact_size[0] + contact_spacing[0]))
+    nc_h = ceil((B_in.xmax - B_in.xmin) / (contact_size[0] + contact_spacing[0]))
     nr_h = ceil((B_width) / (contact_size[1] + contact_spacing[1]))
 
     if (
@@ -267,8 +267,8 @@ def npn_W1L2(
 
     if (
         (
-            B_in.dxmax
-            - B_in.dxmin
+            B_in.xmax
+            - B_in.xmin
             - nc_h * contact_size[1]
             - (nc_h - 1) * contact_spacing[1]
         )
@@ -363,8 +363,8 @@ def npn_W1L2(
         )
         cont_B_arr1.dmovey(
             (
-                B_in.dymax
-                - B_in.dymin
+                B_in.ymax
+                - B_in.ymin
                 - nr_v * contact_size[1]
                 - (nr_v - 1) * contact_spacing[1]
             )
@@ -380,8 +380,8 @@ def npn_W1L2(
         )
         cont_B_arr2.dmovey(
             (
-                B_in.dymax
-                - B_in.dymin
+                B_in.ymax
+                - B_in.ymin
                 - nr_v * contact_size[1]
                 - (nr_v - 1) * contact_spacing[1]
             )
@@ -394,8 +394,8 @@ def npn_W1L2(
         cont_B_arr3.dmove((-np_spacing, E_length + np_spacing))
         cont_B_arr3.dmovex(
             (
-                B_in.dxmax
-                - B_in.dxmin
+                B_in.xmax
+                - B_in.xmin
                 - nc_h * contact_size[0]
                 - (nc_h - 1) * contact_spacing[0]
             )
@@ -411,8 +411,8 @@ def npn_W1L2(
         cont_B_arr4.dmove((-np_spacing, -np_spacing - B_width))
         cont_B_arr4.dmovex(
             (
-                B_in.dxmax
-                - B_in.dxmin
+                B_in.xmax
+                - B_in.xmin
                 - nc_h * contact_size[0]
                 - (nc_h - 1) * contact_spacing[0]
             )
@@ -549,7 +549,7 @@ def npn_W1L2(
     c.add_ref(gf.boolean(A=nmC_out, B=nmC_in, operation="A-B", layer=nsdm_layer))
 
     # generate its contact and local interconnects
-    nr_v = ceil((C_in.dymax - C_in.dymin) / (contact_size[1] + contact_spacing[1]))
+    nr_v = ceil((C_in.ymax - C_in.ymin) / (contact_size[1] + contact_spacing[1]))
     nc_v = ceil((C_width) / (contact_size[0] + contact_spacing[0]))
 
     if (
@@ -559,8 +559,8 @@ def npn_W1L2(
 
     if (
         (
-            C_in.dymax
-            - C_in.dymin
+            C_in.ymax
+            - C_in.ymin
             - nr_v * contact_size[1]
             - (nr_v - 1) * contact_spacing[1]
         )
@@ -568,7 +568,7 @@ def npn_W1L2(
     ) < contact_enclosure[1]:
         nr_v -= 1
 
-    nc_h = ceil((C_in.dxmax - C_in.dxmin) / (contact_size[0] + contact_spacing[0]))
+    nc_h = ceil((C_in.xmax - C_in.xmin) / (contact_size[0] + contact_spacing[0]))
     nr_h = ceil((C_width) / (contact_size[1] + contact_spacing[1]))
 
     if (
@@ -578,8 +578,8 @@ def npn_W1L2(
 
     if (
         (
-            C_in.dxmax
-            - C_in.dxmin
+            C_in.xmax
+            - C_in.xmin
             - nc_h * contact_size[1]
             - (nc_h - 1) * contact_spacing[0]
         )
@@ -672,8 +672,8 @@ def npn_W1L2(
         )
         cont_C_arr1.dmovey(
             (
-                C_in.dymax
-                - C_in.dymin
+                C_in.ymax
+                - C_in.ymin
                 - nr_v * contact_size[1]
                 - (nr_v - 1) * contact_spacing[1]
             )
@@ -691,8 +691,8 @@ def npn_W1L2(
         )
         cont_C_arr2.dmovey(
             (
-                C_in.dymax
-                - C_in.dymin
+                C_in.ymax
+                - C_in.ymin
                 - nr_v * contact_size[1]
                 - (nr_v - 1) * contact_spacing[1]
             )
@@ -707,8 +707,8 @@ def npn_W1L2(
         )
         cont_C_arr3.dmovex(
             (
-                C_in.dxmax
-                - C_in.dxmin
+                C_in.xmax
+                - C_in.xmin
                 - nc_h * contact_size[0]
                 - (nc_h - 1) * contact_spacing[0]
             )
@@ -726,8 +726,8 @@ def npn_W1L2(
         )
         cont_C_arr4.dmovex(
             (
-                C_in.dxmax
-                - C_in.dxmin
+                C_in.xmax
+                - C_in.xmin
                 - nc_h * contact_size[0]
                 - (nc_h - 1) * contact_spacing[0]
             )
@@ -813,8 +813,8 @@ def npn_W1L2(
 
     rect_pwell = gf.components.rectangle(
         size=(
-            B_out.dxmax - B_out.dxmin + 2 * diff_enclosure[0],
-            B_out.dymax - B_out.dymin + 2 * diff_enclosure[1],
+            B_out.xmax - B_out.xmin + 2 * diff_enclosure[0],
+            B_out.ymax - B_out.ymin + 2 * diff_enclosure[1],
         ),
         layer=pwell_layer,
     )
@@ -822,13 +822,13 @@ def npn_W1L2(
     pwell.connect(
         "e1", B_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
-    pwell.dmovex(B_out.dxmax - B_out.dxmin + diff_enclosure[0])
+    pwell.dmovex(B_out.xmax - B_out.xmin + diff_enclosure[0])
 
     # generating deep nwell
     rect_dnw = gf.components.rectangle(
         size=(
-            C_out.dxmax - C_out.dxmin + 2 * diff_enclosure[0],
-            C_out.dymax - C_out.dymin + 2 * diff_enclosure[1],
+            C_out.xmax - C_out.xmin + 2 * diff_enclosure[0],
+            C_out.ymax - C_out.ymin + 2 * diff_enclosure[1],
         ),
         layer=dnwell_layer,
     )
@@ -836,18 +836,18 @@ def npn_W1L2(
     dnwell.connect(
         "e1", C_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
-    dnwell.dmovex(C_out.dxmax - C_out.dxmin + diff_enclosure[0])
+    dnwell.dmovex(C_out.xmax - C_out.xmin + diff_enclosure[0])
 
     # generating npn identifier
     npn = c.add_ref(
         gf.components.rectangle(
-            size=(C_out.dxmax - C_out.dxmin, C_out.dymax - C_out.dymin), layer=npn_layer
+            size=(C_out.xmax - C_out.xmin, C_out.ymax - C_out.ymin), layer=npn_layer
         )
     )
     npn.connect(
         "e1", C_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
-    npn.dmovex(C_out.dxmax - C_out.dxmin)
+    npn.dmovex(C_out.xmax - C_out.xmin)
     return c
 
 

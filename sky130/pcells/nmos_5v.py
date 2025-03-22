@@ -162,27 +162,27 @@ def nmos_5v(
     )
 
     if nc > 1:
-        cont_arr1.dmovex((sd_width - (cont_arr1.dxmax - cont_arr1.dxmin)) / 2)
+        cont_arr1.dmovex((sd_width - (cont_arr1.xmax - cont_arr1.xmin)) / 2)
         cont_arr2.dmovex(
             (nf * (sd_width + gate_length))
-            + ((sd_width - (cont_arr2.dxmax - cont_arr2.dxmin)) / 2)
+            + ((sd_width - (cont_arr2.xmax - cont_arr2.xmin)) / 2)
         )
-        mcont_arr1.dmovex((sd_width - (cont_arr1.dxmax - cont_arr1.dxmin)) / 2)
+        mcont_arr1.dmovex((sd_width - (cont_arr1.xmax - cont_arr1.xmin)) / 2)
         mcont_arr2.dmovex(
             (nf * (sd_width + gate_length))
-            + ((sd_width - (cont_arr2.dxmax - cont_arr2.dxmin)) / 2)
+            + ((sd_width - (cont_arr2.xmax - cont_arr2.xmin)) / 2)
         )
-        li1.dmovex((sd_width - (cont_arr1.dxmax - cont_arr1.dxmin)) / 2)
+        li1.dmovex((sd_width - (cont_arr1.xmax - cont_arr1.xmin)) / 2)
         li2.dmovex(
             (nf * (sd_width + gate_length))
-            + ((sd_width - (cont_arr2.dxmax - cont_arr2.dxmin)) / 2)
+            + ((sd_width - (cont_arr2.xmax - cont_arr2.xmin)) / 2)
         )
         m1d1.dmovex(
-            (sd_width - (cont_arr1.dxmax - cont_arr1.dxmin)) / 2 - mcon_enclosure[0]
+            (sd_width - (cont_arr1.xmax - cont_arr1.xmin)) / 2 - mcon_enclosure[0]
         )
         m1d2.dmovex(
             (nf * (sd_width + gate_length))
-            + ((sd_width - (cont_arr2.dxmax - cont_arr2.dxmin)) / 2)
+            + ((sd_width - (cont_arr2.xmax - cont_arr2.xmin)) / 2)
             - mcon_enclosure[0]
         )
     else:
@@ -215,7 +215,7 @@ def nmos_5v(
         )
         cont_arr3.dmovex(
             sd_width
-            + ((gate_length - (cont_arr3.dxmax - cont_arr3.dxmin)) / 2)
+            + ((gate_length - (cont_arr3.xmax - cont_arr3.xmin)) / 2)
             + (i * (gate_length + sd_width))
         )
         cont_arr3.dmovey(gate_width + end_cap + contact_enclosure[1])
@@ -224,7 +224,7 @@ def nmos_5v(
         )
         cont_arr5.dmovex(
             sd_width
-            + ((gate_length - (cont_arr5.dxmax - cont_arr5.dxmin)) / 2)
+            + ((gate_length - (cont_arr5.xmax - cont_arr5.xmin)) / 2)
             + (i * (gate_length + sd_width))
         )
         cont_arr5.dmovey(-contact_size[1] - end_cap - contact_enclosure[1])
@@ -234,7 +234,7 @@ def nmos_5v(
         )
         mcont_arr3.dmovex(
             sd_width
-            + ((gate_length - (cont_arr3.dxmax - cont_arr3.dxmin)) / 2)
+            + ((gate_length - (cont_arr3.xmax - cont_arr3.xmin)) / 2)
             + (i * (gate_length + sd_width))
         )
         mcont_arr3.dmovey(gate_width + end_cap + contact_enclosure[1])
@@ -243,7 +243,7 @@ def nmos_5v(
         )
         mcont_arr5.dmovex(
             sd_width
-            + ((gate_length - (cont_arr5.dxmax - cont_arr5.dxmin)) / 2)
+            + ((gate_length - (cont_arr5.xmax - cont_arr5.xmin)) / 2)
             + (i * (gate_length + sd_width))
         )
         mcont_arr5.dmovey(-contact_size[1] - end_cap - contact_enclosure[1])
@@ -338,25 +338,25 @@ def nmos_5v(
             l_d
             + diff_spacing
             + sdm_spacing
-            + ((sd_width - (cont_arr4.dxmax - cont_arr4.dxmin)) / 2)
+            + ((sd_width - (cont_arr4.xmax - cont_arr4.xmin)) / 2)
         )
         mcont_arr4.dmovex(
             l_d
             + diff_spacing
             + sdm_spacing
-            + ((sd_width - (cont_arr4.dxmax - cont_arr4.dxmin)) / 2)
+            + ((sd_width - (cont_arr4.xmax - cont_arr4.xmin)) / 2)
         )
         li4.dmovex(
             l_d
             + diff_spacing
             + sdm_spacing
-            + ((sd_width - (cont_arr4.dxmax - cont_arr4.dxmin)) / 2)
+            + ((sd_width - (cont_arr4.xmax - cont_arr4.xmin)) / 2)
         )
         m1dp.dmovex(
             l_d
             + diff_spacing
             + sdm_spacing
-            + ((sd_width - (cont_arr4.dxmax - cont_arr4.dxmin)) / 2)
+            + ((sd_width - (cont_arr4.xmax - cont_arr4.xmin)) / 2)
             - mcon_enclosure[0]
         )
     else:
@@ -405,8 +405,8 @@ def nmos_5v(
     # generating deep nwell
     rect_dnw = gf.components.rectangle(
         size=(
-            rect_pw.dxmax - rect_pw.dxmin + 2 * dnwell_enclosure[0],
-            rect_pw.dymax - rect_pw.dymin + 2 * dnwell_enclosure[1],
+            rect_pw.xmax - rect_pw.xmin + 2 * dnwell_enclosure[0],
+            rect_pw.ymax - rect_pw.ymin + 2 * dnwell_enclosure[1],
         ),
         layer=dnwell_layer,
     )
@@ -417,8 +417,8 @@ def nmos_5v(
     # generating hvi
     rect_hv = gf.components.rectangle(
         size=(
-            rect_pw.dxmax - rect_pw.dxmin + 2 * dnwell_enclosure[0],
-            rect_pw.dymax - rect_pw.dymin + 2 * dnwell_enclosure[1],
+            rect_pw.xmax - rect_pw.xmin + 2 * dnwell_enclosure[0],
+            rect_pw.ymax - rect_pw.ymin + 2 * dnwell_enclosure[1],
         ),
         layer=hvi_layer,
     )
