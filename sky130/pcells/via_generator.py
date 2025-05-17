@@ -118,8 +118,8 @@ def demo_via():
 
     for i in range(2):
         v = via_generator(
-            width=x2.dxmax - x1.dxmax,
-            length=x1.dymax - x1.dymin,
+            width=x2.xmax - x1.xmax,
+            length=x1.ymax - x1.ymin,
             via_enclosure=via_enclosure,
             via_size=via_size,
             via_spacing=via_spacing,
@@ -127,19 +127,19 @@ def demo_via():
         )
         vi = c2.add_ref(v)
         vi.dmovex(
-            (x2.dxmax - x1.dxmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
-            + i * (x2.dxmax - x1.dxmin)
+            (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
+            + i * (x2.xmax - x1.xmin)
         )
         vi.dmovey(
-            x1.dymin
-            - x2.dymin
-            + (x1.dymax - x1.dymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
+            x1.ymin
+            - x2.ymin
+            + (x1.ymax - x1.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
         )
 
     for i in range(2):
         h = via_generator(
-            width=x1.dxmax - x1.dxmin,
-            length=x2.dymax - x1.dymax,
+            width=x1.xmax - x1.xmin,
+            length=x2.ymax - x1.ymax,
             via_enclosure=via_enclosure,
             via_size=via_size,
             via_spacing=via_spacing,
@@ -147,20 +147,20 @@ def demo_via():
         )
         vi = c2.add_ref(h)
         vi.dmovey(
-            (x2.dymax - x1.dymax - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
-            + i * (x2.dymax - x1.dymin)
+            (x2.ymax - x1.ymax - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
+            + i * (x2.ymax - x1.ymin)
         )
         vi.dmovex(
-            x1.dxmin
-            - x2.dxmin
-            + (x1.dxmax - x1.dxmin - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
+            x1.xmin
+            - x2.xmin
+            + (x1.xmax - x1.xmin - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
         )
 
     for i in range(2):
         for j in range(2):
             cor = via_generator(
-                width=x2.dxmax - x1.dxmax,
-                length=x2.dymax - x1.dymax,
+                width=x2.xmax - x1.xmax,
+                length=x2.ymax - x1.ymax,
                 via_enclosure=via_enclosure,
                 via_size=via_size,
                 via_spacing=via_spacing,
@@ -169,13 +169,13 @@ def demo_via():
 
             co = c2.add_ref(cor)
             co.dmovex(
-                (x2.dxmax - x1.dxmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
+                (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
             )
             co.dmovey(
-                (x1.dymin - x2.dymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
+                (x1.ymin - x2.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
             )
-            co.dmovex(j * (x2.dxmax - x1.dxmin))
-            co.dmovey(i * (x2.dymax - x1.dymin))
+            co.dmovex(j * (x2.xmax - x1.xmin))
+            co.dmovey(i * (x2.ymax - x1.ymin))
 
     return c2
 
