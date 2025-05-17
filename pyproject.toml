@@ -13,7 +13,11 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Operating System :: OS Independent"
 ]
-dependencies = ["gdsfactory>=9.3.0", "PySpice"]
+
+dependencies = [
+  "gdsfactory>=9.5.10",
+  "PySpice"
+]
 description = "skywater130 pdk"
 keywords = ["python"]
 license = {file = "LICENSE"}
