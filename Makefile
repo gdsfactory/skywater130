@@ -7,6 +7,8 @@ dev:
 	uv run pre-commit install
 
 modules:
+	git config --global --add safe.directory sky130
+	git config --global --add safe.directory sky130/src
 	git submodule
 	git submodule update --init --recursive
 
