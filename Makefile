@@ -1,5 +1,6 @@
 install: modules
-	pip install -e .[dev,docs]
+	uv venv --python 3.12
+	uv sync --extra docs --extra dev
 
 dev:
 	uv sync --all-extras
@@ -9,6 +10,7 @@ dev:
 modules:
 	git config --global --add safe.directory sky130
 	git config --global --add safe.directory sky130/src
+	git config --global --add safe.directory /__w/skywater130/skywater130
 	git submodule
 	git submodule update --init --recursive
 
@@ -47,4 +49,4 @@ tech:
 docs:
 	uv run jb build docs
 
-.PHONY: gdsdiff build conda docs
+.PHONY: gdsdiff build conda docs modules

@@ -42,6 +42,7 @@ Then you can install with:
 ```bash
 git clone https://github.com/gdsfactory/sky130.git
 cd sky130
+make install
 uv venv --python 3.12
 uv sync --extra docs --extra dev
 ```

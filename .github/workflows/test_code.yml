@@ -19,7 +19,7 @@ jobs:
     strategy:
       max-parallel: 12
       matrix:
-        python-version: ["3.11", "3.12", "3.13"]
+        python-version: ["3.13"]
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v4
@@ -31,4 +31,4 @@ jobs:
       - name: Install Dependencies
         run: uv sync --all-extras
       - name: Run Tests
-        run: make test
+        run: make modules test
