@@ -17,7 +17,7 @@ jobs:
       - uses: astral-sh/setup-uv@v6
       - name: Installing the library
         run: uv sync --all-extras
-      - run: make modules docs
+      - run: make modules ngspice docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

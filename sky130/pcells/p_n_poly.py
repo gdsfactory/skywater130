@@ -252,10 +252,15 @@ def p_n_poly(
         "e1", urpm.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
     psdm.dmovex(urpm_width + sdm_enclosure[0])
+
+    c.add_ports(cont_arr.ports)
+    c.add_port("p", port=c.ports["e1"])
+    c.add_port("n", port=c.ports["e2"])
     return c
 
 
 if __name__ == "__main__":
     # c = p_n_poly(p_poly_width= 5.73, p_poly_length=2)
     c = p_n_poly()
+    c.pprint_ports()
     c.show()
