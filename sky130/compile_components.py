@@ -45,7 +45,7 @@ def {cell_name}() -> gf.Component:
       c = sky130.components.{cell_name}()
       c.plot()
     \"\"\"
-    return import_gds(gdsdir / "{file_path}", cellname="{raw_cell_name}")
+    return import_gds(gdsdir / "{file_path}")
 """
         return code
 
@@ -75,7 +75,7 @@ add_ports_m2 = gf.partial(
     get_name_from_label=True,
     guess_port_orientation=True,
 )
-add_ports = gf.compose(add_ports_m1, add_ports_m2)
+add_ports = (add_ports_m1, add_ports_m2)
 
 gdsdir = PATH.module
 import_gds = partial(gf.import_gds, post_process=add_ports)
