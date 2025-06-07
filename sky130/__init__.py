@@ -10,7 +10,7 @@ from sky130 import components, pcells
 from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS
 from sky130.tech import cross_sections
 
-__version__ = "0.14.0"
+__version__ = "0.14.1"
 
 gf.CONF.allow_layer_mismatch = True
 gf.CONF.allow_width_mismatch = True
