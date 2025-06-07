@@ -15,7 +15,7 @@ modules:
 	git submodule update --init --recursive
 
 ngspice:
-	sudo apt update
+	sudo apt-get update
 	sudo apt-get install -y ngspice
 
 test:
