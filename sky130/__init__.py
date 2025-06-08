@@ -7,8 +7,8 @@ from gdsfactory.get_factories import get_cells
 from gdsfactory.pdk import Pdk
 
 from sky130 import components, pcells
-from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS
-from sky130.tech import cross_sections
+from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS, connectivity
+from sky130.tech import cross_sections, routing_strategies
 
 __version__ = "0.14.1"
 
@@ -23,6 +23,8 @@ PDK = Pdk(
     layers=LAYER,
     layer_stack=LAYER_STACK,
     layer_views=LAYER_VIEWS,
+    routing_strategies=routing_strategies,
+    connectivity=connectivity,
 )
 PDK.register_cells_yaml(dirpath=pathlib.Path(__file__).parent.absolute())
 PDK.activate()
