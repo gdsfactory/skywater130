@@ -10,6 +10,7 @@ from sky130.pcells.pmos import pmos
 from sky130.pcells.pmos_5v import pmos_5v
 from sky130.pcells.pnp import pnp
 from sky130.pcells.via_generator import via_generator
+from sky130.pcells.waveguides import *
 
 __all__ = [
     "mimcap_1",

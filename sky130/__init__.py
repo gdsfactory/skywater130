@@ -1,6 +1,4 @@
-"""sky130 - skywater gdsfactory pdk"""
-
-import pathlib
+"""Sky130 - skywater gdsfactory pdk"""
 
 import gdsfactory as gf
 from gdsfactory.get_factories import get_cells
@@ -26,17 +24,13 @@ PDK = Pdk(
     routing_strategies=routing_strategies,
     connectivity=connectivity,
 )
-PDK.register_cells_yaml(dirpath=pathlib.Path(__file__).parent.absolute())
 PDK.activate()
 
-__all__ = ["cells", "PDK", "components"]
-
-if __name__ == "__main__":
-    f = PDK.cells
-    print(f.keys())
-    # import gdsfactory as gf
-
-    # script = gf.write_cells.get_import_gds_script("gds", module="sky130.components")
-    # filepath = pathlib.Path("components2.py")
-    # filepath.write_text(script)
-    # print(script)
+__all__ = [
+    "cells",
+    "PDK",
+    "components",
+    "pcells",
+    "LAYER",
+    "LAYER_STACK",
+]
