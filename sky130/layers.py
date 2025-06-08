@@ -479,13 +479,7 @@ class LayerMapSky130(LayerMap):
     cap2m: Layer = (97, 44)  # MiM capacitor plate over metal 4
 
     LABEL_INSTANCE: Layer = (66, 0)
-    DEVREC: Layer = (68, 0)
-    PORT: Layer = (1, 10)
-    PORTE: Layer = (1, 11)
-    TE: Layer = (203, 0)
-    TM: Layer = (204, 0)
     TEXT: Layer = (66, 0)
-    WG: Layer = (203, 0)  # TODO remove when updating gdsfactory7
 
 
 LAYER = LayerMapSky130
@@ -660,6 +654,21 @@ def get_layer_stack() -> LayerStack:
 
 LAYER_STACK = get_layer_stack()
 LAYER_VIEWS = gf.technology.LayerViews(PATH.lyp_yaml)
+connectivity = [
+    ("met1", "via", "met2"),
+    ("met2", "via2", "met3"),
+    ("met3", "via3", "met4"),
+    ("met4", "via4", "met5"),
+    ("licon1", "li1", "mcon"),
+    ("poly", "licon1"),
+    ("nwell", "dnwell"),
+    ("nwell", "nsdm"),
+    ("pwell", "pwbm"),
+    ("hvtp", "pwbm"),
+    ("hvi", "poly"),
+    ("ldntm", "poly"),
+    ("hvntm", "poly"),
+]
 
 
 if __name__ == "__main__":
@@ -669,12 +678,6 @@ if __name__ == "__main__":
     # print(lyp_to_dataclass(PATH.lyp))
     # print(LAYER_STACK.get_klayout_3d_script())
     from gdsfactory.technology.klayout_tech import KLayoutTechnology
-
-    connectivity = [
-        ("met1", "via", "met2"),
-        ("met2", "via2", "met3"),
-        ("met3", "via3", "met4"),
-    ]
 
     t = KLayoutTechnology(
         name="sky130",
