@@ -40,7 +40,7 @@ Then you need to restart Klayout to make sure the new technology installed appea
 Then you can install with:
 
 ```bash
-git clone https://github.com/gdsfactory/sky130.git
+git clone https://github.com/gdsfactory/skywater130.git
 cd sky130
 make install
 uv venv --python 3.12
