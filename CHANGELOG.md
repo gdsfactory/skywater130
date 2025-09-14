@@ -4,12 +4,11 @@
 
 ## [0.15.1](https://github.com/gdsfactory/skywater130/releases/tag/v0.15.1) - 2025-09-14
 
-No significant changes.
-
+- better type annotations and update to gdsfactory 9.15.0 [#121](https://github.com/gdsfactory/skywater130/pull/121)
 
 ## [0.15.0](https://github.com/gdsfactory/skywater130/releases/tag/v0.15.0) - 2025-06-08
 
-No significant changes.
+- add routing strategies
 
 
 ## [0.14.1](https://github.com/gdsfactory/skywater130/releases/tag/v0.14.1) - 2025-06-06
