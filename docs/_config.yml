@@ -49,9 +49,32 @@ sphinx:
     - "matplotlib.sphinxext.plot_directive"
   config:
     #autodoc_typehints: description
+    autodoc_typehints: description
+    autodoc_typehints_format: short
+    python_use_unqualified_type_names: True
     autodoc_type_aliases:
+      "ComponentFactory": "ComponentFactory"
       "ComponentSpec": "ComponentSpec"
-    nb_execution_show_tb: True
+      "CrossSectionFactory": "CrossSectionFactory"
+      "CrossSectionSpec": "CrossSectionSpec"
+      "LayerSpec": "LayerSpec"
+      "LayerSpecs": "LayerSpecs"
+      "Layer": "Layer"
+      "Layers": "Layers"
+      "PathType": "PathType"
+      "SDict": "sax.SDict"
+      "sax.SDict": "sax.SDict"
+      "gdsfactory.typings.ComponentFactory": "ComponentFactory"
+      "gdsfactory.typings.ComponentSpec": "ComponentSpec"
+      "gdsfactory.typings.CrossSectionFactory": "CrossSectionFactory"
+      "gdsfactory.typings.CrossSectionSpec": "CrossSectionSpec"
+      "gdsfactory.typings.LayerSpec": "LayerSpec"
+      "gdsfactory.typings.LayerSpecs": "LayerSpecs"
+      "gdsfactory.typings.Layer": "Layer"
+      "gdsfactory.typings.Layers": "Layers"
+      "gdsfactory.typings.PathType": "PathType"
+      "CrossSection | str | dict[str, Any] | Callable[[...], CrossSection] | SymmetricalCrossSection | DCrossSection": "CrossSectionSpec"
+      "Component | ComponentAllAngle | str | dict[str, Any] | Callable[[...], Component]": "ComponentSpec"
     # nb_custom_formats:
     #     .py:
     #         - jupytext.reads
