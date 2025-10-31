@@ -97,7 +97,7 @@ def demo_via():
         via_layer=via_layer,
     )
     v = c1.add_ref(c)
-    v.dmove(
+    v.move(
         (
             (width - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2,
             (length - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2,
@@ -109,7 +109,7 @@ def demo_via():
     d = gf.Component()
     x1 = d.add_ref(rect)
     x2 = d.add_ref(rect_out)
-    x1.dmove((1.5 * width, 1.5 * length))
+    x1.move((1.5 * width, 1.5 * length))
     c2.add_ref(gf.boolean(A=x2, B=x1, operation="not", layer=bottom_layer))
     c2.add_label(
         "test for via4 over met4 within a bending area",
@@ -126,11 +126,11 @@ def demo_via():
             via_layer=via_layer,
         )
         vi = c2.add_ref(v)
-        vi.dmovex(
+        vi.movex(
             (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
             + i * (x2.xmax - x1.xmin)
         )
-        vi.dmovey(
+        vi.movey(
             x1.ymin
             - x2.ymin
             + (x1.ymax - x1.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
@@ -146,11 +146,11 @@ def demo_via():
             via_layer=via_layer,
         )
         vi = c2.add_ref(h)
-        vi.dmovey(
+        vi.movey(
             (x2.ymax - x1.ymax - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
             + i * (x2.ymax - x1.ymin)
         )
-        vi.dmovex(
+        vi.movex(
             x1.xmin
             - x2.xmin
             + (x1.xmax - x1.xmin - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
@@ -168,14 +168,14 @@ def demo_via():
             )
 
             co = c2.add_ref(cor)
-            co.dmovex(
+            co.movex(
                 (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
             )
-            co.dmovey(
+            co.movey(
                 (x1.ymin - x2.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
             )
-            co.dmovex(j * (x2.xmax - x1.xmin))
-            co.dmovey(i * (x2.ymax - x1.ymin))
+            co.movex(j * (x2.xmax - x1.xmin))
+            co.movey(i * (x2.ymax - x1.ymin))
 
     return c2
 

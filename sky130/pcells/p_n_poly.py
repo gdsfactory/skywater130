@@ -79,7 +79,7 @@ def p_n_poly(
         size=(p_poly_width, p_poly_length + 2 * p_length), layer=poly_layer
     )
     R_0 = c.add_ref(rect_p)
-    R_0.dmovey(-p_length)
+    R_0.movey(-p_length)
 
     # generate contacts (licon )
     rect_lc = gf.components.rectangle(size=licon_slots_size, layer=contact_layer)
@@ -103,7 +103,7 @@ def p_n_poly(
         cont_arr = c.add_ref(
             rect_lc, rows=1, columns=nc, column_pitch=lic_sp[0], row_pitch=lic_sp[1]
         )
-        cont_arr.dmovex(
+        cont_arr.movex(
             (
                 p_poly_width
                 - nc * licon_slots_size[0]
@@ -111,7 +111,7 @@ def p_n_poly(
             )
             / 2
         )
-        cont_arr.dmovey(
+        cont_arr.movey(
             i * (p_poly_length + (p_length - licon_slots_size[1]) / 2)
             - (1 - i) * (licon_slots_size[1] + (p_length - licon_slots_size[1]) / 2)
         )
@@ -139,13 +139,13 @@ def p_n_poly(
             + licon_slots_size[1]
             - (1 - i) * (mcon_enclosure[1] - li_enclosure),
         )
-        li_m1.dmovey(
+        li_m1.movey(
             -licon_slots_size[1]
             - contact_enclosure[1]
             - i * li_enclosure
             - (1 - i) * mcon_enclosure[1]
         )
-        li_m1.dmovex((1 - i) * (-mcon_enclosure[0] + li_enclosure))
+        li_m1.movex((1 - i) * (-mcon_enclosure[0] + li_enclosure))
 
     # generate mcon
 
@@ -186,12 +186,12 @@ def p_n_poly(
             column_pitch=con_sp[0],
             row_pitch=con_sp[1],
         )
-        # mcon_arr.dmovex((p_poly_width - nc*licon_slots_size[0] - (nc-1)*licon_slots_spacing[0] - 2*li_enclosure )/2)
-        mcon_arr.dmovey(
+        # mcon_arr.movex((p_poly_width - nc*licon_slots_size[0] - (nc-1)*licon_slots_spacing[0] - 2*li_enclosure )/2)
+        mcon_arr.movey(
             (1 - i) * (-licon_slots_size[1] - contact_enclosure[1] - li_enclosure)
             + i * (p_poly_length)
         )
-        mcon_arr.dmovex(
+        mcon_arr.movex(
             (
                 rect_li_m1.xmax
                 - rect_li_m1.xmin
@@ -200,7 +200,7 @@ def p_n_poly(
             )
             / 2
         )
-        mcon_arr.dmovey(
+        mcon_arr.movey(
             (
                 rect_li_m1.ymax
                 - rect_li_m1.ymin
@@ -223,7 +223,7 @@ def p_n_poly(
     npc.connect(
         "e1", R_0.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
-    npc.dmovex(p_poly_width + npc_enclosure[0])
+    npc.movex(p_poly_width + npc_enclosure[0])
 
     # generate rpm (poly resistor implant)
     if p_poly_width <= urpm_min_width:
@@ -240,7 +240,7 @@ def p_n_poly(
     urpm.connect(
         "e1", R_0.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
-    urpm.dmovex(p_poly_width + ((urpm_width - p_poly_width) / 2))
+    urpm.movex(p_poly_width + ((urpm_width - p_poly_width) / 2))
 
     # generate p+ implants
     rect_psdm = gf.components.rectangle(
@@ -251,7 +251,7 @@ def p_n_poly(
     psdm.connect(
         "e1", urpm.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
-    psdm.dmovex(urpm_width + sdm_enclosure[0])
+    psdm.movex(urpm_width + sdm_enclosure[0])
 
     c.add_ports(cont_arr.ports)
     c.add_port("p", port=c.ports["e1"])
