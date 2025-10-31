@@ -26,5 +26,5 @@ routes:
     routing_strategy: route_bundle_electrical
 
     settings:
-      cross_section: xs_metal1
+      cross_section: metal1
       width: ${settings.metal_width}
