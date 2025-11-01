@@ -13,7 +13,7 @@ jobs:
     name: Sphinx docs to gh-pages
     steps:
       - uses: actions/checkout@v5
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@v7
       - name: Installing the library
         run: uv sync --all-extras
       - run: make modules ngspice docs
