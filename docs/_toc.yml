@@ -9,5 +9,6 @@ chapters:
   - file: components
   - file: tutorial
     sections:
-      - glob: notebooks/*
+      - file: notebooks/intro
+      - file: rc_filter_analysis
   - file: changelog
