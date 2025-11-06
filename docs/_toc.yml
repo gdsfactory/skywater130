@@ -10,5 +10,5 @@ chapters:
   - file: tutorial
     sections:
       - file: notebooks/intro
-      - file: rc_filter_analysis
+      - file: notebooks/rc_filter_analysis
   - file: changelog
