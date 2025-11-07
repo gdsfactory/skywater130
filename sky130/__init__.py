@@ -8,7 +8,7 @@ from sky130 import components, pcells
 from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS, connectivity
 from sky130.tech import cross_sections, routing_strategies
 
-__version__ = "0.15.1"
+__version__ = "0.15.2"
 
 gf.CONF.allow_layer_mismatch = True
 gf.CONF.allow_width_mismatch = True

@@ -2,6 +2,11 @@
 
 <!-- towncrier release notes start -->
 
+## [0.15.2](https://github.com/gdsfactory/skywater130/releases/tag/v0.15.2) - 2025-11-07
+
+No significant changes.
+
+
 ## [0.15.1](https://github.com/gdsfactory/skywater130/releases/tag/v0.15.1) - 2025-09-14
 
 - better type annotations and update to gdsfactory 9.15.0 [#121](https://github.com/gdsfactory/skywater130/pull/121)
