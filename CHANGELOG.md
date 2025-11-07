@@ -4,7 +4,13 @@
 
 ## [0.15.2](https://github.com/gdsfactory/skywater130/releases/tag/v0.15.2) - 2025-11-07
 
-No significant changes.
+- Bump astral-sh/setup-uv from 6 to 7 [#125](https://github.com/gdsfactory/skywater130/pull/125)
+- Bump actions/setup-python from 5 to 6 [#122](https://github.com/gdsfactory/skywater130/pull/122)
+- update docs [#126](https://github.com/gdsfactory/skywater130/pull/126)
+- update dmove to move [#124](https://github.com/gdsfactory/skywater130/pull/124)
+- update docs [#126](https://github.com/gdsfactory/skywater130/pull/126)
+- Bump astral-sh/setup-uv from 6 to 7 [#125](https://github.com/gdsfactory/skywater130/pull/125)
+- Bump actions/setup-python from 5 to 6 [#122](https://github.com/gdsfactory/skywater130/pull/122)
 
 
 ## [0.15.1](https://github.com/gdsfactory/skywater130/releases/tag/v0.15.1) - 2025-09-14
