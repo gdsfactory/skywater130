@@ -14,7 +14,7 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "gdsfactory~=9.20.6",
+  "gdsfactory~=9.20.7",
   "PySpice"
 ]
 description = "skywater130 pdk"
@@ -40,7 +40,7 @@ docs = ["jupytext", "jupyter-book==1.0.4"]
 exclude = ["**/.git/**"]
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.12"
 strict = true
 
 [tool.pydocstyle]

@@ -3,6 +3,7 @@
 
 title: sky130
 author: skywater
+logo: logo.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -75,6 +76,7 @@ sphinx:
       "gdsfactory.typings.PathType": "PathType"
       "CrossSection | str | dict[str, Any] | Callable[[...], CrossSection] | SymmetricalCrossSection | DCrossSection": "CrossSectionSpec"
       "Component | ComponentAllAngle | str | dict[str, Any] | Callable[[...], Component]": "ComponentSpec"
+    nb_execution_raise_on_error: true
     # nb_custom_formats:
     #     .py:
     #         - jupytext.reads
