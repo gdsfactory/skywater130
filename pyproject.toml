@@ -34,7 +34,7 @@ dev = [
   "pytest-randomly",
   "pytest-xdist"
 ]
-docs = ["jupytext", "jupyter-book==1.0.4"]
+docs = ["jupytext", "jupyter-book==2.1.0"]
 
 [tool.flit.sdist]
 exclude = ["**/.git/**"]
