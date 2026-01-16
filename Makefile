@@ -1,4 +1,6 @@
 install: modules
+.PHONY: rm-samples
+
 	uv venv --python 3.12
 	uv sync --extra docs --extra dev
 
