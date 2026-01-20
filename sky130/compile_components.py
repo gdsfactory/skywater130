@@ -1,10 +1,38 @@
 import os
+import re
 
 # Define the PDK directories
 pdk_directories = ["src/sky130_fd_pr", "src/sky130_fd_sc_hd"]
 
 
-# List to store gds file paths
+def get_port_order_from_spice(spice_path, cell_name):
+    """Extract port order from a SPICE file's .subckt definition.
+
+    Args:
+        spice_path: Path to the SPICE file
+        cell_name: Name of the subcircuit to find
+
+    Returns:
+        List of port names, or empty list if not found
+    """
+    if not os.path.exists(spice_path):
+        return []
+
+    with open(spice_path, "r") as f:
+        content = f.read()
+
+    # Match .subckt lines: .subckt <name> <port1> <port2> ...
+    # The pattern handles optional whitespace and captures ports until end of line
+    pattern = rf"\.subckt\s+{re.escape(cell_name)}\s+(.+?)$"
+    match = re.search(pattern, content, re.MULTILINE | re.IGNORECASE)
+
+    if match:
+        ports_str = match.group(1).strip()
+        # Split on whitespace to get individual port names
+        ports = ports_str.split()
+        return ports
+
+    return []
 
 
 def compile_components(pdk_directories=pdk_directories):
@@ -32,6 +60,19 @@ def compile_components(pdk_directories=pdk_directories):
         # For old compatibility:
         cell_name = raw_cell_name
 
+        # Compute spice_type based on cell name
+        if "diode" in cell_name:
+            spice_type = "DIODE"
+        elif "res_generic" in cell_name:
+            spice_type = "RESISTOR"
+        else:
+            spice_type = "SUBCKT"
+
+        spice_lib = file_path.split(".")[0] + ".spice"
+
+        # Get port order from the corresponding SPICE file
+        port_order = get_port_order_from_spice(spice_lib, cell_name)
+
         code = f"""
 @cell
 def {cell_name}() -> gf.Component:
@@ -45,7 +86,17 @@ def {cell_name}() -> gf.Component:
       c = sky130.components.{cell_name}()
       c.plot()
     \"\"\"
-    return import_gds(gdsdir / "{file_path}")
+    c = import_gds(gdsdir / "{file_path}")
+    c.info["vlsir"] = {{
+        "model": "{cell_name}",
+        "spice_type": "{spice_type}",
+        "spice_lib": gdsdir / "{spice_lib}",
+        "port_order": {port_order},
+        "port_map": {{}},
+        "params": {{}}
+    }}
+
+    return c
 """
         return code
 
