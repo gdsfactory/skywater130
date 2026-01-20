@@ -256,6 +256,19 @@ def p_n_poly(
     c.add_ports(cont_arr.ports)
     c.add_port("p", port=c.ports["e1"])
     c.add_port("n", port=c.ports["e2"])
+
+    # Model with a generic resistor with 2000 ohm/sq
+    c.info["vlsir"] = {
+        "model" : "p_n_poly_res",
+        "spice_type" : "RESISTOR",
+        "spice_lib" : None,
+        "port_order" : ["p", "n"],
+        "port_map" : {},
+        "params" : {
+            "r" : 2000 * p_poly_length * p_poly_width
+        }
+    }
+
     return c
 
 

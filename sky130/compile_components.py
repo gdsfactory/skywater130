@@ -63,8 +63,6 @@ def compile_components(pdk_directories=pdk_directories):
         # Compute spice_type based on cell name
         if "diode" in cell_name:
             spice_type = "DIODE"
-        elif "res_generic" in cell_name:
-            spice_type = "RESISTOR"
         else:
             spice_type = "SUBCKT"
 

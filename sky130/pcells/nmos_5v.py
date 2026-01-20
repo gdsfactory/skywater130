@@ -436,6 +436,19 @@ def nmos_5v(
     hvntm.movex(-sdm_enclosure[0] - hvntm_enclosure[0])
     hvntm.movey(-sdm_enclosure[1] - hvntm_enclosure[1])
 
+    c.info["vlsir"] = {
+        "model" : "sky130_fd_pr__nfet_05v0_nvt",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "src/sky130_fd_pr/cells/nfet_05v0_nvt/sky130_fd_pr__nfet_05v0_nvt.pm3.spice",
+        "port_order" : ["d","g","s","b"],
+        "port_map" : {}, # TODO: Explicit ports?
+        "params" : {
+            "w" : gate_width,
+            "l" : gate_length,
+            "nf" : nf
+        }
+    }
+
     return c
 
 

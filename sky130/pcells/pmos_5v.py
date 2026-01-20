@@ -416,6 +416,20 @@ def pmos_5v(
     dnwell = c.add_ref(rect_hv)
     dnwell.movex(-diff_enclosure[0] - dnwell_enclosure[0])
     dnwell.movey(-diff_enclosure[1] - dnwell_enclosure[1])
+
+    c.info["vlsir"] = {
+        "model" : "sky130_fd_pr__pfet_05v0_nvt",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "src/sky130_fd_pr/cells/pfet_05v0_nvt/sky130_fd_pr__pfet_05v0_nvt.pm3.spice",
+        "port_order" : ["d","g","s","b"],
+        "port_map" : {}, # TODO: Explicit ports?
+        "params" : {
+            "w" : gate_width,
+            "l" : gate_length,
+            "nf" : nf
+        }
+    }
+
     return c
 
 
