@@ -807,6 +807,18 @@ def npn_W1L1(
         "e1", C_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
     npn.movex(C_out.xmax - C_out.xmin)
+
+    c.info["vlsir"] = {
+        "model" : "sky130_fd_pr__npn_05v5_W1p00L1p00",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "src/sky130_fd_pr/cells/npn_05v5/sky130_fd_pr__npn_05v5_W1p00L1p00.model.spice",
+        "port_order" : ["c", "b", "e", "s"],
+        "port_map" : {}, # TODO: GDSF Ports?
+        "params" : {
+            "area" : E_length * E_width
+        }
+    }
+
     return c
 
 

@@ -128,6 +128,19 @@ def mimcap_2(
     via3_arr2.movey(
         (m4_width - en[1] / 2 - nr2 * via4_size[1] - (nr2 - 1) * via4_spacing[1]) / 2
     )
+
+    c.info['vlsir'] = {
+        "model" : "sky130_fd_pr__cap_mim_m3_2",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "src/cells/cap_mim_m3/sky130_fd_pr__cap_mim_m3_2.model.spice",
+        "port_order" : ["c0","c1"],
+        "port_map" : {"e1":"c0", "e3":"c1"},
+        "params" : {
+            "w" : m5_width,
+            "l" : m5_length
+        }
+    }
+
     return c
 
 
