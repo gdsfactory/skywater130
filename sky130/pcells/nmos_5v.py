@@ -206,6 +206,9 @@ def nmos_5v(
     li1.movey(-li_enclosure / 2)
     li2.movey(-li_enclosure / 2)
 
+    c.add_port(name="DRAIN", width=0.01, center=m1d1.dcenter, layer=m1_layer, orientation=0, port_type="electrical")
+    c.add_port(name="SOURCE", width=0.01, center=m1d2.dcenter, layer=m1_layer, orientation=0, port_type="electrical")
+
     # generating contacts and local interconnects and mcon and m1 of poly
 
     nc_p = floor(gate_length / (2 * contact_size[0]))
@@ -276,6 +279,8 @@ def nmos_5v(
     m1p_d = c.add_ref(rect_m1p, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     m1p_d.movex(sd_width + contact_enclosure[0] - mcon_enclosure[0])
     m1p_d.movey(-pc_size[1] - end_cap + contact_enclosure[1] - contact_enclosure[1])
+
+    c.add_port(name="GATE", width=0.01, center=m1p_u.dcenter, layer=m1_layer, orientation=0, port_type="electrical")
 
     rect_lip = gf.components.rectangle(
         size=(pc_size[0] + li_enclosure, li_width), layer=li_layer
@@ -377,6 +382,8 @@ def nmos_5v(
 
     li4.movey(-li_enclosure / 2)
 
+    c.add_port(name="BODY", width=0.01, center=m1dp.dcenter, layer=m1_layer, orientation=0, port_type="electrical")
+
     # generating p+ implant for bulk tie
     rect_pm = gf.components.rectangle(
         size=(sd_width + 2 * sdm_enclosure[0], gate_width + 2 * sdm_enclosure[1]),
@@ -436,6 +443,8 @@ def nmos_5v(
     hvntm.movex(-sdm_enclosure[0] - hvntm_enclosure[0])
     hvntm.movey(-sdm_enclosure[1] - hvntm_enclosure[1])
 
+    c.draw_ports()
+    c.pprint_ports()
     return c
 
 
