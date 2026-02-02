@@ -445,6 +445,20 @@ def nmos_5v(
 
     c.draw_ports()
     c.pprint_ports()
+
+    c.info['vlsir'] = {
+        "model" : "sky130_fd_pr__nfet_g5v0d10v5",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "corners/tt.spice",
+        "port_order" : ["d", "g", "s", "b"],
+        "port_map" : {
+            "DRAIN" : "d",
+            "SOURCE" : "s",
+            "GATE" : "g",
+            "BODY" : "b"
+        }
+    }
+    
     return c
 
 
