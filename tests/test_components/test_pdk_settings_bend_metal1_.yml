@@ -1,13 +1,13 @@
 info:
   dy: 0.2
-  length: 0.312
+  length: 0.283
   radius: 0.2
-  route_info_length: 0.312
-  route_info_metal1_length: 0.312
+  route_info_length: 0.283
+  route_info_metal1_length: 0.283
   route_info_min_bend_radius: 0.2
   route_info_n_bend_90: 1
   route_info_type: metal1
-  route_info_weight: 0.312
+  route_info_weight: 0.283
   width: 0.2
 name: bend_metal1_RNone_A90_WNone_CSmetal1
 settings:
