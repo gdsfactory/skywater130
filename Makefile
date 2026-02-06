@@ -26,6 +26,9 @@ ngspice:
 test:
 	uv run pytest -s -n logical
 
+test-force:
+	uv run pytest -s -n logical --force-regen
+
 cov:
 	uv run pytest --cov=sky130
 
