@@ -4,9 +4,11 @@ from collections.abc import Callable
 from functools import partial, wraps
 from typing import Any
 
+
 import gdsfactory as gf
 from gdsfactory.cross_section import CrossSection
-from gdsfactory.typings import LayerSpec
+from gdsfactory.typings import LayerSpec, Port, ComponentSpec, CrossSectionSpec
+from gdsfactory.component import Component
 
 ############################
 # Cross-sections functions
@@ -120,6 +122,16 @@ route_bundle_metal3 = partial(route_bundle, cross_section="metal3")
 route_bundle_metal4 = partial(route_bundle, cross_section="metal4")
 route_bundle_metal5 = partial(route_bundle, cross_section="metal5")
 
+
+
+from sky130.routing import route_astar
+
+route_astar_metal1 = partial(route_astar, cross_section="metal1", straight="straight_metal1")
+route_astar_metal2 = partial(route_astar, cross_section="metal2", straight="straight_metal2")
+route_astar_metal3 = partial(route_astar, cross_section="metal3", straight="straight_metal3")
+route_astar_metal4 = partial(route_astar, cross_section="metal4", straight="straight_metal4")
+route_astar_metal5 = partial(route_astar, cross_section="metal5", straight="straight_metal5")
+
 routing_strategies = dict(
     route_bundle=route_bundle,
     route_bundle_metal1=route_bundle_metal1,
@@ -127,6 +139,12 @@ routing_strategies = dict(
     route_bundle_metal3=route_bundle_metal3,
     route_bundle_metal4=route_bundle_metal4,
     route_bundle_metal5=route_bundle_metal5,
+    route_astar=route_astar,
+    route_astar_metal1=route_astar_metal1,
+    route_astar_metal2=route_astar_metal2,
+    route_astar_metal3=route_astar_metal3,
+    route_astar_metal4=route_astar_metal4,
+    route_astar_metal5=route_astar_metal5,
 )
 
 
