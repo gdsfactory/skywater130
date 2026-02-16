@@ -8,7 +8,7 @@ from gdsfactory.component import Component
 from gdsfactory.typings import LayerSpec, Port
 import numpy as np
 
-from doroutes import find_route_astar
+#from doroutes import find_route_astar
 from sky130.pcells.vias import via_m1_m2
 
 
@@ -184,6 +184,9 @@ def _run_astar_rectilinear(
                       [(bend_radius, i) for i in range(1, bend_radius + 1)]
     
     try:
+        print(straight_width)
+        print(grid_unit_dbu)
+        #input("debugging...")
         corners = _doroutes.show(
             polys=polys,
             start=start_pos,
@@ -391,7 +394,7 @@ def route_hierarchical_astar(
     print(f"[DETAIL] Refining with grid_unit={detail_grid_unit}um...")
     
     detail_grid_dbu = int(detail_grid_unit / dbu)
-    detail_straight_width = max(1, width_dbu // detail_grid_dbu + 1)
+    detail_straight_width = max(width, width_dbu // detail_grid_dbu + 1)
     detail_straight_width += (detail_straight_width + 1) % 2
     detail_bend_radius = max(1, (width_dbu + detail_grid_dbu - 1) // detail_grid_dbu)
     margin_dbu = int(detail_margin / dbu)
@@ -425,6 +428,7 @@ def route_hierarchical_astar(
         seg_end_pos = (seg_end[0], seg_end[1], end_dir)
         
         # Try detailed routing for this segment
+        print("detailed...")
         detail_corners = _run_astar_rectilinear(
             polys=polys,
             start_pos=seg_start_pos,
@@ -434,6 +438,7 @@ def route_hierarchical_astar(
             straight_width=detail_straight_width,
             bend_radius=detail_bend_radius,
         )
+        detail_corners = None
         
         if detail_corners and len(detail_corners) > 1:
             # Add detailed path (skip first point as it's same as last added)
@@ -449,268 +454,6 @@ def route_hierarchical_astar(
     return refined_path_um
 
 
-def route_multilayer_astar(
-    c: Component,
-    start: Port,
-    stop: Port,
-    grid_unit: float = 0.5,  # Increased default for faster routing
-    width: float = 0.25,
-    layers_to_avoid: Iterable[LayerSpec] = None,
-    rectilinear: bool = True,
-    bend_radius: int = 1,  # Configurable bend radius in grid units
-) -> None:
-    """Route between start and stop ports using Metal1 (Horizontal) and Metal2 (Vertical).
-
-    Uses `find_route_astar` from doroutes for pathfinding, then places:
-    - Metal 1 rectangles for horizontal segments
-    - Metal 2 rectangles for vertical segments
-    - via_m1_m2 at every corner (layer transition point)
-
-    Args:
-        c: Component to add the route to.
-        start: Start port.
-        stop: Stop port.
-        grid_unit: Discretization unit for A* algorithm (um). Larger = faster but less precise.
-        width: Width of the metal traces (um).
-        layers_to_avoid: Layers containing obstructions.
-        rectilinear: If True, use square 90° corners instead of smooth bends.
-        bend_radius: Bend radius in grid units (larger = fewer corners allowed).
-    """
-    if layers_to_avoid is None:
-        layers_to_avoid = []
-
-    dbu = c.kcl.dbu
-    grid_unit_dbu = int(grid_unit / dbu)
-
-    # 1. Find the path (corners) using A*
-    if rectilinear:
-        # Rectilinear mode: use simple L-pattern for square corners
-        # Import doroutes directly to call show() with custom bend pattern
-        from doroutes import doroutes as _doroutes
-        from kfactory import kdb
-        import numpy as np
-        
-        kc = c.kcl.kcells[c.name]
-        
-        # Get validated layers
-        _layers = [layer if isinstance(layer, tuple) else (layer, 0) for layer in layers_to_avoid]
-        
-        # Extract polygons from layers to avoid
-        polys = []
-        for layer in _layers:
-            layer_idx = kc.kcl.layer(*layer)
-            r = kdb.Region(kc.begin_shapes_rec(layer_idx))
-            for poly in r.each():
-                pts = np.array([(p.x, p.y) for p in poly.each_point_hull()], dtype=np.int64)
-                polys.append(pts)
-        
-        # OPTIMIZATION: Tighter bounding box based on actual start/stop distance
-        start_x = int(start.dcenter[0] / dbu)
-        start_y = int(start.dcenter[1] / dbu)
-        stop_x = int(stop.dcenter[0] / dbu)
-        stop_y = int(stop.dcenter[1] / dbu)
-        
-        # Calculate distance and use proportional padding
-        dist_x = abs(stop_x - start_x)
-        dist_y = abs(stop_y - start_y)
-        max_dist = max(dist_x, dist_y, grid_unit_dbu * 10)  # Minimum 10 grid units
-        padding = int(max_dist * 0.3)  # 30% margin around the route
-        
-        # Use tighter bounds derived from start/stop positions
-        min_x = min(start_x, stop_x) - padding
-        max_x = max(start_x, stop_x) + padding
-        min_y = min(start_y, stop_y) - padding
-        max_y = max(start_y, stop_y) + padding
-        
-        # Also include component bbox to ensure we can route around obstacles
-        comp_bbox = kc.bbox()
-        min_x = min(min_x, comp_bbox.left - padding // 2)
-        max_x = max(max_x, comp_bbox.right + padding // 2)
-        min_y = min(min_y, comp_bbox.bottom - padding // 2)
-        max_y = max(max_y, comp_bbox.top + padding // 2)
-        
-        bbox_tuple = (max_y, max_x, min_y, min_x)  # (north, east, south, west)
-        
-        # Get start/stop positions and orientations
-        def get_pos_with_dir(port):
-            x, y = int(port.dcenter[0] / dbu), int(port.dcenter[1] / dbu)
-            angle = port.orientation
-            if angle is None:
-                d = "o"
-            elif abs(angle) < 1:
-                d = "e"
-            elif abs(angle - 90) < 1:
-                d = "n"
-            elif abs(angle - 180) < 1 or abs(angle + 180) < 1:
-                d = "w"
-            elif abs(angle - 270) < 1 or abs(angle + 90) < 1:
-                d = "s"
-            else:
-                d = "o"
-            return (x, y, d)
-        
-        start_pos = get_pos_with_dir(start)
-        stop_pos = get_pos_with_dir(stop)
-        # Invert stop orientation (port faces inward)
-        stop_dir_map = {"n": "s", "s": "n", "e": "w", "w": "e", "o": "o"}
-        stop_pos = (stop_pos[0], stop_pos[1], stop_dir_map[stop_pos[2]])
-        
-        # Rectilinear bend pattern: simple L-shape
-        # Calculate bend_radius from wire width to ensure minimum straight = wire width
-        # bend_radius in grid units = ceil(width / grid_unit)
-        width_dbu = int(width / dbu)
-        effective_bend_radius = max(bend_radius, (width_dbu + grid_unit_dbu - 1) // grid_unit_dbu)
-        
-        rectilinear_bend = [(i, 0) for i in range(1, effective_bend_radius + 1)] + \
-                          [(effective_bend_radius, i) for i in range(1, effective_bend_radius + 1)]
-        
-        # Calculate straight width in grid units
-        straight_width = width_dbu // grid_unit_dbu + 1
-        straight_width += (straight_width + 1) % 2
-        
-        # Debug output
-        print(f"DEBUG: start_pos={start_pos}, stop_pos={stop_pos}")
-        print(f"DEBUG: effective_bend_radius={effective_bend_radius}, straight_width={straight_width}")
-        print(f"DEBUG: grid_unit_dbu={grid_unit_dbu}, width_dbu={width_dbu}")
-        print(f"DEBUG: bbox={bbox_tuple}")
-        print(f"DEBUG: num_polys={len(polys)}")
-        
-        corners = None
-        
-        # First try with exact orientations
-        try:
-            corners = _doroutes.show(
-                polys=polys,
-                start=start_pos,
-                stop=stop_pos,
-                bbox=bbox_tuple,
-                grid_unit=grid_unit_dbu,
-                straight_width=straight_width,
-                discretized_bend_east_to_north=rectilinear_bend,
-            )
-        except Exception as e:
-            print(f"A* with exact orientations failed: {e}")
-        
-        # If failed, try with relaxed orientations (omnidirectional)
-        if corners is None:
-            print("DEBUG: Retrying with relaxed orientations...")
-            start_pos_relaxed = (start_pos[0], start_pos[1], "o")
-            stop_pos_relaxed = (stop_pos[0], stop_pos[1], "o")
-            try:
-                corners = _doroutes.show(
-                    polys=polys,
-                    start=start_pos_relaxed,
-                    stop=stop_pos_relaxed,
-                    bbox=bbox_tuple,
-                    grid_unit=grid_unit_dbu,
-                    straight_width=straight_width,
-                    discretized_bend_east_to_north=rectilinear_bend,
-                )
-            except Exception as e:
-                print(f"A* rectilinear pathfinding failed (relaxed): {e}")
-                return
-    else:
-        # Original mode: use via-based bend specification
-        bend_spec = partial(via_m1_m2, width=width)
-        straight_spec = "straight_metal1"
-        
-        try:
-            corners = find_route_astar(
-                c=c,
-                start=start,
-                stop=stop,
-                straight=straight_spec,
-                bend=bend_spec,
-                layers=layers_to_avoid,
-                grid_unit=grid_unit_dbu,
-            )
-        except Exception as e:
-            print(f"A* pathfinding failed: {e}")
-            return
-
-    if not corners:
-        print("No route found!")
-        return
-
-    # 2. Convert corners from DBU to um
-    points_um = [(p[0] * dbu, p[1] * dbu) for p in corners]
-
-    # Force first and last points to be exactly at port centers
-    points_um[0] = tuple(start.dcenter)
-    points_um[-1] = tuple(stop.dcenter)
-
-    # 3. Make the path strictly Manhattan by inserting jog points where needed
-    points_um = _make_manhattan(points_um)
-    
-    # OPTIMIZATION: Simplify path by removing redundant corners
-    points_um = _simplify_path(points_um)
-
-    print(f"Route from {start.dcenter} to {stop.dcenter}")
-    print(f"Simplified Manhattan points ({len(points_um)}): {points_um}")
-
-    # 4. Draw segments and vias
-    for i in range(len(points_um) - 1):
-        p_curr = points_um[i]
-        p_next = points_um[i + 1]
-
-        horiz = _is_horizontal(p_curr, p_next)
-
-        if horiz:
-            # Horizontal segment on M1
-            x_min = min(p_curr[0], p_next[0])
-            x_max = max(p_curr[0], p_next[0])
-            length = x_max - x_min
-            y = p_curr[1]
-
-            if length >= 0.001:
-                rect = c.add_ref(
-                    gf.components.rectangle(size=(length, width), layer=LAYER_M1)
-                )
-                rect.dmove((x_min, y - width / 2))
-        else:
-            # Vertical segment on M2
-            y_min = min(p_curr[1], p_next[1])
-            y_max = max(p_curr[1], p_next[1])
-            length = y_max - y_min
-            x = p_curr[0]
-
-            if length >= 0.001:
-                rect = c.add_ref(
-                    gf.components.rectangle(size=(width, length), layer=LAYER_M2)
-                )
-                rect.dmove((x - width / 2, y_min))
-
-        # Place via at each corner (intermediate points only, not start/end yet)
-        if i < len(points_um) - 2:
-            via = c.add_ref(via_m1_m2(width=width, length=width))
-            via.dcenter = p_next
-
-    # 5. Handle start/end layer transitions
-    if len(points_um) >= 2:
-        # Check start: does the first segment match the start port's layer?
-        first_horiz = _is_horizontal(points_um[0], points_um[1])
-        first_layer = LAYER_M1 if first_horiz else LAYER_M2
-
-        # Port.layer is an int layer index; convert to (layer, datatype) tuple
-        def _get_layer_tuple(port: Port, component: Component):
-            if hasattr(port, "layer"):
-                layer_idx = port.layer
-                info = component.kcl.get_info(layer_idx)
-                return (info.layer, info.datatype)
-            return None
-
-        start_layer = _get_layer_tuple(start, c)
-        if start_layer and start_layer != first_layer:
-            via = c.add_ref(via_m1_m2(width=width, length=width))
-            via.dcenter = points_um[0]
-
-        # Check end: does the last segment match the stop port's layer?
-        last_horiz = _is_horizontal(points_um[-2], points_um[-1])
-        last_layer = LAYER_M1 if last_horiz else LAYER_M2
-        stop_layer = _get_layer_tuple(stop, c)
-        if stop_layer and stop_layer != last_layer:
-            via = c.add_ref(via_m1_m2(width=width, length=width))
-            via.dcenter = points_um[-1]
 
 
 # Minimum segment length to draw (skip segments shorter than this)
@@ -743,6 +486,13 @@ def _draw_route_segments(
         List of ports added to segments (empty if add_segment_ports=False).
     """
     segment_ports = []
+    
+    # If single-layer routing (checking if layers are same), add corner patches
+    if horizontal_layer == vertical_layer:
+        for p in points_um:
+            patch = c.add_ref(gf.components.rectangle(size=(width, width), layer=horizontal_layer))
+            patch.dcenter = p
+
     if len(points_um) < 2:
         return segment_ports
     
@@ -1128,11 +878,22 @@ def route_hierarchical(
             blocker_y_min = min(b['y_min'] for b in all_blockers)
             blocker_y_max = max(b['y_max'] for b in all_blockers)
         else:
-            # No blockers - use port bounds
             blocker_x_min = min(start_x, stop_x) - clearance
             blocker_x_max = max(start_x, stop_x) + clearance
             blocker_y_min = min(start_y, stop_y) - clearance
             blocker_y_max = max(start_y, stop_y) + clearance
+
+        # Force a minimum escape distance if blockers are too close to ports
+        # This helps when the obstruction is exactly the device itself
+        min_escape = 1.0 # 1um minimum escape
+        if blocker_x_min > min(start_x, stop_x) - min_escape:
+            blocker_x_min = min(start_x, stop_x) - min_escape
+        if blocker_x_max < max(start_x, stop_x) + min_escape:
+            blocker_x_max = max(start_x, stop_x) + min_escape
+        if blocker_y_min > min(start_y, stop_y) - min_escape:
+            blocker_y_min = min(start_y, stop_y) - min_escape
+        if blocker_y_max < max(start_y, stop_y) + min_escape:
+            blocker_y_max = max(start_y, stop_y) + min_escape
         
         # Generate escape paths with OPTIMAL escape distances
         # Escape LEFT - minimum X to clear blockers
@@ -1308,3 +1069,492 @@ def route_hierarchical(
             via.dcenter = path[-1]
     
     return segment_ports
+
+
+def route_multilayer_3d(
+    c: Component,
+    start: Port,
+    stop: Port,
+    grid_unit: float = 1.0,
+    width: float = 0.25,
+    layers_to_avoid: Iterable[LayerSpec] = None,
+    add_segment_ports: bool = False,
+    port_name_prefix: str = "seg",
+    via_cost: float = 10.0,
+    wrong_way_penalty: float = 8.0,
+) -> List[Port]:
+    """Route using the new 3D multi-layer A* router.
+    
+    This uses the Rust-based show_3d function which builds a 3D grid
+    with per-layer obstructions and finds a path using cost-weighted A*.
+    
+    Metal 1 (layer 0) is treated as Horizontal-preferred.
+    Metal 2 (layer 1) is treated as Vertical-preferred.
+    Vias are placed automatically at layer transitions.
+    
+    Args:
+        c: Component to add the route to.
+        start: Start port.
+        stop: Stop port.
+        grid_unit: Grid resolution in um.
+        width: Wire width in um.
+        layers_to_avoid: Layers containing obstructions (per-layer).
+        add_segment_ports: If True, add a port to each straight segment.
+        port_name_prefix: Prefix for port names.
+        via_cost: Cost weight for via transitions.
+        wrong_way_penalty: Penalty for routing against preferred direction.
+    
+    Returns:
+        List of ports added to segments.
+    """
+    from doroutes import doroutes as _doroutes
+    
+    if layers_to_avoid is None:
+        layers_to_avoid = []
+    
+    dbu = c.kcl.dbu
+    kc = c.kcl.kcells[c.name]
+    
+    _layers = [layer if isinstance(layer, tuple) else (layer, 0) for layer in layers_to_avoid]
+    
+    # Get port positions
+    start_pos = _get_pos_with_dir(start, dbu)
+    stop_pos = _get_pos_with_dir(stop, dbu)
+    
+    # Invert stop orientation (port faces inward, we approach from opposite direction)
+    stop_dir_map = {"n": "s", "s": "n", "e": "w", "w": "e", "o": "o"}
+    stop_pos = (stop_pos[0], stop_pos[1], stop_dir_map[stop_pos[2]])
+    
+    # Port points for polygon exclusion
+    port_points = [
+        (start_pos[0], start_pos[1]),
+        (stop_pos[0], stop_pos[1]),
+    ]
+    
+    # Extract per-layer obstruction polygons separately
+    # M1 metal blocks only layer 0, M2 metal blocks only layer 1
+    # This enables the router to escape via layer transitions
+    m1_polys = _extract_polys_for_layers(kc, [LAYER_M1], dbu, port_points) if LAYER_M1 in _layers else []
+    m2_polys = _extract_polys_for_layers(kc, [LAYER_M2], dbu, port_points) if LAYER_M2 in _layers else []
+    
+    polys_per_layer = [
+        m1_polys,  # Layer 0 (M1) — only M1 obstructions
+        m2_polys,  # Layer 1 (M2) — only M2 obstructions
+    ]
+    
+    # Bounding box
+    start_x, start_y = start_pos[0], start_pos[1]
+    stop_x, stop_y = stop_pos[0], stop_pos[1]
+    dist = max(abs(stop_x - start_x), abs(stop_y - start_y))
+    padding = int(dist * 0.5)
+    
+    comp_bbox = kc.bbox()
+    min_x = min(start_x, stop_x, comp_bbox.left) - padding
+    max_x = max(start_x, stop_x, comp_bbox.right) + padding
+    min_y = min(start_y, stop_y, comp_bbox.bottom) - padding
+    max_y = max(start_y, stop_y, comp_bbox.top) + padding
+    
+    bbox_tuple = (max_y, max_x, min_y, min_x)
+    
+    grid_unit_dbu = int(grid_unit / dbu)
+    
+    # Helper to get layer tuple from port
+    def _get_layer_tuple_local(port, component):
+        if hasattr(port, "layer"):
+            layer_idx = port.layer
+            info = component.kcl.get_info(layer_idx)
+            return (info.layer, info.datatype)
+        return None
+    
+    # Determine start/stop layer from port layer
+    start_layer_idx = 0  # Default to M1
+    stop_layer_idx = 0
+    
+    start_layer = _get_layer_tuple_local(start, c)
+    stop_layer = _get_layer_tuple_local(stop, c)
+    
+    if start_layer == LAYER_M2:
+        start_layer_idx = 1
+    if stop_layer == LAYER_M2:
+        stop_layer_idx = 1
+    
+    # Prepare start/stop with layer info
+    start_3d = (start_x, start_y, start_layer_idx, start_pos[2])
+    stop_3d = (stop_x, stop_y, stop_layer_idx, stop_pos[2])
+    
+    # Debug: show grid dimensions
+    grid_w = (max_x - min_x) // grid_unit_dbu
+    grid_h = (max_y - min_y) // grid_unit_dbu
+    num_m1_polys = len(m1_polys) if 'm1_polys' in dir() else len(polys_per_layer[0])
+    num_m2_polys = len(m2_polys) if 'm2_polys' in dir() else len(polys_per_layer[1])
+    print(f"[3D ROUTE] Grid: {grid_w}x{grid_h} x 2 layers = {grid_w*grid_h*2} cells")
+    print(f"[3D ROUTE] Obstructions: M1={num_m1_polys}, M2={num_m2_polys}")
+    print(f"[3D ROUTE] from ({start_x*dbu:.3f}, {start_y*dbu:.3f}, L{start_layer_idx}) "
+          f"to ({stop_x*dbu:.3f}, {stop_y*dbu:.3f}, L{stop_layer_idx})")
+    print(f"[3D ROUTE] BBox: ({min_x*dbu:.1f}, {min_y*dbu:.1f}) -> ({max_x*dbu:.1f}, {max_y*dbu:.1f})")
+    
+    try:
+        corners_3d, num_vias = _doroutes.show_3d(
+            polys_per_layer=polys_per_layer,
+            start=start_3d,
+            stop=stop_3d,
+            bbox=bbox_tuple,
+            grid_unit=grid_unit_dbu,
+            layer_directions=["h", "v"],  # M1=horizontal, M2=vertical
+            via_cost=via_cost,
+            wrong_way_penalty=wrong_way_penalty,
+        )
+    except Exception as e:
+        print(f"[3D ROUTE] Failed: {e}")
+        # Retry with larger bounding box and finer grid
+        print("[3D ROUTE] Retrying with expanded bounding box and finer grid...")
+        try:
+            # Expand bbox by 50% more
+            retry_padding = int(padding * 2.0) # Double the original padding
+            retry_min_x = min_x - padding 
+            retry_max_x = max_x + padding
+            retry_min_y = min_y - padding
+            retry_max_y = max_y + padding
+            retry_bbox = (retry_max_y, retry_max_x, retry_min_y, retry_min_x)
+            
+            # Use finer grid
+            retry_grid_unit = grid_unit * 0.5
+            retry_grid_unit_dbu = int(retry_grid_unit / dbu)
+             
+            # Update grid dimensions for log
+            r_grid_w = (retry_max_x - retry_min_x) // retry_grid_unit_dbu
+            r_grid_h = (retry_max_y - retry_min_y) // retry_grid_unit_dbu
+            print(f"[3D ROUTE RETRY] Grid: {r_grid_w}x{r_grid_h} x 2 layers")
+            
+            corners_3d, num_vias = _doroutes.show_3d(
+                polys_per_layer=polys_per_layer,
+                start=start_3d,
+                stop=stop_3d,
+                bbox=retry_bbox,
+                grid_unit=retry_grid_unit_dbu,
+                layer_directions=["h", "v"],
+                via_cost=via_cost,
+                wrong_way_penalty=wrong_way_penalty,
+            )
+        except Exception as e2:
+            print(f"[3D ROUTE] Retry failed: {e2}")
+            # Fallback to existing hierarchical router
+            print("[3D ROUTE] Falling back to hierarchical router...")
+            return route_hierarchical(
+                c, start, stop,
+                global_grid_unit=grid_unit * 2,
+                detail_grid_unit=grid_unit,
+                width=width,
+                layers_to_avoid=layers_to_avoid,
+                add_segment_ports=add_segment_ports,
+                port_name_prefix=port_name_prefix,
+            )
+    
+    print(f"[3D ROUTE] Found path with {len(corners_3d)} corners, {num_vias} vias")
+    
+    # Manhattanize the 3D path to fix any diagonal segments
+    # The A* router or simplification might return diagonal jumps for off-grid points
+    manhattan_corners = []
+    if len(corners_3d) > 0:
+        manhattan_corners.append(corners_3d[0])
+        
+        for i in range(1, len(corners_3d)):
+            prev = manhattan_corners[-1]
+            curr = corners_3d[i]
+            
+            # Check for layer transition (via)
+            if prev[2] != curr[2]:
+                manhattan_corners.append(curr)
+                continue
+                
+            # Check for diagonal movement on same layer
+            dx = abs(curr[0] - prev[0])
+            dy = abs(curr[1] - prev[1])
+            
+            if dx > 1 and dy > 1: # Tolerance of 1 DBU
+                # Diagonal! Split into L-shape based on layer preference
+                layer_idx = curr[2]
+                # Even layer (0, 2...) -> Horizontal preference (M1) -> Move H then V
+                # Odd layer (1, 3...) -> Vertical preference (M2) -> Move V then H
+                # (Assuming M1=H, M2=V as per standard Sky130 usage here)
+                
+                if layer_idx % 2 == 0: # M1 (Horizontal)
+                    # Add intermediate point: (curr.x, prev.y)
+                    # First leg Horizontal, second Vertical
+                    intermediate = (curr[0], prev[1], layer_idx)
+                    manhattan_corners.append(intermediate)
+                else: # M2 (Vertical)
+                    # Add intermediate point: (prev.x, curr.y)
+                    # First leg Vertical, second Horizontal
+                    intermediate = (prev[0], curr[1], layer_idx)
+                    manhattan_corners.append(intermediate)
+            
+            manhattan_corners.append(curr)
+
+    corners_3d = manhattan_corners
+    
+    # Via Straightening: Remove small detours around vias
+    # Identify pattern: P[i-1] -> P[i](via start) -> P[i+1](via end) -> P[i+2]
+    # If P[i-1] and P[i+2] align (same X or Y), but P[i]/P[i+1] are offset, align them.
+    if len(corners_3d) >= 4:
+        for i in range(1, len(corners_3d) - 2):
+            p_prev = corners_3d[i-1]
+            p_via_start = corners_3d[i]
+            p_via_end = corners_3d[i+1]
+            p_next = corners_3d[i+2]
+            
+            # Check if this is a via transition
+            if p_via_start[2] == p_via_end[2]:
+                continue # Not a via
+            if p_prev[2] != p_via_start[2] or p_via_end[2] != p_next[2]:
+                continue # Complex transition, skip
+                
+            # Check Y-alignment (Horizontal Check)
+            if abs(p_prev[1] - p_next[1]) < 0.001: 
+                common_y = p_prev[1]
+                # Check if via is detoured from this Y
+                if abs(p_via_start[1] - common_y) > 0.001:
+                    # Check if detour is small (e.g. <= 2 grid units)
+                    # We can use a simpler heuristic: just straighten if distance is reasonable
+                    # Assuming < 3um for a local jog
+                    if abs(p_via_start[1] - common_y) * dbu < 3.0: 
+                        # Straighten!
+                        # Update via coordinates to match the common Y
+                        corners_3d[i] = (p_via_start[0], common_y, p_via_start[2])
+                        corners_3d[i+1] = (p_via_end[0], common_y, p_via_end[2])
+                        
+            # Check X-alignment (Vertical Check)
+            elif abs(p_prev[0] - p_next[0]) < 0.001:
+                common_x = p_prev[0]
+                # Check if via is detoured from this X
+                if abs(p_via_start[0] - common_x) > 0.001:
+                     if abs(p_via_start[0] - common_x) * dbu < 3.0:
+                        corners_3d[i] = (common_x, p_via_start[1], p_via_start[2])
+                        corners_3d[i+1] = (common_x, p_via_end[1], p_via_end[2])
+
+    
+    # Force first and last corners to exact port positions (undo grid snapping)
+    # After forcing, re-manhattanize any resulting diagonal first/last segments
+    if len(corners_3d) >= 2:
+        corners_3d[0] = (start_x, start_y, corners_3d[0][2])
+        corners_3d[-1] = (stop_x, stop_y, corners_3d[-1][2])
+        
+        # Fix diagonal created at start (first segment)
+        if corners_3d[0][2] == corners_3d[1][2]:  # Same layer
+            dx = abs(corners_3d[1][0] - corners_3d[0][0])
+            dy = abs(corners_3d[1][1] - corners_3d[0][1])
+            if dx > 1 and dy > 1:  # Diagonal (both x and y differ by > 1 DBU)
+                layer_idx = corners_3d[0][2]
+                if layer_idx % 2 == 0:  # M1 (H pref): horizontal first
+                    intermediate = (corners_3d[1][0], corners_3d[0][1], layer_idx)
+                else:  # M2 (V pref): vertical first
+                    intermediate = (corners_3d[0][0], corners_3d[1][1], layer_idx)
+                corners_3d.insert(1, intermediate)
+        
+        # Fix diagonal created at end (last segment)
+        if corners_3d[-1][2] == corners_3d[-2][2]:  # Same layer
+            dx = abs(corners_3d[-1][0] - corners_3d[-2][0])
+            dy = abs(corners_3d[-1][1] - corners_3d[-2][1])
+            if dx > 1 and dy > 1:  # Diagonal
+                layer_idx = corners_3d[-1][2]
+                if layer_idx % 2 == 0:  # M1 (H pref): arrive via vertical then horizontal
+                    intermediate = (corners_3d[-1][0], corners_3d[-2][1], layer_idx)
+                else:  # M2 (V pref): arrive via horizontal then vertical
+                    intermediate = (corners_3d[-2][0], corners_3d[-1][1], layer_idx)
+                corners_3d.insert(-1, intermediate)
+    
+    # Via coalescing: eliminate small same-layer jog segments near via transitions
+    # When the A* grid snaps a via position, it can create tiny segments between
+    # the exact port position and the grid-aligned via. This pass moves the via
+    # to absorb those jogs.
+    min_jog_dbu = grid_unit_dbu  # Segments shorter than 1 grid unit are jogs
+    
+    changed = True
+    while changed:
+        changed = False
+        i = 0
+        while i < len(corners_3d) - 1:
+            # Find via transitions (different layer)
+            if corners_3d[i][2] != corners_3d[i + 1][2]:
+                via_start_idx = i
+                via_end_idx = i + 1
+                
+                # Check for small segment BEFORE via
+                if via_start_idx > 0 and corners_3d[via_start_idx - 1][2] == corners_3d[via_start_idx][2]:
+                    prev = corners_3d[via_start_idx - 1]
+                    curr = corners_3d[via_start_idx]
+                    seg_len = abs(curr[0] - prev[0]) + abs(curr[1] - prev[1])
+                    if 0 < seg_len < min_jog_dbu:
+                        # Move via to previous point's position (absorb the jog)
+                        corners_3d[via_start_idx] = (prev[0], prev[1], curr[2])
+                        corners_3d[via_end_idx] = (prev[0], prev[1], corners_3d[via_end_idx][2])
+                        # Previous point is now redundant (same position/layer as via start)
+                        corners_3d.pop(via_start_idx - 1)
+                        changed = True
+                        continue
+                
+                # Check for small segment AFTER via
+                if via_end_idx + 1 < len(corners_3d) and corners_3d[via_end_idx][2] == corners_3d[via_end_idx + 1][2]:
+                    curr = corners_3d[via_end_idx]
+                    nxt = corners_3d[via_end_idx + 1]
+                    seg_len = abs(nxt[0] - curr[0]) + abs(nxt[1] - curr[1])
+                    if 0 < seg_len < min_jog_dbu:
+                        # Move via to next point's position (absorb the jog)
+                        corners_3d[via_start_idx] = (nxt[0], nxt[1], corners_3d[via_start_idx][2])
+                        corners_3d[via_end_idx] = (nxt[0], nxt[1], curr[2])
+                        # Next point is now redundant
+                        corners_3d.pop(via_end_idx + 1)
+                        changed = True
+                        continue
+            i += 1
+    
+    # Remove consecutive duplicate points (same position and layer)
+    deduped = [corners_3d[0]]
+    for j in range(1, len(corners_3d)):
+        prev = deduped[-1]
+        curr = corners_3d[j]
+        if prev[0] == curr[0] and prev[1] == curr[1] and prev[2] == curr[2]:
+            continue
+        deduped.append(curr)
+    corners_3d = deduped
+    
+    # Debug: print final path
+    print(f"[3D ROUTE] Final path ({len(corners_3d)} corners):")
+    for idx, (cx, cy, cz) in enumerate(corners_3d):
+        print(f"  [{idx}] ({cx*dbu:.3f}, {cy*dbu:.3f}) L{cz} ({'M1' if cz==0 else 'M2'})")
+    
+    # Convert corners to um with layer information
+    segment_ports = []
+    
+    # Helper to draw a single segment (horizontal or vertical)
+    def _draw_seg(p_start, p_end, seg_layer):
+        """Draw a single manhattan segment between two um-coordinate points."""
+        sdx = abs(p_end[0] - p_start[0])
+        sdy = abs(p_end[1] - p_start[1])
+        
+        if sdx < MIN_SEGMENT_LENGTH and sdy < MIN_SEGMENT_LENGTH:
+            return  # Zero-length
+        
+        is_horiz = sdy < 0.001
+        
+        if is_horiz:
+            x_min = min(p_start[0], p_end[0])
+            x_max = max(p_start[0], p_end[0])
+            seg_len = x_max - x_min
+            y = p_start[1]
+            if seg_len >= 0.001:
+                rect = c.add_ref(
+                    gf.components.rectangle(size=(seg_len, width), layer=seg_layer)
+                )
+                rect.dmove((x_min, y - width / 2))
+                
+                if add_segment_ports:
+                    port_center = (x_min + seg_len / 2, y)
+                    port = c.add_port(
+                        name=f"{port_name_prefix}",
+                        center=port_center,
+                        width=0.01,
+                        orientation=0,
+                        layer=(seg_layer[0], 16),
+                        port_type="electrical"
+                    )
+                    segment_ports.append(port)
+                    c.draw_ports()
+        else:
+            y_min = min(p_start[1], p_end[1])
+            y_max = max(p_start[1], p_end[1])
+            seg_len = y_max - y_min
+            x = p_start[0]
+            if seg_len >= 0.001:
+                rect = c.add_ref(
+                    gf.components.rectangle(size=(width, seg_len), layer=seg_layer)
+                )
+                rect.dmove((x - width / 2, y_min))
+                
+                if add_segment_ports:
+                    port_center = (x, y_min + seg_len / 2)
+                    port = c.add_port(
+                        name=f"{port_name_prefix}",
+                        center=port_center,
+                        width=0.01,
+                        orientation=90,
+                        layer=(seg_layer[0], 16),
+                        port_type="electrical"
+                    )
+                    segment_ports.append(port)
+                    c.draw_ports()
+    
+    # Add corner patches to ensure connectivity at bends
+    for x, y, z in corners_3d:
+        layer = LAYER_M1 if z == 0 else LAYER_M2
+        patch = c.add_ref(gf.components.rectangle(size=(width, width), layer=layer))
+        patch.dcenter = (x * dbu, y * dbu)
+        
+    if len(corners_3d) < 2:
+        return segment_ports
+    
+    for i in range(len(corners_3d) - 1):
+        x0, y0, z0 = corners_3d[i]
+        x1, y1, z1 = corners_3d[i + 1]
+        
+        # Convert to um
+        p0 = (x0 * dbu, y0 * dbu)
+        p1 = (x1 * dbu, y1 * dbu)
+        
+        # Check for layer transition (via needed)
+        if z0 != z1:
+            # Place via at transition point
+            via = c.add_ref(via_m1_m2(width=width, length=width))
+            via.dcenter = p0
+            
+            # If via transition also changes position, draw connecting segment
+            # on the DESTINATION layer from the via location to the next point
+            pos_dx = abs(p1[0] - p0[0])
+            pos_dy = abs(p1[1] - p0[1])
+            if pos_dx > 0.001 or pos_dy > 0.001:
+                dest_layer = LAYER_M1 if z1 == 0 else LAYER_M2
+                if pos_dx > 0.001 and pos_dy > 0.001:
+                    # Diagonal - split into manhattan segments
+                    if z1 % 2 == 0:  # M1 dest: horizontal first
+                        mid = (p1[0], p0[1])
+                    else:  # M2 dest: vertical first
+                        mid = (p0[0], p1[1])
+                    _draw_seg(p0, mid, dest_layer)
+                    patch = c.add_ref(gf.components.rectangle(size=(width, width), layer=dest_layer))
+                    patch.dcenter = mid
+                    _draw_seg(mid, p1, dest_layer)
+                else:
+                    _draw_seg(p0, p1, dest_layer)
+            continue
+        
+        # Determine layer from z index
+        layer = LAYER_M1 if z0 == 0 else LAYER_M2
+        
+        # Check if segment is diagonal (both dx and dy nonzero)
+        dx = abs(p1[0] - p0[0])
+        dy = abs(p1[1] - p0[1])
+        
+        if dx < MIN_SEGMENT_LENGTH and dy < MIN_SEGMENT_LENGTH:
+            continue  # Skip zero-length segments
+        
+        if dx > 0.001 and dy > 0.001:
+            # Diagonal segment - split into H + V based on layer preference
+            if z0 % 2 == 0:  # M1: horizontal first
+                mid = (p1[0], p0[1])
+                _draw_seg(p0, mid, layer)
+                # Add corner patch at bend
+                patch = c.add_ref(gf.components.rectangle(size=(width, width), layer=layer))
+                patch.dcenter = mid
+                _draw_seg(mid, p1, layer)
+            else:  # M2: vertical first
+                mid = (p0[0], p1[1])
+                _draw_seg(p0, mid, layer)
+                patch = c.add_ref(gf.components.rectangle(size=(width, width), layer=layer))
+                patch.dcenter = mid
+                _draw_seg(mid, p1, layer)
+        else:
+            # Pure horizontal or vertical - draw directly
+            _draw_seg(p0, p1, layer)
+    
+    return segment_ports
+

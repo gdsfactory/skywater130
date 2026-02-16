@@ -14,7 +14,7 @@ import sky130
 from gdsfactory.pdk import get_active_pdk
 from gdsfactory.add_pins import add_instance_label
 import gdsfactory as gf
-from sky130.routing_utils import route_multilayer_astar
+from sky130.routing_utils import route_multilayer_3d
 
 
 
@@ -28,7 +28,7 @@ def test_inverter() -> Component:
     instance2 = c.add_ref(pdk.get_component('nmos_5v', instance_name='nmos'), name='nmos')
     
     # Place instances
-    instance1.move((0, 5))
+    instance1.move((5, 0))
     instance1.mirror_y(instance1.dcenter[1])
     instance2.move((0, 0))
 
@@ -42,82 +42,57 @@ def test_inverter() -> Component:
 
     # Grid resolution for A* pathfinding
     grid_unit_um = 1.0    # 1um grid resolution
-    wire_width = 0.25     # Standard wire width
+    # Wire width is auto-detected from port polygon geometry
     
     # Layers to avoid - ALL metal on these layers including device metal
     # The router must route around everything on both M1 and M2
     layers_to_avoid = [(68, 20), (69, 20)]
 
-    # Draw the A* grid overlay for debugging
-    #draw_astar_grid(c, layers_to_avoid, grid_unit_um, 5.0)
-    # c.show()
-    print("Routing with hierarchical strategy (global 2um + detail 0.25um)...")
+    print("Routing with 3D multi-layer A* (M1=H, M2=V with via transitions)...")
 
-    # Import hierarchical router
-    from sky130.routing_utils import route_hierarchical
-
-    # Route 1: instance1 DRAIN -> instance2 SOURCE
-    # Using hierarchical A* with global routing then detail refinement
-    route_hierarchical(
+    # Route 1: PMOS DRAIN -> NMOS DRAIN (output net)
+    route_multilayer_3d(
         c,
         start=instance1.ports['pmos_DRAIN'],
         stop=instance2.ports['nmos_DRAIN'],
-        global_grid_unit=1.0,    # Coarse grid for fast global routing
-        detail_grid_unit=0.05,   # Fine grid for obstacle avoidance
-        width=wire_width,
+        grid_unit=grid_unit_um,
         layers_to_avoid=layers_to_avoid,
         add_segment_ports=True,
         port_name_prefix="out"
     )
 
-    # Route 2: instance2 DRAIN -> instance3 SOURCE
-    route_hierarchical(
+    # Route 2: PMOS GATE -> NMOS GATE (input net)
+    route_multilayer_3d(
         c,
         start=instance1.ports['pmos_GATE'],
         stop=instance2.ports['nmos_GATE'],
-        global_grid_unit=1.0,
-        detail_grid_unit=0.05,
-        width=wire_width,
+        grid_unit=grid_unit_um,
         layers_to_avoid=layers_to_avoid,
         add_segment_ports=True,
         port_name_prefix="in"
     )
 
-    # Route 3: instance2 DRAIN -> instance3 SOURCE
-    route_hierarchical(
+    # Route 3: PMOS SOURCE -> PMOS BODY (VDD)
+    route_multilayer_3d(
         c,
         start=instance1.ports['pmos_SOURCE'],
         stop=instance1.ports['pmos_BODY'],
-        global_grid_unit=1.0,
-        detail_grid_unit=0.05,
-        width=wire_width,
+        grid_unit=grid_unit_um,
         layers_to_avoid=layers_to_avoid,
         add_segment_ports=True,
         port_name_prefix="vdd"
     )
-    route_hierarchical(
+
+    # Route 4: NMOS SOURCE -> NMOS BODY (VSS)
+    route_multilayer_3d(
         c,
         start=instance2.ports['nmos_SOURCE'],
         stop=instance2.ports['nmos_BODY'],
-        global_grid_unit=1.0,
-        detail_grid_unit=0.05,
-        width=wire_width,
+        grid_unit=grid_unit_um,
         layers_to_avoid=layers_to_avoid,
         add_segment_ports=True,
         port_name_prefix="vss"
     )
-    ###
-   #route_hierarchical(
-   #    c,
-   #    start=instance1.ports['SOURCE'],
-   #    stop=instance2.ports['SOURCE'],
-   #    global_grid_unit=1.0,
-   #    detail_grid_unit=0.05,
-   #    width=wire_width,
-   #    layers_to_avoid=layers_to_avoid,
-   #    add_segment_ports=True,
-   #    port_name_prefix="vdd"
-   #)
 
     # Add instance labels
     add_instance_label(c, instance1, instance_name='pmos')
@@ -143,3 +118,4 @@ if __name__ == "__main__":
         f.write("ext2spice -o test_inverter.sp\n")
     subprocess.run("magic -rcfile /usr/local/share/pdk/sky130A/libs.tech/magic/sky130A.magicrc ./read_gds.tcl".split(), cwd="/home/flow/Vibe/gf-skywater130/results")
     
+

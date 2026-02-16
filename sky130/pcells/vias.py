@@ -22,7 +22,7 @@ def via_m1_m2(
     # Via parameters for m1-m2 transition (via1)
     via_size = (0.15, 0.15)
     via_spacing = (0.17, 0.17)
-    via_enclosure = (0.055, 0.055)
+    via_enclosure = (0.07, 0.07)
     
     # Generate the via array
     # Note: via_generator creates the via layer and the top/bottom metal enclosures?
@@ -33,11 +33,11 @@ def via_m1_m2(
     # It does NOT draw the metal enclosures. We must add them.
     
     # Add Metal 1 landing pad
-    m1_rect = c.add_ref(gf.components.rectangle(size=(width, length), layer=layer_m1))
+    m1_rect = c.add_ref(gf.components.rectangle(size=(width+via_enclosure[0], length+via_enclosure[1]), layer=layer_m1))
     m1_rect.dcenter = (0, 0)
     
     # Add Metal 2 landing pad
-    m2_rect = c.add_ref(gf.components.rectangle(size=(width, length), layer=layer_m2))
+    m2_rect = c.add_ref(gf.components.rectangle(size=(width+via_enclosure[0], length+via_enclosure[1]), layer=layer_m2))
     m2_rect.dcenter = (0, 0)
     
     # Add Via 1 array

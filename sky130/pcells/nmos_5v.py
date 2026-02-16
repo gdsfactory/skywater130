@@ -12,9 +12,9 @@ def nmos_5v(
     gate_width: float = 0.75,
     gate_length: float = 0.5,
     sd_width: float = 0.3,
-    end_cap: float = 0.13,
+    end_cap: float = 0.2,
     contact_size: Float2 = (0.17, 0.17),
-    contact_spacing: Float2 = (0.17, 0.17),
+    contact_spacing: Float2 = (0.19, 0.19),
     contact_layer: LayerSpec = (66, 44),
     contact_enclosure: Float2 = (0.06, 0.06),
     diff_spacing: float = 0.37,
@@ -33,7 +33,7 @@ def nmos_5v(
     hvntm_enclosure: Float2 = (0.185, 0.185),
     li_width: float = 0.17,
     li_layer: LayerSpec = (67, 20),
-    li_enclosure: float = 0.08,
+    li_enclosure: float = 0,
     mcon_layer: LayerSpec = (67, 44),
     mcon_enclosure: Float2 = (0.03, 0.06),
     m1_layer: LayerSpec = (68, 20),
@@ -204,8 +204,8 @@ def nmos_5v(
             - mcon_enclosure[0]
         )
 
-    li1.movey(-li_enclosure / 2)
-    li2.movey(-li_enclosure / 2)
+    li1.dcenter = cont_arr1.dcenter
+    li2.dcenter = cont_arr2.dcenter
 
     port_prefix = f"{instance_name}_" if instance_name else ""
     c.add_port(name=f"{port_prefix}DRAIN", width=0.01, center=m1d1.dcenter, layer=m1_layer, orientation=90, port_type="electrical")
@@ -311,7 +311,7 @@ def nmos_5v(
     npc_d.movey(-pc_size[1] - npc_en - npc_spacing - npc_en / 2)
 
     # generaing p+ bulk tie and its contact and mcon and m1
-    rect_dp = gf.components.rectangle(size=(sd_width, gate_width), layer=diffp_layer)
+    rect_dp = gf.components.rectangle(size=(sd_width+sdm_enclosure[0], gate_width+sdm_enclosure[1]), layer=diffp_layer)
     diff_p = c.add_ref(rect_dp)
     diff_p.connect(
         "e1", diff_n.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
@@ -396,6 +396,7 @@ def nmos_5v(
         "e1", diff_n.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
     psdm.movex(diff_spacing + sdm_spacing - sdm_enclosure[0])
+    diff_p.dcenter = psdm.dcenter
 
     # generating pwell
     rect_pw = gf.components.rectangle(
