@@ -6,6 +6,7 @@ from gdsfactory.typings import Float2, LayerSpec
 
 @gf.cell
 def nmos_5v(
+    instance_name: str = "",
     diffusion_layer: LayerSpec = (65, 20),
     poly_layer: LayerSpec = (66, 20),
     gate_width: float = 0.75,
@@ -19,9 +20,9 @@ def nmos_5v(
     diff_spacing: float = 0.37,
     diff_enclosure: Float2 = (0.33, 0.33),
     diffp_layer: LayerSpec = (65, 44),
-    pwell_layer: LayerSpec = (64, 13),
+    pwell_layer: LayerSpec = (64, 44),
     dnwell_enclosure: Float2 = (0.4, 0.4),
-    dnwell_layer: LayerSpec = (64, 18),
+    dnwell_layer: LayerSpec = (64, 44),
     nf: int = 1,
     sdm_enclosure: Float2 = (0.125, 0.125),
     nsdm_layer: LayerSpec = (93, 44),
@@ -206,6 +207,10 @@ def nmos_5v(
     li1.movey(-li_enclosure / 2)
     li2.movey(-li_enclosure / 2)
 
+    port_prefix = f"{instance_name}_" if instance_name else ""
+    c.add_port(name=f"{port_prefix}DRAIN", width=0.01, center=m1d1.dcenter, layer=m1_layer, orientation=90, port_type="electrical")
+    c.add_port(name=f"{port_prefix}SOURCE", width=0.01, center=m1d2.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+
     # generating contacts and local interconnects and mcon and m1 of poly
 
     nc_p = floor(gate_length / (2 * contact_size[0]))
@@ -276,6 +281,8 @@ def nmos_5v(
     m1p_d = c.add_ref(rect_m1p, rows=1, columns=nf, column_pitch=sd_width + gate_length)
     m1p_d.movex(sd_width + contact_enclosure[0] - mcon_enclosure[0])
     m1p_d.movey(-pc_size[1] - end_cap + contact_enclosure[1] - contact_enclosure[1])
+
+    c.add_port(name=f"{port_prefix}GATE", width=0.01, center=m1p_u.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
 
     rect_lip = gf.components.rectangle(
         size=(pc_size[0] + li_enclosure, li_width), layer=li_layer
@@ -377,6 +384,8 @@ def nmos_5v(
 
     li4.movey(-li_enclosure / 2)
 
+    c.add_port(name=f"{port_prefix}BODY", width=0.01, center=m1dp.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+
     # generating p+ implant for bulk tie
     rect_pm = gf.components.rectangle(
         size=(sd_width + 2 * sdm_enclosure[0], gate_width + 2 * sdm_enclosure[1]),
@@ -436,6 +445,22 @@ def nmos_5v(
     hvntm.movex(-sdm_enclosure[0] - hvntm_enclosure[0])
     hvntm.movey(-sdm_enclosure[1] - hvntm_enclosure[1])
 
+    c.draw_ports()
+    c.pprint_ports()
+
+    c.info['vlsir'] = {
+        "model" : "sky130_fd_pr__nfet_g5v0d10v5",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "corners/tt.spice",
+        "port_order" : ["d", "g", "s", "b"],
+        "port_map" : {
+            "DRAIN" : "d",
+            "SOURCE" : "s",
+            "GATE" : "g",
+            "BODY" : "b"
+        }
+    }
+    
     return c
 
 
