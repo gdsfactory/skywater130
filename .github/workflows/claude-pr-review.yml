@@ -1,0 +1,55 @@
+name: Claude PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  id-token: write
+
+jobs:
+  claude-review:
+    # Run on PR events, or on issue comments that mention @claude
+    if: |
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'issue_comment' &&
+       github.event.issue.pull_request &&
+       contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code Review
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          trigger_phrase: "@claude"
+          model: "claude-sonnet-4-20250514"
+          timeout_minutes: 30
+          allowed_tools: |
+            Read
+            Glob
+            Grep
+            WebFetch
+            WebSearch
+          custom_instructions: |
+            You are a code reviewer for a GDSFactory PDK (Process Design Kit) repository.
+            This repository contains photonic IC design components and models.
+
+            When reviewing PRs, focus on:
+            1. Code quality and adherence to Python best practices
+            2. Proper use of type hints
+            3. Notebook quality and documentation
+            4. Potential bugs or issues
+            5. Pre-commit hook compliance (ruff formatting, pyright type checking)
+
+            Be constructive and helpful in your feedback. Suggest improvements where appropriate.
+            Reference the AGENTS.md file for AI agent best practices in this repository.

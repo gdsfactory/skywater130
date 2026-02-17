@@ -15,7 +15,7 @@ classifiers = [
 ]
 dependencies = [
   "doroutes>=0.3.0",
-  "gdsfactory~=9.20.7",
+  "gdsfactory~=9.34.1",
   "PySpice",
   "python-dotenv>=1.2.1",
 ]

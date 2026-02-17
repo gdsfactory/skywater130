@@ -1,6 +1,11 @@
 install: modules
+.PHONY: rm-samples
+
 	uv venv --python 3.12
 	uv sync --extra docs --extra dev
+
+rm-samples:
+	rm -rf samples
 
 dev:
 	uv sync --all-extras
@@ -20,6 +25,9 @@ ngspice:
 
 test:
 	uv run pytest -s -n logical
+
+test-force:
+	uv run pytest -s -n logical --force-regen
 
 cov:
 	uv run pytest --cov=sky130
