@@ -14,7 +14,7 @@ import sky130
 from gdsfactory.pdk import get_active_pdk
 from gdsfactory.add_pins import add_instance_label
 import gdsfactory as gf
-from sky130.routing_utils import route_multilayer_3d
+from sky130.routing_utils import RouteNetSpec, route_nets_deterministic_copy
 
 
 
@@ -50,53 +50,47 @@ def test_inverter() -> Component:
 
     print("Routing with 3D multi-layer A* (M1=H, M2=V with via transitions)...")
 
-    # Route 1: PMOS DRAIN -> NMOS DRAIN (output net)
-    route_multilayer_3d(
+    nets = [
+        RouteNetSpec(
+            name="out",
+            start=instance1.ports["pmos_DRAIN"],
+            stop=instance2.ports["nmos_DRAIN"],
+            port_name_prefix="out",
+        ),
+        RouteNetSpec(
+            name="in",
+            start=instance1.ports["pmos_GATE"],
+            stop=instance2.ports["nmos_GATE"],
+            port_name_prefix="in",
+        ),
+        RouteNetSpec(
+            name="vdd",
+            start=instance1.ports["pmos_SOURCE"],
+            stop=instance1.ports["pmos_BODY"],
+            port_name_prefix="vdd",
+        ),
+        RouteNetSpec(
+            name="vss",
+            start=instance2.ports["nmos_SOURCE"],
+            stop=instance2.ports["nmos_BODY"],
+            port_name_prefix="vss",
+        ),
+    ]
+
+    c, _ = route_nets_deterministic_copy(
         c,
-        start=instance1.ports['pmos_DRAIN'],
-        stop=instance2.ports['nmos_DRAIN'],
+        nets=nets,
         grid_unit=grid_unit_um,
+        dynamic_width=False,
         layers_to_avoid=layers_to_avoid,
         add_segment_ports=True,
-        port_name_prefix="out"
+        require_all=True,
+        deterministic=True,
     )
 
-    # Route 2: PMOS GATE -> NMOS GATE (input net)
-    route_multilayer_3d(
-        c,
-        start=instance1.ports['pmos_GATE'],
-        stop=instance2.ports['nmos_GATE'],
-        grid_unit=grid_unit_um,
-        layers_to_avoid=layers_to_avoid,
-        add_segment_ports=True,
-        port_name_prefix="in"
-    )
-
-    # Route 3: PMOS SOURCE -> PMOS BODY (VDD)
-    route_multilayer_3d(
-        c,
-        start=instance1.ports['pmos_SOURCE'],
-        stop=instance1.ports['pmos_BODY'],
-        grid_unit=grid_unit_um,
-        layers_to_avoid=layers_to_avoid,
-        add_segment_ports=True,
-        port_name_prefix="vdd"
-    )
-
-    # Route 4: NMOS SOURCE -> NMOS BODY (VSS)
-    route_multilayer_3d(
-        c,
-        start=instance2.ports['nmos_SOURCE'],
-        stop=instance2.ports['nmos_BODY'],
-        grid_unit=grid_unit_um,
-        layers_to_avoid=layers_to_avoid,
-        add_segment_ports=True,
-        port_name_prefix="vss"
-    )
-
-    # Add instance labels
-    add_instance_label(c, instance1, instance_name='pmos')
-    add_instance_label(c, instance2, instance_name='nmos')
+    # Reacquire instances after routing attempts to avoid stale reference handles.
+    add_instance_label(c, c.insts["pmos"], instance_name='pmos')
+    add_instance_label(c, c.insts["nmos"], instance_name='nmos')
 
     return c
 
@@ -104,8 +98,10 @@ if __name__ == "__main__":
     c = test_inverter()
     c.flatten()
     c.pprint_ports()
-    c.show()
-    input("Press Enter to continue...")
+    interactive = sys.stdin.isatty() and sys.stdout.isatty()
+    if interactive:
+        c.show()
+        input("Press Enter to continue...")
     c.write_gds("./results/test_inverter.gds", with_metadata=False)
     with open("./results/read_gds.tcl", "w") as f:
         f.write("box 0um 0um 0um 0um\n")
@@ -118,4 +114,3 @@ if __name__ == "__main__":
         f.write("ext2spice -o test_inverter.sp\n")
     subprocess.run("magic -rcfile /usr/local/share/pdk/sky130A/libs.tech/magic/sky130A.magicrc ./read_gds.tcl".split(), cwd="/home/flow/Vibe/gf-skywater130/results")
     
-
