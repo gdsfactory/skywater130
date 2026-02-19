@@ -1,5 +1,3 @@
-from gdsfactory.config import cwd
-import subprocess
 import sys
 from pathlib import Path
 
@@ -13,22 +11,25 @@ from gdsfactory.component import Component
 import sky130
 from gdsfactory.pdk import get_active_pdk
 from gdsfactory.add_pins import add_instance_label
-import gdsfactory as gf
 from sky130.routing_utils import RouteNetSpec, route_nets_deterministic_copy
 
 
 
 
-def test_inverter() -> Component:
+def test_inverter(
+    pmos_offset: tuple[float, float] = (5.0, 5.0),
+    component_name: str = "test_inverter",
+    add_segment_ports: bool = True,
+) -> Component:
     pdk = get_active_pdk()
-    c = Component("test_inverter")
+    c = Component(component_name)
 
     # Create instances
     instance1 = c.add_ref(pdk.get_component('pmos_5v', instance_name='pmos'), name='pmos')
     instance2 = c.add_ref(pdk.get_component('nmos_5v', instance_name='nmos'), name='nmos')
     
     # Place instances
-    instance1.move((5, 0))
+    instance1.move(pmos_offset)
     instance1.mirror_y(instance1.dcenter[1])
     instance2.move((0, 0))
 
@@ -38,7 +39,7 @@ def test_inverter() -> Component:
 
     # Add routing area markers to ensure grid extends beyond the obstacle
     routing_area_layer = (235, 4)  # Dummy layer for grid extent
-    c.add_polygon([(-50, -20), (110, -20), (110, 50), (-50, 50)], layer=routing_area_layer)
+    c.add_polygon([(-15, -15), (15, -15), (15, 15), (-15, 15)], layer=routing_area_layer)
 
     # Grid resolution for A* pathfinding
     grid_unit_um = 1.0    # 1um grid resolution
@@ -81,9 +82,9 @@ def test_inverter() -> Component:
         c,
         nets=nets,
         grid_unit=grid_unit_um,
-        dynamic_width=False,
+        dynamic_width=True,
         layers_to_avoid=layers_to_avoid,
-        add_segment_ports=True,
+        add_segment_ports=add_segment_ports,
         require_all=True,
         deterministic=True,
     )
@@ -94,23 +95,56 @@ def test_inverter() -> Component:
 
     return c
 
-if __name__ == "__main__":
-    c = test_inverter()
-    c.flatten()
-    c.pprint_ports()
+
+def sweep_inverter_positions(step: float = 5.0) -> list[tuple[str, tuple[float, float], Component, str]]:
+    """Sweep PMOS over 3x3 ring around NMOS center in clockwise order.
+
+    Returns:
+        List of (label, offset, component_or_none, error_message).
+    """
+    positions = [
+        ("top_left", (-step, step)),
+        ("top_middle", (0.0, step)),
+        ("top_right", (step, step)),
+        ("middle_right", (step, 0.0)),
+        ("bottom_right", (step, -step)),
+        ("bottom_middle", (0.0, -step)),
+        ("bottom_left", (-step, -step)),
+        ("middle_left", (-step, 0.0)),
+    ]
+
     interactive = sys.stdin.isatty() and sys.stdout.isatty()
-    if interactive:
-        c.show()
-        input("Press Enter to continue...")
-    c.write_gds("./results/test_inverter.gds", with_metadata=False)
-    with open("./results/read_gds.tcl", "w") as f:
-        f.write("box 0um 0um 0um 0um\n")
-        f.write("gds read /home/flow/Vibe/gf-skywater130/results/test_inverter.gds\n")
-        f.write("load test_inverter\n")
-        f.write("select top cell\n")
-        f.write("extract do local\n")
-        f.write("extract all\n")
-        f.write("ext2spice lvs\n")
-        f.write("ext2spice -o test_inverter.sp\n")
-    subprocess.run("magic -rcfile /usr/local/share/pdk/sky130A/libs.tech/magic/sky130A.magicrc ./read_gds.tcl".split(), cwd="/home/flow/Vibe/gf-skywater130/results")
+    results = []
+
+    for idx, (label, offset) in enumerate(positions, start=1):
+        print(f"\n[{idx}/{len(positions)}] Routing position '{label}' at offset={offset}")
+        try:
+            c = test_inverter(
+                pmos_offset=offset,
+                component_name=f"test_inverter_{label}",
+                add_segment_ports=False,
+            )
+            c.flatten()
+            c.pprint_ports()
+            if interactive:
+                c.show()
+                input(f"Breakpoint at '{label}'. Press Enter to continue...")
+            gds_path = f"./results/test_inverter_{label}.gds"
+            c.write_gds(gds_path, with_metadata=False)
+            results.append((label, offset, c, ""))
+            print(f"[OK] Wrote {gds_path}")
+        except Exception as e:
+            err = str(e)
+            print(f"[FAIL] {label}: {err}")
+            results.append((label, offset, None, err))
+            if interactive:
+                input(f"Breakpoint at failed '{label}'. Press Enter to continue...")
+
+    return results
+
+if __name__ == "__main__":
+    results = sweep_inverter_positions(step=5.0)
+    ok = sum(1 for _, _, c, _ in results if c is not None)
+    fail = len(results) - ok
+    print(f"\nSweep complete: {ok} succeeded, {fail} failed.")
     

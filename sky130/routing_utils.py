@@ -39,6 +39,8 @@ class PortGeometry:
     exit_dir: str
     bbox_dbu: Optional[Tuple[int, int, int, int]]
     dev_center_dbu: Optional[Tuple[int, int]]
+    layer_tuple: Optional[Tuple[int, int]]
+    below_cut_count: int
 
     @property
     def width_along(self) -> float:
@@ -91,6 +93,16 @@ def _segment_envelope_um(
     x0, y0 = p1
     x1, y1 = p2
     return (min(x0, x1) - half, min(y0, y1) - half, max(x0, x1) + half, max(y0, y1) + half)
+
+
+def _rect_envelope_um(
+    center: Tuple[float, float],
+    width_um: float,
+    height_um: float,
+) -> Tuple[float, float, float, float]:
+    """Rectangular envelope from center and explicit width/height."""
+    x, y = center
+    return (x - width_um / 2.0, y - height_um / 2.0, x + width_um / 2.0, y + height_um / 2.0)
 
 
 def _via_envelope_um(
@@ -473,6 +485,305 @@ def _get_pos_with_dir(port, dbu: float) -> Tuple[int, int, str]:
     return (x, y, d)
 
 
+def _below_cut_layer_for_metal(layer_tuple: Tuple[int, int]) -> Optional[Tuple[int, int]]:
+    """Return immediate below-metal cut layer for a routed metal layer."""
+    mapping = {
+        LAYER_M1: (67, 44),  # mcon under M1
+        LAYER_M2: (68, 44),  # via1 under M2
+    }
+    return mapping.get(layer_tuple)
+
+
+def _count_below_port_cuts(kc, port_poly, layer_tuple: Optional[Tuple[int, int]]) -> int:
+    """Count lower-cut shapes whose centers are inside the selected port polygon."""
+    from kfactory import kdb
+
+    if layer_tuple is None:
+        return 0
+    cut_layer = _below_cut_layer_for_metal(layer_tuple)
+    if cut_layer is None:
+        return 0
+
+    cut_idx = kc.kcl.layer(*cut_layer)
+    cut_region = kdb.Region(kc.begin_shapes_rec(cut_idx))
+    count = 0
+    for cut in cut_region.each():
+        bbox = cut.bbox()
+        center = kdb.Point((bbox.left + bbox.right) // 2, (bbox.bottom + bbox.top) // 2)
+        if port_poly.inside(center):
+            count += 1
+    return count
+
+
+def _fanout_hops_from_cut_count(cut_count: int) -> int:
+    """Deterministic width-fanout horizon from below-cut density."""
+    if cut_count <= 1:
+        return 0
+    if cut_count <= 3:
+        return 1
+    if cut_count <= 6:
+        return 2
+    return 3
+
+
+def _segment_direction_width(port_geom: PortGeometry, is_horizontal: bool, fallback: float) -> float:
+    """Port-side snapped width for a segment direction."""
+    raw = port_geom.width_y if is_horizontal else port_geom.width_x
+    return max(float(_DRC["min_width"][LAYER_M1]), fallback, raw)
+
+
+def _selected_straight_width(
+    start_geom: PortGeometry,
+    stop_geom: PortGeometry,
+    fallback_width: float,
+) -> float:
+    """Select route width from the smaller port polygon's longer edge."""
+    area_start = float(start_geom.width_x * start_geom.width_y)
+    area_stop = float(stop_geom.width_x * stop_geom.width_y)
+    selected = start_geom if area_start <= area_stop else stop_geom
+    candidate = max(float(selected.width_x), float(selected.width_y))
+    _ = fallback_width  # retained for call-site compatibility
+    return max(float(_DRC["min_width"][LAYER_M1]), candidate)
+
+
+def _selected_polygon_meta(start_geom: PortGeometry, stop_geom: PortGeometry) -> Tuple[str, str]:
+    """Return selected endpoint ('start'|'stop') and its longer-side axis ('h'|'v')."""
+    area_start = float(start_geom.width_x * start_geom.width_y)
+    area_stop = float(stop_geom.width_x * stop_geom.width_y)
+    selected = "start" if area_start <= area_stop else "stop"  # source tie-break
+    geom = start_geom if selected == "start" else stop_geom
+    axis = "h" if geom.width_y >= geom.width_x else "v"
+    return selected, axis
+
+
+def _first_same_layer_segment_idx(corners_3d: List[Tuple[int, int, int]]) -> Optional[Tuple[int, int]]:
+    for i in range(len(corners_3d) - 1):
+        x0, y0, z0 = corners_3d[i]
+        x1, y1, z1 = corners_3d[i + 1]
+        if z0 == z1 and (x0 != x1 or y0 != y1):
+            return (i, i + 1)
+    return None
+
+
+def _last_same_layer_segment_idx(corners_3d: List[Tuple[int, int, int]]) -> Optional[Tuple[int, int]]:
+    for i in range(len(corners_3d) - 2, -1, -1):
+        x0, y0, z0 = corners_3d[i]
+        x1, y1, z1 = corners_3d[i + 1]
+        if z0 == z1 and (x0 != x1 or y0 != y1):
+            return (i, i + 1)
+    return None
+
+
+def _has_local_backtrack_corners(corners_3d: List[Tuple[int, int, int]]) -> bool:
+    """Detect immediate A->B->A position reversals."""
+    if len(corners_3d) < 3:
+        return False
+    for i in range(1, len(corners_3d) - 1):
+        a = corners_3d[i - 1]
+        b = corners_3d[i]
+        c = corners_3d[i + 1]
+        if a[0] == c[0] and a[1] == c[1] and not (a[0] == b[0] and a[1] == b[1]):
+            return True
+    return False
+
+
+def _has_local_backtrack_path(path: List[Tuple[float, float]], tol: float = 1e-6) -> bool:
+    """Detect immediate A->B->A position reversals in 2D path."""
+    if len(path) < 3:
+        return False
+    for i in range(1, len(path) - 1):
+        a = path[i - 1]
+        b = path[i]
+        c = path[i + 1]
+        if abs(a[0] - c[0]) <= tol and abs(a[1] - c[1]) <= tol:
+            if abs(a[0] - b[0]) > tol or abs(a[1] - b[1]) > tol:
+                return True
+    return False
+
+
+def _enforce_axis_on_corners_endpoint(
+    corners_3d: List[Tuple[int, int, int]],
+    endpoint: str,
+    axis: str,
+    jog_dbu: int = 1,
+    mode: str = "hard",
+) -> bool:
+    """Ensure first/last same-layer segment matches required axis via local jog insertion."""
+    if len(corners_3d) < 2:
+        return False
+
+    pair = _first_same_layer_segment_idx(corners_3d) if endpoint == "start" else _last_same_layer_segment_idx(corners_3d)
+    if pair is None:
+        return False
+    i, j = pair
+    p0 = corners_3d[i]
+    p1 = corners_3d[j]
+    is_h = p0[1] == p1[1]
+    if (axis == "h" and is_h) or (axis == "v" and not is_h):
+        return False
+
+    original = list(corners_3d)
+    if endpoint == "start":
+        if axis == "h":
+            xj = p1[0] if p1[0] != p0[0] else p0[0] + jog_dbu
+            jog = (xj, p0[1], p0[2])
+        else:
+            yj = p1[1] if p1[1] != p0[1] else p0[1] + jog_dbu
+            jog = (p0[0], yj, p0[2])
+        corners_3d.insert(j, jog)
+    else:
+        if axis == "h":
+            xj = p0[0] if p0[0] != p1[0] else p1[0] - jog_dbu
+            jog = (xj, p1[1], p1[2])
+        else:
+            yj = p0[1] if p0[1] != p1[1] else p1[1] - jog_dbu
+            jog = (p1[0], yj, p1[2])
+        corners_3d.insert(j, jog)
+    if _has_local_backtrack_corners(corners_3d):
+        corners_3d[:] = original
+        return False
+    if mode == "prefer":
+        # Prefer mode is best-effort only; keep original if still misaligned.
+        pair2 = _first_same_layer_segment_idx(corners_3d) if endpoint == "start" else _last_same_layer_segment_idx(corners_3d)
+        if pair2 is None:
+            corners_3d[:] = original
+            return False
+        q0 = corners_3d[pair2[0]]
+        q1 = corners_3d[pair2[1]]
+        q_is_h = q0[1] == q1[1]
+        if not ((axis == "h" and q_is_h) or (axis == "v" and not q_is_h)):
+            corners_3d[:] = original
+            return False
+    return True
+
+
+def _enforce_axis_on_path_endpoint(
+    path: List[Tuple[float, float]],
+    endpoint: str,
+    axis: str,
+    jog_um: float = 0.001,
+    mode: str = "hard",
+) -> bool:
+    """Ensure first/last path segment matches required axis via local jog insertion."""
+    if len(path) < 2:
+        return False
+    if endpoint == "start":
+        p0 = path[0]
+        p1 = path[1]
+        is_h = abs(p1[1] - p0[1]) < 0.001
+        if (axis == "h" and is_h) or (axis == "v" and not is_h):
+            return False
+        original = list(path)
+        if axis == "h":
+            xj = p1[0] if abs(p1[0] - p0[0]) > 0.001 else p0[0] + jog_um
+            path.insert(1, (xj, p0[1]))
+        else:
+            yj = p1[1] if abs(p1[1] - p0[1]) > 0.001 else p0[1] + jog_um
+            path.insert(1, (p0[0], yj))
+        if _has_local_backtrack_path(path):
+            path[:] = original
+            return False
+        return True
+
+    p0 = path[-2]
+    p1 = path[-1]
+    is_h = abs(p1[1] - p0[1]) < 0.001
+    if (axis == "h" and is_h) or (axis == "v" and not is_h):
+        return False
+    original = list(path)
+    if axis == "h":
+        xj = p0[0] if abs(p0[0] - p1[0]) > 0.001 else p1[0] - jog_um
+        path.insert(len(path) - 1, (xj, p1[1]))
+    else:
+        yj = p0[1] if abs(p0[1] - p1[1]) > 0.001 else p1[1] - jog_um
+        path.insert(len(path) - 1, (p1[0], yj))
+    if _has_local_backtrack_path(path):
+        path[:] = original
+        return False
+    return True
+
+
+def _build_segment_widths_dynamic(
+    corners_3d: List[Tuple[int, int, int]],
+    start_geom: PortGeometry,
+    stop_geom: PortGeometry,
+    body_width: float,
+    fallback_width: float,
+    dynamic_width: bool,
+) -> List[float]:
+    """Compute per-segment widths using selected-port uniform straight width."""
+    n_segs = len(corners_3d) - 1 if len(corners_3d) >= 2 else 0
+    if n_segs <= 0:
+        return []
+    if not dynamic_width:
+        return [fallback_width] * n_segs
+
+    _ = body_width  # kept for call-site compatibility
+    uniform_w = _selected_straight_width(start_geom, stop_geom, fallback_width)
+    return [uniform_w] * n_segs
+
+
+def _build_corner_patches_from_segments(
+    plan_segments: List[Tuple[Tuple[float, float], Tuple[float, float], Tuple[int, int], float]],
+) -> List[Tuple[Tuple[float, float], Tuple[int, int], float, float]]:
+    """Build anisotropic corner patches from adjacent straight segments.
+
+    Patch width follows horizontal segment width(s) and patch height follows
+    vertical segment width(s) at each same-layer segment junction.
+    """
+    endpoint_map: Dict[Tuple[float, float, Tuple[int, int]], List[Tuple[bool, float]]] = {}
+    for p0, p1, layer, seg_w in plan_segments:
+        is_h = abs(p1[1] - p0[1]) < 0.001
+        key0 = (p0[0], p0[1], layer)
+        key1 = (p1[0], p1[1], layer)
+        endpoint_map.setdefault(key0, []).append((is_h, seg_w))
+        endpoint_map.setdefault(key1, []).append((is_h, seg_w))
+
+    patches: List[Tuple[Tuple[float, float], Tuple[int, int], float, float]] = []
+    for (x, y, layer), entries in endpoint_map.items():
+        h_widths = [w for is_h, w in entries if is_h]
+        v_widths = [w for is_h, w in entries if not is_h]
+        if not h_widths or not v_widths:
+            continue
+        min_w = float(_DRC["min_width"][LAYER_M1 if layer == LAYER_M1 else LAYER_M2])
+        patch_w = max(min_w, max(h_widths))
+        patch_h = max(min_w, max(v_widths))
+        patches.append(((x, y), layer, patch_w, patch_h))
+    return patches
+
+
+def _transition_target_via_width(
+    corners_3d: List[Tuple[int, int, int]],
+    seg_widths: List[float],
+    transition_idx: int,
+    fallback_width: float,
+) -> float:
+    """Target via-driving width from neighboring straight segments around a layer transition."""
+    widths: List[float] = []
+    n = len(seg_widths)
+    for cand in (transition_idx - 1, transition_idx, transition_idx + 1):
+        if 0 <= cand < n:
+            widths.append(float(seg_widths[cand]))
+    if not widths:
+        widths.append(float(fallback_width))
+    return max(widths)
+
+
+def _via_pad_candidates(target_pad_um: float) -> List[float]:
+    """Deterministic descending via-pad fallback ladder down to minimum legal pad."""
+    min_pad = _via_pad_size_um(0.0)
+    target = max(min_pad, float(target_pad_um))
+    vals = [target]
+    for scale in (0.85, 0.70, 0.55, 0.40, 0.25):
+        vals.append(max(min_pad, target * scale))
+    vals.append(min_pad)
+    out: List[float] = []
+    for v in sorted(vals, reverse=True):
+        if not out or abs(v - out[-1]) > 1e-6:
+            out.append(v)
+    return out
+
+
 def _get_port_geometry(
     port,
     kc,
@@ -492,7 +803,7 @@ def _get_port_geometry(
         layer_tuple = (info.layer, info.datatype)
 
     if layer_tuple is None:
-        return PortGeometry(default_width, default_width, "o", None, None)
+        return PortGeometry(default_width, default_width, "o", None, None, None, 0)
 
     layer_idx = kc.kcl.layer(*layer_tuple)
     region = kdb.Region(kc.begin_shapes_rec(layer_idx))
@@ -507,7 +818,7 @@ def _get_port_geometry(
                 best_poly = poly
 
     if best_poly is None:
-        return PortGeometry(default_width, default_width, "o", None, None)
+        return PortGeometry(default_width, default_width, "o", None, None, layer_tuple, 0)
 
     bbox = best_poly.bbox()
     x_extent_um = max(_DRC["min_width"][LAYER_M1], (bbox.right - bbox.left) * dbu)
@@ -515,6 +826,7 @@ def _get_port_geometry(
     exit_dir = "h" if y_extent_um >= x_extent_um else "v"
     bbox_dbu = (bbox.left, bbox.bottom, bbox.right, bbox.top)
     dev_center = ((bbox.left + bbox.right) // 2, (bbox.bottom + bbox.top) // 2)
+    below_cut_count = _count_below_port_cuts(kc, best_poly, layer_tuple)
 
     return PortGeometry(
         width_x=x_extent_um,
@@ -522,6 +834,8 @@ def _get_port_geometry(
         exit_dir=exit_dir,
         bbox_dbu=bbox_dbu,
         dev_center_dbu=dev_center,
+        layer_tuple=layer_tuple,
+        below_cut_count=below_cut_count,
     )
 
 
@@ -828,6 +1142,236 @@ def _draw_route_segments(
     return segment_ports
 
 
+def _draw_dynamic_geometry_for_corners(
+    c: Component,
+    corners_3d: List[Tuple[int, int, int]],
+    start_geom: PortGeometry,
+    stop_geom: PortGeometry,
+    body_width: float,
+    width: float,
+    dynamic_width: bool,
+    m1_polys: List[np.ndarray],
+    m2_polys: List[np.ndarray],
+    start_xy_dbu: Tuple[int, int],
+    stop_xy_dbu: Tuple[int, int],
+    dbu: float,
+    clearance: float,
+    add_segment_ports: bool,
+    port_name_prefix: str,
+) -> Optional[List[Port]]:
+    """Draw dynamic-width route geometry from layered corners.
+
+    Returns:
+        List of segment ports if drawing succeeds, otherwise None.
+    """
+    if len(corners_3d) < 2:
+        return []
+
+    seg_widths = _build_segment_widths_dynamic(
+        corners_3d=corners_3d,
+        start_geom=start_geom,
+        stop_geom=stop_geom,
+        body_width=body_width,
+        fallback_width=width,
+        dynamic_width=dynamic_width,
+    )
+
+    port_points_um = [(start_xy_dbu[0] * dbu, start_xy_dbu[1] * dbu), (stop_xy_dbu[0] * dbu, stop_xy_dbu[1] * dbu)]
+    m1_bboxes = []
+    m2_bboxes = []
+    for poly in m1_polys:
+        if len(poly) >= 3:
+            box = (
+                float(poly[:, 0].min()) * dbu,
+                float(poly[:, 1].min()) * dbu,
+                float(poly[:, 0].max()) * dbu,
+                float(poly[:, 1].max()) * dbu,
+            )
+            if not any(box[0] <= px <= box[2] and box[1] <= py <= box[3] for px, py in port_points_um):
+                m1_bboxes.append(box)
+    for poly in m2_polys:
+        if len(poly) >= 3:
+            box = (
+                float(poly[:, 0].min()) * dbu,
+                float(poly[:, 1].min()) * dbu,
+                float(poly[:, 0].max()) * dbu,
+                float(poly[:, 1].max()) * dbu,
+            )
+            if not any(box[0] <= px <= box[2] and box[1] <= py <= box[3] for px, py in port_points_um):
+                m2_bboxes.append(box)
+
+    width_profiles: List[List[float]] = [list(seg_widths)]
+    if dynamic_width and seg_widths:
+        min_seg_w = max(float(_DRC["min_width"][LAYER_M1]), float(width))
+        for scale in (0.9, 0.8, 0.7, 0.6, 0.5):
+            trial = [max(min_seg_w, sw * scale) for sw in seg_widths]
+            if any(
+                all(abs(a - b) <= 1e-6 for a, b in zip(trial, existing))
+                for existing in width_profiles
+            ):
+                continue
+            width_profiles.append(trial)
+
+    base_corners = [tuple(c) for c in corners_3d]
+    for trial_idx, seg_widths_trial in enumerate(width_profiles):
+        corners_trial = [tuple(c) for c in base_corners]
+        geom_blocked = False
+        via_pad_by_transition: Dict[int, float] = {}
+        for i in range(len(corners_trial) - 1):
+            x0, y0, z0 = corners_trial[i]
+            _, _, z1 = corners_trial[i + 1]
+            if z0 == z1:
+                continue
+            target_w = _transition_target_via_width(corners_trial, seg_widths_trial, i, width)
+            target_pad = _via_pad_size_um(target_w)
+            base_center = (x0 * dbu, y0 * dbu)
+            allow_relocate = i > 0 and (i + 1) < (len(corners_trial) - 1)
+            resolved = None
+            chosen_pad = None
+            for via_pad in _via_pad_candidates(target_pad):
+                candidate = _resolve_legal_via_center(
+                    base_center_um=base_center,
+                    via_pad_um=via_pad,
+                    m1_bboxes=m1_bboxes,
+                    m2_bboxes=m2_bboxes,
+                    dbu=dbu,
+                    relocate_step_um=max(clearance, 0.14),
+                    relocate_radius_um=max(1.0, 2.0 * clearance),
+                    max_candidates=64,
+                    allow_relocate=allow_relocate,
+                )
+                if candidate is None:
+                    continue
+                resolved = candidate
+                chosen_pad = via_pad
+                break
+            if resolved is None or chosen_pad is None:
+                geom_blocked = True
+                break
+            via_pad_by_transition[i] = chosen_pad
+            if resolved != base_center:
+                rx = int(round(resolved[0] / dbu))
+                ry = int(round(resolved[1] / dbu))
+                corners_trial[i] = (rx, ry, z0)
+                corners_trial[i + 1] = (rx, ry, z1)
+
+        plan_segments: List[Tuple[Tuple[float, float], Tuple[float, float], Tuple[int, int], float]] = []
+        plan_vias: List[Tuple[Tuple[float, float], float]] = []
+
+        def _plan_add_segment(p0: Tuple[float, float], p1: Tuple[float, float], layer: Tuple[int, int], seg_w: float) -> None:
+            dx = abs(p1[0] - p0[0])
+            dy = abs(p1[1] - p0[1])
+            if dx < MIN_SEGMENT_LENGTH and dy < MIN_SEGMENT_LENGTH:
+                return
+            if dx > 0.001 and dy > 0.001:
+                mid = (p1[0], p0[1]) if layer == LAYER_M1 else (p0[0], p1[1])
+                _plan_add_segment(p0, mid, layer, seg_w)
+                _plan_add_segment(mid, p1, layer, seg_w)
+                return
+            plan_segments.append((p0, p1, layer, seg_w))
+
+        for i in range(len(corners_trial) - 1):
+            x0, y0, z0 = corners_trial[i]
+            x1, y1, z1 = corners_trial[i + 1]
+            seg_w = seg_widths_trial[i] if i < len(seg_widths_trial) else width
+            p0 = (x0 * dbu, y0 * dbu)
+            p1 = (x1 * dbu, y1 * dbu)
+            if z0 != z1:
+                via_pad = via_pad_by_transition.get(
+                    i,
+                    _via_pad_size_um(_transition_target_via_width(corners_trial, seg_widths_trial, i, width)),
+                )
+                plan_vias.append((p0, via_pad))
+                _plan_add_segment(p0, p1, LAYER_M1 if z1 == 0 else LAYER_M2, seg_w)
+            else:
+                _plan_add_segment(p0, p1, LAYER_M1 if z0 == 0 else LAYER_M2, seg_w)
+
+        plan_patches = _build_corner_patches_from_segments(plan_segments)
+
+        if not geom_blocked:
+            for p0, p1, layer, seg_w in plan_segments:
+                seg_box = _segment_envelope_um(p0, p1, seg_w)
+                target = m1_bboxes if layer == LAYER_M1 else m2_bboxes
+                if any(_bbox_overlap(seg_box, obox) for obox in target):
+                    geom_blocked = True
+                    break
+
+        if not geom_blocked:
+            for center, layer, patch_w, patch_h in plan_patches:
+                patch_box = _rect_envelope_um(center, patch_w, patch_h)
+                target = m1_bboxes if layer == LAYER_M1 else m2_bboxes
+                if any(_bbox_overlap(patch_box, obox) for obox in target):
+                    geom_blocked = True
+                    break
+
+        if not geom_blocked:
+            for center, via_w in plan_vias:
+                if not _is_via_legal_on_both_layers(center, via_w, m1_bboxes, m2_bboxes):
+                    geom_blocked = True
+                    break
+
+        if geom_blocked:
+            continue
+
+        if trial_idx > 0:
+            print(
+                f"[ROUTE] Dynamic straight width downgraded by profile {trial_idx} "
+                "for legal geometry."
+            )
+
+        segment_ports: List[Port] = []
+        for center, layer, patch_w, patch_h in plan_patches:
+            patch = c.add_ref(gf.components.rectangle(size=(patch_w, patch_h), layer=layer))
+            patch.dcenter = center
+
+        for center, via_w in plan_vias:
+            via = c.add_ref(via_m1_m2(width=via_w, length=via_w))
+            via.dcenter = center
+
+        for p0, p1, layer, seg_w in plan_segments:
+            is_horiz = abs(p1[1] - p0[1]) < 0.001
+            if is_horiz:
+                x_min = min(p0[0], p1[0])
+                x_max = max(p0[0], p1[0])
+                seg_len = x_max - x_min
+                if seg_len >= 0.001:
+                    rect = c.add_ref(gf.components.rectangle(size=(seg_len, seg_w), layer=layer))
+                    rect.dmove((x_min, p0[1] - seg_w / 2))
+                    if add_segment_ports:
+                        port = c.add_port(
+                            name=f"{port_name_prefix}",
+                            center=(x_min + seg_len / 2, p0[1]),
+                            width=0.01,
+                            orientation=0,
+                            layer=(layer[0], 16),
+                            port_type="electrical",
+                        )
+                        segment_ports.append(port)
+                        c.draw_ports()
+            else:
+                y_min = min(p0[1], p1[1])
+                y_max = max(p0[1], p1[1])
+                seg_len = y_max - y_min
+                if seg_len >= 0.001:
+                    rect = c.add_ref(gf.components.rectangle(size=(seg_w, seg_len), layer=layer))
+                    rect.dmove((p0[0] - seg_w / 2, y_min))
+                    if add_segment_ports:
+                        port = c.add_port(
+                            name=f"{port_name_prefix}",
+                            center=(p0[0], y_min + seg_len / 2),
+                            width=0.01,
+                            orientation=90,
+                            layer=(layer[0], 16),
+                            port_type="electrical",
+                        )
+                        segment_ports.append(port)
+                        c.draw_ports()
+
+        return segment_ports
+
+    return None
+
+
 def route_hierarchical(
     c: Component,
     start: Port,
@@ -842,6 +1386,7 @@ def route_hierarchical(
     deterministic: bool = True,
     add_segment_ports: bool = False,
     port_name_prefix: str = "seg",
+    dynamic_width: bool = True,
 ) -> List[Port]:
     """Route using hierarchical two-phase approach: global then detailed.
     
@@ -866,6 +1411,7 @@ def route_hierarchical(
         global_grid_unit: Grid unit for global routing (um). Default 2.0.
         detail_grid_unit: Grid unit for detailed routing (um). Default 0.25.
         width: Width of the metal traces (um).
+        dynamic_width: If True, use polygon-driven endpoint snapping and dynamic segment widths.
         layers_to_avoid: Layers containing obstructions.
         detail_margin: Margin around path for detailed routing (um).
         clearance: Preferred minimum obstruction offset in um.
@@ -1229,6 +1775,104 @@ def route_hierarchical(
     m1_via_bboxes = [b for b in _poly_bboxes_um(via_guard_m1) if not _bbox_contains_any_point(b, port_points_um)]
     m2_via_bboxes = [b for b in _poly_bboxes_um(via_guard_m2) if not _bbox_contains_any_point(b, port_points_um)]
 
+    if dynamic_width:
+        start_geom = _get_port_geometry(start, kc, dbu, default_width=width)
+        stop_geom = _get_port_geometry(stop, kc, dbu, default_width=width)
+        selected_endpoint, selected_axis = _selected_polygon_meta(start_geom, stop_geom)
+        body_width = max(
+            _DRC["min_width"][LAYER_M1],
+            min(
+                start_geom.width_x,
+                start_geom.width_y,
+                stop_geom.width_x,
+                stop_geom.width_y,
+            ),
+        )
+
+        def _layer_idx_from_tuple(layer_tuple: Optional[Tuple[int, int]], default_idx: int) -> int:
+            if layer_tuple == LAYER_M2:
+                return 1
+            if layer_tuple == LAYER_M1:
+                return 0
+            return default_idx
+
+        def _segment_layer_idx(p0: Tuple[float, float], p1: Tuple[float, float]) -> int:
+            is_h = _is_horizontal(p0, p1)
+            if is_h:
+                return 1 if use_m2_horiz else 0
+            return 1
+
+        if len(path) < 2:
+            return []
+
+        start_layer_tuple = _get_layer_tuple_local(start, c)
+        stop_layer_tuple = _get_layer_tuple_local(stop, c)
+
+        def _build_corners_from_path(path_pts: List[Tuple[float, float]]) -> List[Tuple[int, int, int]]:
+            first_seg_layer = _segment_layer_idx(path_pts[0], path_pts[1])
+            current_layer = _layer_idx_from_tuple(start_layer_tuple, first_seg_layer)
+            x0 = int(round(path_pts[0][0] / dbu))
+            y0 = int(round(path_pts[0][1] / dbu))
+            out: List[Tuple[int, int, int]] = [(x0, y0, current_layer)]
+            if current_layer != first_seg_layer:
+                out.append((x0, y0, first_seg_layer))
+            for i in range(len(path_pts) - 1):
+                sx = int(round(path_pts[i][0] / dbu))
+                sy = int(round(path_pts[i][1] / dbu))
+                ex = int(round(path_pts[i + 1][0] / dbu))
+                ey = int(round(path_pts[i + 1][1] / dbu))
+                seg_layer = _segment_layer_idx(path_pts[i], path_pts[i + 1])
+                if out[-1][0] != sx or out[-1][1] != sy:
+                    out.append((sx, sy, out[-1][2]))
+                if out[-1][2] != seg_layer:
+                    out.append((sx, sy, seg_layer))
+                out.append((ex, ey, seg_layer))
+            last_seg_layer = _segment_layer_idx(path_pts[-2], path_pts[-1])
+            stop_layer_idx = _layer_idx_from_tuple(stop_layer_tuple, last_seg_layer)
+            if out[-1][2] != stop_layer_idx:
+                out.append((out[-1][0], out[-1][1], stop_layer_idx))
+            return out
+
+        for axis_mode in ("hard", "prefer", "off"):
+            path_trial = list(path)
+            if axis_mode != "off":
+                _enforce_axis_on_path_endpoint(
+                    path_trial,
+                    endpoint=selected_endpoint,
+                    axis=selected_axis,
+                    mode=axis_mode,
+                )
+            path_trial = _make_manhattan(path_trial)
+            path_trial = _simplify_path(path_trial)
+            if len(path_trial) < 2:
+                continue
+            corners_3d = _build_corners_from_path(path_trial)
+            dyn_ports = _draw_dynamic_geometry_for_corners(
+                c=c,
+                corners_3d=corners_3d,
+                start_geom=start_geom,
+                stop_geom=stop_geom,
+                body_width=body_width,
+                width=width,
+                dynamic_width=True,
+                m1_polys=via_guard_m1,
+                m2_polys=via_guard_m2,
+                start_xy_dbu=(int(round(start_x / dbu)), int(round(start_y / dbu))),
+                stop_xy_dbu=(int(round(stop_x / dbu)), int(round(stop_y / dbu))),
+                dbu=dbu,
+                clearance=clearance,
+                add_segment_ports=add_segment_ports,
+                port_name_prefix=port_name_prefix,
+            )
+            if dyn_ports is not None:
+                if axis_mode == "prefer":
+                    print("[ROUTE] Axis policy downgraded to prefer for legal fallback geometry.")
+                elif axis_mode == "off":
+                    print("[ROUTE] Axis policy downgraded to off for legal fallback geometry.")
+                return dyn_ports
+        print("[ROUTE] Dynamic fallback geometry blocked; aborting route.")
+        return []
+
     # Final segment and corner legality guard before any drawing.
     for i in range(len(path) - 1):
         p0 = path[i]
@@ -1390,12 +2034,19 @@ def route_multilayer_3d(
     # Geometry-aware widths for dynamic mode.
     start_geom = _get_port_geometry(start, kc, dbu, default_width=width)
     stop_geom = _get_port_geometry(stop, kc, dbu, default_width=width)
+    selected_poly, selected_axis = _selected_polygon_meta(start_geom, stop_geom)
+    selected_straight_width = _selected_straight_width(start_geom, stop_geom, width)
     if dynamic_width:
-        start_width = max(width, start_geom.width_along)
-        stop_width = max(width, stop_geom.width_along)
+        start_width = max(width, start_geom.width_x, start_geom.width_y)
+        stop_width = max(width, stop_geom.width_x, stop_geom.width_y)
         body_width = max(
             _DRC["min_width"][LAYER_M1],
-            min(start_geom.width_across, stop_geom.width_across),
+            min(
+                start_geom.width_x,
+                start_geom.width_y,
+                stop_geom.width_x,
+                stop_geom.width_y,
+            ),
         )
     else:
         start_width = width
@@ -1461,7 +2112,9 @@ def route_multilayer_3d(
     print(f"[3D ROUTE] BBox: ({min_x*dbu:.1f}, {min_y*dbu:.1f}) -> ({max_x*dbu:.1f}, {max_y*dbu:.1f})")
     print(
         f"[3D ROUTE] widths dynamic={dynamic_width} "
-        f"start={start_width:.3f}um body={body_width:.3f}um stop={stop_width:.3f}um"
+        f"start={start_width:.3f}um body={body_width:.3f}um stop={stop_width:.3f}um "
+        f"selected={selected_poly} selected_straight={selected_straight_width:.3f}um "
+        f"selected_axis={selected_axis}"
     )
 
     # Wider search clearance in dynamic mode to honor endpoint/body widths.
@@ -1546,6 +2199,7 @@ def route_multilayer_3d(
             global_grid_unit=grid_unit * 2,
             detail_grid_unit=grid_unit,
             width=width,
+            dynamic_width=dynamic_width,
             layers_to_avoid=layers_to_avoid,
             clearance=clearance,
             clearance_ladder=clearance_ladder,
@@ -1721,25 +2375,74 @@ def route_multilayer_3d(
             continue
         deduped.append(curr)
     corners_3d = deduped
-    
+
     # Debug: print final path
     print(f"[3D ROUTE] Final path ({len(corners_3d)} corners):")
     for idx, (cx, cy, cz) in enumerate(corners_3d):
         print(f"  [{idx}] ({cx*dbu:.3f}, {cy*dbu:.3f}) L{cz} ({'M1' if cz==0 else 'M2'})")
+
+    if dynamic_width:
+        base_corners = [tuple(c) for c in corners_3d]
+        for axis_mode in ("hard", "prefer", "off"):
+            trial_corners = [tuple(c) for c in base_corners]
+            if axis_mode != "off":
+                _enforce_axis_on_corners_endpoint(
+                    trial_corners,
+                    endpoint=selected_poly,
+                    axis=selected_axis,
+                    jog_dbu=max(1, grid_unit_dbu),
+                    mode=axis_mode,
+                )
+            dyn_ports = _draw_dynamic_geometry_for_corners(
+                c=c,
+                corners_3d=trial_corners,
+                start_geom=start_geom,
+                stop_geom=stop_geom,
+                body_width=body_width,
+                width=width,
+                dynamic_width=True,
+                m1_polys=m1_polys,
+                m2_polys=m2_polys,
+                start_xy_dbu=(start_x, start_y),
+                stop_xy_dbu=(stop_x, stop_y),
+                dbu=dbu,
+                clearance=clearance,
+                add_segment_ports=add_segment_ports,
+                port_name_prefix=port_name_prefix,
+            )
+            if dyn_ports is not None:
+                if axis_mode == "prefer":
+                    print("[3D ROUTE] Axis policy downgraded to prefer for legal geometry.")
+                elif axis_mode == "off":
+                    print("[3D ROUTE] Axis policy downgraded to off for legal geometry.")
+                return dyn_ports
+        print("[3D ROUTE] Planned geometry violates obstruction clearance; falling back to hierarchical router...")
+        return route_hierarchical(
+            c, start, stop,
+            global_grid_unit=grid_unit * 2,
+            detail_grid_unit=grid_unit,
+            width=width,
+            dynamic_width=dynamic_width,
+            layers_to_avoid=layers_to_avoid,
+            clearance=clearance,
+            clearance_ladder=clearance_ladder,
+            deterministic=deterministic,
+            add_segment_ports=add_segment_ports,
+            port_name_prefix=port_name_prefix,
+        )
     
     # Convert corners to um with layer information
     segment_ports = []
     
-    # Build per-segment widths
-    n_segs = len(corners_3d) - 1 if len(corners_3d) >= 2 else 0
-    if n_segs <= 0:
-        seg_widths = []
-    elif n_segs == 1:
-        seg_widths = [max(start_width, stop_width)]
-    else:
-        seg_widths = [body_width] * n_segs
-        seg_widths[0] = start_width
-        seg_widths[-1] = stop_width
+    # Build per-segment widths using endpoint side snap + cut-density fanout.
+    seg_widths = _build_segment_widths_dynamic(
+        corners_3d=corners_3d,
+        start_geom=start_geom,
+        stop_geom=stop_geom,
+        body_width=body_width,
+        fallback_width=width,
+        dynamic_width=dynamic_width,
+    )
 
     # Build obstruction bboxes.
     port_points_um = [(start_x * dbu, start_y * dbu), (stop_x * dbu, stop_y * dbu)]
@@ -1767,30 +2470,45 @@ def route_multilayer_3d(
                 m2_bboxes.append(box)
 
     geom_blocked = False
+    via_pad_by_transition: Dict[int, float] = {}
     for i in range(len(corners_3d) - 1):
         x0, y0, z0 = corners_3d[i]
         _, _, z1 = corners_3d[i + 1]
         if z0 == z1:
             continue
-        seg_w = seg_widths[i] if i < len(seg_widths) else width
-        via_w = _via_pad_size_um(seg_w)
+        target_w = _transition_target_via_width(corners_3d, seg_widths, i, width)
+        target_pad = _via_pad_size_um(target_w)
         base_center = (x0 * dbu, y0 * dbu)
         allow_relocate = i > 0 and (i + 1) < (len(corners_3d) - 1)
-        resolved = _resolve_legal_via_center(
-            base_center_um=base_center,
-            via_pad_um=via_w,
-            m1_bboxes=m1_bboxes,
-            m2_bboxes=m2_bboxes,
-            dbu=dbu,
-            relocate_step_um=max(clearance, 0.14),
-            relocate_radius_um=max(1.0, 2.0 * clearance),
-            max_candidates=64,
-            allow_relocate=allow_relocate,
-        )
-        if resolved is None:
+        resolved = None
+        chosen_pad = None
+        for via_pad in _via_pad_candidates(target_pad):
+            candidate = _resolve_legal_via_center(
+                base_center_um=base_center,
+                via_pad_um=via_pad,
+                m1_bboxes=m1_bboxes,
+                m2_bboxes=m2_bboxes,
+                dbu=dbu,
+                relocate_step_um=max(clearance, 0.14),
+                relocate_radius_um=max(1.0, 2.0 * clearance),
+                max_candidates=64,
+                allow_relocate=allow_relocate,
+            )
+            if candidate is None:
+                continue
+            resolved = candidate
+            chosen_pad = via_pad
+            break
+        if resolved is None or chosen_pad is None:
             geom_blocked = True
             print(f"[3D ROUTE] Via blocked at ({base_center[0]:.3f}, {base_center[1]:.3f})")
             break
+        via_pad_by_transition[i] = chosen_pad
+        if chosen_pad + 1e-6 < target_pad:
+            print(
+                f"[3D ROUTE] Via pad stepped down at index {i} "
+                f"from {target_pad:.3f}um to {chosen_pad:.3f}um"
+            )
         if resolved != base_center:
             rx = int(round(resolved[0] / dbu))
             ry = int(round(resolved[1] / dbu))
@@ -1804,7 +2522,6 @@ def route_multilayer_3d(
 
     # Build canonical primitives so every drawn shape is validated.
     plan_segments: List[Tuple[Tuple[float, float], Tuple[float, float], Tuple[int, int], float]] = []
-    plan_patches: List[Tuple[Tuple[float, float], Tuple[int, int], float]] = []
     plan_vias: List[Tuple[Tuple[float, float], float]] = []
 
     def _plan_add_segment(p0: Tuple[float, float], p1: Tuple[float, float], layer: Tuple[int, int], seg_w: float) -> None:
@@ -1815,17 +2532,9 @@ def route_multilayer_3d(
         if dx > 0.001 and dy > 0.001:
             mid = (p1[0], p0[1]) if layer == LAYER_M1 else (p0[0], p1[1])
             _plan_add_segment(p0, mid, layer, seg_w)
-            plan_patches.append((mid, layer, seg_w))
             _plan_add_segment(mid, p1, layer, seg_w)
             return
         plan_segments.append((p0, p1, layer, seg_w))
-
-    for idx, (x, y, z) in enumerate(corners_3d):
-        w_before = seg_widths[idx - 1] if idx > 0 and seg_widths else (seg_widths[0] if seg_widths else width)
-        w_after = seg_widths[idx] if idx < len(seg_widths) else (seg_widths[-1] if seg_widths else width)
-        patch_w = max(w_before, w_after)
-        layer = LAYER_M1 if z == 0 else LAYER_M2
-        plan_patches.append(((x * dbu, y * dbu), layer, patch_w))
 
     if len(corners_3d) >= 2:
         for i in range(len(corners_3d) - 1):
@@ -1835,10 +2544,16 @@ def route_multilayer_3d(
             p0 = (x0 * dbu, y0 * dbu)
             p1 = (x1 * dbu, y1 * dbu)
             if z0 != z1:
-                plan_vias.append((p0, _via_pad_size_um(seg_w)))
+                via_pad = via_pad_by_transition.get(
+                    i,
+                    _via_pad_size_um(_transition_target_via_width(corners_3d, seg_widths, i, width)),
+                )
+                plan_vias.append((p0, via_pad))
                 _plan_add_segment(p0, p1, LAYER_M1 if z1 == 0 else LAYER_M2, seg_w)
             else:
                 _plan_add_segment(p0, p1, LAYER_M1 if z0 == 0 else LAYER_M2, seg_w)
+
+    plan_patches = _build_corner_patches_from_segments(plan_segments)
 
     if not geom_blocked:
         for p0, p1, layer, seg_w in plan_segments:
@@ -1850,8 +2565,8 @@ def route_multilayer_3d(
                 break
 
     if not geom_blocked:
-        for center, layer, patch_w in plan_patches:
-            patch_box = _via_envelope_um(center, patch_w, patch_w)
+        for center, layer, patch_w, patch_h in plan_patches:
+            patch_box = _rect_envelope_um(center, patch_w, patch_h)
             target = m1_bboxes if layer == LAYER_M1 else m2_bboxes
             if any(_bbox_overlap(patch_box, obox) for obox in target):
                 geom_blocked = True
@@ -1872,6 +2587,7 @@ def route_multilayer_3d(
             global_grid_unit=grid_unit * 2,
             detail_grid_unit=grid_unit,
             width=width,
+            dynamic_width=dynamic_width,
             layers_to_avoid=layers_to_avoid,
             clearance=clearance,
             clearance_ladder=clearance_ladder,
@@ -1881,8 +2597,8 @@ def route_multilayer_3d(
         )
 
     segment_ports = []
-    for center, layer, patch_w in plan_patches:
-        patch = c.add_ref(gf.components.rectangle(size=(patch_w, patch_w), layer=layer))
+    for center, layer, patch_w, patch_h in plan_patches:
+        patch = c.add_ref(gf.components.rectangle(size=(patch_w, patch_h), layer=layer))
         patch.dcenter = center
 
     for center, via_w in plan_vias:
