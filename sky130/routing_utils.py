@@ -341,7 +341,9 @@ def _simplify_path(corners: List[Tuple[float, float]]) -> List[Tuple[float, floa
     if len(unique_corners) < 3:
         return unique_corners
     
-    # Second pass: remove collinear points
+    # Second pass: remove collinear points, including opposite-direction jogs.
+    # If two consecutive segments lie on the same axis, the middle point is
+    # redundant (covers both straight continuation and immediate reversal).
     result = [unique_corners[0]]
     for i in range(1, len(unique_corners) - 1):
         prev = unique_corners[i - 1]
@@ -354,18 +356,51 @@ def _simplify_path(corners: List[Tuple[float, float]]) -> List[Tuple[float, floa
         dx2 = next_pt[0] - curr[0]
         dy2 = next_pt[1] - curr[1]
         
-        # Normalize to direction only (sign matters, not magnitude)
-        dir1 = (1 if dx1 > 0.001 else (-1 if dx1 < -0.001 else 0),
-                1 if dy1 > 0.001 else (-1 if dy1 < -0.001 else 0))
-        dir2 = (1 if dx2 > 0.001 else (-1 if dx2 < -0.001 else 0),
-                1 if dy2 > 0.001 else (-1 if dy2 < -0.001 else 0))
-        
-        # Keep point only if direction changes
-        if dir1 != dir2:
+        tol = 0.001
+        seg1_h = abs(dy1) <= tol and abs(dx1) > tol
+        seg1_v = abs(dx1) <= tol and abs(dy1) > tol
+        seg2_h = abs(dy2) <= tol and abs(dx2) > tol
+        seg2_v = abs(dx2) <= tol and abs(dy2) > tol
+
+        # Keep point only when the axis changes or either segment is diagonal/noise.
+        if not ((seg1_h and seg2_h) or (seg1_v and seg2_v)):
             result.append(curr)
     
     result.append(unique_corners[-1])
     return result
+
+
+def _prune_redundant_jogs_corners(
+    corners_3d: List[Tuple[int, int, int]],
+) -> List[Tuple[int, int, int]]:
+    """Collapse immediate same-layer jog reversals and collinear stubs."""
+    if len(corners_3d) < 3:
+        return corners_3d
+    pts = list(corners_3d)
+    changed = True
+    while changed and len(pts) >= 3:
+        changed = False
+        i = 1
+        while i < len(pts) - 1:
+            a = pts[i - 1]
+            b = pts[i]
+            c = pts[i + 1]
+            same_layer = a[2] == b[2] == c[2]
+            if same_layer:
+                if a[0] == c[0] and a[1] == c[1] and (a[0] != b[0] or a[1] != b[1]):
+                    pts.pop(i)
+                    changed = True
+                    break
+                ab_h = a[1] == b[1] and a[0] != b[0]
+                bc_h = b[1] == c[1] and b[0] != c[0]
+                ab_v = a[0] == b[0] and a[1] != b[1]
+                bc_v = b[0] == c[0] and b[1] != c[1]
+                if (ab_h and bc_h) or (ab_v and bc_v):
+                    pts.pop(i)
+                    changed = True
+                    break
+            i += 1
+    return pts
 
 
 def _run_astar_rectilinear(
@@ -1677,6 +1712,11 @@ def route_hierarchical(
             escape_x_right = blocker_x_max + clearance_try
             escape_y_top = blocker_y_max + clearance_try
             escape_y_bottom = blocker_y_min - clearance_try
+            far_delta = max(2.0, 2.0 * min_escape)
+            escape_x_left_far = escape_x_left - far_delta
+            escape_x_right_far = escape_x_right + far_delta
+            escape_y_top_far = escape_y_top + far_delta
+            escape_y_bottom_far = escape_y_bottom - far_delta
 
             candidate_paths = list(direct_candidates)
             candidate_paths.extend(
@@ -1685,10 +1725,18 @@ def route_hierarchical(
                     ("escape_right", [(start_x, start_y), (escape_x_right, start_y), (escape_x_right, stop_y), (stop_x, stop_y)]),
                     ("escape_top", [(start_x, start_y), (start_x, escape_y_top), (stop_x, escape_y_top), (stop_x, stop_y)]),
                     ("escape_bottom", [(start_x, start_y), (start_x, escape_y_bottom), (stop_x, escape_y_bottom), (stop_x, stop_y)]),
+                    ("escape_left_far", [(start_x, start_y), (escape_x_left_far, start_y), (escape_x_left_far, stop_y), (stop_x, stop_y)]),
+                    ("escape_right_far", [(start_x, start_y), (escape_x_right_far, start_y), (escape_x_right_far, stop_y), (stop_x, stop_y)]),
+                    ("escape_top_far", [(start_x, start_y), (start_x, escape_y_top_far), (stop_x, escape_y_top_far), (stop_x, stop_y)]),
+                    ("escape_bottom_far", [(start_x, start_y), (start_x, escape_y_bottom_far), (stop_x, escape_y_bottom_far), (stop_x, stop_y)]),
                     ("s_up_left", [(start_x, start_y), (start_x, escape_y_top), (escape_x_left, escape_y_top), (escape_x_left, stop_y), (stop_x, stop_y)]),
                     ("s_up_right", [(start_x, start_y), (start_x, escape_y_top), (escape_x_right, escape_y_top), (escape_x_right, stop_y), (stop_x, stop_y)]),
                     ("s_down_left", [(start_x, start_y), (start_x, escape_y_bottom), (escape_x_left, escape_y_bottom), (escape_x_left, stop_y), (stop_x, stop_y)]),
                     ("s_down_right", [(start_x, start_y), (start_x, escape_y_bottom), (escape_x_right, escape_y_bottom), (escape_x_right, stop_y), (stop_x, stop_y)]),
+                    ("s_up_left_far", [(start_x, start_y), (start_x, escape_y_top_far), (escape_x_left_far, escape_y_top_far), (escape_x_left_far, stop_y), (stop_x, stop_y)]),
+                    ("s_up_right_far", [(start_x, start_y), (start_x, escape_y_top_far), (escape_x_right_far, escape_y_top_far), (escape_x_right_far, stop_y), (stop_x, stop_y)]),
+                    ("s_down_left_far", [(start_x, start_y), (start_x, escape_y_bottom_far), (escape_x_left_far, escape_y_bottom_far), (escape_x_left_far, stop_y), (stop_x, stop_y)]),
+                    ("s_down_right_far", [(start_x, start_y), (start_x, escape_y_bottom_far), (escape_x_right_far, escape_y_bottom_far), (escape_x_right_far, stop_y), (stop_x, stop_y)]),
                 ]
             )
 
@@ -2375,6 +2423,7 @@ def route_multilayer_3d(
             continue
         deduped.append(curr)
     corners_3d = deduped
+    corners_3d = _prune_redundant_jogs_corners(corners_3d)
 
     # Debug: print final path
     print(f"[3D ROUTE] Final path ({len(corners_3d)} corners):")
@@ -2393,6 +2442,7 @@ def route_multilayer_3d(
                     jog_dbu=max(1, grid_unit_dbu),
                     mode=axis_mode,
                 )
+            trial_corners = _prune_redundant_jogs_corners(trial_corners)
             dyn_ports = _draw_dynamic_geometry_for_corners(
                 c=c,
                 corners_3d=trial_corners,

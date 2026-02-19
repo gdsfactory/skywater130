@@ -20,6 +20,9 @@ def test_inverter(
     pmos_offset: tuple[float, float] = (5.0, 5.0),
     component_name: str = "test_inverter",
     add_segment_ports: bool = True,
+    routing_half_extent: float = 15.0,
+    grid_unit_um: float = 1.0,
+    mirror_pmos: bool = True,
 ) -> Component:
     pdk = get_active_pdk()
     c = Component(component_name)
@@ -30,7 +33,8 @@ def test_inverter(
     
     # Place instances
     instance1.move(pmos_offset)
-    instance1.mirror_y(instance1.dcenter[1])
+    if mirror_pmos:
+        instance1.mirror_y(instance1.dcenter[1])
     instance2.move((0, 0))
 
     # Important to add ports ONLY after finished moving instances
@@ -39,10 +43,17 @@ def test_inverter(
 
     # Add routing area markers to ensure grid extends beyond the obstacle
     routing_area_layer = (235, 4)  # Dummy layer for grid extent
-    c.add_polygon([(-15, -15), (15, -15), (15, 15), (-15, 15)], layer=routing_area_layer)
+    c.add_polygon(
+        [
+            (-routing_half_extent, -routing_half_extent),
+            (routing_half_extent, -routing_half_extent),
+            (routing_half_extent, routing_half_extent),
+            (-routing_half_extent, routing_half_extent),
+        ],
+        layer=routing_area_layer,
+    )
 
     # Grid resolution for A* pathfinding
-    grid_unit_um = 1.0    # 1um grid resolution
     # Wire width is auto-detected from port polygon geometry
     
     # Layers to avoid - ALL metal on these layers including device metal
@@ -115,15 +126,39 @@ def sweep_inverter_positions(step: float = 5.0) -> list[tuple[str, tuple[float, 
 
     interactive = sys.stdin.isatty() and sys.stdout.isatty()
     results = []
+    retry_profiles = [
+        (15.0, 1.0),
+        (30.0, 1.0),
+        (50.0, 1.0),
+        (50.0, 0.5),
+    ]
 
     for idx, (label, offset) in enumerate(positions, start=1):
         print(f"\n[{idx}/{len(positions)}] Routing position '{label}' at offset={offset}")
-        try:
-            c = test_inverter(
-                pmos_offset=offset,
-                component_name=f"test_inverter_{label}",
-                add_segment_ports=False,
+        c = None
+        err = ""
+        for attempt_idx, (half_extent, grid_unit) in enumerate(retry_profiles, start=1):
+            print(
+                f"[{label}] attempt {attempt_idx}/{len(retry_profiles)} "
+                f"window=+/-{half_extent}um grid={grid_unit}um"
             )
+            try:
+                c = test_inverter(
+                    pmos_offset=offset,
+                    component_name=f"test_inverter_{label}_a{attempt_idx}",
+                    add_segment_ports=False,
+                    routing_half_extent=half_extent,
+                    grid_unit_um=grid_unit,
+                    mirror_pmos=not label.startswith("middle_"),
+                )
+                err = ""
+                break
+            except Exception as e:
+                c = None
+                err = str(e)
+                print(f"[{label}] attempt {attempt_idx} failed: {err}")
+
+        if c is not None:
             c.flatten()
             c.pprint_ports()
             if interactive:
@@ -133,8 +168,7 @@ def sweep_inverter_positions(step: float = 5.0) -> list[tuple[str, tuple[float, 
             c.write_gds(gds_path, with_metadata=False)
             results.append((label, offset, c, ""))
             print(f"[OK] Wrote {gds_path}")
-        except Exception as e:
-            err = str(e)
+        else:
             print(f"[FAIL] {label}: {err}")
             results.append((label, offset, None, err))
             if interactive:
