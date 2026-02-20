@@ -120,6 +120,20 @@ def _via_pad_size_um(width_um: float) -> float:
     return max(width_um, _DRC["min_via_pad"][LAYER_M1], _DRC["min_via_pad"][LAYER_M2])
 
 
+def _snap_even_dbu_width_um(
+    width_um: float,
+    dbu: float,
+    min_um: float = 0.0,
+) -> float:
+    """Snap a width to an even number of DBU units (>= min_um)."""
+    if dbu <= 0:
+        return max(width_um, min_um)
+    units = max(1, int(round(max(width_um, min_um) / dbu)))
+    if units % 2 != 0:
+        units += 1
+    return units * dbu
+
+
 def _via_metal_footprint_um(via_pad_um: float) -> float:
     """Actual M1/M2 square metal footprint produced by via_m1_m2."""
     return via_pad_um + float(_DRC["via_metal_enclosure_add"])
@@ -1210,6 +1224,10 @@ def _draw_dynamic_geometry_for_corners(
         fallback_width=width,
         dynamic_width=dynamic_width,
     )
+    min_seg_w = max(float(_DRC["min_width"][LAYER_M1]), float(width))
+    seg_widths = [_snap_even_dbu_width_um(sw, dbu, min_seg_w) for sw in seg_widths]
+    min_seg_w = max(float(_DRC["min_width"][LAYER_M1]), float(width))
+    seg_widths = [_snap_even_dbu_width_um(sw, dbu, min_seg_w) for sw in seg_widths]
 
     port_points_um = [(start_xy_dbu[0] * dbu, start_xy_dbu[1] * dbu), (stop_xy_dbu[0] * dbu, stop_xy_dbu[1] * dbu)]
     m1_bboxes = []
@@ -1237,9 +1255,8 @@ def _draw_dynamic_geometry_for_corners(
 
     width_profiles: List[List[float]] = [list(seg_widths)]
     if dynamic_width and seg_widths:
-        min_seg_w = max(float(_DRC["min_width"][LAYER_M1]), float(width))
         for scale in (0.9, 0.8, 0.7, 0.6, 0.5):
-            trial = [max(min_seg_w, sw * scale) for sw in seg_widths]
+            trial = [_snap_even_dbu_width_um(sw * scale, dbu, min_seg_w) for sw in seg_widths]
             if any(
                 all(abs(a - b) <= 1e-6 for a, b in zip(trial, existing))
                 for existing in width_profiles
@@ -1250,6 +1267,9 @@ def _draw_dynamic_geometry_for_corners(
     base_corners = [tuple(c) for c in corners_3d]
     for trial_idx, seg_widths_trial in enumerate(width_profiles):
         corners_trial = [tuple(c) for c in base_corners]
+        corners_trial = _prune_redundant_jogs_corners(corners_trial)
+        if len(corners_trial) < 2:
+            continue
         geom_blocked = False
         via_pad_by_transition: Dict[int, float] = {}
         for i in range(len(corners_trial) - 1):
@@ -1258,12 +1278,26 @@ def _draw_dynamic_geometry_for_corners(
             if z0 == z1:
                 continue
             target_w = _transition_target_via_width(corners_trial, seg_widths_trial, i, width)
-            target_pad = _via_pad_size_um(target_w)
+            target_pad = _snap_even_dbu_width_um(
+                _via_pad_size_um(target_w),
+                dbu,
+                max(float(_DRC["min_via_pad"][LAYER_M1]), float(_DRC["min_via_pad"][LAYER_M2])),
+            )
             base_center = (x0 * dbu, y0 * dbu)
             allow_relocate = i > 0 and (i + 1) < (len(corners_trial) - 1)
             resolved = None
             chosen_pad = None
-            for via_pad in _via_pad_candidates(target_pad):
+            tried_pads = set()
+            for via_pad_raw in _via_pad_candidates(target_pad):
+                via_pad = _snap_even_dbu_width_um(
+                    via_pad_raw,
+                    dbu,
+                    max(float(_DRC["min_via_pad"][LAYER_M1]), float(_DRC["min_via_pad"][LAYER_M2])),
+                )
+                key = int(round(via_pad / dbu))
+                if key in tried_pads:
+                    continue
+                tried_pads.add(key)
                 candidate = _resolve_legal_via_center(
                     base_center_um=base_center,
                     via_pad_um=via_pad,
@@ -1290,6 +1324,10 @@ def _draw_dynamic_geometry_for_corners(
                 corners_trial[i] = (rx, ry, z0)
                 corners_trial[i + 1] = (rx, ry, z1)
 
+        corners_trial = _prune_redundant_jogs_corners(corners_trial)
+        if len(corners_trial) < 2:
+            continue
+
         plan_segments: List[Tuple[Tuple[float, float], Tuple[float, float], Tuple[int, int], float]] = []
         plan_vias: List[Tuple[Tuple[float, float], float]] = []
 
@@ -1314,7 +1352,11 @@ def _draw_dynamic_geometry_for_corners(
             if z0 != z1:
                 via_pad = via_pad_by_transition.get(
                     i,
-                    _via_pad_size_um(_transition_target_via_width(corners_trial, seg_widths_trial, i, width)),
+                    _snap_even_dbu_width_um(
+                        _via_pad_size_um(_transition_target_via_width(corners_trial, seg_widths_trial, i, width)),
+                        dbu,
+                        max(float(_DRC["min_via_pad"][LAYER_M1]), float(_DRC["min_via_pad"][LAYER_M2])),
+                    ),
                 )
                 plan_vias.append((p0, via_pad))
                 _plan_add_segment(p0, p1, LAYER_M1 if z1 == 0 else LAYER_M2, seg_w)
@@ -2527,12 +2569,26 @@ def route_multilayer_3d(
         if z0 == z1:
             continue
         target_w = _transition_target_via_width(corners_3d, seg_widths, i, width)
-        target_pad = _via_pad_size_um(target_w)
+        target_pad = _snap_even_dbu_width_um(
+            _via_pad_size_um(target_w),
+            dbu,
+            max(float(_DRC["min_via_pad"][LAYER_M1]), float(_DRC["min_via_pad"][LAYER_M2])),
+        )
         base_center = (x0 * dbu, y0 * dbu)
         allow_relocate = i > 0 and (i + 1) < (len(corners_3d) - 1)
         resolved = None
         chosen_pad = None
-        for via_pad in _via_pad_candidates(target_pad):
+        tried_pads = set()
+        for via_pad_raw in _via_pad_candidates(target_pad):
+            via_pad = _snap_even_dbu_width_um(
+                via_pad_raw,
+                dbu,
+                max(float(_DRC["min_via_pad"][LAYER_M1]), float(_DRC["min_via_pad"][LAYER_M2])),
+            )
+            key = int(round(via_pad / dbu))
+            if key in tried_pads:
+                continue
+            tried_pads.add(key)
             candidate = _resolve_legal_via_center(
                 base_center_um=base_center,
                 via_pad_um=via_pad,
@@ -2596,7 +2652,11 @@ def route_multilayer_3d(
             if z0 != z1:
                 via_pad = via_pad_by_transition.get(
                     i,
-                    _via_pad_size_um(_transition_target_via_width(corners_3d, seg_widths, i, width)),
+                    _snap_even_dbu_width_um(
+                        _via_pad_size_um(_transition_target_via_width(corners_3d, seg_widths, i, width)),
+                        dbu,
+                        max(float(_DRC["min_via_pad"][LAYER_M1]), float(_DRC["min_via_pad"][LAYER_M2])),
+                    ),
                 )
                 plan_vias.append((p0, via_pad))
                 _plan_add_segment(p0, p1, LAYER_M1 if z1 == 0 else LAYER_M2, seg_w)
