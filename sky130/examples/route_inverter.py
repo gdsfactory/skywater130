@@ -1,3 +1,4 @@
+import argparse
 import sys
 from pathlib import Path
 
@@ -14,10 +15,19 @@ from gdsfactory.add_pins import add_instance_label
 from sky130.routing_utils import RouteNetSpec, route_nets_deterministic_copy
 
 
+INVERTER_SCHEMATIC = """\
+* Schematic netlist for LVS: test_inverter
+.subckt test_inverter
+X0 nmos_SOURCE pmos_GATE pmos_DRAIN nmos_SOURCE sky130_fd_pr__nfet_g5v0d10v5 w=0.75 l=0.5
+X1 pmos_SOURCE pmos_GATE pmos_DRAIN pmos_SOURCE sky130_fd_pr__pfet_g5v0d10v5 w=0.75 l=0.5
+.ends test_inverter
+"""
+
+
 
 
 def test_inverter(
-    pmos_offset: tuple[float, float] = (5.0, 5.0),
+    pmos_offset: tuple[float, float] = (0.0, 5.0),
     component_name: str = "test_inverter",
     add_segment_ports: bool = True,
     routing_half_extent: float = 15.0,
@@ -107,78 +117,36 @@ def test_inverter(
     return c
 
 
-def sweep_inverter_positions(step: float = 5.0) -> list[tuple[str, tuple[float, float], Component, str]]:
-    """Sweep PMOS over 3x3 ring around NMOS center in clockwise order.
-
-    Returns:
-        List of (label, offset, component_or_none, error_message).
-    """
-    positions = [
-        ("top_left", (-step, step)),
-        ("top_middle", (0.0, step)),
-        ("top_right", (step, step)),
-        ("middle_right", (step, 0.0)),
-        ("bottom_right", (step, -step)),
-        ("bottom_middle", (0.0, -step)),
-        ("bottom_left", (-step, -step)),
-        ("middle_left", (-step, 0.0)),
-    ]
-
-    interactive = sys.stdin.isatty() and sys.stdout.isatty()
-    results = []
-    retry_profiles = [
-        (15.0, 1.0),
-        (30.0, 1.0),
-        (50.0, 1.0),
-        (50.0, 0.5),
-    ]
-
-    for idx, (label, offset) in enumerate(positions, start=1):
-        print(f"\n[{idx}/{len(positions)}] Routing position '{label}' at offset={offset}")
-        c = None
-        err = ""
-        for attempt_idx, (half_extent, grid_unit) in enumerate(retry_profiles, start=1):
-            print(
-                f"[{label}] attempt {attempt_idx}/{len(retry_profiles)} "
-                f"window=+/-{half_extent}um grid={grid_unit}um"
-            )
-            try:
-                c = test_inverter(
-                    pmos_offset=offset,
-                    component_name=f"test_inverter_{label}_a{attempt_idx}",
-                    add_segment_ports=False,
-                    routing_half_extent=half_extent,
-                    grid_unit_um=grid_unit,
-                    mirror_pmos=not label.startswith("middle_"),
-                )
-                err = ""
-                break
-            except Exception as e:
-                c = None
-                err = str(e)
-                print(f"[{label}] attempt {attempt_idx} failed: {err}")
-
-        if c is not None:
-            c.flatten()
-            c.pprint_ports()
-            if interactive:
-                c.show()
-                input(f"Breakpoint at '{label}'. Press Enter to continue...")
-            gds_path = f"./results/test_inverter_{label}.gds"
-            c.write_gds(gds_path, with_metadata=False)
-            results.append((label, offset, c, ""))
-            print(f"[OK] Wrote {gds_path}")
-        else:
-            print(f"[FAIL] {label}: {err}")
-            results.append((label, offset, None, err))
-            if interactive:
-                input(f"Breakpoint at failed '{label}'. Press Enter to continue...")
-
-    return results
-
 if __name__ == "__main__":
-    results = sweep_inverter_positions(step=5.0)
-    ok = sum(1 for _, _, c, _ in results if c is not None)
-    fail = len(results) - ok
-    print(f"\nSweep complete: {ok} succeeded, {fail} failed.")
-    
+    parser = argparse.ArgumentParser(description="Route inverter example (headless by default).")
+    parser.add_argument(
+        "--skip-lvs",
+        action="store_true",
+        help="Skip LVS run after writing GDS.",
+    )
+    parser.add_argument(
+        "--out-gds",
+        default="./results/test_inverter.gds",
+        help="Output GDS path.",
+    )
+    args = parser.parse_args()
+
+    c = test_inverter(
+        component_name="test_inverter",
+        add_segment_ports=False,
+        pmos_offset=(0.0, 5.0),
+        mirror_pmos=True,
+    )
+    c.flatten()
+    c.pprint_ports()
+    c.show()
+    gds_path = Path(args.out_gds)
+    gds_path.parent.mkdir(parents=True, exist_ok=True)
+    c.write_gds(str(gds_path), with_metadata=False)
+    print(f"[OK] Wrote {gds_path}")
+    if args.skip_lvs:
+        print("[INFO] Skipping LVS (--skip-lvs)")
+    else:
+        from sky130.examples.lvs_magic_utils import run_lvs
+
+        run_lvs(gds_path, "test_inverter", INVERTER_SCHEMATIC)

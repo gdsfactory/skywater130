@@ -3,7 +3,7 @@
 from dataclasses import dataclass
 from itertools import permutations
 from functools import partial
-from typing import Dict, Iterable, List, Optional, Sequence, Tuple
+from typing import Dict, Iterable, List, Optional, Sequence, Set, Tuple
 
 import gdsfactory as gf
 from gdsfactory.component import Component
@@ -386,16 +386,21 @@ def _simplify_path(corners: List[Tuple[float, float]]) -> List[Tuple[float, floa
 
 def _prune_redundant_jogs_corners(
     corners_3d: List[Tuple[int, int, int]],
+    protected_indices: Optional[Set[int]] = None,
 ) -> List[Tuple[int, int, int]]:
     """Collapse immediate same-layer jog reversals and collinear stubs."""
     if len(corners_3d) < 3:
         return corners_3d
     pts = list(corners_3d)
+    protected = set(protected_indices or set())
     changed = True
     while changed and len(pts) >= 3:
         changed = False
         i = 1
         while i < len(pts) - 1:
+            if i in protected:
+                i += 1
+                continue
             a = pts[i - 1]
             b = pts[i]
             c = pts[i + 1]
@@ -415,6 +420,63 @@ def _prune_redundant_jogs_corners(
                     break
             i += 1
     return pts
+
+
+def _collapse_ping_pong_transitions(
+    corners_3d: List[Tuple[int, int, int]],
+    protect_endpoints: bool = True,
+) -> List[Tuple[int, int, int]]:
+    """Remove no-op Lx->Ly->Lx transitions at identical XY."""
+    if len(corners_3d) < 3:
+        return list(corners_3d)
+    pts = list(corners_3d)
+    changed = True
+    while changed and len(pts) >= 3:
+        changed = False
+        i = 0
+        while i + 2 < len(pts):
+            a = pts[i]
+            b = pts[i + 1]
+            c = pts[i + 2]
+            same_xy = a[0] == b[0] == c[0] and a[1] == b[1] == c[1]
+            ping_pong = a[2] == c[2] and a[2] != b[2]
+            if same_xy and ping_pong:
+                if protect_endpoints and (i == 0 or (i + 2) == (len(pts) - 1)):
+                    i += 1
+                    continue
+                del pts[i + 1 : i + 3]
+                changed = True
+                break
+            i += 1
+    return pts
+
+
+def _anchor_corners_endpoints(
+    corners_3d: List[Tuple[int, int, int]],
+    start_xy: Tuple[int, int],
+    stop_xy: Tuple[int, int],
+) -> None:
+    """Force first/last corner XY to exact routed port centers."""
+    if len(corners_3d) < 2:
+        return
+    corners_3d[0] = (start_xy[0], start_xy[1], corners_3d[0][2])
+    corners_3d[-1] = (stop_xy[0], stop_xy[1], corners_3d[-1][2])
+
+
+def _is_manhattan_layered_path(corners_3d: List[Tuple[int, int, int]]) -> bool:
+    """True if every same-layer segment is axis-aligned and non-diagonal."""
+    if len(corners_3d) < 2:
+        return True
+    for i in range(len(corners_3d) - 1):
+        x0, y0, z0 = corners_3d[i]
+        x1, y1, z1 = corners_3d[i + 1]
+        if z0 != z1:
+            continue
+        dx = abs(x1 - x0)
+        dy = abs(y1 - y0)
+        if dx > 0 and dy > 0:
+            return False
+    return True
 
 
 def _run_astar_rectilinear(
@@ -1960,8 +2022,7 @@ def route_hierarchical(
                 elif axis_mode == "off":
                     print("[ROUTE] Axis policy downgraded to off for legal fallback geometry.")
                 return dyn_ports
-        print("[ROUTE] Dynamic fallback geometry blocked; aborting route.")
-        return []
+        print("[ROUTE] Dynamic fallback geometry blocked; downgrading to fixed-width fallback.")
 
     # Final segment and corner legality guard before any drawing.
     for i in range(len(path) - 1):
@@ -2433,10 +2494,17 @@ def route_multilayer_3d(
                     curr = corners_3d[via_start_idx]
                     seg_len = abs(curr[0] - prev[0]) + abs(curr[1] - prev[1])
                     if 0 < seg_len < min_jog_dbu:
+                        # Never rewrite endpoint anchor points during coalescing.
+                        if via_start_idx == 0 or via_end_idx == (len(corners_3d) - 1):
+                            i += 1
+                            continue
                         # Move via to previous point's position (absorb the jog)
                         corners_3d[via_start_idx] = (prev[0], prev[1], curr[2])
                         corners_3d[via_end_idx] = (prev[0], prev[1], corners_3d[via_end_idx][2])
                         # Previous point is now redundant (same position/layer as via start)
+                        if (via_start_idx - 1) == 0:
+                            i += 1
+                            continue
                         corners_3d.pop(via_start_idx - 1)
                         changed = True
                         continue
@@ -2447,10 +2515,17 @@ def route_multilayer_3d(
                     nxt = corners_3d[via_end_idx + 1]
                     seg_len = abs(nxt[0] - curr[0]) + abs(nxt[1] - curr[1])
                     if 0 < seg_len < min_jog_dbu:
+                        # Never rewrite endpoint anchor points during coalescing.
+                        if via_start_idx == 0 or via_end_idx == (len(corners_3d) - 1):
+                            i += 1
+                            continue
                         # Move via to next point's position (absorb the jog)
                         corners_3d[via_start_idx] = (nxt[0], nxt[1], corners_3d[via_start_idx][2])
                         corners_3d[via_end_idx] = (nxt[0], nxt[1], curr[2])
                         # Next point is now redundant
+                        if (via_end_idx + 1) == (len(corners_3d) - 1):
+                            i += 1
+                            continue
                         corners_3d.pop(via_end_idx + 1)
                         changed = True
                         continue
@@ -2465,7 +2540,60 @@ def route_multilayer_3d(
             continue
         deduped.append(curr)
     corners_3d = deduped
-    corners_3d = _prune_redundant_jogs_corners(corners_3d)
+    corners_3d = _collapse_ping_pong_transitions(corners_3d, protect_endpoints=True)
+    _anchor_corners_endpoints(corners_3d, (start_x, start_y), (stop_x, stop_y))
+    protected = {0, len(corners_3d) - 1} if len(corners_3d) >= 2 else set()
+    corners_3d = _prune_redundant_jogs_corners(corners_3d, protected_indices=protected)
+    corners_3d = _collapse_ping_pong_transitions(corners_3d, protect_endpoints=True)
+    _anchor_corners_endpoints(corners_3d, (start_x, start_y), (stop_x, stop_y))
+
+    if len(corners_3d) < 2:
+        print("[3D ROUTE] Path collapsed after cleanup; falling back to hierarchical router...")
+        return route_hierarchical(
+            c, start, stop,
+            global_grid_unit=grid_unit * 2,
+            detail_grid_unit=grid_unit,
+            width=width,
+            dynamic_width=dynamic_width,
+            layers_to_avoid=layers_to_avoid,
+            clearance=clearance,
+            clearance_ladder=clearance_ladder,
+            deterministic=deterministic,
+            add_segment_ports=add_segment_ports,
+            port_name_prefix=port_name_prefix,
+        )
+
+    if (corners_3d[0][0], corners_3d[0][1]) != (start_x, start_y) or (corners_3d[-1][0], corners_3d[-1][1]) != (stop_x, stop_y):
+        print("[3D ROUTE] Endpoint anchoring failed after cleanup; falling back to hierarchical router...")
+        return route_hierarchical(
+            c, start, stop,
+            global_grid_unit=grid_unit * 2,
+            detail_grid_unit=grid_unit,
+            width=width,
+            dynamic_width=dynamic_width,
+            layers_to_avoid=layers_to_avoid,
+            clearance=clearance,
+            clearance_ladder=clearance_ladder,
+            deterministic=deterministic,
+            add_segment_ports=add_segment_ports,
+            port_name_prefix=port_name_prefix,
+        )
+
+    if not _is_manhattan_layered_path(corners_3d):
+        print("[3D ROUTE] Non-manhattan same-layer segment after cleanup; falling back to hierarchical router...")
+        return route_hierarchical(
+            c, start, stop,
+            global_grid_unit=grid_unit * 2,
+            detail_grid_unit=grid_unit,
+            width=width,
+            dynamic_width=dynamic_width,
+            layers_to_avoid=layers_to_avoid,
+            clearance=clearance,
+            clearance_ladder=clearance_ladder,
+            deterministic=deterministic,
+            add_segment_ports=add_segment_ports,
+            port_name_prefix=port_name_prefix,
+        )
 
     # Debug: print final path
     print(f"[3D ROUTE] Final path ({len(corners_3d)} corners):")
@@ -2484,7 +2612,20 @@ def route_multilayer_3d(
                     jog_dbu=max(1, grid_unit_dbu),
                     mode=axis_mode,
                 )
-            trial_corners = _prune_redundant_jogs_corners(trial_corners)
+            trial_corners = _collapse_ping_pong_transitions(trial_corners, protect_endpoints=True)
+            _anchor_corners_endpoints(trial_corners, (start_x, start_y), (stop_x, stop_y))
+            trial_protected = {0, len(trial_corners) - 1} if len(trial_corners) >= 2 else set()
+            trial_corners = _prune_redundant_jogs_corners(trial_corners, protected_indices=trial_protected)
+            trial_corners = _collapse_ping_pong_transitions(trial_corners, protect_endpoints=True)
+            _anchor_corners_endpoints(trial_corners, (start_x, start_y), (stop_x, stop_y))
+            if len(trial_corners) < 2:
+                continue
+            if (trial_corners[0][0], trial_corners[0][1]) != (start_x, start_y):
+                continue
+            if (trial_corners[-1][0], trial_corners[-1][1]) != (stop_x, stop_y):
+                continue
+            if not _is_manhattan_layered_path(trial_corners):
+                continue
             dyn_ports = _draw_dynamic_geometry_for_corners(
                 c=c,
                 corners_3d=trial_corners,
