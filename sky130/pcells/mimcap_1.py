@@ -146,6 +146,18 @@ def mimcap_1(
         (m3_width - en[1] / 2 - nr2 * via3_size[1] - (nr2 - 1) * via3_spacing[1]) / 2
     )
 
+    c.info['vlsir'] = {
+        "model" : "sky130_fd_pr__cap_mim_m3_1",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "src/cells/cap_mim_m3/sky130_fd_pr__cap_mim_m3_1.model.spice",
+        "port_order" : ["c0","c1"],
+        "port_map" : {"e1":"c0", "e3":"c1"},
+        "params" : {
+            "w" : m4_width,
+            "l" : m4_length
+        }
+    }
+
     return c
 
 

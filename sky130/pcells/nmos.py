@@ -452,6 +452,19 @@ def nmos(
     dnwell.movex(-diff_enclosure[0] - dnwell_enclosure[0])
     dnwell.movey(-diff_enclosure[1] - dnwell_enclosure[1])
 
+    c.info["vlsir"] = {
+        "model" : "sky130_fd_pr__nfet_01v8",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "src/sky130_fd_pr/cells/nfet_01v8/sky130_fd_pr__nfet_01v8__tt.pm3.spice",
+        "port_order" : ["d","g","s","b"],
+        "port_map" : {}, # TODO: Explicit ports?
+        "params" : {
+            "w" : gate_width,
+            "l" : gate_length,
+            "nf" : nf
+        }
+    }
+
     return c
 
 

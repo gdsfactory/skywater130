@@ -252,6 +252,19 @@ def p_p_poly(
         "e1", rpm.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
     psdm.movex(rpm_width + sdm_enclosure[0])
+
+    # Model with a generic resistor with 300 ohm/sq
+    c.info["vlsir"] = {
+        "model" : "p_p_poly_res",
+        "spice_type" : "RESISTOR",
+        "spice_lib" : None,
+        "port_order" : ["p", "n"],
+        "port_map" : {},
+        "params" : {
+            "r" : 300 * p_poly_length * p_poly_width
+        }
+    }
+
     return c
 
 
