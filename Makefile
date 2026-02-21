@@ -26,6 +26,9 @@ ngspice:
 test:
 	uv run pytest -s -n logical
 
+test-ports:
+	uv run pytest -s tests/test_components.py::test_optical_port_positions
+
 cov:
 	uv run pytest --cov=sky130
 
