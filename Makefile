@@ -56,6 +56,7 @@ tech:
 	python3 install_tech.py
 
 docs:
+	sudo apt-get update && sudo apt-get install -y ngspice
 	uv run jb build docs
 
 .PHONY: gdsdiff build conda docs modules

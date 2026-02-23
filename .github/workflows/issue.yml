@@ -1,0 +1,23 @@
+name: Auto-label PDK issues
+on:
+  issues:
+    types:
+      - opened
+      - edited
+      - deleted
+      - pinned
+      - unpinned
+      - closed
+      - reopened
+      - assigned
+      - unassigned
+      - unlabeled
+      - locked
+      - unlocked
+      - transferred
+      - milestoned
+      - demilestoned
+
+jobs:
+  label:
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/issue.yml@main
