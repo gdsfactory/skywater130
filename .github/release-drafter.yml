@@ -1,29 +1,23 @@
 name-template: 'v$RESOLVED_VERSION'
 tag-template: 'v$RESOLVED_VERSION'
-change-template: '- $TITLE [#$NUMBER](https://github.com/gdsfactory/skywater130/pull/$NUMBER)'
-template: |
-  # What's Changed
-
-  $CHANGES
-
-  **Full Changelog**: https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...v$RESOLVED_VERSION
+change-template: '- $TITLE (#$NUMBER)'
+change-title-escapes: '\<*_&'
 
 categories:
   - title: 'Breaking'
     label: 'breaking'
   - title: 'New'
     labels:
-    - 'feature'
-    - 'enhancement'
+      - 'feature'
+      - 'enhancement'
   - title: 'Bug Fixes'
     label: 'bug'
   - title: 'Maintenance'
     labels:
-    - 'maintenance'
-    - 'github_actions'
+      - 'maintenance'
+      - 'github_actions'
   - title: 'Documentation'
     label: 'documentation'
-  - title: 'Other changes'
   - title: 'Dependency Updates'
     label: 'dependencies'
     collapse-after: 5
