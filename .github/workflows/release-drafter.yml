@@ -1,8 +1,11 @@
-name: Release Drafter
+name: Release Drafter and Labels
 on:
   push:
     branches:
       - main
+  pull_request:
+    types: [edited, opened, reopened, synchronize, unlabeled, labeled]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
