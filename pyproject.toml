@@ -14,8 +14,10 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "gdsfactory~=9.34.0",
-  "PySpice"
+  "doroutes>=0.3.0",
+  "gdsfactory~=9.34.1",
+  "PySpice",
+  "python-dotenv>=1.2.1",
 ]
 description = "skywater130 pdk"
 keywords = ["python"]
