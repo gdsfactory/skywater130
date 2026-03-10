@@ -23,7 +23,7 @@ def wire_corner(
         width=width,
         port_names=port_names_electrical,
         port_types=port_types_electrical,
-        radius=None,
+        radius=radius,
     )
 
 
