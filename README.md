@@ -59,17 +59,17 @@ make pre-commit
 
 ## Release
 
-1. Update the changelog in `.changelog.d/` with entries describing the changes. Make sure the changelog is clear and readable for customers.
-2. Bump the version:
+1. Bump the version:
 
 ```bash
 tbump 0.0.1
 ```
 
-3. Push the tag:
+2. Push the tag:
 
 ```bash
 git push --tags
 ```
+This triggers the release workflow that builds wheels and uploads them.
 
-4. Create a pull request with the updated changelog and version bump. This triggers the release workflow that builds wheels and uploads them.
+3. Create a pull request with the updated changelog since last release.
