@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_pr__cap_vpp_04p4x04p6_m1m2m3_shieldl1m5_floatm4
+ports:
+  C0:
+    center:
+    - 1.525
+    - 4.42
+    layer: 262
+    name: C0
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C1:
+    center:
+    - 2.18
+    - 4.42
+    layer: 262
+    name: C1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

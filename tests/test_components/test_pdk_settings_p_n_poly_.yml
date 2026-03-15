@@ -1,5 +1,60 @@
 info: {}
 name: p_n_poly_PPW0p35_PPL0p5_PRL66_13_PL66_20_PL94_20_SE0p12_1bc43356
+ports:
+  e1:
+    center:
+    - 0.08
+    - 1.56
+    layer: 225
+    name: e1
+    orientation: 180
+    port_type: electrical
+    width: 2
+  e2:
+    center:
+    - 0.175
+    - 2.56
+    layer: 225
+    name: e2
+    orientation: 90
+    port_type: electrical
+    width: 0.19
+  e3:
+    center:
+    - 0.27
+    - 1.56
+    layer: 225
+    name: e3
+    orientation: 0
+    port_type: electrical
+    width: 2
+  e4:
+    center:
+    - 0.175
+    - 0.56
+    layer: 225
+    name: e4
+    orientation: 270
+    port_type: electrical
+    width: 0.19
+  n:
+    center:
+    - 0.175
+    - 2.56
+    layer: 225
+    name: n
+    orientation: 90
+    port_type: electrical
+    width: 0.19
+  p:
+    center:
+    - 0.08
+    - 1.56
+    layer: 225
+    name: p
+    orientation: 180
+    port_type: electrical
+    width: 2
 settings:
   contact_enclosure:
   - 0.06

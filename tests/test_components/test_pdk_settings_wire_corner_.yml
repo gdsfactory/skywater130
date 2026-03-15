@@ -2,5 +2,24 @@ info:
   dy: 0.2
   length: 0.2
 name: wire_corner_CSmetal2_WNone_RNone
+ports:
+  e1:
+    center:
+    - -0.1
+    - 0
+    layer: 262
+    name: e1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  e2:
+    center:
+    - 0
+    - 0.1
+    layer: 262
+    name: e2
+    orientation: 90
+    port_type: electrical
+    width: 0.2
 settings:
   cross_section: metal2

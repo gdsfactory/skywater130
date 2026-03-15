@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_sc_hd__a222oi_1
+ports:
+  VGND:
+    center:
+    - 2.16
+    - 0.123
+    layer: 238
+    name: VGND
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  VPWR:
+    center:
+    - 1.93
+    - 2.598
+    layer: 238
+    name: VPWR
+    orientation: 0
+    port_type: electrical
+    width: 0.2
 settings: {}

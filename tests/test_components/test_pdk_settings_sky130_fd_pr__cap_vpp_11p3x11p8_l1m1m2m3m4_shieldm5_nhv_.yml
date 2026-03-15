@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_pr__cap_vpp_11p3x11p8_l1m1m2m3m4_shieldm5_nhv
+ports:
+  C0:
+    center:
+    - 0.885
+    - 11.205
+    layer: 262
+    name: C0
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C1:
+    center:
+    - 0.8
+    - 11.505
+    layer: 238
+    name: C1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

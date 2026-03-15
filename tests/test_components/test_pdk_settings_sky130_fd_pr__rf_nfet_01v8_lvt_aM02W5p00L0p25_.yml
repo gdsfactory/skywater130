@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_pr__rf_nfet_01v8_lvt_aM02W5p00L0p25
+ports:
+  GATE:
+    center:
+    - 1.41
+    - 5.835
+    layer: 238
+    name: GATE
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  GATE1:
+    center:
+    - 1.41
+    - 0.235
+    layer: 238
+    name: GATE1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

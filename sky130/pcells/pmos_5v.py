@@ -201,8 +201,22 @@ def pmos_5v(
     li2.dcenter = cont_arr2.dcenter
 
     port_prefix = f"{instance_name}_" if instance_name else ""
-    c.add_port(name=f"{port_prefix}DRAIN", width=0.01, center=m1d1.dcenter, layer=m1_layer, orientation=90, port_type="electrical")
-    c.add_port(name=f"{port_prefix}SOURCE", width=0.01, center=m1d2.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+    c.add_port(
+        name=f"{port_prefix}DRAIN",
+        width=0.01,
+        center=m1d1.dcenter,
+        layer=m1_layer,
+        orientation=90,
+        port_type="electrical",
+    )
+    c.add_port(
+        name=f"{port_prefix}SOURCE",
+        width=0.01,
+        center=m1d2.dcenter,
+        layer=m1_layer,
+        orientation=270,
+        port_type="electrical",
+    )
 
     # generating contacts and local interconnects and mcon of poly
 
@@ -275,7 +289,14 @@ def pmos_5v(
     m1p_d.movex(sd_width + contact_enclosure[0] - mcon_enclosure[0])
     m1p_d.movey(-pc_size[1] - end_cap + contact_enclosure[1] - contact_enclosure[1])
 
-    c.add_port(name=f"{port_prefix}GATE", width=0.01, center=m1p_u.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+    c.add_port(
+        name=f"{port_prefix}GATE",
+        width=0.01,
+        center=m1p_u.dcenter,
+        layer=m1_layer,
+        orientation=270,
+        port_type="electrical",
+    )
 
     rect_lip = gf.components.rectangle(
         size=(pc_size[0] + li_enclosure, li_width), layer=li_layer
@@ -304,7 +325,10 @@ def pmos_5v(
     npc_d.movey(-pc_size[1] - npc_en - npc_spacing - npc_en / 2)
 
     # generaing n+ bulk tie and its contact and mcon and m1
-    rect_dn = gf.components.rectangle(size=(sd_width+sdm_enclosure[0], gate_width+sdm_enclosure[1]), layer=diffn_layer)
+    rect_dn = gf.components.rectangle(
+        size=(sd_width + sdm_enclosure[0], gate_width + sdm_enclosure[1]),
+        layer=diffn_layer,
+    )
     diff_n = c.add_ref(rect_dn)
     diff_n.connect(
         "e1", diff_p.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
@@ -377,7 +401,14 @@ def pmos_5v(
 
     li4.movey(-li_enclosure / 2)
 
-    c.add_port(name=f"{port_prefix}BODY", width=0.01, center=m1dn.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+    c.add_port(
+        name=f"{port_prefix}BODY",
+        width=0.01,
+        center=m1dn.dcenter,
+        layer=m1_layer,
+        orientation=270,
+        port_type="electrical",
+    )
 
     # generating n+ implant for bulk tie
     rect_nm = gf.components.rectangle(

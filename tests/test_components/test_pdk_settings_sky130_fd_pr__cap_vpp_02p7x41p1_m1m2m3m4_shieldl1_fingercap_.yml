@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_pr__cap_vpp_02p7x41p1_m1m2m3m4_shieldl1_fingercap
+ports:
+  C0:
+    center:
+    - 0.74
+    - 1.4
+    layer: 262
+    name: C0
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C1:
+    center:
+    - 1.545
+    - 0.185
+    layer: 262
+    name: C1
+    orientation: 0
+    port_type: electrical
+    width: 0.2
 settings: {}

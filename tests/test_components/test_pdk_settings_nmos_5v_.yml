@@ -1,5 +1,56 @@
-info: {}
-name: nmos_5v_DL65_20_PL66_20_GW0p75_GL0p5_SW0p3_EC0p13_CS0p1_6d78cadc
+info:
+  vlsir:
+    model: sky130_fd_pr__nfet_g5v0d10v5
+    port_map:
+      BODY: b
+      DRAIN: d
+      GATE: g
+      SOURCE: s
+    port_order:
+    - d
+    - g
+    - s
+    - b
+    spice_lib: corners/tt.spice
+    spice_type: SUBCKT
+name: nmos_5v_IN_DL65_20_PL66_20_GW0p75_GL0p5_SW0p3_EC0p2_CS0_0ab39dc3
+ports:
+  BODY:
+    center:
+    - 1.75
+    - 0.375
+    layer: 238
+    name: BODY
+    orientation: 270
+    port_type: electrical
+    width: 0.01
+  DRAIN:
+    center:
+    - 0.15
+    - 0.375
+    layer: 238
+    name: DRAIN
+    orientation: 90
+    port_type: electrical
+    width: 0.01
+  GATE:
+    center:
+    - 0.55
+    - 1.095
+    layer: 238
+    name: GATE
+    orientation: 270
+    port_type: electrical
+    width: 0.01
+  SOURCE:
+    center:
+    - 0.95
+    - 0.375
+    layer: 238
+    name: SOURCE
+    orientation: 270
+    port_type: electrical
+    width: 0.01
 settings:
   contact_enclosure:
   - 0.06
@@ -11,8 +62,8 @@ settings:
   - 0.17
   - 0.17
   contact_spacing:
-  - 0.17
-  - 0.17
+  - 0.19
+  - 0.19
   diff_enclosure:
   - 0.33
   - 0.33
@@ -28,8 +79,8 @@ settings:
   - 0.4
   dnwell_layer:
   - 64
-  - 18
-  end_cap: 0.13
+  - 44
+  end_cap: 0.2
   gate_length: 0.5
   gate_width: 0.75
   hvi_layer:
@@ -41,7 +92,8 @@ settings:
   hvntm_layer:
   - 125
   - 20
-  li_enclosure: 0.08
+  instance_name: ''
+  li_enclosure: 0
   li_layer:
   - 67
   - 20
@@ -71,7 +123,7 @@ settings:
   - 20
   pwell_layer:
   - 64
-  - 13
+  - 44
   sd_width: 0.3
   sdm_enclosure:
   - 0.125
