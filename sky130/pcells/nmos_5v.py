@@ -208,8 +208,22 @@ def nmos_5v(
     li2.dcenter = cont_arr2.dcenter
 
     port_prefix = f"{instance_name}_" if instance_name else ""
-    c.add_port(name=f"{port_prefix}DRAIN", width=0.01, center=m1d1.dcenter, layer=m1_layer, orientation=90, port_type="electrical")
-    c.add_port(name=f"{port_prefix}SOURCE", width=0.01, center=m1d2.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+    c.add_port(
+        name=f"{port_prefix}DRAIN",
+        width=0.01,
+        center=m1d1.dcenter,
+        layer=m1_layer,
+        orientation=90,
+        port_type="electrical",
+    )
+    c.add_port(
+        name=f"{port_prefix}SOURCE",
+        width=0.01,
+        center=m1d2.dcenter,
+        layer=m1_layer,
+        orientation=270,
+        port_type="electrical",
+    )
 
     # generating contacts and local interconnects and mcon and m1 of poly
 
@@ -282,7 +296,14 @@ def nmos_5v(
     m1p_d.movex(sd_width + contact_enclosure[0] - mcon_enclosure[0])
     m1p_d.movey(-pc_size[1] - end_cap + contact_enclosure[1] - contact_enclosure[1])
 
-    c.add_port(name=f"{port_prefix}GATE", width=0.01, center=m1p_u.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+    c.add_port(
+        name=f"{port_prefix}GATE",
+        width=0.01,
+        center=m1p_u.dcenter,
+        layer=m1_layer,
+        orientation=270,
+        port_type="electrical",
+    )
 
     rect_lip = gf.components.rectangle(
         size=(pc_size[0] + li_enclosure, li_width), layer=li_layer
@@ -311,7 +332,10 @@ def nmos_5v(
     npc_d.movey(-pc_size[1] - npc_en - npc_spacing - npc_en / 2)
 
     # generaing p+ bulk tie and its contact and mcon and m1
-    rect_dp = gf.components.rectangle(size=(sd_width+sdm_enclosure[0], gate_width+sdm_enclosure[1]), layer=diffp_layer)
+    rect_dp = gf.components.rectangle(
+        size=(sd_width + sdm_enclosure[0], gate_width + sdm_enclosure[1]),
+        layer=diffp_layer,
+    )
     diff_p = c.add_ref(rect_dp)
     diff_p.connect(
         "e1", diff_n.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
@@ -384,7 +408,14 @@ def nmos_5v(
 
     li4.movey(-li_enclosure / 2)
 
-    c.add_port(name=f"{port_prefix}BODY", width=0.01, center=m1dp.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+    c.add_port(
+        name=f"{port_prefix}BODY",
+        width=0.01,
+        center=m1dp.dcenter,
+        layer=m1_layer,
+        orientation=270,
+        port_type="electrical",
+    )
 
     # generating p+ implant for bulk tie
     rect_pm = gf.components.rectangle(
@@ -449,19 +480,14 @@ def nmos_5v(
     c.draw_ports()
     c.pprint_ports()
 
-    c.info['vlsir'] = {
-        "model" : "sky130_fd_pr__nfet_g5v0d10v5",
-        "spice_type" : "SUBCKT",
-        "spice_lib" : "corners/tt.spice",
-        "port_order" : ["d", "g", "s", "b"],
-        "port_map" : {
-            "DRAIN" : "d",
-            "SOURCE" : "s",
-            "GATE" : "g",
-            "BODY" : "b"
-        }
+    c.info["vlsir"] = {
+        "model": "sky130_fd_pr__nfet_g5v0d10v5",
+        "spice_type": "SUBCKT",
+        "spice_lib": "corners/tt.spice",
+        "port_order": ["d", "g", "s", "b"],
+        "port_map": {"DRAIN": "d", "SOURCE": "s", "GATE": "g", "BODY": "b"},
     }
-    
+
     return c
 
 

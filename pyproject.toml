@@ -64,6 +64,8 @@ testpaths = ["sky130", "tests"]
 
 [tool.ruff]
 fix = true
+
+[tool.ruff.lint]
 ignore = [
   "E501",  # line too long, handled by black
   "B008",  # do not perform function calls in argument defaults
@@ -81,9 +83,11 @@ select = [
   "UP"
 ]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "docs/notebooks/intro.py" = ['B018']
+"sky130/examples/*.py" = ["E402"]
 "sky130/pcells/__init__.py" = ["F403"]
+"sky130/tech.py" = ["E402"]
 
 [tool.setuptools.package-data]
 mypkg = ["*.gds"]

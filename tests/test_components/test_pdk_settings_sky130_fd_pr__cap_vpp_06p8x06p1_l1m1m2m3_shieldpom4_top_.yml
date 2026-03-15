@@ -1,3 +1,94 @@
 info: {}
 name: sky130_fd_pr__cap_vpp_06p8x06p1_l1m1m2m3_shieldpom4_top
+ports:
+  C0:
+    center:
+    - 2.305
+    - 11.7
+    layer: 262
+    name: C0
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C01:
+    center:
+    - 2.77
+    - 5.93
+    layer: 262
+    name: C01
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C02:
+    center:
+    - 2.77
+    - 11.69
+    layer: 262
+    name: C02
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C03:
+    center:
+    - 9.24
+    - 5.93
+    layer: 262
+    name: C03
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  C04:
+    center:
+    - 9.24
+    - 11.69
+    layer: 262
+    name: C04
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  C1:
+    center:
+    - 3.43
+    - 11.305
+    layer: 262
+    name: C1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C11:
+    center:
+    - 3.365
+    - 5.935
+    layer: 262
+    name: C11
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C12:
+    center:
+    - 3.365
+    - 11.695
+    layer: 262
+    name: C12
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C13:
+    center:
+    - 9.835
+    - 5.935
+    layer: 262
+    name: C13
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  C14:
+    center:
+    - 9.835
+    - 11.695
+    layer: 262
+    name: C14
+    orientation: 0
+    port_type: electrical
+    width: 0.2
 settings: {}

@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_pr__cap_vpp_05p9x05p9_m1m2m3m4_shieldl1_wafflecap
+ports:
+  C0:
+    center:
+    - 2.145
+    - 2.515
+    layer: 262
+    name: C0
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C1:
+    center:
+    - 2.39
+    - 2.235
+    layer: 262
+    name: C1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

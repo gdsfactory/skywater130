@@ -1,3 +1,31 @@
 info: {}
 name: sky130_fd_pr__rf_npn_11v0_W1p00L1p00
+ports:
+  B:
+    center:
+    - 1.86
+    - 6.89
+    layer: 238
+    name: B
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C:
+    center:
+    - 4.995
+    - 8.86
+    layer: 238
+    name: C
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  E:
+    center:
+    - 1.865
+    - 4.905
+    layer: 238
+    name: E
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

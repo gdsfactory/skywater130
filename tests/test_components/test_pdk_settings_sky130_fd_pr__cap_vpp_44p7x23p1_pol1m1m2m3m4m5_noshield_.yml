@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_pr__cap_vpp_44p7x23p1_pol1m1m2m3m4m5_noshield
+ports:
+  C0:
+    center:
+    - 25.82
+    - 22.935
+    layer: 262
+    name: C0
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  C1:
+    center:
+    - 26.38
+    - 22.9
+    layer: 262
+    name: C1
+    orientation: 0
+    port_type: electrical
+    width: 0.2
 settings: {}

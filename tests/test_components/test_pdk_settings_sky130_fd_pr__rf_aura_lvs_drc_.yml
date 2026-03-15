@@ -1,3 +1,58 @@
 info: {}
 name: sky130_fd_pr__rf_aura_lvs_drc
+ports:
+  D_P:
+    center:
+    - 66.645
+    - -124.91
+    layer: 262
+    name: D_P
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  G:
+    center:
+    - 68.315
+    - 100.635
+    layer: 238
+    name: G
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  G_P:
+    center:
+    - 66.635
+    - -124.16
+    layer: 238
+    name: G_P
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  S:
+    center:
+    - 68.275
+    - 99.415
+    layer: 238
+    name: S
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  S_P:
+    center:
+    - 66.64
+    - -125.805
+    layer: 238
+    name: S_P
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  VPWR:
+    center:
+    - 68.315
+    - 100.14
+    layer: 262
+    name: VPWR
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

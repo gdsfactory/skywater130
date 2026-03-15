@@ -1,3 +1,58 @@
 info: {}
 name: sky130_fd_pr__rf_pfet_01v8_aM04W5p00L0p25
+ports:
+  BULK:
+    center:
+    - 3.565
+    - 3.045
+    layer: 238
+    name: BULK
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  BULK1:
+    center:
+    - 0.31
+    - 3.055
+    layer: 238
+    name: BULK1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  DRAIN:
+    center:
+    - 0.33
+    - 4.48
+    layer: 262
+    name: DRAIN
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  GATE:
+    center:
+    - 1.985
+    - 5.91
+    layer: 238
+    name: GATE
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  GATE1:
+    center:
+    - 1.89
+    - 0.17
+    layer: 238
+    name: GATE1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  SOURCE:
+    center:
+    - 0.29
+    - 1.855
+    layer: 262
+    name: SOURCE
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

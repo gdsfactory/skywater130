@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_sc_hd__nand2b_2
+ports:
+  VGND:
+    center:
+    - 0.235
+    - 0
+    layer: 238
+    name: VGND
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  VPWR:
+    center:
+    - 0.235
+    - 2.72
+    layer: 238
+    name: VPWR
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

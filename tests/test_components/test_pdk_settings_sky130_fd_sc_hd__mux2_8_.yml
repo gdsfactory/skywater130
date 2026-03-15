@@ -1,3 +1,40 @@
 info: {}
 name: sky130_fd_sc_hd__mux2_8
+ports:
+  A1:
+    center:
+    - 8.045
+    - 1.19
+    layer: 238
+    name: A1
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  S:
+    center:
+    - 9.425
+    - 1.53
+    layer: 238
+    name: S
+    orientation: 0
+    port_type: electrical
+    width: 0.2
+  VGND:
+    center:
+    - 0.23
+    - 0
+    layer: 238
+    name: VGND
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  VPWR:
+    center:
+    - 0.23
+    - 2.72
+    layer: 238
+    name: VPWR
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

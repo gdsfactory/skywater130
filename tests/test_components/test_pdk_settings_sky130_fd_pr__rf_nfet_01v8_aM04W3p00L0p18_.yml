@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_pr__rf_nfet_01v8_aM04W3p00L0p18
+ports:
+  DRAIN:
+    center:
+    - 0.08
+    - 2.65
+    layer: 262
+    name: DRAIN
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  SOURCE:
+    center:
+    - 0.08
+    - 1.095
+    layer: 262
+    name: SOURCE
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}
