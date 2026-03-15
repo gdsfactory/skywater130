@@ -29,6 +29,9 @@ test:
 test-ports:
 	uv run pytest -s tests/test_components.py::test_optical_port_positions
 
+test-force:
+	uv run pytest -s -n logical --force-regen
+
 cov:
 	uv run pytest --cov=sky130
 

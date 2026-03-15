@@ -6,22 +6,23 @@ from gdsfactory.typings import Float2, LayerSpec
 
 @gf.cell
 def pmos_5v(
+    instance_name: str = "",
     diffusion_layer: LayerSpec = (65, 20),
     poly_layer: LayerSpec = (66, 20),
     gate_width: float = 0.75,
     gate_length: float = 0.5,
     sd_width: float = 0.3,
-    end_cap: float = 0.13,
+    end_cap: float = 0.2,
     contact_size: Float2 = (0.17, 0.17),
-    contact_spacing: Float2 = (0.17, 0.17),
+    contact_spacing: Float2 = (0.19, 0.19),
     contact_layer: LayerSpec = (66, 44),
     contact_enclosure: Float2 = (0.06, 0.06),
     diff_spacing: float = 0.37,
     diff_enclosure: Float2 = (0.33, 0.33),
     diffn_layer: LayerSpec = (65, 44),
-    nwell_layer: LayerSpec = (64, 22),
+    nwell_layer: LayerSpec = (64, 20),
     dnwell_enclosure: Float2 = (0.4, 0.4),
-    dnwell_layer: LayerSpec = (64, 18),
+    dnwell_layer: LayerSpec = (64, 20),
     nf: int = 1,
     sdm_enclosure: Float2 = (0.125, 0.125),
     nsdm_layer: LayerSpec = (93, 44),
@@ -30,7 +31,7 @@ def pmos_5v(
     hvi_layer: LayerSpec = (75, 20),
     li_width: float = 0.17,
     li_layer: LayerSpec = (67, 20),
-    li_enclosure: float = 0.08,
+    li_enclosure: float = 0,
     mcon_layer: LayerSpec = (67, 44),
     mcon_enclosure: Float2 = (0.03, 0.06),
     m1_layer: LayerSpec = (68, 20),
@@ -106,8 +107,8 @@ def pmos_5v(
     rect_c = gf.components.rectangle(size=contact_size, layer=contact_layer)
     rect_mc = gf.components.rectangle(size=contact_size, layer=mcon_layer)
 
-    nr = floor(gate_width / (2 * contact_size[1]))
-    nc = floor(sd_width / (2 * contact_size[0]))
+    nr = floor(gate_width / (contact_spacing[1] + contact_size[1]))
+    nc = floor(sd_width / (contact_spacing[0] + contact_size[0]))
 
     con_sp = list(contact_spacing)
     con_sp[0] = con_sp[1] = contact_spacing[0] + contact_size[0]
@@ -196,8 +197,12 @@ def pmos_5v(
             - mcon_enclosure[0]
         )
 
-    li1.movey(-li_enclosure / 2)
-    li2.movey(-li_enclosure / 2)
+    li1.dcenter = cont_arr1.dcenter
+    li2.dcenter = cont_arr2.dcenter
+
+    port_prefix = f"{instance_name}_" if instance_name else ""
+    c.add_port(name=f"{port_prefix}DRAIN", width=0.01, center=m1d1.dcenter, layer=m1_layer, orientation=90, port_type="electrical")
+    c.add_port(name=f"{port_prefix}SOURCE", width=0.01, center=m1d2.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
 
     # generating contacts and local interconnects and mcon of poly
 
@@ -270,6 +275,8 @@ def pmos_5v(
     m1p_d.movex(sd_width + contact_enclosure[0] - mcon_enclosure[0])
     m1p_d.movey(-pc_size[1] - end_cap + contact_enclosure[1] - contact_enclosure[1])
 
+    c.add_port(name=f"{port_prefix}GATE", width=0.01, center=m1p_u.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+
     rect_lip = gf.components.rectangle(
         size=(pc_size[0] + li_enclosure, li_width), layer=li_layer
     )
@@ -297,7 +304,7 @@ def pmos_5v(
     npc_d.movey(-pc_size[1] - npc_en - npc_spacing - npc_en / 2)
 
     # generaing n+ bulk tie and its contact and mcon and m1
-    rect_dn = gf.components.rectangle(size=(sd_width, gate_width), layer=diffn_layer)
+    rect_dn = gf.components.rectangle(size=(sd_width+sdm_enclosure[0], gate_width+sdm_enclosure[1]), layer=diffn_layer)
     diff_n = c.add_ref(rect_dn)
     diff_n.connect(
         "e1", diff_p.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
@@ -370,6 +377,8 @@ def pmos_5v(
 
     li4.movey(-li_enclosure / 2)
 
+    c.add_port(name=f"{port_prefix}BODY", width=0.01, center=m1dn.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+
     # generating n+ implant for bulk tie
     rect_nm = gf.components.rectangle(
         size=(sd_width + 2 * sdm_enclosure[0], gate_width + 2 * sdm_enclosure[1]),
@@ -380,6 +389,7 @@ def pmos_5v(
         "e1", diff_p.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
     nsdm.movex(diff_spacing + sdm_spacing - sdm_enclosure[0])
+    diff_n.dcenter = nsdm.dcenter
 
     # generating nwell
     rect_nw = gf.components.rectangle(
@@ -416,6 +426,9 @@ def pmos_5v(
     dnwell = c.add_ref(rect_hv)
     dnwell.movex(-diff_enclosure[0] - dnwell_enclosure[0])
     dnwell.movey(-diff_enclosure[1] - dnwell_enclosure[1])
+
+    c.draw_ports()
+    c.pprint_ports()
     return c
 
 

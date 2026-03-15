@@ -6,22 +6,23 @@ from gdsfactory.typings import Float2, LayerSpec
 
 @gf.cell
 def nmos_5v(
+    instance_name: str = "",
     diffusion_layer: LayerSpec = (65, 20),
     poly_layer: LayerSpec = (66, 20),
     gate_width: float = 0.75,
     gate_length: float = 0.5,
     sd_width: float = 0.3,
-    end_cap: float = 0.13,
+    end_cap: float = 0.2,
     contact_size: Float2 = (0.17, 0.17),
-    contact_spacing: Float2 = (0.17, 0.17),
+    contact_spacing: Float2 = (0.19, 0.19),
     contact_layer: LayerSpec = (66, 44),
     contact_enclosure: Float2 = (0.06, 0.06),
     diff_spacing: float = 0.37,
     diff_enclosure: Float2 = (0.33, 0.33),
     diffp_layer: LayerSpec = (65, 44),
-    pwell_layer: LayerSpec = (64, 13),
+    pwell_layer: LayerSpec = (64, 44),
     dnwell_enclosure: Float2 = (0.4, 0.4),
-    dnwell_layer: LayerSpec = (64, 18),
+    dnwell_layer: LayerSpec = (64, 44),
     nf: int = 1,
     sdm_enclosure: Float2 = (0.125, 0.125),
     nsdm_layer: LayerSpec = (93, 44),
@@ -32,7 +33,7 @@ def nmos_5v(
     hvntm_enclosure: Float2 = (0.185, 0.185),
     li_width: float = 0.17,
     li_layer: LayerSpec = (67, 20),
-    li_enclosure: float = 0.08,
+    li_enclosure: float = 0,
     mcon_layer: LayerSpec = (67, 44),
     mcon_enclosure: Float2 = (0.03, 0.06),
     m1_layer: LayerSpec = (68, 20),
@@ -203,8 +204,12 @@ def nmos_5v(
             - mcon_enclosure[0]
         )
 
-    li1.movey(-li_enclosure / 2)
-    li2.movey(-li_enclosure / 2)
+    li1.dcenter = cont_arr1.dcenter
+    li2.dcenter = cont_arr2.dcenter
+
+    port_prefix = f"{instance_name}_" if instance_name else ""
+    c.add_port(name=f"{port_prefix}DRAIN", width=0.01, center=m1d1.dcenter, layer=m1_layer, orientation=90, port_type="electrical")
+    c.add_port(name=f"{port_prefix}SOURCE", width=0.01, center=m1d2.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
 
     # generating contacts and local interconnects and mcon and m1 of poly
 
@@ -277,6 +282,8 @@ def nmos_5v(
     m1p_d.movex(sd_width + contact_enclosure[0] - mcon_enclosure[0])
     m1p_d.movey(-pc_size[1] - end_cap + contact_enclosure[1] - contact_enclosure[1])
 
+    c.add_port(name=f"{port_prefix}GATE", width=0.01, center=m1p_u.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+
     rect_lip = gf.components.rectangle(
         size=(pc_size[0] + li_enclosure, li_width), layer=li_layer
     )
@@ -304,7 +311,7 @@ def nmos_5v(
     npc_d.movey(-pc_size[1] - npc_en - npc_spacing - npc_en / 2)
 
     # generaing p+ bulk tie and its contact and mcon and m1
-    rect_dp = gf.components.rectangle(size=(sd_width, gate_width), layer=diffp_layer)
+    rect_dp = gf.components.rectangle(size=(sd_width+sdm_enclosure[0], gate_width+sdm_enclosure[1]), layer=diffp_layer)
     diff_p = c.add_ref(rect_dp)
     diff_p.connect(
         "e1", diff_n.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
@@ -377,6 +384,8 @@ def nmos_5v(
 
     li4.movey(-li_enclosure / 2)
 
+    c.add_port(name=f"{port_prefix}BODY", width=0.01, center=m1dp.dcenter, layer=m1_layer, orientation=270, port_type="electrical")
+
     # generating p+ implant for bulk tie
     rect_pm = gf.components.rectangle(
         size=(sd_width + 2 * sdm_enclosure[0], gate_width + 2 * sdm_enclosure[1]),
@@ -387,6 +396,7 @@ def nmos_5v(
         "e1", diff_n.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
     )
     psdm.movex(diff_spacing + sdm_spacing - sdm_enclosure[0])
+    diff_p.dcenter = psdm.dcenter
 
     # generating pwell
     rect_pw = gf.components.rectangle(
@@ -436,6 +446,22 @@ def nmos_5v(
     hvntm.movex(-sdm_enclosure[0] - hvntm_enclosure[0])
     hvntm.movey(-sdm_enclosure[1] - hvntm_enclosure[1])
 
+    c.draw_ports()
+    c.pprint_ports()
+
+    c.info['vlsir'] = {
+        "model" : "sky130_fd_pr__nfet_g5v0d10v5",
+        "spice_type" : "SUBCKT",
+        "spice_lib" : "corners/tt.spice",
+        "port_order" : ["d", "g", "s", "b"],
+        "port_map" : {
+            "DRAIN" : "d",
+            "SOURCE" : "s",
+            "GATE" : "g",
+            "BODY" : "b"
+        }
+    }
+    
     return c
 
 
