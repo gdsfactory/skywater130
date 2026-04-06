@@ -17,7 +17,7 @@ dependencies = [
   "doroutes>=0.3.0",
   "gdsfactory~=9.34.1",
   "PySpice",
-  "python-dotenv>=1.2.1",
+  "python-dotenv>=1.2.1"
 ]
 description = "skywater130 pdk"
 keywords = ["python"]
@@ -29,6 +29,7 @@ version = "0.15.3"
 
 [project.optional-dependencies]
 dev = [
+  "gdsfactoryplus",
   "pytest",
   "pytest-cov",
   "pytest_regressions",
