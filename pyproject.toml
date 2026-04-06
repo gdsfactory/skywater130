@@ -84,7 +84,11 @@ select = [
 
 [tool.ruff.per-file-ignores]
 "docs/notebooks/intro.py" = ['B018']
+"sky130/examples/*.py" = ["E402"]
 "sky130/pcells/__init__.py" = ["F403"]
+"sky130/routing_utils.py" = ["B023"]
+"sky130/src/**/*.py" = ["E", "W", "F", "B"]
+"sky130/tech.py" = ["E402"]
 
 [tool.setuptools.package-data]
 mypkg = ["*.gds"]

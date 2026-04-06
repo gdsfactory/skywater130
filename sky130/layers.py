@@ -648,7 +648,7 @@ def get_layer_stack() -> LayerStack:
                 material="metal",
                 thickness=m5_thickness,
             ),
-        )
+        ),
     )
 
 

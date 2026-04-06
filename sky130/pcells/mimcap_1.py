@@ -58,6 +58,7 @@ def mimcap_1(
             capm_enclosure=(0.5, 0.5),
       )
       c.plot()
+
     """
     c = gf.Component()
 
@@ -78,7 +79,8 @@ def mimcap_1(
     # generate m4 plates
 
     rect_m4_r = gf.components.rectangle(
-        size=(m4_r_length, m3_width - en[1]), layer=m4_layer
+        size=(m4_r_length, m3_width - en[1]),
+        layer=m4_layer,
     )
     m4_r = c.add_ref(rect_m4_r)
     m4_r.movex(m3_length - m4_r_length - en[0] / 2)
@@ -87,7 +89,10 @@ def mimcap_1(
     rect_m4_l = gf.components.rectangle(size=(m4_length, m4_width), layer=m4_layer)
     m4_l = c.add_ref(rect_m4_l)
     m4_l.connect(
-        "e3", m3.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e3",
+        m3.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     m4_l.movex(m4_length + capm_enclosure[0] + m4_enclosure[0] + en[0] / 2)
 
@@ -98,7 +103,10 @@ def mimcap_1(
     )
     capm = c.add_ref(rect_capm)
     capm.connect(
-        "e3", m4_l.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e3",
+        m4_l.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     capm.movex(m4_length + m4_enclosure[0])
 
@@ -118,12 +126,12 @@ def mimcap_1(
     via3_arr1.movex(
         capm_enclosure[0]
         + m4_enclosure[0]
-        + ((m4_length - nc1 * via3_size[0] - (nc1 - 1) * via3_spacing[0]) / 2)
+        + ((m4_length - nc1 * via3_size[0] - (nc1 - 1) * via3_spacing[0]) / 2),
     )
     via3_arr1.movey(
         capm_enclosure[1]
         + m4_enclosure[1]
-        + ((m4_width - nr1 * via3_size[1] - (nr1 - 1) * via3_spacing[1]) / 2)
+        + ((m4_width - nr1 * via3_size[1] - (nr1 - 1) * via3_spacing[1]) / 2),
     )
 
     # for the right m4 plate
@@ -140,10 +148,10 @@ def mimcap_1(
     )
     via3_arr2.movex(m3_length - en[0] / 2 - m4_r_length)
     via3_arr2.movex(
-        (m4_r_length - nc2 * via3_size[0] - (nc2 - 1) * via3_spacing[0]) / 2
+        (m4_r_length - nc2 * via3_size[0] - (nc2 - 1) * via3_spacing[0]) / 2,
     )
     via3_arr2.movey(
-        (m3_width - en[1] / 2 - nr2 * via3_size[1] - (nr2 - 1) * via3_spacing[1]) / 2
+        (m3_width - en[1] / 2 - nr2 * via3_size[1] - (nr2 - 1) * via3_spacing[1]) / 2,
     )
 
     return c

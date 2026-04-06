@@ -17,6 +17,7 @@ def wire_corner(
         cross_section: spec.
         width: optional width. Defaults to cross_section width.
         radius: ignored (wire corners are 0-radius sharp corners).
+
     """
     return gf.c.wire_corner(
         cross_section=cross_section,
@@ -43,6 +44,7 @@ def wire_corner45(
         width: optional width. Defaults to cross_section width.
         layer: ignored.
         with_corner90_ports: if True, adds ports at 90 degrees.
+
     """
     return gf.c.wire_corner45(
         cross_section=cross_section,
@@ -70,9 +72,13 @@ def straight_metal1(
         length: straight length (um).
         cross_section: specification (CrossSection, string or dict).
         width: width of the waveguide. If None, it will use the width of the cross_section.
+
     """
     return gf.c.straight(
-        length=length, cross_section=cross_section, width=width, npoints=2
+        length=length,
+        cross_section=cross_section,
+        width=width,
+        npoints=2,
     )
 
 
@@ -88,9 +94,13 @@ def straight_metal2(
         length: straight length (um).
         cross_section: specification (CrossSection, string or dict).
         width: width of the waveguide. If None, it will use the width of the cross_section.
+
     """
     return gf.c.straight(
-        length=length, cross_section=cross_section, width=width, npoints=2
+        length=length,
+        cross_section=cross_section,
+        width=width,
+        npoints=2,
     )
 
 
@@ -159,6 +169,7 @@ def bend_s_metal1(
         size: in x and y direction.
         cross_section: spec.
         width: width of the waveguide. If None, it will use the width of the cross_section.
+
     """
     return gf.c.bend_s(
         size=size,
@@ -184,6 +195,7 @@ def bend_s_metal2(
         size: in x and y direction.
         cross_section: spec.
         width: width of the waveguide. If None, it will use the width of the cross_section.
+
     """
     return gf.c.bend_s(
         size=size,
@@ -195,14 +207,14 @@ def bend_s_metal2(
 
 
 __all__ = [
-    "wire_corner",
-    "wire_corner45",
-    "straight_metal1",
-    "straight_metal2",
     "bend_metal1",
     "bend_metal2",
     "bend_s_metal1",
     "bend_s_metal2",
+    "straight_metal1",
+    "straight_metal2",
+    "wire_corner",
+    "wire_corner45",
 ]
 
 if __name__ == "__main__":

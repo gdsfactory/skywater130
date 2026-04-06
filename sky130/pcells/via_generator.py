@@ -32,6 +32,7 @@ def via_generator(
 
       c = sky130.pcells.via_generator()
       c.plot()
+
     """
     c = gf.Component()
 
@@ -50,7 +51,11 @@ def via_generator(
     rect_via = gf.components.rectangle(size=via_size, layer=via_layer)
 
     c.add_ref(
-        rect_via, rows=nr, columns=nc, column_pitch=via_sp[0], row_pitch=via_sp[1]
+        rect_via,
+        rows=nr,
+        columns=nc,
+        column_pitch=via_sp[0],
+        row_pitch=via_sp[1],
     )
     return c
 
@@ -101,7 +106,7 @@ def demo_via():
         (
             (width - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2,
             (length - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2,
-        )
+        ),
     )
 
     c2 = gf.Component("via test for bending structure")
@@ -128,12 +133,12 @@ def demo_via():
         vi = c2.add_ref(v)
         vi.movex(
             (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
-            + i * (x2.xmax - x1.xmin)
+            + i * (x2.xmax - x1.xmin),
         )
         vi.movey(
             x1.ymin
             - x2.ymin
-            + (x1.ymax - x1.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
+            + (x1.ymax - x1.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2,
         )
 
     for i in range(2):
@@ -148,12 +153,12 @@ def demo_via():
         vi = c2.add_ref(h)
         vi.movey(
             (x2.ymax - x1.ymax - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
-            + i * (x2.ymax - x1.ymin)
+            + i * (x2.ymax - x1.ymin),
         )
         vi.movex(
             x1.xmin
             - x2.xmin
-            + (x1.xmax - x1.xmin - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
+            + (x1.xmax - x1.xmin - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2,
         )
 
     for i in range(2):
@@ -169,10 +174,10 @@ def demo_via():
 
             co = c2.add_ref(cor)
             co.movex(
-                (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2
+                (x2.xmax - x1.xmax - nc * via_size[0] - (nc - 1) * via_spacing[0]) / 2,
             )
             co.movey(
-                (x1.ymin - x2.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2
+                (x1.ymin - x2.ymin - nr * via_size[1] - (nr - 1) * via_spacing[1]) / 2,
             )
             co.movex(j * (x2.xmax - x1.xmin))
             co.movey(i * (x2.ymax - x1.ymin))

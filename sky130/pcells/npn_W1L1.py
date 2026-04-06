@@ -66,6 +66,7 @@ def npn_W1L1(
 
       c = sky130.pcells.npn_W1L1(np_spacing=1, B_width=0.8, C_width=0.8, E_length=2)
       c.plot()
+
     """
     c = gf.Component()
 
@@ -108,13 +109,17 @@ def npn_W1L1(
             contact_size[1] + contact_spacing[1],
         )
         cont_e_arr = c.add_ref(
-            i, rows=nr_e, columns=nc_e, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_e,
+            columns=nc_e,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )
         cont_e_arr.movex(
-            (E_width - nc_e * contact_size[0] - (nc_e - 1) * contact_spacing[0]) / 2
+            (E_width - nc_e * contact_size[0] - (nc_e - 1) * contact_spacing[0]) / 2,
         )
         cont_e_arr.movey(
-            (E_length - nr_e * contact_size[1] - (nr_e - 1) * contact_spacing[1]) / 2
+            (E_length - nr_e * contact_size[1] - (nr_e - 1) * contact_spacing[1]) / 2,
         )
 
     rect_eli = gf.components.rectangle(
@@ -133,7 +138,7 @@ def npn_W1L1(
             - (nc_e - 1) * contact_spacing[0]
             - 2 * li_enclosure
         )
-        / 2
+        / 2,
     )
     li_e.movey(
         (
@@ -142,7 +147,7 @@ def npn_W1L1(
             - (nr_e - 1) * contact_spacing[1]
             - 2 * li_enclosure
         )
-        / 2
+        / 2,
     )
 
     rect_em1 = gf.components.rectangle(
@@ -164,7 +169,7 @@ def npn_W1L1(
             - (nc_e - 1) * contact_spacing[0]
             - 2 * mcon_enclosure[0]
         )
-        / 2
+        / 2,
     )
     m1_e.movey(
         (
@@ -173,13 +178,14 @@ def npn_W1L1(
             - (nr_e - 1) * contact_spacing[1]
             - 2 * mcon_enclosure[1]
         )
-        / 2
+        / 2,
     )
 
     # generating Base
 
     rect_B_in = gf.components.rectangle(
-        size=(E_width + 2 * np_spacing, E_length + 2 * np_spacing), layer=tap_layer
+        size=(E_width + 2 * np_spacing, E_length + 2 * np_spacing),
+        layer=tap_layer,
     )
     rect_B_out = gf.components.rectangle(
         size=(
@@ -195,12 +201,18 @@ def npn_W1L1(
     B_out = c_B.add_ref(rect_B_out)
 
     B_in.connect(
-        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        E.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     B_in.movex(E_width + np_spacing)
 
     B_out.connect(
-        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        E.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     B_out.movex(E_width + np_spacing + B_width)
 
@@ -227,12 +239,18 @@ def npn_W1L1(
     pmB_out = c_B.add_ref(rect_pmB_out)
 
     pmB_in.connect(
-        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        E.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     pmB_in.movex(E_width + np_spacing - sdm_enclosure[0])
 
     pmB_out.connect(
-        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        E.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     pmB_out.movex(E_width + np_spacing + B_width + sdm_enclosure[1])
 
@@ -295,7 +313,10 @@ def npn_W1L1(
         li_m1_b_out = c_B.add_ref(rect_out)
 
         li_m1_b_in.connect(
-            "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+            "e1",
+            E.ports["e1"],
+            allow_layer_mismatch=True,
+            allow_width_mismatch=True,
         )
         li_m1_b_in.movex(
             (
@@ -304,11 +325,14 @@ def npn_W1L1(
                 + (B_width - nc * contact_size[0] - (nc - 1) * contact_spacing[0]) / 2
             )
             - i * mcon_enclosure[0]
-            - (1 - i) * li_enclosure
+            - (1 - i) * li_enclosure,
         )
 
         li_m1_b_out.connect(
-            "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+            "e1",
+            E.ports["e1"],
+            allow_layer_mismatch=True,
+            allow_width_mismatch=True,
         )
         li_m1_b_out.movex(
             (
@@ -318,13 +342,16 @@ def npn_W1L1(
                 - ((B_width - nc * contact_size[0] - (nc - 1) * contact_spacing[0]) / 2)
                 + i * mcon_enclosure[0]
             )
-            + (1 - i) * li_enclosure
+            + (1 - i) * li_enclosure,
         )
 
         c.add_ref(
             gf.boolean(
-                A=li_m1_b_out, B=li_m1_b_in, operation="not", layer=rect_layer[i]
-            )
+                A=li_m1_b_out,
+                B=li_m1_b_in,
+                operation="not",
+                layer=rect_layer[i],
+            ),
         )
 
     for i in rect_c_mc:
@@ -332,11 +359,15 @@ def npn_W1L1(
         nc_b = nc
 
         cont_B_arr1 = c.add_ref(
-            i, rows=nr_b, columns=nc_b, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_b,
+            columns=nc_b,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # left side
         cont_B_arr1.move((-np_spacing - B_width, -np_spacing))
         cont_B_arr1.movex(
-            (B_width - nc_b * contact_size[0] - (nc_b - 1) * contact_spacing[0]) / 2
+            (B_width - nc_b * contact_size[0] - (nc_b - 1) * contact_spacing[0]) / 2,
         )
         cont_B_arr1.movey(
             (
@@ -345,15 +376,19 @@ def npn_W1L1(
                 - nr_b * contact_size[1]
                 - (nr_b - 1) * contact_spacing[1]
             )
-            / 2
+            / 2,
         )
 
         cont_B_arr2 = c.add_ref(
-            i, rows=nr_b, columns=nc_b, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_b,
+            columns=nc_b,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # right side
         cont_B_arr2.move((E_width + np_spacing, -np_spacing))
         cont_B_arr2.movex(
-            (B_width - nc_b * contact_size[0] - (nc_b - 1) * contact_spacing[0]) / 2
+            (B_width - nc_b * contact_size[0] - (nc_b - 1) * contact_spacing[0]) / 2,
         )
         cont_B_arr2.movey(
             (
@@ -362,12 +397,16 @@ def npn_W1L1(
                 - nr_b * contact_size[1]
                 - (nr_b - 1) * contact_spacing[1]
             )
-            / 2
+            / 2,
         )
 
         nr_b, nc_b = nc_b, nr_b
         cont_B_arr3 = c.add_ref(
-            i, rows=nr_b, columns=nc_b, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_b,
+            columns=nc_b,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # upper side
         cont_B_arr3.move((-np_spacing, E_length + np_spacing))
         cont_B_arr3.movex(
@@ -377,14 +416,18 @@ def npn_W1L1(
                 - nc_b * contact_size[0]
                 - (nc_b - 1) * contact_spacing[0]
             )
-            / 2
+            / 2,
         )
         cont_B_arr3.movey(
-            (B_width - nr_b * contact_size[1] - (nr_b - 1) * contact_spacing[1]) / 2
+            (B_width - nr_b * contact_size[1] - (nr_b - 1) * contact_spacing[1]) / 2,
         )
 
         cont_B_arr4 = c.add_ref(
-            i, rows=nr_b, columns=nc_b, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_b,
+            columns=nc_b,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # bottom side
         cont_B_arr4.move((-np_spacing, -np_spacing - B_width))
         cont_B_arr4.movex(
@@ -394,14 +437,18 @@ def npn_W1L1(
                 - nc_b * contact_size[0]
                 - (nc_b - 1) * contact_spacing[0]
             )
-            / 2
+            / 2,
         )
         cont_B_arr4.movey(
-            (B_width - nr_b * contact_size[1] - (nr_b - 1) * contact_spacing[1]) / 2
+            (B_width - nr_b * contact_size[1] - (nr_b - 1) * contact_spacing[1]) / 2,
         )
 
         cont_B_arrc1 = c.add_ref(
-            i, rows=nr_b, columns=nr_b, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_b,
+            columns=nr_b,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # corners
         cont_B_arrc1.move((-np_spacing - B_width, -np_spacing - B_width))
         cont_B_arrc1.move(
@@ -410,11 +457,15 @@ def npn_W1L1(
                 / 2,
                 (B_width - nr_b * contact_size[1] - (nr_b - 1) * contact_spacing[1])
                 / 2,
-            )
+            ),
         )
 
         cont_B_arrc2 = c.add_ref(
-            i, rows=nr_b, columns=nr_b, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_b,
+            columns=nr_b,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )
         cont_B_arrc2.move((-np_spacing - B_width, E_length + np_spacing))
         cont_B_arrc2.move(
@@ -423,11 +474,15 @@ def npn_W1L1(
                 / 2,
                 (B_width - nr_b * contact_size[1] - (nr_b - 1) * contact_spacing[1])
                 / 2,
-            )
+            ),
         )
 
         cont_B_arrc3 = c.add_ref(
-            i, rows=nr_b, columns=nr_b, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_b,
+            columns=nr_b,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )
         cont_B_arrc3.move((E_width + np_spacing, -np_spacing - B_width))
         cont_B_arrc3.move(
@@ -436,11 +491,15 @@ def npn_W1L1(
                 / 2,
                 (B_width - nr_b * contact_size[1] - (nr_b - 1) * contact_spacing[1])
                 / 2,
-            )
+            ),
         )
 
         cont_B_arrc4 = c.add_ref(
-            i, rows=nr_b, columns=nr_b, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_b,
+            columns=nr_b,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )
         cont_B_arrc4.move((E_width + np_spacing, E_length + np_spacing))
         cont_B_arrc4.move(
@@ -449,7 +508,7 @@ def npn_W1L1(
                 / 2,
                 (B_width - nr_b * contact_size[1] - (nr_b - 1) * contact_spacing[1])
                 / 2,
-            )
+            ),
         )
 
     # generating Collector
@@ -475,12 +534,18 @@ def npn_W1L1(
     C_out = c_C.add_ref(rect_C_out)
 
     C_in.connect(
-        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        E.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     C_in.movex(E_width + 2.25 * np_spacing + B_width)
 
     C_out.connect(
-        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        E.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     C_out.movex(E_width + 2.25 * np_spacing + B_width + C_width)
 
@@ -515,12 +580,18 @@ def npn_W1L1(
     nmC_out = c_C.add_ref(rect_nmC_out)
 
     nmC_in.connect(
-        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        E.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     nmC_in.movex(E_width + 2.25 * np_spacing + B_width - sdm_enclosure[0])
 
     nmC_out.connect(
-        "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        E.ports["e1"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     nmC_out.movex(E_width + 2.25 * np_spacing + B_width + C_width + sdm_enclosure[0])
 
@@ -584,7 +655,10 @@ def npn_W1L1(
         li_m1_c_out = c_C.add_ref(rect_out)
 
         li_m1_c_in.connect(
-            "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+            "e1",
+            E.ports["e1"],
+            allow_layer_mismatch=True,
+            allow_width_mismatch=True,
         )
         li_m1_c_in.movex(
             E_width
@@ -592,11 +666,14 @@ def npn_W1L1(
             + B_width
             + (C_width - nc * contact_size[0] - (nc - 1) * contact_spacing[0]) / 2
             - i * mcon_enclosure[0]
-            - (1 - i) * li_enclosure
+            - (1 - i) * li_enclosure,
         )
 
         li_m1_c_out.connect(
-            "e1", E.ports["e1"], allow_layer_mismatch=True, allow_width_mismatch=True
+            "e1",
+            E.ports["e1"],
+            allow_layer_mismatch=True,
+            allow_width_mismatch=True,
         )
         li_m1_c_out.movex(
             E_width
@@ -605,26 +682,33 @@ def npn_W1L1(
             + C_width
             - (C_width - nc * contact_size[0] - (nc - 1) * contact_spacing[0]) / 2
             + i * mcon_enclosure[0]
-            + (1 - i) * li_enclosure
+            + (1 - i) * li_enclosure,
         )
 
         c.add_ref(
             gf.boolean(
-                A=li_m1_c_out, B=li_m1_c_in, operation="not", layer=rect_layer[i]
-            )
+                A=li_m1_c_out,
+                B=li_m1_c_in,
+                operation="not",
+                layer=rect_layer[i],
+            ),
         )
 
     for i in rect_c_mc:
         nr_c = nr
         nc_c = nc
         cont_C_arr1 = c.add_ref(
-            i, rows=nr_c, columns=nc_c, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_c,
+            columns=nc_c,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # left side
         cont_C_arr1.move(
-            (-2.25 * np_spacing - B_width - C_width, -2.25 * np_spacing - B_width)
+            (-2.25 * np_spacing - B_width - C_width, -2.25 * np_spacing - B_width),
         )
         cont_C_arr1.movex(
-            (C_width - nc_c * contact_size[0] - (nc_c - 1) * contact_spacing[0]) / 2
+            (C_width - nc_c * contact_size[0] - (nc_c - 1) * contact_spacing[0]) / 2,
         )
         cont_C_arr1.movey(
             (
@@ -633,17 +717,21 @@ def npn_W1L1(
                 - nr_c * contact_size[1]
                 - (nr_c - 1) * contact_spacing[1]
             )
-            / 2
+            / 2,
         )
 
         cont_C_arr2 = c.add_ref(
-            i, rows=nr_c, columns=nc_c, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_c,
+            columns=nc_c,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # right side
         cont_C_arr2.move(
-            (E_width + 2.25 * np_spacing + B_width, -2.25 * np_spacing - B_width)
+            (E_width + 2.25 * np_spacing + B_width, -2.25 * np_spacing - B_width),
         )
         cont_C_arr2.movex(
-            (C_width - nc_c * contact_size[0] - (nc_c - 1) * contact_spacing[0]) / 2
+            (C_width - nc_c * contact_size[0] - (nc_c - 1) * contact_spacing[0]) / 2,
         )
         cont_C_arr2.movey(
             (
@@ -652,15 +740,19 @@ def npn_W1L1(
                 - nr_c * contact_size[1]
                 - (nr_c - 1) * contact_spacing[1]
             )
-            / 2
+            / 2,
         )
 
         nr_c, nc_c = nc_c, nr_c
         cont_C_arr3 = c.add_ref(
-            i, rows=nr_c, columns=nc_c, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_c,
+            columns=nc_c,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # upper side
         cont_C_arr3.move(
-            (-2.25 * np_spacing - B_width, E_length + 2.25 * np_spacing + B_width)
+            (-2.25 * np_spacing - B_width, E_length + 2.25 * np_spacing + B_width),
         )
         cont_C_arr3.movex(
             (
@@ -669,17 +761,21 @@ def npn_W1L1(
                 - nc_c * contact_size[0]
                 - (nc_c - 1) * contact_spacing[0]
             )
-            / 2
+            / 2,
         )
         cont_C_arr3.movey(
-            (C_width - nr_c * contact_size[1] - (nr_c - 1) * contact_spacing[1]) / 2
+            (C_width - nr_c * contact_size[1] - (nr_c - 1) * contact_spacing[1]) / 2,
         )
 
         cont_C_arr4 = c.add_ref(
-            i, rows=nr_c, columns=nc_c, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_c,
+            columns=nc_c,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # bottom side
         cont_C_arr4.move(
-            (-2.25 * np_spacing - B_width, -2.25 * np_spacing - B_width - C_width)
+            (-2.25 * np_spacing - B_width, -2.25 * np_spacing - B_width - C_width),
         )
         cont_C_arr4.movex(
             (
@@ -688,20 +784,24 @@ def npn_W1L1(
                 - nc_c * contact_size[0]
                 - (nc_c - 1) * contact_spacing[0]
             )
-            / 2
+            / 2,
         )
         cont_C_arr4.movey(
-            (C_width - nr_c * contact_size[1] - (nr_c - 1) * contact_spacing[1]) / 2
+            (C_width - nr_c * contact_size[1] - (nr_c - 1) * contact_spacing[1]) / 2,
         )
 
         cont_C_arrc1 = c.add_ref(
-            i, rows=nr_c, columns=nr_c, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_c,
+            columns=nr_c,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # corners
         cont_C_arrc1.move(
             (
                 -2.25 * np_spacing - B_width - C_width,
                 -2.25 * np_spacing - B_width - C_width,
-            )
+            ),
         )
         cont_C_arrc1.move(
             (
@@ -709,17 +809,21 @@ def npn_W1L1(
                 / 2,
                 (C_width - nr_c * contact_size[1] - (nr_c - 1) * contact_spacing[1])
                 / 2,
-            )
+            ),
         )
 
         cont_C_arrc2 = c.add_ref(
-            i, rows=nr_c, columns=nr_c, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_c,
+            columns=nr_c,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # corners
         cont_C_arrc2.move(
             (
                 -2.25 * np_spacing - B_width - C_width,
                 E_length + 2.25 * np_spacing + B_width,
-            )
+            ),
         )
         cont_C_arrc2.move(
             (
@@ -727,17 +831,21 @@ def npn_W1L1(
                 / 2,
                 (C_width - nr_c * contact_size[1] - (nr_c - 1) * contact_spacing[1])
                 / 2,
-            )
+            ),
         )
 
         cont_C_arrc3 = c.add_ref(
-            i, rows=nr_c, columns=nr_c, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_c,
+            columns=nr_c,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # corners
         cont_C_arrc3.move(
             (
                 E_width + 2.25 * np_spacing + B_width,
                 E_length + 2.25 * np_spacing + B_width,
-            )
+            ),
         )
         cont_C_arrc3.move(
             (
@@ -745,17 +853,21 @@ def npn_W1L1(
                 / 2,
                 (C_width - nr_c * contact_size[1] - (nr_c - 1) * contact_spacing[1])
                 / 2,
-            )
+            ),
         )
 
         cont_C_arrc4 = c.add_ref(
-            i, rows=nr_c, columns=nr_c, column_pitch=con_sp[0], row_pitch=con_sp[1]
+            i,
+            rows=nr_c,
+            columns=nr_c,
+            column_pitch=con_sp[0],
+            row_pitch=con_sp[1],
         )  # corners
         cont_C_arrc4.move(
             (
                 E_width + 2.25 * np_spacing + B_width,
                 -2.25 * np_spacing - B_width - C_width,
-            )
+            ),
         )
         cont_C_arrc4.move(
             (
@@ -763,7 +875,7 @@ def npn_W1L1(
                 / 2,
                 (C_width - nr_c * contact_size[1] - (nr_c - 1) * contact_spacing[1])
                 / 2,
-            )
+            ),
         )
 
     # generating pwell around E & B
@@ -777,7 +889,10 @@ def npn_W1L1(
     )
     pwell = c.add_ref(rect_pwell)
     pwell.connect(
-        "e1", B_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        B_out.ports["e3"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     pwell.movex(B_out.xmax - B_out.xmin + diff_enclosure[0])
 
@@ -792,7 +907,10 @@ def npn_W1L1(
     )
     dnwell = c.add_ref(rect_dnw)
     dnwell.connect(
-        "e1", C_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        C_out.ports["e3"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     dnwell.movex(C_out.xmax - C_out.xmin + diff_enclosure[0])
 
@@ -800,11 +918,15 @@ def npn_W1L1(
 
     npn = c.add_ref(
         gf.components.rectangle(
-            size=(C_out.xmax - C_out.xmin, C_out.ymax - C_out.ymin), layer=npn_layer
-        )
+            size=(C_out.xmax - C_out.xmin, C_out.ymax - C_out.ymin),
+            layer=npn_layer,
+        ),
     )
     npn.connect(
-        "e1", C_out.ports["e3"], allow_layer_mismatch=True, allow_width_mismatch=True
+        "e1",
+        C_out.ports["e3"],
+        allow_layer_mismatch=True,
+        allow_width_mismatch=True,
     )
     npn.movex(C_out.xmax - C_out.xmin)
     return c

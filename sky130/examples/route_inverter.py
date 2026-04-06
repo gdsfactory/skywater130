@@ -4,16 +4,16 @@ from pathlib import Path
 
 # Load environment variables from .env file (must be before doroutes import)
 from dotenv import load_dotenv
+
 load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from gdsfactory.component import Component
-import sky130
-from gdsfactory.pdk import get_active_pdk
 from gdsfactory.add_pins import add_instance_label
-from sky130.routing_utils import RouteNetSpec, route_nets_deterministic_copy
+from gdsfactory.component import Component
+from gdsfactory.pdk import get_active_pdk
 
+from sky130.routing_utils import RouteNetSpec, route_nets_deterministic_copy
 
 INVERTER_SCHEMATIC = """\
 * Schematic netlist for LVS: test_inverter
@@ -22,8 +22,6 @@ X0 nmos_SOURCE pmos_GATE pmos_DRAIN nmos_SOURCE sky130_fd_pr__nfet_g5v0d10v5 w=0
 X1 pmos_SOURCE pmos_GATE pmos_DRAIN pmos_SOURCE sky130_fd_pr__pfet_g5v0d10v5 w=0.75 l=0.5
 .ends test_inverter
 """
-
-
 
 
 def test_inverter(
@@ -38,9 +36,15 @@ def test_inverter(
     c = Component(component_name)
 
     # Create instances
-    instance1 = c.add_ref(pdk.get_component('pmos_5v', instance_name='pmos'), name='pmos')
-    instance2 = c.add_ref(pdk.get_component('nmos_5v', instance_name='nmos'), name='nmos')
-    
+    instance1 = c.add_ref(
+        pdk.get_component("pmos_5v", instance_name="pmos"),
+        name="pmos",
+    )
+    instance2 = c.add_ref(
+        pdk.get_component("nmos_5v", instance_name="nmos"),
+        name="nmos",
+    )
+
     # Place instances
     instance1.move(pmos_offset)
     if mirror_pmos:
@@ -65,7 +69,7 @@ def test_inverter(
 
     # Grid resolution for A* pathfinding
     # Wire width is auto-detected from port polygon geometry
-    
+
     # Layers to avoid - ALL metal on these layers including device metal
     # The router must route around everything on both M1 and M2
     layers_to_avoid = [(68, 20), (69, 20)]
@@ -111,14 +115,16 @@ def test_inverter(
     )
 
     # Reacquire instances after routing attempts to avoid stale reference handles.
-    add_instance_label(c, c.insts["pmos"], instance_name='pmos')
-    add_instance_label(c, c.insts["nmos"], instance_name='nmos')
+    add_instance_label(c, c.insts["pmos"], instance_name="pmos")
+    add_instance_label(c, c.insts["nmos"], instance_name="nmos")
 
     return c
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Route inverter example (headless by default).")
+    parser = argparse.ArgumentParser(
+        description="Route inverter example (headless by default).",
+    )
     parser.add_argument(
         "--skip-lvs",
         action="store_true",

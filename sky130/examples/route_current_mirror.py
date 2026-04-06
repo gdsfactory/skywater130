@@ -9,12 +9,11 @@ load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from gdsfactory.component import Component
-import sky130
-from gdsfactory.pdk import get_active_pdk
 from gdsfactory.add_pins import add_instance_label
-from sky130.routing_utils import RouteNetSpec, route_nets_deterministic_copy
+from gdsfactory.component import Component
+from gdsfactory.pdk import get_active_pdk
 
+from sky130.routing_utils import RouteNetSpec, route_nets_deterministic_copy
 
 CURRENT_MIRROR_SCHEMATIC = """\
 * Schematic netlist for LVS: test_current_mirror
@@ -41,16 +40,20 @@ def test_current_mirror(
 
     # 4T NMOS cascode mirror: two stacked NMOS in reference and output branches.
     nmos_ref_bot = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_ref_bot"), name="nmos_ref_bot"
+        pdk.get_component("nmos_5v", instance_name="nmos_ref_bot"),
+        name="nmos_ref_bot",
     )
     nmos_ref_top = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_ref_top"), name="nmos_ref_top"
+        pdk.get_component("nmos_5v", instance_name="nmos_ref_top"),
+        name="nmos_ref_top",
     )
     nmos_out_bot = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_out_bot"), name="nmos_out_bot"
+        pdk.get_component("nmos_5v", instance_name="nmos_out_bot"),
+        name="nmos_out_bot",
     )
     nmos_out_top = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_out_top"), name="nmos_out_top"
+        pdk.get_component("nmos_5v", instance_name="nmos_out_top"),
+        name="nmos_out_top",
     )
 
     # Place in 2x2 branch grid.
@@ -74,7 +77,9 @@ def test_current_mirror(
     # Layers to avoid - ALL metal on these layers including device metal
     layers_to_avoid = [(68, 20), (69, 20)]
 
-    print("Routing 4T cascode current mirror with 3D multi-layer A* (M1=H, M2=V with via transitions)...")
+    print(
+        "Routing 4T cascode current mirror with 3D multi-layer A* (M1=H, M2=V with via transitions)...",
+    )
 
     # Core cascode-mirror connectivity:
     # - stacked branches (ref/out)
@@ -157,7 +162,9 @@ def test_current_mirror(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Route current mirror example (headless by default).")
+    parser = argparse.ArgumentParser(
+        description="Route current mirror example (headless by default).",
+    )
     parser.add_argument(
         "--skip-lvs",
         action="store_true",
@@ -198,4 +205,3 @@ if __name__ == "__main__":
             CURRENT_MIRROR_SCHEMATIC,
             graph_check_fn=check_current_mirror_layout_graph,
         )
-

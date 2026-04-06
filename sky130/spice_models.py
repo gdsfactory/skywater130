@@ -134,28 +134,36 @@ sky130_fd_sc_hd__clkbuf_2 = partial(import_spice, "sky130_fd_sc_hd__clkbuf_2")
 sky130_fd_sc_hd__clkbuf_4 = partial(import_spice, "sky130_fd_sc_hd__clkbuf_4")
 sky130_fd_sc_hd__clkbuf_8 = partial(import_spice, "sky130_fd_sc_hd__clkbuf_8")
 sky130_fd_sc_hd__clkdlybuf4s15_1 = partial(
-    import_spice, "sky130_fd_sc_hd__clkdlybuf4s15_1"
+    import_spice,
+    "sky130_fd_sc_hd__clkdlybuf4s15_1",
 )
 sky130_fd_sc_hd__clkdlybuf4s15_2 = partial(
-    import_spice, "sky130_fd_sc_hd__clkdlybuf4s15_2"
+    import_spice,
+    "sky130_fd_sc_hd__clkdlybuf4s15_2",
 )
 sky130_fd_sc_hd__clkdlybuf4s18_1 = partial(
-    import_spice, "sky130_fd_sc_hd__clkdlybuf4s18_1"
+    import_spice,
+    "sky130_fd_sc_hd__clkdlybuf4s18_1",
 )
 sky130_fd_sc_hd__clkdlybuf4s18_2 = partial(
-    import_spice, "sky130_fd_sc_hd__clkdlybuf4s18_2"
+    import_spice,
+    "sky130_fd_sc_hd__clkdlybuf4s18_2",
 )
 sky130_fd_sc_hd__clkdlybuf4s25_1 = partial(
-    import_spice, "sky130_fd_sc_hd__clkdlybuf4s25_1"
+    import_spice,
+    "sky130_fd_sc_hd__clkdlybuf4s25_1",
 )
 sky130_fd_sc_hd__clkdlybuf4s25_2 = partial(
-    import_spice, "sky130_fd_sc_hd__clkdlybuf4s25_2"
+    import_spice,
+    "sky130_fd_sc_hd__clkdlybuf4s25_2",
 )
 sky130_fd_sc_hd__clkdlybuf4s50_1 = partial(
-    import_spice, "sky130_fd_sc_hd__clkdlybuf4s50_1"
+    import_spice,
+    "sky130_fd_sc_hd__clkdlybuf4s50_1",
 )
 sky130_fd_sc_hd__clkdlybuf4s50_2 = partial(
-    import_spice, "sky130_fd_sc_hd__clkdlybuf4s50_2"
+    import_spice,
+    "sky130_fd_sc_hd__clkdlybuf4s50_2",
 )
 sky130_fd_sc_hd__clkinv_1 = partial(import_spice, "sky130_fd_sc_hd__clkinv_1")
 sky130_fd_sc_hd__clkinv_16 = partial(import_spice, "sky130_fd_sc_hd__clkinv_16")
@@ -214,13 +222,16 @@ sky130_fd_sc_hd__dlygate4sd1_1 = partial(import_spice, "sky130_fd_sc_hd__dlygate
 sky130_fd_sc_hd__dlygate4sd2_1 = partial(import_spice, "sky130_fd_sc_hd__dlygate4sd2_1")
 sky130_fd_sc_hd__dlygate4sd3_1 = partial(import_spice, "sky130_fd_sc_hd__dlygate4sd3_1")
 sky130_fd_sc_hd__dlymetal6s2s_1 = partial(
-    import_spice, "sky130_fd_sc_hd__dlymetal6s2s_1"
+    import_spice,
+    "sky130_fd_sc_hd__dlymetal6s2s_1",
 )
 sky130_fd_sc_hd__dlymetal6s4s_1 = partial(
-    import_spice, "sky130_fd_sc_hd__dlymetal6s4s_1"
+    import_spice,
+    "sky130_fd_sc_hd__dlymetal6s4s_1",
 )
 sky130_fd_sc_hd__dlymetal6s6s_1 = partial(
-    import_spice, "sky130_fd_sc_hd__dlymetal6s6s_1"
+    import_spice,
+    "sky130_fd_sc_hd__dlymetal6s6s_1",
 )
 sky130_fd_sc_hd__ebufn_1 = partial(import_spice, "sky130_fd_sc_hd__ebufn_1")
 sky130_fd_sc_hd__ebufn_2 = partial(import_spice, "sky130_fd_sc_hd__ebufn_2")
@@ -258,109 +269,144 @@ sky130_fd_sc_hd__inv_4 = partial(import_spice, "sky130_fd_sc_hd__inv_4")
 sky130_fd_sc_hd__inv_6 = partial(import_spice, "sky130_fd_sc_hd__inv_6")
 sky130_fd_sc_hd__inv_8 = partial(import_spice, "sky130_fd_sc_hd__inv_8")
 sky130_fd_sc_hd__lpflow_bleeder_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_bleeder_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_bleeder_1",
 )
 sky130_fd_sc_hd__lpflow_clkbufkapwr_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkbufkapwr_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkbufkapwr_1",
 )
 sky130_fd_sc_hd__lpflow_clkbufkapwr_16 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkbufkapwr_16"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkbufkapwr_16",
 )
 sky130_fd_sc_hd__lpflow_clkbufkapwr_2 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkbufkapwr_2"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkbufkapwr_2",
 )
 sky130_fd_sc_hd__lpflow_clkbufkapwr_4 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkbufkapwr_4"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkbufkapwr_4",
 )
 sky130_fd_sc_hd__lpflow_clkbufkapwr_8 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkbufkapwr_8"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkbufkapwr_8",
 )
 sky130_fd_sc_hd__lpflow_clkinvkapwr_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkinvkapwr_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkinvkapwr_1",
 )
 sky130_fd_sc_hd__lpflow_clkinvkapwr_16 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkinvkapwr_16"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkinvkapwr_16",
 )
 sky130_fd_sc_hd__lpflow_clkinvkapwr_2 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkinvkapwr_2"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkinvkapwr_2",
 )
 sky130_fd_sc_hd__lpflow_clkinvkapwr_4 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkinvkapwr_4"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkinvkapwr_4",
 )
 sky130_fd_sc_hd__lpflow_clkinvkapwr_8 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_clkinvkapwr_8"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_clkinvkapwr_8",
 )
 sky130_fd_sc_hd__lpflow_decapkapwr_12 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_decapkapwr_12"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_decapkapwr_12",
 )
 sky130_fd_sc_hd__lpflow_decapkapwr_3 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_decapkapwr_3"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_decapkapwr_3",
 )
 sky130_fd_sc_hd__lpflow_decapkapwr_4 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_decapkapwr_4"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_decapkapwr_4",
 )
 sky130_fd_sc_hd__lpflow_decapkapwr_6 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_decapkapwr_6"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_decapkapwr_6",
 )
 sky130_fd_sc_hd__lpflow_decapkapwr_8 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_decapkapwr_8"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_decapkapwr_8",
 )
 sky130_fd_sc_hd__lpflow_inputiso0n_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_inputiso0n_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_inputiso0n_1",
 )
 sky130_fd_sc_hd__lpflow_inputiso0p_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_inputiso0p_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_inputiso0p_1",
 )
 sky130_fd_sc_hd__lpflow_inputiso1n_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_inputiso1n_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_inputiso1n_1",
 )
 sky130_fd_sc_hd__lpflow_inputiso1p_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_inputiso1p_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_inputiso1p_1",
 )
 sky130_fd_sc_hd__lpflow_inputisolatch_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_inputisolatch_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_inputisolatch_1",
 )
 sky130_fd_sc_hd__lpflow_isobufsrc_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_isobufsrc_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_isobufsrc_1",
 )
 sky130_fd_sc_hd__lpflow_isobufsrc_16 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_isobufsrc_16"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_isobufsrc_16",
 )
 sky130_fd_sc_hd__lpflow_isobufsrc_2 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_isobufsrc_2"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_isobufsrc_2",
 )
 sky130_fd_sc_hd__lpflow_isobufsrc_4 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_isobufsrc_4"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_isobufsrc_4",
 )
 sky130_fd_sc_hd__lpflow_isobufsrc_8 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_isobufsrc_8"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_isobufsrc_8",
 )
 sky130_fd_sc_hd__lpflow_isobufsrckapwr_16 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_isobufsrckapwr_16"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_isobufsrckapwr_16",
 )
 sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1",
 )
 sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2",
 )
 sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4",
 )
 sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4",
 )
 sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1",
 )
 sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2",
 )
 sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4 = partial(
-    import_spice, "sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4"
+    import_spice,
+    "sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4",
 )
 sky130_fd_sc_hd__macro_sparecell = partial(
-    import_spice, "sky130_fd_sc_hd__macro_sparecell"
+    import_spice,
+    "sky130_fd_sc_hd__macro_sparecell",
 )
 sky130_fd_sc_hd__maj3_1 = partial(import_spice, "sky130_fd_sc_hd__maj3_1")
 sky130_fd_sc_hd__maj3_2 = partial(import_spice, "sky130_fd_sc_hd__maj3_2")
@@ -661,22 +707,28 @@ sky130_fd_sc_hs__clkbuf_2 = partial(import_spice, "sky130_fd_sc_hs__clkbuf_2")
 sky130_fd_sc_hs__clkbuf_4 = partial(import_spice, "sky130_fd_sc_hs__clkbuf_4")
 sky130_fd_sc_hs__clkbuf_8 = partial(import_spice, "sky130_fd_sc_hs__clkbuf_8")
 sky130_fd_sc_hs__clkdlyinv3sd1_1 = partial(
-    import_spice, "sky130_fd_sc_hs__clkdlyinv3sd1_1"
+    import_spice,
+    "sky130_fd_sc_hs__clkdlyinv3sd1_1",
 )
 sky130_fd_sc_hs__clkdlyinv3sd2_1 = partial(
-    import_spice, "sky130_fd_sc_hs__clkdlyinv3sd2_1"
+    import_spice,
+    "sky130_fd_sc_hs__clkdlyinv3sd2_1",
 )
 sky130_fd_sc_hs__clkdlyinv3sd3_1 = partial(
-    import_spice, "sky130_fd_sc_hs__clkdlyinv3sd3_1"
+    import_spice,
+    "sky130_fd_sc_hs__clkdlyinv3sd3_1",
 )
 sky130_fd_sc_hs__clkdlyinv5sd1_1 = partial(
-    import_spice, "sky130_fd_sc_hs__clkdlyinv5sd1_1"
+    import_spice,
+    "sky130_fd_sc_hs__clkdlyinv5sd1_1",
 )
 sky130_fd_sc_hs__clkdlyinv5sd2_1 = partial(
-    import_spice, "sky130_fd_sc_hs__clkdlyinv5sd2_1"
+    import_spice,
+    "sky130_fd_sc_hs__clkdlyinv5sd2_1",
 )
 sky130_fd_sc_hs__clkdlyinv5sd3_1 = partial(
-    import_spice, "sky130_fd_sc_hs__clkdlyinv5sd3_1"
+    import_spice,
+    "sky130_fd_sc_hs__clkdlyinv5sd3_1",
 )
 sky130_fd_sc_hs__clkinv_1 = partial(import_spice, "sky130_fd_sc_hs__clkinv_1")
 sky130_fd_sc_hs__clkinv_16 = partial(import_spice, "sky130_fd_sc_hs__clkinv_16")
@@ -730,13 +782,16 @@ sky130_fd_sc_hs__dlygate4sd1_1 = partial(import_spice, "sky130_fd_sc_hs__dlygate
 sky130_fd_sc_hs__dlygate4sd2_1 = partial(import_spice, "sky130_fd_sc_hs__dlygate4sd2_1")
 sky130_fd_sc_hs__dlygate4sd3_1 = partial(import_spice, "sky130_fd_sc_hs__dlygate4sd3_1")
 sky130_fd_sc_hs__dlymetal6s2s_1 = partial(
-    import_spice, "sky130_fd_sc_hs__dlymetal6s2s_1"
+    import_spice,
+    "sky130_fd_sc_hs__dlymetal6s2s_1",
 )
 sky130_fd_sc_hs__dlymetal6s4s_1 = partial(
-    import_spice, "sky130_fd_sc_hs__dlymetal6s4s_1"
+    import_spice,
+    "sky130_fd_sc_hs__dlymetal6s4s_1",
 )
 sky130_fd_sc_hs__dlymetal6s6s_1 = partial(
-    import_spice, "sky130_fd_sc_hs__dlymetal6s6s_1"
+    import_spice,
+    "sky130_fd_sc_hs__dlymetal6s6s_1",
 )
 sky130_fd_sc_hs__ebufn_1 = partial(import_spice, "sky130_fd_sc_hs__ebufn_1")
 sky130_fd_sc_hs__ebufn_2 = partial(import_spice, "sky130_fd_sc_hs__ebufn_2")
@@ -1000,24 +1055,30 @@ sky130_fd_sc_hvl__inv_2 = partial(import_spice, "sky130_fd_sc_hvl__inv_2")
 sky130_fd_sc_hvl__inv_4 = partial(import_spice, "sky130_fd_sc_hvl__inv_4")
 sky130_fd_sc_hvl__inv_8 = partial(import_spice, "sky130_fd_sc_hvl__inv_8")
 sky130_fd_sc_hvl__lsbufhv2hv_hl_1 = partial(
-    import_spice, "sky130_fd_sc_hvl__lsbufhv2hv_hl_1"
+    import_spice,
+    "sky130_fd_sc_hvl__lsbufhv2hv_hl_1",
 )
 sky130_fd_sc_hvl__lsbufhv2hv_lh_1 = partial(
-    import_spice, "sky130_fd_sc_hvl__lsbufhv2hv_lh_1"
+    import_spice,
+    "sky130_fd_sc_hvl__lsbufhv2hv_lh_1",
 )
 sky130_fd_sc_hvl__lsbufhv2lv_1 = partial(import_spice, "sky130_fd_sc_hvl__lsbufhv2lv_1")
 sky130_fd_sc_hvl__lsbufhv2lv_simple_1 = partial(
-    import_spice, "sky130_fd_sc_hvl__lsbufhv2lv_simple_1"
+    import_spice,
+    "sky130_fd_sc_hvl__lsbufhv2lv_simple_1",
 )
 sky130_fd_sc_hvl__lsbuflv2hv_1 = partial(import_spice, "sky130_fd_sc_hvl__lsbuflv2hv_1")
 sky130_fd_sc_hvl__lsbuflv2hv_clkiso_hlkg_3 = partial(
-    import_spice, "sky130_fd_sc_hvl__lsbuflv2hv_clkiso_hlkg_3"
+    import_spice,
+    "sky130_fd_sc_hvl__lsbuflv2hv_clkiso_hlkg_3",
 )
 sky130_fd_sc_hvl__lsbuflv2hv_isosrchvaon_1 = partial(
-    import_spice, "sky130_fd_sc_hvl__lsbuflv2hv_isosrchvaon_1"
+    import_spice,
+    "sky130_fd_sc_hvl__lsbuflv2hv_isosrchvaon_1",
 )
 sky130_fd_sc_hvl__lsbuflv2hv_symmetric_1 = partial(
-    import_spice, "sky130_fd_sc_hvl__lsbuflv2hv_symmetric_1"
+    import_spice,
+    "sky130_fd_sc_hvl__lsbuflv2hv_symmetric_1",
 )
 sky130_fd_sc_hvl__mux2_1 = partial(import_spice, "sky130_fd_sc_hvl__mux2_1")
 sky130_fd_sc_hvl__mux4_1 = partial(import_spice, "sky130_fd_sc_hvl__mux4_1")
