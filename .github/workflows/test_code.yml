@@ -3,7 +3,6 @@ on:
   pull_request:
   push:
     branches: [main]
-
 jobs:
   test:
     uses: doplaydo/pdk-ci-workflow/.github/workflows/test_code.yml@main

@@ -4,7 +4,6 @@ on:
     types: [opened, synchronize, reopened]
   issue_comment:
     types: [created]
-
 jobs:
   review:
     uses: doplaydo/pdk-ci-workflow/.github/workflows/claude-pr-review.yml@main

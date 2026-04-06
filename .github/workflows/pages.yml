@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-
 jobs:
   docs:
     uses: doplaydo/pdk-ci-workflow/.github/workflows/pages.yml@main

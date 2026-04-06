@@ -17,7 +17,6 @@ on:
       - transferred
       - milestoned
       - demilestoned
-
 jobs:
   label:
     uses: doplaydo/pdk-ci-workflow/.github/workflows/issue.yml@main
