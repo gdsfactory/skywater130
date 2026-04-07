@@ -1,6 +1,4 @@
 install: modules
-.PHONY: rm-samples
-
 	uv venv --python 3.12
 	uv sync --extra docs --extra dev
 
@@ -61,4 +59,4 @@ tech:
 docs:
 	uv run jb build docs
 
-.PHONY: gdsdiff build conda docs modules
+.PHONY: gdsdiff build conda docs modules rm-samples
