@@ -1,7 +1,44 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: 9260cbc9c84c06022993bfbcc42fdbf0305c5b8e
+  # PDK compliance hooks from pdk-ci-workflow
+  - repo: https://github.com/doplaydo/pdk-ci-workflow
+    rev: "main"
     hooks:
+      - id: check-required-files
+        always_run: true
+      - id: check-pyproject-sections
+        always_run: true
+      - id: check-package-init
+        always_run: true
+      - id: check-cells-structure
+        always_run: true
+      - id: check-tech-structure
+        always_run: true
+      - id: check-pdk-object
+        always_run: true
+      - id: check-test-structure
+        always_run: true
+      - id: check-makefile-targets
+        always_run: true
+      - id: check-workflows
+        always_run: true
+      - id: check-multi-band
+        always_run: true
+      - id: check-no-raw-layers
+        always_run: true
+      - id: check-no-main-in-cells
+        always_run: true
+      - id: check-precommit-config
+        always_run: true
+      - id: check-version-sync
+        always_run: true
+
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-yaml
+      - id: check-toml
       - id: end-of-file-fixer
       - id: trailing-whitespace
       - id: requirements-txt-fixer
@@ -11,14 +48,23 @@ repos:
     hooks:
       - id: pretty-format-toml
         args: [--autofix]
+
   - repo: https://github.com/kynan/nbstripout
     rev: 0.8.1
     hooks:
       - id: nbstripout
         files: ".ipynb"
+
+  # Ruff - linting and formatting
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: "v0.11.10"
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix, --config=pyproject.toml]
       - id: ruff-format
+
+  # Pyright - type checking
+  - repo: https://github.com/ReubenLimMonash/pyright-python-pre-commit-hook
+    rev: v1.1.0
+    hooks:
+      - id: pyright
