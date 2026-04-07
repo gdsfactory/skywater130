@@ -1,4 +1,5 @@
 name: Auto-label PDK issues
+
 on:
   issues:
     types:
@@ -19,5 +20,13 @@ on:
       - demilestoned
 
 jobs:
-  label:
-    uses: doplaydo/pdk-ci-workflow/.github/workflows/issue.yml@main
+  add-label:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add label
+        run: gh issue edit ${{ github.event.issue.number }} --add-label "pdk"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}

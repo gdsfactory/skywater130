@@ -1,10 +1,39 @@
-name: Build docs
+name: build docs
+
 on:
   pull_request:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  docs:
-    uses: doplaydo/pdk-ci-workflow/.github/workflows/pages.yml@main
+  build-docs:
+    runs-on: ubuntu-latest
+    name: Sphinx docs to gh-pages
+    steps:
+      - uses: actions/checkout@v6
+      - uses: astral-sh/setup-uv@v7
+      - name: Installing the library
+        run: uv sync --all-extras
+      - run: make modules ngspice docs
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: "./docs/_build/html/"
+  deploy-docs:
+    needs: build-docs
+    if: ${{ github.ref == 'refs/heads/main' }}
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
