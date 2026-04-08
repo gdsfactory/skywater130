@@ -16,6 +16,7 @@ classifiers = [
 dependencies = [
   "doroutes>=0.3.0",
   "gdsfactory~=9.34.1",
+  "gdsfactoryplus",
   "PySpice",
   "python-dotenv>=1.2.1",
 ]
@@ -37,6 +38,9 @@ dev = [
   "pytest-xdist"
 ]
 docs = ["jupytext", "jupyter-book==1.0.4"]
+
+[tool.gdsfactoryplus.pdk]
+name = "sky130"
 
 [tool.flit.sdist]
 exclude = ["**/.git/**"]
