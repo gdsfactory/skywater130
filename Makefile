@@ -35,7 +35,7 @@ mypy:
 	mypy . --ignore-missing-imports
 
 doc:
-	python docs/write_components_doc.py
+	uv run python docs/write_components_doc.py
 
 update-pre:
 	pre-commit autoupdate
