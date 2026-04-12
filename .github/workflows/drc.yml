@@ -1,0 +1,10 @@
+name: DRC Check
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  drc:
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/drc.yml@main
+    secrets: inherit
