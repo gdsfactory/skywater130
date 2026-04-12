@@ -14,7 +14,8 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "doroutes>=0.3.0",
+  "doroutes~=0.5.0",
+  "gdsfactoryplus",
   "gdsfactory~=9.40.0",
   "PySpice",
   "python-dotenv>=1.2.1"
@@ -37,6 +38,9 @@ dev = [
   "pytest-xdist"
 ]
 docs = ["jupytext", "jupyter-book==1.0.4"]
+
+[tool.gdsfactoryplus.pdk]
+name = "sky130"
 
 [tool.codespell]
 ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
