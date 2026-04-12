@@ -9,12 +9,15 @@ load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from gdsfactory.component import Component
-import sky130
-from gdsfactory.pdk import get_active_pdk
-from gdsfactory.add_pins import add_instance_label
-from sky130.routing_utils import RouteNetSpec, route_multilayer_3d, route_nets_deterministic_copy
+from gdsfactory.add_pins import add_instance_label  # noqa: E402
+from gdsfactory.component import Component  # noqa: E402
+from gdsfactory.pdk import get_active_pdk  # noqa: E402
 
+from sky130.routing_utils import (  # noqa: E402
+    RouteNetSpec,
+    route_multilayer_3d,
+    route_nets_deterministic_copy,
+)
 
 OPAMP_SCHEMATIC = """\
 * Schematic netlist for LVS: test_2stage_opamp
@@ -50,21 +53,40 @@ def test_2stage_opamp(
     c = Component(component_name)
 
     # Stage 1 devices: NMOS differential pair + PMOS active loads + NMOS tail source.
-    nmos_in_p = c.add_ref(pdk.get_component("nmos_5v", instance_name="nmos_in_p"), name="nmos_in_p")
-    nmos_in_n = c.add_ref(pdk.get_component("nmos_5v", instance_name="nmos_in_n"), name="nmos_in_n")
-    pmos_load_p = c.add_ref(pdk.get_component("pmos_5v", instance_name="pmos_load_p"), name="pmos_load_p")
-    pmos_load_n = c.add_ref(pdk.get_component("pmos_5v", instance_name="pmos_load_n"), name="pmos_load_n")
-    nmos_tail = c.add_ref(pdk.get_component("nmos_5v", instance_name="nmos_tail"), name="nmos_tail")
+    nmos_in_p = c.add_ref(
+        pdk.get_component("nmos_5v", instance_name="nmos_in_p"), name="nmos_in_p"
+    )
+    nmos_in_n = c.add_ref(
+        pdk.get_component("nmos_5v", instance_name="nmos_in_n"), name="nmos_in_n"
+    )
+    pmos_load_p = c.add_ref(
+        pdk.get_component("pmos_5v", instance_name="pmos_load_p"), name="pmos_load_p"
+    )
+    pmos_load_n = c.add_ref(
+        pdk.get_component("pmos_5v", instance_name="pmos_load_n"), name="pmos_load_n"
+    )
+    nmos_tail = c.add_ref(
+        pdk.get_component("nmos_5v", instance_name="nmos_tail"), name="nmos_tail"
+    )
 
     # Stage 2 devices: common-source gain stage + PMOS load.
-    nmos_stage2 = c.add_ref(pdk.get_component("nmos_5v", instance_name="nmos_stage2"), name="nmos_stage2")
+    nmos_stage2 = c.add_ref(
+        pdk.get_component("nmos_5v", instance_name="nmos_stage2"), name="nmos_stage2"
+    )
     pmos_stage2_load = c.add_ref(
-        pdk.get_component("pmos_5v", instance_name="pmos_stage2_load"), name="pmos_stage2_load"
+        pdk.get_component("pmos_5v", instance_name="pmos_stage2_load"),
+        name="pmos_stage2_load",
     )
 
     # Bias helper devices.
-    nmos_bias_ref = c.add_ref(pdk.get_component("nmos_5v", instance_name="nmos_bias_ref"), name="nmos_bias_ref")
-    pmos_bias_ref = c.add_ref(pdk.get_component("pmos_5v", instance_name="pmos_bias_ref"), name="pmos_bias_ref")
+    nmos_bias_ref = c.add_ref(
+        pdk.get_component("nmos_5v", instance_name="nmos_bias_ref"),
+        name="nmos_bias_ref",
+    )
+    pmos_bias_ref = c.add_ref(
+        pdk.get_component("pmos_5v", instance_name="pmos_bias_ref"),
+        name="pmos_bias_ref",
+    )
 
     # Deterministic floorplan (single placement, no sweeps).
     stage2_y_um = 2.0
@@ -97,7 +119,9 @@ def test_2stage_opamp(
 
     layers_to_avoid = [(68, 20), (69, 20)]
 
-    print("Routing 2-stage CMOS op-amp core with 3D multi-layer A* (M1=H, M2=V with via transitions)...")
+    print(
+        "Routing 2-stage CMOS op-amp core with 3D multi-layer A* (M1=H, M2=V with via transitions)..."
+    )
 
     # Pre-route the two known hard nets with fixed-width fallback first.
     # Remaining nets still use dynamic-width multi-net routing.
@@ -154,7 +178,9 @@ def test_2stage_opamp(
             deterministic=True,
         )
         if len(c.insts) <= before_inst:
-            raise RuntimeError(f"[OPAMP] Critical pre-route failed for net '{net.name}'")
+            raise RuntimeError(
+                f"[OPAMP] Critical pre-route failed for net '{net.name}'"
+            )
 
     # Practical routed core netlist (internal connections only).
     nets = [
@@ -294,7 +320,9 @@ def test_2stage_opamp(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Route 2-stage opamp example (headless by default).")
+    parser = argparse.ArgumentParser(
+        description="Route 2-stage opamp example (headless by default)."
+    )
     parser.add_argument(
         "--skip-lvs",
         action="store_true",
@@ -332,4 +360,3 @@ if __name__ == "__main__":
             OPAMP_SCHEMATIC,
             graph_check_fn=check_opamp_layout_graph,
         )
-

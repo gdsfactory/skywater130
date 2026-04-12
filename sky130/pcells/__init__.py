@@ -10,10 +10,14 @@ from sky130.pcells.pmos import pmos
 from sky130.pcells.pmos_5v import pmos_5v
 from sky130.pcells.pnp import pnp
 from sky130.pcells.via_generator import via_generator
-from sky130.pcells.waypoint import waypoint
 from sky130.pcells.waveguides import *
+from sky130.pcells.waypoint import waypoint
 
 __all__ = [
+    "bend_metal1",
+    "bend_metal2",
+    "bend_s_metal1",
+    "bend_s_metal2",
     "mimcap_1",
     "mimcap_2",
     "nmos",
@@ -25,6 +29,10 @@ __all__ = [
     "pmos",
     "pmos_5v",
     "pnp",
+    "straight_metal1",
+    "straight_metal2",
     "via_generator",
     "waypoint",
+    "wire_corner",
+    "wire_corner45",
 ]

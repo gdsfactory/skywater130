@@ -342,7 +342,7 @@ def nmos(
     npc_d.movex(sd_width - ((pc_x - gate_length) / 2) - npc_en / 2)
     npc_d.movey(-pc_size[1] - npc_en - npc_spacing - npc_en / 2)
 
-    # generaing p+ bulk tie and its contact  and mcon and m1
+    # generating p+ bulk tie and its contact  and mcon and m1
     rect_dp = gf.components.rectangle(size=(sd_width, gate_width), layer=diffp_layer)
     diff_p = c.add_ref(rect_dp)
     diff_p.connect(

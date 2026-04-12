@@ -12,6 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - uses: actions/setup-python@v6
+    - name: Download pre-commit config
+      run: curl -sf https://raw.githubusercontent.com/doplaydo/pdk-ci-workflow/main/templates/.pre-commit-config.yaml -o .pre-commit-config.yaml
     - uses: pre-commit/action@v3.0.1
 
   test:

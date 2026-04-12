@@ -15,9 +15,9 @@ classifiers = [
 ]
 dependencies = [
   "doroutes>=0.3.0",
-  "gdsfactory~=9.34.1",
+  "gdsfactory~=9.40.0",
   "PySpice",
-  "python-dotenv>=1.2.1",
+  "python-dotenv>=1.2.1"
 ]
 description = "skywater130 pdk"
 keywords = ["python"]
@@ -37,6 +37,9 @@ dev = [
   "pytest-xdist"
 ]
 docs = ["jupytext", "jupyter-book==1.0.4"]
+
+[tool.codespell]
+ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
 
 [tool.flit.sdist]
 exclude = ["**/.git/**"]
@@ -64,6 +67,8 @@ testpaths = ["sky130", "tests"]
 
 [tool.ruff]
 fix = true
+
+[tool.ruff.lint]
 ignore = [
   "E501",  # line too long, handled by black
   "B008",  # do not perform function calls in argument defaults
@@ -81,12 +86,12 @@ select = [
   "UP"
 ]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "docs/notebooks/intro.py" = ['B018']
 "sky130/pcells/__init__.py" = ["F403"]
 
 [tool.setuptools.package-data]
-mypkg = ["*.gds"]
+"*" = ["*.gds"]
 
 [tool.setuptools.packages]
 find = {}
@@ -125,7 +130,7 @@ message_template = "Bump to {new_version}"
 tag_template = "v{new_version}"
 
 [tool.tbump.version]
-current = "0.15.2"
+current = "0.15.3"
 regex = '''
   (?P<major>\d+)
   \.
