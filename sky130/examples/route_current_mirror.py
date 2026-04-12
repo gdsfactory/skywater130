@@ -9,12 +9,14 @@ load_dotenv(Path(__file__).parent.parent.parent / ".env")
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from gdsfactory.component import Component
-import sky130
-from gdsfactory.pdk import get_active_pdk
-from gdsfactory.add_pins import add_instance_label
-from sky130.routing_utils import RouteNetSpec, route_nets_deterministic_copy
+from gdsfactory.add_pins import add_instance_label  # noqa: E402
+from gdsfactory.component import Component  # noqa: E402
+from gdsfactory.pdk import get_active_pdk  # noqa: E402
 
+from sky130.routing_utils import (  # noqa: E402
+    RouteNetSpec,
+    route_nets_deterministic_copy,
+)
 
 CURRENT_MIRROR_SCHEMATIC = """\
 * Schematic netlist for LVS: test_current_mirror
@@ -74,7 +76,9 @@ def test_current_mirror(
     # Layers to avoid - ALL metal on these layers including device metal
     layers_to_avoid = [(68, 20), (69, 20)]
 
-    print("Routing 4T cascode current mirror with 3D multi-layer A* (M1=H, M2=V with via transitions)...")
+    print(
+        "Routing 4T cascode current mirror with 3D multi-layer A* (M1=H, M2=V with via transitions)..."
+    )
 
     # Core cascode-mirror connectivity:
     # - stacked branches (ref/out)
@@ -157,7 +161,9 @@ def test_current_mirror(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Route current mirror example (headless by default).")
+    parser = argparse.ArgumentParser(
+        description="Route current mirror example (headless by default)."
+    )
     parser.add_argument(
         "--skip-lvs",
         action="store_true",
@@ -198,4 +204,3 @@ if __name__ == "__main__":
             CURRENT_MIRROR_SCHEMATIC,
             graph_check_fn=check_current_mirror_layout_graph,
         )
-

@@ -1,6 +1,4 @@
 install: modules
-.PHONY: rm-samples
-
 	uv venv --python 3.12
 	uv sync --extra docs --extra dev
 
@@ -10,6 +8,7 @@ rm-samples:
 dev:
 	uv sync --all-extras
 	uv pip install -e .
+	curl -sf https://raw.githubusercontent.com/doplaydo/pdk-ci-workflow/main/templates/.pre-commit-config.yaml -o .pre-commit-config.yaml
 	uv run pre-commit install
 
 modules:
@@ -36,7 +35,7 @@ mypy:
 	mypy . --ignore-missing-imports
 
 doc:
-	python docs/write_components_doc.py
+	uv run python docs/write_components_doc.py
 
 update-pre:
 	pre-commit autoupdate
@@ -61,4 +60,4 @@ tech:
 docs:
 	uv run jb build docs
 
-.PHONY: gdsdiff build conda docs modules
+.PHONY: gdsdiff build conda docs modules rm-samples

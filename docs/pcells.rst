@@ -10,6 +10,10 @@ PCells
 .. autosummary::
    :toctree: _autosummary/
 
+   bend_metal1
+   bend_metal2
+   bend_s_metal1
+   bend_s_metal2
    mimcap_1
    mimcap_2
    nmos
@@ -21,4 +25,9 @@ PCells
    pmos
    pmos_5v
    pnp
+   straight_metal1
+   straight_metal2
    via_generator
+   waypoint
+   wire_corner
+   wire_corner45

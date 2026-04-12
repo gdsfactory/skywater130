@@ -1,5 +1,5 @@
 info: {}
-name: pmos_5v_DL65_20_PL66_20_GW0p75_GL0p5_SW0p3_EC0p13_CS0p1_53db6c9d
+name: pmos_5v_IN_DL65_20_PL66_20_GW0p75_GL0p5_SW0p3_EC0p2_CS0_370534f7
 settings:
   contact_enclosure:
   - 0.06
@@ -11,8 +11,8 @@ settings:
   - 0.17
   - 0.17
   contact_spacing:
-  - 0.17
-  - 0.17
+  - 0.19
+  - 0.19
   diff_enclosure:
   - 0.33
   - 0.33
@@ -28,14 +28,15 @@ settings:
   - 0.4
   dnwell_layer:
   - 64
-  - 18
-  end_cap: 0.13
+  - 20
+  end_cap: 0.2
   gate_length: 0.5
   gate_width: 0.75
   hvi_layer:
   - 75
   - 20
-  li_enclosure: 0.08
+  instance_name: ''
+  li_enclosure: 0
   li_layer:
   - 67
   - 20
@@ -59,7 +60,7 @@ settings:
   - 44
   nwell_layer:
   - 64
-  - 22
+  - 20
   poly_layer:
   - 66
   - 20

@@ -107,7 +107,7 @@ def bend_metal1(
             xs = gf.get_cross_section(cross_section=cross_section, width=width)
         else:
             xs = gf.get_cross_section(cross_section=cross_section)
-        radius = xs.radius or xs.width
+        radius = xs.radius_min or xs.radius or xs.width
     return gf.c.bend_circular(
         radius=radius,
         angle=angle,
@@ -132,7 +132,7 @@ def bend_metal2(
             xs = gf.get_cross_section(cross_section=cross_section, width=width)
         else:
             xs = gf.get_cross_section(cross_section=cross_section)
-        radius = xs.radius or xs.width
+        radius = xs.radius_min or xs.radius or xs.width
     return gf.c.bend_circular(
         radius=radius,
         angle=angle,
