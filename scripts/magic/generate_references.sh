@@ -55,7 +55,9 @@ for device_name, device_cfg in config["devices"].items():
     out_dir = pathlib.Path(ref_dir) / device_name
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    pmap = param_maps.get(device_name, {})
+    # Resolve param map (direct or via reference)
+    pmap_ref = device_cfg.get("param_map_ref", "")
+    pmap = param_maps.get(device_name, param_maps.get(pmap_ref, {}))
 
     for params in device_cfg["sweep"]:
         param_str = json.dumps(params, sort_keys=True)
