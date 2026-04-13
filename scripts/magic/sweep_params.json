@@ -1,0 +1,46 @@
+{
+  "param_maps": {
+    "sky130_fd_pr__nfet_01v8": {
+      "gate_width": "w",
+      "gate_length": "l",
+      "nf": "nf",
+      "guard_ring": "guard",
+      "dnwell": "dnwell"
+    },
+    "sky130_fd_pr__pfet_01v8": {
+      "gate_width": "w",
+      "gate_length": "l",
+      "nf": "nf",
+      "guard_ring": "guard",
+      "dnwell": "dnwell"
+    }
+  },
+  "devices": {
+    "sky130_fd_pr__nfet_01v8": {
+      "cell_module": "sky130.pcells.mosfets",
+      "sweep": [
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 1, "guard_ring": true, "dnwell": false},
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 1, "guard_ring": false, "dnwell": false},
+        {"gate_width": 1.0,  "gate_length": 0.15, "nf": 1, "guard_ring": true, "dnwell": false},
+        {"gate_width": 0.42, "gate_length": 0.5,  "nf": 1, "guard_ring": true, "dnwell": false},
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 2, "guard_ring": true, "dnwell": false},
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 4, "guard_ring": true, "dnwell": false},
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 3, "guard_ring": true, "dnwell": false},
+        {"gate_width": 1.0,  "gate_length": 0.15, "nf": 4, "guard_ring": true, "dnwell": true},
+        {"gate_width": 10.0, "gate_length": 0.15, "nf": 8, "guard_ring": true, "dnwell": false},
+        {"gate_width": 5.0,  "gate_length": 1.0,  "nf": 2, "guard_ring": true, "dnwell": false}
+      ]
+    },
+    "sky130_fd_pr__pfet_01v8": {
+      "cell_module": "sky130.pcells.mosfets",
+      "sweep": [
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 1, "guard_ring": true, "dnwell": false},
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 1, "guard_ring": false, "dnwell": false},
+        {"gate_width": 1.0,  "gate_length": 0.15, "nf": 2, "guard_ring": true, "dnwell": false},
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 4, "guard_ring": true, "dnwell": false},
+        {"gate_width": 0.42, "gate_length": 0.15, "nf": 3, "guard_ring": true, "dnwell": false},
+        {"gate_width": 5.0,  "gate_length": 1.0,  "nf": 2, "guard_ring": true, "dnwell": false}
+      ]
+    }
+  }
+}
