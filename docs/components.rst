@@ -3,7 +3,7 @@
 Cells
 =============================
 
-.. currentmodule:: sky130.components
+.. currentmodule:: sky130.cells
 
 .. autosummary::
    :toctree: _autosummary/
@@ -716,3 +716,22 @@ Cells
    sky130_fd_sc_hd__sedfxbp_1
    sky130_fd_sc_hd__sedfxbp_2
    sky130_fd_sc_hd__sedfxtp_1
+   sky130_fd_sc_hd__sedfxtp_2
+   sky130_fd_sc_hd__sedfxtp_4
+   sky130_fd_sc_hd__tap_1
+   sky130_fd_sc_hd__tap_2
+   sky130_fd_sc_hd__tapvgnd2_1
+   sky130_fd_sc_hd__tapvgnd_1
+   sky130_fd_sc_hd__tapvpwrvgnd_1
+   sky130_fd_sc_hd__xnor2_1
+   sky130_fd_sc_hd__xnor2_2
+   sky130_fd_sc_hd__xnor2_4
+   sky130_fd_sc_hd__xnor3_1
+   sky130_fd_sc_hd__xnor3_2
+   sky130_fd_sc_hd__xnor3_4
+   sky130_fd_sc_hd__xor2_1
+   sky130_fd_sc_hd__xor2_2
+   sky130_fd_sc_hd__xor2_4
+   sky130_fd_sc_hd__xor3_1
+   sky130_fd_sc_hd__xor3_2
+   sky130_fd_sc_hd__xor3_4
