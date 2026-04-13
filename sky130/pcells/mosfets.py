@@ -74,10 +74,10 @@ def _mosfet_core(
 
     # ---- Finger pitch and contact positions ----
     # For shared contacts between gates (nf > 1), the gate-to-contact spacing
-    # depends on L:  when L < pc_pad_size (gate narrower than contact pad),
-    # the poly_surround constraint (0.08) applies.  When L >= pc_pad_size,
-    # the standard gate_to_diffcont (0.145) is used.
-    if L < pc_pad_size:
+    # depends on L: when L < contact_size, poly_surround clearance requires
+    # wider spacing (0.165 vs 0.145).  A minimum pitch of 0.48 is enforced
+    # so intermediate L values (e.g. L=0.18) maintain adequate clearance.
+    if L < contact_size:
         shared_gate_to_diffcont = max(gate_to_diffcont,
                                       contact_size / 2 + poly_surround)
     else:
@@ -93,7 +93,7 @@ def _mosfet_core(
         diff_half_x = hl + diff_extension
     else:
         # Multi-finger: regular grid with shared contacts
-        finger_pitch = L + 2 * shared_gate_to_diffcont
+        finger_pitch = max(L + 2 * shared_gate_to_diffcont, 0.48)
         # Gate centers: symmetric about origin
         gate_centers_x = [
             _snap(-((nf - 1) / 2.0) * finger_pitch + i * finger_pitch)
@@ -315,7 +315,25 @@ def _mosfet_core(
         # In y: extends to poly contact region top/bottom + npc_ext + some clearance
         polycont_pad_top = hw + gate_to_polycont + contact_size / 2 + poly_surround
         nwell_y = polycont_pad_top + 0.015  # empirical from reference: pad_top + 0.015
-        _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, nwell_x, nwell_y)
+
+        if nf > 1 and L < pc_pad_size:
+            # Multi-finger with alternating pads: L-shaped nwell.
+            # Even gates have bottom pads, odd gates have top pads.
+            # The nwell center region covers ±nwell_step_y where
+            # nwell_step_y = hw + gate_to_polycont - 0.01.
+            # Extensions on each side only cover where pads exist.
+            nwell_step_y = _snap(hw + gate_to_polycont - 0.01)
+            # Bottom pad side: extends full -nwell_x, truncated on right
+            step_x = _snap(nwell_x - finger_pitch)
+            # Three rectangles: center, bottom extension, top extension
+            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y,
+                  nwell_x, nwell_step_y)
+            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y,
+                  step_x, -nwell_step_y)
+            _rect(c, LAYER.nwelldrawing, -step_x, nwell_step_y,
+                  nwell_x, nwell_y)
+        else:
+            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, nwell_x, nwell_y)
 
     # ---- 6. Labels ----
     # For nf=1: D (drain) on left/negative-x, S (source) on right/positive-x
@@ -514,10 +532,14 @@ def _add_guard_ring(
 
     # Horizontal segment contacts (top/bottom)
     non_corner_x = 2 * contact_region_inner_x
-    # Contact count uses enclosure in the non-corner region
-    # HVI uses 0.33 (= pc_pad_size); standard uses contact_pitch (0.34)
-    horiz_enc = 0.33 if is_hvi else contact_pitch
-    n_horiz = max(1, 1 + _floor((non_corner_x - 2 * horiz_enc - contact_size) / contact_pitch))
+    # Contact count uses enclosure in the non-corner region.
+    # Use integer nanometer arithmetic for exact boundary handling.
+    horiz_enc = 0.33 if is_hvi else 0.32
+    _ncx_nm = round(non_corner_x * 1000)
+    _henc_nm = round(horiz_enc * 1000)
+    _cs_nm = round(contact_size * 1000)
+    _cp_nm = round(contact_pitch * 1000)
+    n_horiz = max(1, 1 + (_ncx_nm - 2 * _henc_nm - _cs_nm) // _cp_nm)
     arr_w = (n_horiz - 1) * contact_pitch + contact_size
     ch = contact_size / 2.0
     for sign_y in [1, -1]:
@@ -529,10 +551,14 @@ def _add_guard_ring(
 
     # Vertical segment contacts (left/right)
     non_corner_y = 2 * contact_region_inner_y
-    # Contact count uses enclosure in the non-corner region
-    # HVI devices use 0.29 (= ring_width); standard uses 0.27
-    vert_enc = 0.29 if is_hvi else 0.27
-    n_vert = max(1, 1 + _floor((non_corner_y - 2 * vert_enc - contact_size) / contact_pitch))
+    # Contact count — also in integer nanometers.
+    # Subtract 1 before division for strict less-than at exact boundaries
+    # (e.g. PFET W=5.0 where the available height is exactly N*pitch).
+    vert_enc = 0.29 if is_hvi else 0.30
+    _ncy_nm = round(non_corner_y * 1000)
+    _venc_nm = round(vert_enc * 1000)
+    _vert_avail_nm = _ncy_nm - 2 * _venc_nm - _cs_nm
+    n_vert = max(1, 1 + (_vert_avail_nm - 1) // _cp_nm)
     arr_h = (n_vert - 1) * contact_pitch + contact_size
     for sign_x in [-1, 1]:
         cx = sign_x * gr_cx
@@ -715,7 +741,8 @@ def _add_hvntm(c, info):
 def _add_hvi_nfet(c, info, guard_ring, gr_info=None):
     """Add HVI (75/20) layer for NFET devices.
 
-    Without guard ring: diff_half_x + 0.185 in x, hw + 0.21 in y.
+    Without guard ring: diff_half_x + 0.185 in x, hw + 0.185 in y (nf>1)
+                        or hw + 0.21 in y (nf=1).
     With guard ring: gr_outer + 0.185 in both x and y.
     """
     hvi_enc = 0.185
@@ -726,7 +753,9 @@ def _add_hvi_nfet(c, info, guard_ring, gr_info=None):
         dhx = info["diff_half_x"]
         hw = info["hw"]
         hvi_x = dhx + hvi_enc
-        hvi_y = hw + 0.21
+        # For nf=1, Magic uses a slightly larger y-extent (0.21 vs 0.185)
+        nf = len(info["gate_centers_x"])
+        hvi_y = hw + (0.21 if nf == 1 else hvi_enc)
     _rect(c, LAYER.hvidrawing, -hvi_x, -hvi_y, hvi_x, hvi_y)
 
 
