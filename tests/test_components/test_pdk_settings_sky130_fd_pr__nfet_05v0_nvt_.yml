@@ -1,0 +1,11 @@
+info: {}
+name: sky130_fd_pr__nfet_05v0_nvt_GW0p42_GL0p9_SW0p28_N1_GRTr_7fc26206
+settings:
+  dnwell: false
+  end_cap: 0.13
+  gate_length: 0.9
+  gate_width: 0.42
+  guard_ring: true
+  mult: 1
+  nf: 1
+  sd_width: 0.28

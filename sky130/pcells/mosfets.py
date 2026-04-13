@@ -450,6 +450,422 @@ def sky130_fd_pr__pfet_01v8(
     return c
 
 
+def _add_ports(
+    c: gf.Component,
+    info: dict,
+    gate_width: float,
+    gate_length: float,
+    sd_width: float,
+    end_cap: float,
+) -> None:
+    """Add GATE, SOURCE, DRAIN, BODY ports to a MOSFET component."""
+    diff_w = info["diff_w"]
+    diff_h = info["diff_h"]
+    pitch = info["pitch"]
+
+    gate0_x = sd_width + gate_length / 2
+    gate0_y = diff_h / 2
+    c.add_port(
+        name="GATE",
+        center=(gate0_x, gate0_y),
+        width=gate_width,
+        orientation=0,
+        layer=LAYER.polydrawing,
+        port_type="electrical",
+    )
+
+    src_x = sd_width / 2
+    src_y = diff_h / 2
+    c.add_port(
+        name="SOURCE",
+        center=(src_x, src_y),
+        width=gate_width,
+        orientation=180,
+        layer=LAYER.li1drawing,
+        port_type="electrical",
+    )
+
+    drain_x = pitch + sd_width / 2
+    drain_y = diff_h / 2
+    c.add_port(
+        name="DRAIN",
+        center=(drain_x, drain_y),
+        width=gate_width,
+        orientation=0,
+        layer=LAYER.li1drawing,
+        port_type="electrical",
+    )
+
+    body_x = diff_w / 2
+    body_y = -(end_cap + info["pc_pad_h"])
+    c.add_port(
+        name="BODY",
+        center=(body_x, body_y),
+        width=diff_w,
+        orientation=270,
+        layer=LAYER.li1drawing,
+        port_type="electrical",
+    )
+
+
+def _add_guard_ring(
+    c: gf.Component,
+    info: dict,
+    end_cap: float,
+    is_pmos: bool,
+) -> None:
+    """Add a guard ring (pwell for NMOS, nwell for PMOS) to the component."""
+    ring_spacing = 0.27
+    ring_width = 0.34
+    diff_h = info["diff_h"]
+    diff_w = info["diff_w"]
+    pc_pad_h = info["pc_pad_h"]
+    device_top = diff_h + end_cap + pc_pad_h
+    device_bottom = -(end_cap + pc_pad_h)
+    device_height = device_top - device_bottom
+
+    if is_pmos:
+        gr = c.add_ref(
+            nwell_guard_ring(
+                inner_width=diff_w,
+                inner_height=device_height,
+                ring_width=ring_width,
+                spacing=ring_spacing,
+            )
+        )
+    else:
+        gr = c.add_ref(
+            pwell_guard_ring(
+                inner_width=diff_w,
+                inner_height=device_height,
+                ring_width=ring_width,
+                spacing=ring_spacing,
+            )
+        )
+    gr.move((0, device_bottom))
+
+
+def _add_dnwell(c: gf.Component) -> None:
+    """Add deep N-well rectangle enclosing the entire component bounding box."""
+    dnwell_enc = 0.40
+    bb = c.bbox()
+    _add_rect(
+        c,
+        LAYER.dnwelldrawing,
+        float(bb.left) - dnwell_enc,
+        float(bb.bottom) - dnwell_enc,
+        float(bb.width()) + 2 * dnwell_enc,
+        float(bb.height()) + 2 * dnwell_enc,
+    )
+
+
+def _mosfet_variant(
+    gate_width: float,
+    gate_length: float,
+    sd_width: float,
+    nf: int,
+    guard_ring: bool,
+    dnwell: bool,
+    end_cap: float,
+    is_pmos: bool,
+    extra_layers: list,
+) -> gf.Component:
+    """Build a MOSFET variant component with optional extra implant/well layers."""
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, sd_width, nf, end_cap, is_pmos=is_pmos)
+
+    # Extra implant/process layers covering diffusion + implant_enc margin
+    for layer in extra_layers:
+        enc = info["implant_enc"]
+        _add_rect(
+            c,
+            layer,
+            -enc,
+            -enc,
+            info["diff_w"] + 2 * enc,
+            info["diff_h"] + 2 * enc,
+        )
+
+    if guard_ring:
+        _add_guard_ring(c, info, end_cap, is_pmos=is_pmos)
+
+    if dnwell:
+        _add_dnwell(c)
+
+    _add_ports(c, info, gate_width, gate_length, sd_width, end_cap)
+    return c
+
+
+# ---------------------------------------------------------------------------
+# Variant: Low-Vt NMOS 1.8V
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__nfet_01v8_lvt(
+    gate_width: float = 0.42,
+    gate_length: float = 0.15,
+    sd_width: float = 0.28,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """Low-Vt 1.8V NMOS (sky130_fd_pr__nfet_01v8_lvt)."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=False,
+        extra_layers=[LAYER.lvtndrawing],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Variant: Low-Vt PMOS 1.8V
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__pfet_01v8_lvt(
+    gate_width: float = 0.42,
+    gate_length: float = 0.15,
+    sd_width: float = 0.28,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """Low-Vt 1.8V PMOS (sky130_fd_pr__pfet_01v8_lvt)."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=True,
+        extra_layers=[LAYER.lvtndrawing],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Variant: High-Vt PMOS 1.8V
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__pfet_01v8_hvt(
+    gate_width: float = 0.42,
+    gate_length: float = 0.15,
+    sd_width: float = 0.28,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """High-Vt 1.8V PMOS (sky130_fd_pr__pfet_01v8_hvt)."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=True,
+        extra_layers=[LAYER.hvtpdrawing],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Variant: Thick-oxide NMOS 5V/10V
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__nfet_g5v0d10v5(
+    gate_width: float = 0.42,
+    gate_length: float = 0.50,
+    sd_width: float = 0.28,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """Thick-oxide 5V/10V NMOS (sky130_fd_pr__nfet_g5v0d10v5)."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=False,
+        extra_layers=[LAYER.hvidrawing],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Variant: Thick-oxide PMOS 5V/10V
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__pfet_g5v0d10v5(
+    gate_width: float = 0.42,
+    gate_length: float = 0.50,
+    sd_width: float = 0.28,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """Thick-oxide 5V/10V PMOS (sky130_fd_pr__pfet_g5v0d10v5)."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=True,
+        extra_layers=[LAYER.hvidrawing],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Variant: 20V LDNMOS
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__nfet_20v0(
+    gate_width: float = 0.42,
+    gate_length: float = 2.0,
+    sd_width: float = 0.50,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """20V LDNMOS (sky130_fd_pr__nfet_20v0) — simplified."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=False,
+        extra_layers=[LAYER.hvidrawing],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Variant: 20V LDPMOS
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__pfet_20v0(
+    gate_width: float = 0.42,
+    gate_length: float = 2.0,
+    sd_width: float = 0.50,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """20V LDPMOS (sky130_fd_pr__pfet_20v0) — simplified."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=True,
+        extra_layers=[LAYER.hvidrawing],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Variant: Native NMOS 3.3V
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__nfet_03v3_nvt(
+    gate_width: float = 0.42,
+    gate_length: float = 0.50,
+    sd_width: float = 0.28,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """Native NMOS 3.3V (sky130_fd_pr__nfet_03v3_nvt)."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=False,
+        extra_layers=[LAYER.lvtndrawing],
+    )
+
+
+# ---------------------------------------------------------------------------
+# Variant: Native NMOS 5V
+# ---------------------------------------------------------------------------
+
+
+@gf.cell
+def sky130_fd_pr__nfet_05v0_nvt(
+    gate_width: float = 0.42,
+    gate_length: float = 0.90,
+    sd_width: float = 0.28,
+    nf: int = 1,
+    guard_ring: bool = True,
+    dnwell: bool = False,
+    end_cap: float = 0.13,
+    mult: int = 1,
+) -> gf.Component:
+    """Native NMOS 5V (sky130_fd_pr__nfet_05v0_nvt)."""
+    return _mosfet_variant(
+        gate_width=gate_width,
+        gate_length=gate_length,
+        sd_width=sd_width,
+        nf=nf,
+        guard_ring=guard_ring,
+        dnwell=dnwell,
+        end_cap=end_cap,
+        is_pmos=False,
+        extra_layers=[LAYER.lvtndrawing, LAYER.hvidrawing],
+    )
+
+
 if __name__ == "__main__":
     c = sky130_fd_pr__nfet_01v8()
     c.show()
