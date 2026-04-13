@@ -24,7 +24,7 @@ _LICON_SPACE = 0.17  # licon contact spacing
 _LICON_ENC = 0.06  # licon enclosure within diff
 _MCON_SIZE = 0.17  # mcon contact size
 _MCON_SPACE = 0.19  # mcon contact spacing
-_MCON_ENC = 0.14  # mcon enclosure within diff area
+_MCON_ENC = 0.06  # mcon enclosure within diff area
 _RING_LICON_ENC_BASE = 0.31  # licon enclosure from inner edge of guard ring
 # Horizontal segments (with corner overlap) add _RING_WIDTH to this base.
 _RING_LICON_ENC_HORIZ = _RING_LICON_ENC_BASE + _RING_WIDTH  # 0.48
@@ -98,7 +98,8 @@ def _guard_ring_contacts(
 
 def _draw_ring(
     c: gf.Component,
-    inner_half: float,
+    inner_half_x: float,
+    inner_half_y: float,
     ring_width: float,
     tap_layer,
     implant_layer,
@@ -107,24 +108,25 @@ def _draw_ring(
 ):
     """Draw one rectangular guard ring centered at origin.
 
-    The ring inner edge is at +/-*inner_half*, ring outer edge at
-    +/-(inner_half + ring_width).  Tap, implant, li1, and licon contacts are
-    placed on all four segments.
+    The ring inner edge is at +/-*inner_half_x* in X and +/-*inner_half_y*
+    in Y.  Ring outer edge is inner + *ring_width*.  Tap, implant, li1, and
+    licon contacts are placed on all four segments.
 
-    Returns (outer_half,) for downstream geometry.
+    Returns (outer_half_x, outer_half_y) for downstream geometry.
     """
-    ih = inner_half
+    ihx = inner_half_x
+    ihy = inner_half_y
     rw = ring_width
-    oh = ih + rw  # outer half-extent
+    ohx = ihx + rw  # outer half-extent in X
+    ohy = ihy + rw  # outer half-extent in Y
 
-    # Four tap / li1 segments (top, bottom full width; left, right full height
-    # with corner overlap).
+    # Four tap / li1 segments (top, bottom full width; left, right inner height).
     segs = [
         # (x0, y0, x1, y1)
-        (-oh, ih, oh, oh),  # top
-        (-oh, -oh, oh, -ih),  # bottom
-        (-oh, -ih, -ih, ih),  # left
-        (ih, -ih, oh, ih),  # right
+        (-ohx, ihy, ohx, ohy),   # top
+        (-ohx, -ohy, ohx, -ihy),  # bottom
+        (-ohx, -ihy, -ihx, ihy),  # left
+        (ihx, -ihy, ohx, ihy),   # right
     ]
 
     for x0, y0, x1, y1 in segs:
@@ -133,13 +135,15 @@ def _draw_ring(
 
     # Implant: 4 segments extending _IMPLANT_ENC beyond tap
     ie = _IMPLANT_ENC
-    imp_oh = oh + ie
-    imp_ih = ih - ie
+    imp_ohx = ohx + ie
+    imp_ohy = ohy + ie
+    imp_ihx = ihx - ie
+    imp_ihy = ihy - ie
     imp_segs = [
-        (-imp_oh, imp_ih, imp_oh, imp_oh),  # top
-        (-imp_oh, -imp_oh, imp_oh, -imp_ih),  # bottom
-        (-imp_oh, -imp_ih, -imp_ih, imp_ih),  # left
-        (imp_ih, -imp_ih, imp_oh, imp_ih),  # right
+        (-imp_ohx, imp_ihy, imp_ohx, imp_ohy),   # top
+        (-imp_ohx, -imp_ohy, imp_ohx, -imp_ihy),  # bottom
+        (-imp_ohx, -imp_ihy, -imp_ihx, imp_ihy),  # left
+        (imp_ihx, -imp_ihy, imp_ohx, imp_ihy),   # right
     ]
     for x0, y0, x1, y1 in imp_segs:
         _add_box(c, implant_layer, x0, y0, x1, y1)
@@ -149,7 +153,7 @@ def _draw_ring(
         for x0, y0, x1, y1 in segs:
             _guard_ring_contacts(c, x0, y0, x1 - x0, y1 - y0)
 
-    return oh
+    return ohx, ohy
 
 
 # ---------------------------------------------------------------------------
@@ -213,8 +217,13 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     licon_ref.move((-hw, -hl))
 
     # --- Li1 pad on diff ---
-    li1_hx = hw + 0.02
-    li1_hy = hl - 0.06
+    # When W >= L the wider dimension is X; when W < L the wider is Y.
+    if diode_width >= diode_length:
+        li1_hx = hw + 0.02
+        li1_hy = hl - 0.06
+    else:
+        li1_hx = hw - 0.06
+        li1_hy = hl + 0.02
     _add_box(c, LAYER.li1drawing, -li1_hx, -li1_hy, li1_hx, li1_hy)
 
     # --- Mcon contacts on diff ---
@@ -229,33 +238,32 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     mcon_ref.move((-hw, -hl))
 
     # --- Met1 pad on diff ---
-    met1_hx = hw
-    met1_hy = hl - 0.03
+    if diode_width >= diode_length:
+        met1_hx = hw
+        met1_hy = hl - 0.03
+    else:
+        met1_hx = hw - 0.03
+        met1_hy = hl
     _add_box(c, LAYER.met1drawing, -met1_hx, -met1_hy, met1_hx, met1_hy)
 
     # --- P+ guard ring (pwell / substrate ring) ---
-    ring_inner_half = hw + _RING_SPACING  # == hl + _RING_SPACING when square
-    # Use max(hw, hl) + spacing as inner half to handle non-square (conservative)
-    ring_inner_half_x = hw + _RING_SPACING
-    ring_inner_half_y = hl + _RING_SPACING
-    # For square diodes (all reference cases), these are equal.
-    ring_ih = max(ring_inner_half_x, ring_inner_half_y)
-    _draw_ring(
-        c, ring_ih, _RING_WIDTH,
+    ring_ih_x = hw + _RING_SPACING
+    ring_ih_y = hl + _RING_SPACING
+    ring_oh_x, ring_oh_y = _draw_ring(
+        c, ring_ih_x, ring_ih_y, _RING_WIDTH,
         tap_layer=LAYER.tapdrawing,
         implant_layer=LAYER.psdmdrawing,
         li1_layer=LAYER.li1drawing,
     )
 
-    ring_oh = ring_ih + _RING_WIDTH
-
     # --- Boundary marker (235,4) ---
-    bnd = ring_ih + ring_oh
-    _add_box(c, LAYER.prBoundaryboundary, -bnd, -bnd, bnd, bnd)
+    bnd_x = ring_ih_x + ring_oh_x
+    bnd_y = ring_ih_y + ring_oh_y
+    _add_box(c, LAYER.prBoundaryboundary, -bnd_x, -bnd_y, bnd_x, bnd_y)
 
     # --- Labels ---
     c.add_label("D1", position=(0.0, 0.0), layer=LAYER.li1label)
-    d2_y = -(ring_ih + ring_oh) / 2
+    d2_y = -(ring_ih_y + ring_oh_y) / 2
     c.add_label("D2", position=(0.0, d2_y), layer=LAYER.li1label)
 
     # --- Ports ---
@@ -270,7 +278,7 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     c.add_port(
         name="ANODE",
         center=(0.0, d2_y),
-        width=2 * ring_oh,
+        width=2 * ring_oh_x,
         orientation=270,
         layer=LAYER.li1drawing,
         port_type="electrical",
@@ -342,8 +350,12 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     licon_ref.move((-hw, -hl))
 
     # --- Li1 pad on diff ---
-    li1_hx = hw + 0.02
-    li1_hy = hl - 0.06
+    if diode_width >= diode_length:
+        li1_hx = hw + 0.02
+        li1_hy = hl - 0.06
+    else:
+        li1_hx = hw - 0.06
+        li1_hy = hl + 0.02
     _add_box(c, LAYER.li1drawing, -li1_hx, -li1_hy, li1_hx, li1_hy)
 
     # --- Mcon contacts on diff ---
@@ -358,41 +370,50 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     mcon_ref.move((-hw, -hl))
 
     # --- Met1 pad on diff ---
-    met1_hx = hw
-    met1_hy = hl - 0.03
+    if diode_width >= diode_length:
+        met1_hx = hw
+        met1_hy = hl - 0.03
+    else:
+        met1_hx = hw - 0.03
+        met1_hy = hl
     _add_box(c, LAYER.met1drawing, -met1_hx, -met1_hy, met1_hx, met1_hy)
 
     # --- Inner guard ring: N+ tap ring inside N-well ---
-    inner_ring_ih = max(hw, hl) + _RING_SPACING
-    inner_ring_oh = _draw_ring(
-        c, inner_ring_ih, _RING_WIDTH,
+    inner_ih_x = hw + _RING_SPACING
+    inner_ih_y = hl + _RING_SPACING
+    inner_oh_x, inner_oh_y = _draw_ring(
+        c, inner_ih_x, inner_ih_y, _RING_WIDTH,
         tap_layer=LAYER.tapdrawing,
         implant_layer=LAYER.nsdmdrawing,
         li1_layer=LAYER.li1drawing,
     )
 
     # --- N-well: covers diff + inner ring + 0.18 extension ---
-    nwell_half = inner_ring_oh + _NWELL_ENC
-    _add_box(c, LAYER.nwelldrawing, -nwell_half, -nwell_half, nwell_half, nwell_half)
+    nwell_hx = inner_oh_x + _NWELL_ENC
+    nwell_hy = inner_oh_y + _NWELL_ENC
+    _add_box(c, LAYER.nwelldrawing, -nwell_hx, -nwell_hy, nwell_hx, nwell_hy)
 
     # --- Outer guard ring: P+ tap ring in substrate ---
-    outer_ring_ih = nwell_half + _RING_SPACING
+    outer_ih_x = nwell_hx + _RING_SPACING
+    outer_ih_y = nwell_hy + _RING_SPACING
     _draw_ring(
-        c, outer_ring_ih, _RING_WIDTH,
+        c, outer_ih_x, outer_ih_y, _RING_WIDTH,
         tap_layer=LAYER.tapdrawing,
         implant_layer=LAYER.psdmdrawing,
         li1_layer=LAYER.li1drawing,
     )
 
-    outer_ring_oh = outer_ring_ih + _RING_WIDTH
+    outer_oh_x = outer_ih_x + _RING_WIDTH
+    outer_oh_y = outer_ih_y + _RING_WIDTH
 
     # --- Boundary marker (235,4) — based on inner ring geometry ---
-    bnd = inner_ring_ih + inner_ring_oh
-    _add_box(c, LAYER.prBoundaryboundary, -bnd, -bnd, bnd, bnd)
+    bnd_x = inner_ih_x + inner_oh_x
+    bnd_y = inner_ih_y + inner_oh_y
+    _add_box(c, LAYER.prBoundaryboundary, -bnd_x, -bnd_y, bnd_x, bnd_y)
 
     # --- Labels ---
     c.add_label("D1", position=(0.0, 0.0), layer=LAYER.li1label)
-    d2_y = -(inner_ring_ih + inner_ring_oh) / 2
+    d2_y = -(inner_ih_y + inner_oh_y) / 2
     c.add_label("D2", position=(0.0, d2_y), layer=LAYER.li1label)
 
     # --- Ports ---
@@ -407,7 +428,7 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     c.add_port(
         name="CATHODE",
         center=(0.0, d2_y),
-        width=2 * inner_ring_oh,
+        width=2 * inner_oh_x,
         orientation=270,
         layer=LAYER.li1drawing,
         port_type="electrical",
