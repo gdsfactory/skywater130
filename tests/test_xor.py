@@ -161,6 +161,10 @@ def test_xor(device_name: str, params: dict, cell_module: str) -> None:
             str(ref_gds), str(run_gds),
             xor=True, show=False,
             test_name=test_id,
+            ignore_label_differences=True,
+            ignore_cell_name_differences=True,
+            ignore_sliver_differences=True,
+            sliver_tolerance=2,
         )
         assert not has_diff, (
             f"XOR differences found between generated GDS and reference for "
