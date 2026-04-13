@@ -14,6 +14,12 @@ skip = [
     "sky130_fd_sc_hd__conb_1",
     "sky130_fd_sc_hd__macro_sparecell",
     "compile_components",
+    # Utility cells — tested separately in test_contact.py / test_guard_ring.py
+    "contact_array",
+    "licon_array",
+    "mcon_array",
+    "pwell_guard_ring",
+    "nwell_guard_ring",
 ]
 
 cell_names = set(cells.keys()) - set(skip)

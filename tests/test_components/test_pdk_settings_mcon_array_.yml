@@ -1,0 +1,15 @@
+info: {}
+name: contact_array_W0p29_H0p29_CLmcondrawing_CS0p17_0p17_CS0_1c908671
+settings:
+  contact_layer: mcondrawing
+  contact_size:
+  - 0.17
+  - 0.17
+  contact_spacing:
+  - 0.19
+  - 0.19
+  enclosure:
+  - 0.03
+  - 0.06
+  height: 0.29
+  width: 0.29
