@@ -1,9 +1,9 @@
 info: {}
-name: sky130_fd_pr__pfet_01v8_lvt_GW0p42_GL0p15_SW0p28_N1_GRT_bef0be38
+name: sky130_fd_pr__pfet_01v8_lvt_GW0p42_GL0p35_SW0p28_N1_GRT_c99a6076
 settings:
   dnwell: false
   end_cap: 0.13
-  gate_length: 0.15
+  gate_length: 0.35
   gate_width: 0.42
   guard_ring: true
   mult: 1

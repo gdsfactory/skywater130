@@ -1,6 +1,5 @@
 info: {}
-name: sky130_fd_pr__diode_pd2nw_05v5_DW0p42_DL0p42_GRTrue
+name: sky130_fd_pr__diode_pd2nw_05v5_DW0p45_DL0p45
 settings:
-  diode_length: 0.42
-  diode_width: 0.42
-  guard_ring: true
+  diode_length: 0.45
+  diode_width: 0.45
