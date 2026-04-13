@@ -118,8 +118,9 @@ def _mosfet_core(
     # Determine which side each gate gets a poly contact
     # "top" means positive y, "bottom" means negative y
     for gi, gx in enumerate(gate_centers_x):
-        if nf == 1:
-            # Both sides get contacts
+        if nf == 1 or L >= pc_pad_size:
+            # Both sides get contacts when nf=1 or gate is wide enough to
+            # serve as its own contact pad on both sides.
             contact_sides = ["top", "bottom"]
         else:
             # Alternate: even gates get bottom contact, odd gates get top
@@ -204,6 +205,9 @@ def _mosfet_core(
             num_poly_contacts_x = max(1, num_poly_contacts_x)
 
             # Place contact array horizontally
+            # Licon and mcon use different pitches for wide gates
+            licon_poly_pitch = contact_size + contact_size  # 0.34
+            mcon_poly_pitch = contact_size + 0.19            # 0.36
             if num_poly_contacts_x == 1:
                 _rect(c, LAYER.licon1drawing,
                       gx - licon_half, pad_cy - licon_half,
@@ -212,14 +216,19 @@ def _mosfet_core(
                       gx - licon_half, pad_cy - licon_half,
                       gx + licon_half, pad_cy + licon_half)
             else:
-                pitch = contact_size + contact_size  # 0.34 for licon
-                array_w = (num_poly_contacts_x - 1) * pitch + contact_size
-                start_x = gx - array_w / 2.0
+                # Licon array
+                licon_array_w = (num_poly_contacts_x - 1) * licon_poly_pitch + contact_size
+                licon_start_x = gx - licon_array_w / 2.0
                 for ci in range(num_poly_contacts_x):
-                    cx = start_x + ci * pitch
+                    cx = licon_start_x + ci * licon_poly_pitch
                     _rect(c, LAYER.licon1drawing,
                           cx, pad_cy - licon_half,
                           cx + contact_size, pad_cy + licon_half)
+                # Mcon array (different pitch)
+                mcon_array_w = (num_poly_contacts_x - 1) * mcon_poly_pitch + contact_size
+                mcon_start_x = gx - mcon_array_w / 2.0
+                for ci in range(num_poly_contacts_x):
+                    cx = mcon_start_x + ci * mcon_poly_pitch
                     _rect(c, LAYER.mcondrawing,
                           cx, pad_cy - licon_half,
                           cx + contact_size, pad_cy + licon_half)
@@ -237,8 +246,14 @@ def _mosfet_core(
                   gx - m1_half_x, pad_cy - m1_half_y,
                   gx + m1_half_x, pad_cy + m1_half_y)
 
-            # NPC over poly contact region (stays at pad size, not gate width)
-            npc_half_x = pc_pad_size / 2.0 + npc_ext
+            # NPC over poly contact region
+            # For narrow gates: stays at pad size
+            # For wide gates: covers the licon array extent + poly_surround + npc_ext
+            if num_poly_contacts_x > 1:
+                licon_array_w = (num_poly_contacts_x - 1) * licon_poly_pitch + contact_size
+                npc_half_x = licon_array_w / 2.0 + poly_surround + npc_ext
+            else:
+                npc_half_x = pc_pad_size / 2.0 + npc_ext
             npc_half_y = pc_pad_size / 2.0 + npc_ext
             _rect(c, LAYER.npcdrawing,
                   gx - npc_half_x, pad_cy - npc_half_y,
@@ -343,7 +358,10 @@ def _mosfet_core(
                         layer=LAYER.li1label)
 
         for gi, gx in enumerate(gate_centers_x):
-            if gi % 2 == 0:
+            if L >= pc_pad_size:
+                # Wide gate: contacts on both sides, label on top
+                gate_label_y = hw + gate_to_polycont
+            elif gi % 2 == 0:
                 gate_label_y = -(hw + gate_to_polycont)
             else:
                 gate_label_y = hw + gate_to_polycont
@@ -352,6 +370,14 @@ def _mosfet_core(
                 position=(gx, gate_label_y),
                 layer=LAYER.li1label,
             )
+
+    # ---- Compute outermost gate edge (for variant implant sizing) ----
+    outermost_gate_edge_x = abs(gate_centers_x[-1]) + hl
+
+    # ---- Compute nwell extent (for pfet variants) ----
+    polycont_pad_top = hw + gate_to_polycont + contact_size / 2 + poly_surround
+    nwell_x = diff_half_x + nwell_enc_x
+    nwell_y = polycont_pad_top + 0.015  # empirical from reference
 
     # ---- Return coordinate info ----
     return {
@@ -365,6 +391,9 @@ def _mosfet_core(
         "implant_enc": implant_enc,
         "nwell_enc_x": nwell_enc_x,
         "npc_ext": npc_ext,
+        "outermost_gate_edge_x": outermost_gate_edge_x,
+        "nwell_x": nwell_x,
+        "nwell_y": nwell_y,
     }
 
 
@@ -372,13 +401,15 @@ def _add_guard_ring(
     c: gf.Component,
     info: dict,
     is_pmos: bool,
-) -> None:
+    is_hvi: bool = False,
+    is_nvt: bool = False,
+) -> dict:
     """Add a guard ring around the device matching Magic's exact geometry.
 
-    Ring is 0.17um wide tap with 0.125um implant enclosure.
-    Guard ring inner edge is positioned at:
-      x: (diff_half_x + implant_enc) + 0.215  from origin
-      y: NPC_edge + 0.24  from origin
+    For standard devices: ring_width=0.17, spacing from nsdm/npc.
+    For HVI devices: ring_width=0.29, larger spacing, different nwell enclosure.
+
+    Returns a dict with guard ring extents for HVI layer placement.
     """
     from math import floor as _floor
 
@@ -388,19 +419,33 @@ def _add_guard_ring(
     pc_pad_size = info["pc_pad_size"]
     npc_ext = info["npc_ext"]
 
-    # Guard ring constants
-    ring_width = 0.17
-    impl_enc = 0.125
+    # Guard ring constants — differ for HVI devices
     contact_size = 0.17
     contact_pitch = 0.34  # contact_size + contact_spacing
+    impl_enc = 0.125
+
+    if is_hvi:
+        ring_width = 0.29
+        # HVI devices use larger spacing from device boundary
+        implant_x = diff_half_x + info["implant_enc"]
+        if is_nvt:
+            inner_spacing_x = 0.255
+        else:
+            # nfet_g5v0d10v5 uses 0.265, pfet_g5v0d10v5 uses 0.255
+            inner_spacing_x = 0.265 if not is_pmos else 0.255
+        inner_spacing_y = 0.36
+    else:
+        ring_width = 0.17
+        inner_spacing_x = 0.215
+        inner_spacing_y = 0.24
 
     # Device extents for spacing calculations
     nsdm_x = diff_half_x + info["implant_enc"]
     npc_y = hw + gate_to_polycont + pc_pad_size / 2.0 + npc_ext
 
-    # Guard ring inner/outer edges (empirically matched to Magic)
-    gr_inner_x = _snap(nsdm_x + 0.215)
-    gr_inner_y = _snap(npc_y + 0.24)
+    # Guard ring inner/outer edges
+    gr_inner_x = _snap(nsdm_x + inner_spacing_x)
+    gr_inner_y = _snap(npc_y + inner_spacing_y)
     gr_outer_x = gr_inner_x + ring_width
     gr_outer_y = gr_inner_y + ring_width
 
@@ -412,11 +457,25 @@ def _add_guard_ring(
     _rect(c, LAYER.tapdrawing, -gr_outer_x, -gr_inner_y, -gr_inner_x, gr_inner_y)  # left
     _rect(c, LAYER.tapdrawing, gr_inner_x, -gr_inner_y, gr_outer_x, gr_inner_y)    # right
 
-    # ---- Li1 on guard ring (same footprint as tap) ----
-    _rect(c, LAYER.li1drawing, -gr_outer_x, gr_inner_y, gr_outer_x, gr_outer_y)
-    _rect(c, LAYER.li1drawing, -gr_outer_x, -gr_outer_y, gr_outer_x, -gr_inner_y)
-    _rect(c, LAYER.li1drawing, -gr_outer_x, -gr_inner_y, -gr_inner_x, gr_inner_y)
-    _rect(c, LAYER.li1drawing, gr_inner_x, -gr_inner_y, gr_outer_x, gr_inner_y)
+    # ---- Li1 on guard ring ----
+    # For HVI devices, Li1 is 0.17 wide (standard) centered in the wider 0.29 tap.
+    # For standard devices, Li1 matches the tap footprint.
+    if is_hvi:
+        li1_width = 0.17
+        li1_margin = (ring_width - li1_width) / 2.0
+        li1_inner_x = gr_inner_x + li1_margin
+        li1_outer_x = gr_outer_x - li1_margin
+        li1_inner_y = gr_inner_y + li1_margin
+        li1_outer_y = gr_outer_y - li1_margin
+    else:
+        li1_inner_x = gr_inner_x
+        li1_outer_x = gr_outer_x
+        li1_inner_y = gr_inner_y
+        li1_outer_y = gr_outer_y
+    _rect(c, LAYER.li1drawing, -li1_outer_x, li1_inner_y, li1_outer_x, li1_outer_y)
+    _rect(c, LAYER.li1drawing, -li1_outer_x, -li1_outer_y, li1_outer_x, -li1_inner_y)
+    _rect(c, LAYER.li1drawing, -li1_outer_x, -li1_inner_y, -li1_inner_x, li1_inner_y)
+    _rect(c, LAYER.li1drawing, li1_inner_x, -li1_inner_y, li1_outer_x, li1_inner_y)
 
     # ---- Implant on guard ring ----
     # PSDM for NFET body tap (P+ substrate), NSDM for PFET body tap (N+ well)
@@ -444,11 +503,21 @@ def _add_guard_ring(
     gr_cx = (gr_inner_x + gr_outer_x) / 2.0  # x center of left/right segments
     gr_cy = (gr_inner_y + gr_outer_y) / 2.0  # y center of top/bottom segments
 
+    # For HVI devices, licon contacts use the li1 inner edge for available region,
+    # not the tap inner edge (since li1 is narrower than tap in HVI).
+    if is_hvi:
+        contact_region_inner_x = li1_inner_x
+        contact_region_inner_y = li1_inner_y
+    else:
+        contact_region_inner_x = gr_inner_x
+        contact_region_inner_y = gr_inner_y
+
     # Horizontal segment contacts (top/bottom)
-    # Non-corner x region: -gr_inner_x to +gr_inner_x
-    non_corner_x = 2 * gr_inner_x
-    # Contact count uses enclosure = contact_pitch in the non-corner region
-    n_horiz = max(1, 1 + _floor((non_corner_x - 2 * contact_pitch - contact_size) / contact_pitch))
+    non_corner_x = 2 * contact_region_inner_x
+    # Contact count uses enclosure in the non-corner region
+    # HVI uses 0.33 (= pc_pad_size); standard uses contact_pitch (0.34)
+    horiz_enc = 0.33 if is_hvi else contact_pitch
+    n_horiz = max(1, 1 + _floor((non_corner_x - 2 * horiz_enc - contact_size) / contact_pitch))
     arr_w = (n_horiz - 1) * contact_pitch + contact_size
     ch = contact_size / 2.0
     for sign_y in [1, -1]:
@@ -459,10 +528,10 @@ def _add_guard_ring(
                   cx - ch, cy - ch, cx + ch, cy + ch)
 
     # Vertical segment contacts (left/right)
-    # Non-corner y region: -gr_inner_y to +gr_inner_y
-    non_corner_y = 2 * gr_inner_y
-    # Contact count uses enclosure = 0.27 in the non-corner region
-    vert_enc = 0.27
+    non_corner_y = 2 * contact_region_inner_y
+    # Contact count uses enclosure in the non-corner region
+    # HVI devices use 0.29 (= ring_width); standard uses 0.27
+    vert_enc = 0.29 if is_hvi else 0.27
     n_vert = max(1, 1 + _floor((non_corner_y - 2 * vert_enc - contact_size) / contact_pitch))
     arr_h = (n_vert - 1) * contact_pitch + contact_size
     for sign_x in [-1, 1]:
@@ -474,7 +543,8 @@ def _add_guard_ring(
 
     # ---- N-well for PFET guard ring ----
     if is_pmos:
-        nw_ext = 0.18
+        # HVI PFET uses larger nwell enclosure (0.33 vs 0.18)
+        nw_ext = 0.33 if is_hvi else 0.18
         _rect(c, LAYER.nwelldrawing,
               -(gr_outer_x + nw_ext), -(gr_outer_y + nw_ext),
               gr_outer_x + nw_ext, gr_outer_y + nw_ext)
@@ -490,6 +560,13 @@ def _add_guard_ring(
         position=(0.0, -pr_y),
         layer=LAYER.li1label,
     )
+
+    return {
+        "gr_outer_x": gr_outer_x,
+        "gr_outer_y": gr_outer_y,
+        "gr_inner_x": gr_inner_x,
+        "gr_inner_y": gr_inner_y,
+    }
 
 
 @gf.cell
@@ -526,49 +603,7 @@ def sky130_fd_pr__nfet_01v8(
     if guard_ring:
         _add_guard_ring(c, info, is_pmos=False)
 
-    # Note: dnwell parameter accepted for API compatibility but not generated
-    # (Magic's reference GDS does not include a dnwell layer for standard MOSFETs)
-
-    # ---- Ports ----
-    sd = info["sd_centers_x"]
-    hw = info["hw"]
-    gpc = info["gate_to_polycont"]
-
-    c.add_port(
-        name="GATE",
-        center=(info["gate_centers_x"][0], 0.0),
-        width=gate_width,
-        orientation=0,
-        layer=LAYER.polydrawing,
-        port_type="electrical",
-    )
-    # Source = rightmost S/D for nf=1
-    c.add_port(
-        name="SOURCE",
-        center=(sd[-1], 0.0),
-        width=gate_width,
-        orientation=0,
-        layer=LAYER.li1drawing,
-        port_type="electrical",
-    )
-    # Drain = leftmost S/D for nf=1
-    c.add_port(
-        name="DRAIN",
-        center=(sd[0], 0.0),
-        width=gate_width,
-        orientation=180,
-        layer=LAYER.li1drawing,
-        port_type="electrical",
-    )
-    c.add_port(
-        name="BODY",
-        center=(0.0, -(hw + gpc)),
-        width=gate_width,
-        orientation=270,
-        layer=LAYER.li1drawing,
-        port_type="electrical",
-    )
-
+    _add_ports(c, info, gate_width)
     return c
 
 
@@ -607,9 +642,16 @@ def sky130_fd_pr__pfet_01v8(
     if guard_ring:
         _add_guard_ring(c, info, is_pmos=True)
 
-    # Note: dnwell parameter accepted for API compatibility but not generated
+    _add_ports(c, info, gate_width)
+    return c
 
-    # ---- Ports ----
+
+def _add_ports(
+    c: gf.Component,
+    info: dict,
+    gate_width: float,
+) -> None:
+    """Add standard MOSFET ports to a component."""
     sd = info["sd_centers_x"]
     hw = info["hw"]
     gpc = info["gate_to_polycont"]
@@ -647,73 +689,93 @@ def sky130_fd_pr__pfet_01v8(
         port_type="electrical",
     )
 
-    return c
+
+def _add_lvtn_or_hvtp(c, info, layer):
+    """Add LVTN (125/44) or HVTP (78/44) implant layer.
+
+    Sizing: outermost_gate_edge + 0.18 in x, hw + 0.18 in y.
+    """
+    enc = 0.18
+    ge = info["outermost_gate_edge_x"]
+    hw = info["hw"]
+    _rect(c, layer, -(ge + enc), -(hw + enc), ge + enc, hw + enc)
 
 
-def _mosfet_variant(
-    gate_width: float,
-    gate_length: float,
-    sd_width: float,
-    nf: int,
-    guard_ring: bool,
-    dnwell: bool,
-    end_cap: float,
-    is_pmos: bool,
-    extra_layers: list,
-) -> gf.Component:
-    """Build a MOSFET variant component with optional extra implant/well layers."""
-    c = gf.Component()
-    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=is_pmos,
-                        suppress_nwell=(is_pmos and guard_ring))
+def _add_hvntm(c, info):
+    """Add HVNTM (125/20) layer.
 
-    # Extra implant/process layers covering diffusion + implant_enc margin
-    enc = info["implant_enc"]
+    Sizing: diff_half_x + 0.185 in x, hw + 0.185 in y.
+    """
+    enc = 0.185
     dhx = info["diff_half_x"]
     hw = info["hw"]
-    for layer in extra_layers:
-        _rect(c, layer, -(dhx + enc), -(hw + enc), dhx + enc, hw + enc)
+    _rect(c, LAYER.hvntmdrawing, -(dhx + enc), -(hw + enc), dhx + enc, hw + enc)
 
-    if guard_ring:
-        _add_guard_ring(c, info, is_pmos=is_pmos)
 
-    # Note: dnwell parameter accepted for API compatibility but not generated
+def _add_hvi_nfet(c, info, guard_ring, gr_info=None):
+    """Add HVI (75/20) layer for NFET devices.
 
-    # Ports
-    sd = info["sd_centers_x"]
-    gpc = info["gate_to_polycont"]
-    c.add_port(
-        name="GATE",
-        center=(info["gate_centers_x"][0], 0.0),
-        width=gate_width,
-        orientation=0,
-        layer=LAYER.polydrawing,
-        port_type="electrical",
-    )
-    c.add_port(
-        name="SOURCE",
-        center=(sd[-1], 0.0),
-        width=gate_width,
-        orientation=0,
-        layer=LAYER.li1drawing,
-        port_type="electrical",
-    )
-    c.add_port(
-        name="DRAIN",
-        center=(sd[0], 0.0),
-        width=gate_width,
-        orientation=180,
-        layer=LAYER.li1drawing,
-        port_type="electrical",
-    )
-    c.add_port(
-        name="BODY",
-        center=(0.0, -(hw + gpc)),
-        width=gate_width,
-        orientation=270,
-        layer=LAYER.li1drawing,
-        port_type="electrical",
-    )
-    return c
+    Without guard ring: diff_half_x + 0.185 in x, hw + 0.21 in y.
+    With guard ring: gr_outer + 0.185 in both x and y.
+    """
+    hvi_enc = 0.185
+    if guard_ring and gr_info is not None:
+        hvi_x = gr_info["gr_outer_x"] + hvi_enc
+        hvi_y = gr_info["gr_outer_y"] + hvi_enc
+    else:
+        dhx = info["diff_half_x"]
+        hw = info["hw"]
+        hvi_x = dhx + hvi_enc
+        hvi_y = hw + 0.21
+    _rect(c, LAYER.hvidrawing, -hvi_x, -hvi_y, hvi_x, hvi_y)
+
+
+def _add_hvi_pfet(c, info, guard_ring, gr_info=None):
+    """Add HVI (75/20) layer for PFET devices.
+
+    With guard ring: same as nwell extent (gr_outer + nw_ext).
+    Without guard ring: three rectangles covering nwell + extra horizontal band.
+    """
+    if guard_ring and gr_info is not None:
+        # HVI = nwell extent = gr_outer + 0.33
+        nw_ext = 0.33
+        hvi_x = gr_info["gr_outer_x"] + nw_ext
+        hvi_y = gr_info["gr_outer_y"] + nw_ext
+        _rect(c, LAYER.hvidrawing, -hvi_x, -hvi_y, hvi_x, hvi_y)
+    else:
+        # Three rectangles forming a cross/plus shape around nwell
+        nwell_x = info["nwell_x"]
+        nwell_y = info["nwell_y"]
+        hw = info["hw"]
+        center_y = hw + 0.21   # same as nfet HVI y extent
+        center_x = nwell_x + 0.425   # empirical from Magic reference
+        # Center horizontal band
+        _rect(c, LAYER.hvidrawing, -center_x, -center_y, center_x, center_y)
+        # Top fill to nwell boundary
+        _rect(c, LAYER.hvidrawing, -nwell_x, center_y, nwell_x, nwell_y)
+        # Bottom fill to nwell boundary
+        _rect(c, LAYER.hvidrawing, -nwell_x, -nwell_y, nwell_x, -center_y)
+
+
+def _add_areaid_native(c, info):
+    """Add areaidlvNative (81/60) marker for native NMOS devices.
+
+    For nf=1: single rect covering gate_edge + 0.10 in x, hw + 0.10 in y.
+    For nf>1: separate per-gate rects, each gate_center ± (hl + 0.10) in x.
+    """
+    enc = 0.10
+    hw = info["hw"]
+    gate_centers = info["gate_centers_x"]
+    # hl is the half gate length (outermost_gate_edge minus last gate center)
+    if len(gate_centers) == 1:
+        hl = info["outermost_gate_edge_x"]
+    else:
+        hl = info["outermost_gate_edge_x"] - abs(gate_centers[-1])
+
+    for gx in gate_centers:
+        _rect(c, LAYER.areaidlvNative,
+              gx - hl - enc, -(hw + enc),
+              gx + hl + enc, hw + enc)
 
 
 # ---------------------------------------------------------------------------
@@ -733,17 +795,17 @@ def sky130_fd_pr__nfet_01v8_lvt(
     mult: int = 1,
 ) -> gf.Component:
     """Low-Vt 1.8V NMOS (sky130_fd_pr__nfet_01v8_lvt)."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=False,
-        extra_layers=[LAYER.lvtndrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=False)
+
+    # LVTN implant: gate_edge + 0.18 enclosure
+    _add_lvtn_or_hvtp(c, info, LAYER.lvtndrawing)
+
+    if guard_ring:
+        _add_guard_ring(c, info, is_pmos=False)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 # ---------------------------------------------------------------------------
@@ -754,7 +816,7 @@ def sky130_fd_pr__nfet_01v8_lvt(
 @gf.cell
 def sky130_fd_pr__pfet_01v8_lvt(
     gate_width: float = 0.42,
-    gate_length: float = 0.15,
+    gate_length: float = 0.35,
     sd_width: float = 0.28,
     nf: int = 1,
     guard_ring: bool = True,
@@ -763,17 +825,18 @@ def sky130_fd_pr__pfet_01v8_lvt(
     mult: int = 1,
 ) -> gf.Component:
     """Low-Vt 1.8V PMOS (sky130_fd_pr__pfet_01v8_lvt)."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=True,
-        extra_layers=[LAYER.lvtndrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
+                        suppress_nwell=guard_ring)
+
+    # LVTN implant: gate_edge + 0.18 enclosure
+    _add_lvtn_or_hvtp(c, info, LAYER.lvtndrawing)
+
+    if guard_ring:
+        _add_guard_ring(c, info, is_pmos=True)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 # ---------------------------------------------------------------------------
@@ -793,17 +856,18 @@ def sky130_fd_pr__pfet_01v8_hvt(
     mult: int = 1,
 ) -> gf.Component:
     """High-Vt 1.8V PMOS (sky130_fd_pr__pfet_01v8_hvt)."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=True,
-        extra_layers=[LAYER.hvtpdrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
+                        suppress_nwell=guard_ring)
+
+    # HVTP implant: gate_edge + 0.18 enclosure
+    _add_lvtn_or_hvtp(c, info, LAYER.hvtpdrawing)
+
+    if guard_ring:
+        _add_guard_ring(c, info, is_pmos=True)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 # ---------------------------------------------------------------------------
@@ -823,17 +887,21 @@ def sky130_fd_pr__nfet_g5v0d10v5(
     mult: int = 1,
 ) -> gf.Component:
     """Thick-oxide 5V/10V NMOS (sky130_fd_pr__nfet_g5v0d10v5)."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=False,
-        extra_layers=[LAYER.hvidrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=False)
+
+    # HVNTM layer
+    _add_hvntm(c, info)
+
+    gr_info = None
+    if guard_ring:
+        gr_info = _add_guard_ring(c, info, is_pmos=False, is_hvi=True)
+
+    # HVI layer (sizing depends on guard ring)
+    _add_hvi_nfet(c, info, guard_ring, gr_info)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 # ---------------------------------------------------------------------------
@@ -853,17 +921,19 @@ def sky130_fd_pr__pfet_g5v0d10v5(
     mult: int = 1,
 ) -> gf.Component:
     """Thick-oxide 5V/10V PMOS (sky130_fd_pr__pfet_g5v0d10v5)."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=True,
-        extra_layers=[LAYER.hvidrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
+                        suppress_nwell=guard_ring)
+
+    gr_info = None
+    if guard_ring:
+        gr_info = _add_guard_ring(c, info, is_pmos=True, is_hvi=True)
+
+    # HVI layer (sizing depends on guard ring and nwell)
+    _add_hvi_pfet(c, info, guard_ring, gr_info)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 # ---------------------------------------------------------------------------
@@ -883,17 +953,19 @@ def sky130_fd_pr__nfet_20v0(
     mult: int = 1,
 ) -> gf.Component:
     """20V LDNMOS (sky130_fd_pr__nfet_20v0) — simplified."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=False,
-        extra_layers=[LAYER.hvidrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=False)
+
+    _add_hvntm(c, info)
+
+    gr_info = None
+    if guard_ring:
+        gr_info = _add_guard_ring(c, info, is_pmos=False, is_hvi=True)
+
+    _add_hvi_nfet(c, info, guard_ring, gr_info)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 # ---------------------------------------------------------------------------
@@ -913,17 +985,18 @@ def sky130_fd_pr__pfet_20v0(
     mult: int = 1,
 ) -> gf.Component:
     """20V LDPMOS (sky130_fd_pr__pfet_20v0) — simplified."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=True,
-        extra_layers=[LAYER.hvidrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
+                        suppress_nwell=guard_ring)
+
+    gr_info = None
+    if guard_ring:
+        gr_info = _add_guard_ring(c, info, is_pmos=True, is_hvi=True)
+
+    _add_hvi_pfet(c, info, guard_ring, gr_info)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 # ---------------------------------------------------------------------------
@@ -943,17 +1016,25 @@ def sky130_fd_pr__nfet_03v3_nvt(
     mult: int = 1,
 ) -> gf.Component:
     """Native NMOS 3.3V (sky130_fd_pr__nfet_03v3_nvt)."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=False,
-        extra_layers=[LAYER.lvtndrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=False)
+
+    # areaidlvNative marker
+    _add_areaid_native(c, info)
+    # LVTN implant
+    _add_lvtn_or_hvtp(c, info, LAYER.lvtndrawing)
+    # HVNTM layer
+    _add_hvntm(c, info)
+
+    gr_info = None
+    if guard_ring:
+        gr_info = _add_guard_ring(c, info, is_pmos=False, is_hvi=True, is_nvt=True)
+
+    # HVI layer
+    _add_hvi_nfet(c, info, guard_ring, gr_info)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 # ---------------------------------------------------------------------------
@@ -973,17 +1054,23 @@ def sky130_fd_pr__nfet_05v0_nvt(
     mult: int = 1,
 ) -> gf.Component:
     """Native NMOS 5V (sky130_fd_pr__nfet_05v0_nvt)."""
-    return _mosfet_variant(
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        guard_ring=guard_ring,
-        dnwell=dnwell,
-        end_cap=end_cap,
-        is_pmos=False,
-        extra_layers=[LAYER.lvtndrawing, LAYER.hvidrawing],
-    )
+    c = gf.Component()
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=False)
+
+    # LVTN implant
+    _add_lvtn_or_hvtp(c, info, LAYER.lvtndrawing)
+    # HVNTM layer
+    _add_hvntm(c, info)
+
+    gr_info = None
+    if guard_ring:
+        gr_info = _add_guard_ring(c, info, is_pmos=False, is_hvi=True, is_nvt=True)
+
+    # HVI layer
+    _add_hvi_nfet(c, info, guard_ring, gr_info)
+
+    _add_ports(c, info, gate_width)
+    return c
 
 
 if __name__ == "__main__":
