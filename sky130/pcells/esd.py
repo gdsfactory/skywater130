@@ -7,8 +7,7 @@ a large gate width, multi-finger layout, and the areaidesd marker layer.
 import gdsfactory as gf
 
 from sky130.layers import LAYER
-from sky130.pcells.guard_ring import pwell_guard_ring
-from sky130.pcells.mosfets import _add_ports, _add_rect, _mosfet_core
+from sky130.pcells.mosfets import _mosfet_core, _rect, _add_guard_ring
 
 
 @gf.cell
@@ -36,52 +35,54 @@ def sky130_fd_pr__esd_nfet_01v8(
     """
     c = gf.Component()
 
-    info = _mosfet_core(
-        c,
-        gate_width=gate_width,
-        gate_length=gate_length,
-        sd_width=sd_width,
-        nf=nf,
-        end_cap=end_cap,
-        is_pmos=False,
-    )
+    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=False)
 
-    diff_w = info["diff_w"]
-    diff_h = info["diff_h"]
-    implant_enc = info["implant_enc"]
+    dhx = info["diff_half_x"]
+    hw = info["hw"]
+    enc = info["implant_enc"]
 
     # ---- areaidesd marker layer ----
-    # Cover the full diffusion area plus the implant enclosure margin.
-    _add_rect(
-        c,
-        LAYER.areaidesd,
-        -implant_enc,
-        -implant_enc,
-        diff_w + 2 * implant_enc,
-        diff_h + 2 * implant_enc,
-    )
+    _rect(c, LAYER.areaidesd, -(dhx + enc), -(hw + enc), dhx + enc, hw + enc)
 
     # ---- Guard ring ----
     if guard_ring:
-        ring_spacing = 0.27
-        ring_width = 0.34
-        pc_pad_h = info["pc_pad_h"]
-        device_top = diff_h + end_cap + pc_pad_h
-        device_bottom = -(end_cap + pc_pad_h)
-        device_height = device_top - device_bottom
-
-        gr = c.add_ref(
-            pwell_guard_ring(
-                inner_width=diff_w,
-                inner_height=device_height,
-                ring_width=ring_width,
-                spacing=ring_spacing,
-            )
-        )
-        gr.move((0, device_bottom))
+        _add_guard_ring(c, info, is_pmos=False)
 
     # ---- Ports ----
-    _add_ports(c, info, gate_width, gate_length, sd_width, end_cap)
+    sd = info["sd_centers_x"]
+    gpc = info["gate_to_polycont"]
+    c.add_port(
+        name="GATE",
+        center=(info["gate_centers_x"][0], 0.0),
+        width=gate_width,
+        orientation=0,
+        layer=LAYER.polydrawing,
+        port_type="electrical",
+    )
+    c.add_port(
+        name="SOURCE",
+        center=(sd[-1], 0.0),
+        width=gate_width,
+        orientation=0,
+        layer=LAYER.li1drawing,
+        port_type="electrical",
+    )
+    c.add_port(
+        name="DRAIN",
+        center=(sd[0], 0.0),
+        width=gate_width,
+        orientation=180,
+        layer=LAYER.li1drawing,
+        port_type="electrical",
+    )
+    c.add_port(
+        name="BODY",
+        center=(0.0, -(hw + gpc)),
+        width=gate_width,
+        orientation=270,
+        layer=LAYER.li1drawing,
+        port_type="electrical",
+    )
 
     return c
 
