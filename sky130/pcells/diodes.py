@@ -1,46 +1,182 @@
 """Diode pcell generators for sky130.
 
 Provides N+/P-well and P+/N-well diode parametric cells matching the sky130
-process device geometries, including diffusion implant layers, licon contacts,
-li1 pads, and optional guard rings.
+Magic VLSI reference geometry, including inline guard ring tap geometry with
+licon contacts, mcon, met1, and implant/well layers.
 """
 
 import gdsfactory as gf
 
 from sky130.layers import LAYER
-from sky130.pcells.contact import licon_array
-from sky130.pcells.guard_ring import nwell_guard_ring, pwell_guard_ring
+from sky130.pcells.contact import contact_array
 
 
-def _add_rect(c: gf.Component, layer, x: float, y: float, w: float, h: float):
-    """Add a rectangle to a component using polygon coordinates."""
-    c.add_polygon(
-        [(x, y), (x + w, y), (x + w, y + h), (x, y + h)],
-        layer=layer,
+# ---------------------------------------------------------------------------
+# Geometry constants (um) derived from Magic reference
+# ---------------------------------------------------------------------------
+
+_IMPLANT_ENC = 0.125  # NSDM / PSDM enclosure beyond diffusion or tap
+_NWELL_ENC = 0.18  # N-well enclosure beyond inner guard ring tap
+_RING_SPACING = 0.34  # gap from diff edge (or nwell edge) to guard ring inner edge
+_RING_WIDTH = 0.17  # width of each guard ring tap segment
+_LICON_SIZE = 0.17  # licon contact size
+_LICON_SPACE = 0.17  # licon contact spacing
+_LICON_ENC = 0.06  # licon enclosure within diff
+_MCON_SIZE = 0.17  # mcon contact size
+_MCON_SPACE = 0.19  # mcon contact spacing
+_MCON_ENC = 0.14  # mcon enclosure within diff area
+_RING_LICON_ENC_BASE = 0.31  # licon enclosure from inner edge of guard ring
+# Horizontal segments (with corner overlap) add _RING_WIDTH to this base.
+_RING_LICON_ENC_HORIZ = _RING_LICON_ENC_BASE + _RING_WIDTH  # 0.48
+_RING_LICON_ENC_VERT = _RING_LICON_ENC_BASE  # 0.31
+
+
+def _add_box(c: gf.Component, layer, x0: float, y0: float, x1: float, y1: float):
+    """Add a rectangle to *c* given (x0, y0) to (x1, y1) corners."""
+    c.add_polygon([(x0, y0), (x1, y0), (x1, y1), (x0, y1)], layer=layer)
+
+
+def _contact_array_eps(
+    width: float,
+    height: float,
+    contact_layer,
+    contact_size: float,
+    contact_spacing: float,
+    enc_x: float,
+    enc_y: float,
+) -> gf.Component:
+    """Contact array with epsilon tolerance to avoid floating-point floor errors."""
+    return contact_array(
+        width=width,
+        height=height,
+        contact_layer=contact_layer,
+        contact_size=(contact_size, contact_size),
+        contact_spacing=(contact_spacing, contact_spacing),
+        enclosure=(enc_x, enc_y),
     )
+
+
+def _guard_ring_contacts(
+    c: gf.Component,
+    seg_x: float,
+    seg_y: float,
+    seg_w: float,
+    seg_h: float,
+):
+    """Place licon contacts on one guard ring tap segment.
+
+    Horizontal segments (top/bottom, wider than tall) have corner overlap so
+    they use the larger enclosure (_RING_LICON_ENC_HORIZ = 0.48) in the long
+    direction and zero in the short direction.
+
+    Vertical segments (left/right, taller than wide) have no corner overlap so
+    they use the smaller enclosure (_RING_LICON_ENC_VERT = 0.31) in the long
+    direction and zero in the short direction.
+    """
+    if seg_w >= seg_h:
+        # horizontal segment (top / bottom)
+        enc_x = _RING_LICON_ENC_HORIZ
+        enc_y = 0.0
+    else:
+        # vertical segment (left / right)
+        enc_x = 0.0
+        enc_y = _RING_LICON_ENC_VERT
+
+    cont = c.add_ref(
+        _contact_array_eps(
+            width=seg_w,
+            height=seg_h,
+            contact_layer=LAYER.licon1drawing,
+            contact_size=_LICON_SIZE,
+            contact_spacing=_LICON_SPACE,
+            enc_x=enc_x,
+            enc_y=enc_y,
+        )
+    )
+    cont.move((seg_x, seg_y))
+
+
+def _draw_ring(
+    c: gf.Component,
+    inner_half: float,
+    ring_width: float,
+    tap_layer,
+    implant_layer,
+    li1_layer,
+    with_licon: bool = True,
+):
+    """Draw one rectangular guard ring centered at origin.
+
+    The ring inner edge is at +/-*inner_half*, ring outer edge at
+    +/-(inner_half + ring_width).  Tap, implant, li1, and licon contacts are
+    placed on all four segments.
+
+    Returns (outer_half,) for downstream geometry.
+    """
+    ih = inner_half
+    rw = ring_width
+    oh = ih + rw  # outer half-extent
+
+    # Four tap / li1 segments (top, bottom full width; left, right full height
+    # with corner overlap).
+    segs = [
+        # (x0, y0, x1, y1)
+        (-oh, ih, oh, oh),  # top
+        (-oh, -oh, oh, -ih),  # bottom
+        (-oh, -ih, -ih, ih),  # left
+        (ih, -ih, oh, ih),  # right
+    ]
+
+    for x0, y0, x1, y1 in segs:
+        _add_box(c, tap_layer, x0, y0, x1, y1)
+        _add_box(c, li1_layer, x0, y0, x1, y1)
+
+    # Implant: 4 segments extending _IMPLANT_ENC beyond tap
+    ie = _IMPLANT_ENC
+    imp_oh = oh + ie
+    imp_ih = ih - ie
+    imp_segs = [
+        (-imp_oh, imp_ih, imp_oh, imp_oh),  # top
+        (-imp_oh, -imp_oh, imp_oh, -imp_ih),  # bottom
+        (-imp_oh, -imp_ih, -imp_ih, imp_ih),  # left
+        (imp_ih, -imp_ih, imp_oh, imp_ih),  # right
+    ]
+    for x0, y0, x1, y1 in imp_segs:
+        _add_box(c, implant_layer, x0, y0, x1, y1)
+
+    # Licon contacts on each segment
+    if with_licon:
+        for x0, y0, x1, y1 in segs:
+            _guard_ring_contacts(c, x0, y0, x1 - x0, y1 - y0)
+
+    return oh
+
+
+# ---------------------------------------------------------------------------
+# pw2nd (N+/P-well) diode
+# ---------------------------------------------------------------------------
 
 
 @gf.cell
 def sky130_fd_pr__diode_pw2nd_05v5(
-    diode_width: float = 0.42,
-    diode_length: float = 0.42,
-    guard_ring: bool = True,
+    diode_width: float = 0.45,
+    diode_length: float = 0.45,
 ) -> gf.Component:
-    """Return an N+/P-well diode (cathode is N+ diffusion in P-well substrate).
+    """Return an N+/P-well diode (cathode = N+ diffusion in P-well substrate).
 
-    Geometry: diffdrawing rectangle with NSDM implant, licon contacts, and
-    li1 pad.  An optional P+ substrate guard ring (pwell type) surrounds the
-    diode.
+    Geometry centered at origin, matching Magic VLSI reference layout:
+    - diff + NSDM implant (cathode)
+    - P+ tap guard ring with PSDM implant (anode / substrate)
+    - licon on diff and guard ring, mcon + met1 on diff
+    - areaid_diode marker
 
     Ports:
-      CATHODE — on li1drawing at top of diffusion area.
-      ANODE   — on li1drawing at the guard ring bottom (or bottom of cell when
-                guard_ring=False).
+      CATHODE -- on met1drawing over diffusion.
+      ANODE   -- on li1drawing at guard ring bottom.
 
     Args:
         diode_width: width of the diode diffusion in um.
         diode_length: length (height) of the diode diffusion in um.
-        guard_ring: when True, add a pwell guard ring around the diode.
 
     .. plot::
       :include-source:
@@ -52,108 +188,124 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     """
     c = gf.Component()
 
-    li_enc = 0.08  # li1 enclosure beyond licon/contact area
-    nsdm_enc = 0.125  # NSDM enclosure beyond diffusion
+    hw = diode_width / 2  # half-width
+    hl = diode_length / 2  # half-length
 
-    dw = diode_width
-    dl = diode_length
+    # --- Diffusion ---
+    _add_box(c, LAYER.diffdrawing, -hw, -hl, hw, hl)
 
-    # --- Diffusion rectangle ---
-    _add_rect(c, LAYER.diffdrawing, 0.0, 0.0, dw, dl)
+    # --- areaid_diode ---
+    _add_box(c, LAYER.areaiddiode, -hw, -hl, hw, hl)
 
-    # --- NSDM implant extends nsdm_enc beyond diffusion ---
-    _add_rect(
-        c,
-        LAYER.nsdmdrawing,
-        -nsdm_enc,
-        -nsdm_enc,
-        dw + 2 * nsdm_enc,
-        dl + 2 * nsdm_enc,
+    # --- NSDM implant over diff ---
+    _add_box(c, LAYER.nsdmdrawing, -hw - _IMPLANT_ENC, -hl - _IMPLANT_ENC,
+             hw + _IMPLANT_ENC, hl + _IMPLANT_ENC)
+
+    # --- Licon contacts on diff ---
+    licon_ref = c.add_ref(
+        _contact_array_eps(
+            width=diode_width, height=diode_length,
+            contact_layer=LAYER.licon1drawing,
+            contact_size=_LICON_SIZE, contact_spacing=_LICON_SPACE,
+            enc_x=_LICON_ENC, enc_y=_LICON_ENC,
+        )
+    )
+    licon_ref.move((-hw, -hl))
+
+    # --- Li1 pad on diff ---
+    li1_hx = hw + 0.02
+    li1_hy = hl - 0.06
+    _add_box(c, LAYER.li1drawing, -li1_hx, -li1_hy, li1_hx, li1_hy)
+
+    # --- Mcon contacts on diff ---
+    mcon_ref = c.add_ref(
+        _contact_array_eps(
+            width=diode_width, height=diode_length,
+            contact_layer=LAYER.mcondrawing,
+            contact_size=_MCON_SIZE, contact_spacing=_MCON_SPACE,
+            enc_x=_MCON_ENC, enc_y=_MCON_ENC,
+        )
+    )
+    mcon_ref.move((-hw, -hl))
+
+    # --- Met1 pad on diff ---
+    met1_hx = hw
+    met1_hy = hl - 0.03
+    _add_box(c, LAYER.met1drawing, -met1_hx, -met1_hy, met1_hx, met1_hy)
+
+    # --- P+ guard ring (pwell / substrate ring) ---
+    ring_inner_half = hw + _RING_SPACING  # == hl + _RING_SPACING when square
+    # Use max(hw, hl) + spacing as inner half to handle non-square (conservative)
+    ring_inner_half_x = hw + _RING_SPACING
+    ring_inner_half_y = hl + _RING_SPACING
+    # For square diodes (all reference cases), these are equal.
+    ring_ih = max(ring_inner_half_x, ring_inner_half_y)
+    _draw_ring(
+        c, ring_ih, _RING_WIDTH,
+        tap_layer=LAYER.tapdrawing,
+        implant_layer=LAYER.psdmdrawing,
+        li1_layer=LAYER.li1drawing,
     )
 
-    # --- Licon contacts within diffusion ---
-    licon_ref = c.add_ref(licon_array(width=dw, height=dl))
-    licon_ref.move((0.0, 0.0))
+    ring_oh = ring_ih + _RING_WIDTH
 
-    # --- Li1 pad covering diffusion + small enclosure ---
-    li1_x = -li_enc
-    li1_y = -li_enc
-    li1_w = dw + 2 * li_enc
-    li1_h = dl + 2 * li_enc
-    _add_rect(c, LAYER.li1drawing, li1_x, li1_y, li1_w, li1_h)
+    # --- Boundary marker (235,4) ---
+    bnd = ring_ih + ring_oh
+    _add_box(c, LAYER.prBoundaryboundary, -bnd, -bnd, bnd, bnd)
 
-    # --- CATHODE port on li1drawing at top edge of diffusion li1 pad ---
+    # --- Labels ---
+    c.add_label("D1", position=(0.0, 0.0), layer=LAYER.li1label)
+    d2_y = -(ring_ih + ring_oh) / 2
+    c.add_label("D2", position=(0.0, d2_y), layer=LAYER.li1label)
+
+    # --- Ports ---
     c.add_port(
         name="CATHODE",
-        center=(dw / 2, li1_y + li1_h),
-        width=li1_w,
+        center=(0.0, 0.0),
+        width=diode_width,
         orientation=90,
+        layer=LAYER.met1drawing,
+        port_type="electrical",
+    )
+    c.add_port(
+        name="ANODE",
+        center=(0.0, d2_y),
+        width=2 * ring_oh,
+        orientation=270,
         layer=LAYER.li1drawing,
         port_type="electrical",
     )
 
-    # --- Guard ring (pwell type — P+ substrate ring) ---
-    if guard_ring:
-        ring_spacing = 0.27
-        ring_width = 0.34
-        c.add_ref(
-            pwell_guard_ring(
-                inner_width=dw,
-                inner_height=dl,
-                ring_width=ring_width,
-                spacing=ring_spacing,
-            )
-        )
-        # Guard ring origin is at (0,0), matching the diode origin.
-        # The VSS port from pwell_guard_ring is at the bottom of the ring.
-        # We re-expose it as ANODE.
-        ring_outer_bottom = -(ring_spacing + ring_width)
-        ring_outer_left = -(ring_spacing + ring_width)
-        ring_outer_width = dw + 2 * (ring_spacing + ring_width)
-
-        c.add_port(
-            name="ANODE",
-            center=(dw / 2 + ring_outer_left + ring_outer_width / 2, ring_outer_bottom),
-            width=ring_outer_width,
-            orientation=270,
-            layer=LAYER.li1drawing,
-            port_type="electrical",
-        )
-    else:
-        # Without guard ring, ANODE port at bottom of li1 pad
-        c.add_port(
-            name="ANODE",
-            center=(dw / 2, li1_y),
-            width=li1_w,
-            orientation=270,
-            layer=LAYER.li1drawing,
-            port_type="electrical",
-        )
-
     return c
+
+
+# ---------------------------------------------------------------------------
+# pd2nw (P+/N-well) diode
+# ---------------------------------------------------------------------------
 
 
 @gf.cell
 def sky130_fd_pr__diode_pd2nw_05v5(
-    diode_width: float = 0.42,
-    diode_length: float = 0.42,
-    guard_ring: bool = True,
+    diode_width: float = 0.45,
+    diode_length: float = 0.45,
 ) -> gf.Component:
-    """Return a P+/N-well diode (anode is P+ diffusion in N-well).
+    """Return a P+/N-well diode (anode = P+ diffusion in N-well).
 
-    Geometry: diffdrawing rectangle with PSDM implant inside nwelldrawing,
-    licon contacts, and li1 pad.  An optional N-well guard ring surrounds
-    the diode.
+    Geometry centered at origin, matching Magic VLSI reference layout:
+    - diff + PSDM implant (anode) inside N-well
+    - Inner N+ tap guard ring with NSDM implant (cathode / N-well contact)
+    - N-well covering diff + inner ring + 0.18 um extension
+    - Outer P+ tap guard ring with PSDM implant (substrate ring)
+    - licon on diff and both guard rings, mcon + met1 on diff
+    - areaid_diode marker
 
     Ports:
-      ANODE   — on li1drawing at top of diffusion area.
-      CATHODE — on li1drawing at the guard ring bottom (or bottom of cell when
-                guard_ring=False).
+      ANODE   -- on met1drawing over diffusion.
+      CATHODE -- on li1drawing at inner guard ring bottom.
 
     Args:
         diode_width: width of the diode diffusion in um.
         diode_length: length (height) of the diode diffusion in um.
-        guard_ring: when True, add an nwell guard ring around the diode.
 
     .. plot::
       :include-source:
@@ -165,94 +317,101 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     """
     c = gf.Component()
 
-    li_enc = 0.08  # li1 enclosure beyond licon/contact area
-    psdm_enc = 0.125  # PSDM enclosure beyond diffusion
-    nwell_enc = 0.18  # N-well enclosure beyond diffusion
+    hw = diode_width / 2
+    hl = diode_length / 2
 
-    dw = diode_width
-    dl = diode_length
+    # --- Diffusion ---
+    _add_box(c, LAYER.diffdrawing, -hw, -hl, hw, hl)
 
-    # --- N-well enclosing the diffusion ---
-    _add_rect(
-        c,
-        LAYER.nwelldrawing,
-        -nwell_enc,
-        -nwell_enc,
-        dw + 2 * nwell_enc,
-        dl + 2 * nwell_enc,
+    # --- areaid_diode ---
+    _add_box(c, LAYER.areaiddiode, -hw, -hl, hw, hl)
+
+    # --- PSDM implant over diff (P+ diffusion) ---
+    _add_box(c, LAYER.psdmdrawing, -hw - _IMPLANT_ENC, -hl - _IMPLANT_ENC,
+             hw + _IMPLANT_ENC, hl + _IMPLANT_ENC)
+
+    # --- Licon contacts on diff ---
+    licon_ref = c.add_ref(
+        _contact_array_eps(
+            width=diode_width, height=diode_length,
+            contact_layer=LAYER.licon1drawing,
+            contact_size=_LICON_SIZE, contact_spacing=_LICON_SPACE,
+            enc_x=_LICON_ENC, enc_y=_LICON_ENC,
+        )
+    )
+    licon_ref.move((-hw, -hl))
+
+    # --- Li1 pad on diff ---
+    li1_hx = hw + 0.02
+    li1_hy = hl - 0.06
+    _add_box(c, LAYER.li1drawing, -li1_hx, -li1_hy, li1_hx, li1_hy)
+
+    # --- Mcon contacts on diff ---
+    mcon_ref = c.add_ref(
+        _contact_array_eps(
+            width=diode_width, height=diode_length,
+            contact_layer=LAYER.mcondrawing,
+            contact_size=_MCON_SIZE, contact_spacing=_MCON_SPACE,
+            enc_x=_MCON_ENC, enc_y=_MCON_ENC,
+        )
+    )
+    mcon_ref.move((-hw, -hl))
+
+    # --- Met1 pad on diff ---
+    met1_hx = hw
+    met1_hy = hl - 0.03
+    _add_box(c, LAYER.met1drawing, -met1_hx, -met1_hy, met1_hx, met1_hy)
+
+    # --- Inner guard ring: N+ tap ring inside N-well ---
+    inner_ring_ih = max(hw, hl) + _RING_SPACING
+    inner_ring_oh = _draw_ring(
+        c, inner_ring_ih, _RING_WIDTH,
+        tap_layer=LAYER.tapdrawing,
+        implant_layer=LAYER.nsdmdrawing,
+        li1_layer=LAYER.li1drawing,
     )
 
-    # --- Diffusion rectangle ---
-    _add_rect(c, LAYER.diffdrawing, 0.0, 0.0, dw, dl)
+    # --- N-well: covers diff + inner ring + 0.18 extension ---
+    nwell_half = inner_ring_oh + _NWELL_ENC
+    _add_box(c, LAYER.nwelldrawing, -nwell_half, -nwell_half, nwell_half, nwell_half)
 
-    # --- PSDM implant extends psdm_enc beyond diffusion ---
-    _add_rect(
-        c,
-        LAYER.psdmdrawing,
-        -psdm_enc,
-        -psdm_enc,
-        dw + 2 * psdm_enc,
-        dl + 2 * psdm_enc,
+    # --- Outer guard ring: P+ tap ring in substrate ---
+    outer_ring_ih = nwell_half + _RING_SPACING
+    _draw_ring(
+        c, outer_ring_ih, _RING_WIDTH,
+        tap_layer=LAYER.tapdrawing,
+        implant_layer=LAYER.psdmdrawing,
+        li1_layer=LAYER.li1drawing,
     )
 
-    # --- Licon contacts within diffusion ---
-    licon_ref = c.add_ref(licon_array(width=dw, height=dl))
-    licon_ref.move((0.0, 0.0))
+    outer_ring_oh = outer_ring_ih + _RING_WIDTH
 
-    # --- Li1 pad covering diffusion + small enclosure ---
-    li1_x = -li_enc
-    li1_y = -li_enc
-    li1_w = dw + 2 * li_enc
-    li1_h = dl + 2 * li_enc
-    _add_rect(c, LAYER.li1drawing, li1_x, li1_y, li1_w, li1_h)
+    # --- Boundary marker (235,4) — based on inner ring geometry ---
+    bnd = inner_ring_ih + inner_ring_oh
+    _add_box(c, LAYER.prBoundaryboundary, -bnd, -bnd, bnd, bnd)
 
-    # --- ANODE port on li1drawing at top edge of diffusion li1 pad ---
+    # --- Labels ---
+    c.add_label("D1", position=(0.0, 0.0), layer=LAYER.li1label)
+    d2_y = -(inner_ring_ih + inner_ring_oh) / 2
+    c.add_label("D2", position=(0.0, d2_y), layer=LAYER.li1label)
+
+    # --- Ports ---
     c.add_port(
         name="ANODE",
-        center=(dw / 2, li1_y + li1_h),
-        width=li1_w,
+        center=(0.0, 0.0),
+        width=diode_width,
         orientation=90,
+        layer=LAYER.met1drawing,
+        port_type="electrical",
+    )
+    c.add_port(
+        name="CATHODE",
+        center=(0.0, d2_y),
+        width=2 * inner_ring_oh,
+        orientation=270,
         layer=LAYER.li1drawing,
         port_type="electrical",
     )
-
-    # --- Guard ring (nwell type — N+ tap ring in N-well) ---
-    if guard_ring:
-        ring_spacing = 0.27
-        ring_width = 0.34
-        c.add_ref(
-            nwell_guard_ring(
-                inner_width=dw,
-                inner_height=dl,
-                ring_width=ring_width,
-                spacing=ring_spacing,
-            )
-        )
-        # Guard ring origin is at (0,0), matching the diode origin.
-        # The VDD port from nwell_guard_ring is at the bottom of the ring.
-        # We re-expose it as CATHODE.
-        ring_outer_bottom = -(ring_spacing + ring_width)
-        ring_outer_left = -(ring_spacing + ring_width)
-        ring_outer_width = dw + 2 * (ring_spacing + ring_width)
-
-        c.add_port(
-            name="CATHODE",
-            center=(dw / 2 + ring_outer_left + ring_outer_width / 2, ring_outer_bottom),
-            width=ring_outer_width,
-            orientation=270,
-            layer=LAYER.li1drawing,
-            port_type="electrical",
-        )
-    else:
-        # Without guard ring, CATHODE port at bottom of li1 pad
-        c.add_port(
-            name="CATHODE",
-            center=(dw / 2, li1_y),
-            width=li1_w,
-            orientation=270,
-            layer=LAYER.li1drawing,
-            port_type="electrical",
-        )
 
     return c
 

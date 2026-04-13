@@ -44,13 +44,18 @@ def contact_array(
     avail_w = width - 2 * ex
     avail_h = height - 2 * ey
 
+    # Epsilon tolerance to avoid floating-point rounding artifacts.
+    _EPS = 1e-6
+
     # Return empty component if area is too small for even one contact
-    if avail_w < sx or avail_h < sy:
+    if avail_w < sx - _EPS or avail_h < sy - _EPS:
         return c
 
-    # Floor rounding matches Magic's contact placement behavior
-    nc = 1 + floor((avail_w - sx) / (sx + spx))
-    nr = 1 + floor((avail_h - sy) / (sy + spy))
+    # Floor rounding matches Magic's contact placement behavior.
+    # Add epsilon before floor to compensate for floating-point drift
+    # (e.g. 0.34/0.34 yielding 0.9999… instead of 1.0).
+    nc = 1 + floor((avail_w - sx) / (sx + spx) + _EPS)
+    nr = 1 + floor((avail_h - sy) / (sy + spy) + _EPS)
 
     nc = max(nc, 1)
     nr = max(nr, 1)
