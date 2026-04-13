@@ -80,18 +80,15 @@ for device_name, device_cfg in config["devices"].items():
 
         # Write Tcl script to temp file (avoids heredoc/stdin issues)
         tcl_script = f"""
-# Get device defaults
+# Get device defaults and merge overrides
 set defaults [sky130::{device_name}_defaults]
-
-# Override with sweep parameters
 set overrides [dict create {override_str}]
 set params [dict merge $defaults $overrides]
 
 # Draw the device
-set cellname [sky130::{device_name}_draw $params]
+sky130::{device_name}_draw $params
 
-# Export to GDS
-load $cellname
+# Export current cell to GDS
 select top cell
 expand
 gds write {out_path}
@@ -102,11 +99,16 @@ quit -noprompt
             f.write(tcl_script)
             tcl_path = f.name
 
+        pdk_root = os.environ["PDK_ROOT"]
+        tech_file = f"{pdk_root}/sky130A/libs.tech/magic/sky130A.tech"
+        magicrc = f"{pdk_root}/sky130A/libs.tech/magic/sky130A.magicrc"
+
+        # Use magicrc which sets up the full sky130 environment
         try:
             result = subprocess.run(
-                ["magic", "-dnull", "-noconsole", "-T", "sky130A", tcl_path],
-                capture_output=True, text=True, timeout=60,
-                env={**os.environ, "PDK_ROOT": os.environ["PDK_ROOT"]}
+                ["magic", "-dnull", "-noconsole", "-rcfile", magicrc, tcl_path],
+                capture_output=True, text=True, timeout=120,
+                env={**os.environ, "PDK_ROOT": pdk_root}
             )
             if out_path.exists() and out_path.stat().st_size > 0:
                 print(f"    OK ({out_path.stat().st_size} bytes)")

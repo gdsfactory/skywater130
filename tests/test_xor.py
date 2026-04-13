@@ -39,7 +39,7 @@ _REF_GDS_DIR = pathlib.Path(__file__).resolve().parent / "ref_gds"
 
 def _param_hash(params: dict) -> str:
     """Return a 12-character sha256 hex digest of the sorted JSON params."""
-    serialised = json.dumps(params, sort_keys=True, separators=(",", ":"))
+    serialised = json.dumps(params, sort_keys=True)
     return hashlib.sha256(serialised.encode()).hexdigest()[:12]
 
 

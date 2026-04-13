@@ -35,7 +35,7 @@ RUN git clone --depth 1 https://github.com/RTimothyEdwards/open_pdks.git /tmp/op
     rm -rf /tmp/open_pdks
 
 # Verify Magic works
-RUN magic -dnull -noconsole <<< 'puts "Magic OK: [info patchlevel]"; quit -noprompt'
+RUN echo 'puts "Magic OK: [info patchlevel]"; quit -noprompt' | magic -dnull -noconsole
 
 WORKDIR /work
 COPY sweep_params.json /work/sweep_params.json
