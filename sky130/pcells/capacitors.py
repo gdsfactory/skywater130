@@ -19,7 +19,6 @@ import gdsfactory as gf
 
 from sky130.layers import LAYER
 
-
 # ---------------------------------------------------------------------------
 # Helpers (same pattern as mosfets.py)
 # ---------------------------------------------------------------------------
@@ -95,17 +94,17 @@ def _via_array(
 # ---------------------------------------------------------------------------
 
 # Design-rule constants for M3/M4 MIM (from Magic reference geometry)
-_M31_MET3_ENC_CAPM = 0.200      # met3 enclosure of capm on left/top/bottom
-_M31_MET3_RIGHT_EXT = 1.960     # met3 extends this far to the right of capm
-_M31_MET4_TOP_INSET = 0.195     # met4 top-plate inset from capm on all sides
-_M31_MET4_BOT_WIDTH = 0.480     # met4 bottom-plate pickup strip width (X)
+_M31_MET3_ENC_CAPM = 0.200  # met3 enclosure of capm on left/top/bottom
+_M31_MET3_RIGHT_EXT = 1.960  # met3 extends this far to the right of capm
+_M31_MET4_TOP_INSET = 0.195  # met4 top-plate inset from capm on all sides
+_M31_MET4_BOT_WIDTH = 0.480  # met4 bottom-plate pickup strip width (X)
 _M31_MET4_BOT_INSET_R = 0.020  # met4 bot inset from met3 right edge
 _M31_MET4_BOT_INSET_Y = 0.060  # met4 bot inset from met3 top/bottom
 _M31_VIA3_SIZE = 0.200
 _M31_VIA3_PITCH = 0.400
-_M31_VIA3_ENC_TOP = 0.300       # via3 enclosure within capm for top plate
-_M31_VIA3_ENC_BOT_X = 0.140    # via3 enclosure within met4_bot (X)
-_M31_VIA3_ENC_BOT_Y = 0.140    # via3 enclosure within met4_bot (Y)
+_M31_VIA3_ENC_TOP = 0.300  # via3 enclosure within capm for top plate
+_M31_VIA3_ENC_BOT_X = 0.140  # via3 enclosure within met4_bot (X)
+_M31_VIA3_ENC_BOT_Y = 0.140  # via3 enclosure within met4_bot (Y)
 
 
 @gf.cell
@@ -241,17 +240,17 @@ def sky130_fd_pr__cap_mim_m3_1(
 # ---------------------------------------------------------------------------
 
 # Design-rule constants for M4/M5 MIM
-_M32_MET4_ENC_CAP2M = 0.400     # met4 enclosure of cap2m on left/top/bottom
-_M32_MET4_RIGHT_EXT = 3.090     # met4 extends this far to the right of cap2m
-_M32_MET5_TOP_INSET = 0.080     # met5 top-plate inset from cap2m on all sides
-_M32_MET5_BOT_WIDTH = 1.600     # met5 bottom-plate pickup strip width (X)
-_M32_MET5_BOT_EXT_R = 0.110     # met5 bot extends beyond met4 right edge
-_M32_MET5_BOT_EXT_Y = 0.005     # met5 bot extends beyond met4 top/bottom
+_M32_MET4_ENC_CAP2M = 0.400  # met4 enclosure of cap2m on left/top/bottom
+_M32_MET4_RIGHT_EXT = 3.090  # met4 extends this far to the right of cap2m
+_M32_MET5_TOP_INSET = 0.080  # met5 top-plate inset from cap2m on all sides
+_M32_MET5_BOT_WIDTH = 1.600  # met5 bottom-plate pickup strip width (X)
+_M32_MET5_BOT_EXT_R = 0.110  # met5 bot extends beyond met4 right edge
+_M32_MET5_BOT_EXT_Y = 0.005  # met5 bot extends beyond met4 top/bottom
 _M32_VIA4_SIZE = 0.800
 _M32_VIA4_PITCH = 1.600
-_M32_VIA4_ENC_TOP_X = 0.000     # via4 within cap2m: use full area (centered)
+_M32_VIA4_ENC_TOP_X = 0.000  # via4 within cap2m: use full area (centered)
 _M32_VIA4_ENC_TOP_Y = 0.000
-_M32_VIA4_ENC_BOT_X = 0.400     # via4 within met5_bot: 0.400 enclosure
+_M32_VIA4_ENC_BOT_X = 0.400  # via4 within met5_bot: 0.400 enclosure
 _M32_VIA4_ENC_BOT_Y = 0.400
 
 

@@ -10,7 +10,6 @@ import gdsfactory as gf
 from sky130.layers import LAYER
 from sky130.pcells.contact import contact_array
 
-
 # ---------------------------------------------------------------------------
 # Geometry constants (um) derived from Magic reference
 # ---------------------------------------------------------------------------
@@ -123,10 +122,10 @@ def _draw_ring(
     # Four tap / li1 segments (top, bottom full width; left, right inner height).
     segs = [
         # (x0, y0, x1, y1)
-        (-ohx, ihy, ohx, ohy),   # top
+        (-ohx, ihy, ohx, ohy),  # top
         (-ohx, -ohy, ohx, -ihy),  # bottom
         (-ohx, -ihy, -ihx, ihy),  # left
-        (ihx, -ihy, ohx, ihy),   # right
+        (ihx, -ihy, ohx, ihy),  # right
     ]
 
     for x0, y0, x1, y1 in segs:
@@ -140,10 +139,10 @@ def _draw_ring(
     imp_ihx = ihx - ie
     imp_ihy = ihy - ie
     imp_segs = [
-        (-imp_ohx, imp_ihy, imp_ohx, imp_ohy),   # top
+        (-imp_ohx, imp_ihy, imp_ohx, imp_ohy),  # top
         (-imp_ohx, -imp_ohy, imp_ohx, -imp_ihy),  # bottom
         (-imp_ohx, -imp_ihy, -imp_ihx, imp_ihy),  # left
-        (imp_ihx, -imp_ihy, imp_ohx, imp_ihy),   # right
+        (imp_ihx, -imp_ihy, imp_ohx, imp_ihy),  # right
     ]
     for x0, y0, x1, y1 in imp_segs:
         _add_box(c, implant_layer, x0, y0, x1, y1)
@@ -202,16 +201,25 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     _add_box(c, LAYER.areaiddiode, -hw, -hl, hw, hl)
 
     # --- NSDM implant over diff ---
-    _add_box(c, LAYER.nsdmdrawing, -hw - _IMPLANT_ENC, -hl - _IMPLANT_ENC,
-             hw + _IMPLANT_ENC, hl + _IMPLANT_ENC)
+    _add_box(
+        c,
+        LAYER.nsdmdrawing,
+        -hw - _IMPLANT_ENC,
+        -hl - _IMPLANT_ENC,
+        hw + _IMPLANT_ENC,
+        hl + _IMPLANT_ENC,
+    )
 
     # --- Licon contacts on diff ---
     licon_ref = c.add_ref(
         _contact_array_eps(
-            width=diode_width, height=diode_length,
+            width=diode_width,
+            height=diode_length,
             contact_layer=LAYER.licon1drawing,
-            contact_size=_LICON_SIZE, contact_spacing=_LICON_SPACE,
-            enc_x=_LICON_ENC, enc_y=_LICON_ENC,
+            contact_size=_LICON_SIZE,
+            contact_spacing=_LICON_SPACE,
+            enc_x=_LICON_ENC,
+            enc_y=_LICON_ENC,
         )
     )
     licon_ref.move((-hw, -hl))
@@ -229,10 +237,13 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     # --- Mcon contacts on diff ---
     mcon_ref = c.add_ref(
         _contact_array_eps(
-            width=diode_width, height=diode_length,
+            width=diode_width,
+            height=diode_length,
             contact_layer=LAYER.mcondrawing,
-            contact_size=_MCON_SIZE, contact_spacing=_MCON_SPACE,
-            enc_x=_MCON_ENC, enc_y=_MCON_ENC,
+            contact_size=_MCON_SIZE,
+            contact_spacing=_MCON_SPACE,
+            enc_x=_MCON_ENC,
+            enc_y=_MCON_ENC,
         )
     )
     mcon_ref.move((-hw, -hl))
@@ -250,7 +261,10 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     ring_ih_x = hw + _RING_SPACING
     ring_ih_y = hl + _RING_SPACING
     ring_oh_x, ring_oh_y = _draw_ring(
-        c, ring_ih_x, ring_ih_y, _RING_WIDTH,
+        c,
+        ring_ih_x,
+        ring_ih_y,
+        _RING_WIDTH,
         tap_layer=LAYER.tapdrawing,
         implant_layer=LAYER.psdmdrawing,
         li1_layer=LAYER.li1drawing,
@@ -335,16 +349,25 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     _add_box(c, LAYER.areaiddiode, -hw, -hl, hw, hl)
 
     # --- PSDM implant over diff (P+ diffusion) ---
-    _add_box(c, LAYER.psdmdrawing, -hw - _IMPLANT_ENC, -hl - _IMPLANT_ENC,
-             hw + _IMPLANT_ENC, hl + _IMPLANT_ENC)
+    _add_box(
+        c,
+        LAYER.psdmdrawing,
+        -hw - _IMPLANT_ENC,
+        -hl - _IMPLANT_ENC,
+        hw + _IMPLANT_ENC,
+        hl + _IMPLANT_ENC,
+    )
 
     # --- Licon contacts on diff ---
     licon_ref = c.add_ref(
         _contact_array_eps(
-            width=diode_width, height=diode_length,
+            width=diode_width,
+            height=diode_length,
             contact_layer=LAYER.licon1drawing,
-            contact_size=_LICON_SIZE, contact_spacing=_LICON_SPACE,
-            enc_x=_LICON_ENC, enc_y=_LICON_ENC,
+            contact_size=_LICON_SIZE,
+            contact_spacing=_LICON_SPACE,
+            enc_x=_LICON_ENC,
+            enc_y=_LICON_ENC,
         )
     )
     licon_ref.move((-hw, -hl))
@@ -361,10 +384,13 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     # --- Mcon contacts on diff ---
     mcon_ref = c.add_ref(
         _contact_array_eps(
-            width=diode_width, height=diode_length,
+            width=diode_width,
+            height=diode_length,
             contact_layer=LAYER.mcondrawing,
-            contact_size=_MCON_SIZE, contact_spacing=_MCON_SPACE,
-            enc_x=_MCON_ENC, enc_y=_MCON_ENC,
+            contact_size=_MCON_SIZE,
+            contact_spacing=_MCON_SPACE,
+            enc_x=_MCON_ENC,
+            enc_y=_MCON_ENC,
         )
     )
     mcon_ref.move((-hw, -hl))
@@ -382,7 +408,10 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     inner_ih_x = hw + _RING_SPACING
     inner_ih_y = hl + _RING_SPACING
     inner_oh_x, inner_oh_y = _draw_ring(
-        c, inner_ih_x, inner_ih_y, _RING_WIDTH,
+        c,
+        inner_ih_x,
+        inner_ih_y,
+        _RING_WIDTH,
         tap_layer=LAYER.tapdrawing,
         implant_layer=LAYER.nsdmdrawing,
         li1_layer=LAYER.li1drawing,
@@ -397,7 +426,10 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     outer_ih_x = nwell_hx + _RING_SPACING
     outer_ih_y = nwell_hy + _RING_SPACING
     _draw_ring(
-        c, outer_ih_x, outer_ih_y, _RING_WIDTH,
+        c,
+        outer_ih_x,
+        outer_ih_y,
+        _RING_WIDTH,
         tap_layer=LAYER.tapdrawing,
         implant_layer=LAYER.psdmdrawing,
         li1_layer=LAYER.li1drawing,

@@ -10,7 +10,6 @@ All geometry is centered at the origin to match Magic's output coordinate system
 import gdsfactory as gf
 
 from sky130.layers import LAYER
-from sky130.pcells.guard_ring import nwell_guard_ring, pwell_guard_ring
 
 
 def _snap(val: float, grid: float = 0.005) -> float:
@@ -43,26 +42,26 @@ def _mosfet_core(
     """
     # ---- Magic design-rule constants ----
     contact_size = 0.17
-    diff_surround = 0.06       # Diffusion enclosure of licon contact
-    poly_surround = 0.08       # Poly enclosure of licon contact (on poly)
-    gate_to_diffcont = 0.145   # Gate edge to diff contact center (edge contacts)
+    diff_surround = 0.06  # Diffusion enclosure of licon contact
+    poly_surround = 0.08  # Poly enclosure of licon contact (on poly)
+    gate_to_diffcont = 0.145  # Gate edge to diff contact center (edge contacts)
     gate_to_polycont_n = 0.275  # Gate edge to poly contact center (NFET)
-    gate_to_polycont_p = 0.32   # Gate edge to poly contact center (PFET)
-    diff_extension = 0.29      # Diffusion extension beyond gate (nf=1 edge)
-    end_cap = 0.13             # Poly extension beyond diffusion (non-contact side)
-    implant_enc = 0.125        # Implant enclosure beyond diffusion
-    nwell_enc_x = 0.18         # Nwell enclosure of diff in x (PFET)
-    npc_ext = 0.02             # NPC extension beyond poly pad
-    met1_surround = 0.03       # Met1 surround of mcon contact
-    li1_ext_y = 0.02           # Li1 extension beyond diffusion edge for S/D
+    gate_to_polycont_p = 0.32  # Gate edge to poly contact center (PFET)
+    diff_extension = 0.29  # Diffusion extension beyond gate (nf=1 edge)
+    end_cap = 0.13  # Poly extension beyond diffusion (non-contact side)
+    implant_enc = 0.125  # Implant enclosure beyond diffusion
+    nwell_enc_x = 0.18  # Nwell enclosure of diff in x (PFET)
+    npc_ext = 0.02  # NPC extension beyond poly pad
+    met1_surround = 0.03  # Met1 surround of mcon contact
+    li1_ext_y = 0.02  # Li1 extension beyond diffusion edge for S/D
 
     gate_to_polycont = gate_to_polycont_p if is_pmos else gate_to_polycont_n
 
     # ---- Derived dimensions ----
     W = gate_width
     L = gate_length
-    hw = W / 2.0    # half-width (y direction)
-    hl = L / 2.0    # half-length (x direction)
+    hw = W / 2.0  # half-width (y direction)
+    hl = L / 2.0  # half-length (x direction)
 
     # Poly contact pad dimensions
     pc_pad_size = contact_size + 2 * poly_surround  # 0.33
@@ -78,8 +77,9 @@ def _mosfet_core(
     # wider spacing (0.165 vs 0.145).  A minimum pitch of 0.48 is enforced
     # so intermediate L values (e.g. L=0.18) maintain adequate clearance.
     if L < contact_size:
-        shared_gate_to_diffcont = max(gate_to_diffcont,
-                                      contact_size / 2 + poly_surround)
+        shared_gate_to_diffcont = max(
+            gate_to_diffcont, contact_size / 2 + poly_surround
+        )
     else:
         shared_gate_to_diffcont = gate_to_diffcont
 
@@ -101,8 +101,7 @@ def _mosfet_core(
         ]
         # S/D contact centers: nf+1 contacts
         sd_centers_x = [
-            _snap(-(nf / 2.0) * finger_pitch + i * finger_pitch)
-            for i in range(nf + 1)
+            _snap(-(nf / 2.0) * finger_pitch + i * finger_pitch) for i in range(nf + 1)
         ]
         # Diffusion extends diff_surround + contact_size/2 beyond outermost contact
         diff_half_x = abs(sd_centers_x[-1]) + contact_size / 2 + diff_surround
@@ -142,19 +141,31 @@ def _mosfet_core(
                 # Gate rect connects top and bottom pads
                 poly_top_gate = hw + gate_ext_contact
                 poly_bot_gate = -(hw + gate_ext_contact)
-                _rect(c, LAYER.polydrawing, gx - hl, poly_bot_gate, gx + hl, poly_top_gate)
+                _rect(
+                    c, LAYER.polydrawing, gx - hl, poly_bot_gate, gx + hl, poly_top_gate
+                )
 
                 # Top poly contact pad
                 pad_half = pc_pad_size / 2.0
                 pad_cy_top = hw + gate_to_polycont
-                _rect(c, LAYER.polydrawing,
-                      gx - pad_half, pad_cy_top - pad_half,
-                      gx + pad_half, pad_cy_top + pad_half)
+                _rect(
+                    c,
+                    LAYER.polydrawing,
+                    gx - pad_half,
+                    pad_cy_top - pad_half,
+                    gx + pad_half,
+                    pad_cy_top + pad_half,
+                )
                 # Bottom poly contact pad
                 pad_cy_bot = -(hw + gate_to_polycont)
-                _rect(c, LAYER.polydrawing,
-                      gx - pad_half, pad_cy_bot - pad_half,
-                      gx + pad_half, pad_cy_bot + pad_half)
+                _rect(
+                    c,
+                    LAYER.polydrawing,
+                    gx - pad_half,
+                    pad_cy_bot - pad_half,
+                    gx + pad_half,
+                    pad_cy_bot + pad_half,
+                )
             else:
                 # Multi-finger with narrow gate
                 pad_half = pc_pad_size / 2.0
@@ -162,22 +173,46 @@ def _mosfet_core(
                     # Gate extends up to pad base, down to end_cap
                     poly_top_gate = hw + gate_ext_contact
                     poly_bot_gate = -(hw + gate_ext_nocont)
-                    _rect(c, LAYER.polydrawing, gx - hl, poly_bot_gate, gx + hl, poly_top_gate)
+                    _rect(
+                        c,
+                        LAYER.polydrawing,
+                        gx - hl,
+                        poly_bot_gate,
+                        gx + hl,
+                        poly_top_gate,
+                    )
                     # Top contact pad
                     pad_cy = hw + gate_to_polycont
-                    _rect(c, LAYER.polydrawing,
-                          gx - pad_half, pad_cy - pad_half,
-                          gx + pad_half, pad_cy + pad_half)
+                    _rect(
+                        c,
+                        LAYER.polydrawing,
+                        gx - pad_half,
+                        pad_cy - pad_half,
+                        gx + pad_half,
+                        pad_cy + pad_half,
+                    )
                 else:
                     # Gate extends down to pad base, up to end_cap
                     poly_top_gate = hw + gate_ext_nocont
                     poly_bot_gate = -(hw + gate_ext_contact)
-                    _rect(c, LAYER.polydrawing, gx - hl, poly_bot_gate, gx + hl, poly_top_gate)
+                    _rect(
+                        c,
+                        LAYER.polydrawing,
+                        gx - hl,
+                        poly_bot_gate,
+                        gx + hl,
+                        poly_top_gate,
+                    )
                     # Bottom contact pad
                     pad_cy = -(hw + gate_to_polycont)
-                    _rect(c, LAYER.polydrawing,
-                          gx - pad_half, pad_cy - pad_half,
-                          gx + pad_half, pad_cy + pad_half)
+                    _rect(
+                        c,
+                        LAYER.polydrawing,
+                        gx - pad_half,
+                        pad_cy - pad_half,
+                        gx + pad_half,
+                        pad_cy + pad_half,
+                    )
 
         # ---- Licon contacts on poly pads ----
         # For wide gates (L > contact pad size), use a horizontal contact array
@@ -199,6 +234,7 @@ def _mosfet_core(
             num_poly_contacts_x = 1
             if cpl > contact_size:
                 from math import floor
+
                 num_poly_contacts_x = 1 + floor(
                     (cpl - contact_size) / (contact_size + contact_size)
                 )
@@ -207,57 +243,98 @@ def _mosfet_core(
             # Place contact array horizontally
             # Licon and mcon use different pitches for wide gates
             licon_poly_pitch = contact_size + contact_size  # 0.34
-            mcon_poly_pitch = contact_size + 0.19            # 0.36
+            mcon_poly_pitch = contact_size + 0.19  # 0.36
             if num_poly_contacts_x == 1:
-                _rect(c, LAYER.licon1drawing,
-                      gx - licon_half, pad_cy - licon_half,
-                      gx + licon_half, pad_cy + licon_half)
-                _rect(c, LAYER.mcondrawing,
-                      gx - licon_half, pad_cy - licon_half,
-                      gx + licon_half, pad_cy + licon_half)
+                _rect(
+                    c,
+                    LAYER.licon1drawing,
+                    gx - licon_half,
+                    pad_cy - licon_half,
+                    gx + licon_half,
+                    pad_cy + licon_half,
+                )
+                _rect(
+                    c,
+                    LAYER.mcondrawing,
+                    gx - licon_half,
+                    pad_cy - licon_half,
+                    gx + licon_half,
+                    pad_cy + licon_half,
+                )
             else:
                 # Licon array
-                licon_array_w = (num_poly_contacts_x - 1) * licon_poly_pitch + contact_size
+                licon_array_w = (
+                    num_poly_contacts_x - 1
+                ) * licon_poly_pitch + contact_size
                 licon_start_x = gx - licon_array_w / 2.0
                 for ci in range(num_poly_contacts_x):
                     cx = licon_start_x + ci * licon_poly_pitch
-                    _rect(c, LAYER.licon1drawing,
-                          cx, pad_cy - licon_half,
-                          cx + contact_size, pad_cy + licon_half)
+                    _rect(
+                        c,
+                        LAYER.licon1drawing,
+                        cx,
+                        pad_cy - licon_half,
+                        cx + contact_size,
+                        pad_cy + licon_half,
+                    )
                 # Mcon array (different pitch)
-                mcon_array_w = (num_poly_contacts_x - 1) * mcon_poly_pitch + contact_size
+                mcon_array_w = (
+                    num_poly_contacts_x - 1
+                ) * mcon_poly_pitch + contact_size
                 mcon_start_x = gx - mcon_array_w / 2.0
                 for ci in range(num_poly_contacts_x):
                     cx = mcon_start_x + ci * mcon_poly_pitch
-                    _rect(c, LAYER.mcondrawing,
-                          cx, pad_cy - licon_half,
-                          cx + contact_size, pad_cy + licon_half)
+                    _rect(
+                        c,
+                        LAYER.mcondrawing,
+                        cx,
+                        pad_cy - licon_half,
+                        cx + contact_size,
+                        pad_cy + licon_half,
+                    )
 
             # Li1 over poly contact: covers the larger of pad area or gate width
             li_half_x = max(pc_pad_size / 2.0, hl)
-            _rect(c, LAYER.li1drawing,
-                  gx - li_half_x, pad_cy - licon_half,
-                  gx + li_half_x, pad_cy + licon_half)
+            _rect(
+                c,
+                LAYER.li1drawing,
+                gx - li_half_x,
+                pad_cy - licon_half,
+                gx + li_half_x,
+                pad_cy + licon_half,
+            )
             # Met1 over poly contact
             pad_half_x = max(pc_pad_size / 2.0, hl)
             m1_half_x = pad_half_x - npc_ext
             m1_half_y = licon_half + met1_surround
-            _rect(c, LAYER.met1drawing,
-                  gx - m1_half_x, pad_cy - m1_half_y,
-                  gx + m1_half_x, pad_cy + m1_half_y)
+            _rect(
+                c,
+                LAYER.met1drawing,
+                gx - m1_half_x,
+                pad_cy - m1_half_y,
+                gx + m1_half_x,
+                pad_cy + m1_half_y,
+            )
 
             # NPC over poly contact region
             # For narrow gates: stays at pad size
             # For wide gates: covers the licon array extent + poly_surround + npc_ext
             if num_poly_contacts_x > 1:
-                licon_array_w = (num_poly_contacts_x - 1) * licon_poly_pitch + contact_size
+                licon_array_w = (
+                    num_poly_contacts_x - 1
+                ) * licon_poly_pitch + contact_size
                 npc_half_x = licon_array_w / 2.0 + poly_surround + npc_ext
             else:
                 npc_half_x = pc_pad_size / 2.0 + npc_ext
             npc_half_y = pc_pad_size / 2.0 + npc_ext
-            _rect(c, LAYER.npcdrawing,
-                  gx - npc_half_x, pad_cy - npc_half_y,
-                  gx + npc_half_x, pad_cy + npc_half_y)
+            _rect(
+                c,
+                LAYER.npcdrawing,
+                gx - npc_half_x,
+                pad_cy - npc_half_y,
+                gx + npc_half_x,
+                pad_cy + npc_half_y,
+            )
 
     # ---- 3. S/D contacts (licon, li1, mcon, met1) ----
     # Licon: size=0.17, spacing=0.17, enclosure=0.06
@@ -277,8 +354,7 @@ def _mosfet_core(
         arr_h_licon = (n_licon - 1) * licon_pitch + contact_size
         for ci in range(n_licon):
             cy = -arr_h_licon / 2.0 + ci * licon_pitch + ch
-            _rect(c, LAYER.licon1drawing,
-                  sx - ch, cy - ch, sx + ch, cy + ch)
+            _rect(c, LAYER.licon1drawing, sx - ch, cy - ch, sx + ch, cy + ch)
 
         # -- Mcon contacts (different pitch and enclosure) --
         avail_h_mcon = W - 2 * mcon_enc_y
@@ -286,27 +362,29 @@ def _mosfet_core(
         arr_h_mcon = (n_mcon - 1) * mcon_pitch + contact_size
         for ci in range(n_mcon):
             cy = -arr_h_mcon / 2.0 + ci * mcon_pitch + ch
-            _rect(c, LAYER.mcondrawing,
-                  sx - ch, cy - ch, sx + ch, cy + ch)
+            _rect(c, LAYER.mcondrawing, sx - ch, cy - ch, sx + ch, cy + ch)
 
         # Li1 strip over S/D: same x range as contact, y extends to ±(hw + li1_ext_y)
         li1_y_ext = hw + li1_ext_y
-        _rect(c, LAYER.li1drawing,
-              sx - ch, -li1_y_ext,
-              sx + ch, li1_y_ext)
+        _rect(c, LAYER.li1drawing, sx - ch, -li1_y_ext, sx + ch, li1_y_ext)
 
         # Met1 pad over S/D
         m1_half_x = ch + met1_surround
         m1_half_y = hw  # met1 extends to diff edge
-        _rect(c, LAYER.met1drawing,
-              sx - m1_half_x, -m1_half_y,
-              sx + m1_half_x, m1_half_y)
+        _rect(
+            c, LAYER.met1drawing, sx - m1_half_x, -m1_half_y, sx + m1_half_x, m1_half_y
+        )
 
     # ---- 4. Implant layer (NSDM or PSDM) ----
     impl_layer = LAYER.psdmdrawing if is_pmos else LAYER.nsdmdrawing
-    _rect(c, impl_layer,
-          -(diff_half_x + implant_enc), -(hw + implant_enc),
-          diff_half_x + implant_enc, hw + implant_enc)
+    _rect(
+        c,
+        impl_layer,
+        -(diff_half_x + implant_enc),
+        -(hw + implant_enc),
+        diff_half_x + implant_enc,
+        hw + implant_enc,
+    )
 
     # ---- 5. N-well (PFET only, skipped when guard ring will provide it) ----
     if is_pmos and not suppress_nwell:
@@ -326,12 +404,9 @@ def _mosfet_core(
             # Bottom pad side: extends full -nwell_x, truncated on right
             step_x = _snap(nwell_x - finger_pitch)
             # Three rectangles: center, bottom extension, top extension
-            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y,
-                  nwell_x, nwell_step_y)
-            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y,
-                  step_x, -nwell_step_y)
-            _rect(c, LAYER.nwelldrawing, -step_x, nwell_step_y,
-                  nwell_x, nwell_y)
+            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y, nwell_x, nwell_step_y)
+            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, step_x, -nwell_step_y)
+            _rect(c, LAYER.nwelldrawing, -step_x, nwell_step_y, nwell_x, nwell_y)
         else:
             _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, nwell_x, nwell_y)
 
@@ -364,16 +439,13 @@ def _mosfet_core(
         for gi in range(nf):
             sx = sd_centers_x[gi]
             if gi % 2 == 0:
-                c.add_label(text=f"D{gi}", position=(sx, 0.0),
-                            layer=LAYER.li1label)
+                c.add_label(text=f"D{gi}", position=(sx, 0.0), layer=LAYER.li1label)
             else:
-                c.add_label(text=f"S{gi}", position=(sx, 0.0),
-                            layer=LAYER.li1label)
+                c.add_label(text=f"S{gi}", position=(sx, 0.0), layer=LAYER.li1label)
         # Last S/D contact: labeled only for odd nf
         if nf % 2 == 1:
             sx = sd_centers_x[nf]
-            c.add_label(text=f"S{nf - 1}", position=(sx, 0.0),
-                        layer=LAYER.li1label)
+            c.add_label(text=f"S{nf - 1}", position=(sx, 0.0), layer=LAYER.li1label)
 
         for gi, gx in enumerate(gate_centers_x):
             if L >= pc_pad_size:
@@ -429,7 +501,6 @@ def _add_guard_ring(
 
     Returns a dict with guard ring extents for HVI layer placement.
     """
-    from math import floor as _floor
 
     hw = info["hw"]
     diff_half_x = info["diff_half_x"]
@@ -470,10 +541,14 @@ def _add_guard_ring(
     # ---- Tap segments ----
     # Top and bottom span full width; left and right span inner_y range only
     # (corners formed by overlap of horizontal and vertical segments)
-    _rect(c, LAYER.tapdrawing, -gr_outer_x, gr_inner_y, gr_outer_x, gr_outer_y)    # top
-    _rect(c, LAYER.tapdrawing, -gr_outer_x, -gr_outer_y, gr_outer_x, -gr_inner_y)  # bottom
-    _rect(c, LAYER.tapdrawing, -gr_outer_x, -gr_inner_y, -gr_inner_x, gr_inner_y)  # left
-    _rect(c, LAYER.tapdrawing, gr_inner_x, -gr_inner_y, gr_outer_x, gr_inner_y)    # right
+    _rect(c, LAYER.tapdrawing, -gr_outer_x, gr_inner_y, gr_outer_x, gr_outer_y)  # top
+    _rect(
+        c, LAYER.tapdrawing, -gr_outer_x, -gr_outer_y, gr_outer_x, -gr_inner_y
+    )  # bottom
+    _rect(
+        c, LAYER.tapdrawing, -gr_outer_x, -gr_inner_y, -gr_inner_x, gr_inner_y
+    )  # left
+    _rect(c, LAYER.tapdrawing, gr_inner_x, -gr_inner_y, gr_outer_x, gr_inner_y)  # right
 
     # ---- Li1 on guard ring ----
     # For HVI devices, Li1 is 0.17 wide (standard) centered in the wider 0.29 tap.
@@ -546,8 +621,7 @@ def _add_guard_ring(
         cy = sign_y * gr_cy
         for i in range(n_horiz):
             cx = -arr_w / 2.0 + i * contact_pitch + ch
-            _rect(c, LAYER.licon1drawing,
-                  cx - ch, cy - ch, cx + ch, cy + ch)
+            _rect(c, LAYER.licon1drawing, cx - ch, cy - ch, cx + ch, cy + ch)
 
     # Vertical segment contacts (left/right)
     non_corner_y = 2 * contact_region_inner_y
@@ -564,16 +638,20 @@ def _add_guard_ring(
         cx = sign_x * gr_cx
         for i in range(n_vert):
             cy = -arr_h / 2.0 + i * contact_pitch + ch
-            _rect(c, LAYER.licon1drawing,
-                  cx - ch, cy - ch, cx + ch, cy + ch)
+            _rect(c, LAYER.licon1drawing, cx - ch, cy - ch, cx + ch, cy + ch)
 
     # ---- N-well for PFET guard ring ----
     if is_pmos:
         # HVI PFET uses larger nwell enclosure (0.33 vs 0.18)
         nw_ext = 0.33 if is_hvi else 0.18
-        _rect(c, LAYER.nwelldrawing,
-              -(gr_outer_x + nw_ext), -(gr_outer_y + nw_ext),
-              gr_outer_x + nw_ext, gr_outer_y + nw_ext)
+        _rect(
+            c,
+            LAYER.nwelldrawing,
+            -(gr_outer_x + nw_ext),
+            -(gr_outer_y + nw_ext),
+            gr_outer_x + nw_ext,
+            gr_outer_y + nw_ext,
+        )
 
     # ---- PR boundary at ring center ----
     pr_x = (gr_inner_x + gr_outer_x) / 2.0
@@ -662,8 +740,9 @@ def sky130_fd_pr__pfet_01v8(
     """
     c = gf.Component()
 
-    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
-                        suppress_nwell=guard_ring)
+    info = _mosfet_core(
+        c, gate_width, gate_length, nf, is_pmos=True, suppress_nwell=guard_ring
+    )
 
     if guard_ring:
         _add_guard_ring(c, info, is_pmos=True)
@@ -776,8 +855,8 @@ def _add_hvi_pfet(c, info, guard_ring, gr_info=None):
         nwell_x = info["nwell_x"]
         nwell_y = info["nwell_y"]
         hw = info["hw"]
-        center_y = hw + 0.21   # same as nfet HVI y extent
-        center_x = nwell_x + 0.425   # empirical from Magic reference
+        center_y = hw + 0.21  # same as nfet HVI y extent
+        center_x = nwell_x + 0.425  # empirical from Magic reference
         # Center horizontal band
         _rect(c, LAYER.hvidrawing, -center_x, -center_y, center_x, center_y)
         # Top fill to nwell boundary
@@ -802,9 +881,9 @@ def _add_areaid_native(c, info):
         hl = info["outermost_gate_edge_x"] - abs(gate_centers[-1])
 
     for gx in gate_centers:
-        _rect(c, LAYER.areaidlvNative,
-              gx - hl - enc, -(hw + enc),
-              gx + hl + enc, hw + enc)
+        _rect(
+            c, LAYER.areaidlvNative, gx - hl - enc, -(hw + enc), gx + hl + enc, hw + enc
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -855,8 +934,9 @@ def sky130_fd_pr__pfet_01v8_lvt(
 ) -> gf.Component:
     """Low-Vt 1.8V PMOS (sky130_fd_pr__pfet_01v8_lvt)."""
     c = gf.Component()
-    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
-                        suppress_nwell=guard_ring)
+    info = _mosfet_core(
+        c, gate_width, gate_length, nf, is_pmos=True, suppress_nwell=guard_ring
+    )
 
     # LVTN implant: gate_edge + 0.18 enclosure
     _add_lvtn_or_hvtp(c, info, LAYER.lvtndrawing)
@@ -886,8 +966,9 @@ def sky130_fd_pr__pfet_01v8_hvt(
 ) -> gf.Component:
     """High-Vt 1.8V PMOS (sky130_fd_pr__pfet_01v8_hvt)."""
     c = gf.Component()
-    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
-                        suppress_nwell=guard_ring)
+    info = _mosfet_core(
+        c, gate_width, gate_length, nf, is_pmos=True, suppress_nwell=guard_ring
+    )
 
     # HVTP implant: gate_edge + 0.18 enclosure
     _add_lvtn_or_hvtp(c, info, LAYER.hvtpdrawing)
@@ -951,8 +1032,9 @@ def sky130_fd_pr__pfet_g5v0d10v5(
 ) -> gf.Component:
     """Thick-oxide 5V/10V PMOS (sky130_fd_pr__pfet_g5v0d10v5)."""
     c = gf.Component()
-    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
-                        suppress_nwell=guard_ring)
+    info = _mosfet_core(
+        c, gate_width, gate_length, nf, is_pmos=True, suppress_nwell=guard_ring
+    )
 
     gr_info = None
     if guard_ring:
@@ -1015,8 +1097,9 @@ def sky130_fd_pr__pfet_20v0(
 ) -> gf.Component:
     """20V LDPMOS (sky130_fd_pr__pfet_20v0) — simplified."""
     c = gf.Component()
-    info = _mosfet_core(c, gate_width, gate_length, nf, is_pmos=True,
-                        suppress_nwell=guard_ring)
+    info = _mosfet_core(
+        c, gate_width, gate_length, nf, is_pmos=True, suppress_nwell=guard_ring
+    )
 
     gr_info = None
     if guard_ring:

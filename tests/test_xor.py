@@ -158,8 +158,10 @@ def test_xor(device_name: str, params: dict, cell_module: str) -> None:
     try:
         test_id = f"xor_{device_name}_{param_hash}"
         has_diff = gf.diff(
-            str(ref_gds), str(run_gds),
-            xor=True, show=False,
+            str(ref_gds),
+            str(run_gds),
+            xor=True,
+            show=False,
             test_name=test_id,
             ignore_label_differences=True,
             ignore_cell_name_differences=True,

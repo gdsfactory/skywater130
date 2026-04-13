@@ -7,7 +7,7 @@ a large gate width, multi-finger layout, and the areaidesd marker layer.
 import gdsfactory as gf
 
 from sky130.layers import LAYER
-from sky130.pcells.mosfets import _mosfet_core, _rect, _add_guard_ring
+from sky130.pcells.mosfets import _add_guard_ring, _mosfet_core, _rect
 
 
 @gf.cell
