@@ -179,6 +179,11 @@ def _mosfet_core(
                           gx + pad_half, pad_cy + pad_half)
 
         # ---- Licon contacts on poly pads ----
+        # For wide gates (L > contact pad size), use a horizontal contact array
+        cpl = gate_length - 2 * poly_surround  # poly contact width (coverage area)
+        if cpl < contact_size:
+            cpl = contact_size  # minimum one contact
+
         for side in contact_sides:
             if side == "top":
                 pad_cy = hw + gate_to_polycont
@@ -186,22 +191,45 @@ def _mosfet_core(
                 pad_cy = -(hw + gate_to_polycont)
 
             licon_half = contact_size / 2.0
-            # Licon on poly contact
-            _rect(c, LAYER.licon1drawing,
-                  gx - licon_half, pad_cy - licon_half,
-                  gx + licon_half, pad_cy + licon_half)
+
+            # Determine contact array dimensions for poly contacts
+            # For narrow gates: single contact at gate center
+            # For wide gates: array of contacts spanning gate width
+            num_poly_contacts_x = 1
+            if cpl > contact_size:
+                from math import floor
+                num_poly_contacts_x = 1 + floor(
+                    (cpl - contact_size) / (contact_size + contact_size)
+                )
+            num_poly_contacts_x = max(1, num_poly_contacts_x)
+
+            # Place contact array horizontally
+            if num_poly_contacts_x == 1:
+                _rect(c, LAYER.licon1drawing,
+                      gx - licon_half, pad_cy - licon_half,
+                      gx + licon_half, pad_cy + licon_half)
+                _rect(c, LAYER.mcondrawing,
+                      gx - licon_half, pad_cy - licon_half,
+                      gx + licon_half, pad_cy + licon_half)
+            else:
+                pitch = contact_size + contact_size  # 0.34 for licon
+                array_w = (num_poly_contacts_x - 1) * pitch + contact_size
+                start_x = gx - array_w / 2.0
+                for ci in range(num_poly_contacts_x):
+                    cx = start_x + ci * pitch
+                    _rect(c, LAYER.licon1drawing,
+                          cx, pad_cy - licon_half,
+                          cx + contact_size, pad_cy + licon_half)
+                    _rect(c, LAYER.mcondrawing,
+                          cx, pad_cy - licon_half,
+                          cx + contact_size, pad_cy + licon_half)
+
             # Li1 over poly contact: covers the larger of pad area or gate width
             li_half_x = max(pc_pad_size / 2.0, hl)
             _rect(c, LAYER.li1drawing,
                   gx - li_half_x, pad_cy - licon_half,
                   gx + li_half_x, pad_cy + licon_half)
-            # Mcon on poly contact (same position as licon)
-            _rect(c, LAYER.mcondrawing,
-                  gx - licon_half, pad_cy - licon_half,
-                  gx + licon_half, pad_cy + licon_half)
             # Met1 over poly contact
-            # met1 x half-extent = pad_half - npc_ext (= poly pad half minus 0.02)
-            # met1 y half-extent = licon_half + met1_surround
             pad_half_x = max(pc_pad_size / 2.0, hl)
             m1_half_x = pad_half_x - npc_ext
             m1_half_y = licon_half + met1_surround
@@ -209,8 +237,7 @@ def _mosfet_core(
                   gx - m1_half_x, pad_cy - m1_half_y,
                   gx + m1_half_x, pad_cy + m1_half_y)
 
-            # NPC over poly contact region
-            # NPC always covers the contact pad region (not full gate width)
+            # NPC over poly contact region (stays at pad size, not gate width)
             npc_half_x = pc_pad_size / 2.0 + npc_ext
             npc_half_y = pc_pad_size / 2.0 + npc_ext
             _rect(c, LAYER.npcdrawing,
