@@ -27,6 +27,7 @@ from sky130.pcells.resistors import (
     sky130_fd_pr__res_generic_nd,
     sky130_fd_pr__res_generic_po,
     sky130_fd_pr__res_high_po,
+    sky130_fd_pr__res_high_po_0p35,
 )
 from sky130.pcells.via_generator import via_generator
 from sky130.pcells.waveguides import (
@@ -56,6 +57,7 @@ __all__ = [
     "sky130_fd_pr__res_generic_nd",
     "sky130_fd_pr__res_generic_po",
     "sky130_fd_pr__res_high_po",
+    "sky130_fd_pr__res_high_po_0p35",
     "sky130_fd_pr__cap_mim_m3_1",
     "sky130_fd_pr__cap_mim_m3_2",
     "sky130_fd_pr__diode_pw2nd_05v5",
