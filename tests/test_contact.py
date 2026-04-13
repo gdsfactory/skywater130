@@ -1,10 +1,5 @@
 """Tests for sky130/pcells/contact.py — shared contact/via array generator."""
 
-import pytest
-import sky130
-
-sky130.PDK.activate()
-
 from sky130.layers import LAYER
 from sky130.pcells.contact import contact_array, licon_array, mcon_array
 
@@ -57,8 +52,8 @@ def test_contact_array_centering():
     pts = [(pt.x, pt.y) for pt in poly.each_point_hull()]
     xs = [p[0] for p in pts]
     ys = [p[1] for p in pts]
-    x_min, x_max = min(xs), max(xs)
-    y_min, y_max = min(ys), max(ys)
+    x_min = min(xs)
+    y_min = min(ys)
 
     # Contact width/height in database units (1nm = 1 DBU)
     contact_w_nm = 0.17 * 1000

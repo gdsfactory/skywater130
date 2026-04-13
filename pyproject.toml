@@ -37,14 +37,14 @@ dev = [
 ]
 docs = ["jupytext", "jupyter-book==1.0.4"]
 
-[tool.gdsfactoryplus.pdk]
-name = "sky130"
-
 [tool.codespell]
 ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
 
 [tool.flit.sdist]
 exclude = ["**/.git/**"]
+
+[tool.gdsfactoryplus.pdk]
+name = "sky130"
 
 [tool.mypy]
 python_version = "3.12"

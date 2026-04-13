@@ -1,9 +1,6 @@
 """Tests for sky130/pcells/capacitors.py — MIM capacitor pcells."""
 
 import gdsfactory as gf
-import sky130
-
-sky130.PDK.activate()
 
 from sky130.layers import LAYER
 

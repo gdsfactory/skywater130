@@ -5,8 +5,6 @@ produced by Magic's sky130 device generators, including multi-finger support,
 S/D sharing, guard rings, and deep N-well options.
 """
 
-from math import ceil, floor
-
 import gdsfactory as gf
 
 from sky130.layers import LAYER
@@ -572,7 +570,9 @@ def _mosfet_variant(
 ) -> gf.Component:
     """Build a MOSFET variant component with optional extra implant/well layers."""
     c = gf.Component()
-    info = _mosfet_core(c, gate_width, gate_length, sd_width, nf, end_cap, is_pmos=is_pmos)
+    info = _mosfet_core(
+        c, gate_width, gate_length, sd_width, nf, end_cap, is_pmos=is_pmos
+    )
 
     # Extra implant/process layers covering diffusion + implant_enc margin
     for layer in extra_layers:

@@ -92,15 +92,19 @@ def test_pfet_01v8_has_ports():
         assert required in port_names, f"Missing port: {required}"
 
 
-@pytest.mark.parametrize("variant_fn,extra_layer", [
-    ("sky130_fd_pr__nfet_01v8_lvt", LAYER.lvtndrawing),
-    ("sky130_fd_pr__pfet_01v8_hvt", LAYER.hvtpdrawing),
-    ("sky130_fd_pr__pfet_01v8_lvt", LAYER.lvtndrawing),
-    ("sky130_fd_pr__nfet_g5v0d10v5", LAYER.hvidrawing),
-    ("sky130_fd_pr__pfet_g5v0d10v5", LAYER.hvidrawing),
-])
+@pytest.mark.parametrize(
+    "variant_fn,extra_layer",
+    [
+        ("sky130_fd_pr__nfet_01v8_lvt", LAYER.lvtndrawing),
+        ("sky130_fd_pr__pfet_01v8_hvt", LAYER.hvtpdrawing),
+        ("sky130_fd_pr__pfet_01v8_lvt", LAYER.lvtndrawing),
+        ("sky130_fd_pr__nfet_g5v0d10v5", LAYER.hvidrawing),
+        ("sky130_fd_pr__pfet_g5v0d10v5", LAYER.hvidrawing),
+    ],
+)
 def test_mosfet_variant_has_implant_layer(variant_fn, extra_layer):
     import sky130.pcells.mosfets as m
+
     fn = getattr(m, variant_fn)
     c = fn()
     layers = set(c.get_polygons().keys())
@@ -109,23 +113,27 @@ def test_mosfet_variant_has_implant_layer(variant_fn, extra_layer):
 
 def test_nfet_20v0_instantiates():
     from sky130.pcells.mosfets import sky130_fd_pr__nfet_20v0
+
     c = sky130_fd_pr__nfet_20v0()
     assert c is not None
 
 
 def test_pfet_20v0_instantiates():
     from sky130.pcells.mosfets import sky130_fd_pr__pfet_20v0
+
     c = sky130_fd_pr__pfet_20v0()
     assert c is not None
 
 
 def test_nfet_03v3_nvt_instantiates():
     from sky130.pcells.mosfets import sky130_fd_pr__nfet_03v3_nvt
+
     c = sky130_fd_pr__nfet_03v3_nvt()
     assert c is not None
 
 
 def test_nfet_05v0_nvt_instantiates():
     from sky130.pcells.mosfets import sky130_fd_pr__nfet_05v0_nvt
+
     c = sky130_fd_pr__nfet_05v0_nvt()
     assert c is not None

@@ -52,8 +52,8 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     """
     c = gf.Component()
 
-    li_enc = 0.08       # li1 enclosure beyond licon/contact area
-    nsdm_enc = 0.125    # NSDM enclosure beyond diffusion
+    li_enc = 0.08  # li1 enclosure beyond licon/contact area
+    nsdm_enc = 0.125  # NSDM enclosure beyond diffusion
 
     dw = diode_width
     dl = diode_length
@@ -96,7 +96,7 @@ def sky130_fd_pr__diode_pw2nd_05v5(
     if guard_ring:
         ring_spacing = 0.27
         ring_width = 0.34
-        gr = c.add_ref(
+        c.add_ref(
             pwell_guard_ring(
                 inner_width=dw,
                 inner_height=dl,
@@ -165,9 +165,9 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     """
     c = gf.Component()
 
-    li_enc = 0.08       # li1 enclosure beyond licon/contact area
-    psdm_enc = 0.125    # PSDM enclosure beyond diffusion
-    nwell_enc = 0.18    # N-well enclosure beyond diffusion
+    li_enc = 0.08  # li1 enclosure beyond licon/contact area
+    psdm_enc = 0.125  # PSDM enclosure beyond diffusion
+    nwell_enc = 0.18  # N-well enclosure beyond diffusion
 
     dw = diode_width
     dl = diode_length
@@ -220,7 +220,7 @@ def sky130_fd_pr__diode_pd2nw_05v5(
     if guard_ring:
         ring_spacing = 0.27
         ring_width = 0.34
-        gr = c.add_ref(
+        c.add_ref(
             nwell_guard_ring(
                 inner_width=dw,
                 inner_height=dl,

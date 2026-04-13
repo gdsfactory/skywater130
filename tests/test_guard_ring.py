@@ -1,9 +1,5 @@
 """Tests for sky130/pcells/guard_ring.py — pwell and nwell guard ring generators."""
 
-import sky130
-
-sky130.PDK.activate()
-
 from sky130.layers import LAYER
 from sky130.pcells.guard_ring import nwell_guard_ring, pwell_guard_ring
 
@@ -13,7 +9,9 @@ def test_pwell_guard_ring_creates_component():
     c = pwell_guard_ring(inner_width=2.0, inner_height=2.0)
     polys = c.get_polygons()
     assert LAYER.tapdrawing in polys, "tapdrawing layer missing from pwell guard ring"
-    assert LAYER.licon1drawing in polys, "licon1drawing layer missing from pwell guard ring"
+    assert LAYER.licon1drawing in polys, (
+        "licon1drawing layer missing from pwell guard ring"
+    )
 
 
 def test_nwell_guard_ring_creates_component():
@@ -21,17 +19,21 @@ def test_nwell_guard_ring_creates_component():
     c = nwell_guard_ring(inner_width=2.0, inner_height=2.0)
     polys = c.get_polygons()
     assert LAYER.tapdrawing in polys, "tapdrawing layer missing from nwell guard ring"
-    assert LAYER.nwelldrawing in polys, "nwelldrawing layer missing from nwell guard ring"
-    assert LAYER.licon1drawing in polys, "licon1drawing layer missing from nwell guard ring"
+    assert LAYER.nwelldrawing in polys, (
+        "nwelldrawing layer missing from nwell guard ring"
+    )
+    assert LAYER.licon1drawing in polys, (
+        "licon1drawing layer missing from nwell guard ring"
+    )
 
 
 def test_guard_ring_has_ports():
     """pwell_guard_ring should expose a port named 'VSS' or 'BODY'."""
     c = pwell_guard_ring(inner_width=2.0, inner_height=2.0)
     port_names = [p.name for p in c.ports]
-    assert any(
-        "VSS" in name or "BODY" in name for name in port_names
-    ), f"No VSS or BODY port found; ports are: {port_names}"
+    assert any("VSS" in name or "BODY" in name for name in port_names), (
+        f"No VSS or BODY port found; ports are: {port_names}"
+    )
 
 
 def test_guard_ring_encloses_area():

@@ -1,12 +1,13 @@
+from sky130.pcells.bjts import sky130_fd_pr__npn_05v5, sky130_fd_pr__pnp_05v5
 from sky130.pcells.capacitors import (
     sky130_fd_pr__cap_mim_m3_1,
     sky130_fd_pr__cap_mim_m3_2,
 )
-from sky130.pcells.diodes import (
-    sky130_fd_pr__diode_pw2nd_05v5,
-    sky130_fd_pr__diode_pd2nw_05v5,
-)
 from sky130.pcells.contact import contact_array, licon_array, mcon_array
+from sky130.pcells.diodes import (
+    sky130_fd_pr__diode_pd2nw_05v5,
+    sky130_fd_pr__diode_pw2nd_05v5,
+)
 from sky130.pcells.esd import sky130_fd_pr__esd_nfet_01v8
 from sky130.pcells.guard_ring import nwell_guard_ring, pwell_guard_ring
 from sky130.pcells.mosfets import (
@@ -22,7 +23,6 @@ from sky130.pcells.mosfets import (
     sky130_fd_pr__pfet_20v0,
     sky130_fd_pr__pfet_g5v0d10v5,
 )
-from sky130.pcells.bjts import sky130_fd_pr__npn_05v5, sky130_fd_pr__pnp_05v5
 from sky130.pcells.resistors import (
     sky130_fd_pr__res_generic_nd,
     sky130_fd_pr__res_generic_po,

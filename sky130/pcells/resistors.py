@@ -46,11 +46,11 @@ def sky130_fd_pr__res_generic_po(
     c = gf.Component()
 
     # Contact region dimensions (head/tail)
-    li_enc = 0.08          # li1 enclosure beyond licon
-    licon_enc = 0.06       # licon enclosure within poly
+    li_enc = 0.08  # li1 enclosure beyond licon
+    licon_enc = 0.06  # licon enclosure within poly
     contact_size = 0.17
     contact_h = contact_size + 2 * licon_enc  # minimum contact area height
-    head_h = max(contact_h, 0.29)             # li1 pad height
+    head_h = max(contact_h, 0.29)  # li1 pad height
 
     # Total poly height: body + two contact heads
     poly_total_h = res_length + 2 * head_h

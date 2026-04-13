@@ -43,12 +43,11 @@ def sky130_fd_pr__cap_mim_m3_1(
     c = gf.Component()
 
     # Design rule enclosures (um)
-    capm_enc = 0.14   # capm must be enclosed by met3 by at least 0.14 um on all sides
-    via3_enc = 0.06   # via3 enclosure within capm / met4
+    capm_enc = 0.14  # capm must be enclosed by met3 by at least 0.14 um on all sides
+    via3_enc = 0.06  # via3 enclosure within capm / met4
     via3_size = (0.2, 0.2)
     via3_spacing = (0.2, 0.2)
     # met4 landing pad must enclose via3 by via3_enc on all sides
-    met4_enc = via3_enc
 
     # --- Bottom plate: met3drawing ---
     bot_w = cap_width
@@ -143,8 +142,8 @@ def sky130_fd_pr__cap_mim_m3_2(
     c = gf.Component()
 
     # Design rule enclosures (um)
-    cap2m_enc = 0.14   # cap2m must be enclosed by met4 by at least 0.14 um
-    via4_enc = 0.06    # via4 enclosure within cap2m / met5
+    cap2m_enc = 0.14  # cap2m must be enclosed by met4 by at least 0.14 um
+    via4_enc = 0.06  # via4 enclosure within cap2m / met5
     via4_size = (0.8, 0.8)
     via4_spacing = (0.8, 0.8)
 

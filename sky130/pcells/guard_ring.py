@@ -133,9 +133,9 @@ def _guard_ring(
     nwell_ext = 0.18
 
     # Ring outer and inner bounds
-    x0 = -(s + rw)   # outer left
+    x0 = -(s + rw)  # outer left
     x1 = iw + s + rw  # outer right
-    y0 = -(s + rw)   # outer bottom
+    y0 = -(s + rw)  # outer bottom
     y1 = ih + s + rw  # outer top
 
     # Four tap segments -------------------------------------------------------
