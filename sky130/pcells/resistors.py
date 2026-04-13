@@ -427,6 +427,13 @@ def sky130_fd_pr__res_generic_po(
     bnd_y = _snap(gr_inner_y + _GR_RING_W - 0.085)
     _rect(c, LAYER.prBoundaryboundary, -bnd_x, -bnd_y, bnd_x, bnd_y)
 
+    # ---- Labels (match Magic output on li1label) ----
+    mcon_cy = _snap((m1_inner + m1_outer) / 2)
+    gr_bottom = _snap(-(gr_inner_y + _GR_RING_W))
+    c.add_label(text="R1", position=(0, mcon_cy), layer=LAYER.li1label)
+    c.add_label(text="R2", position=(0, -mcon_cy), layer=LAYER.li1label)
+    c.add_label(text="B", position=(0, gr_bottom), layer=LAYER.li1label)
+
     # ---- Ports ----
     c.add_port(
         name="PLUS",
@@ -542,6 +549,13 @@ def sky130_fd_pr__res_high_po_0p35(
     bnd_x = _snap(gr_inner_x + _GR_RING_W - 0.085)
     bnd_y = _snap(gr_inner_y + _GR_RING_W - 0.085)
     _rect(c, LAYER.prBoundaryboundary, -bnd_x, -bnd_y, bnd_x, bnd_y)
+
+    # ---- Labels ----
+    mcon_cy = _snap((m1_inner + m1_outer) / 2)
+    gr_bottom = _snap(-(gr_inner_y + _GR_RING_W))
+    c.add_label(text="R1", position=(0, mcon_cy), layer=LAYER.li1label)
+    c.add_label(text="R2", position=(0, -mcon_cy), layer=LAYER.li1label)
+    c.add_label(text="B", position=(0, gr_bottom), layer=LAYER.li1label)
 
     # ---- Ports ----
     c.add_port(
@@ -670,6 +684,13 @@ def sky130_fd_pr__res_generic_nd(
     bnd_x = _snap(gr_inner_x + _GR_RING_W - 0.085)
     bnd_y = _snap(gr_inner_y + _GR_RING_W - 0.085)
     _rect(c, LAYER.prBoundaryboundary, -bnd_x, -bnd_y, bnd_x, bnd_y)
+
+    # ---- Labels ----
+    mcon_cy = _snap((m1_inner + m1_outer) / 2)
+    gr_bottom = _snap(-(gr_inner_y + _GR_RING_W))
+    c.add_label(text="R1", position=(0, mcon_cy), layer=LAYER.li1label)
+    c.add_label(text="R2", position=(0, -mcon_cy), layer=LAYER.li1label)
+    c.add_label(text="B", position=(0, gr_bottom), layer=LAYER.li1label)
 
     # ---- Ports ----
     c.add_port(
