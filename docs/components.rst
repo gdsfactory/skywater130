@@ -931,4 +931,3 @@ RF aura test structures
    sky130_fd_pr__rf_aura_blocking
    sky130_fd_pr__rf_aura_drc_flag_check
    sky130_fd_pr__rf_aura_lvs_drc
-

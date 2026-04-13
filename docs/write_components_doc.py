@@ -134,10 +134,7 @@ def _pcell_category(name: str) -> str:
         return "Capacitors & poly resistors"
     if name in {"via_generator"} or name.startswith("via"):
         return "Vias"
-    if (
-        name.startswith(("bend_", "straight_", "wire_"))
-        or name == "waypoint"
-    ):
+    if name.startswith(("bend_", "straight_", "wire_")) or name == "waypoint":
         return "Routing primitives"
     return "Other"
 
@@ -205,7 +202,9 @@ def _autosummary(module: str, names: Iterable[str]) -> str:
     return "\n".join(body)
 
 
-def _grouped(names: Iterable[str], categorize, order: list[str]) -> dict[str, list[str]]:
+def _grouped(
+    names: Iterable[str], categorize, order: list[str]
+) -> dict[str, list[str]]:
     groups: dict[str, list[str]] = {k: [] for k in order}
     for n in sorted(names):
         if n in SKIP or n.startswith("_"):
@@ -228,9 +227,7 @@ def write_components() -> None:
 
     out: list[str] = []
     out.append(_heading("Cells", "="))
-    out.append(
-        "Fixed (GDS-backed) cells available in the PDK, grouped by function.\n"
-    )
+    out.append("Fixed (GDS-backed) cells available in the PDK, grouped by function.\n")
 
     out.append(_heading("Digital standard cells (sky130_fd_sc_hd)", "-"))
     out.append(
@@ -269,7 +266,7 @@ def write_components() -> None:
         out.append(_heading("Other fixed cells", "-"))
         out.append(_autosummary("sky130.components", leftover))
 
-    COMPONENTS_RST.write_text("\n".join(out) + "\n")
+    COMPONENTS_RST.write_text("\n".join(out).rstrip() + "\n")
 
 
 def write_pcells() -> None:
@@ -278,9 +275,7 @@ def write_pcells() -> None:
 
     out: list[str] = []
     out.append(_heading("PCells", "="))
-    out.append(
-        "Parametric cells available in the PDK, grouped by device family.\n"
-    )
+    out.append("Parametric cells available in the PDK, grouped by device family.\n")
     for cat in PCELL_ORDER:
         names = groups.get(cat)
         if not names:
@@ -288,7 +283,7 @@ def write_pcells() -> None:
         out.append(_heading(cat, "-"))
         out.append(_autosummary("sky130.pcells", names))
 
-    PCELLS_RST.write_text("\n".join(out) + "\n")
+    PCELLS_RST.write_text("\n".join(out).rstrip() + "\n")
 
 
 if __name__ == "__main__":

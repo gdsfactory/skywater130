@@ -68,4 +68,3 @@ Routing primitives
    waypoint
    wire_corner
    wire_corner45
-
