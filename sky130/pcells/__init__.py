@@ -22,9 +22,7 @@ from sky130.pcells.mosfets import (
     sky130_fd_pr__pfet_20v0,
     sky130_fd_pr__pfet_g5v0d10v5,
 )
-from sky130.pcells.npn_W1L1 import npn_W1L1
-from sky130.pcells.npn_W1L2 import npn_W1L2
-from sky130.pcells.pnp import pnp
+from sky130.pcells.bjts import sky130_fd_pr__npn_05v5, sky130_fd_pr__pnp_05v5
 from sky130.pcells.resistors import (
     sky130_fd_pr__res_generic_nd,
     sky130_fd_pr__res_generic_po,
@@ -51,10 +49,9 @@ __all__ = [
     "contact_array",
     "licon_array",
     "mcon_array",
-    "npn_W1L1",
-    "npn_W1L2",
+    "sky130_fd_pr__npn_05v5",
+    "sky130_fd_pr__pnp_05v5",
     "nwell_guard_ring",
-    "pnp",
     "pwell_guard_ring",
     "sky130_fd_pr__res_generic_nd",
     "sky130_fd_pr__res_generic_po",
