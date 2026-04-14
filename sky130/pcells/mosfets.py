@@ -116,13 +116,20 @@ def _mosfet_core(
 
     # Determine which side each gate gets a poly contact
     # "top" means positive y, "bottom" means negative y
+    # When L >= 2*end_cap (0.26) but < pc_pad_size (0.33), the gate is long
+    # enough that the poly body extends symmetrically to gate_ext_contact on
+    # both sides, and the pad alternation reverses (even=top, odd=bottom).
+    reversed_alternation = L >= 2 * end_cap and L < pc_pad_size and nf > 1
     for gi, gx in enumerate(gate_centers_x):
-        if nf == 1 or L >= pc_pad_size:
-            # Both sides get contacts when nf=1 or gate is wide enough to
-            # serve as its own contact pad on both sides.
+        if nf == 1 or L >= pc_pad_size or reversed_alternation:
+            # Both sides get contacts when:
+            # - nf=1 (single finger)
+            # - gate is wide enough to serve as its own contact pad (L >= pc_pad_size)
+            # - reversed alternation range (L >= 2*end_cap): gate body is symmetric
+            #   and both sides have poly contact pads
             contact_sides = ["top", "bottom"]
         else:
-            # Alternate: even gates get bottom contact, odd gates get top
+            # Standard alternation (L < 2*end_cap): even gates get bottom, odd get top
             if gi % 2 == 0:
                 contact_sides = ["bottom"]
             else:
@@ -166,8 +173,42 @@ def _mosfet_core(
                     gx + pad_half,
                     pad_cy_bot + pad_half,
                 )
+            elif reversed_alternation:
+                # Multi-finger with intermediate gate width (L >= 2*end_cap):
+                # Gate body extends to gate_ext_contact on BOTH sides (symmetric).
+                # Pad rectangles on BOTH sides (same as nf=1).
+                pad_half = pc_pad_size / 2.0
+                poly_ext_y = hw + gate_ext_contact
+                _rect(
+                    c,
+                    LAYER.polydrawing,
+                    gx - hl,
+                    -poly_ext_y,
+                    gx + hl,
+                    poly_ext_y,
+                )
+                # Top poly contact pad
+                pad_cy_top = hw + gate_to_polycont
+                _rect(
+                    c,
+                    LAYER.polydrawing,
+                    gx - pad_half,
+                    pad_cy_top - pad_half,
+                    gx + pad_half,
+                    pad_cy_top + pad_half,
+                )
+                # Bottom poly contact pad
+                pad_cy_bot = -(hw + gate_to_polycont)
+                _rect(
+                    c,
+                    LAYER.polydrawing,
+                    gx - pad_half,
+                    pad_cy_bot - pad_half,
+                    gx + pad_half,
+                    pad_cy_bot + pad_half,
+                )
             else:
-                # Multi-finger with narrow gate
+                # Multi-finger with narrow gate (L < contact_size)
                 pad_half = pc_pad_size / 2.0
                 if "top" in contact_sides:
                     # Gate extends up to pad base, down to end_cap
@@ -317,24 +358,54 @@ def _mosfet_core(
             )
 
             # NPC over poly contact region
-            # For narrow gates: stays at pad size
-            # For wide gates: covers the licon array extent + poly_surround + npc_ext
-            if num_poly_contacts_x > 1:
-                licon_array_w = (
-                    num_poly_contacts_x - 1
-                ) * licon_poly_pitch + contact_size
-                npc_half_x = licon_array_w / 2.0 + poly_surround + npc_ext
-            else:
-                npc_half_x = pc_pad_size / 2.0 + npc_ext
-            npc_half_y = pc_pad_size / 2.0 + npc_ext
-            _rect(
-                c,
-                LAYER.npcdrawing,
-                gx - npc_half_x,
-                pad_cy - npc_half_y,
-                gx + npc_half_x,
-                pad_cy + npc_half_y,
-            )
+            # For reversed alternation: defer NPC to after the loop (spans all gates)
+            # For normal cases: per-gate NPC
+            if not reversed_alternation:
+                if num_poly_contacts_x > 1:
+                    licon_array_w = (
+                        num_poly_contacts_x - 1
+                    ) * licon_poly_pitch + contact_size
+                    npc_half_x = licon_array_w / 2.0 + poly_surround + npc_ext
+                else:
+                    npc_half_x = pc_pad_size / 2.0 + npc_ext
+                npc_half_y = pc_pad_size / 2.0 + npc_ext
+                _rect(
+                    c,
+                    LAYER.npcdrawing,
+                    gx - npc_half_x,
+                    pad_cy - npc_half_y,
+                    gx + npc_half_x,
+                    pad_cy + npc_half_y,
+                )
+
+    # ---- NPC for reversed alternation: span all gates on both top and bottom ----
+    if reversed_alternation:
+        npc_half_x = pc_pad_size / 2.0 + npc_ext
+        npc_half_y = pc_pad_size / 2.0 + npc_ext
+        # NPC left edge = leftmost gate center - npc_half_x
+        # NPC right edge = rightmost gate center + npc_half_x
+        npc_left = gate_centers_x[0] - npc_half_x
+        npc_right = gate_centers_x[-1] + npc_half_x
+        # Top NPC
+        pad_cy_top = hw + gate_to_polycont
+        _rect(
+            c,
+            LAYER.npcdrawing,
+            npc_left,
+            pad_cy_top - npc_half_y,
+            npc_right,
+            pad_cy_top + npc_half_y,
+        )
+        # Bottom NPC
+        pad_cy_bot = -(hw + gate_to_polycont)
+        _rect(
+            c,
+            LAYER.npcdrawing,
+            npc_left,
+            pad_cy_bot - npc_half_y,
+            npc_right,
+            pad_cy_bot + npc_half_y,
+        )
 
     # ---- 3. S/D contacts (licon, li1, mcon, met1) ----
     # Licon: size=0.17, spacing=0.17, enclosure=0.06
@@ -394,19 +465,43 @@ def _mosfet_core(
         polycont_pad_top = hw + gate_to_polycont + contact_size / 2 + poly_surround
         nwell_y = polycont_pad_top + 0.015  # empirical from reference: pad_top + 0.015
 
-        if nf > 1 and L < pc_pad_size:
+        if nf > 1 and L < pc_pad_size and not reversed_alternation:
             # Multi-finger with alternating pads: L-shaped nwell.
-            # Even gates have bottom pads, odd gates have top pads.
-            # The nwell center region covers ±nwell_step_y where
-            # nwell_step_y = hw + gate_to_polycont - 0.01.
-            # Extensions on each side only cover where pads exist.
+            # (Only for standard alternation where each gate has a pad on one side.
+            #  Reversed alternation has pads on both sides, so uses simple rect.)
             nwell_step_y = _snap(hw + gate_to_polycont - 0.01)
-            # Bottom pad side: extends full -nwell_x, truncated on right
             step_x = _snap(nwell_x - finger_pitch)
-            # Three rectangles: center, bottom extension, top extension
-            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y, nwell_x, nwell_step_y)
-            _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, step_x, -nwell_step_y)
-            _rect(c, LAYER.nwelldrawing, -step_x, nwell_step_y, nwell_x, nwell_y)
+
+            # Determine which y-side ("bottom" = -y, "top" = +y) the even gates use.
+            # Even gates are at the outermost positions for odd nf.
+            if reversed_alternation:
+                even_side = "top"  # even gates get top contacts
+            else:
+                even_side = "bottom"  # even gates get bottom contacts
+
+            if nf % 2 == 1:
+                # Odd nf: both outermost gates are even, so the even-side needs
+                # full width; the other side only needs narrow (center) width.
+                if even_side == "bottom":
+                    # Main rect: full width, from -nwell_y to +nwell_step_y
+                    _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, nwell_x, nwell_step_y)
+                    # Top bump: narrow, from +nwell_step_y to +nwell_y
+                    _rect(c, LAYER.nwelldrawing, -step_x, nwell_step_y, step_x, nwell_y)
+                else:
+                    # Main rect: full width, from -nwell_step_y to +nwell_y
+                    _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y, nwell_x, nwell_y)
+                    # Bottom bump: narrow, from -nwell_y to -nwell_step_y
+                    _rect(c, LAYER.nwelldrawing, -step_x, -nwell_y, step_x, -nwell_step_y)
+            else:
+                # Even nf: outermost gates are 0 (even) and nf-1 (odd).
+                # Each side extends in one diagonal direction.
+                _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y, nwell_x, nwell_step_y)
+                if even_side == "bottom":
+                    _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, step_x, -nwell_step_y)
+                    _rect(c, LAYER.nwelldrawing, -step_x, nwell_step_y, nwell_x, nwell_y)
+                else:
+                    _rect(c, LAYER.nwelldrawing, -step_x, -nwell_y, nwell_x, -nwell_step_y)
+                    _rect(c, LAYER.nwelldrawing, -nwell_x, nwell_step_y, step_x, nwell_y)
         else:
             _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, nwell_x, nwell_y)
 
@@ -448,8 +543,8 @@ def _mosfet_core(
             c.add_label(text=f"S{nf - 1}", position=(sx, 0.0), layer=LAYER.li1label)
 
         for gi, gx in enumerate(gate_centers_x):
-            if L >= pc_pad_size:
-                # Wide gate: contacts on both sides, label on top
+            if L >= pc_pad_size or reversed_alternation:
+                # Wide gate or reversed alternation: contacts on both sides, label on top
                 gate_label_y = hw + gate_to_polycont
             elif gi % 2 == 0:
                 gate_label_y = -(hw + gate_to_polycont)
@@ -609,7 +704,7 @@ def _add_guard_ring(
     non_corner_x = 2 * contact_region_inner_x
     # Contact count uses enclosure in the non-corner region.
     # Use integer nanometer arithmetic for exact boundary handling.
-    horiz_enc = 0.33 if is_hvi else 0.32
+    horiz_enc = 0.325 if is_hvi else 0.31
     _ncx_nm = round(non_corner_x * 1000)
     _henc_nm = round(horiz_enc * 1000)
     _cs_nm = round(contact_size * 1000)
@@ -832,9 +927,9 @@ def _add_hvi_nfet(c, info, guard_ring, gr_info=None):
         dhx = info["diff_half_x"]
         hw = info["hw"]
         hvi_x = dhx + hvi_enc
-        # For nf=1, Magic uses a slightly larger y-extent (0.21 vs 0.185)
-        nf = len(info["gate_centers_x"])
-        hvi_y = hw + (0.21 if nf == 1 else hvi_enc)
+        # Magic uses minimum HVI y-extent of 0.42 (matching nf=1 W=0.42 case),
+        # or hw + hvi_enc for larger W where hw already exceeds the minimum.
+        hvi_y = max(hw + hvi_enc, 0.42)
     _rect(c, LAYER.hvidrawing, -hvi_x, -hvi_y, hvi_x, hvi_y)
 
 
@@ -855,8 +950,14 @@ def _add_hvi_pfet(c, info, guard_ring, gr_info=None):
         nwell_x = info["nwell_x"]
         nwell_y = info["nwell_y"]
         hw = info["hw"]
-        center_y = hw + 0.21  # same as nfet HVI y extent
-        center_x = nwell_x + 0.425  # empirical from Magic reference
+        hvi_enc = 0.185
+        center_y = max(hw + hvi_enc, 0.42)
+        if center_y > 0.42:
+            # Large W: minimal protrusion beyond nwell
+            center_x = nwell_x + (hvi_enc - 0.18)  # nwell_x + 0.005
+        else:
+            # Small W: wider horizontal band for HVI clearance
+            center_x = nwell_x + 0.425
         # Center horizontal band
         _rect(c, LAYER.hvidrawing, -center_x, -center_y, center_x, center_y)
         # Top fill to nwell boundary
