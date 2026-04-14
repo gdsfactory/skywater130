@@ -1,36 +1,55 @@
 # Magic Reference GDS Generation
 
-This directory contains tooling for generating reference GDS layouts from
-Magic VLSI's device generators (open_pdks) for XOR validation.
+Generates reference GDS layouts from Magic VLSI's device generators for XOR
+validation against our gdsfactory pcells.
 
-## Prerequisites
+## Pinned Versions
 
-- [Magic VLSI](https://github.com/RTimothyEdwards/magic) installed
-- [open_pdks](https://github.com/RTimothyEdwards/open_pdks) built with `--enable-sky130-pdk`
-- `PDK_ROOT` environment variable pointing to installed PDK
+The committed `tests/ref_gds/` files were generated from **exactly** these commits:
 
-## Tcl Source
+| Tool | Commit | Repository |
+|------|--------|------------|
+| Magic | `67c6ed939514e537773f9f01cc2ecca5c3400c44` | [RTimothyEdwards/magic](https://github.com/RTimothyEdwards/magic) |
+| open_pdks | `fc20c144baf309002e0b335585a3aaef06b56f00` | [RTimothyEdwards/open_pdks](https://github.com/RTimothyEdwards/open_pdks) |
 
-The canonical device generators live in `sky130/magic/sky130.tcl` in
-[open_pdks](https://github.com/RTimothyEdwards/open_pdks). Refer to that
-repository for the authoritative Tcl procedures.
+**Do not bump these without regenerating all reference GDS and fixing any XOR
+failures.** Upstream geometry changes will break the XOR tests silently if refs
+are not regenerated.
 
 ## Usage
 
 ```bash
-export PDK_ROOT=/usr/local/share/pdk
-./generate_references.sh                          # all devices
-./generate_references.sh sky130_fd_pr__nfet_01v8  # single device
+# Build the Docker image (first time takes ~15 min)
+docker build -t sky130-magic-ref scripts/magic/
+
+# Generate all 211 reference GDS files
+docker run --rm -e PDK_ROOT=/usr/local/share/pdk \
+  -v $(pwd)/tests/ref_gds:/output sky130-magic-ref
+
+# Generate for a single device
+docker run --rm -e PDK_ROOT=/usr/local/share/pdk \
+  -v $(pwd)/tests/ref_gds:/output sky130-magic-ref sky130_fd_pr__nfet_01v8
 ```
 
-Output goes to `../../tests/ref_gds/{device}/{hash}.gds`.
+## How It Works
 
-## sweep_params.json
+1. `sweep_params.json` defines device names and parameter combinations (211 total)
+2. `generate_references.sh` iterates each combo, calls the device's `_defaults`
+   proc to get Magic's default parameters, merges in the sweep overrides, then
+   calls the `_draw` proc to generate geometry
+3. Magic exports the cell to GDS via `gds write`
+4. Output goes to `tests/ref_gds/{device_name}/{param_hash}.gds`
 
-Single source of truth for parameter combinations tested. Both this script
-and `tests/test_xor.py` read from it. Each device entry contains:
+The param hash is `sha256(json.dumps(params, sort_keys=True))[:12]` — deterministic
+from the parameter dict.
 
-- `cell_module`: Python module path for the gdsfactory cell
-- `sweep`: list of parameter dicts to test
+## Updating Upstream
 
-The `param_maps` section translates Python parameter names to Magic parameter names.
+If you need to track a newer Magic or open_pdks:
+
+1. Update `MAGIC_COMMIT` and/or `OPEN_PDKS_COMMIT` in `Dockerfile`
+2. Rebuild the Docker image
+3. Delete existing refs: `rm -rf tests/ref_gds/sky130_fd_pr__*`
+4. Regenerate: `docker run --rm -e PDK_ROOT=/usr/local/share/pdk -v $(pwd)/tests/ref_gds:/output sky130-magic-ref`
+5. Run `uv run pytest tests/test_xor.py` — fix any XOR failures
+6. Commit the new refs + geometry fixes together
