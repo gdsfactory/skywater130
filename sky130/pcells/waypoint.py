@@ -2,7 +2,7 @@ import gdsfactory as gf
 from gdsfactory.typings import LayerSpec
 
 
-@gf.cell
+@gf.cell(tags={"type": "waypoint"})
 def waypoint(
     width: float = 0.2,
     layer: LayerSpec = (235, 4),

@@ -4,7 +4,7 @@ import gdsfactory as gf
 from gdsfactory.typings import Float2, LayerSpec
 
 
-@gf.cell
+@gf.cell(tags={"type": "via_generator"})
 def via_generator(
     width: float = 1,
     length: float = 1,

@@ -4,7 +4,7 @@ import gdsfactory as gf
 from gdsfactory.typings import Float2, LayerSpec
 
 
-@gf.cell
+@gf.cell(tags={"type": "npn_W1L2"})
 def npn_W1L2(
     E_width: float = 1,
     E_length: float = 2,

@@ -4,7 +4,7 @@ import gdsfactory as gf
 from gdsfactory.typings import Float2, LayerSpec
 
 
-@gf.cell
+@gf.cell(tags={"type": "nmos_5v"})
 def nmos_5v(
     instance_name: str = "",
     diffusion_layer: LayerSpec = (65, 20),

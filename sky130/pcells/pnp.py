@@ -4,7 +4,7 @@ import gdsfactory as gf
 from gdsfactory.typings import Float2, LayerSpec
 
 
-@gf.cell
+@gf.cell(tags={"type": "pnp"})
 def pnp(
     E_width: float = 0.68,
     E_length: float = 0.68,

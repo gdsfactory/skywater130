@@ -4,7 +4,7 @@ import gdsfactory as gf
 from gdsfactory.typings import Float2, LayerSpec
 
 
-@gf.cell
+@gf.cell(tags={"type": "mimcap_2"})
 def mimcap_2(
     m4_layer: LayerSpec = (71, 20),
     via4_size: Float2 = (0.8, 0.8),

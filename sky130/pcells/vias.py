@@ -3,7 +3,7 @@ import gdsfactory as gf
 from sky130.pcells.via_generator import via_generator
 
 
-@gf.cell
+@gf.cell(tags={"type": "vias"})
 def via_m1_m2(
     width: float = 0.5,
     length: float = 0.5,
