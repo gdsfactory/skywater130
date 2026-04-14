@@ -1,0 +1,25 @@
+name: Model Regression
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  model-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+      - run: make install
+      - name: Run model regression tests
+        run: |
+          output=$(make test 2>&1) && exit 0
+          if echo "$output" | grep -qE '/ 0 selected|no tests ran'; then
+            echo "No model tests found — skipping"
+            exit 0
+          fi
+          echo "$output"
+          exit 1
+        env:
+          GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+          PYTEST_ADDOPTS: "-k model --tb=short"

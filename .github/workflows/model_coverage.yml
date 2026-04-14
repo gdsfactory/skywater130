@@ -1,0 +1,36 @@
+name: Model Coverage
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  model-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+      - run: make install
+      - name: Check model coverage
+        env:
+          GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+        run: |
+          uv run python -c "
+          import importlib, os
+          mod = importlib.import_module('sky130')
+          pdk = mod.PDK
+          pdk.activate()
+          cells = pdk.cells
+          models = getattr(pdk, 'models', {}) or {}
+          total = len(cells)
+          with_model = len(set(cells) & set(models))
+          pct = (with_model / total * 100) if total else 0
+          summary = os.environ.get('GITHUB_STEP_SUMMARY', '/dev/null')
+          with open(summary, 'a') as f:
+              f.write(f'## Model Coverage\n\n')
+              f.write(f'| Metric | Value |\n|--------|-------|\n')
+              f.write(f'| Cells | {total} |\n')
+              f.write(f'| Cells with model | {with_model} |\n')
+              f.write(f'| Coverage | {pct:.1f}% |\n')
+          print(f'Model coverage: {with_model}/{total} ({pct:.1f}%)')
+          "

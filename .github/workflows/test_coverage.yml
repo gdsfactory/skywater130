@@ -1,0 +1,33 @@
+name: Test Coverage
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7
+      - run: make install
+      - name: Run tests with coverage
+        run: make test
+        env:
+          GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+          PYTEST_ADDOPTS: "--cov=sky130 --cov-report=term-missing --cov-report=xml --cov-append -q"
+      - name: Write summary
+        if: always()
+        run: |
+          uv run python -c "
+          import xml.etree.ElementTree as ET, os
+          try:
+              tree = ET.parse('coverage.xml')
+              rate = float(tree.getroot().attrib.get('line-rate', 0)) * 100
+              summary = os.environ.get('GITHUB_STEP_SUMMARY', '/dev/null')
+              with open(summary, 'a') as f:
+                  f.write(f'## Test Coverage\n\nLine coverage: {rate:.1f}%\n')
+              print(f'Coverage: {rate:.1f}%')
+          except Exception as e:
+              print(f'Could not parse coverage: {e}')
+          "
