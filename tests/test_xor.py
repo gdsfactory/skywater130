@@ -21,7 +21,84 @@ import pathlib
 import tempfile
 
 import gdsfactory as gf
+import klayout.db as kdb
 import pytest
+
+# ---------------------------------------------------------------------------
+# Skip layers: label layers (datatype 5) and boundary markers
+# ---------------------------------------------------------------------------
+
+SKIP_LAYERS = {
+    (67, 5),   # li1label
+    (68, 5),   # met1label
+    (69, 5),   # met2label
+    (70, 5),   # met3label
+    (71, 5),   # met4label
+    (72, 5),   # met5label
+    (235, 4),  # prBoundary
+    (0, 0),    # empty/context
+}
+
+
+def xor_gds_files(
+    ref_path: pathlib.Path, run_path: pathlib.Path
+) -> dict[tuple[int, int], str]:
+    """Layer-by-layer kdb.Region XOR. Returns dict of failing layers.
+
+    Ported from IHP PDK approach — merge regions before XOR,
+    no hidden tolerances.
+    """
+    layout_ref = kdb.Layout()
+    layout_ref.read(str(ref_path))
+    layout_new = kdb.Layout()
+    layout_new.read(str(run_path))
+
+    dbu = layout_ref.dbu
+    cell_ref = layout_ref.top_cell()
+    cell_new = layout_new.top_cell()
+
+    layers_ref = {}
+    for li in layout_ref.layer_indices():
+        info = layout_ref.get_info(li)
+        key = (info.layer, info.datatype)
+        r = kdb.Region(cell_ref.begin_shapes_rec(li))
+        if not r.is_empty():
+            layers_ref[key] = r
+
+    layers_new = {}
+    for li in layout_new.layer_indices():
+        info = layout_new.get_info(li)
+        key = (info.layer, info.datatype)
+        r = kdb.Region(cell_new.begin_shapes_rec(li))
+        if not r.is_empty():
+            layers_new[key] = r
+
+    all_layers = sorted(set(layers_ref) | set(layers_new))
+    failures = {}
+
+    for key in all_layers:
+        if key in SKIP_LAYERS:
+            continue
+        in_ref = key in layers_ref
+        in_new = key in layers_new
+        if in_ref and not in_new:
+            failures[key] = "ONLY IN REF"
+            continue
+        if in_new and not in_ref:
+            failures[key] = "ONLY IN NEW"
+            continue
+
+        r_ref = layers_ref[key].merged()
+        r_new = layers_new[key].merged()
+        xor_area = (r_ref ^ r_new).area() * dbu * dbu
+        if xor_area > 1e-6:
+            failures[key] = (
+                f"XOR={xor_area:.6f} um^2 "
+                f"(ref={r_ref.area() * dbu * dbu:.4f}, "
+                f"new={r_new.area() * dbu * dbu:.4f})"
+            )
+    return failures
+
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -153,22 +230,15 @@ def test_xor(device_name: str, params: dict, cell_module: str) -> None:
     component.write_gds(str(run_gds))
 
     # ------------------------------------------------------------------
-    # 5. XOR comparison
+    # 5. XOR comparison (kdb.Region based — no hidden tolerances)
     # ------------------------------------------------------------------
     try:
-        test_id = f"xor_{device_name}_{param_hash}"
-        has_diff = gf.diff(
-            str(ref_gds),
-            str(run_gds),
-            xor=True,
-            show=False,
-            test_name=test_id,
-            ignore_label_differences=True,
-            ignore_cell_name_differences=True,
-        )
-        assert not has_diff, (
-            f"XOR differences found between generated GDS and reference for "
-            f"{device_name} with params {params}"
-        )
+        failures = xor_gds_files(ref_gds, run_gds)
+        if failures:
+            lines = [f"  ({l},{d}): {msg}" for (l, d), msg in sorted(failures.items())]
+            raise AssertionError(
+                f"XOR differences for {device_name} with {params}:\n"
+                + "\n".join(lines)
+            )
     finally:
         run_gds.unlink(missing_ok=True)
