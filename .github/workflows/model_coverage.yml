@@ -1,0 +1,11 @@
+name: Model Coverage
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  model-coverage:
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/model_coverage.yml@main
+    secrets: inherit

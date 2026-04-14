@@ -1,0 +1,11 @@
+name: Model Regression
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  model-regression:
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/model_regression.yml@main
+    secrets: inherit

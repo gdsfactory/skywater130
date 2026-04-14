@@ -1,0 +1,11 @@
+name: Test Coverage
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  coverage:
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/test_coverage.yml@main
+    secrets: inherit
