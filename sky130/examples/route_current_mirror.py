@@ -43,16 +43,16 @@ def test_current_mirror(
 
     # 4T NMOS cascode mirror: two stacked NMOS in reference and output branches.
     nmos_ref_bot = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_ref_bot"), name="nmos_ref_bot"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos_ref_bot"
     )
     nmos_ref_top = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_ref_top"), name="nmos_ref_top"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos_ref_top"
     )
     nmos_out_bot = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_out_bot"), name="nmos_out_bot"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos_out_bot"
     )
     nmos_out_top = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_out_top"), name="nmos_out_top"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos_out_top"
     )
 
     # Place in 2x2 branch grid.
@@ -86,56 +86,56 @@ def test_current_mirror(
     nets = [
         RouteNetSpec(
             name="stack_ref",
-            start=nmos_ref_bot.ports["nmos_ref_bot_DRAIN"],
-            stop=nmos_ref_top.ports["nmos_ref_top_SOURCE"],
+            start=nmos_ref_bot.ports["DRAIN"],
+            stop=nmos_ref_top.ports["SOURCE"],
             port_name_prefix="stack_ref",
         ),
         RouteNetSpec(
             name="stack_out",
-            start=nmos_out_bot.ports["nmos_out_bot_DRAIN"],
-            stop=nmos_out_top.ports["nmos_out_top_SOURCE"],
+            start=nmos_out_bot.ports["DRAIN"],
+            stop=nmos_out_top.ports["SOURCE"],
             port_name_prefix="stack_out",
         ),
         RouteNetSpec(
             name="bias_bot_gate",
-            start=nmos_ref_bot.ports["nmos_ref_bot_GATE"],
-            stop=nmos_out_bot.ports["nmos_out_bot_GATE"],
+            start=nmos_ref_bot.ports["GATE"],
+            stop=nmos_out_bot.ports["GATE"],
             port_name_prefix="bias_bot_gate",
         ),
         RouteNetSpec(
             name="bias_top_gate",
-            start=nmos_ref_top.ports["nmos_ref_top_GATE"],
-            stop=nmos_out_top.ports["nmos_out_top_GATE"],
+            start=nmos_ref_top.ports["GATE"],
+            stop=nmos_out_top.ports["GATE"],
             port_name_prefix="bias_top_gate",
         ),
         RouteNetSpec(
             name="vss_src_join",
-            start=nmos_ref_bot.ports["nmos_ref_bot_SOURCE"],
-            stop=nmos_out_bot.ports["nmos_out_bot_SOURCE"],
+            start=nmos_ref_bot.ports["SOURCE"],
+            stop=nmos_out_bot.ports["SOURCE"],
             port_name_prefix="vss_src_join",
         ),
         RouteNetSpec(
             name="vss_body_ref_bot",
-            start=nmos_ref_bot.ports["nmos_ref_bot_SOURCE"],
-            stop=nmos_ref_bot.ports["nmos_ref_bot_BODY"],
+            start=nmos_ref_bot.ports["SOURCE"],
+            stop=nmos_ref_bot.ports["BODY"],
             port_name_prefix="vss_body_ref_bot",
         ),
         RouteNetSpec(
             name="vss_body_out_bot",
-            start=nmos_out_bot.ports["nmos_out_bot_SOURCE"],
-            stop=nmos_out_bot.ports["nmos_out_bot_BODY"],
+            start=nmos_out_bot.ports["SOURCE"],
+            stop=nmos_out_bot.ports["BODY"],
             port_name_prefix="vss_body_out_bot",
         ),
         RouteNetSpec(
             name="vss_body_ref_top",
-            start=nmos_ref_bot.ports["nmos_ref_bot_SOURCE"],
-            stop=nmos_ref_top.ports["nmos_ref_top_BODY"],
+            start=nmos_ref_bot.ports["SOURCE"],
+            stop=nmos_ref_top.ports["BODY"],
             port_name_prefix="vss_body_ref_top",
         ),
         RouteNetSpec(
             name="vss_body_out_top",
-            start=nmos_out_bot.ports["nmos_out_bot_SOURCE"],
-            stop=nmos_out_top.ports["nmos_out_top_BODY"],
+            start=nmos_out_bot.ports["SOURCE"],
+            stop=nmos_out_top.ports["BODY"],
             port_name_prefix="vss_body_out_top",
         ),
     ]

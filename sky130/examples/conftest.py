@@ -1,3 +1,1 @@
-"""Skip routing examples that depend on cells not yet ported."""
-
-collect_ignore_glob = ["route_*.py"]
+# conftest.py for sky130/examples — no skips needed.

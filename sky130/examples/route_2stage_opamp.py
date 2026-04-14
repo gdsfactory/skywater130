@@ -54,37 +54,37 @@ def test_2stage_opamp(
 
     # Stage 1 devices: NMOS differential pair + PMOS active loads + NMOS tail source.
     nmos_in_p = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_in_p"), name="nmos_in_p"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos_in_p"
     )
     nmos_in_n = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_in_n"), name="nmos_in_n"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos_in_n"
     )
     pmos_load_p = c.add_ref(
-        pdk.get_component("pmos_5v", instance_name="pmos_load_p"), name="pmos_load_p"
+        pdk.get_component("sky130_fd_pr__pfet_g5v0d10v5"), name="pmos_load_p"
     )
     pmos_load_n = c.add_ref(
-        pdk.get_component("pmos_5v", instance_name="pmos_load_n"), name="pmos_load_n"
+        pdk.get_component("sky130_fd_pr__pfet_g5v0d10v5"), name="pmos_load_n"
     )
     nmos_tail = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_tail"), name="nmos_tail"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos_tail"
     )
 
     # Stage 2 devices: common-source gain stage + PMOS load.
     nmos_stage2 = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_stage2"), name="nmos_stage2"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos_stage2"
     )
     pmos_stage2_load = c.add_ref(
-        pdk.get_component("pmos_5v", instance_name="pmos_stage2_load"),
+        pdk.get_component("sky130_fd_pr__pfet_g5v0d10v5"),
         name="pmos_stage2_load",
     )
 
     # Bias helper devices.
     nmos_bias_ref = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos_bias_ref"),
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"),
         name="nmos_bias_ref",
     )
     pmos_bias_ref = c.add_ref(
-        pdk.get_component("pmos_5v", instance_name="pmos_bias_ref"),
+        pdk.get_component("sky130_fd_pr__pfet_g5v0d10v5"),
         name="pmos_bias_ref",
     )
 
@@ -128,38 +128,38 @@ def test_2stage_opamp(
     critical_nets = [
         RouteNetSpec(
             name="vss_join_core",
-            start=nmos_tail.ports["nmos_tail_SOURCE"],
-            stop=nmos_stage2.ports["nmos_stage2_SOURCE"],
+            start=nmos_tail.ports["SOURCE"],
+            stop=nmos_stage2.ports["SOURCE"],
             port_name_prefix="vss_join_core",
         ),
         RouteNetSpec(
             name="v1_to_stage2",
-            start=nmos_in_n.ports["nmos_in_n_DRAIN"],
-            stop=nmos_stage2.ports["nmos_stage2_GATE"],
+            start=nmos_in_n.ports["DRAIN"],
+            stop=nmos_stage2.ports["GATE"],
             port_name_prefix="v1_to_stage2",
         ),
         RouteNetSpec(
             name="tail_bias",
-            start=nmos_tail.ports["nmos_tail_GATE"],
-            stop=nmos_bias_ref.ports["nmos_bias_ref_GATE"],
+            start=nmos_tail.ports["GATE"],
+            stop=nmos_bias_ref.ports["GATE"],
             port_name_prefix="tail_bias",
         ),
         RouteNetSpec(
             name="tail_to_inp",
-            start=nmos_tail.ports["nmos_tail_DRAIN"],
-            stop=nmos_in_p.ports["nmos_in_p_SOURCE"],
+            start=nmos_tail.ports["DRAIN"],
+            stop=nmos_in_p.ports["SOURCE"],
             port_name_prefix="tail_to_inp",
         ),
         RouteNetSpec(
             name="tail_to_inn",
-            start=nmos_tail.ports["nmos_tail_DRAIN"],
-            stop=nmos_in_n.ports["nmos_in_n_SOURCE"],
+            start=nmos_tail.ports["DRAIN"],
+            stop=nmos_in_n.ports["SOURCE"],
             port_name_prefix="tail_to_inn",
         ),
         RouteNetSpec(
             name="pbias_d_to_vdd",
-            start=pmos_bias_ref.ports["pmos_bias_ref_DRAIN"],
-            stop=pmos_bias_ref.ports["pmos_bias_ref_SOURCE"],
+            start=pmos_bias_ref.ports["DRAIN"],
+            stop=pmos_bias_ref.ports["SOURCE"],
             port_name_prefix="pbias_d_to_vdd",
         ),
     ]
@@ -186,110 +186,110 @@ def test_2stage_opamp(
     nets = [
         RouteNetSpec(
             name="vss_join_bias",
-            start=nmos_tail.ports["nmos_tail_SOURCE"],
-            stop=nmos_bias_ref.ports["nmos_bias_ref_SOURCE"],
+            start=nmos_tail.ports["SOURCE"],
+            stop=nmos_bias_ref.ports["SOURCE"],
             port_name_prefix="vss_join_bias",
         ),
         RouteNetSpec(
             name="vss_body_tail",
-            start=nmos_tail.ports["nmos_tail_SOURCE"],
-            stop=nmos_tail.ports["nmos_tail_BODY"],
+            start=nmos_tail.ports["SOURCE"],
+            stop=nmos_tail.ports["BODY"],
             port_name_prefix="vss_body_tail",
         ),
         RouteNetSpec(
             name="vss_body_stage2",
-            start=nmos_stage2.ports["nmos_stage2_SOURCE"],
-            stop=nmos_stage2.ports["nmos_stage2_BODY"],
+            start=nmos_stage2.ports["SOURCE"],
+            stop=nmos_stage2.ports["BODY"],
             port_name_prefix="vss_body_stage2",
         ),
         RouteNetSpec(
             name="vss_body_in_p",
-            start=nmos_in_p.ports["nmos_in_p_SOURCE"],
-            stop=nmos_in_p.ports["nmos_in_p_BODY"],
+            start=nmos_in_p.ports["SOURCE"],
+            stop=nmos_in_p.ports["BODY"],
             port_name_prefix="vss_body_in_p",
         ),
         RouteNetSpec(
             name="vss_body_in_n",
-            start=nmos_in_n.ports["nmos_in_n_SOURCE"],
-            stop=nmos_in_n.ports["nmos_in_n_BODY"],
+            start=nmos_in_n.ports["SOURCE"],
+            stop=nmos_in_n.ports["BODY"],
             port_name_prefix="vss_body_in_n",
         ),
         RouteNetSpec(
             name="vss_body_bias_ref",
-            start=nmos_bias_ref.ports["nmos_bias_ref_SOURCE"],
-            stop=nmos_bias_ref.ports["nmos_bias_ref_BODY"],
+            start=nmos_bias_ref.ports["SOURCE"],
+            stop=nmos_bias_ref.ports["BODY"],
             port_name_prefix="vss_body_bias_ref",
         ),
         RouteNetSpec(
             name="vdd_join_stage2_to_bias",
-            start=pmos_stage2_load.ports["pmos_stage2_load_SOURCE"],
-            stop=pmos_bias_ref.ports["pmos_bias_ref_SOURCE"],
+            start=pmos_stage2_load.ports["SOURCE"],
+            stop=pmos_bias_ref.ports["SOURCE"],
             port_name_prefix="vdd_join_stage2_to_bias",
         ),
         RouteNetSpec(
             name="vdd_join_loads",
-            start=pmos_load_p.ports["pmos_load_p_SOURCE"],
-            stop=pmos_load_n.ports["pmos_load_n_SOURCE"],
+            start=pmos_load_p.ports["SOURCE"],
+            stop=pmos_load_n.ports["SOURCE"],
             port_name_prefix="vdd_join_loads",
         ),
         RouteNetSpec(
             name="vdd_join_loads_to_stage2",
-            start=pmos_load_p.ports["pmos_load_p_SOURCE"],
-            stop=pmos_stage2_load.ports["pmos_stage2_load_SOURCE"],
+            start=pmos_load_p.ports["SOURCE"],
+            stop=pmos_stage2_load.ports["SOURCE"],
             port_name_prefix="vdd_join_loads_to_stage2",
         ),
         RouteNetSpec(
             name="vdd_body_stage2_load",
-            start=pmos_stage2_load.ports["pmos_stage2_load_SOURCE"],
-            stop=pmos_stage2_load.ports["pmos_stage2_load_BODY"],
+            start=pmos_stage2_load.ports["SOURCE"],
+            stop=pmos_stage2_load.ports["BODY"],
             port_name_prefix="vdd_body_stage2_load",
         ),
         RouteNetSpec(
             name="vdd_body_load_p",
-            start=pmos_load_p.ports["pmos_load_p_SOURCE"],
-            stop=pmos_load_p.ports["pmos_load_p_BODY"],
+            start=pmos_load_p.ports["SOURCE"],
+            stop=pmos_load_p.ports["BODY"],
             port_name_prefix="vdd_body_load_p",
         ),
         RouteNetSpec(
             name="vdd_body_load_n",
-            start=pmos_load_n.ports["pmos_load_n_SOURCE"],
-            stop=pmos_load_n.ports["pmos_load_n_BODY"],
+            start=pmos_load_n.ports["SOURCE"],
+            stop=pmos_load_n.ports["BODY"],
             port_name_prefix="vdd_body_load_n",
         ),
         RouteNetSpec(
             name="vdd_body_bias_ref",
-            start=pmos_bias_ref.ports["pmos_bias_ref_SOURCE"],
-            stop=pmos_bias_ref.ports["pmos_bias_ref_BODY"],
+            start=pmos_bias_ref.ports["SOURCE"],
+            stop=pmos_bias_ref.ports["BODY"],
             port_name_prefix="vdd_body_bias_ref",
         ),
         RouteNetSpec(
             name="stage1_node_p",
-            start=nmos_in_p.ports["nmos_in_p_DRAIN"],
-            stop=pmos_load_p.ports["pmos_load_p_DRAIN"],
+            start=nmos_in_p.ports["DRAIN"],
+            stop=pmos_load_p.ports["DRAIN"],
             port_name_prefix="stage1_node_p",
         ),
         RouteNetSpec(
             name="stage1_node_n",
-            start=nmos_in_n.ports["nmos_in_n_DRAIN"],
-            stop=pmos_load_n.ports["pmos_load_n_DRAIN"],
+            start=nmos_in_n.ports["DRAIN"],
+            stop=pmos_load_n.ports["DRAIN"],
             port_name_prefix="stage1_node_n",
         ),
         RouteNetSpec(
             name="load_bias_pair",
-            start=pmos_load_p.ports["pmos_load_p_GATE"],
-            stop=pmos_load_n.ports["pmos_load_n_GATE"],
+            start=pmos_load_p.ports["GATE"],
+            stop=pmos_load_n.ports["GATE"],
             port_name_prefix="load_bias_pair",
         ),
         RouteNetSpec(
             name="stage2_out",
-            start=nmos_stage2.ports["nmos_stage2_DRAIN"],
-            stop=pmos_stage2_load.ports["pmos_stage2_load_DRAIN"],
+            start=nmos_stage2.ports["DRAIN"],
+            stop=pmos_stage2_load.ports["DRAIN"],
             port_name_prefix="stage2_out",
         ),
         RouteNetSpec(
             name="stage2_load_bias",
-            start=pmos_stage2_load.ports["pmos_stage2_load_GATE"],
-            stop=pmos_bias_ref.ports["pmos_bias_ref_GATE"],
+            start=pmos_stage2_load.ports["GATE"],
+            stop=pmos_bias_ref.ports["GATE"],
             port_name_prefix="stage2_load_bias",
         ),
     ]

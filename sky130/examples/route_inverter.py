@@ -40,10 +40,10 @@ def test_inverter(
 
     # Create instances
     instance1 = c.add_ref(
-        pdk.get_component("pmos_5v", instance_name="pmos"), name="pmos"
+        pdk.get_component("sky130_fd_pr__pfet_g5v0d10v5"), name="pmos"
     )
     instance2 = c.add_ref(
-        pdk.get_component("nmos_5v", instance_name="nmos"), name="nmos"
+        pdk.get_component("sky130_fd_pr__nfet_g5v0d10v5"), name="nmos"
     )
 
     # Place instances
@@ -80,26 +80,26 @@ def test_inverter(
     nets = [
         RouteNetSpec(
             name="out",
-            start=instance1.ports["pmos_DRAIN"],
-            stop=instance2.ports["nmos_DRAIN"],
+            start=instance1.ports["DRAIN"],
+            stop=instance2.ports["DRAIN"],
             port_name_prefix="out",
         ),
         RouteNetSpec(
             name="in",
-            start=instance1.ports["pmos_GATE"],
-            stop=instance2.ports["nmos_GATE"],
+            start=instance1.ports["GATE"],
+            stop=instance2.ports["GATE"],
             port_name_prefix="in",
         ),
         RouteNetSpec(
             name="vdd",
-            start=instance1.ports["pmos_SOURCE"],
-            stop=instance1.ports["pmos_BODY"],
+            start=instance1.ports["SOURCE"],
+            stop=instance1.ports["BODY"],
             port_name_prefix="vdd",
         ),
         RouteNetSpec(
             name="vss",
-            start=instance2.ports["nmos_SOURCE"],
-            stop=instance2.ports["nmos_BODY"],
+            start=instance2.ports["SOURCE"],
+            stop=instance2.ports["BODY"],
             port_name_prefix="vss",
         ),
     ]
