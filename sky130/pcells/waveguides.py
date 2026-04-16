@@ -5,7 +5,7 @@ from gdsfactory.cross_section import port_names_electrical, port_types_electrica
 from gdsfactory.typings import CrossSectionSpec, LayerSpec, Size
 
 
-@gf.cell(tags={"type": "waveguides"})
+@gf.cell(tags=["waveguides"])
 def wire_corner(
     cross_section: CrossSectionSpec = "metal2",
     width: float | None = None,
@@ -27,7 +27,7 @@ def wire_corner(
     )
 
 
-@gf.cell(tags={"type": "waveguides"})
+@gf.cell(tags=["waveguides"])
 def wire_corner45(
     cross_section: CrossSectionSpec = "metal2",
     radius: float = 10,
@@ -58,7 +58,7 @@ def wire_corner45(
 ####################
 
 
-@gf.cell(tags={"type": "waveguides"})
+@gf.cell(tags=["waveguides"])
 def straight_metal1(
     length: float = 10,
     cross_section: CrossSectionSpec = "metal1",
@@ -76,7 +76,7 @@ def straight_metal1(
     )
 
 
-@gf.cell(tags={"type": "waveguides"})
+@gf.cell(tags=["waveguides"])
 def straight_metal2(
     length: float = 10,
     cross_section: CrossSectionSpec = "metal2",
@@ -94,7 +94,7 @@ def straight_metal2(
     )
 
 
-@gf.cell(tags={"type": "waveguides"})
+@gf.cell(tags=["waveguides"])
 def bend_metal1(
     radius: float | None = None,
     angle: float = 90,
@@ -119,7 +119,7 @@ def bend_metal1(
     )
 
 
-@gf.cell(tags={"type": "waveguides"})
+@gf.cell(tags=["waveguides"])
 def bend_metal2(
     radius: float | None = None,
     angle: float = 90,
@@ -144,7 +144,7 @@ def bend_metal2(
     )
 
 
-@gf.cell(tags={"type": "waveguides"})
+@gf.cell(tags=["waveguides"])
 def bend_s_metal1(
     size: Size = (11, 1.8),
     cross_section: CrossSectionSpec = "metal1",
@@ -169,7 +169,7 @@ def bend_s_metal1(
     )
 
 
-@gf.cell(tags={"type": "waveguides"})
+@gf.cell(tags=["waveguides"])
 def bend_s_metal2(
     size: Size = (11, 1.8),
     cross_section: CrossSectionSpec = "metal2",

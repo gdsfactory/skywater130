@@ -4,7 +4,7 @@ import gdsfactory as gf
 from gdsfactory.typings import Float2, LayerSpec
 
 
-@gf.cell(tags={"type": "nmos"})
+@gf.cell(tags=["nmos"])
 def nmos(
     diffusion_layer: LayerSpec = (65, 20),
     poly_layer: LayerSpec = (66, 20),
