@@ -8,6 +8,7 @@ updates:
       interval: monthly
     ignore:
       - dependency-name: "doplaydo/*"
+      - dependency-name: "jupyter-book"
 
   - package-ecosystem: github-actions
     cooldown:

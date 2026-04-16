@@ -3,7 +3,7 @@
 <!-- BADGES:START -->
 [![Docs](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml)
 [![Tests](https://github.com/gdsfactory/skywater130/actions/workflows/test_code.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/test_code.yml)
-[![DRC](https://github.com/gdsfactory/skywater130/actions/workflows/drc.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/drc.yml)
+[![DRC](https://github.com/gdsfactory/skywater130/raw/badges/drc.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/drc.yml)
 [![Model Regression](https://github.com/gdsfactory/skywater130/actions/workflows/model_regression.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/model_regression.yml)
 [![Test Coverage](https://github.com/gdsfactory/skywater130/raw/badges/coverage.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/test_coverage.yml)
 [![Model Coverage](https://github.com/gdsfactory/skywater130/raw/badges/model_coverage.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/model_coverage.yml)
