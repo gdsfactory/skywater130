@@ -8,4 +8,5 @@ on:
 jobs:
   model-regression:
     uses: doplaydo/pdk-ci-workflow/.github/workflows/model_regression.yml@main
-    secrets: inherit
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
