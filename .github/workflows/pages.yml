@@ -9,3 +9,17 @@ jobs:
   docs:
     uses: doplaydo/pdk-ci-workflow/.github/workflows/pages.yml@main
     secrets: inherit
+  deploy-docs:
+    needs: docs
+    if: ${{ github.ref == 'refs/heads/main' }}
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
