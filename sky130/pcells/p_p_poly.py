@@ -4,7 +4,7 @@ import gdsfactory as gf
 from gdsfactory.typings import Float2, LayerSpec
 
 
-@gf.cell
+@gf.cell(tags=["p_p_poly"])
 def p_p_poly(
     p_poly_width: float = 0.35,
     p_poly_length: float = 0.5,
