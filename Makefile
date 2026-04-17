@@ -5,7 +5,7 @@ install: modules
 rm-samples:
 	rm -rf samples
 
-dev:
+dev: modules
 	uv sync --all-extras
 	uv pip install -e .
 	curl -sf https://raw.githubusercontent.com/doplaydo/pdk-ci-workflow/main/templates/.pre-commit-config.yaml -o .pre-commit-config.yaml
