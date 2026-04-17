@@ -8,4 +8,5 @@ on:
 jobs:
   coverage:
     uses: doplaydo/pdk-ci-workflow/.github/workflows/test_coverage.yml@main
-    secrets: inherit
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}

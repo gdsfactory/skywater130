@@ -7,4 +7,5 @@ on:
 jobs:
   draft:
     uses: doplaydo/pdk-ci-workflow/.github/workflows/release-drafter.yml@main
-    secrets: inherit
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
