@@ -22,6 +22,7 @@ if cell_name == "all_cells":
 
     c = gf.Component("all_cells")
     for name, func in sorted(pdk.cells.items()):
+        # Skip cells from installed packages (not PDK-owned)
         try:
             src = inspect.getfile(func)
         except TypeError:
@@ -29,6 +30,7 @@ if cell_name == "all_cells":
         if ".venv" in src or "site-packages" in src:
             continue
 
+        # Skip cells that require positional arguments
         sig = inspect.signature(func)
         required = [
             p
@@ -42,7 +44,7 @@ if cell_name == "all_cells":
 
         try:
             c.add_ref(func())
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             print(f"Error instantiating cell {name}: {e}")
     c.write_gds(f"build/gds/{cell_name}.gds")
 else:
