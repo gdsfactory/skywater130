@@ -1,5 +1,6 @@
 info: {}
 name: npn_W1L2_EW1_EL2_BW0p4_CW0p4_NS0p27_DL65_20_TL65_44_DE0_7e7949df
+ports: {}
 settings:
   B_width: 0.4
   C_width: 0.4

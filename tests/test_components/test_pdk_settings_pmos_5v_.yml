@@ -1,5 +1,42 @@
 info: {}
 name: pmos_5v_IN_DL65_20_PL66_20_GW0p75_GL0p5_SW0p3_EC0p2_CS0_370534f7
+ports:
+  BODY:
+    center:
+    - 1.75
+    - 0.375
+    layer: met1drawing
+    name: BODY
+    orientation: 270
+    port_type: electrical
+    width: 0.01
+  DRAIN:
+    center:
+    - 0.15
+    - 0.375
+    layer: met1drawing
+    name: DRAIN
+    orientation: 90
+    port_type: electrical
+    width: 0.01
+  GATE:
+    center:
+    - 0.55
+    - 1.095
+    layer: met1drawing
+    name: GATE
+    orientation: 270
+    port_type: electrical
+    width: 0.01
+  SOURCE:
+    center:
+    - 0.95
+    - 0.375
+    layer: met1drawing
+    name: SOURCE
+    orientation: 270
+    port_type: electrical
+    width: 0.01
 settings:
   contact_enclosure:
   - 0.06

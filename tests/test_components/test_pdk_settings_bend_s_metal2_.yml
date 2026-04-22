@@ -10,6 +10,25 @@ info:
   route_info_weight: 11.206
   start_angle: 0
 name: bend_s_metal2_S11_1p8_CSmetal2_WNone
+ports:
+  e1:
+    center:
+    - 0
+    - 0
+    layer: met2drawing
+    name: e1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  e2:
+    center:
+    - 11
+    - 1.8
+    layer: met2drawing
+    name: e2
+    orientation: 0
+    port_type: electrical
+    width: 0.2
 settings:
   cross_section: metal2
   size:

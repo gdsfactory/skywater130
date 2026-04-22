@@ -1,6 +1,25 @@
 info:
   length: 14.142
 name: wire_corner45_CSmetal2_R10_WNone_LNone_WCPTrue
+ports:
+  e1:
+    center:
+    - 0
+    - 0
+    layer: met2drawing
+    name: e1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  e2:
+    center:
+    - 10
+    - 10
+    layer: met2drawing
+    name: e2
+    orientation: 90
+    port_type: electrical
+    width: 0.2
 settings:
   cross_section: metal2
   radius: 10

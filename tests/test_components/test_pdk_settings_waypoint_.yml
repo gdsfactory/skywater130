@@ -1,5 +1,15 @@
 info: {}
 name: waypoint_W0p2_L235_4_IN
+ports:
+  waypoint:
+    center:
+    - 0.1
+    - 0.1
+    layer: prBoundaryboundary
+    name: waypoint
+    orientation: 180
+    port_type: electrical
+    width: 0.01
 settings:
   instance_name: ''
   layer:
