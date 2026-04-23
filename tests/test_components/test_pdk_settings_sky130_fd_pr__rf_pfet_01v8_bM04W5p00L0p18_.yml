@@ -1,3 +1,40 @@
 info: {}
 name: sky130_fd_pr__rf_pfet_01v8_bM04W5p00L0p18
+ports:
+  DRAIN:
+    center:
+    - 0.175
+    - 4.86
+    layer: met2drawing
+    name: DRAIN
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  GATE:
+    center:
+    - 2.065
+    - 6.58
+    layer: met1drawing
+    name: GATE
+    orientation: 90
+    port_type: electrical
+    width: 0.2
+  GATE1:
+    center:
+    - 2.065
+    - 0.36
+    layer: met1drawing
+    name: GATE1
+    orientation: 270
+    port_type: electrical
+    width: 0.2
+  SOURCE:
+    center:
+    - 0.175
+    - 2.24
+    layer: met2drawing
+    name: SOURCE
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

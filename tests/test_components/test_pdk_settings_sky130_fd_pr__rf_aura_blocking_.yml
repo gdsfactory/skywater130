@@ -1,3 +1,103 @@
 info: {}
 name: sky130_fd_pr__rf_aura_blocking
+ports:
+  D_P:
+    center:
+    - 68.56
+    - -124.915
+    layer: met2drawing
+    name: D_P
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  D_P2:
+    center:
+    - 100.605
+    - -122.75
+    layer: met2drawing
+    name: D_P2
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  G:
+    center:
+    - 69.58
+    - 100.635
+    layer: met1drawing
+    name: G
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  G_N2:
+    center:
+    - 103.875
+    - 111.83
+    layer: met1drawing
+    name: G_N2
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  G_P:
+    center:
+    - 68.605
+    - -124.16
+    layer: met1drawing
+    name: G_P
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  G_P2:
+    center:
+    - 103.29
+    - -120.56
+    layer: met1drawing
+    name: G_P2
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  S:
+    center:
+    - 69.575
+    - 99.395
+    layer: met1drawing
+    name: S
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  S_N2:
+    center:
+    - 103.875
+    - 88.26
+    layer: met1drawing
+    name: S_N2
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  S_P:
+    center:
+    - 68.59
+    - -125.82
+    layer: met1drawing
+    name: S_P
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  S_P2:
+    center:
+    - 103.29
+    - -127.045
+    layer: met1drawing
+    name: S_P2
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  VPWR:
+    center:
+    - 69.6
+    - 100.14
+    layer: met2drawing
+    name: VPWR
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

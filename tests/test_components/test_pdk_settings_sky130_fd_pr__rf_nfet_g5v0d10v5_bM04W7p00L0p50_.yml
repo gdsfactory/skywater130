@@ -1,3 +1,49 @@
 info: {}
 name: sky130_fd_pr__rf_nfet_g5v0d10v5_bM04W7p00L0p50
+ports:
+  DRAIN:
+    center:
+    - 1.485
+    - 4.44
+    layer: met2drawing
+    name: DRAIN
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  GATE:
+    center:
+    - 3.395
+    - 8.47
+    layer: met1drawing
+    name: GATE
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  GATE1:
+    center:
+    - 3.39
+    - 0.2
+    layer: met1drawing
+    name: GATE1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  SOURCE:
+    center:
+    - 1.16
+    - 1.75
+    layer: met2drawing
+    name: SOURCE
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  SOURCE1:
+    center:
+    - 1.175
+    - 7.255
+    layer: met2drawing
+    name: SOURCE1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

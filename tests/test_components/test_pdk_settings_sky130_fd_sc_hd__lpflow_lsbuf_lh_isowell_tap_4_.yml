@@ -1,3 +1,49 @@
 info: {}
 name: sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4
+ports:
+  LOWLVPWR:
+    center:
+    - 0.465
+    - 2.21
+    layer: met1drawing
+    name: LOWLVPWR
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  VGND:
+    center:
+    - 0.4
+    - 5.44
+    layer: met1drawing
+    name: VGND
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  VGND1:
+    center:
+    - 0.495
+    - 0.03
+    layer: met1drawing
+    name: VGND1
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  VPB:
+    center:
+    - 0.56
+    - 3.57
+    layer: met1drawing
+    name: VPB
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  VPWR:
+    center:
+    - 3.6
+    - 2.598
+    layer: met1drawing
+    name: VPWR
+    orientation: 180
+    port_type: electrical
+    width: 0.2
 settings: {}

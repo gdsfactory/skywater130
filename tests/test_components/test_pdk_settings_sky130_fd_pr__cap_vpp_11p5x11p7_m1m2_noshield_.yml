@@ -1,3 +1,22 @@
 info: {}
 name: sky130_fd_pr__cap_vpp_11p5x11p7_m1m2_noshield
+ports:
+  C0:
+    center:
+    - 5.17
+    - 10.88
+    layer: met2drawing
+    name: C0
+    orientation: 180
+    port_type: electrical
+    width: 0.2
+  C1:
+    center:
+    - 5.71
+    - 10.4
+    layer: met2drawing
+    name: C1
+    orientation: 0
+    port_type: electrical
+    width: 0.2
 settings: {}
