@@ -416,7 +416,7 @@ def _mosfet_core(
     mcon_pitch = contact_size + mcon_spacing  # 0.36
     mcon_enc_y = 0.06
 
-    for si, sx in enumerate(sd_centers_x):
+    for _si, sx in enumerate(sd_centers_x):
         ch = contact_size / 2.0
 
         # -- Licon contacts --
@@ -484,24 +484,45 @@ def _mosfet_core(
                 # full width; the other side only needs narrow (center) width.
                 if even_side == "bottom":
                     # Main rect: full width, from -nwell_y to +nwell_step_y
-                    _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, nwell_x, nwell_step_y)
+                    _rect(
+                        c, LAYER.nwelldrawing, -nwell_x, -nwell_y, nwell_x, nwell_step_y
+                    )
                     # Top bump: narrow, from +nwell_step_y to +nwell_y
                     _rect(c, LAYER.nwelldrawing, -step_x, nwell_step_y, step_x, nwell_y)
                 else:
                     # Main rect: full width, from -nwell_step_y to +nwell_y
-                    _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y, nwell_x, nwell_y)
+                    _rect(
+                        c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y, nwell_x, nwell_y
+                    )
                     # Bottom bump: narrow, from -nwell_y to -nwell_step_y
-                    _rect(c, LAYER.nwelldrawing, -step_x, -nwell_y, step_x, -nwell_step_y)
+                    _rect(
+                        c, LAYER.nwelldrawing, -step_x, -nwell_y, step_x, -nwell_step_y
+                    )
             else:
                 # Even nf: outermost gates are 0 (even) and nf-1 (odd).
                 # Each side extends in one diagonal direction.
-                _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_step_y, nwell_x, nwell_step_y)
+                _rect(
+                    c,
+                    LAYER.nwelldrawing,
+                    -nwell_x,
+                    -nwell_step_y,
+                    nwell_x,
+                    nwell_step_y,
+                )
                 if even_side == "bottom":
-                    _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, step_x, -nwell_step_y)
-                    _rect(c, LAYER.nwelldrawing, -step_x, nwell_step_y, nwell_x, nwell_y)
+                    _rect(
+                        c, LAYER.nwelldrawing, -nwell_x, -nwell_y, step_x, -nwell_step_y
+                    )
+                    _rect(
+                        c, LAYER.nwelldrawing, -step_x, nwell_step_y, nwell_x, nwell_y
+                    )
                 else:
-                    _rect(c, LAYER.nwelldrawing, -step_x, -nwell_y, nwell_x, -nwell_step_y)
-                    _rect(c, LAYER.nwelldrawing, -nwell_x, nwell_step_y, step_x, nwell_y)
+                    _rect(
+                        c, LAYER.nwelldrawing, -step_x, -nwell_y, nwell_x, -nwell_step_y
+                    )
+                    _rect(
+                        c, LAYER.nwelldrawing, -nwell_x, nwell_step_y, step_x, nwell_y
+                    )
         else:
             _rect(c, LAYER.nwelldrawing, -nwell_x, -nwell_y, nwell_x, nwell_y)
 
@@ -611,7 +632,6 @@ def _add_guard_ring(
     if is_hvi:
         ring_width = 0.29
         # HVI devices use larger spacing from device boundary
-        implant_x = diff_half_x + info["implant_enc"]
         if is_nvt:
             inner_spacing_x = 0.255
         else:

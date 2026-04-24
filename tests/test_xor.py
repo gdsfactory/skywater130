@@ -20,7 +20,6 @@ import json
 import pathlib
 import tempfile
 
-import gdsfactory as gf
 import klayout.db as kdb
 import pytest
 
@@ -29,14 +28,14 @@ import pytest
 # ---------------------------------------------------------------------------
 
 SKIP_LAYERS = {
-    (67, 5),   # li1label
-    (68, 5),   # met1label
-    (69, 5),   # met2label
-    (70, 5),   # met3label
-    (71, 5),   # met4label
-    (72, 5),   # met5label
+    (67, 5),  # li1label
+    (68, 5),  # met1label
+    (69, 5),  # met2label
+    (70, 5),  # met3label
+    (71, 5),  # met4label
+    (72, 5),  # met5label
     (235, 4),  # prBoundary
-    (0, 0),    # empty/context
+    (0, 0),  # empty/context
 }
 
 
@@ -235,10 +234,11 @@ def test_xor(device_name: str, params: dict, cell_module: str) -> None:
     try:
         failures = xor_gds_files(ref_gds, run_gds)
         if failures:
-            lines = [f"  ({l},{d}): {msg}" for (l, d), msg in sorted(failures.items())]
+            lines = [
+                f"  ({lay},{d}): {msg}" for (lay, d), msg in sorted(failures.items())
+            ]
             raise AssertionError(
-                f"XOR differences for {device_name} with {params}:\n"
-                + "\n".join(lines)
+                f"XOR differences for {device_name} with {params}:\n" + "\n".join(lines)
             )
     finally:
         run_gds.unlink(missing_ok=True)

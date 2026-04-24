@@ -435,9 +435,6 @@ def sky130_fd_pr__diode_pd2nw_05v5(
         li1_layer=LAYER.li1drawing,
     )
 
-    outer_oh_x = outer_ih_x + _RING_WIDTH
-    outer_oh_y = outer_ih_y + _RING_WIDTH
-
     # --- Boundary marker (235,4) — based on inner ring geometry ---
     bnd_x = inner_ih_x + inner_oh_x
     bnd_y = inner_ih_y + inner_oh_y
