@@ -3,7 +3,7 @@
 Cells
 =============================
 
-.. currentmodule:: sky130.components
+.. currentmodule:: sky130.cells
 
 .. autosummary::
    :toctree: _autosummary/

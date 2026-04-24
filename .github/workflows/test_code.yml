@@ -1,36 +1,11 @@
 name: Test code
-
 on:
   pull_request:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  pre-commit:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v6
-    - uses: actions/setup-python@v6
-    - name: Download pre-commit config
-      run: curl -sf https://raw.githubusercontent.com/doplaydo/pdk-ci-workflow/main/templates/.pre-commit-config.yaml -o .pre-commit-config.yaml
-    - uses: pre-commit/action@v3.0.1
-
   test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      max-parallel: 12
-      matrix:
-        python-version: ["3.12"]
-        os: [ubuntu-latest]
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          submodules: "recursive"
-      - uses: astral-sh/setup-uv@v7
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install Dependencies
-        run: uv sync --all-extras
-      - name: Run Tests
-        run: make modules test
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/test_code.yml@main
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}

@@ -1,5 +1,17 @@
 # sky130 gdsfactory PDK 0.15.2
 
+<!-- BADGES:START -->
+[![Docs](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml)
+[![Tests](https://github.com/gdsfactory/skywater130/actions/workflows/test_code.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/test_code.yml)
+[![DRC](https://github.com/gdsfactory/skywater130/raw/badges/drc.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/drc.yml)
+[![Model Regression](https://github.com/gdsfactory/skywater130/actions/workflows/model_regression.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/model_regression.yml)
+[![Test Coverage](https://github.com/gdsfactory/skywater130/raw/badges/coverage.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/test_coverage.yml)
+[![Model Coverage](https://github.com/gdsfactory/skywater130/raw/badges/model_coverage.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/model_coverage.yml)
+[![Issues](https://github.com/gdsfactory/skywater130/raw/badges/issues.svg)](https://github.com/gdsfactory/skywater130/issues)
+[![PRs](https://github.com/gdsfactory/skywater130/raw/badges/prs.svg)](https://github.com/gdsfactory/skywater130/pulls)
+<!-- BADGES:END -->
+
+
 [![pypi](https://img.shields.io/pypi/v/sky130)](https://pypi.org/project/sky130/)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 

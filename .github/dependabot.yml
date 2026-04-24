@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: "uv"
+    cooldown:
+      default-days: 7
+    directory: "/"
+    schedule:
+      interval: monthly
+    ignore:
+      - dependency-name: "doplaydo/*"
+      - dependency-name: "jupyter-book"
+
+  - package-ecosystem: github-actions
+    cooldown:
+      default-days: 7
+    directory: /
+    schedule:
+      interval: monthly
+    ignore:
+      - dependency-name: "doplaydo/*"
+      # actions/deploy-pages is pinned in templates/.github/workflows/pages.yml
+      # and kept in sync by check_template_drift.py. Bumping it here causes drift
+      # churn — upgrades are owned by the pdk-ci-workflow repo.
+      - dependency-name: "actions/deploy-pages"
