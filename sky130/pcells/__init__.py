@@ -1,14 +1,34 @@
-from sky130.pcells.mimcap_1 import mimcap_1
-from sky130.pcells.mimcap_2 import mimcap_2
-from sky130.pcells.nmos import nmos
-from sky130.pcells.nmos_5v import nmos_5v
-from sky130.pcells.npn_W1L1 import npn_W1L1
-from sky130.pcells.npn_W1L2 import npn_W1L2
-from sky130.pcells.p_n_poly import p_n_poly
-from sky130.pcells.p_p_poly import p_p_poly
-from sky130.pcells.pmos import pmos
-from sky130.pcells.pmos_5v import pmos_5v
-from sky130.pcells.pnp import pnp
+from sky130.pcells.bjts import sky130_fd_pr__npn_05v5, sky130_fd_pr__pnp_05v5
+from sky130.pcells.capacitors import (
+    sky130_fd_pr__cap_mim_m3_1,
+    sky130_fd_pr__cap_mim_m3_2,
+)
+from sky130.pcells.contact import contact_array, licon_array, mcon_array
+from sky130.pcells.diodes import (
+    sky130_fd_pr__diode_pd2nw_05v5,
+    sky130_fd_pr__diode_pw2nd_05v5,
+)
+from sky130.pcells.esd import sky130_fd_pr__esd_nfet_01v8
+from sky130.pcells.guard_ring import nwell_guard_ring, pwell_guard_ring
+from sky130.pcells.mosfets import (
+    sky130_fd_pr__nfet_01v8,
+    sky130_fd_pr__nfet_01v8_lvt,
+    sky130_fd_pr__nfet_03v3_nvt,
+    sky130_fd_pr__nfet_05v0_nvt,
+    sky130_fd_pr__nfet_20v0,
+    sky130_fd_pr__nfet_g5v0d10v5,
+    sky130_fd_pr__pfet_01v8,
+    sky130_fd_pr__pfet_01v8_hvt,
+    sky130_fd_pr__pfet_01v8_lvt,
+    sky130_fd_pr__pfet_20v0,
+    sky130_fd_pr__pfet_g5v0d10v5,
+)
+from sky130.pcells.resistors import (
+    sky130_fd_pr__res_generic_nd,
+    sky130_fd_pr__res_generic_po,
+    sky130_fd_pr__res_high_po,
+    sky130_fd_pr__res_high_po_0p35,
+)
 from sky130.pcells.via_generator import via_generator
 from sky130.pcells.waveguides import (
     bend_metal1,
@@ -27,17 +47,33 @@ __all__ = [
     "bend_metal2",
     "bend_s_metal1",
     "bend_s_metal2",
-    "mimcap_1",
-    "mimcap_2",
-    "nmos",
-    "nmos_5v",
-    "npn_W1L1",
-    "npn_W1L2",
-    "p_n_poly",
-    "p_p_poly",
-    "pmos",
-    "pmos_5v",
-    "pnp",
+    "contact_array",
+    "licon_array",
+    "mcon_array",
+    "sky130_fd_pr__npn_05v5",
+    "sky130_fd_pr__pnp_05v5",
+    "nwell_guard_ring",
+    "pwell_guard_ring",
+    "sky130_fd_pr__res_generic_nd",
+    "sky130_fd_pr__res_generic_po",
+    "sky130_fd_pr__res_high_po",
+    "sky130_fd_pr__res_high_po_0p35",
+    "sky130_fd_pr__cap_mim_m3_1",
+    "sky130_fd_pr__cap_mim_m3_2",
+    "sky130_fd_pr__diode_pw2nd_05v5",
+    "sky130_fd_pr__diode_pd2nw_05v5",
+    "sky130_fd_pr__esd_nfet_01v8",
+    "sky130_fd_pr__nfet_01v8",
+    "sky130_fd_pr__nfet_01v8_lvt",
+    "sky130_fd_pr__nfet_03v3_nvt",
+    "sky130_fd_pr__nfet_05v0_nvt",
+    "sky130_fd_pr__nfet_20v0",
+    "sky130_fd_pr__nfet_g5v0d10v5",
+    "sky130_fd_pr__pfet_01v8",
+    "sky130_fd_pr__pfet_01v8_hvt",
+    "sky130_fd_pr__pfet_01v8_lvt",
+    "sky130_fd_pr__pfet_20v0",
+    "sky130_fd_pr__pfet_g5v0d10v5",
     "straight_metal1",
     "straight_metal2",
     "via_generator",

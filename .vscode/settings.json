@@ -1,1 +1,4 @@
-{"python.defaultInterpreterPath":"python"}
+{
+    "python.defaultInterpreterPath": "python",
+    "livewire.gfp2ServerUrl": "http://127.0.0.1:7905"
+}
