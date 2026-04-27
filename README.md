@@ -1,4 +1,4 @@
-# sky130 gdsfactory PDK 0.15.2
+# sky130 gdsfactory PDK 1.0.0
 
 <!-- BADGES:START -->
 [![Docs](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml)
