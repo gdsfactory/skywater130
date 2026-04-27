@@ -9,7 +9,7 @@ from sky130 import fixed, logic, pcells
 from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS, connectivity
 from sky130.tech import cross_sections, routing_strategies
 
-__version__ = "0.15.3"
+__version__ = "1.0.0"
 
 components = _cells_module
 
