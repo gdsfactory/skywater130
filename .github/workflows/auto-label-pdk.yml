@@ -1,0 +1,71 @@
+name: Auto-label PDK issues
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+      - deleted
+      - pinned
+      - unpinned
+      - closed
+      - reopened
+      - assigned
+      - unassigned
+      - unlabeled
+      - locked
+      - unlocked
+      - transferred
+      - milestoned
+      - demilestoned
+
+permissions:
+  issues: write
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Apply pdk:<name> label to the issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const slug = context.repo.repo.toLowerCase();
+            const label = `pdk:${slug}`;
+
+            // Ensure the label exists in the repo (idempotent).
+            try {
+              await github.rest.issues.getLabel({ ...context.repo, name: label });
+            } catch (e) {
+              if (e.status === 404) {
+                await github.rest.issues.createLabel({
+                  ...context.repo,
+                  name: label,
+                  color: 'a855f7',
+                  description: 'PDK this issue belongs to',
+                });
+              } else {
+                throw e;
+              }
+            }
+
+            // Apply the label to the triggering issue. Some events (deleted,
+            // transferred) may leave the issue unreachable — swallow 404s.
+            const issueNumber = context.payload.issue && context.payload.issue.number;
+            if (!issueNumber) {
+              core.info('No issue number on payload — nothing to label.');
+              return;
+            }
+            try {
+              await github.rest.issues.addLabels({
+                ...context.repo,
+                issue_number: issueNumber,
+                labels: [label],
+              });
+            } catch (e) {
+              if (e.status === 404 || e.status === 410) {
+                core.info(`Issue unreachable (${e.status}); skipping label apply.`);
+              } else {
+                throw e;
+              }
+            }
