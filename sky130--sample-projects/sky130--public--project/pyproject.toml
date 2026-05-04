@@ -8,7 +8,7 @@ classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.12"
 ]
-dependencies = ["gdsfactoryplus>=0.46.1", "sky130~=0.15.0"]
+dependencies = ["gdsfactoryplus>=0.46.1", "sky130~=1.0.0"]
 description = "My cspdk demo project"
 keywords = ["cornerstone", "cspdk", "eda", "photonics", "python"]
 license = {file = "LICENSE"}
