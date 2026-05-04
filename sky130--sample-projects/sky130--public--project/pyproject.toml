@@ -1,0 +1,103 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["build", "pip", "setuptools", "wheel"]
+
+[project]
+authors = [{name = "GDSFactory", email = "support@gdsfactory.com"}]
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12"
+]
+dependencies = ["gdsfactoryplus>=0.46.1", "sky130~=0.15.0"]
+description = "My cspdk demo project"
+keywords = ["cornerstone", "cspdk", "eda", "photonics", "python"]
+license = {file = "LICENSE"}
+name = "mysky"
+readme = "README.md"
+requires-python = "~=3.12.0"
+version = "0.0.0"
+optional-dependencies.dev = ["pre-commit", "uv"]
+
+[tool.basedpyright]
+pythonPlatform = "Linux"
+reportMissingImports = true
+reportMissingTypeStubs = false
+reportUnknownMemberType = false
+reportUnusedCallResult = false
+
+[tool.codespell]
+ignore-words-list = "te, te/tm, te, ba, fpr, fpr_spacing, ro, nd, donot, schem"
+
+[tool.gdsfactoryplus]
+drc.pdk = "sky130"
+drc.timeout = 300
+pdk.name = "sky130"
+sim.wls.max = 1.6
+sim.wls.min = 1.5
+sim.wls.num = 3000
+
+[tool.ruff]
+lint.ignore = [
+  "B008",  # do not perform function calls in argument defaults
+  "B028",  # stacklevel
+  "B904",
+  "B905",  # `zip()` without an explicit `strict=` parameter
+  "C408",  # C408 Unnecessary `dict` call (rewrite as a literal)
+  "C901",  # too complex
+  "D100",  # public module docstrings
+  "D101",  # public class docstrings
+  "D102",  # public method docstrings
+  "D103",  # public function docstrings
+  "D104",  # public package docstrings
+  "E501"  # line too long, handled by black
+]
+lint.select = [
+  "B",  # flake8-bugbear
+  "C",  # flake8-comprehensions
+  "D",  # pydocstyle
+  "E",  # pycodestyle errors
+  "F",  # pyflakes
+  "I",  # isort
+  "T10",  # flake8-debugger
+  "UP",  # pyupgrade
+  "W"  # pycodestyle warnings
+]
+lint.pydocstyle.convention = "google"
+
+[tool.setuptools]
+package-data."*" = [
+  "*.csv",
+  "*.yaml",
+  "*.yml",
+  "*.gds",
+  "*.lyp",
+  "*.oas",
+  "*.lyt",
+  "*.dat",
+  "*.nc",
+  "*.svg",
+  "*.GDS",
+  "*.json",
+  "*.txt",
+  "*.md",
+  "*.OAS"
+]
+packages.find.exclude = ["examples*"]
+packages.find.namespaces = false
+packages.find.where = ["."]
+
+[tool.tbump]
+file = [
+  {src = "README.md"},
+  {src = "pyproject.toml"},
+  {src = "mycspdk/__init__.py"}
+]
+git.message_template = "Bump to {new_version}"
+git.tag_template = "{new_version}"
+version.current = "0.0.0"
+version.regex = '''  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  '''
