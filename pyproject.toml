@@ -1,8 +1,8 @@
 # https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
 
 [build-system]
-build-backend = "flit_core.buildapi"
-requires = ["flit_core >=3.2,<4"]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
 
 [project]
 authors = [{name = "gdsfactory", email = "contact@gdsfactory.com"}]
@@ -40,8 +40,11 @@ docs = ["jupytext", "jupyter-book==1.0.4"]
 [tool.codespell]
 ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
 
-[tool.flit.sdist]
-exclude = ["**/.git/**"]
+[tool.hatch.build.targets.wheel]
+packages = ["sky130"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"sky130--sample-projects" = "sky130--sample-projects"
 
 [tool.gdsfactoryplus.pdk]
 name = "sky130"
@@ -91,11 +94,6 @@ select = [
 [tool.ruff.lint.per-file-ignores]
 "docs/notebooks/intro.py" = ['B018']
 
-[tool.setuptools.package-data]
-"*" = ["*.gds"]
-
-[tool.setuptools.packages]
-find = {}
 
 [tool.tbump]
 
