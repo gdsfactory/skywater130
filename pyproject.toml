@@ -40,14 +40,14 @@ docs = ["jupytext", "jupyter-book==1.0.4"]
 [tool.codespell]
 ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
 
+[tool.gdsfactoryplus.pdk]
+name = "sky130"
+
 [tool.hatch.build.targets.wheel]
 packages = ["sky130"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "sky130--sample-projects" = "sky130--sample-projects"
-
-[tool.gdsfactoryplus.pdk]
-name = "sky130"
 
 [tool.mypy]
 python_version = "3.12"
@@ -75,25 +75,27 @@ fix = true
 
 [tool.ruff.lint]
 ignore = [
-  "E501",  # line too long, handled by black
-  "B008",  # do not perform function calls in argument defaults
-  "C901",  # too complex
-  "B905",  # `zip()` without an explicit `strict=` parameter
-  "C408"  # C408 Unnecessary `dict` call (rewrite as a literal)
+  "E501", # line too long, handled by black
+  "B008", # do not perform function calls in argument defaults
+  "C901", # too complex
+  "B905", # `zip()` without an explicit `strict=` parameter
+  "C408" # C408 Unnecessary `dict` call (rewrite as a literal)
 ]
 select = [
-  "E",  # pycodestyle errors
-  "W",  # pycodestyle warnings
-  "F",  # pyflakes
-  "I",  # isort
-  "C",  # flake8-comprehensions
-  "B",  # flake8-bugbear
+  "E", # pycodestyle errors
+  "W", # pycodestyle warnings
+  "F", # pyflakes
+  "I", # isort
+  "C", # flake8-comprehensions
+  "B", # flake8-bugbear
   "UP"
 ]
 
 [tool.ruff.lint.per-file-ignores]
 "docs/notebooks/intro.py" = ['B018']
 
+[tool.setuptools.package-data]
+"*" = ["*.gds"]
 
 [tool.tbump]
 
