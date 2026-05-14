@@ -1,8 +1,8 @@
 # https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
 
 [build-system]
-build-backend = "flit_core.buildapi"
-requires = ["flit_core >=3.2,<4"]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
 
 [project]
 authors = [{name = "gdsfactory", email = "contact@gdsfactory.com"}]
@@ -44,11 +44,14 @@ ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
 connected-layers = [[[66, 20], [66, 44]], [[66, 44], [67, 20]], [[67, 20], [67, 44]], [[67, 44], [68, 20]], [[68, 20], [68, 44]], [[68, 44], [69, 20]], [[69, 20], [69, 44]], [[69, 44], [70, 20]], [[70, 20], [70, 44]], [[70, 44], [71, 20]], [[71, 20], [71, 44]], [[71, 44], [72, 20]]]
 short-layers = [[66, 20], [66, 44], [67, 20], [67, 44], [68, 20], [68, 44], [69, 20], [69, 44], [70, 20], [70, 44], [71, 20], [71, 44], [72, 20]]
 
-[tool.flit.sdist]
-exclude = ["**/.git/**"]
-
 [tool.gdsfactoryplus.pdk]
 name = "sky130"
+
+[tool.hatch.build.targets.wheel]
+packages = ["sky130"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"sky130--sample-projects" = "sky130--sample-projects"
 
 [tool.mypy]
 python_version = "3.12"
@@ -97,9 +100,6 @@ select = [
 
 [tool.setuptools.package-data]
 "*" = ["*.gds"]
-
-[tool.setuptools.packages]
-find = {}
 
 [tool.tbump]
 
