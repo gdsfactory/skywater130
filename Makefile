@@ -57,7 +57,23 @@ build:
 tech:
 	python3 install_tech.py
 
-docs:
-	uv run jb build docs
+nbdocs:
+	rm -rf docs/notebooks/*.md
+	find notebooks -maxdepth 1 -mindepth 1 -name "*.ipynb" | sort | \
+		xargs -P4 -I{} uv run --extra docs jupyter nbconvert \
+			--execute --to markdown --embed-images {} --output-dir docs/notebooks
+	uv run python docs/hooks.py docs/notebooks/*.md
 
-.PHONY: gdsdiff build conda docs modules rm-samples
+docs-pdf: nbdocs
+	cp CHANGELOG.md docs/changelog.md
+	uv run mkdocs build -f mkdocs-pdf.yml
+
+docs: nbdocs
+	cp CHANGELOG.md docs/changelog.md
+	uv run --extra docs zensical build
+
+docs-serve: nbdocs
+	cp CHANGELOG.md docs/changelog.md
+	uv run --extra docs zensical serve -a localhost:8080
+
+.PHONY: drc drc-sample doc docs docs-pdf build
