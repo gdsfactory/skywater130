@@ -25,7 +25,7 @@ ngspice:
 test:
 	uv run pytest -s -n logical
 
-test-force:
+test-force: install
 	uv run pytest -s -n logical --force-regen
 
 cov:
