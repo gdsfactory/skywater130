@@ -1,0 +1,33 @@
+[project]
+nav = [
+  {"Home" = "index.md"},
+  {"Reference" = [
+    {"Changelog" = "changelog.md"}
+  ]},
+  {"Tutorial" = [
+    {"Overview" = "tutorial.md"},
+    {"Technology" = "tech.md"},
+    {"Intro" = "notebooks/intro.md"},
+    {"Rc Filter Analysis" = "notebooks/rc_filter_analysis.md"}
+  ]}
+]
+site_dir = "docs/_build/html"
+site_name = "skywater130 pdk"
+site_url = "https://gdsfactory.github.io/skywater130"
+
+[project.plugins.autorefs]
+
+[project.plugins.mkdocstrings]
+
+[project.plugins.mkdocstrings.handlers.python]
+
+[project.plugins.mkdocstrings.handlers.python.options]
+docstring_style = "google"
+show_root_toc_entry = false
+show_source = false
+
+[project.plugins.search]
+
+[project.theme]
+logo = "logo.png"
+name = "material"

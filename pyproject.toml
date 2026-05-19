@@ -35,7 +35,14 @@ dev = [
   "pytest-randomly",
   "pytest-xdist"
 ]
-docs = ["jupytext", "jupyter-book==1.0.4"]
+docs = [
+  "jupyter",
+  "mkdocs-material",
+  "mkdocs-with-pdf",
+  "nbconvert",
+  "mkdocstrings[python]>=0.27.0",
+  "zensical>=0.0.40,<0.1.0"
+]
 
 [tool.codespell]
 ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
