@@ -8,8 +8,8 @@ nav = [
   {"Tutorial" = [
     {"Overview" = "tutorial.md"},
     {"Technology" = "tech.md"},
-    {"Intro" = "notebooks/intro.md"},
-    {"Rc Filter Analysis" = "notebooks/rc_filter_analysis.md"}
+    {"Intro" = "intro.md"},
+    {"Rc Filter Analysis" = "rc_filter_analysis.md"}
   ]}
 ]
 site_dir = "_build/html"
