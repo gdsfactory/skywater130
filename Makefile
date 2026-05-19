@@ -70,10 +70,10 @@ docs-pdf: nbdocs
 
 docs: nbdocs
 	cp CHANGELOG.md docs/changelog.md
-	uv run --extra docs zensical build
+	uv run --extra docs zensical build -f docs/zensical.toml
 
 docs-serve: nbdocs
 	cp CHANGELOG.md docs/changelog.md
-	uv run --extra docs zensical serve -a localhost:8080
+	uv run --extra docs zensical serve -f docs/zensical.toml -a localhost:8080
 
 .PHONY: drc drc-sample doc docs docs-pdf build

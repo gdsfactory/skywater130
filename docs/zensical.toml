@@ -11,7 +11,7 @@ nav = [
     {"Rc Filter Analysis" = "notebooks/rc_filter_analysis.md"}
   ]}
 ]
-site_dir = "docs/_build/html"
+site_dir = "_build/html"
 site_name = "skywater130 pdk"
 site_url = "https://gdsfactory.github.io/skywater130"
 
