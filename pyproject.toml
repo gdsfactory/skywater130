@@ -86,19 +86,19 @@ fix = true
 
 [tool.ruff.lint]
 ignore = [
-  "E501",  # line too long, handled by black
-  "B008",  # do not perform function calls in argument defaults
-  "C901",  # too complex
-  "B905",  # `zip()` without an explicit `strict=` parameter
-  "C408"  # C408 Unnecessary `dict` call (rewrite as a literal)
+  "E501", # line too long, handled by black
+  "B008", # do not perform function calls in argument defaults
+  "C901", # too complex
+  "B905", # `zip()` without an explicit `strict=` parameter
+  "C408" # C408 Unnecessary `dict` call (rewrite as a literal)
 ]
 select = [
-  "E",  # pycodestyle errors
-  "W",  # pycodestyle warnings
-  "F",  # pyflakes
-  "I",  # isort
-  "C",  # flake8-comprehensions
-  "B",  # flake8-bugbear
+  "E", # pycodestyle errors
+  "W", # pycodestyle warnings
+  "F", # pyflakes
+  "I", # isort
+  "C", # flake8-comprehensions
+  "B", # flake8-bugbear
   "UP"
 ]
 

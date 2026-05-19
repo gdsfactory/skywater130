@@ -1,4 +1,3 @@
-# ruff: noqa: INP001
 """Post-process notebook markdown: convert MyST admonitions to Material style.
 
 Usage: python docs/hooks.py docs/notebooks/*.md
