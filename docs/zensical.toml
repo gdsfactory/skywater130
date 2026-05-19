@@ -1,4 +1,5 @@
 [project]
+docs_dir = "."
 nav = [
   {"Home" = "index.md"},
   {"Reference" = [
