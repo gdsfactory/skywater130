@@ -28,6 +28,9 @@ test:
 test-force: install
 	uv run pytest -s -n logical --force-regen
 
+test-gfp-projects:
+	cd sky130--sample-projects/sky130--public--project && uv run --directory $(CURDIR) gfp test
+
 cov:
 	uv run pytest --cov=sky130
 
