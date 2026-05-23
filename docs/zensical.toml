@@ -1,4 +1,5 @@
 [project]
+docs_dir = "."
 nav = [
   {"Home" = "index.md"},
   {"Reference" = [
@@ -7,11 +8,11 @@ nav = [
   {"Tutorial" = [
     {"Overview" = "tutorial.md"},
     {"Technology" = "tech.md"},
-    {"Intro" = "notebooks/intro.md"},
-    {"Rc Filter Analysis" = "notebooks/rc_filter_analysis.md"}
+    {"Intro" = "intro.md"},
+    {"Rc Filter Analysis" = "rc_filter_analysis.md"}
   ]}
 ]
-site_dir = "docs/_build/html"
+site_dir = "_build/html"
 site_name = "skywater130 pdk"
 site_url = "https://gdsfactory.github.io/skywater130"
 
