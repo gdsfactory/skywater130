@@ -1,8 +1,4 @@
-# ruff: noqa: INP001
-"""Post-process notebook markdown: convert MyST admonitions to Material style.
-
-Usage: python docs/hooks.py docs/notebooks/*.md
-"""
+"""Post-process notebook markdown: convert MyST admonitions to Material style."""
 
 import re
 import sys
@@ -11,7 +7,14 @@ from pathlib import Path
 
 def process(markdown: str) -> str:
     """Apply all transformations to a markdown string."""
-    return _myst_to_material_admonitions(markdown)
+    markdown = _myst_to_material_admonitions(markdown)
+    markdown = _escape_curly_braces(markdown)
+    return markdown
+
+
+def _escape_curly_braces(markdown: str) -> str:
+    """Escape {WORD} patterns that mkdocstrings would try to resolve."""
+    return re.sub(r"\{([A-Z_]+)\}", r"\1", markdown)
 
 
 def _myst_to_material_admonitions(markdown: str) -> str:
@@ -40,8 +43,14 @@ def _myst_to_material_admonitions(markdown: str) -> str:
         header = f'!!! {kind} "{title}"' if title else f"!!! {kind}"
         return header + "\n\n" + "\n".join(out).rstrip() + "\n"
 
-    return re.sub(
+    markdown = re.sub(
         r"^```\{(\w+)\}\s*\n(.*?)^```\s*$",
+        _replace,
+        markdown,
+        flags=re.MULTILINE | re.DOTALL,
+    )
+    return re.sub(
+        r"^:::\{(\w+)\}\s*\n(.*?)^:::\s*$",
         _replace,
         markdown,
         flags=re.MULTILINE | re.DOTALL,
