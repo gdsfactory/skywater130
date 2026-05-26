@@ -6,7 +6,6 @@ nav = [
     {"Changelog" = "changelog.md"}
   ]},
   {"Tutorial" = [
-    {"Overview" = "tutorial.md"},
     {"Technology" = "tech.md"},
     {"Intro" = "intro.md"},
     {"Rc Filter Analysis" = "rc_filter_analysis.md"}

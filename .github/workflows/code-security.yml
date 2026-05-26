@@ -1,0 +1,29 @@
+name: Code Security
+
+on:
+  pull_request:
+  merge_group:
+    branches: [main]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  sast:
+    uses: doplaydo/infra/.github/workflows/reuseable-sast.yaml@main
+    with:
+      output-format: text
+      fail-on-findings: false
+      enable-secrets-scan: true
+
+  sca:
+    uses: doplaydo/infra/.github/workflows/reuseable-sca.yaml@main
+    with:
+      scan-type: fs
+      scanners: misconfig,secret
+      fail-on-findings: false
