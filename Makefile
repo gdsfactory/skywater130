@@ -79,4 +79,7 @@ docs-serve: nbdocs
 	cp CHANGELOG.md docs/changelog.md
 	uv run --extra docs zensical serve -f docs/zensical.toml -a localhost:8080
 
-.PHONY: drc drc-sample doc docs docs-pdf build
+update-changelog:
+	claude -p "remove links and make a user friendly changelog from @CHANGELOG.md to @docs/changelog.md"
+
+.PHONY: drc drc-sample doc docs docs-pdf build update-changelog
