@@ -25,5 +25,5 @@ jobs:
     uses: doplaydo/infra/.github/workflows/reuseable-sca.yaml@main
     with:
       scan-type: fs
-      scanners: misconfig,secret
+      scanners: vuln,misconfig,secret
       fail-on-findings: false

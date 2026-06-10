@@ -137,6 +137,10 @@ src = "sky130/klayout/pymacros/set_menus.lym"
 [[tool.tbump.file]]
 src = "sky130/klayout/grain.xml"
 
+[[tool.tbump.file]]
+search = 'sky130~={current_version}'
+src = "sky130--sample-projects/sky130--public--project/pyproject.toml"
+
 [tool.tbump.git]
 message_template = "Bump to {new_version}"
 tag_template = "v{new_version}"
