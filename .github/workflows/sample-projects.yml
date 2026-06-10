@@ -3,9 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['*--sample-projects/**']
   pull_request:
-    paths: ['*--sample-projects/**']
 
 jobs:
   test-sample-projects:
