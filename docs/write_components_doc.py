@@ -1,6 +1,5 @@
 """Generate Markdown docs for skywater130 cells and pcells with kwasm viewers."""
 
-import base64
 import inspect
 import pathlib
 import traceback
