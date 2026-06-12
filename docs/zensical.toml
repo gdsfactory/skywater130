@@ -3,6 +3,8 @@ docs_dir = "."
 nav = [
   {"Home" = "index.md"},
   {"Reference" = [
+    {"PCells" = "pcells.md"},
+    {"Cells" = "components.md"},
     {"Changelog" = "changelog.md"}
   ]},
   {"Tutorial" = [
