@@ -7,6 +7,6 @@ on:
 
 jobs:
   test-sample-projects:
-    uses: doplaydo/pdk-ci-workflow/.github/workflows/test-sample-projects.yml@main
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/test-sample-projects.yml@main
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
