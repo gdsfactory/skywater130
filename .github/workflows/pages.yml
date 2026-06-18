@@ -7,7 +7,7 @@ on:
 
 jobs:
   docs:
-    uses: doplaydo/pdk-ci-workflow/.github/workflows/pages.yml@main
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/pages.yml@main
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
       SIMCLOUD_APIKEY: ${{ secrets.SIMCLOUD_APIKEY }}
