@@ -63,7 +63,7 @@ uv sync --extra docs --extra dev
 
 ## Pre-commit
 
-Pre-commit hooks are centrally maintained in [pdk-ci-workflow](https://github.com/doplaydo/pdk-ci-workflow). `make dev` fetches the canonical config and installs the git hook.
+Pre-commit hooks are centrally maintained in [pdk-ci-workflow-public](https://github.com/doplaydo/pdk-ci-workflow-public). `make dev` fetches the canonical config and installs the git hook.
 
 ```bash
 make dev
