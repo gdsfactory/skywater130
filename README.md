@@ -1,5 +1,7 @@
 # sky130 gdsfactory PDK 1.0.0
 
+SkyWater's SKY130 is a fully open-source 130nm CMOS process (with Google) — no NDA required, widely used for open-source chip design and education.
+
 <!-- BADGES:START -->
 [![Docs](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml)
 [![Tests](https://github.com/gdsfactory/skywater130/actions/workflows/test_code.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/test_code.yml)
