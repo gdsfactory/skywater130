@@ -23,8 +23,8 @@ def _add_pins(c: gf.Component) -> None:
         if port.port_type == "electrical":
             by_name.setdefault(port.name, []).append(port)
     for name, ports in by_name.items():
-        pin_layer = _LAYER_MAP.get(ports[0].layer)
-        if pin_layer:
-            for port in ports:
+        for port in ports:
+            pin_layer = _LAYER_MAP.get(port.layer)
+            if pin_layer:
                 add_pin_rectangle_inside(c, port, layer=pin_layer, layer_label=None)
         c.create_pin(ports=ports, name=name)
