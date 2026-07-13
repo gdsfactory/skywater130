@@ -7,6 +7,6 @@ on:
 
 jobs:
   review:
-    uses: doplaydo/pdk-ci-workflow/.github/workflows/claude-pr-review.yml@main
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/claude-pr-review.yml@main
     secrets:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}

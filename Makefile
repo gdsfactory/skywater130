@@ -8,7 +8,7 @@ rm-samples:
 dev: modules
 	uv sync --all-extras
 	uv pip install -e .
-	curl -sf https://raw.githubusercontent.com/doplaydo/pdk-ci-workflow/main/templates/.pre-commit-config.yaml -o .pre-commit-config.yaml
+	curl -sf https://raw.githubusercontent.com/doplaydo/pdk-ci-workflow-public/main/templates/.pre-commit-config.yaml -o .pre-commit-config.yaml
 	uv run pre-commit install
 
 modules:
@@ -25,8 +25,11 @@ ngspice:
 test:
 	uv run pytest -s -n logical
 
-test-force:
+test-force: install
 	uv run pytest -s -n logical --force-regen
+
+test-gfp-projects:
+	cd sky130--sample-projects/sky130--public--project && uv run --directory $(CURDIR) gfp test
 
 cov:
 	uv run pytest --cov=sky130
@@ -57,7 +60,26 @@ build:
 tech:
 	python3 install_tech.py
 
-docs:
-	uv run jb build docs
+nbdocs:
+	rm -rf docs/notebooks/*.md
+	find notebooks -maxdepth 1 -mindepth 1 -name "*.ipynb" | sort | \
+		xargs -P4 -I{} uv run --extra docs jupyter nbconvert \
+			--execute --to markdown --embed-images {} --output-dir docs/notebooks
+	uv run python docs/hooks.py docs/notebooks/*.md
 
-.PHONY: gdsdiff build conda docs modules rm-samples
+docs-pdf: nbdocs
+	cp CHANGELOG.md docs/changelog.md
+	uv run mkdocs build -f mkdocs-pdf.yml
+
+docs: nbdocs
+	cp CHANGELOG.md docs/changelog.md
+	uv run --extra docs zensical build -f docs/zensical.toml
+
+docs-serve: nbdocs
+	cp CHANGELOG.md docs/changelog.md
+	uv run --extra docs zensical serve -f docs/zensical.toml -a localhost:8080
+
+update-changelog:
+	claude -p "remove links and make a user friendly changelog from @CHANGELOG.md to @docs/changelog.md"
+
+.PHONY: drc drc-sample doc docs docs-pdf build update-changelog

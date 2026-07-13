@@ -1,5 +1,7 @@
 # sky130 gdsfactory PDK 1.0.0
 
+SkyWater's SKY130 is a fully open-source 130nm CMOS process (with Google) — no NDA required, widely used for open-source chip design and education.
+
 <!-- BADGES:START -->
 [![Docs](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/pages.yml)
 [![Tests](https://github.com/gdsfactory/skywater130/actions/workflows/test_code.yml/badge.svg)](https://github.com/gdsfactory/skywater130/actions/workflows/test_code.yml)
@@ -57,6 +59,22 @@ cd sky130
 make install
 uv venv --python 3.12
 uv sync --extra docs --extra dev
+```
+
+## Pre-commit
+
+Pre-commit hooks are centrally maintained in [pdk-ci-workflow-public](https://github.com/doplaydo/pdk-ci-workflow-public). `make dev` fetches the canonical config and installs the git hook.
+
+```bash
+make dev
+```
+
+## Tests
+
+Run the test suite:
+
+```bash
+make test
 ```
 
 ## Documentation

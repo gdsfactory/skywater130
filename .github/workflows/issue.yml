@@ -20,4 +20,4 @@ on:
 
 jobs:
   label:
-    uses: doplaydo/pdk-ci-workflow/.github/workflows/issue.yml@main
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/issue.yml@main

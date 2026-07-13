@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Apply pdk:<name> label to the issue
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const slug = context.repo.repo.toLowerCase();

@@ -1,8 +1,8 @@
 # https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
 
 [build-system]
-build-backend = "flit_core.buildapi"
-requires = ["flit_core >=3.2,<4"]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
 
 [project]
 authors = [{name = "gdsfactory", email = "contact@gdsfactory.com"}]
@@ -12,9 +12,9 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "doroutes~=0.5.0",
+  "doroutes>=0.6,<1.2",
   "gdsfactoryplus",
-  "gdsfactory~=9.40.1",
+  "gdsfactory~=9.45.0",
   "PySpice",
   "python-dotenv>=1.2.1"
 ]
@@ -35,16 +35,33 @@ dev = [
   "pytest-randomly",
   "pytest-xdist"
 ]
-docs = ["jupytext", "jupyter-book==1.0.4"]
+docs = [
+  "jupyter",
+  "mkdocs-material",
+  "mkdocs-with-pdf",
+  "nbconvert",
+  "mkdocstrings[python]>=0.27.0",
+  "zensical>=0.0.40,<0.1.0"
+]
 
 [tool.codespell]
 ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
 
-[tool.flit.sdist]
-exclude = ["**/.git/**"]
+[tool.elvis]
+connected-layers = [[[66, 20], [66, 44]], [[66, 44], [67, 20]], [[67, 20], [67, 44]], [[67, 44], [68, 20]], [[68, 20], [68, 44]], [[68, 44], [69, 20]], [[69, 20], [69, 44]], [[69, 44], [70, 20]], [[70, 20], [70, 44]], [[70, 44], [71, 20]], [[71, 20], [71, 44]], [[71, 44], [72, 20]]]
+short-layers = [[66, 20], [66, 44], [67, 20], [67, 44], [68, 20], [68, 44], [69, 20], [69, 44], [70, 20], [70, 44], [71, 20], [71, 44], [72, 20]]
 
 [tool.gdsfactoryplus.pdk]
 name = "sky130"
+
+[tool.hatch.build]
+artifacts = ["sky130/src/**/*.gds"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["sky130"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"sky130--sample-projects" = "sky130--sample-projects"
 
 [tool.mypy]
 python_version = "3.12"
@@ -94,9 +111,6 @@ select = [
 [tool.setuptools.package-data]
 "*" = ["*.gds"]
 
-[tool.setuptools.packages]
-find = {}
-
 [tool.tbump]
 
 [[tool.tbump.before_commit]]
@@ -125,6 +139,10 @@ src = "sky130/klayout/pymacros/set_menus.lym"
 
 [[tool.tbump.file]]
 src = "sky130/klayout/grain.xml"
+
+[[tool.tbump.file]]
+search = 'sky130~={current_version}'
+src = "sky130--sample-projects/sky130--public--project/pyproject.toml"
 
 [tool.tbump.git]
 message_template = "Bump to {new_version}"

@@ -24,11 +24,11 @@ def xsection(func: Callable[..., CrossSection]) -> Callable[..., CrossSection]:
 
     Ensures that the cross-section name matches the name of the function that generated it when created using default parameters
 
-    .. code-block:: python
-
+    ```python
         @xsection
         def strip(width=TECH.width_strip, radius=TECH.radius_strip):
             return gf.cross_section.cross_section(width=width, radius=radius)
+    ```
     """
     default_xs = func()
     _cross_section_default_names[default_xs.name] = func.__name__
