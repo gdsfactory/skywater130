@@ -6,6 +6,7 @@ Provides NPN and PNP vertical BJT generators.
 import gdsfactory as gf
 
 from sky130.layers import LAYER
+from sky130.pcells._common import _add_pins
 from sky130.pcells.contact import licon_array
 
 
@@ -85,6 +86,7 @@ def sky130_fd_pr__npn_05v5(
         width=min(e_li_w, e_li_h),
         orientation=90,
         layer=LAYER.li1drawing,
+        port_type="electrical",
     )
 
     # ------------------------------------------------------------------ #
@@ -224,6 +226,7 @@ def sky130_fd_pr__npn_05v5(
         width=min(brw, b_inner_h),
         orientation=180,
         layer=LAYER.li1drawing,
+        port_type="electrical",
     )
 
     # ------------------------------------------------------------------ #
@@ -256,6 +259,7 @@ def sky130_fd_pr__npn_05v5(
         width=coll_li_w,
         orientation=270,
         layer=LAYER.li1drawing,
+        port_type="electrical",
     )
 
     # ------------------------------------------------------------------ #
@@ -268,6 +272,7 @@ def sky130_fd_pr__npn_05v5(
         )
     ).move((nw_x0, nw_y0))
 
+    _add_pins(c)
     return c
 
 
@@ -342,6 +347,7 @@ def sky130_fd_pr__pnp_05v5(
         width=min(ew, el),
         orientation=90,
         layer=LAYER.li1drawing,
+        port_type="electrical",
     )
 
     # ------------------------------------------------------------------ #
@@ -415,6 +421,7 @@ def sky130_fd_pr__pnp_05v5(
         width=min(brw, b_inner_h),
         orientation=180,
         layer=LAYER.li1drawing,
+        port_type="electrical",
     )
 
     # ------------------------------------------------------------------ #
@@ -509,6 +516,7 @@ def sky130_fd_pr__pnp_05v5(
         width=min(c_rw, c_inner_h),
         orientation=180,
         layer=LAYER.li1drawing,
+        port_type="electrical",
     )
 
     # PNP identifier layer
@@ -519,6 +527,7 @@ def sky130_fd_pr__pnp_05v5(
         )
     ).move((c_origin_x - nw_enc, c_origin_y - nw_enc))
 
+    _add_pins(c)
     return c
 
 

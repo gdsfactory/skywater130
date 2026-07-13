@@ -10,6 +10,7 @@ All geometry is centered at the origin to match Magic's output coordinate system
 import gdsfactory as gf
 
 from sky130.layers import LAYER
+from sky130.pcells._common import _add_pins
 
 
 def _snap(val: float, grid: float = 0.005) -> float:
@@ -823,6 +824,7 @@ def sky130_fd_pr__nfet_01v8(
         _add_guard_ring(c, info, is_pmos=False)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -863,6 +865,7 @@ def sky130_fd_pr__pfet_01v8(
         _add_guard_ring(c, info, is_pmos=True)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1034,6 +1037,7 @@ def sky130_fd_pr__nfet_01v8_lvt(
         _add_guard_ring(c, info, is_pmos=False)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1066,6 +1070,7 @@ def sky130_fd_pr__pfet_01v8_lvt(
         _add_guard_ring(c, info, is_pmos=True)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1098,6 +1103,7 @@ def sky130_fd_pr__pfet_01v8_hvt(
         _add_guard_ring(c, info, is_pmos=True)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1132,6 +1138,7 @@ def sky130_fd_pr__nfet_g5v0d10v5(
     _add_hvi_nfet(c, info, guard_ring, gr_info)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1165,6 +1172,7 @@ def sky130_fd_pr__pfet_g5v0d10v5(
     _add_hvi_pfet(c, info, guard_ring, gr_info)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1197,6 +1205,7 @@ def sky130_fd_pr__nfet_20v0(
     _add_hvi_nfet(c, info, guard_ring, gr_info)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1229,6 +1238,7 @@ def sky130_fd_pr__pfet_20v0(
     _add_hvi_pfet(c, info, guard_ring, gr_info)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1267,6 +1277,7 @@ def sky130_fd_pr__nfet_03v3_nvt(
     _add_hvi_nfet(c, info, guard_ring, gr_info)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 
@@ -1303,6 +1314,7 @@ def sky130_fd_pr__nfet_05v0_nvt(
     _add_hvi_nfet(c, info, guard_ring, gr_info)
 
     _add_ports(c, info, gate_width)
+    _add_pins(c)
     return c
 
 

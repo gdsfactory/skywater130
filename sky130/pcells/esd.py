@@ -7,6 +7,7 @@ a large gate width, multi-finger layout, and the areaidesd marker layer.
 import gdsfactory as gf
 
 from sky130.layers import LAYER
+from sky130.pcells._common import _add_pins
 from sky130.pcells.mosfets import _add_guard_ring, _mosfet_core, _rect
 
 
@@ -84,6 +85,7 @@ def sky130_fd_pr__esd_nfet_01v8(
         port_type="electrical",
     )
 
+    _add_pins(c)
     return c
 
 

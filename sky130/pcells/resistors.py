@@ -14,6 +14,7 @@ from math import floor
 import gdsfactory as gf
 
 from sky130.layers import LAYER
+from sky130.pcells._common import _add_pins
 
 # ---------------------------------------------------------------------------
 # Shared helpers (same pattern as mosfets.py)
@@ -449,6 +450,7 @@ def sky130_fd_pr__res_generic_po(
         width=W,
         orientation=90,
         layer=LAYER.met1drawing,
+        port_type="electrical",
     )
     c.add_port(
         name="MINUS",
@@ -456,8 +458,10 @@ def sky130_fd_pr__res_generic_po(
         width=W,
         orientation=270,
         layer=LAYER.met1drawing,
+        port_type="electrical",
     )
 
+    _add_pins(c)
     return c
 
 
@@ -597,6 +601,7 @@ def sky130_fd_pr__res_high_po_0p35(
         width=W,
         orientation=90,
         layer=LAYER.met1drawing,
+        port_type="electrical",
     )
     c.add_port(
         name="MINUS",
@@ -604,8 +609,10 @@ def sky130_fd_pr__res_high_po_0p35(
         width=W,
         orientation=270,
         layer=LAYER.met1drawing,
+        port_type="electrical",
     )
 
+    _add_pins(c)
     return c
 
 
@@ -745,6 +752,7 @@ def sky130_fd_pr__res_generic_nd(
         width=W,
         orientation=90,
         layer=LAYER.met1drawing,
+        port_type="electrical",
     )
     c.add_port(
         name="MINUS",
@@ -752,8 +760,10 @@ def sky130_fd_pr__res_generic_nd(
         width=W,
         orientation=270,
         layer=LAYER.met1drawing,
+        port_type="electrical",
     )
 
+    _add_pins(c)
     return c
 
 

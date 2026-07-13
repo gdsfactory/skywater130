@@ -6,6 +6,7 @@ Provides pwell and nwell guard rings used to isolate NMOS and PMOS devices.
 import gdsfactory as gf
 
 from sky130.layers import LAYER
+from sky130.pcells._common import _add_pins
 from sky130.pcells.contact import contact_array
 
 
@@ -255,6 +256,7 @@ def _guard_ring(
         port_type="electrical",
     )
 
+    _add_pins(c)
     return c
 
 

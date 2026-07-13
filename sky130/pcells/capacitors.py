@@ -18,6 +18,7 @@ from math import floor
 import gdsfactory as gf
 
 from sky130.layers import LAYER
+from sky130.pcells._common import _add_pins
 
 # ---------------------------------------------------------------------------
 # Helpers (same pattern as mosfets.py)
@@ -223,6 +224,7 @@ def sky130_fd_pr__cap_mim_m3_1(
         width=min(met3_sx, met3_sy),
         orientation=90,
         layer=LAYER.met3drawing,
+        port_type="electrical",
     )
     c.add_port(
         name="TOP",
@@ -230,8 +232,10 @@ def sky130_fd_pr__cap_mim_m3_1(
         width=min(met4t_r - met4t_l, met4t_t - met4t_b),
         orientation=90,
         layer=LAYER.met4drawing,
+        port_type="electrical",
     )
 
+    _add_pins(c)
     return c
 
 
@@ -369,6 +373,7 @@ def sky130_fd_pr__cap_mim_m3_2(
         width=min(met4_sx, met4_sy),
         orientation=90,
         layer=LAYER.met4drawing,
+        port_type="electrical",
     )
     c.add_port(
         name="TOP",
@@ -376,8 +381,10 @@ def sky130_fd_pr__cap_mim_m3_2(
         width=min(met5t_r - met5t_l, met5t_t - met5t_b),
         orientation=90,
         layer=LAYER.met5drawing,
+        port_type="electrical",
     )
 
+    _add_pins(c)
     return c
 
 
