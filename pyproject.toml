@@ -43,6 +43,7 @@ docs = [
   "mkdocstrings[python]>=0.27.0",
   "zensical>=0.0.40,<0.1.0"
 ]
+pex = ["gf-pex @ git+https://github.com/doplaydo/gf-pex.git@dev/diogo-main"]
 
 [tool.codespell]
 ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
