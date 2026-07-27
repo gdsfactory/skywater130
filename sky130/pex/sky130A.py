@@ -4,38 +4,46 @@
 #
 
 import sys
+import warnings
 from pathlib import Path
 
-from gf_pex.techfile import (
-    CapacitanceInfo,
-    ComputedLayerInfo,
-    ComputedLayerKind,
-    ConformalDielectricLayer,
-    Contact,
-    ContactResistance,
-    DiffusionLayer,
-    FieldOxideLayer,
-    GDSPair,
-    LayerInfo,
-    LayerPurpose,
-    LayerResistance,
-    MetalLayer,
-    NWellLayer,
-    OverlapCapacitance,
-    ProcessParasiticsInfo,
-    ProcessStackInfo,
-    ResistanceInfo,
-    SideOverlapCapacitance,
-    SidewallCapacitance,
-    SidewallDielectricLayer,
-    SimpleDielectricLayer,
-    StackLayerInfo,
-    StackLayerType,
-    SubstrateCapacitance,
-    SubstrateLayer,
-    Techfile,
-    ViaResistance,
-)
+try:
+    from gf_pex.techfile import (
+        CapacitanceInfo,
+        ComputedLayerInfo,
+        ComputedLayerKind,
+        ConformalDielectricLayer,
+        Contact,
+        ContactResistance,
+        DiffusionLayer,
+        FieldOxideLayer,
+        GDSPair,
+        LayerInfo,
+        LayerPurpose,
+        LayerResistance,
+        MetalLayer,
+        NWellLayer,
+        OverlapCapacitance,
+        ProcessParasiticsInfo,
+        ProcessStackInfo,
+        ResistanceInfo,
+        SideOverlapCapacitance,
+        SidewallCapacitance,
+        SimpleDielectricLayer,
+        StackLayerInfo,
+        StackLayerType,
+        SubstrateCapacitance,
+        SubstrateLayer,
+        Techfile,
+        ViaResistance,
+    )
+except ImportError:
+    warnings.warn(
+        "gf_pex is not installed. Cannot build techfile from gf180mcuD. "
+        "Install it with: pip install gf-pex",
+        stacklevel=2,
+    )
+    sys.exit(1)
 
 DNWELL = LayerPurpose.PURPOSE_DNWELL
 NWELL = LayerPurpose.PURPOSE_NWELL
