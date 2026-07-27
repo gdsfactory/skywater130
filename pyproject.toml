@@ -86,6 +86,7 @@ python_files = ["sky130/*.py", "tests/*.py"]
 testpaths = ["sky130", "tests"]
 
 [tool.ruff]
+extend-exclude = ["sky130/pex/sky130A.py"]
 fix = true
 
 [tool.ruff.lint]
