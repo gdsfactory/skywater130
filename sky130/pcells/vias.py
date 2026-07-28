@@ -1,5 +1,6 @@
 import gdsfactory as gf
 
+from sky130.pcells._common import _add_pins
 from sky130.pcells.via_generator import via_generator
 
 
@@ -86,5 +87,5 @@ def via_m1_m2(
         layer=layer_m2,
         port_type="electrical",
     )
-
+    _add_pins(c)
     return c

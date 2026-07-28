@@ -22,6 +22,10 @@ ngspice:
 	sudo apt-get update
 	sudo apt-get install -y ngspice
 
+gf-main: install
+	uv sync --extra dev --extra gf-main
+	uv run pre-commit install
+
 test:
 	uv run pytest -s -n logical
 

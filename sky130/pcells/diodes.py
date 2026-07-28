@@ -8,6 +8,7 @@ licon contacts, mcon, met1, and implant/well layers.
 import gdsfactory as gf
 
 from sky130.layers import LAYER
+from sky130.pcells._common import _add_pins
 from sky130.pcells.contact import contact_array
 
 # ---------------------------------------------------------------------------
@@ -297,7 +298,7 @@ def sky130_fd_pr__diode_pw2nd_05v5(
         layer=LAYER.li1drawing,
         port_type="electrical",
     )
-
+    _add_pins(c)
     return c
 
 
@@ -462,7 +463,7 @@ def sky130_fd_pr__diode_pd2nw_05v5(
         layer=LAYER.li1drawing,
         port_type="electrical",
     )
-
+    _add_pins(c)
     return c
 
 
