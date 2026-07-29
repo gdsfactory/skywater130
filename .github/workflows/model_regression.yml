@@ -7,6 +7,6 @@ on:
 
 jobs:
   model-regression:
-    uses: doplaydo/pdk-ci-workflow/.github/workflows/model_regression.yml@main
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/model_regression.yml@main
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
