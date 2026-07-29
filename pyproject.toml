@@ -14,7 +14,7 @@ classifiers = [
 dependencies = [
   "doroutes>=0.6,<1.2",
   "gdsfactoryplus",
-  "gdsfactory~=9.45.0",
+  "gdsfactory~=9.47.0",
   "PySpice",
   "python-dotenv>=1.2.1"
 ]
@@ -42,9 +42,6 @@ docs = [
   "nbconvert",
   "mkdocstrings[python]>=0.27.0",
   "zensical>=0.0.40,<0.1.0"
-]
-gf-main = [
-  "gdsfactory @ git+https://github.com/gdsfactory/gdsfactory.git@main",
 ]
 
 [tool.codespell]
