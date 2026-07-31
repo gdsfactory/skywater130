@@ -1,7 +1,7 @@
 import gdsfactory as gf
 from gdsfactory.typings import LayerSpec
 
-from sky130.pcells._common import _add_pins
+from sky130.pcells._common import add_pins
 
 
 @gf.cell(tags=["waypoint"])
@@ -41,7 +41,7 @@ def waypoint(
     # )
     c.pprint_ports()
     c.draw_ports()
-    _add_pins(c)
+    add_pins(c)
     return c
 
 

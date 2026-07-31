@@ -10,7 +10,7 @@ All geometry is centered at the origin to match Magic's output coordinate system
 import gdsfactory as gf
 
 from sky130.layers import LAYER
-from sky130.pcells._common import _add_pins
+from sky130.pcells._common import add_pins
 
 
 def _snap(val: float, grid: float = 0.005) -> float:
@@ -909,7 +909,15 @@ def _add_ports(
         layer=LAYER.li1drawing,
         port_type="electrical",
     )
-    _add_pins(c)
+    add_pins(
+        c,
+        port_pin_mapping={
+            "GATE": ["GATE"],
+            "SOURCE": ["SOURCE"],
+            "DRAIN": ["DRAIN"],
+            "BODY": ["BODY"],
+        },
+    )
 
 
 def _add_lvtn_or_hvtp(c, info, layer):
