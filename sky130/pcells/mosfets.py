@@ -8,6 +8,7 @@ All geometry is centered at the origin to match Magic's output coordinate system
 """
 
 import gdsfactory as gf
+from gdsfactory.add_pins import add_electrical_pins
 
 from sky130.layers import LAYER
 
@@ -907,6 +908,15 @@ def _add_ports(
         orientation=270,
         layer=LAYER.li1drawing,
         port_type="electrical",
+    )
+    add_electrical_pins(
+        c,
+        port_pin_mapping={
+            "GATE": ["GATE"],
+            "SOURCE": ["SOURCE"],
+            "DRAIN": ["DRAIN"],
+            "BODY": ["BODY"],
+        },
     )
 
 

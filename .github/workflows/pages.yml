@@ -7,10 +7,16 @@ on:
 
 jobs:
   docs:
-    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/pages.yml@main
+    permissions:
+      contents: read
+      id-token: write
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/pages.yml@main
+    with:
+      s3-prefix: ${{ vars.DOCS_S3_PREFIX }}  # set repo variable to 'REPO-NAME/' to enable docs.gdsfactory.com deployment
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
       SIMCLOUD_APIKEY: ${{ secrets.SIMCLOUD_APIKEY }}
+      PDK_CI_WORKFLOW_TOKEN: ${{ secrets.PDK_CI_WORKFLOW_TOKEN }}
   deploy-docs:
     needs: docs
     if: ${{ github.ref == 'refs/heads/main' }}
