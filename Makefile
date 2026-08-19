@@ -8,7 +8,7 @@ rm-samples:
 dev: modules
 	uv sync --all-extras
 	uv pip install -e .
-	curl -sf https://raw.githubusercontent.com/doplaydo/pdk-ci-workflow-public/main/templates/.pre-commit-config.yaml -o .pre-commit-config.yaml
+	gh api "repos/doplaydo/pdk-ci-workflow/contents/templates/.pre-commit-config.yaml?ref=main" --header "Accept: application/vnd.github.raw+json" > .pre-commit-config.yaml
 	uv run pre-commit clean
 	uv run pre-commit install
 

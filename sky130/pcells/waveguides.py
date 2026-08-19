@@ -4,8 +4,6 @@ import gdsfactory as gf
 from gdsfactory.cross_section import port_names_electrical, port_types_electrical
 from gdsfactory.typings import CrossSectionSpec, LayerSpec, Size
 
-from sky130.pcells._common import add_pins
-
 
 @gf.cell(tags=["waveguides"])
 def wire_corner(
@@ -20,15 +18,13 @@ def wire_corner(
         width: optional width. Defaults to cross_section width.
         radius: ignored (wire corners are 0-radius sharp corners).
     """
-    c = gf.c.wire_corner(
+    return gf.c.wire_corner(
         cross_section=cross_section,
         width=width,
         port_names=port_names_electrical,
         port_types=port_types_electrical,
         radius=radius,
     )
-    add_pins(c)
-    return c
 
 
 @gf.cell(tags=["waveguides"])

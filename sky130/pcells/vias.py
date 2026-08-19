@@ -1,6 +1,6 @@
 import gdsfactory as gf
+from gdsfactory.add_pins import add_electrical_pins
 
-from sky130.pcells._common import add_pins
 from sky130.pcells.via_generator import via_generator
 
 
@@ -87,5 +87,5 @@ def via_m1_m2(
         layer=layer_m2,
         port_type="electrical",
     )
-    add_pins(c, port_pin_mapping={"e1": ["e1"], "e2": ["e2"]})
+    add_electrical_pins(c, port_pin_mapping={"e1": ["e1"], "e2": ["e2"]})
     return c

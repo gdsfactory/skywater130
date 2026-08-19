@@ -13,9 +13,10 @@ jobs:
   build-pdf:
     permissions:
       contents: write
-    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/build-pdf.yml@main
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/build-pdf.yml@main
     with:
       release_tag: ${{ inputs.release_tag }}
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
       SIMCLOUD_APIKEY: ${{ secrets.SIMCLOUD_APIKEY }}
+      PDK_CI_WORKFLOW_TOKEN: ${{ secrets.PDK_CI_WORKFLOW_TOKEN }}
