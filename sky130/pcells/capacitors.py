@@ -51,6 +51,10 @@ def _via_array(
 
     Parameters
     ----------
+    c : gf.Component
+        Component the vias are added to.
+    layer : LayerSpec
+        Layer the vias are drawn on.
     region_x0, region_y0, region_x1, region_y1 : float
         Bounding box of the region within which vias are placed.
     via_size : float
