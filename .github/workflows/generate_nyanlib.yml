@@ -1,0 +1,11 @@
+name: Generate nyanlib
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  generate:
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/generate_nyanlib.yml@main
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}

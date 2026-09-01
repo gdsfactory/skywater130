@@ -1,0 +1,12 @@
+name: GDS XOR
+on:
+  pull_request:
+    paths:
+      - "**.gds"
+
+jobs:
+  gds-xor:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/gds-xor.yml@main
