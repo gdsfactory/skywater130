@@ -12,7 +12,7 @@ classifiers = [
   "Operating System :: OS Independent"
 ]
 dependencies = [
-  "doroutes>=0.6,<1.2",
+  "doroutes>=0.6,<1.4",
   "gdsfactoryplus",
   "gdsfactory~=9.45.0",
   "PySpice",
