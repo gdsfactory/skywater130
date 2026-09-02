@@ -1,0 +1,21 @@
+name: Build PDF
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        type: string
+        required: false
+        default: ''
+        description: 'Upload PDF to this release tag (leave empty to just build)'
+
+jobs:
+  build-pdf:
+    permissions:
+      contents: write
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/build-pdf.yml@main
+    with:
+      release_tag: ${{ inputs.release_tag }}
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+      SIMCLOUD_APIKEY: ${{ secrets.SIMCLOUD_APIKEY }}
