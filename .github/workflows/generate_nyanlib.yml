@@ -9,3 +9,5 @@ jobs:
     uses: doplaydo/pdk-ci-workflow-public/.github/workflows/generate_nyanlib.yml@main
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+      GFP_GHCR_APP_ID: ${{ secrets.GFP_GHCR_APP_ID }}
+      GFP_GHCR_APP_PRIVATE_KEY: ${{ secrets.GFP_GHCR_APP_PRIVATE_KEY }}
