@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "pdk_name": "skywater130",
+  "constraints": [
+    {"layer": "dnwell", "rule": "dnwell.1", "type": "min_width", "value_um": 3.00},
+    {"layer": "dnwell", "rule": "dnwell.2", "type": "min_space", "value_um": 6.30},
+    {"layer": "nwell", "rule": "nwell.1", "type": "min_width", "value_um": 0.84},
+    {"layer": "nwell", "rule": "nwell.2a", "type": "min_space", "value_um": 1.27},
+    {"layer": "hvtp", "rule": "hvtp.1", "type": "min_width", "value_um": 0.38},
+    {"layer": "hvtp", "rule": "hvtp.2", "type": "min_space", "value_um": 0.38},
+    {"layer": "hvtr", "rule": "hvtr.1", "type": "min_width", "value_um": 0.38},
+    {"layer": "hvtr", "rule": "hvtr.2", "type": "min_separation", "value_um": 0.38, "other_layer": "hvtp"},
+    {"layer": "lvtn", "rule": "lvtn.1a", "type": "min_width", "value_um": 0.38},
+    {"layer": "lvtn", "rule": "lvtn.2", "type": "min_space", "value_um": 0.38},
+    {"layer": "nsdm", "rule": "nsdm.1", "type": "min_width", "value_um": 0.38},
+    {"layer": "nsdm", "rule": "nsdm.2", "type": "min_space", "value_um": 0.38},
+    {"layer": "psdm", "rule": "psdm.1", "type": "min_width", "value_um": 0.38},
+    {"layer": "psdm", "rule": "psdm.2", "type": "min_space", "value_um": 0.38}
+  ]
+}
