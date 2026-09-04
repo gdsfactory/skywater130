@@ -69,14 +69,17 @@ nbdocs:
 	uv run python docs/hooks.py docs/notebooks/*.md
 
 docs-pdf: nbdocs
+	uv run python .github/write_layer_stack.py
 	cp CHANGELOG.md docs/changelog.md
 	uv run mkdocs build -f mkdocs-pdf.yml
 
 docs: nbdocs
+	uv run python .github/write_layer_stack.py
 	cp CHANGELOG.md docs/changelog.md
 	uv run --extra docs zensical build -f docs/zensical.toml
 
 docs-serve: nbdocs
+	uv run python .github/write_layer_stack.py
 	cp CHANGELOG.md docs/changelog.md
 	uv run --extra docs zensical serve -f docs/zensical.toml -a localhost:8080
 
