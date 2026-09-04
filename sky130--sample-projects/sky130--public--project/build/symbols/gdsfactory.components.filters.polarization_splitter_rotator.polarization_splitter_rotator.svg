@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="icon"
+     transform="translate(0,80) scale(1,-1)">
+    <rect
+       style="fill:none;fill-opacity:0;stroke:none;stroke-opacity:0.165761"
+       id="frame"
+       width="79"
+       height="79"
+       x="0.5"
+       y="0.5" />
+       <path d="M 55.590 9.365 L 5.474 10.349 L 1.102 11.052 L 1.093 16.202 L 5.474 16.998 L 55.590 17.982 L 63.239 17.982 L 78.897 16.296 L 78.897 11.051 L 63.239 9.365 L 55.590 9.365 Z" id="poly0" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 55.590 19.199 L 55.589 23.170 L 63.803 23.273 L 65.141 24.293 L 66.398 26.436 L 67.646 29.981 L 68.805 34.744 L 72.548 55.889 L 74.290 63.491 L 75.429 66.819 L 76.527 68.938 L 78.907 70.568 L 78.900 65.394 L 77.595 64.969 L 76.264 63.378 L 75.103 60.796 L 74.076 57.400 L 72.589 50.531 L 69.119 31.180 L 67.833 25.977 L 66.608 22.546 L 65.206 20.212 L 63.819 19.265 L 55.590 19.199 Z" id="poly1" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+
+  </g>
+</svg>
