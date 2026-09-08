@@ -4,10 +4,15 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
 jobs:
   generate:
     uses: doplaydo/pdk-ci-workflow-public/.github/workflows/generate_nyanlib.yml@main
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
-      GFP_GHCR_APP_ID: ${{ secrets.GFP_GHCR_APP_ID }}
-      GFP_GHCR_APP_PRIVATE_KEY: ${{ secrets.GFP_GHCR_APP_PRIVATE_KEY }}
+      GFP_ECR_IMAGE: ${{ secrets.GFP_ECR_IMAGE }}
+      SHARED_SERVICES_AWS_OIDC_ROLE_ARN: ${{ secrets.SHARED_SERVICES_AWS_OIDC_ROLE_ARN }}
