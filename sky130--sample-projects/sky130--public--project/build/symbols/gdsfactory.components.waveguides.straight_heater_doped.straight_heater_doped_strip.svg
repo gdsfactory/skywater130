@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="icon"
+     transform="translate(0,80) scale(1,-1)">
+    <rect
+       style="fill:none;fill-opacity:0;stroke:none;stroke-opacity:0.165761"
+       id="frame"
+       width="79"
+       height="79"
+       x="0.5"
+       y="0.5" />
+       <path d="M 0.251 39.138 L 0.251 40.862 L 79.752 40.829 L 79.749 39.138 L 0.251 39.138 Z" id="poly0" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 74.830 3.317 L 74.829 36.541 L 77.316 36.541 L 77.316 3.326 L 74.830 3.317 Z" id="poly1" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 74.830 43.449 L 74.829 76.674 L 77.316 76.674 L 77.316 43.459 L 74.830 43.449 Z" id="poly2" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 50.716 3.317 L 50.714 36.541 L 53.202 36.541 L 53.202 3.326 L 50.716 3.317 Z" id="poly3" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 50.716 43.449 L 50.714 76.674 L 53.202 76.674 L 53.202 43.459 L 50.716 43.449 Z" id="poly4" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 26.701 3.317 L 26.699 36.541 L 29.187 36.541 L 29.187 3.326 L 26.701 3.317 Z" id="poly5" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 26.701 43.449 L 26.699 76.674 L 29.187 76.674 L 29.187 43.459 L 26.701 43.449 Z" id="poly6" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 2.686 3.317 L 2.684 36.541 L 5.172 36.541 L 5.172 3.326 L 2.686 3.317 Z" id="poly7" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 2.686 43.449 L 2.684 76.674 L 5.172 76.674 L 5.172 43.459 L 2.686 43.449 Z" id="poly8" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+
+  </g>
+</svg>

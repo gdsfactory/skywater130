@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="icon"
+     transform="translate(0,80) scale(1,-1)">
+    <rect
+       style="fill:none;fill-opacity:0;stroke:none;stroke-opacity:0.165761"
+       id="frame"
+       width="79"
+       height="79"
+       x="0.5"
+       y="0.5" />
+       <path d="M 0.792 0.138 L 0.792 0.210 L 79.216 0.187 L 79.208 0.159 L 0.792 0.138 Z" id="poly0" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.792 17.647 L 0.792 17.719 L 79.216 17.697 L 79.208 17.668 L 0.792 17.647 Z" id="poly1" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.792 35.156 L 0.792 35.228 L 79.216 35.206 L 79.208 35.177 L 0.792 35.156 Z" id="poly2" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.792 52.665 L 0.792 52.737 L 79.216 52.715 L 79.208 52.686 L 0.792 52.665 Z" id="poly3" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.792 70.174 L 0.792 70.246 L 79.216 70.224 L 79.208 70.195 L 0.792 70.174 Z" id="poly4" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 8.634 20.439 L 8.628 24.577 L 32.151 24.578 L 32.151 25.953 L 8.631 25.953 L 8.628 27.334 L 47.847 27.334 L 47.848 23.197 L 24.325 23.196 L 24.325 21.820 L 47.844 21.820 L 47.847 20.439 L 8.634 20.439 Z" id="poly5" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 8.634 37.948 L 8.629 39.329 L 32.151 39.329 L 32.151 40.705 L 8.631 40.705 L 8.628 42.086 L 32.151 42.087 L 32.151 43.463 L 8.631 43.463 L 8.628 44.844 L 47.847 44.844 L 47.847 37.948 L 8.634 37.948 Z" id="poly6" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 8.634 72.966 L 8.629 74.347 L 32.151 74.347 L 32.151 75.723 L 8.628 75.724 L 8.628 79.862 L 47.847 79.862 L 47.846 78.481 L 24.325 78.481 L 24.325 77.105 L 47.847 77.104 L 47.847 72.966 L 8.634 72.966 Z" id="poly7" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 32.158 55.457 L 32.151 58.214 L 8.627 58.215 L 8.629 62.353 L 16.482 62.352 L 16.483 59.596 L 32.151 59.596 L 32.155 62.353 L 47.848 62.352 L 47.849 55.458 L 32.158 55.457 Z" id="poly8" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 8.634 2.930 L 8.628 4.311 L 16.467 4.311 L 16.467 8.444 L 8.628 8.445 L 8.626 9.825 L 24.320 9.826 L 24.325 4.311 L 32.164 4.311 L 32.166 2.931 L 8.634 2.930 Z" id="poly9" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+
+  </g>
+</svg>
