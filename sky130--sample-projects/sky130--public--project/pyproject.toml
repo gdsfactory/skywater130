@@ -3,7 +3,7 @@ build-backend = "setuptools.build_meta"
 requires = ["build", "pip", "setuptools", "wheel"]
 
 [project]
-authors = [{name = "GDSFactory", email = "support@gdsfactory.com"}]
+authors = [{ name = "GDSFactory", email = "support@gdsfactory.com" }]
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.12"
@@ -11,12 +11,12 @@ classifiers = [
 dependencies = ["gdsfactoryplus>=0.46.1", "sky130~=1.0.0"]
 description = "My cspdk demo project"
 keywords = ["cornerstone", "cspdk", "eda", "photonics", "python"]
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 name = "mysky"
+optional-dependencies.dev = ["pre-commit", "uv"]
 readme = "README.md"
 requires-python = "~=3.12.0"
 version = "0.0.0"
-optional-dependencies.dev = ["pre-commit", "uv"]
 
 [tool.basedpyright]
 pythonPlatform = "Linux"
@@ -51,6 +51,7 @@ lint.ignore = [
   "D104",  # public package docstrings
   "E501"  # line too long, handled by black
 ]
+lint.pydocstyle.convention = "google"
 lint.select = [
   "B",  # flake8-bugbear
   "C",  # flake8-comprehensions
@@ -62,7 +63,6 @@ lint.select = [
   "UP",  # pyupgrade
   "W"  # pycodestyle warnings
 ]
-lint.pydocstyle.convention = "google"
 
 [tool.setuptools]
 package-data."*" = [
@@ -88,9 +88,9 @@ packages.find.where = ["."]
 
 [tool.tbump]
 file = [
-  {src = "README.md"},
-  {src = "pyproject.toml"},
-  {src = "mycspdk/__init__.py"}
+  { src = "README.md" },
+  { src = "pyproject.toml" },
+  { src = "mycspdk/__init__.py" }
 ]
 git.message_template = "Bump to {new_version}"
 git.tag_template = "{new_version}"
