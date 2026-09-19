@@ -1,0 +1,17 @@
+name: Test LVS with gflvs
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-lvs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Install dependencies
+        run: uv sync --all-extras
+      - name: Install gflvs
+        run: uv pip install gflvs
+      - name: Run LVS tests
+        run: make test-lvs

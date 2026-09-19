@@ -26,6 +26,9 @@ ngspice:
 test:
 	uv run pytest -s -n logical
 
+test-lvs:
+	uv run pytest tests/gflvs/ -v
+
 test-force: install
 	uv run pytest -s -n logical --force-regen
 
