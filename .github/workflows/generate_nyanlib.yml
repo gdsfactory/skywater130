@@ -4,8 +4,14 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  pull-requests: write
+  packages: read
+
 jobs:
   generate:
-    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/generate_nyanlib.yml@main
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/generate_nyanlib.yml@main
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+      PDK_CI_WORKFLOW_TOKEN: ${{ secrets.PDK_CI_WORKFLOW_TOKEN }}

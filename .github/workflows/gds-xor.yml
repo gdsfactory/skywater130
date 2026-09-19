@@ -9,4 +9,6 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/gds-xor.yml@main
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/gds-xor.yml@main
+    secrets:
+      PDK_CI_WORKFLOW_TOKEN: ${{ secrets.PDK_CI_WORKFLOW_TOKEN }}

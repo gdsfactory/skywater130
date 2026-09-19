@@ -1,55 +1,46 @@
-name: Release PyPI
+name: Release
 
 on:
-  push:
-    tags: "v*"
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        description: 'Version to cut, e.g. 1.2.3 or v1.2.3 — creates release/<version> with the bump commit, opens a PR, then tags, builds, and publishes'
 
 jobs:
-  release_pypi:
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          submodules: 'recursive'
-      - name: Remove samples
-        run: make rm-samples
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: 3.x
-          cache-dependency-path: pyproject.toml
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install setuptools wheel twine
-      - name: Build and publish
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: |
-          make modules build
-          twine upload --verbose dist/*
-  release_environment:
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-    runs-on: ubuntu-latest
+  cut-release:
     permissions:
       contents: write
-    steps:
-      - uses: actions/checkout@v7
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.11'
-          cache: "pip"
-          cache-dependency-path: pyproject.toml
-      - name: Install dependencies
-        run: |
-          pip install .
-          pip freeze > requirements.txt
-      - name: Publish Latest Draft
-        run: |
-          gh release edit ${{ github.ref_name }} --draft=false
-          gh release upload ${{ github.ref_name }} requirements.txt --clobber
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      pull-requests: write
+      checks: read
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/cut-release.yml@main
+    with:
+      version: ${{ inputs.version }}
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      # A PAT is required here: the branch/PR that cut-release creates must
+      # trigger "Test code", and events created with github.token don't
+      # trigger workflows.
+      PDK_CI_WORKFLOW_TOKEN: ${{ secrets.PDK_CI_WORKFLOW_TOKEN }}
+
+  release:
+    needs: [cut-release]
+    if: needs.cut-release.result == 'success' && needs.cut-release.outputs.skip_all != 'true'
+    permissions:
+      contents: write
+      pull-requests: write
+      checks: read
+    uses: doplaydo/pdk-ci-workflow/.github/workflows/release.yml@main
+    with:
+      checkout_ref: ${{ needs.cut-release.outputs.head_sha }}
+      head_branch: ${{ needs.cut-release.outputs.head_branch }}
+    secrets:
+      DEVPI_USERNAME: ${{ secrets.DEVPI_USERNAME }}
+      DEVPI_PASSWORD: ${{ secrets.DEVPI_PASSWORD }}
+      PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+      PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+      SIMCLOUD_APIKEY: ${{ secrets.SIMCLOUD_APIKEY }}
+      PDK_CI_WORKFLOW_TOKEN: ${{ secrets.PDK_CI_WORKFLOW_TOKEN }}
