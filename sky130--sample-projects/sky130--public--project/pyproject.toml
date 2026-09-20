@@ -9,8 +9,8 @@ classifiers = [
   "Programming Language :: Python :: 3.12"
 ]
 dependencies = ["gdsfactoryplus>=0.46.1", "sky130~=1.0.0"]
-description = "My cspdk demo project"
-keywords = ["cornerstone", "cspdk", "eda", "photonics", "python"]
+description = "My sky130 demo project"
+keywords = ["eda", "photonics", "python", "sky130"]
 license = {file = "LICENSE"}
 name = "mysky"
 readme = "README.md"
@@ -90,7 +90,7 @@ packages.find.where = ["."]
 file = [
   {src = "README.md"},
   {src = "pyproject.toml"},
-  {src = "mycspdk/__init__.py"}
+  {src = "mysky/__init__.py"}
 ]
 git.message_template = "Bump to {new_version}"
 git.tag_template = "{new_version}"
