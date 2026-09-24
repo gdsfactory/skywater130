@@ -9,6 +9,11 @@ nav:
       - Technology: tech.md
       - Intro: intro.md
       - Rc Filter Analysis: rc_filter_analysis.md
+markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.superfences
+  - admonition
 plugins:
   - search
   - autorefs
