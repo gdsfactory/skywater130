@@ -4442,7 +4442,7 @@ docs = [
 
 [package.metadata]
 requires-dist = [
-    { name = "doroutes", specifier = ">=0.6,<1.2" },
+    { name = "doroutes", specifier = ">=0.6,<1.4" },
     { name = "gdsfactory", specifier = "~=9.45.0" },
     { name = "gdsfactoryplus" },
     { name = "jupyter", marker = "extra == 'docs'" },

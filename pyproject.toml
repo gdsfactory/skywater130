@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 requires = ["hatchling"]
 
 [project]
-authors = [{name = "gdsfactory", email = "contact@gdsfactory.com"}]
+authors = [{ name = "gdsfactory", email = "contact@gdsfactory.com" }]
 classifiers = [
   "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3.12",
@@ -20,7 +20,7 @@ dependencies = [
 ]
 description = "skywater130 pdk"
 keywords = ["python"]
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 name = "sky130"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -58,6 +58,7 @@ name = "sky130"
 artifacts = ["sky130/src/**/*.gds"]
 
 [tool.hatch.build.targets.wheel]
+exclude = ["**/.git", "**/.git/**"]
 packages = ["sky130"]
 
 [tool.hatch.build.targets.wheel.force-include]
