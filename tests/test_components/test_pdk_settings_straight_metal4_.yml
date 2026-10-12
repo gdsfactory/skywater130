@@ -1,0 +1,11 @@
+info:
+  length: 10
+  route_info_length: 10
+  route_info_metal4_length: 10
+  route_info_type: metal4
+  route_info_weight: 10
+  width: 0.2
+name: straight_metal4_L10_CSmetal4_WNone
+settings:
+  cross_section: metal4
+  length: 10
