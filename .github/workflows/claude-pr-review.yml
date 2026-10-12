@@ -7,6 +7,13 @@ on:
 
 jobs:
   review:
+    # Reusable workflows can only use permissions granted by the caller, and the
+    # default GITHUB_TOKEN never includes id-token: write (needed for OIDC).
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+      id-token: write
     uses: doplaydo/pdk-ci-workflow-public/.github/workflows/claude-pr-review.yml@main
     secrets:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
