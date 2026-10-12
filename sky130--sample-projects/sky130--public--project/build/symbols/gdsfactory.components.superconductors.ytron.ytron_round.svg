@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="icon"
+     transform="translate(0,80) scale(1,-1)">
+    <rect
+       style="fill:none;fill-opacity:0;stroke:none;stroke-opacity:0.165761"
+       id="frame"
+       width="79"
+       height="79"
+       x="0.5"
+       y="0.5" />
+       <path d="M 4.159 0.080 L 4.158 40.019 L 0.182 79.919 L 36.638 79.920 L 40.615 40.092 L 40.628 40.066 L 40.682 40.034 L 40.765 40.017 L 40.855 40.021 L 40.908 40.034 L 40.949 40.054 L 40.975 40.092 L 43.361 63.960 L 79.818 63.959 L 77.433 40.019 L 77.433 0.081 L 4.159 0.080 Z" id="poly0" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+
+  </g>
+</svg>

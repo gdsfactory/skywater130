@@ -8,6 +8,6 @@ on:
 
 jobs:
   badges:
-    uses: doplaydo/pdk-ci-workflow/.github/workflows/update_badges.yml@main
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/update_badges.yml@main
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}

@@ -1,0 +1,20 @@
+name: Sample Project Upload
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '**/*--sample-projects/**'
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  upload:
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/sample-project-upload.yml@main
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
+      GFP_ECR_IMAGE: ${{ secrets.GFP_ECR_IMAGE }}
+      SHARED_SERVICES_AWS_OIDC_ROLE_ARN: ${{ secrets.SHARED_SERVICES_AWS_OIDC_ROLE_ARN }}
