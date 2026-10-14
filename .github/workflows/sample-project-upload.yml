@@ -18,3 +18,5 @@ jobs:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
       GFP_ECR_IMAGE: ${{ secrets.GFP_ECR_IMAGE }}
       SHARED_SERVICES_AWS_OIDC_ROLE_ARN: ${{ secrets.SHARED_SERVICES_AWS_OIDC_ROLE_ARN }}
+      # Syncs mapped sample projects to doplaydo/gfp-sample-projects (optional).
+      GSP_SYNC_TOKEN: ${{ secrets.GSP_SYNC_TOKEN }}
