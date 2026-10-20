@@ -14,16 +14,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  sast:
-    uses: doplaydo/infra/.github/workflows/reuseable-sast.yaml@main
-    with:
-      output-format: text
-      fail-on-findings: false
-      enable-secrets-scan: true
-
-  sca:
-    uses: doplaydo/infra/.github/workflows/reuseable-sca.yaml@main
-    with:
-      scan-type: fs
-      scanners: vuln,misconfig,secret
-      fail-on-findings: false
+  security:
+    permissions:
+      contents: read
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/code-security.yml@main

@@ -1,4 +1,5 @@
 import gdsfactory as gf
+from gdsfactory.add_pins import add_electrical_pins
 from gdsfactory.typings import LayerSpec
 
 
@@ -37,8 +38,7 @@ def waypoint(
     # c.add_port(
     #    "e4", center=(width / 2, 0), width=width, orientation=270, layer=layer
     # )
-    c.pprint_ports()
-    c.draw_ports()
+    add_electrical_pins(c)
     return c
 
 

@@ -8,5 +8,7 @@ on:
 jobs:
   model-regression:
     uses: doplaydo/pdk-ci-workflow-public/.github/workflows/model_regression.yml@main
+    with:
+      enforce-model-metadata: ${{ vars.ENFORCE_MODEL_METADATA == 'true' }}
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}

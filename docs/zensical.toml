@@ -1,18 +1,18 @@
 [project]
 docs_dir = "."
 nav = [
-  {"Home" = "index.md"},
-  {"Reference" = [
-    {"Layer Stack" = "layer_stack.md"},
-    {"PCells" = "pcells.md"},
-    {"Cells" = "components.md"},
-    {"Changelog" = "changelog.md"}
-  ]},
-  {"Tutorial" = [
-    {"Technology" = "tech.md"},
-    {"Intro" = "intro.md"},
-    {"Rc Filter Analysis" = "rc_filter_analysis.md"}
-  ]}
+  { "Home" = "index.md" },
+  { "Reference" = [
+    { "Layer Stack" = "layer_stack.md" },
+    { "PCells" = "pcells.md" },
+    { "Cells" = "components.md" },
+    { "Changelog" = "changelog.md" }
+  ] },
+  { "Tutorial" = [
+    { "Technology" = "tech.md" },
+    { "Intro" = "intro.md" },
+    { "Rc Filter Analysis" = "rc_filter_analysis.md" }
+  ] }
 ]
 site_dir = "_build/html"
 site_name = "skywater130 pdk"

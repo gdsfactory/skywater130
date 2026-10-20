@@ -1,9 +1,11 @@
 """Routing functions with obstacle avoidance for sky130 PDK."""
 
+import warnings
 from collections.abc import Sequence
 from typing import Any
 
 import gdsfactory as gf
+import kfactory as kf
 import klayout.dbcore as kdb
 import networkx as nx
 import numpy as np
@@ -273,9 +275,9 @@ def route_astar(
     resolution: float = 0.5,
     avoid_layers: Sequence[LayerSpec] | None = None,
     distance: float = 1,
-    cross_section: CrossSectionSpec = "strip",
+    cross_section: CrossSectionSpec = "metal1",
     bend: ComponentSpec = gf.components.bend_euler,
-    straight: ComponentSpec = "straight",
+    straight: ComponentSpec = "straight_metal1",
     avoid_same_layer: bool = False,
     **kwargs: Any,
 ) -> Route:
@@ -369,6 +371,10 @@ def route_astar(
     min_segment_length = max(resolution * 2, width * 2)
 
     for route_idx, (p1, p2) in enumerate(zip(port1, port2)):
+        # The code below works in DBU (nm), so convert um-based DPorts
+        p1 = p1 if isinstance(p1, kf.Port) else p1.to_itype()
+        p2 = p2 if isinstance(p2, kf.Port) else p2.to_itype()
+
         # Create working copy of static grid for this route
         grid_working = grid_static.copy()
 
@@ -752,14 +758,16 @@ def route_astar(
         bend_component = wire_corner_safe if is_electrical else bend
 
         try:
-            # Convert kdb.Point to tuples for gdsfactory compatibility (coordinates in nm -> um)
-            waypoints_um = [(pt.x / 1000, pt.y / 1000) for pt in final_points]
+            # Convert kdb.Point to tuples for gdsfactory compatibility (coordinates in nm -> um).
+            # route_single expects only the intermediate points: passing the port
+            # positions as waypoints makes it silently place nothing.
+            waypoints_um = [(pt.x / 1000, pt.y / 1000) for pt in final_points[1:-1]]
 
             r = gf.routing.route_single(
                 component=component,
                 port1=p1,
                 port2=p2,
-                waypoints=waypoints_um,
+                waypoints=waypoints_um or None,
                 cross_section=cross_section,
                 bend=bend_component,
                 straight=straight,
@@ -778,7 +786,9 @@ def route_astar(
                 ports.extend(r.ports)
 
         except Exception as e:
-            print(f"WARNING: route_single failed for route {route_idx}: {e}")
+            warnings.warn(
+                f"route_single failed for route {route_idx}: {e}", stacklevel=2
+            )
             continue
 
     return Route(references, length, length_effective, ports)
