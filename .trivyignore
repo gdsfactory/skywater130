@@ -1,0 +1,4 @@
+# protobuf DoS (fixed in 5.29.6 / 6.33.5). Not fixable here: vlsir 7.0.0, the
+# latest release, pins protobuf<5 and comes in via gdsfactoryplus -> vlsirtools.
+# Remove once vlsir allows protobuf>=5.29.6.
+CVE-2026-0994

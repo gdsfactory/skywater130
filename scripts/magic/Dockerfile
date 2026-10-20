@@ -7,7 +7,7 @@
 #
 # Usage:
 #   docker build -t sky130-magic-ref scripts/magic/
-#   docker run --rm -e PDK_ROOT=/usr/local/share/pdk \
+#   docker run --rm --user "$(id -u):$(id -g)" -e PDK_ROOT=/usr/local/share/pdk \
 #     -v $(pwd)/tests/ref_gds:/output sky130-magic-ref
 
 FROM ubuntu:22.04
@@ -22,7 +22,8 @@ ARG OPEN_PDKS_COMMIT=fc20c144baf309002e0b335585a3aaef06b56f00
 # ─────────────────────────────────────────────────────────────────────────
 
 # Install build dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
     build-essential \
     git \
     python3 \
@@ -57,6 +58,8 @@ RUN git clone https://github.com/RTimothyEdwards/open_pdks.git /tmp/open_pdks &&
 # Verify Magic works
 RUN echo 'puts "Magic OK: [info patchlevel]"; quit -noprompt' | magic -dnull -noconsole
 
+RUN useradd --create-home --uid 1000 magic
+
 WORKDIR /work
 COPY sweep_params.json /work/sweep_params.json
 COPY generate_references.sh /work/generate_references.sh
@@ -64,5 +67,7 @@ RUN chmod +x /work/generate_references.sh
 
 # Output goes to /output (mount as volume)
 ENV REF_DIR=/output
+
+USER magic
 
 ENTRYPOINT ["/work/generate_references.sh"]

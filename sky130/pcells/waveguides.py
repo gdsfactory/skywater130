@@ -95,6 +95,60 @@ def straight_metal2(
 
 
 @gf.cell(tags=["waveguides"])
+def straight_metal3(
+    length: float = 10,
+    cross_section: CrossSectionSpec = "metal3",
+    width: float | None = None,
+) -> gf.Component:
+    """Returns a Straight waveguide.
+
+    Args:
+        length: straight length (um).
+        cross_section: specification (CrossSection, string or dict).
+        width: width of the waveguide. If None, it will use the width of the cross_section.
+    """
+    return gf.c.straight(
+        length=length, cross_section=cross_section, width=width, npoints=2
+    )
+
+
+@gf.cell(tags=["waveguides"])
+def straight_metal4(
+    length: float = 10,
+    cross_section: CrossSectionSpec = "metal4",
+    width: float | None = None,
+) -> gf.Component:
+    """Returns a Straight waveguide.
+
+    Args:
+        length: straight length (um).
+        cross_section: specification (CrossSection, string or dict).
+        width: width of the waveguide. If None, it will use the width of the cross_section.
+    """
+    return gf.c.straight(
+        length=length, cross_section=cross_section, width=width, npoints=2
+    )
+
+
+@gf.cell(tags=["waveguides"])
+def straight_metal5(
+    length: float = 10,
+    cross_section: CrossSectionSpec = "metal5",
+    width: float | None = None,
+) -> gf.Component:
+    """Returns a Straight waveguide.
+
+    Args:
+        length: straight length (um).
+        cross_section: specification (CrossSection, string or dict).
+        width: width of the waveguide. If None, it will use the width of the cross_section.
+    """
+    return gf.c.straight(
+        length=length, cross_section=cross_section, width=width, npoints=2
+    )
+
+
+@gf.cell(tags=["waveguides"])
 def bend_metal1(
     radius: float | None = None,
     angle: float = 90,
@@ -199,6 +253,9 @@ __all__ = [
     "wire_corner45",
     "straight_metal1",
     "straight_metal2",
+    "straight_metal3",
+    "straight_metal4",
+    "straight_metal5",
     "bend_metal1",
     "bend_metal2",
     "bend_s_metal1",
@@ -206,7 +263,7 @@ __all__ = [
 ]
 
 if __name__ == "__main__":
-    from amf.cband import PDK
+    from sky130 import PDK
 
     PDK.activate()
 
