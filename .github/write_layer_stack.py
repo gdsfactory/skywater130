@@ -8,10 +8,9 @@ from __future__ import annotations
 
 import json
 import math
-from pathlib import Path
 
-from sky130.config import PATH
 from sky130 import PDK
+from sky130.config import PATH
 
 BANDS = [("", PDK)]
 
@@ -20,19 +19,32 @@ BANDS = [("", PDK)]
 # ---------------------------------------------------------------------------
 
 MATERIAL_COLORS = {
-    "si": "#A0A0A0", "silicon": "#A0A0A0",
-    "sio2": "#FFF8DC", "oxide": "#D0D0D0",
-    "sin": "#8FBC8F", "sion": "#8FBC8F",
-    "ge": "#4682B4", "al": "#4CAF50", "cu": "#D0A050",
-    "w": "#9E9E9E", "tin": "#DDA0DD", "air": "#E8F4FD",
-    "nclad": "#FFF8DC", "nbox": "#FFF8DC",
+    "si": "#A0A0A0",
+    "silicon": "#A0A0A0",
+    "sio2": "#FFF8DC",
+    "oxide": "#D0D0D0",
+    "sin": "#8FBC8F",
+    "sion": "#8FBC8F",
+    "ge": "#4682B4",
+    "al": "#4CAF50",
+    "cu": "#D0A050",
+    "w": "#9E9E9E",
+    "tin": "#DDA0DD",
+    "air": "#E8F4FD",
+    "nclad": "#FFF8DC",
+    "nbox": "#FFF8DC",
 }
 
 XS_MATERIAL_COLORS = {
-    "si": "#5B8CBE", "silicon": "#5B8CBE",
-    "sin": "#2E8B57", "sion": "#2E8B57",
-    "ge": "#4682B4", "al": "#CCC", "cu": "#D0A050",
-    "tin": "#CD853F", "w": "#9E9E9E",
+    "si": "#5B8CBE",
+    "silicon": "#5B8CBE",
+    "sin": "#2E8B57",
+    "sion": "#2E8B57",
+    "ge": "#4682B4",
+    "al": "#CCC",
+    "cu": "#D0A050",
+    "tin": "#CD853F",
+    "w": "#9E9E9E",
 }
 
 
@@ -67,7 +79,7 @@ def _gds_layer_number(layer_attr):
     if layer_attr is None:
         return None
     inner = getattr(layer_attr, "layer", layer_attr)
-    if isinstance(inner, (tuple, list)) and len(inner) >= 1:
+    if isinstance(inner, tuple | list) and len(inner) >= 1:
         try:
             return int(inner[0])
         except (ValueError, TypeError):
@@ -103,14 +115,19 @@ def _extract_layers(layer_stack):
         zmin = getattr(level, "zmin", 0) or 0
         material = getattr(level, "material", "") or ""
         gds = _gds_layer_number(getattr(level, "layer", None))
-        layers.append({
-            "name": name, "gds": gds, "material": material,
-            "type": _infer_layer_type(material, name),
-            "zmin": round(zmin, 4), "zmax": round(zmin + thickness, 4),
-            "thickness": round(thickness, 4),
-            "color": _color_for_layer(material),
-        })
-    layers.sort(key=lambda l: l["zmin"])
+        layers.append(
+            {
+                "name": name,
+                "gds": gds,
+                "material": material,
+                "type": _infer_layer_type(material, name),
+                "zmin": round(zmin, 4),
+                "zmax": round(zmin + thickness, 4),
+                "thickness": round(thickness, 4),
+                "color": _color_for_layer(material),
+            }
+        )
+    layers.sort(key=lambda lyr: lyr["zmin"])
     return layers
 
 
@@ -118,19 +135,19 @@ def _compute_layout(layers, svg_w=550, svg_h=750):
     margin = {"top": 60, "bottom": 30, "left": 70, "right": 100}
     plot_h = svg_h - margin["top"] - margin["bottom"]
 
-    real = [l for l in layers if abs(l["thickness"]) > 1e-9]
+    real = [lyr for lyr in layers if abs(lyr["thickness"]) > 1e-9]
     if not real:
         return layers, []
 
     n = len(real)
     row_h = plot_h / max(n, 1)
-    for i, l in enumerate(real):
-        l["uy"] = round(margin["top"] + (n - 1 - i) * row_h, 1)
-        l["uh"] = round(row_h * 0.93, 1)
+    for i, lyr in enumerate(real):
+        lyr["uy"] = round(margin["top"] + (n - 1 - i) * row_h, 1)
+        lyr["uh"] = round(row_h * 0.93, 1)
 
     all_z = []
-    for l in real:
-        all_z.extend([l["zmin"], l["zmax"]])
+    for lyr in real:
+        all_z.extend([lyr["zmin"], lyr["zmax"]])
     z_min_g = min(all_z)
     z_max_g = max(all_z)
     z_range = z_max_g - z_min_g or 1.0
@@ -139,15 +156,18 @@ def _compute_layout(layers, svg_w=550, svg_h=750):
         frac = (z - z_min_g) / z_range
         return margin["top"] + plot_h - frac * plot_h
 
-    for l in real:
-        overlapping = [ol for ol in real if
-                       ol["zmin"] < l["zmax"] - 1e-6 and ol["zmax"] > l["zmin"] + 1e-6]
-        l["ncols"] = len(overlapping)
-        l["col"] = overlapping.index(l) if l in overlapping else 0
-        sy_top = z_to_y(l["zmax"])
-        sy_bot = z_to_y(l["zmin"])
-        l["sy"] = round(sy_top, 1)
-        l["sh"] = round(max(sy_bot - sy_top, 2), 1)
+    for lyr in real:
+        overlapping = [
+            ol
+            for ol in real
+            if ol["zmin"] < lyr["zmax"] - 1e-6 and ol["zmax"] > lyr["zmin"] + 1e-6
+        ]
+        lyr["ncols"] = len(overlapping)
+        lyr["col"] = overlapping.index(lyr) if lyr in overlapping else 0
+        sy_top = z_to_y(lyr["zmax"])
+        sy_bot = z_to_y(lyr["zmin"])
+        lyr["sy"] = round(sy_top, 1)
+        lyr["sh"] = round(max(sy_bot - sy_top, 2), 1)
 
     ticks = []
     step = _nice_step(z_range)
@@ -171,7 +191,13 @@ def _extract_cross_sections(pdk, layer_stack):
         zmin = getattr(level, "zmin", 0) or 0
         material = getattr(level, "material", "") or ""
         gds = _gds_layer_number(getattr(level, "layer", None))
-        info = {"name": name, "zmin": zmin, "thickness": thickness, "material": material, "gds": gds}
+        info = {
+            "name": name,
+            "zmin": zmin,
+            "thickness": thickness,
+            "material": material,
+            "gds": gds,
+        }
         if gds is not None:
             layer_z_by_gds[gds] = info
         layer_z_by_name[name] = info
@@ -183,7 +209,11 @@ def _extract_cross_sections(pdk, layer_stack):
             for entry in layer_map:
                 lname = getattr(entry, "name", None)
                 val = getattr(entry, "value", None)
-                gds = _gds_layer_number(val) if isinstance(val, (tuple, list)) else (val if isinstance(val, int) else _gds_layer_number(val))
+                gds = (
+                    _gds_layer_number(val)
+                    if isinstance(val, tuple | list)
+                    else (val if isinstance(val, int) else _gds_layer_number(val))
+                )
                 if lname and gds is not None:
                     layer_name_to_gds[lname] = gds
         except TypeError:
@@ -215,13 +245,17 @@ def _extract_cross_sections(pdk, layer_stack):
         if main_layer is not None and main_width is not None:
             info = resolve(main_layer)
             if info:
-                xs_layers.append({
-                    "name": info["name"], "material": info["material"],
-                    "zmin": round(info["zmin"], 4),
-                    "zmax": round(info["zmin"] + info["thickness"], 4),
-                    "thickness": round(info["thickness"], 4),
-                    "width": round(float(main_width), 2), "gds": info["gds"],
-                })
+                xs_layers.append(
+                    {
+                        "name": info["name"],
+                        "material": info["material"],
+                        "zmin": round(info["zmin"], 4),
+                        "zmax": round(info["zmin"] + info["thickness"], 4),
+                        "thickness": round(info["thickness"], 4),
+                        "width": round(float(main_width), 2),
+                        "gds": info["gds"],
+                    }
+                )
 
         for section in sections:
             sec_layer = getattr(section, "layer", None)
@@ -230,13 +264,17 @@ def _extract_cross_sections(pdk, layer_stack):
                 continue
             info = resolve(sec_layer)
             if info:
-                xs_layers.append({
-                    "name": info["name"], "material": info["material"],
-                    "zmin": round(info["zmin"], 4),
-                    "zmax": round(info["zmin"] + info["thickness"], 4),
-                    "thickness": round(info["thickness"], 4),
-                    "width": round(float(sec_width), 2), "gds": info["gds"],
-                })
+                xs_layers.append(
+                    {
+                        "name": info["name"],
+                        "material": info["material"],
+                        "zmin": round(info["zmin"], 4),
+                        "zmax": round(info["zmin"] + info["thickness"], 4),
+                        "thickness": round(info["thickness"], 4),
+                        "width": round(float(sec_width), 2),
+                        "gds": info["gds"],
+                    }
+                )
 
         if xs_layers:
             results.append({"name": xs_name, "layers": xs_layers})
@@ -272,7 +310,7 @@ def _render_layer_stack(layers, ticks, svg_id, svg_w=550, svg_h=750):
   </div>
   <svg width="{svg_w}" height="{svg_h}" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,sans-serif" font-size="11">
     <rect width="{svg_w}" height="{svg_h}" fill="white"/>
-    <text x="{svg_w//2}" y="24" text-anchor="middle" font-size="14" font-weight="bold">Layer Stack</text>
+    <text x="{svg_w // 2}" y="24" text-anchor="middle" font-size="14" font-weight="bold">Layer Stack</text>
     <g class="ticks"></g><g class="layers"></g>
   </svg>
   <div class="tooltip" style="display:none;position:absolute;background:white;color:#222;border:1px solid #ccc;border-radius:4px;padding:6px 10px;font-size:11px;pointer-events:none;box-shadow:0 2px 6px rgba(0,0,0,.15);z-index:10;white-space:nowrap"></div>
@@ -391,16 +429,24 @@ def _render_cross_sections(cross_sections, layer_stack, svg_id, svg_w=1000, svg_
     col_w = plot_w / max(n_xs, 1)
 
     parts = []
-    parts.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="{svg_w}" height="{svg_h}" font-family="system-ui,sans-serif" font-size="11">')
+    parts.append(
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{svg_w}" height="{svg_h}" font-family="system-ui,sans-serif" font-size="11">'
+    )
     parts.append(f'<rect width="{svg_w}" height="{svg_h}" fill="white"/>')
-    parts.append(f'<text x="{svg_w//2}" y="24" text-anchor="middle" font-size="14" font-weight="bold">PDK Cross-Sections</text>')
+    parts.append(
+        f'<text x="{svg_w // 2}" y="24" text-anchor="middle" font-size="14" font-weight="bold">PDK Cross-Sections</text>'
+    )
 
     step = _nice_step(z_range, 8)
     z = math.floor(z_min_g / step) * step
     while z <= z_max_g + step * 0.5:
         y = z2y(z)
-        parts.append(f'<line x1="{margin_l}" y1="{y:.1f}" x2="{svg_w-margin_r}" y2="{y:.1f}" stroke="#EEE" stroke-width="1"/>')
-        parts.append(f'<text x="{margin_l-6}" y="{y+4:.1f}" text-anchor="end" font-size="9" fill="#666">{z:.2f}</text>')
+        parts.append(
+            f'<line x1="{margin_l}" y1="{y:.1f}" x2="{svg_w - margin_r}" y2="{y:.1f}" stroke="#EEE" stroke-width="1"/>'
+        )
+        parts.append(
+            f'<text x="{margin_l - 6}" y="{y + 4:.1f}" text-anchor="end" font-size="9" fill="#666">{z:.2f}</text>'
+        )
         z += step
 
     all_data = []
@@ -414,22 +460,48 @@ def _render_cross_sections(cross_sections, layer_stack, svg_id, svg_w=1000, svg_
         # Cladding background
         cy_top = z2y(clad_top) if clad_top > 0 else z2y(z_max_g)
         cy_bot = z2y(0)
-        parts.append(f'<g data-idx="{idx}"><rect x="{cx:.1f}" y="{cy_top:.1f}" width="{col_w-1.4:.1f}" height="{cy_bot-cy_top:.1f}" fill="#FFF8DC" opacity="0.6"/></g>')
-        all_data.append({"name": "Cladding", "material": "SiO2", "zmin": 0, "zmax": round(clad_top, 3), "thickness": round(clad_top, 3), "gds": None})
+        parts.append(
+            f'<g data-idx="{idx}"><rect x="{cx:.1f}" y="{cy_top:.1f}" width="{col_w - 1.4:.1f}" height="{cy_bot - cy_top:.1f}" fill="#FFF8DC" opacity="0.6"/></g>'
+        )
+        all_data.append(
+            {
+                "name": "Cladding",
+                "material": "SiO2",
+                "zmin": 0,
+                "zmax": round(clad_top, 3),
+                "thickness": round(clad_top, 3),
+                "gds": None,
+            }
+        )
         idx += 1
 
         # Substrate background
         sy_top = z2y(0)
         sy_bot = z2y(-box_t)
-        parts.append(f'<g data-idx="{idx}"><rect x="{cx:.1f}" y="{sy_top:.1f}" width="{col_w-1.4:.1f}" height="{sy_bot-sy_top:.1f}" fill="#C0C0C0" opacity="0.5"/></g>')
-        all_data.append({"name": "Substrate", "material": "Si", "zmin": round(-box_t, 3), "zmax": 0, "thickness": round(box_t, 3), "gds": None})
+        parts.append(
+            f'<g data-idx="{idx}"><rect x="{cx:.1f}" y="{sy_top:.1f}" width="{col_w - 1.4:.1f}" height="{sy_bot - sy_top:.1f}" fill="#C0C0C0" opacity="0.5"/></g>'
+        )
+        all_data.append(
+            {
+                "name": "Substrate",
+                "material": "Si",
+                "zmin": round(-box_t, 3),
+                "zmax": 0,
+                "thickness": round(box_t, 3),
+                "gds": None,
+            }
+        )
         idx += 1
 
         # Column borders
         bt = min(cy_top, margin_t)
         bb = max(sy_bot, margin_t + plot_h)
-        parts.append(f'<line x1="{cx:.1f}" y1="{bt:.1f}" x2="{cx:.1f}" y2="{bb:.1f}" stroke="#CCC" stroke-width="1" stroke-dasharray="3,3"/>')
-        parts.append(f'<line x1="{cxe:.1f}" y1="{bt:.1f}" x2="{cxe:.1f}" y2="{bb:.1f}" stroke="#CCC" stroke-width="1" stroke-dasharray="3,3"/>')
+        parts.append(
+            f'<line x1="{cx:.1f}" y1="{bt:.1f}" x2="{cx:.1f}" y2="{bb:.1f}" stroke="#CCC" stroke-width="1" stroke-dasharray="3,3"/>'
+        )
+        parts.append(
+            f'<line x1="{cxe:.1f}" y1="{bt:.1f}" x2="{cxe:.1f}" y2="{bb:.1f}" stroke="#CCC" stroke-width="1" stroke-dasharray="3,3"/>'
+        )
 
         # Layers
         for layer in xs["layers"]:
@@ -440,16 +512,22 @@ def _render_cross_sections(cross_sections, layer_stack, svg_id, svg_w=1000, svg_
             rw = inner_w * wf
             rx = center - rw / 2
             color = _color_for_xs(layer["material"])
-            parts.append(f'<g data-idx="{idx}"><rect x="{rx:.1f}" y="{yt:.1f}" width="{rw:.1f}" height="{h:.1f}" fill="{color}" stroke="#444" stroke-width="0.5"/></g>')
+            parts.append(
+                f'<g data-idx="{idx}"><rect x="{rx:.1f}" y="{yt:.1f}" width="{rw:.1f}" height="{h:.1f}" fill="{color}" stroke="#444" stroke-width="0.5"/></g>'
+            )
             all_data.append(layer)
             idx += 1
 
         # Label
         ly = margin_t + plot_h + 15
-        parts.append(f'<text x="{center:.0f}" y="{ly}" text-anchor="middle" font-size="10" font-weight="bold">{xs["name"]}</text>')
+        parts.append(
+            f'<text x="{center:.0f}" y="{ly}" text-anchor="middle" font-size="10" font-weight="bold">{xs["name"]}</text>'
+        )
 
-    parts.append(f'<text x="12" y="{(margin_t+plot_h)//2}" text-anchor="middle" font-size="11" transform="rotate(-90,12,{(margin_t+plot_h)//2})">Z (µm)</text>')
-    parts.append('</svg>')
+    parts.append(
+        f'<text x="12" y="{(margin_t + plot_h) // 2}" text-anchor="middle" font-size="11" transform="rotate(-90,12,{(margin_t + plot_h) // 2})">Z (µm)</text>'
+    )
+    parts.append("</svg>")
     svg_html = "\n".join(parts)
     dj = json.dumps(all_data, separators=(",", ": "))
 
@@ -489,7 +567,7 @@ def _render_cross_sections(cross_sections, layer_stack, svg_id, svg_w=1000, svg_
 # Main
 # ---------------------------------------------------------------------------
 
-CSS = '''<style>
+CSS = """<style>
   .layer-stack-viz .section { margin-bottom: 32px; }
   .layer-stack-viz .section h2 {
     font-size: 15px; color: #555; margin-bottom: 10px;
@@ -499,8 +577,7 @@ CSS = '''<style>
     background: white; border: 1px solid #e0e0e0; border-radius: 6px;
     padding: 12px; display: inline-block;
   }
-</style>'''
-
+</style>"""
 
 
 def main():
@@ -508,8 +585,10 @@ def main():
     filepath.parent.mkdir(parents=True, exist_ok=True)
 
     parts = ["# Layer Stack\n"]
-    parts.append("Interactive layer stack and cross-section visualizations. "
-                 "Hover for details, Ctrl+scroll to zoom, drag to pan, double-click to reset.\n")
+    parts.append(
+        "Interactive layer stack and cross-section visualizations. "
+        "Hover for details, Ctrl+scroll to zoom, drag to pan, double-click to reset.\n"
+    )
 
     for band_label, pdk in BANDS:
         pdk.activate()
@@ -529,19 +608,23 @@ def main():
         if layers:
             sid = _next_id()
             parts.append('<div class="section">')
-            parts.append('  <h2>Layer Stack</h2>')
-            parts.append(f'  <div class="viz-container">{_render_layer_stack(layers, ticks, sid)}</div>')
-            parts.append('</div>')
+            parts.append("  <h2>Layer Stack</h2>")
+            parts.append(
+                f'  <div class="viz-container">{_render_layer_stack(layers, ticks, sid)}</div>'
+            )
+            parts.append("</div>")
 
         xs = _extract_cross_sections(pdk, ls)
         if xs:
             sid = _next_id()
             parts.append('<div class="section">')
-            parts.append('  <h2>Cross-Sections</h2>')
-            parts.append(f'  <div class="viz-container">{_render_cross_sections(xs, ls, sid)}</div>')
-            parts.append('</div>')
+            parts.append("  <h2>Cross-Sections</h2>")
+            parts.append(
+                f'  <div class="viz-container">{_render_cross_sections(xs, ls, sid)}</div>'
+            )
+            parts.append("</div>")
 
-        parts.append('</div>')
+        parts.append("</div>")
 
     content = "\n".join(parts) + "\n"
     filepath.write_text(content)
