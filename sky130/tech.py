@@ -115,13 +115,26 @@ def metal5(
 
 
 route_bundle = partial(
-    gf.routing.route_bundle_electrical, cross_section="metal1", auto_taper=False
+    gf.routing.route_bundle_electrical,
+    cross_section="metal1",
+    straight="straight_metal1",
+    auto_taper=False,
 )
-route_bundle_metal1 = partial(route_bundle, cross_section="metal1")
-route_bundle_metal2 = partial(route_bundle, cross_section="metal2")
-route_bundle_metal3 = partial(route_bundle, cross_section="metal3")
-route_bundle_metal4 = partial(route_bundle, cross_section="metal4")
-route_bundle_metal5 = partial(route_bundle, cross_section="metal5")
+route_bundle_metal1 = partial(
+    route_bundle, cross_section="metal1", straight="straight_metal1"
+)
+route_bundle_metal2 = partial(
+    route_bundle, cross_section="metal2", straight="straight_metal2"
+)
+route_bundle_metal3 = partial(
+    route_bundle, cross_section="metal3", straight="straight_metal3"
+)
+route_bundle_metal4 = partial(
+    route_bundle, cross_section="metal4", straight="straight_metal4"
+)
+route_bundle_metal5 = partial(
+    route_bundle, cross_section="metal5", straight="straight_metal5"
+)
 
 
 route_astar_metal1 = partial(

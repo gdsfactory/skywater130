@@ -8,6 +8,8 @@ on:
 jobs:
   docs:
     uses: doplaydo/pdk-ci-workflow-public/.github/workflows/pages.yml@main
+    with:
+      runner: ${{ vars.DOCS_RUNNER || 'ubuntu-latest' }}  # set DOCS_RUNNER to select the docs build runner
     secrets:
       GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
       SIMCLOUD_APIKEY: ${{ secrets.SIMCLOUD_APIKEY }}
