@@ -1,0 +1,17 @@
+name: Sample projects · editable PDK
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-sample-projects:
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/sample-projects.yml@main
+    with:
+      pdk_source: editable
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
