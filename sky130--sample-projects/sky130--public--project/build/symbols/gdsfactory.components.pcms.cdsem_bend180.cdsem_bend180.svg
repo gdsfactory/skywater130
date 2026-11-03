@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="icon"
+     transform="translate(0,80) scale(1,-1)">
+    <rect
+       style="fill:none;fill-opacity:0;stroke:none;stroke-opacity:0.165761"
+       id="frame"
+       width="79"
+       height="79"
+       x="0.5"
+       y="0.5" />
+       <path d="M 78.911 45.329 L 78.913 48.916 L 79.818 48.912 L 79.819 34.655 L 78.912 34.640 L 78.911 45.329 Z M 79.096 45.293 L 79.096 38.259 L 79.635 38.259 L 79.635 45.293 L 79.096 45.293 Z" id="poly0" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 78.911 66.643 L 78.913 70.230 L 79.818 70.227 L 79.819 55.969 L 78.912 55.954 L 78.911 66.643 Z M 79.096 66.607 L 79.096 59.574 L 79.635 59.574 L 79.635 66.607 L 79.096 66.607 Z" id="poly1" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 78.913 9.769 L 78.912 27.592 L 79.095 27.586 L 79.096 16.945 L 79.273 16.945 L 79.273 27.592 L 79.819 27.592 L 79.819 9.779 L 79.635 9.785 L 79.635 20.426 L 79.457 20.426 L 79.457 9.779 L 78.913 9.769 Z" id="poly2" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.183 3.552 L 0.183 5.400 L 76.200 5.410 L 76.515 6.131 L 76.690 7.039 L 76.860 8.295 L 77.022 9.889 L 77.175 11.798 L 77.416 15.851 L 77.536 18.526 L 77.641 21.429 L 77.786 26.965 L 77.879 32.924 L 77.907 36.441 L 77.916 40.000 L 77.907 43.559 L 77.879 47.076 L 77.786 53.035 L 77.641 58.571 L 77.536 61.474 L 77.416 64.149 L 77.175 68.202 L 77.022 70.111 L 76.860 71.705 L 76.690 72.961 L 76.515 73.869 L 76.200 74.590 L 0.183 74.600 L 0.183 76.448 L 76.202 76.437 L 76.534 75.676 L 76.853 73.763 L 77.150 70.754 L 77.306 68.578 L 77.450 66.103 L 77.667 61.118 L 77.769 57.954 L 77.855 54.596 L 77.961 48.370 L 77.995 44.679 L 78.010 40.938 L 78.005 37.187 L 77.980 33.465 L 77.891 27.142 L 77.815 23.704 L 77.720 20.439 L 77.610 17.381 L 77.484 14.562 L 77.230 10.294 L 77.069 8.282 L 76.898 6.603 L 76.581 4.527 L 76.393 3.855 L 76.202 3.563 L 0.183 3.552 Z" id="poly3" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+
+  </g>
+</svg>

@@ -57,7 +57,7 @@ try:
     import flayout as fl
     from flayout.pcell import _klayout_type, _validate_parameter, _validate_on_error, copy_tree
     import sky130
-    import sky130.components as gfc
+    import sky130.cells as gfc
     import gdsfactory as gf
 except Exception as e:
     error = f"{e}\n" + "Make sure you installed sky130 using the same python as klayout uses."

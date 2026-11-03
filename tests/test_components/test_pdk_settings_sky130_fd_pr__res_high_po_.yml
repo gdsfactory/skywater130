@@ -1,0 +1,5 @@
+info: {}
+name: sky130_fd_pr__res_high_po_0p35_RW0p35_RL0p5
+settings:
+  res_length: 0.5
+  res_width: 0.35

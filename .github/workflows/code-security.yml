@@ -1,0 +1,19 @@
+name: Code Security
+
+on:
+  pull_request:
+  merge_group:
+    branches: [main]
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  security:
+    permissions:
+      contents: read
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/code-security.yml@main

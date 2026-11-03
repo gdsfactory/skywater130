@@ -4,11 +4,12 @@ from collections.abc import Callable
 from functools import partial, wraps
 from typing import Any
 
-
 import gdsfactory as gf
 from gdsfactory.cross_section import CrossSection
-from gdsfactory.typings import LayerSpec, Port, ComponentSpec, CrossSectionSpec
-from gdsfactory.component import Component
+from gdsfactory.typings import LayerSpec
+
+from sky130.layers import LAYER, LAYER_STACK, LAYER_VIEWS  # noqa: F401
+from sky130.routing import route_astar
 
 ############################
 # Cross-sections functions
@@ -23,11 +24,11 @@ def xsection(func: Callable[..., CrossSection]) -> Callable[..., CrossSection]:
 
     Ensures that the cross-section name matches the name of the function that generated it when created using default parameters
 
-    .. code-block:: python
-
+    ```python
         @xsection
         def strip(width=TECH.width_strip, radius=TECH.radius_strip):
             return gf.cross_section.cross_section(width=width, radius=radius)
+    ```
     """
     default_xs = func()
     _cross_section_default_names[default_xs.name] = func.__name__
@@ -114,23 +115,43 @@ def metal5(
 
 
 route_bundle = partial(
-    gf.routing.route_bundle_electrical, cross_section="metal1", auto_taper=False
+    gf.routing.route_bundle_electrical,
+    cross_section="metal1",
+    straight="straight_metal1",
+    auto_taper=False,
 )
-route_bundle_metal1 = partial(route_bundle, cross_section="metal1")
-route_bundle_metal2 = partial(route_bundle, cross_section="metal2")
-route_bundle_metal3 = partial(route_bundle, cross_section="metal3")
-route_bundle_metal4 = partial(route_bundle, cross_section="metal4")
-route_bundle_metal5 = partial(route_bundle, cross_section="metal5")
+route_bundle_metal1 = partial(
+    route_bundle, cross_section="metal1", straight="straight_metal1"
+)
+route_bundle_metal2 = partial(
+    route_bundle, cross_section="metal2", straight="straight_metal2"
+)
+route_bundle_metal3 = partial(
+    route_bundle, cross_section="metal3", straight="straight_metal3"
+)
+route_bundle_metal4 = partial(
+    route_bundle, cross_section="metal4", straight="straight_metal4"
+)
+route_bundle_metal5 = partial(
+    route_bundle, cross_section="metal5", straight="straight_metal5"
+)
 
 
-
-from sky130.routing import route_astar
-
-route_astar_metal1 = partial(route_astar, cross_section="metal1", straight="straight_metal1")
-route_astar_metal2 = partial(route_astar, cross_section="metal2", straight="straight_metal2")
-route_astar_metal3 = partial(route_astar, cross_section="metal3", straight="straight_metal3")
-route_astar_metal4 = partial(route_astar, cross_section="metal4", straight="straight_metal4")
-route_astar_metal5 = partial(route_astar, cross_section="metal5", straight="straight_metal5")
+route_astar_metal1 = partial(
+    route_astar, cross_section="metal1", straight="straight_metal1"
+)
+route_astar_metal2 = partial(
+    route_astar, cross_section="metal2", straight="straight_metal2"
+)
+route_astar_metal3 = partial(
+    route_astar, cross_section="metal3", straight="straight_metal3"
+)
+route_astar_metal4 = partial(
+    route_astar, cross_section="metal4", straight="straight_metal4"
+)
+route_astar_metal5 = partial(
+    route_astar, cross_section="metal5", straight="straight_metal5"
+)
 
 routing_strategies = dict(
     route_bundle=route_bundle,

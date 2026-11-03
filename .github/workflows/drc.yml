@@ -1,0 +1,11 @@
+name: DRC Check
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  drc:
+    uses: doplaydo/pdk-ci-workflow-public/.github/workflows/drc.yml@main
+    secrets:
+      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}

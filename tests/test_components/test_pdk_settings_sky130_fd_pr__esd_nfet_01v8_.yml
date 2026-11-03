@@ -1,0 +1,9 @@
+info: {}
+name: sky130_fd_pr__esd_nfet_01v8_GW20_GL0p15_SW0p28_N4_GRTrue_EC0p13
+settings:
+  end_cap: 0.13
+  gate_length: 0.15
+  gate_width: 20
+  guard_ring: true
+  nf: 4
+  sd_width: 0.28

@@ -5,7 +5,7 @@ from gdsfactory.cross_section import port_names_electrical, port_types_electrica
 from gdsfactory.typings import CrossSectionSpec, LayerSpec, Size
 
 
-@gf.cell
+@gf.cell(tags=["waveguides"])
 def wire_corner(
     cross_section: CrossSectionSpec = "metal2",
     width: float | None = None,
@@ -27,7 +27,7 @@ def wire_corner(
     )
 
 
-@gf.cell
+@gf.cell(tags=["waveguides"])
 def wire_corner45(
     cross_section: CrossSectionSpec = "metal2",
     radius: float = 10,
@@ -58,7 +58,7 @@ def wire_corner45(
 ####################
 
 
-@gf.cell
+@gf.cell(tags=["waveguides"])
 def straight_metal1(
     length: float = 10,
     cross_section: CrossSectionSpec = "metal1",
@@ -76,7 +76,7 @@ def straight_metal1(
     )
 
 
-@gf.cell
+@gf.cell(tags=["waveguides"])
 def straight_metal2(
     length: float = 10,
     cross_section: CrossSectionSpec = "metal2",
@@ -94,7 +94,61 @@ def straight_metal2(
     )
 
 
-@gf.cell
+@gf.cell(tags=["waveguides"])
+def straight_metal3(
+    length: float = 10,
+    cross_section: CrossSectionSpec = "metal3",
+    width: float | None = None,
+) -> gf.Component:
+    """Returns a Straight waveguide.
+
+    Args:
+        length: straight length (um).
+        cross_section: specification (CrossSection, string or dict).
+        width: width of the waveguide. If None, it will use the width of the cross_section.
+    """
+    return gf.c.straight(
+        length=length, cross_section=cross_section, width=width, npoints=2
+    )
+
+
+@gf.cell(tags=["waveguides"])
+def straight_metal4(
+    length: float = 10,
+    cross_section: CrossSectionSpec = "metal4",
+    width: float | None = None,
+) -> gf.Component:
+    """Returns a Straight waveguide.
+
+    Args:
+        length: straight length (um).
+        cross_section: specification (CrossSection, string or dict).
+        width: width of the waveguide. If None, it will use the width of the cross_section.
+    """
+    return gf.c.straight(
+        length=length, cross_section=cross_section, width=width, npoints=2
+    )
+
+
+@gf.cell(tags=["waveguides"])
+def straight_metal5(
+    length: float = 10,
+    cross_section: CrossSectionSpec = "metal5",
+    width: float | None = None,
+) -> gf.Component:
+    """Returns a Straight waveguide.
+
+    Args:
+        length: straight length (um).
+        cross_section: specification (CrossSection, string or dict).
+        width: width of the waveguide. If None, it will use the width of the cross_section.
+    """
+    return gf.c.straight(
+        length=length, cross_section=cross_section, width=width, npoints=2
+    )
+
+
+@gf.cell(tags=["waveguides"])
 def bend_metal1(
     radius: float | None = None,
     angle: float = 90,
@@ -107,7 +161,7 @@ def bend_metal1(
             xs = gf.get_cross_section(cross_section=cross_section, width=width)
         else:
             xs = gf.get_cross_section(cross_section=cross_section)
-        radius = xs.radius or xs.width
+        radius = xs.radius_min or xs.radius or xs.width
     return gf.c.bend_circular(
         radius=radius,
         angle=angle,
@@ -119,7 +173,7 @@ def bend_metal1(
     )
 
 
-@gf.cell
+@gf.cell(tags=["waveguides"])
 def bend_metal2(
     radius: float | None = None,
     angle: float = 90,
@@ -132,7 +186,7 @@ def bend_metal2(
             xs = gf.get_cross_section(cross_section=cross_section, width=width)
         else:
             xs = gf.get_cross_section(cross_section=cross_section)
-        radius = xs.radius or xs.width
+        radius = xs.radius_min or xs.radius or xs.width
     return gf.c.bend_circular(
         radius=radius,
         angle=angle,
@@ -144,7 +198,7 @@ def bend_metal2(
     )
 
 
-@gf.cell
+@gf.cell(tags=["waveguides"])
 def bend_s_metal1(
     size: Size = (11, 1.8),
     cross_section: CrossSectionSpec = "metal1",
@@ -169,7 +223,7 @@ def bend_s_metal1(
     )
 
 
-@gf.cell
+@gf.cell(tags=["waveguides"])
 def bend_s_metal2(
     size: Size = (11, 1.8),
     cross_section: CrossSectionSpec = "metal2",
@@ -199,6 +253,9 @@ __all__ = [
     "wire_corner45",
     "straight_metal1",
     "straight_metal2",
+    "straight_metal3",
+    "straight_metal4",
+    "straight_metal5",
     "bend_metal1",
     "bend_metal2",
     "bend_s_metal1",
@@ -206,7 +263,7 @@ __all__ = [
 ]
 
 if __name__ == "__main__":
-    from amf.cband import PDK
+    from sky130 import PDK
 
     PDK.activate()
 

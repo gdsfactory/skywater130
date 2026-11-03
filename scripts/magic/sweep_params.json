@@ -1,0 +1,1310 @@
+{
+  "param_maps": {
+    "_mosfet": {
+      "gate_width": "w",
+      "gate_length": "l",
+      "nf": "nf",
+      "guard_ring": "guard"
+    },
+    "_resistor": {
+      "res_width": "w",
+      "res_length": "l"
+    },
+    "_capacitor": {
+      "cap_width": "w",
+      "cap_length": "l"
+    },
+    "_diode": {
+      "diode_width": "w",
+      "diode_length": "l"
+    }
+  },
+  "devices": {
+    "sky130_fd_pr__nfet_01v8": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 8,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.5,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.15,
+          "nf": 8,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.18,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.25,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 1.0,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 1.0,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 10,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 3.0,
+          "gate_length": 0.25,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 7,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__pfet_01v8": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.25,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 1.0,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.18,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.15,
+          "nf": 6,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__nfet_01v8_lvt": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.3,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.3,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.15,
+          "nf": 6,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__pfet_01v8_lvt": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.35,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.35,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.35,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.35,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.35,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.35,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.35,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.35,
+          "nf": 3,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.35,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.35,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.35,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.35,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.35,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.35,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.35,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.7,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.7,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.35,
+          "nf": 6,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__pfet_01v8_hvt": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.15,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.15,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.15,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.3,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.3,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.15,
+          "nf": 6,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__nfet_g5v0d10v5": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 1.0,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 1.0,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.5,
+          "nf": 6,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__pfet_g5v0d10v5": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 1.0,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 1.0,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.5,
+          "nf": 6,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__nfet_03v3_nvt": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.5,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.5,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.5,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 1.0,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 1.0,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.5,
+          "nf": 6,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__nfet_05v0_nvt": {
+      "cell_module": "sky130.pcells.mosfets",
+      "param_map_ref": "_mosfet",
+      "sweep": [
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.9,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.9,
+          "nf": 1,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.9,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.9,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.9,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.9,
+          "nf": 5,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.9,
+          "nf": 2,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 0.9,
+          "nf": 3,
+          "guard_ring": false
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.9,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.9,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 0.9,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 2.0,
+          "gate_length": 0.9,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.9,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 5.0,
+          "gate_length": 0.9,
+          "nf": 3,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 10.0,
+          "gate_length": 0.9,
+          "nf": 4,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.42,
+          "gate_length": 1.8,
+          "nf": 1,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 1.0,
+          "gate_length": 1.8,
+          "nf": 2,
+          "guard_ring": true
+        },
+        {
+          "gate_width": 0.84,
+          "gate_length": 0.9,
+          "nf": 6,
+          "guard_ring": false
+        }
+      ]
+    },
+    "sky130_fd_pr__res_generic_po": {
+      "cell_module": "sky130.pcells.resistors",
+      "param_map_ref": "_resistor",
+      "sweep": [
+        {
+          "res_width": 0.33,
+          "res_length": 1.65
+        },
+        {
+          "res_width": 0.33,
+          "res_length": 5.0
+        },
+        {
+          "res_width": 0.33,
+          "res_length": 10.0
+        },
+        {
+          "res_width": 1.0,
+          "res_length": 2.0
+        },
+        {
+          "res_width": 1.0,
+          "res_length": 10.0
+        },
+        {
+          "res_width": 0.5,
+          "res_length": 3.0
+        },
+        {
+          "res_width": 2.0,
+          "res_length": 1.65
+        }
+      ]
+    },
+    "sky130_fd_pr__res_high_po_0p35": {
+      "cell_module": "sky130.pcells.resistors",
+      "param_map_ref": "_resistor",
+      "sweep": [
+        {
+          "res_width": 0.35,
+          "res_length": 0.5
+        },
+        {
+          "res_width": 0.35,
+          "res_length": 2.0
+        },
+        {
+          "res_width": 0.35,
+          "res_length": 5.0
+        },
+        {
+          "res_width": 0.35,
+          "res_length": 10.0
+        }
+      ]
+    },
+    "sky130_fd_pr__res_generic_nd": {
+      "cell_module": "sky130.pcells.resistors",
+      "param_map_ref": "_resistor",
+      "sweep": [
+        {
+          "res_width": 0.42,
+          "res_length": 2.1
+        },
+        {
+          "res_width": 1.0,
+          "res_length": 5.0
+        },
+        {
+          "res_width": 0.42,
+          "res_length": 10.0
+        },
+        {
+          "res_width": 2.0,
+          "res_length": 3.0
+        }
+      ]
+    },
+    "sky130_fd_pr__cap_mim_m3_1": {
+      "cell_module": "sky130.pcells.capacitors",
+      "param_map_ref": "_capacitor",
+      "sweep": [
+        {
+          "cap_width": 2.0,
+          "cap_length": 2.0
+        },
+        {
+          "cap_width": 5.0,
+          "cap_length": 5.0
+        },
+        {
+          "cap_width": 2.0,
+          "cap_length": 10.0
+        },
+        {
+          "cap_width": 10.0,
+          "cap_length": 2.0
+        },
+        {
+          "cap_width": 3.0,
+          "cap_length": 3.0
+        },
+        {
+          "cap_width": 10.0,
+          "cap_length": 10.0
+        }
+      ]
+    },
+    "sky130_fd_pr__cap_mim_m3_2": {
+      "cell_module": "sky130.pcells.capacitors",
+      "param_map_ref": "_capacitor",
+      "sweep": [
+        {
+          "cap_width": 2.0,
+          "cap_length": 2.0
+        },
+        {
+          "cap_width": 5.0,
+          "cap_length": 5.0
+        },
+        {
+          "cap_width": 2.0,
+          "cap_length": 10.0
+        },
+        {
+          "cap_width": 10.0,
+          "cap_length": 10.0
+        }
+      ]
+    },
+    "sky130_fd_pr__diode_pw2nd_05v5": {
+      "cell_module": "sky130.pcells.diodes",
+      "param_map_ref": "_diode",
+      "sweep": [
+        {
+          "diode_width": 0.45,
+          "diode_length": 0.45
+        },
+        {
+          "diode_width": 1.0,
+          "diode_length": 1.0
+        },
+        {
+          "diode_width": 2.0,
+          "diode_length": 2.0
+        },
+        {
+          "diode_width": 0.45,
+          "diode_length": 1.0
+        },
+        {
+          "diode_width": 1.0,
+          "diode_length": 0.45
+        },
+        {
+          "diode_width": 5.0,
+          "diode_length": 5.0
+        },
+        {
+          "diode_width": 0.45,
+          "diode_length": 5.0
+        }
+      ]
+    },
+    "sky130_fd_pr__diode_pd2nw_05v5": {
+      "cell_module": "sky130.pcells.diodes",
+      "param_map_ref": "_diode",
+      "sweep": [
+        {
+          "diode_width": 0.45,
+          "diode_length": 0.45
+        },
+        {
+          "diode_width": 1.0,
+          "diode_length": 1.0
+        },
+        {
+          "diode_width": 2.0,
+          "diode_length": 2.0
+        },
+        {
+          "diode_width": 0.45,
+          "diode_length": 1.0
+        },
+        {
+          "diode_width": 1.0,
+          "diode_length": 0.45
+        },
+        {
+          "diode_width": 5.0,
+          "diode_length": 5.0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 80 80"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <g
+     id="icon"
+     transform="translate(0,80) scale(1,-1)">
+    <rect
+       style="fill:none;fill-opacity:0;stroke:none;stroke-opacity:0.165761"
+       id="frame"
+       width="79"
+       height="79"
+       x="0.5"
+       y="0.5" />
+       <path d="M 69.869 75.091 L 69.869 77.399 L 72.803 79.902 L 76.952 79.902 L 79.885 77.399 L 79.885 73.858 L 76.952 71.355 L 72.802 71.355 L 69.869 73.858 L 69.869 75.091 Z" id="poly0" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 69.869 62.136 L 69.869 64.443 L 72.803 66.946 L 76.952 66.946 L 79.885 64.443 L 79.885 60.903 L 76.952 58.399 L 72.802 58.399 L 69.869 60.902 L 69.869 62.136 Z" id="poly1" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 69.869 49.180 L 69.869 51.487 L 72.803 53.991 L 76.952 53.991 L 79.885 51.487 L 79.885 47.947 L 76.952 45.443 L 72.802 45.443 L 69.869 47.947 L 69.869 49.180 Z" id="poly2" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 69.869 36.224 L 69.869 38.531 L 72.803 41.035 L 76.952 41.035 L 79.885 38.531 L 79.885 34.991 L 76.952 32.487 L 72.802 32.487 L 69.869 34.991 L 69.869 36.224 Z" id="poly3" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 69.869 23.268 L 69.869 25.575 L 72.803 28.079 L 76.952 28.079 L 79.885 25.575 L 79.885 22.035 L 76.952 19.532 L 72.802 19.532 L 69.869 22.035 L 69.869 23.268 Z" id="poly4" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 69.869 10.312 L 69.869 12.620 L 72.803 15.123 L 76.952 15.123 L 79.885 12.619 L 79.885 9.079 L 76.952 6.576 L 72.802 6.576 L 69.869 9.079 L 69.869 10.312 Z" id="poly5" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 55.918 42.702 L 55.918 45.009 L 58.852 47.513 L 63.001 47.513 L 65.935 45.009 L 65.935 41.469 L 63.001 38.965 L 58.851 38.965 L 55.918 41.469 L 55.918 42.702 Z" id="poly6" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 55.918 3.834 L 55.918 6.142 L 58.852 8.645 L 63.001 8.645 L 65.935 6.141 L 65.935 2.601 L 63.001 0.098 L 58.851 0.098 L 55.918 2.601 L 55.918 3.834 Z" id="poly7" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 55.918 16.790 L 55.918 19.098 L 58.852 21.601 L 63.001 21.601 L 65.935 19.097 L 65.935 15.557 L 63.001 13.054 L 58.851 13.054 L 55.918 15.557 L 55.918 16.790 Z" id="poly8" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 55.918 29.746 L 55.918 32.053 L 58.852 34.557 L 63.001 34.557 L 65.935 32.053 L 65.935 28.513 L 63.001 26.009 L 58.851 26.010 L 55.918 28.513 L 55.918 29.746 Z" id="poly9" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 55.918 55.658 L 55.918 57.965 L 58.852 60.468 L 63.001 60.468 L 65.935 57.965 L 65.935 54.425 L 63.001 51.921 L 58.851 51.921 L 55.918 54.424 L 55.918 55.658 Z" id="poly10" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 55.918 68.614 L 55.918 70.921 L 58.852 73.424 L 63.001 73.424 L 65.935 70.921 L 65.935 67.380 L 63.001 64.877 L 58.851 64.877 L 55.918 67.380 L 55.918 68.614 Z" id="poly11" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 41.967 10.312 L 41.967 12.620 L 44.901 15.123 L 49.050 15.123 L 51.984 12.619 L 51.984 9.079 L 49.050 6.576 L 44.901 6.576 L 41.967 9.079 L 41.967 10.312 Z" id="poly12" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 41.967 75.091 L 41.967 77.399 L 44.901 79.902 L 49.050 79.902 L 51.984 77.399 L 51.984 73.858 L 49.050 71.355 L 44.901 71.355 L 41.967 73.858 L 41.967 75.091 Z" id="poly13" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 41.967 62.136 L 41.967 64.443 L 44.901 66.946 L 49.050 66.946 L 51.984 64.443 L 51.984 60.903 L 49.050 58.399 L 44.901 58.399 L 41.967 60.902 L 41.967 62.136 Z" id="poly14" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 41.967 49.180 L 41.967 51.487 L 44.901 53.991 L 49.050 53.991 L 51.984 51.487 L 51.984 47.947 L 49.050 45.443 L 44.901 45.443 L 41.967 47.947 L 41.967 49.180 Z" id="poly15" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 41.967 36.224 L 41.967 38.531 L 44.901 41.035 L 49.050 41.035 L 51.984 38.531 L 51.984 34.991 L 49.050 32.487 L 44.901 32.487 L 41.967 34.991 L 41.967 36.224 Z" id="poly16" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 41.967 23.268 L 41.967 25.575 L 44.901 28.079 L 49.050 28.079 L 51.984 25.575 L 51.984 22.035 L 49.050 19.532 L 44.901 19.532 L 41.967 22.035 L 41.967 23.268 Z" id="poly17" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 28.016 68.614 L 28.016 70.921 L 30.950 73.424 L 35.099 73.424 L 38.033 70.921 L 38.033 67.380 L 35.099 64.877 L 30.950 64.877 L 28.016 67.380 L 28.016 68.614 Z" id="poly18" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 28.016 55.658 L 28.016 57.965 L 30.950 60.468 L 35.099 60.468 L 38.033 57.965 L 38.033 54.425 L 35.099 51.921 L 30.950 51.921 L 28.016 54.424 L 28.016 55.658 Z" id="poly19" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 28.016 42.702 L 28.016 45.009 L 30.950 47.513 L 35.099 47.513 L 38.033 45.009 L 38.033 41.469 L 35.099 38.965 L 30.950 38.965 L 28.016 41.469 L 28.016 42.702 Z" id="poly20" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 28.016 29.746 L 28.016 32.053 L 30.950 34.557 L 35.099 34.557 L 38.033 32.053 L 38.033 28.513 L 35.099 26.009 L 30.950 26.010 L 28.016 28.513 L 28.016 29.746 Z" id="poly21" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 28.016 16.790 L 28.016 19.098 L 30.950 21.601 L 35.099 21.601 L 38.033 19.097 L 38.033 15.557 L 35.099 13.054 L 30.950 13.054 L 28.016 15.557 L 28.016 16.790 Z" id="poly22" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 28.016 3.834 L 28.016 6.142 L 30.950 8.645 L 35.099 8.645 L 38.033 6.141 L 38.033 2.601 L 35.099 0.098 L 30.950 0.098 L 28.016 2.601 L 28.016 3.834 Z" id="poly23" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 14.065 49.180 L 14.065 51.487 L 16.999 53.991 L 21.148 53.991 L 24.082 51.487 L 24.082 47.947 L 21.148 45.443 L 16.999 45.443 L 14.065 47.947 L 14.065 49.180 Z" id="poly24" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 14.065 10.312 L 14.065 12.620 L 16.999 15.123 L 21.148 15.123 L 24.082 12.619 L 24.082 9.079 L 21.148 6.576 L 16.999 6.576 L 14.065 9.079 L 14.065 10.312 Z" id="poly25" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 14.065 23.268 L 14.065 25.575 L 16.999 28.079 L 21.148 28.079 L 24.082 25.575 L 24.082 22.035 L 21.148 19.532 L 16.999 19.532 L 14.065 22.035 L 14.065 23.268 Z" id="poly26" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 14.065 36.224 L 14.065 38.531 L 16.999 41.035 L 21.148 41.035 L 24.082 38.531 L 24.082 34.991 L 21.148 32.487 L 16.999 32.487 L 14.065 34.991 L 14.065 36.224 Z" id="poly27" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 14.065 62.136 L 14.065 64.443 L 16.999 66.946 L 21.148 66.946 L 24.082 64.443 L 24.082 60.903 L 21.148 58.399 L 16.999 58.399 L 14.065 60.902 L 14.065 62.136 Z" id="poly28" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 14.065 75.091 L 14.065 77.399 L 16.999 79.902 L 21.148 79.902 L 24.082 77.399 L 24.082 73.858 L 21.148 71.355 L 16.999 71.355 L 14.065 73.858 L 14.065 75.091 Z" id="poly29" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.114 3.834 L 0.115 6.142 L 3.048 8.645 L 7.198 8.645 L 10.131 6.141 L 10.131 2.601 L 7.197 0.098 L 3.048 0.098 L 0.115 2.601 L 0.114 3.834 Z" id="poly30" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.114 68.614 L 0.115 70.921 L 3.048 73.424 L 7.198 73.424 L 10.131 70.921 L 10.131 67.380 L 7.197 64.877 L 3.048 64.877 L 0.115 67.380 L 0.114 68.614 Z" id="poly31" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.114 55.658 L 0.115 57.965 L 3.048 60.468 L 7.198 60.468 L 10.131 57.965 L 10.131 54.425 L 7.197 51.921 L 3.048 51.921 L 0.115 54.424 L 0.114 55.658 Z" id="poly32" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.114 42.702 L 0.115 45.009 L 3.048 47.513 L 7.198 47.513 L 10.131 45.009 L 10.131 41.469 L 7.197 38.965 L 3.048 38.965 L 0.115 41.469 L 0.114 42.702 Z" id="poly33" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.114 29.746 L 0.115 32.053 L 3.048 34.557 L 7.198 34.557 L 10.131 32.053 L 10.131 28.513 L 7.197 26.009 L 3.048 26.010 L 0.115 28.513 L 0.114 29.746 Z" id="poly34" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+<path d="M 0.114 16.790 L 0.115 19.098 L 3.048 21.601 L 7.198 21.601 L 10.131 19.097 L 10.131 15.557 L 7.197 13.054 L 3.048 13.054 L 0.115 15.557 L 0.114 16.790 Z" id="poly35" style="fill:none;fill-opacity:0;stroke:currentColor;stroke-dasharray:none;stroke-opacity:1" />
+
+  </g>
+</svg>

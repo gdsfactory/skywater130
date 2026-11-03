@@ -1,0 +1,10 @@
+info: {}
+name: sky130_fd_pr__npn_05v5_EW1_EL1_BRW0p4_NS0p27_SE0p125_NE_aa3a9801
+settings:
+  base_ring_width: 0.4
+  emitter_length: 1
+  emitter_width: 1
+  li_enclosure: 0.08
+  np_spacing: 0.27
+  nwell_enclosure: 0.18
+  sdm_enclosure: 0.125
