@@ -1,12 +1,13 @@
 name: Test Coverage
 on:
-  pull_request:
-  push:
-    branches: [main]
-  workflow_dispatch:
+  workflow_run:
+    workflows: [Test code]
+    types: [completed]
 
 jobs:
   coverage:
+    permissions:
+      actions: read
+      contents: read
+      statuses: write
     uses: doplaydo/pdk-ci-workflow-public/.github/workflows/test_coverage.yml@main
-    secrets:
-      GFP_API_KEY: ${{ secrets.GFP_API_KEY }}
