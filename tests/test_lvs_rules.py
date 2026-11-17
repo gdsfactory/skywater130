@@ -93,9 +93,6 @@ def test_flags_toggle(monkeypatch: pytest.MonkeyPatch) -> None:
         assert rules.build_lvs_config().run_mode == LvsRunMode.LVS_RUN_MODE_HIERARCHICAL
 
 
-# geometry lives in subcells until the BJT pcells are flattened (Task 2)
-NEEDS_FLATTEN = pytest.mark.xfail(strict=True, reason="needs flatten, Task 2")
-
 # values from the swarm verification table (templates-sky130.md §3)
 PCELL_ROWS = [
     (
@@ -130,20 +127,8 @@ PCELL_ROWS = [
     ("cap_mim_m3_2", dict(cap_width=4, cap_length=6), 2, dict(w=4.0, l=6.0)),
     ("diode_pw2nd_05v5", dict(diode_width=1, diode_length=2), 2, dict(w=1.0, l=2.0)),
     ("diode_pd2nw_05v5", dict(diode_width=2, diode_length=1), 2, dict(w=2.0, l=1.0)),
-    pytest.param(
-        "npn_05v5",
-        dict(emitter_width=2, emitter_length=2),
-        3,
-        dict(w=2.0, l=2.0),
-        marks=NEEDS_FLATTEN,
-    ),
-    pytest.param(
-        "pnp_05v5",
-        dict(emitter_width=3.4, emitter_length=3.4),
-        3,
-        dict(w=3.4, l=3.4),
-        marks=NEEDS_FLATTEN,
-    ),
+    ("npn_05v5", dict(emitter_width=2, emitter_length=2), 3, dict(w=2.0, l=2.0)),
+    ("pnp_05v5", dict(emitter_width=3.4, emitter_length=3.4), 3, dict(w=3.4, l=3.4)),
 ]
 
 
