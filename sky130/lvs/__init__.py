@@ -1,4 +1,4 @@
-"""gflvs LVS rules for sky130 (needs the `lvs` extra: importing this package imports gflvs)."""
+"""gflvs LVS rules for sky130 (requires gflvs installed: importing this package imports gflvs)."""
 
 from sky130.lvs.rules import (
     DEFAULT_LVS_CONFIG,

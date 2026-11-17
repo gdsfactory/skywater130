@@ -161,6 +161,7 @@ NWELL, DIFF, TAP, POLY = (
     L(LAYER.polydrawing),
 )
 DIFFRES, POLYRES = L(LAYER.diffres), L(LAYER.polyres)
+LI1, MET1 = L(LAYER.li1drawing), L(LAYER.met1drawing)
 MET3, MET4, MET5 = L(LAYER.met3drawing), L(LAYER.met4drawing), L(LAYER.met5drawing)
 CAPM, CAP2M = L(LAYER.capm), L(LAYER.cap2m)
 NSDM, PSDM, LVTN = L(LAYER.nsdmdrawing), L(LAYER.psdmdrawing), L(LAYER.lvtndrawing)
@@ -191,9 +192,8 @@ MARKER_LAYERS: frozenset[LayerKey] = frozenset(
 MOS_REACH = (
     1.2  # S/D diffusion and guard ring lie within this of the channel (max seen 1.155)
 )
-RES_HEAD = (
-    0.1  # head strip next to the resistor body; below the min resistor width 0.33
-)
+RES_REACH = 2.5  # farthest met1 head point from the resistor body (max seen 2.13)
+RES_LINK = 0.1  # met1 heads start up to 0.025 from the body: the grown "l" region bridges that gap
 CAP_REACH = 3.5  # farthest bottom-plate metal from the dielectric (max seen 3.09, m3_2)
 DIODE_REACH = 0.8  # guard-ring tap distance from the diode diffusion (seen 0.51)
 
@@ -214,7 +214,8 @@ LAYER_CONNECTIVITY: dict[LayerKey, list[LayerKey]] = connectivity(
 )
 
 # ── Templates ───────────────────────────────────────────────────────
-# Terminals sit on diff/poly/tap as the swarm verified them, not on the li1/met1 route layer.
+# Leaf PCells are not traced inside, and gflvs binds a terminal only to parent nets on its leftmost
+# layer, so every terminal starts with the li1/met1/met3-5 its route lands on (rule 2).
 
 
 def mos(
@@ -235,11 +236,18 @@ def mos(
         name,
         [
             # nets ordered by x: leftmost is the drain, matching the pcell's D0/S1/D2... labels
-            pin("d/s", (DIFF & near_gate) - POLY),
-            pin("g", gate),
-            pin("b", TAP & body_implant & near_gate),
+            pin("d/s", LI1 & ((DIFF & near_gate) - POLY)),
+            # li1 on the gate poly pads; the GATE port sits on the poly finger, which is not traced
+            pin("g", LI1 & POLY & near_gate),
+            pin("b", LI1 & TAP & body_implant & near_gate),
         ],
-        [par("l", gate, "length"), par("w", gate, "width"), par("nf", gate, "count")],
+        # w on the S/D diffusion and nf on the poly (one finger+pad polygon per finger) also tie the
+        # li1 S/D strips and gate pads into one device when there is no guard ring
+        [
+            par("l", gate),
+            par("w", DIFF & near_gate),
+            par("nf", POLY & near_gate, "count"),
+        ],
     )
 
 
@@ -250,7 +258,7 @@ def res(
     require: Sequence[LayerRef] = (),
     exclude: Sequence[LayerRef] = (),
 ) -> DeviceTemplate:
-    """Resistor: body = conductor & marker, heads are the conductor strip RES_HEAD around it."""
+    """Resistor: body = conductor & marker, terminals are the met1 heads within RES_REACH."""
     body = conductor & marker
     for layer in require:
         body = body & layer
@@ -259,8 +267,8 @@ def res(
     return tpl(
         name,
         # lower head first: MINUS sits at -y, PLUS at +y in every resistor pcell
-        [pin("minus/plus", (conductor & grow(body, RES_HEAD)) - marker)],
-        [par("l", body, "length"), par("w", body, "width")],
+        [pin("minus/plus", MET1 & grow(body, RES_REACH))],
+        [par("l", conductor & grow(body, RES_LINK)), par("w", body)],
     )
 
 
@@ -287,8 +295,8 @@ def diode(
     return tpl(
         name,
         [
-            pin(terminal, junction),
-            pin(ring_terminal, TAP & ring_implant & grow(junction, DIODE_REACH)),
+            pin(terminal, MET1 & junction),
+            pin(ring_terminal, LI1 & TAP & ring_implant & grow(junction, DIODE_REACH)),
         ],
         [par("w", junction), par("l", junction)],
     )
@@ -367,9 +375,11 @@ BJT_TEMPLATES = [
     tpl(
         "sky130_fd_pr__npn_05v5",
         [
-            pin("e", DIFF & NSDM & NPN),
-            pin("b", TAP & PSDM & NPN),
-            pin("c", NWELL & NPN),
+            pin("e", LI1 & DIFF & NSDM & NPN),
+            pin("b", LI1 & TAP & PSDM & NPN),
+            # the collector li1 strip is part of the base ring's li1 polygon, so c touches b and the
+            # extracted netlist shows that short
+            pin("c", (LI1 & NPN) - TAP - DIFF),
         ],
         [par("w", DIFF & NSDM & NPN), par("l", DIFF & NSDM & NPN)],
     ),
@@ -377,9 +387,9 @@ BJT_TEMPLATES = [
     tpl(
         "sky130_fd_pr__pnp_05v5",
         [
-            pin("e", DIFF & PSDM & PNP),
-            pin("b", TAP & NSDM & PNP),
-            pin("c", TAP & PSDM & PNP),
+            pin("e", LI1 & DIFF & PSDM & PNP),
+            pin("b", LI1 & TAP & NSDM & PNP),
+            pin("c", LI1 & TAP & PSDM & PNP),
         ],
         [par("w", DIFF & PSDM & PNP), par("l", DIFF & PSDM & PNP)],
     ),
@@ -408,18 +418,34 @@ NO_MARKER_TEMPLATES: frozenset[str] = frozenset(
     }
 )
 
-# the built-in "width"/"length" extractors measure paired terminals (d/s, minus/plus), which these lack
-_BBOX_DEVICES = (
-    "sky130_fd_pr__cap",
-    "sky130_fd_pr__diode",
-    "sky130_fd_pr__npn",
-    "sky130_fd_pr__pnp",
-)
+
+def finger_x(polygons: list[gdstk.Polygon]) -> float:
+    """Return the gate length: the width of one gate finger (fingers run along y in every MOS pcell)."""
+    return bbox_x(polygons[:1])
+
+
+def res_length(polygons: list[gdstk.Polygon]) -> float:
+    """Return the resistor length from its body grown by RES_LINK along y."""
+    return bbox_y(polygons) - 2 * RES_LINK
+
+
+# rule 3: every w/l reads its own parameter region, never the gap between paired terminals
 PARAMETER_EXTRACTORS: dict[tuple[str, str], Callable[[list[gdstk.Polygon]], float]] = {
-    (t.device_name, name): extractor
-    for t in DEVICE_TEMPLATES
-    if t.device_name.startswith(_BBOX_DEVICES)
-    for name, extractor in (("w", bbox_x), ("l", bbox_y))
+    **{
+        (t.device_name, n): f
+        for t in MOSFET_TEMPLATES
+        for n, f in (("l", finger_x), ("w", bbox_y))
+    },
+    **{
+        (t.device_name, n): f
+        for t in RESISTOR_TEMPLATES
+        for n, f in (("l", res_length), ("w", bbox_x))
+    },
+    **{
+        (t.device_name, n): f
+        for t in (*CAPACITOR_TEMPLATES, *DIODE_TEMPLATES, *BJT_TEMPLATES)
+        for n, f in (("w", bbox_x), ("l", bbox_y))
+    },
 }
 
 # TODO(issue: pending): via_m1_m2 is not exported from sky130.pcells ("via" covers it anyway)

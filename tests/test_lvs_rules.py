@@ -161,3 +161,41 @@ def test_pcell_extracts(
     assert len(extracted.terminals) == n_terminals
     values = {p.name: p.value for p in extracted.parameters}
     assert values == pytest.approx(params, rel=1e-3)
+
+
+def test_terminals_bind_to_routes(tmp_path: Path) -> None:
+    """li1 straps drawn in a parent on the S/D ports land the d/s terminals on traced nets."""
+    PDK.activate()
+    component = pcells.sky130_fd_pr__nfet_01v8()
+    gds = component.write_gds(tmp_path / "nfet.gds")
+    (device,) = [c for c in gdstk.read_gds(str(gds)).cells if c.name == component.name]
+    top = gdstk.Cell("TOP")
+    top.add(gdstk.Reference(device))
+    li1 = LAYER.li1drawing
+    for port in ("SOURCE", "DRAIN"):
+        x, y = component.ports[port].center
+        top.add(
+            gdstk.rectangle(
+                (x - 0.05, y - 0.05),
+                (x + 0.05, y + 0.05),
+                layer=li1[0],
+                datatype=li1[1],
+            )
+        )
+    library = gdstk.Library()
+    library.add(top, device)
+
+    cfg = rules.DEFAULT_LVS_CONFIG
+    _, layout_to_netlist, _ = gflvs.layout_to_netlist(
+        library,
+        "TOP",
+        device_templates=cfg.device_templates,
+        nettracer_config=cfg.netlist_tracer_config,
+        electrical_device_extraction_config=cfg.electrical_device_extraction_config,
+    )
+
+    nets = {net.name: net for net in layout_to_netlist.nets}
+    (mos,) = [d for d in layout_to_netlist.devices if d.class_name]
+    net_of = {t.name: nets[t.parent_net.net_name] for t in mos.terminals}
+    assert net_of["d"].connected_shapes and net_of["s"].connected_shapes
+    assert net_of["d"].name != net_of["s"].name
