@@ -1,0 +1,21 @@
+name: Test PEX rules with gfpex
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-pex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install gfpex (private, needs GFPEX_TOKEN)
+        run: |
+          uv venv --python 3.12
+          uv sync --extra dev
+          uv pip install networkx "kfnetlist @ git+https://github.com/gdsfactory/kfnetlist" \
+            "gfpex @ git+https://x-access-token:${{ secrets.GFPEX_TOKEN }}@github.com/doplaydo/gf-pex@dev/diogo-main"
+      - name: Run PEX tests
+        # --no-sync: a plain `uv run` re-syncs the lockfile's kfnetlist, which lacks the morphnet module gfpex needs
+        run: uv run --no-sync pytest tests/gfpex/ -v
