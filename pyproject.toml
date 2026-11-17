@@ -82,6 +82,8 @@ strict = true
 [tool.pytest.ini_options]
 # addopts = --tb=no
 # addopts = '--tb=short'
+addopts = ["--ignore=sky130/lvs"]  # python_files collects sky130/*.py, and rules.py imports gflvs
+markers = ["slow: long-running tests (deselect with -m 'not slow')"]
 python_files = ["sky130/*.py", "tests/*.py"]
 testpaths = ["sky130", "tests"]
 
