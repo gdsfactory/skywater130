@@ -161,7 +161,7 @@ NWELL, DIFF, TAP, POLY = (
     L(LAYER.polydrawing),
 )
 DIFFRES, POLYRES = L(LAYER.diffres), L(LAYER.polyres)
-LI1, MET1 = L(LAYER.li1drawing), L(LAYER.met1drawing)
+LICON1, LI1, MET1 = L(LAYER.licon1drawing), L(LAYER.li1drawing), L(LAYER.met1drawing)
 MET3, MET4, MET5 = L(LAYER.met3drawing), L(LAYER.met4drawing), L(LAYER.met5drawing)
 CAPM, CAP2M = L(LAYER.capm), L(LAYER.cap2m)
 NSDM, PSDM, LVTN = L(LAYER.nsdmdrawing), L(LAYER.psdmdrawing), L(LAYER.lvtndrawing)
@@ -189,13 +189,18 @@ MARKER_LAYERS: frozenset[LayerKey] = frozenset(
 )  # the PCells draw no pin layers (port labels are text only)
 
 # ponytail: tuned on PCell geometry; re-measure if PCell rules change
-MOS_REACH = (
-    1.2  # S/D diffusion and guard ring lie within this of the channel (max seen 1.155)
-)
+# S/D diffusion and guard ring lie within this of the channel (max seen 1.155)
+MOS_REACH = 1.2
+# own poly contact from its channel (max seen 0.24); in hd nand2 the other gate's is 0.52 away
+GATE_REACH = 0.35
+# grows S/D licons into one piece per strap (licon gap <= 0.19; other-net li1 >= 0.17 away)
+LICON_MERGE = 0.12
 RES_REACH = 2.5  # farthest met1 head point from the resistor body (max seen 2.13)
 RES_LINK = 0.1  # met1 heads start up to 0.025 from the body: the grown "l" region bridges that gap
 CAP_REACH = 3.5  # farthest bottom-plate metal from the dielectric (max seen 3.09, m3_2)
-DIODE_REACH = 0.8  # guard-ring tap distance from the diode diffusion (seen 0.51)
+DIODE_REACH = (
+    0.8  # guard-ring tap distance from the diode diffusion (seen 0.51 PCell, 0.34 deck)
+)
 
 LAYER_CONNECTIVITY: dict[LayerKey, list[LayerKey]] = connectivity(
     [
@@ -205,7 +210,8 @@ LAYER_CONNECTIVITY: dict[LayerKey, list[LayerKey]] = connectivity(
         (LAYER.li1, LAYER.mcon, LAYER.met1),
         (LAYER.met1, LAYER.via, LAYER.met2),
         (LAYER.met2, LAYER.via2, LAYER.met3),
-        # TODO(issue: pending): via3 inside capm (via4 inside cap2m) shorts the MIM plates here
+        # TODO(issue: pending): via3 inside capm (via4 inside cap2m) shorts the MIM plates here;
+        # TODO(gflvs G5): needs layer-op connectivity (via3 - capm) to express the deck's rule
         (LAYER.met3, LAYER.via3, LAYER.met4),
         (LAYER.met4, LAYER.via4, LAYER.met5),
         # well/implant pairs (nwell-dnwell/nsdm, pwell/hvtp-pwbm, hvi/ldntm/hvntm-poly) dropped:
@@ -235,17 +241,28 @@ def mos(
     return tpl(
         name,
         [
-            # nets ordered by x: leftmost is the drain, matching the pcell's D0/S1/D2... labels
-            pin("d/s", LI1 & ((DIFF & near_gate) - POLY)),
-            # li1 on the gate poly pads; the GATE port sits on the poly finger, which is not traced
-            pin("g", LI1 & POLY & near_gate),
+            # nets ordered by x: leftmost is the drain, matching the pcell's D0/S1/D2... labels.
+            # Only li1 on S/D contacts counts (li1 crossing uncontacted diffusion is not a terminal),
+            # and the implant keeps the other-type diffusion of dense cells out.
+            pin(
+                "d/s",
+                LI1 & grow(((DIFF & implant & near_gate) - POLY) & LICON1, LICON_MERGE),
+            ),
+            # li1 on this gate's own poly contacts: not an S/D strap over a poly edge, not a
+            # neighbouring gate's contact
+            pin("g", LI1 & POLY & LICON1 & grow(gate, GATE_REACH)),
+            # TODO(gflvs G5): no shared body net: taps can't be traced through well/substrate, so each
+            # tap ring is its own net and a MOS without a local tap has no b (std cells)
             pin("b", LI1 & TAP & body_implant & near_gate),
         ],
-        # w on the S/D diffusion and nf on the poly (one finger+pad polygon per finger) also tie the
-        # li1 S/D strips and gate pads into one device when there is no guard ring
+        # l per finger on the gate; w on this transistor's same-implant diffusion and nf on the poly
+        # (one finger+pad polygon per finger), which also tie the li1 S/D and gate contacts into one
+        # device when there is no guard ring.
+        # ponytail: w is the diffusion height, wrong if fingers of different W share a diffusion
+        # within MOS_REACH; switch to the gate once gflvs can group devices without it
         [
             par("l", gate),
-            par("w", DIFF & near_gate),
+            par("w", DIFF & implant & near_gate),
             par("nf", POLY & near_gate, "count"),
         ],
     )
@@ -290,7 +307,11 @@ def diode(
     terminal: str,
     ring_terminal: str,
 ) -> DeviceTemplate:
-    """Diode: junction = diff & areaiddiode & implant, ring tap bound by DIODE_REACH."""
+    """Diode: junction = diff & areaiddiode & implant, ring tap bound by DIODE_REACH.
+
+    w/l read the junction grown by DIODE_REACH (the extractors subtract it): that region overlaps
+    the ring-tap li1 pieces, so an open ring (separate li1 sides, as in the deck) stays one device.
+    """
     junction = DIFF & AREAID_DIODE & implant
     return tpl(
         name,
@@ -298,7 +319,7 @@ def diode(
             pin(terminal, MET1 & junction),
             pin(ring_terminal, LI1 & TAP & ring_implant & grow(junction, DIODE_REACH)),
         ],
-        [par("w", junction), par("l", junction)],
+        [par("w", grow(junction, DIODE_REACH)), par("l", grow(junction, DIODE_REACH))],
     )
 
 
@@ -371,15 +392,14 @@ DIODE_TEMPLATES = [
 # TODO: LOW — real BJT models are fixed-size (…_W1p00L1p00); w/l only check the emitter box
 BJT_TEMPLATES = [
     # CONFIDENCE: LOW
-    # TODO(issue: pending): npn collector li1 is merged with the base ring and has no tap
+    # TODO(issue: pending): npn collector li1 is merged with the base ring and has no tap, so the
+    # PCell's npn extracts no c
     tpl(
         "sky130_fd_pr__npn_05v5",
         [
             pin("e", LI1 & DIFF & NSDM & NPN),
             pin("b", LI1 & TAP & PSDM & NPN),
-            # the collector li1 strip is part of the base ring's li1 polygon, so c touches b and the
-            # extracted netlist shows that short
-            pin("c", (LI1 & NPN) - TAP - DIFF),
+            pin("c", LI1 & TAP & NSDM & NPN),  # the n+ collector tap ring in the nwell
         ],
         [par("w", DIFF & NSDM & NPN), par("l", DIFF & NSDM & NPN)],
     ),
@@ -429,6 +449,16 @@ def res_length(polygons: list[gdstk.Polygon]) -> float:
     return bbox_y(polygons) - 2 * RES_LINK
 
 
+def diode_w(polygons: list[gdstk.Polygon]) -> float:
+    """Return the junction width from the junction grown by DIODE_REACH."""
+    return bbox_x(polygons) - 2 * DIODE_REACH
+
+
+def diode_l(polygons: list[gdstk.Polygon]) -> float:
+    """Return the junction length from the junction grown by DIODE_REACH."""
+    return bbox_y(polygons) - 2 * DIODE_REACH
+
+
 # rule 3: every w/l reads its own parameter region, never the gap between paired terminals
 PARAMETER_EXTRACTORS: dict[tuple[str, str], Callable[[list[gdstk.Polygon]], float]] = {
     **{
@@ -443,7 +473,12 @@ PARAMETER_EXTRACTORS: dict[tuple[str, str], Callable[[list[gdstk.Polygon]], floa
     },
     **{
         (t.device_name, n): f
-        for t in (*CAPACITOR_TEMPLATES, *DIODE_TEMPLATES, *BJT_TEMPLATES)
+        for t in DIODE_TEMPLATES
+        for n, f in (("w", diode_w), ("l", diode_l))
+    },
+    **{
+        (t.device_name, n): f
+        for t in (*CAPACITOR_TEMPLATES, *BJT_TEMPLATES)
         for n, f in (("w", bbox_x), ("l", bbox_y))
     },
 }

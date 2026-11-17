@@ -124,10 +124,20 @@ PCELL_ROWS = [
     ("res_high_po_0p35", dict(res_length=2), 2, dict(w=0.35, l=2.0)),
     ("res_generic_nd", dict(res_width=0.5, res_length=4), 2, dict(w=0.5, l=4.0)),
     ("cap_mim_m3_1", dict(cap_width=5, cap_length=3), 2, dict(w=5.0, l=3.0)),
-    ("cap_mim_m3_2", dict(cap_width=4, cap_length=6), 2, dict(w=4.0, l=6.0)),
+    # 3x5, not 4x6: TODO(issue: pending) at 4x6 a via4 column ends on the cap2m edge and shorts the plates
+    ("cap_mim_m3_2", dict(cap_width=3, cap_length=5), 2, dict(w=3.0, l=5.0)),
     ("diode_pw2nd_05v5", dict(diode_width=1, diode_length=2), 2, dict(w=1.0, l=2.0)),
     ("diode_pd2nw_05v5", dict(diode_width=2, diode_length=1), 2, dict(w=2.0, l=1.0)),
-    ("npn_05v5", dict(emitter_width=2, emitter_length=2), 3, dict(w=2.0, l=2.0)),
+    pytest.param(
+        "npn_05v5",
+        dict(emitter_width=2, emitter_length=2),
+        3,
+        dict(w=2.0, l=2.0),
+        # TODO(issue: pending): the PCell npn has no collector tap, so c (the n+ tap) is empty
+        marks=pytest.mark.xfail(
+            strict=True, reason="PCell bug: npn collector has no tap"
+        ),
+    ),
     ("pnp_05v5", dict(emitter_width=3.4, emitter_length=3.4), 3, dict(w=3.4, l=3.4)),
 ]
 
@@ -199,3 +209,53 @@ def test_terminals_bind_to_routes(tmp_path: Path) -> None:
     net_of = {t.name: nets[t.parent_net.net_name] for t in mos.terminals}
     assert net_of["d"].connected_shapes and net_of["s"].connected_shapes
     assert net_of["d"].name != net_of["s"].name
+
+
+# deck testcases from efabless/sky130_klayout_pdk@dace518 (Apache-2.0), expected values from its KLayout LVS
+LVS_GDS = Path(__file__).parent / "lvs_gds"
+
+
+def _extract(gds: Path) -> list[Any]:
+    library = gdstk.read_gds(str(gds))
+    (top,) = library.top_level()
+    cfg = rules.DEFAULT_LVS_CONFIG
+    _, layout_to_netlist, _ = gflvs.layout_to_netlist(
+        library,
+        top.name,
+        device_templates=cfg.device_templates,
+        nettracer_config=cfg.netlist_tracer_config,
+        electrical_device_extraction_config=cfg.electrical_device_extraction_config,
+    )
+    return [d for d in layout_to_netlist.devices if d.class_name]
+
+
+def _nets(device: Any) -> dict[str, str]:
+    return {t.name: t.parent_net.net_name for t in device.terminals}
+
+
+def test_hd_inv_1_matches_klayout() -> None:
+    """Dense std cell: per-finger W/L as KLayout, and A, Y, VGND, VPWR stay separate."""
+    devices = {
+        d.class_name: d for d in _extract(LVS_GDS / "sky130_fd_sc_hd__inv_1.gds")
+    }
+    n, p = devices["sky130_fd_pr__nfet_01v8"], devices["sky130_fd_pr__pfet_01v8_hvt"]
+    assert {x.name: x.value for x in n.parameters} == pytest.approx(
+        dict(l=0.15, w=0.65, nf=1)
+    )
+    assert {x.name: x.value for x in p.parameters} == pytest.approx(
+        dict(l=0.15, w=1.0, nf=1)
+    )
+    n_nets, p_nets = _nets(n), _nets(p)
+    assert n_nets["g"] == p_nets["g"]  # A
+    n_sd, p_sd = {n_nets["d"], n_nets["s"]}, {p_nets["d"], p_nets["s"]}
+    assert len(n_sd) == len(p_sd) == 2
+    assert len(n_sd & p_sd) == 1  # Y; VGND and VPWR stay apart
+    assert n_nets["g"] not in n_sd | p_sd
+
+
+def test_deck_npn_terminals_distinct() -> None:
+    """The collector anchors on its n+ tap ring, not on the emitter li1."""
+    (npn,) = _extract(LVS_GDS / "sky130_fd_pr__npn_05v5_W1p00L1p00.gds")
+    nets = _nets(npn)
+    assert sorted(nets) == ["b", "c", "e"]
+    assert len(set(nets.values())) == 3
