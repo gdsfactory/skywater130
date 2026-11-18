@@ -27,6 +27,7 @@ test:
 	uv run pytest -s -n logical
 
 test-pex:
+	uv run --no-sync python -c "import gfpex.gfpex"  # fail here, not skip in pytest, if gfpex or a dependency is missing
 	uv run --no-sync pytest tests/test_pex_sky130.py -v
 
 test-force: install
