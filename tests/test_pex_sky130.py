@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import pytest
 
-pytest.importorskip("gfpex")
+pytest.importorskip(
+    "gfpex.gfpex"
+)  # not bare "gfpex": a folder named gfpex on sys.path would satisfy it
 
 from gfpex.gfpex import Techfile  # noqa: E402
 

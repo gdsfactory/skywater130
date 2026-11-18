@@ -32,7 +32,7 @@ of the per-layer coefficients (fringe, sidewall, side-overlap) is pending.
 ## Running the tests
 
 ```bash
-make test-pex   # uv run --no-sync pytest tests/gfpex/ -v
+make test-pex   # uv run --no-sync pytest tests/test_pex_sky130.py -v
 ```
 
 The tests skip when gfpex is not installed. CI runs them through the manual

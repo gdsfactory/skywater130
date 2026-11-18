@@ -24,4 +24,4 @@ jobs:
             "gfpex @ git+https://github.com/doplaydo/gf-pex@dev/diogo-main"
       - name: Run PEX tests
         # --no-sync: a plain `uv run` re-syncs the lockfile's kfnetlist, which lacks the morphnet module gfpex needs
-        run: uv run --no-sync pytest tests/gfpex/ -v
+        run: uv run --no-sync pytest tests/test_pex_sky130.py -v

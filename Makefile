@@ -27,7 +27,7 @@ test:
 	uv run pytest -s -n logical
 
 test-pex:
-	uv run --no-sync pytest tests/gfpex/ -v
+	uv run --no-sync pytest tests/test_pex_sky130.py -v
 
 test-force: install
 	uv run pytest -s -n logical --force-regen
