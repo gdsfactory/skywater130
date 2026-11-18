@@ -18,6 +18,9 @@ gfpex is optional and not a dependency of this package. Install it, then:
 from sky130.pex.rules import DEFAULT_PEX_RULES_CONFIG  # a gfpex.gfpex.Techfile
 ```
 
+gfpex is private: installing it needs read access to `doplaydo/gf-pex`, git authenticated for github.com
+(for example `gh auth login && gh auth setup-git`) and a Rust toolchain to build it.
+
 ## Provenance tags
 
 Section comments in `rules.py` say where the numbers come from:
