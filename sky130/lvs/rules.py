@@ -5,7 +5,9 @@ Usage::
     import gflvs
     from sky130.lvs import DEFAULT_LVS_CONFIG
 
-    gflvs.lvs(netlist, lib, DEFAULT_LVS_CONFIG)
+    gflvs.lvs(netlist, lib, DEFAULT_LVS_CONFIG, topcell=component.name)
+
+An empty topcell picks gdsfactory's `$$$CONTEXT_INFO$$$` cell (doplaydo/gflvs#137), so pass it.
 
 Flip the flags below and call `build_lvs_config()` for a variant config.
 
@@ -211,7 +213,7 @@ LAYER_CONNECTIVITY: dict[LayerKey, list[LayerKey]] = connectivity(
         (LAYER.met1, LAYER.via, LAYER.met2),
         (LAYER.met2, LAYER.via2, LAYER.met3),
         # TODO(issue: pending): via3 inside capm (via4 inside cap2m) shorts the MIM plates here;
-        # TODO(gflvs G5): needs layer-op connectivity (via3 - capm) to express the deck's rule
+        # TODO(gflvs): needs layer-op connectivity (via3 - capm) to express the deck's rule (doplaydo/gflvs#136)
         (LAYER.met3, LAYER.via3, LAYER.met4),
         (LAYER.met4, LAYER.via4, LAYER.met5),
         # well/implant pairs (nwell-dnwell/nsdm, pwell/hvtp-pwbm, hvi/ldntm/hvntm-poly) dropped:
@@ -222,6 +224,7 @@ LAYER_CONNECTIVITY: dict[LayerKey, list[LayerKey]] = connectivity(
 # ── Templates ───────────────────────────────────────────────────────
 # Leaf PCells are not traced inside, and gflvs binds a terminal only to parent nets on its leftmost
 # layer, so every terminal starts with the li1/met1/met3-5 its route lands on (rule 2).
+# Terminal names are the PCell logical pin names (port names where a PCell registers no pins).
 
 
 def mos(
@@ -241,19 +244,19 @@ def mos(
     return tpl(
         name,
         [
-            # nets ordered by x: leftmost is the drain, matching the pcell's D0/S1/D2... labels.
+            # nets ordered by x: leftmost is the drain (the DRAIN port), matching the D0/S1/D2... labels.
             # Only li1 on S/D contacts counts (li1 crossing uncontacted diffusion is not a terminal),
             # and the implant keeps the other-type diffusion of dense cells out.
             pin(
-                "d/s",
+                "DRAIN/SOURCE",
                 LI1 & grow(((DIFF & implant & near_gate) - POLY) & LICON1, LICON_MERGE),
             ),
             # li1 on this gate's own poly contacts: not an S/D strap over a poly edge, not a
             # neighbouring gate's contact
-            pin("g", LI1 & POLY & LICON1 & grow(gate, GATE_REACH)),
-            # TODO(gflvs G5): no shared body net: taps can't be traced through well/substrate, so each
+            pin("GATE", LI1 & POLY & LICON1 & grow(gate, GATE_REACH)),
+            # TODO(gflvs): no shared body net: taps can't be traced through well/substrate, so each
             # tap ring is its own net and a MOS without a local tap has no b (std cells)
-            pin("b", LI1 & TAP & body_implant & near_gate),
+            pin("BODY", LI1 & TAP & body_implant & near_gate),
         ],
         # l per finger on the gate; w on this transistor's same-implant diffusion and nf on the poly
         # (one finger+pad polygon per finger), which also tie the li1 S/D and gate contacts into one
@@ -284,7 +287,7 @@ def res(
     return tpl(
         name,
         # lower head first: MINUS sits at -y, PLUS at +y in every resistor pcell
-        [pin("minus/plus", MET1 & grow(body, RES_REACH))],
+        [pin("MINUS/PLUS", MET1 & grow(body, RES_REACH))],
         [par("l", conductor & grow(body, RES_LINK)), par("w", body)],
     )
 
@@ -292,10 +295,13 @@ def res(
 def cap(
     name: str, dielectric: LayerRef, bottom: LayerRef, top: LayerRef
 ) -> DeviceTemplate:
-    """MIM cap: c0 = top plate over the dielectric, c1 = bottom plate near it."""
+    """MIM cap: TOP = top plate over the dielectric, BOTTOM = bottom plate near it."""
     return tpl(
         name,
-        [pin("c0", top & dielectric), pin("c1", bottom & grow(dielectric, CAP_REACH))],
+        [
+            pin("TOP", top & dielectric),
+            pin("BOTTOM", bottom & grow(dielectric, CAP_REACH)),
+        ],
         [par("w", dielectric), par("l", dielectric)],
     )
 
@@ -383,23 +389,24 @@ CAPACITOR_TEMPLATES = [
 ]
 DIODE_TEMPLATES = [
     diode(
-        "sky130_fd_pr__diode_pw2nd_05v5", NSDM, PSDM, "cathode", "anode"
+        "sky130_fd_pr__diode_pw2nd_05v5", NSDM, PSDM, "CATHODE", "ANODE"
     ),  # CONFIDENCE: MEDIUM
     diode(
-        "sky130_fd_pr__diode_pd2nw_05v5", PSDM, NSDM, "anode", "cathode"
+        "sky130_fd_pr__diode_pd2nw_05v5", PSDM, NSDM, "ANODE", "CATHODE"
     ),  # CONFIDENCE: MEDIUM
 ]
 # TODO: LOW — real BJT models are fixed-size (…_W1p00L1p00); w/l only check the emitter box
 BJT_TEMPLATES = [
     # CONFIDENCE: LOW
     # TODO(issue: pending): npn collector li1 is merged with the base ring and has no tap, so the
-    # PCell's npn extracts no c
+    # PCell's npn extracts no COLLECTOR
     tpl(
         "sky130_fd_pr__npn_05v5",
         [
-            pin("e", LI1 & DIFF & NSDM & NPN),
-            pin("b", LI1 & TAP & PSDM & NPN),
-            pin("c", LI1 & TAP & NSDM & NPN),  # the n+ collector tap ring in the nwell
+            pin("EMITTER", LI1 & DIFF & NSDM & NPN),
+            pin("BASE", LI1 & TAP & PSDM & NPN),
+            # the n+ collector tap ring in the nwell
+            pin("COLLECTOR", LI1 & TAP & NSDM & NPN),
         ],
         [par("w", DIFF & NSDM & NPN), par("l", DIFF & NSDM & NPN)],
     ),
@@ -407,9 +414,9 @@ BJT_TEMPLATES = [
     tpl(
         "sky130_fd_pr__pnp_05v5",
         [
-            pin("e", LI1 & DIFF & PSDM & PNP),
-            pin("b", LI1 & TAP & NSDM & PNP),
-            pin("c", LI1 & TAP & PSDM & PNP),
+            pin("EMITTER", LI1 & DIFF & PSDM & PNP),
+            pin("BASE", LI1 & TAP & NSDM & PNP),
+            pin("COLLECTOR", LI1 & TAP & PSDM & PNP),
         ],
         [par("w", DIFF & PSDM & PNP), par("l", DIFF & PSDM & PNP)],
     ),

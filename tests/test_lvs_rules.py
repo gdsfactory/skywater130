@@ -45,7 +45,7 @@ def test_connectivity_symmetric() -> None:
 
 
 def test_template_layers_in_pdk() -> None:
-    pdk_layers = {(layer.layer, layer.datatype) for layer in LAYER}
+    pdk_layers = {(layer.layer, layer.datatype) for layer in LAYER}  # type: ignore[attr-defined]  # aenum LayerMap
     used = rules._template_layers(rules.DEVICE_TEMPLATES) | set(
         rules.LAYER_CONNECTIVITY
     )
@@ -133,7 +133,7 @@ PCELL_ROWS = [
         dict(emitter_width=2, emitter_length=2),
         3,
         dict(w=2.0, l=2.0),
-        # TODO(issue: pending): the PCell npn has no collector tap, so c (the n+ tap) is empty
+        # TODO(issue: pending): the PCell npn has no collector tap, so COLLECTOR (the n+ tap) is empty
         marks=pytest.mark.xfail(
             strict=True, reason="PCell bug: npn collector has no tap"
         ),
@@ -156,7 +156,11 @@ def test_pcell_extracts(
     component = factory(**kwargs)
     gds = component.write_gds(tmp_path / f"{pcell}.gds")
     # top_level() returns kfactory's $$$CONTEXT_INFO$$$ cell, so look the pcell up by name
-    (top,) = [c for c in gdstk.read_gds(str(gds)).cells if c.name == component.name]
+    (top,) = [
+        c
+        for c in gdstk.read_gds(str(gds)).cells
+        if isinstance(c, gdstk.Cell) and c.name == component.name
+    ]
 
     results = ElectricalDeviceExtractionPolicy().execute(
         top,
@@ -171,14 +175,21 @@ def test_pcell_extracts(
     assert len(extracted.terminals) == n_terminals
     values = {p.name: p.value for p in extracted.parameters}
     assert values == pytest.approx(params, rel=1e-3)
+    # terminal names are the PCell's logical pins, its port names where it registers none
+    pins = {p.name for p in component.pins} or {p.name for p in component.ports}
+    assert {t.name for t in extracted.terminals} == pins
 
 
 def test_terminals_bind_to_routes(tmp_path: Path) -> None:
-    """li1 straps drawn in a parent on the S/D ports land the d/s terminals on traced nets."""
+    """li1 straps drawn in a parent on the S/D ports land the DRAIN/SOURCE terminals on traced nets."""
     PDK.activate()
     component = pcells.sky130_fd_pr__nfet_01v8()
     gds = component.write_gds(tmp_path / "nfet.gds")
-    (device,) = [c for c in gdstk.read_gds(str(gds)).cells if c.name == component.name]
+    (device,) = [
+        c
+        for c in gdstk.read_gds(str(gds)).cells
+        if isinstance(c, gdstk.Cell) and c.name == component.name
+    ]
     top = gdstk.Cell("TOP")
     top.add(gdstk.Reference(device))
     li1 = LAYER.li1drawing
@@ -207,8 +218,8 @@ def test_terminals_bind_to_routes(tmp_path: Path) -> None:
     nets = {net.name: net for net in layout_to_netlist.nets}
     (mos,) = [d for d in layout_to_netlist.devices if d.class_name]
     net_of = {t.name: nets[t.parent_net.net_name] for t in mos.terminals}
-    assert net_of["d"].connected_shapes and net_of["s"].connected_shapes
-    assert net_of["d"].name != net_of["s"].name
+    assert net_of["DRAIN"].connected_shapes and net_of["SOURCE"].connected_shapes
+    assert net_of["DRAIN"].name != net_of["SOURCE"].name
 
 
 # deck testcases from efabless/sky130_klayout_pdk@dace518 (Apache-2.0), expected values from its KLayout LVS
@@ -246,16 +257,17 @@ def test_hd_inv_1_matches_klayout() -> None:
         dict(l=0.15, w=1.0, nf=1)
     )
     n_nets, p_nets = _nets(n), _nets(p)
-    assert n_nets["g"] == p_nets["g"]  # A
-    n_sd, p_sd = {n_nets["d"], n_nets["s"]}, {p_nets["d"], p_nets["s"]}
+    assert n_nets["GATE"] == p_nets["GATE"]  # A
+    n_sd = {n_nets["DRAIN"], n_nets["SOURCE"]}
+    p_sd = {p_nets["DRAIN"], p_nets["SOURCE"]}
     assert len(n_sd) == len(p_sd) == 2
     assert len(n_sd & p_sd) == 1  # Y; VGND and VPWR stay apart
-    assert n_nets["g"] not in n_sd | p_sd
+    assert n_nets["GATE"] not in n_sd | p_sd
 
 
 def test_deck_npn_terminals_distinct() -> None:
     """The collector anchors on its n+ tap ring, not on the emitter li1."""
     (npn,) = _extract(LVS_GDS / "sky130_fd_pr__npn_05v5_W1p00L1p00.gds")
     nets = _nets(npn)
-    assert sorted(nets) == ["b", "c", "e"]
+    assert sorted(nets) == ["BASE", "COLLECTOR", "EMITTER"]
     assert len(set(nets.values())) == 3
