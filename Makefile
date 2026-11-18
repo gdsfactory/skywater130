@@ -26,6 +26,10 @@ ngspice:
 test:
 	uv run pytest -s -n logical
 
+test-pex:
+	uv run --no-sync python -c "import gfpex.gfpex"  # fail here, not skip in pytest, if gfpex or a dependency is missing
+	uv run --no-sync pytest tests/test_pex_sky130.py -v
+
 test-force: install
 	uv run pytest -s -n logical --force-regen
 
@@ -83,4 +87,4 @@ docs-serve: nbdocs
 update-changelog:
 	claude -p "remove links and make a user friendly changelog from @CHANGELOG.md to @docs/changelog.md"
 
-.PHONY: drc drc-sample doc docs docs-pdf build update-changelog
+.PHONY: drc drc-sample doc docs docs-pdf build update-changelog test-pex

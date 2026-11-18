@@ -82,6 +82,7 @@ strict = true
 [tool.pytest.ini_options]
 # addopts = --tb=no
 # addopts = '--tb=short'
+addopts = "--ignore=sky130/pex"
 python_files = ["sky130/*.py", "tests/*.py"]
 testpaths = ["sky130", "tests"]
 

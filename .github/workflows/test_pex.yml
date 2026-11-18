@@ -1,0 +1,34 @@
+name: Test PEX rules with gfpex
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-pex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false  # keep GITHUB_TOKEN out of .git/config
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5
+      - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca # stable
+      - name: Fetch gfpex (private, needs GFPEX_TOKEN)
+        # The token lives only in this step, which runs git and nothing else: no ~/.gitconfig entry, no build hooks,
+        # no tests. The remote URL is reset so the clone keeps no copy of it.
+        env:
+          GFPEX_TOKEN: ${{ secrets.GFPEX_TOKEN }}
+        run: |
+          git clone --depth 1 --branch dev/diogo-main "https://x-access-token:${GFPEX_TOKEN}@github.com/doplaydo/gf-pex" "$RUNNER_TEMP/gf-pex"
+          git -C "$RUNNER_TEMP/gf-pex" remote set-url origin https://github.com/doplaydo/gf-pex
+      - name: Install gfpex
+        run: |
+          uv venv --python 3.12
+          uv sync --extra dev
+          uv pip install networkx "kfnetlist @ git+https://github.com/gdsfactory/kfnetlist" \
+            "$RUNNER_TEMP/gf-pex"
+      - name: Run PEX tests
+        # --no-sync: a plain `uv run` re-syncs the lockfile's kfnetlist, which lacks the morphnet module gfpex needs
+        run: make test-pex
