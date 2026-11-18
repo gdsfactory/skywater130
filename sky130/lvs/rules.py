@@ -212,7 +212,7 @@ LAYER_CONNECTIVITY: dict[LayerKey, list[LayerKey]] = connectivity(
         (LAYER.li1, LAYER.mcon, LAYER.met1),
         (LAYER.met1, LAYER.via, LAYER.met2),
         (LAYER.met2, LAYER.via2, LAYER.met3),
-        # TODO(issue: pending): via3 inside capm (via4 inside cap2m) shorts the MIM plates here;
+        # TODO(https://github.com/gdsfactory/skywater130/issues/296): via3 inside capm (via4 inside cap2m) shorts the MIM plates here;
         # TODO(gflvs): needs layer-op connectivity (via3 - capm) to express the deck's rule (doplaydo/gflvs#136)
         (LAYER.met3, LAYER.via3, LAYER.met4),
         (LAYER.met4, LAYER.via4, LAYER.met5),
@@ -329,8 +329,8 @@ def diode(
     )
 
 
-# TODO(issue: pending): MOS/ESD BODY port sits on the gate poly-contact pad, not the guard ring
-# TODO(issue: pending): for even nf the SOURCE port sits on a drain diffusion
+# TODO(https://github.com/gdsfactory/skywater130/issues/296): MOS/ESD BODY port sits on the gate poly-contact pad, not the guard ring
+# TODO(https://github.com/gdsfactory/skywater130/issues/296): for even nf the SOURCE port sits on a drain diffusion
 MOSFET_TEMPLATES = [
     mos(
         "sky130_fd_pr__nfet_01v8", NSDM, PSDM, exclude=(LVTN, HVI, AREAID_ESD)
@@ -342,7 +342,7 @@ MOSFET_TEMPLATES = [
         require=(LVTN,),
         exclude=(HVI, AREAID_ESD),
     ),  # CONFIDENCE: HIGH
-    # TODO(issue: pending): nfet_20v0 draws the same layers as g5v0d10v5, so it extracts as g5v0d10v5
+    # TODO(https://github.com/gdsfactory/skywater130/issues/296): nfet_20v0 draws the same layers as g5v0d10v5, so it extracts as g5v0d10v5
     mos(
         "sky130_fd_pr__nfet_g5v0d10v5", NSDM, PSDM, require=(HVI,), exclude=(LVTN,)
     ),  # CONFIDENCE: MEDIUM
@@ -368,7 +368,7 @@ MOSFET_TEMPLATES = [
     mos(
         "sky130_fd_pr__pfet_01v8_hvt", PSDM, NSDM, require=(HVTP,), exclude=(HVI,)
     ),  # CONFIDENCE: HIGH
-    # TODO(issue: pending): pfet_20v0 draws the same layers as g5v0d10v5, so it extracts as g5v0d10v5
+    # TODO(https://github.com/gdsfactory/skywater130/issues/296): pfet_20v0 draws the same layers as g5v0d10v5, so it extracts as g5v0d10v5
     mos(
         "sky130_fd_pr__pfet_g5v0d10v5", PSDM, NSDM, require=(HVI,)
     ),  # CONFIDENCE: MEDIUM
@@ -382,7 +382,7 @@ RESISTOR_TEMPLATES = [
     ),  # CONFIDENCE: HIGH
     res("sky130_fd_pr__res_generic_nd", DIFF, DIFFRES),  # CONFIDENCE: HIGH
 ]
-# TODO(issue: pending): via3 inside capm (via4 inside cap2m) shorts the plates in the tracer
+# TODO(https://github.com/gdsfactory/skywater130/issues/296): via3 inside capm (via4 inside cap2m) shorts the plates in the tracer
 CAPACITOR_TEMPLATES = [
     cap("sky130_fd_pr__cap_mim_m3_1", CAPM, MET3, MET4),  # CONFIDENCE: MEDIUM
     cap("sky130_fd_pr__cap_mim_m3_2", CAP2M, MET4, MET5),  # CONFIDENCE: MEDIUM
@@ -398,7 +398,7 @@ DIODE_TEMPLATES = [
 # TODO: LOW — real BJT models are fixed-size (…_W1p00L1p00); w/l only check the emitter box
 BJT_TEMPLATES = [
     # CONFIDENCE: LOW
-    # TODO(issue: pending): npn collector li1 is merged with the base ring and has no tap, so the
+    # TODO(https://github.com/gdsfactory/skywater130/issues/296): npn collector li1 is merged with the base ring and has no tap, so the
     # PCell's npn extracts no COLLECTOR
     tpl(
         "sky130_fd_pr__npn_05v5",
@@ -490,7 +490,7 @@ PARAMETER_EXTRACTORS: dict[tuple[str, str], Callable[[list[gdstk.Polygon]], floa
     },
 }
 
-# TODO(issue: pending): via_m1_m2 is not exported from sky130.pcells ("via" covers it anyway)
+# TODO(https://github.com/gdsfactory/skywater130/issues/296): via_m1_m2 is not exported from sky130.pcells ("via" covers it anyway)
 PASSTHROUGH_DEVICE_CLASS_NAMES: tuple[str, ...] = ("via", "contact_array")
 
 

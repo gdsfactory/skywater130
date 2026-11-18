@@ -124,7 +124,7 @@ PCELL_ROWS = [
     ("res_high_po_0p35", dict(res_length=2), 2, dict(w=0.35, l=2.0)),
     ("res_generic_nd", dict(res_width=0.5, res_length=4), 2, dict(w=0.5, l=4.0)),
     ("cap_mim_m3_1", dict(cap_width=5, cap_length=3), 2, dict(w=5.0, l=3.0)),
-    # 3x5, not 4x6: TODO(issue: pending) at 4x6 a via4 column ends on the cap2m edge and shorts the plates
+    # 3x5, not 4x6: TODO(https://github.com/gdsfactory/skywater130/issues/296) at 4x6 a via4 column ends on the cap2m edge and shorts the plates
     ("cap_mim_m3_2", dict(cap_width=3, cap_length=5), 2, dict(w=3.0, l=5.0)),
     ("diode_pw2nd_05v5", dict(diode_width=1, diode_length=2), 2, dict(w=1.0, l=2.0)),
     ("diode_pd2nw_05v5", dict(diode_width=2, diode_length=1), 2, dict(w=2.0, l=1.0)),
@@ -133,7 +133,7 @@ PCELL_ROWS = [
         dict(emitter_width=2, emitter_length=2),
         3,
         dict(w=2.0, l=2.0),
-        # TODO(issue: pending): the PCell npn has no collector tap, so COLLECTOR (the n+ tap) is empty
+        # TODO(https://github.com/gdsfactory/skywater130/issues/296): the PCell npn has no collector tap, so COLLECTOR (the n+ tap) is empty
         marks=pytest.mark.xfail(
             strict=True, reason="PCell bug: npn collector has no tap"
         ),
