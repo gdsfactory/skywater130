@@ -6,9 +6,10 @@ Usage::
 
 Provenance: every layer, stack entry and coefficient here is carried over unchanged from gf-pex
 ``gfpexconfg/sky130A.py`` (branch dev/diogo-main), which derives from the KPEX sky130A technology definition and
-Magic's sky130A.tech extraction defaults. Three deliberate departures from that source: the MiM plate over met4 is
-named ``cap2m`` as in ``sky130.layers.LAYER``; the duplicate li1-over-nwell overlap entry is dropped; and the
-``iox`` sidewall dielectric has k = 3.9 (SiO2) instead of 0.39. Section comments carry the provenance tag:
+Magic's sky130A.tech extraction defaults. Four deliberate departures from that source: the MiM plate over met4 is
+named ``cap2m`` as in ``sky130.layers.LAYER``; the duplicate li1-over-nwell overlap entry is dropped; the ``iox``
+sidewall dielectric has k = 3.9 (SiO2) instead of 0.39; and the dielectrics the source repeats after each metal
+variant get unique names (``nild5_capm``, ``nild6_cap2m``, ``capild_met4``). Section comments carry the provenance tag:
     FOUNDRY <source>   value stated by a foundry document
     DERIVED <formula>  computed from foundry values (C = 8.854·k/t aF/µm², Rs = ρ/t, series t/k, ...)
     ASSUMED <source>   borrowed from the closest open PDK (gf-pex gfpexconfg/<pdk>.py:line) or literature
@@ -1255,7 +1256,7 @@ def _build_process_stack(tech: Techfile) -> None:
     )
     psi.layers.append(
         StackLayerInfo(
-            name="nild5",
+            name="nild5_capm",
             layer_type=StackLayerType.LAYER_TYPE_SIMPLE_DIELECTRIC,
             simple_dielectric_layer=SimpleDielectricLayer(
                 dielectric_k=4.1, reference="nild4"
@@ -1285,7 +1286,7 @@ def _build_process_stack(tech: Techfile) -> None:
     )
     psi.layers.append(
         StackLayerInfo(
-            name="capild",
+            name="capild_met4",
             layer_type=StackLayerType.LAYER_TYPE_CONFORMAL_DIELECTRIC,
             conformal_dielectric_layer=ConformalDielectricLayer(
                 dielectric_k=capild_k,
@@ -1335,7 +1336,7 @@ def _build_process_stack(tech: Techfile) -> None:
     )
     psi.layers.append(
         StackLayerInfo(
-            name="nild6",
+            name="nild6_cap2m",
             layer_type=StackLayerType.LAYER_TYPE_SIMPLE_DIELECTRIC,
             simple_dielectric_layer=SimpleDielectricLayer(
                 dielectric_k=4.0, reference="nild5"

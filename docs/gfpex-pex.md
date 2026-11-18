@@ -5,10 +5,11 @@
 layers, the process stack (z, thickness, dielectric k), sheet/contact/via
 resistances and the Magic-style capacitance tables. The data is carried over
 from gf-pex `gfpexconfg/sky130A.py` (KPEX sky130A technology definition and
-Magic `sky130A.tech` defaults), with three deliberate departures: the MiM plate
+Magic `sky130A.tech` defaults), with four deliberate departures: the MiM plate
 over met4 is named `cap2m` as in `LAYER`, the duplicate li1-over-nwell overlap
 is dropped, and the `iox` sidewall dielectric has k = 3.9 (SiO2) instead of the
-source's 0.39.
+source's 0.39. The dielectrics the source repeats after each metal variant get
+unique names (`nild5_capm`, `nild6_cap2m`, `capild_met4`).
 
 ## Usage
 

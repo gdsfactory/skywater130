@@ -92,3 +92,9 @@ def test_z_lookup_covers_contacts() -> None:
     assert contacts
     missing = {c.name for c in contacts} - set(z)
     assert not missing
+
+
+def test_stack_names_unique() -> None:
+    # A stack entry is referenced by name; a repeated name makes the reference ambiguous.
+    names = [s.name for s in CFG.process_stack.layers]
+    assert len(names) == len(set(names))
