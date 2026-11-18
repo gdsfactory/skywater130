@@ -6,7 +6,9 @@ Usage::
 
 Provenance: every layer, stack entry and coefficient here is carried over unchanged from gf-pex
 ``gfpexconfg/sky130A.py`` (branch dev/diogo-main), which derives from the KPEX sky130A technology definition and
-Magic's sky130A.tech extraction defaults. Section comments carry the provenance tag:
+Magic's sky130A.tech extraction defaults. Three deliberate departures from that source: the MiM plate over met4 is
+named ``cap2m`` as in ``sky130.layers.LAYER``; the duplicate li1-over-nwell overlap entry is dropped; and the
+``iox`` sidewall dielectric has k = 3.9 (SiO2) instead of 0.39. Section comments carry the provenance tag:
     FOUNDRY <source>   value stated by a foundry document
     DERIVED <formula>  computed from foundry values (C = 8.854·k/t aF/µm², Rs = ρ/t, series t/k, ...)
     ASSUMED <source>   borrowed from the closest open PDK (gf-pex gfpexconfg/<pdk>.py:line) or literature
@@ -245,7 +247,7 @@ def _build_layers(tech: Techfile) -> None:
     tech.layers.append(
         LayerInfo(
             purpose=MIM,
-            name="capm2",
+            name="cap2m",
             drw_gds_pair=GDSPair(layer=97, datatype=44),
             description="MiM capacitor plate over metal 4",
         )
@@ -591,11 +593,11 @@ def _build_lvs_computed_layers(tech: Techfile) -> None:
             kind=KCAP,
             layer_info=LayerInfo(
                 purpose=MIM,
-                name="capm2",
+                name="cap2m",
                 description="MiM cap above metal4",
                 drw_gds_pair=GDSPair(layer=97, datatype=44),
             ),
-            original_layer_name="capm2",
+            original_layer_name="cap2m",
         )
     )
     tech.lvs_computed_layers.append(
@@ -1025,7 +1027,7 @@ def _build_process_stack(tech: Techfile) -> None:
             name="iox",
             layer_type=StackLayerType.LAYER_TYPE_SIDEWALL_DIELECTRIC,
             sidewall_dielectric_layer=SidewallDielectricLayer(
-                dielectric_k=0.39,
+                dielectric_k=3.9,  # SiO2; gf-pex/KPEX carry 0.39, a typo (k < 1 is below vacuum)
                 height_above_metal=0.18,
                 width_outside_sidewall=0.006,
                 reference="poly",
@@ -1314,7 +1316,7 @@ def _build_process_stack(tech: Techfile) -> None:
     # CAPM2 (MIM cap above met4)
     psi.layers.append(
         StackLayerInfo(
-            name="capm2",
+            name="cap2m",
             layer_type=StackLayerType.LAYER_TYPE_METAL,
             metal_layer=MetalLayer(
                 z=4.0211 + 0.845 + capild_thickness,
@@ -1502,11 +1504,6 @@ def _build_parasitics(tech: Techfile) -> None:
     ci.overlaps.append(
         OverlapCapacitance(
             top_layer_name="li1", bottom_layer_name="pwell", capacitance=36.99
-        )
-    )
-    ci.overlaps.append(
-        OverlapCapacitance(
-            top_layer_name="li1", bottom_layer_name="nwell", capacitance=36.99
         )
     )
     ci.overlaps.append(

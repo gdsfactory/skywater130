@@ -66,23 +66,19 @@ def test_names_resolve() -> None:
 
 
 def test_drawing_gds_pairs_match_layer_map() -> None:
-    checked = 0
     for layer in CFG.layers:
         member = getattr(LAYER, f"{layer.name}drawing", None) or getattr(
-            LAYER, layer.name, None
+            LAYER, layer.name
         )
-        if member is None:  # capm2 has no LAYER entry
-            continue
         assert (layer.drw_gds_pair.layer, layer.drw_gds_pair.datatype) == (
             member.layer,
             member.datatype,
         ), layer.name
-        checked += 1
-    assert checked >= len(CFG.layers) - 1
 
 
 def test_metal_z_monotonic() -> None:
     metals = [s.metal_layer for s in CFG.process_stack.layers if s.metal_layer]
+    assert len(metals) > 1
     for below, above in zip(metals, metals[1:]):
         if above.z == below.z:  # ncap/cap variants of the same physical metal
             assert above.thickness == below.thickness
@@ -92,5 +88,7 @@ def test_metal_z_monotonic() -> None:
 
 def test_z_lookup_covers_contacts() -> None:
     z = CFG.build_layer_z_lookup()
-    missing = {c.name for c in _contacts()} - set(z)
+    contacts = _contacts()
+    assert contacts
+    missing = {c.name for c in contacts} - set(z)
     assert not missing
