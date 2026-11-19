@@ -1,0 +1,45 @@
+name: Test LVS rules with gflvs
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test-lvs:
+    runs-on: ubuntu-latest
+    env:
+      UV_PYTHON: "3.12"  # gdsfactoryplus only ships cp312 wheels
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false  # keep GITHUB_TOKEN out of .git/config
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5
+      - name: Check for the gflvs token
+        id: token
+        env:
+          TOKEN: ${{ secrets.GFLVS_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::GFLVS_TOKEN is not available (fork or Dependabot PR?), so the gflvs LVS tests are skipped"
+          fi
+      - name: Install with the lvs extra (gflvs dev, kfnetlist main)
+        if: steps.token.outputs.available == 'true'
+        # gflvs is private. The token rewrites only doplaydo/gflvs URLs, through env-scoped git config that lives
+        # only in this step. --upgrade-package moves both to the tip of their branch, not the commit in uv.lock.
+        env:
+          GIT_CONFIG_COUNT: "1"
+          GIT_CONFIG_KEY_0: url.https://x-access-token:${{ secrets.GFLVS_TOKEN }}@github.com/doplaydo/gflvs.insteadOf
+          GIT_CONFIG_VALUE_0: https://github.com/doplaydo/gflvs
+        run: uv sync --extra dev --extra lvs --upgrade-package gflvs --upgrade-package kfnetlist
+      - name: Run LVS tests
+        if: steps.token.outputs.available == 'true'
+        run: |
+          uv run --no-sync python -c "import gflvs"  # fail here, not skip in pytest, if gflvs or a dependency is missing
+          uv run --no-sync pytest tests/test_lvs_rules.py -v

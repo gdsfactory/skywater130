@@ -43,6 +43,7 @@ docs = [
   "mkdocstrings[python]>=0.27.0",
   "zensical>=0.0.40,<0.2.0"
 ]
+lvs = ["gflvs", "kfnetlist", "pymoo>=0.6.0"]  # pymoo: gflvs imports it but only lists it as a dev dep
 
 [tool.codespell]
 ignore-words-list = "ba,donot,fpr,nd,ro,schem,te"
@@ -82,6 +83,8 @@ strict = true
 [tool.pytest.ini_options]
 # addopts = --tb=no
 # addopts = '--tb=short'
+addopts = ["--ignore=sky130/lvs"]  # python_files collects sky130/*.py, and rules.py imports gflvs
+markers = ["slow: long-running tests (deselect with -m 'not slow')"]
 python_files = ["sky130/*.py", "tests/*.py"]
 testpaths = ["sky130", "tests"]
 
@@ -198,3 +201,14 @@ showcontent = true
 directory = "fixed"
 name = "Fixed"
 showcontent = true
+
+[tool.uv]
+# gflvs (`lvs` extra) needs kfnetlist main (0.4.x, protobuf>=7.36) and numpy>=2.5.1. These lift circulax's
+# kfnetlist<0.4 pin, vlsir's protobuf cap and tidy3d's numpy<2.5 cap for the whole project; protobuf>=7.36
+# also covers CVE-2026-0994.
+override-dependencies = ["protobuf>=7.36", "kfnetlist>=0.4.1", "numpy>=2.5.1"]
+
+[tool.uv.sources]
+gflvs = { git = "https://github.com/doplaydo/gflvs.git", branch = "dev" }
+# rev (not branch) must match gflvs's own kfnetlist source, or uv sees two URLs
+kfnetlist = { git = "https://github.com/gdsfactory/kfnetlist.git", rev = "main" }

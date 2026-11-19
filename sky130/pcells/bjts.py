@@ -268,6 +268,7 @@ def sky130_fd_pr__npn_05v5(
         )
     ).move((nw_x0, nw_y0))
 
+    c.flatten()  # gflvs extracts devices from the cell's own polygons only
     return c
 
 
@@ -519,6 +520,7 @@ def sky130_fd_pr__pnp_05v5(
         )
     ).move((c_origin_x - nw_enc, c_origin_y - nw_enc))
 
+    c.flatten()  # gflvs extracts devices from the cell's own polygons only
     return c
 
 
